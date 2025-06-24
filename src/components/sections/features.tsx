@@ -55,15 +55,7 @@ export function Features() {
   return (
     <section className="py-24 sm:py-32">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-headline text-3xl font-bold tracking-tight text-secondary sm:text-4xl">
-            Une Expérience Premium, de A à Z
-          </h2>
-          <p className="mt-4 text-lg text-foreground/70">
-            Chaque fonctionnalité est conçue pour vous offrir une immersion complète et élégante dans le monde de la cartomancie.
-          </p>
-        </div>
-        <div className="mt-16 grid gap-8 md:grid-cols-1 lg:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-3">
           {features.map((feature, index) => (
             <div key={feature.id} id={feature.id} className="scroll-mt-24">
               <FeatureCard feature={feature} index={index} />
