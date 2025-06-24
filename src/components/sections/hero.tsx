@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export function Hero() {
   return (
@@ -18,12 +19,16 @@ export function Hero() {
             L'Oracle Royal est votre guide personnel pour apprendre, pratiquer et interpréter le langage des 52 cartes.
           </p>
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
-            <Button size="lg">
-              Débuter l'initiation
-              <ArrowRight className="ml-2 h-5 w-5" />
+            <Button size="lg" asChild>
+              <Link href="/apprentissage">
+                Débuter l'initiation
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-primary/50 text-primary hover:bg-primary/10 hover:text-primary">
-              Explorer les fonctionnalités
+            <Button size="lg" variant="outline" className="border-primary/50 text-primary hover:bg-primary/10 hover:text-primary" asChild>
+              <a href="#apprentissage">
+                Explorer les fonctionnalités
+              </a>
             </Button>
           </div>
         </div>
