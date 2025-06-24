@@ -32,10 +32,10 @@ const FeatureCard = ({ feature, index }: { feature: (typeof features)[0], index:
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.15 }}
       viewport={{ once: true, amount: 0.3 }}
-      className="relative overflow-hidden rounded-2xl border border-primary/20 bg-card/60 p-8 shadow-xl backdrop-blur-md"
+      className="relative overflow-hidden rounded-2xl border border-primary/20 bg-card/25 p-8 shadow-xl backdrop-blur-md"
     >
       <div
-        className="absolute right-0 top-0 h-32 w-32 bg-[radial-gradient(closest-side,hsl(var(--primary)/0.2),transparent)] -translate-y-1/2 translate-x-1/2"
+        className="absolute right-0 top-0 h-32 w-32 bg-[radial-gradient(closest-side,hsl(var(--primary)/0.1),transparent)] -translate-y-1/2 translate-x-1/2"
       ></div>
       <div className="flex items-center gap-4">
         <div className="rounded-lg bg-primary/10 p-3">
@@ -45,7 +45,7 @@ const FeatureCard = ({ feature, index }: { feature: (typeof features)[0], index:
           {feature.title}
         </h3>
       </div>
-      <p className="mt-4 text-foreground/80">{feature.description}</p>
+      <p className="mt-4 text-card-foreground/80">{feature.description}</p>
     </motion.div>
   );
 };
