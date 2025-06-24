@@ -21,7 +21,7 @@ const features = [
     id: "tirages",
     icon: Rows3,
     title: "Tirages Personnalisés",
-    description: "Réalisez vos propres tirages avec des mises en page classiques. Enregistrez vos interprétations et suivez votre progression.",
+    description: "Utilisez des dispositions classiques pour vos tirages. Sauvegardez vos lectures et suivez l'évolution de votre intuition.",
   },
 ];
 
