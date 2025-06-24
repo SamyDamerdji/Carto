@@ -15,7 +15,7 @@ const features = [
     id: "entrainement",
     icon: BrainCircuit,
     title: "Entraînement Interactif",
-    description: "Testez et renforcez vos connaissances avec des quiz ludiques et adaptatifs. La mémorisation devient un jeu.",
+    description: "Testez et renforcez vos connaissances avec des quiz assistés par IA. La mémorisation devient un jeu.",
   },
   {
     id: "tirages",
