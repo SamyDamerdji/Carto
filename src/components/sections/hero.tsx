@@ -18,13 +18,7 @@ export function Hero() {
             Maîtrisez l'art ancestral de la cartomancie traditionnelle.
             Le Cartomancien est votre guide personnel pour apprendre, pratiquer et interpréter le langage des 52 cartes.
           </p>
-          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
-            <Button size="lg" asChild>
-              <Link href="/apprentissage">
-                Débuter l'initiation
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button size="lg" variant="outline" className="border-primary/50 text-primary hover:bg-primary/10 hover:text-primary" asChild>
               <a href="#apprentissage">
                 Explorer les fonctionnalités
