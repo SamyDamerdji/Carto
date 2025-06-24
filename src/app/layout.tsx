@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
-  title: "L'Oracle Royal",
+  title: "Le Cartomancien",
   description: "Apprenez et mémorisez les significations divinatoires des 52 cartes à jouer.",
 };
 
