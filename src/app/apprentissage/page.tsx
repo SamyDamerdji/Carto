@@ -1,5 +1,4 @@
 import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
 import { BookOpen, Palette, KeyRound } from "lucide-react";
 
 function InfoCard({ icon: Icon, title, children }: { icon: React.ElementType, title: string, children: React.ReactNode }) {
@@ -46,7 +45,6 @@ export default function ApprentissagePage() {
           </InfoCard>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }
