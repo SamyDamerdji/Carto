@@ -56,9 +56,10 @@
   }
   body {
     @apply bg-background text-foreground;
-    background-image: radial-gradient(ellipse at 50% 0%, hsl(258 60% 70% / 0.15), transparent 70%),
-                      radial-gradient(ellipse at 80% 10%, hsl(39 100% 50% / 0.1), transparent 70%),
-                      radial-gradient(ellipse at 20% 90%, hsl(258 60% 70% / 0.1), transparent 70%);
-
+    background-image: url('https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/fond.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
   }
 }
