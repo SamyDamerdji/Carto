@@ -18,7 +18,7 @@ export default {
     extend: {
       fontFamily: {
         body: ['"EB Garamond"', 'serif'],
-        headline: ['"Playfair Display"', 'serif'],
+        headline: ['"Cinzel"', 'serif'],
       },
       colors: {
         background: 'hsl(var(--background))',
