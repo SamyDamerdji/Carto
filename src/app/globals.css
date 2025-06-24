@@ -27,35 +27,26 @@
   }
  
   .dark {
-    --background: 240 65% 10%;
-    --foreground: 276 100% 95%;
-
-    --card: 240 33% 26%;
-    --card-foreground: 276 100% 95%;
-
-    --popover: 240 33% 20%;
-    --popover-foreground: 276 100% 95%;
-
+    --background: 258 48% 12%;
+    --foreground: 259 50% 95%;
+    --card: 258 48% 25%;
+    --card-foreground: 259 50% 95%;
+    --popover: 258 48% 10%;
+    --popover-foreground: 259 50% 95%;
     --primary: 33 100% 50%;
-    --primary-foreground: 240 65% 5%;
-
-    --secondary: 276 100% 84%;
-    --secondary-foreground: 276 30% 20%;
-
-    --muted: 240 33% 20%;
-    --muted-foreground: 240 20% 65%;
-
-    --accent: 240 33% 30%;
-    --accent-foreground: 33 100% 70%;
-    
+    --primary-foreground: 22 47% 11%;
+    --secondary: 258 60% 70%;
+    --secondary-foreground: 258 48% 12%;
+    --muted: 258 48% 20%;
+    --muted-foreground: 259 50% 70%;
+    --accent: 258 48% 30%;
+    --accent-foreground: 259 50% 95%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-
     --border: 33 100% 40%;
-    --input: 240 33% 30%;
+    --input: 258 48% 20%;
     --ring: 33 100% 50%;
-    
-    --radius: 0.75rem;
+    --radius: 1rem;
   }
 }
  
@@ -65,8 +56,9 @@
   }
   body {
     @apply bg-background text-foreground;
-    background-image: radial-gradient(ellipse at 50% 0%, hsl(276 100% 84% / 0.08), transparent 70%),
-                      radial-gradient(ellipse at 50% 100%, hsl(33 100% 50% / 0.1), transparent 70%);
+    background-image: radial-gradient(ellipse at 50% 0%, hsl(258 60% 70% / 0.15), transparent 70%),
+                      radial-gradient(ellipse at 80% 10%, hsl(33 100% 50% / 0.1), transparent 70%),
+                      radial-gradient(ellipse at 20% 90%, hsl(258 60% 70% / 0.1), transparent 70%);
 
   }
 }
