@@ -17,7 +17,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        body: ['"PT Sans"', 'sans-serif'],
+        body: ['"EB Garamond"', 'serif'],
         headline: ['"Playfair Display"', 'serif'],
       },
       colors: {
