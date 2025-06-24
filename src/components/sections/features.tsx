@@ -21,7 +21,7 @@ const features = [
     id: "tirages",
     icon: Rows3,
     title: "Tirages Personnalisés",
-    description: "Utilisez des dispositions classiques pour vos tirages. Sauvegardez vos lectures et suivez l'évolution de votre intuition.",
+    description: "Découvrez ce que l'avenir vous réserve et laissez l'Oracle interpréter le message des cartes.",
   },
 ];
 
