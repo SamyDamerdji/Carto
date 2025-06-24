@@ -62,7 +62,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    background-image: url('https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/fond.png');
+    background-image: url('https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/public/cards/fond.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
