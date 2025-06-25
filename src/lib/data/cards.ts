@@ -1,6 +1,7 @@
 import { piqueCards } from './collections/pique';
 import { trefleCards } from './collections/trefle';
 import { coeurCards } from './collections/coeur';
+import { carreauCards } from './collections/carreau';
 
 export type CardColor = 'Trèfle' | 'Coeur' | 'Carreau' | 'Pique';
 
@@ -42,5 +43,6 @@ export interface Card {
 export const cardsData: Card[] = [
   ...trefleCards,
   ...piqueCards,
-  ...coeurCards
+  ...coeurCards,
+  ...carreauCards,
 ];
