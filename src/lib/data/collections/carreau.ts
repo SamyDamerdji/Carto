@@ -172,5 +172,45 @@ export const carreauCards: Card[] = [
       { "carte_associee_id": "carreau_valet", "signification": "Indique une nouvelle ou un message important concernant des affaires financières. Symbolise aussi un mentorat, où la Dame (experte) guide le Valet (dynamique)." },
       { "carte_associee_id": "carreau_as", "signification": "Renforce les thèmes de réussite et d'opportunités, indiquant un succès imminent et des portes qui s'ouvrent dans le domaine matériel." }
     ]
+  },
+  {
+    "id": "carreau_10",
+    "nom_carte": "Dix de Carreau",
+    "valeur": 10,
+    "couleur": "Carreau",
+    "image_url": "/images/cards/carreau_10.png",
+    "resume_general": "Carte de mouvement, de transition et de changement visible. Elle représente un avancement, un tournant décisif, et l'aboutissement des efforts. C'est le 'feu vert' cosmique qui pousse à l'action et annonce un nouveau chapitre.",
+    "phrase_cle": "Vous avez assez attendu, allez-y maintenant.",
+    "mots_cles": [
+      "mouvement", "transition", "changement", "travail", "effort", "récompense", "réussite",
+      "opportunité", "avancement", "voyage", "déménagement", "alignement"
+    ],
+    "interpretations": {
+      "general": "Le 10 de Carreau déborde d'énergie. Il incarne un mouvement, une porte qui s'ouvre sur un nouveau chapitre. Symboliquement, il représente le travail, les efforts prolongés et la récompense qui en découle. C'est un rappel que chaque effort a une récompense et que le simple fait d'avancer est une victoire.",
+      "endroit": "Annonce un succès positif, un travail qui porte ses fruits, une entrée d'argent méritée. C'est un 'feu vert' pour une décision, une signature ou une ouverture professionnelle. Dans les relations, il indique une évolution, un passage à un niveau supérieur. C'est un signe d'évolution et d'alignement personnel.",
+      "ombre_et_defis": "Symbolise des moments de tension où les choses semblent s'accumuler. Ces obstacles sont vus comme des opportunités déguisées pour grandir. En négatif, il peut signaler un blocage, un frein intérieur, une peur du changement ou un manque de clarté qui empêche d'avancer.",
+      "conseil": "Prenez cette carte comme un guide. Réévaluez vos priorités et préparez-vous pour la prochaine étape. Persévérez, car le succès est à portée de main. Prenez un moment pour respirer et réaligner vos actions avec votre cœur pour ne pas vous perdre dans la course."
+    },
+    "domaines": {
+      "amour": "Indique un mouvement intense. Peut signifier une relation qui passe à un niveau supérieur, ou une relation à distance. C'est un choix décisif à faire : partir ou rester, ouvrir ou refermer. La situation demande de ne plus faire semblant.",
+      "travail": "Représente des efforts prolongés qui vont payer. C'est un signe très positif pour les projets professionnels, indiquant une ouverture, une signature, un 'feu vert'. Elle vous teste sur votre capacité à suivre ce que votre âme réclame.",
+      "finances": "Peut indiquer une entrée d'argent, mais liée à des efforts fournis. C'est un retour sur investissement, un gain mérité. Rappelle que la patience est le maître mot pour obtenir la récompense de son dévouement.",
+      "spirituel": "Représente un alignement entre les actions et les croyances. Si l'on se sent en décalage, la carte invite à faire le point et à se poser la question des motivations profondes. Le 10 symbolise la fin d'un cycle et le début d'un autre, un appel au renouveau."
+    },
+    "prompts_visuels": [
+      "une porte massive s'ouvrant sur un chemin ensoleillé",
+      "un train qui démarre, vu depuis le quai, avec une personne qui hésite à monter",
+      "une personne au sommet d'une colline, regardant la route parcourue et celle à venir",
+      "un carrefour où une voiture prend une direction décisive",
+      "une main qui appuie sur un interrupteur, allumant une grande pièce"
+    ],
+    "prompts_conversationnels": [
+      "Le 10 de Carreau est un 'feu vert cosmique'. Comment cette énergie se distingue-t-elle de 'l'opportunité' de l'As de Trèfle ?",
+      "La fiche mentionne que les obstacles sont des 'opportunités déguisées'. Donnez un exemple concret de ce principe dans un contexte de projet d'équipe.",
+      "Cette carte invite à 'réaligner ses actions avec son cœur'. Pourquoi est-ce parfois nécessaire, même quand on est en pleine course vers le succès ?",
+      "En amour, le 10 de Carreau force un 'choix décisif'. Comparez cela à la 'phase de questionnement' du 10 de Pique.",
+      "La vibration de cette carte est 'dynamique, presque électrique'. Comment gérer une telle énergie pour qu'elle soit constructive et non chaotique ?"
+    ],
+    "combinaisons": []
   }
 ]
