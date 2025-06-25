@@ -90,5 +90,54 @@ export const trefleCards: Card[] = [
       "On dit que pour incarner son énergie, il faut 'fixer des objectifs clairs' et 'ne pas se laisser distraire'. Pourquoi la discipline est-elle si centrale dans la symbolique de cette carte ?"
     ],
     "combinaisons": []
+  },
+  {
+    "id": "trefle_09",
+    "nom_carte": "Neuf de Trèfle",
+    "valeur": 9,
+    "couleur": "Trèfle",
+    "image_url": "/images/cards/trefle_09.png",
+    "resume_general": "Carte de la réussite méritée et des récompenses après l'effort. Elle symbolise les réussites inattendues, la prospérité issue du travail et l'aboutissement d'un projet. Elle représente aussi la fin d'un chapitre et l'aube d'un nouveau départ.",
+    "phrase_cle": "Le travail paie, soyez prêt à saisir votre chance.",
+    "mots_cles": [
+      "réussite", "récompense", "travail acharné", "prospérité", "chance", "effort", "achèvement", 
+      "nouveau départ", "satisfaction", "opportunité", "concrétisation", "réflexion"
+    ],
+    "interpretations": {
+      "general": "Le 9 de Trèfle est une carte d'énergie fascinante qui évoque des réussites inattendues. Cependant, rien n'arrive par magie ; elle rappelle que chaque succès demande un effort et une préparation. C'est la satisfaction de voir son travail porter ses fruits.",
+      "endroit": "Annonce une réussite méritée, une récompense pour le travail fourni, la fin d'un chapitre et le début d'un nouveau. Elle suggère des relations épanouissantes construites sur des bases solides et la concrétisation d'un projet ambitieux.",
+      "ombre_et_defis": "Peut murmurer un avertissement sur les excès. Trop d'efforts sans réflexion peuvent mener à l'épuisement. Elle invite à ne pas s'éparpiller et à ne pas se laisser paralyser par la procrastination ou les doutes. Avec des piques, elle annonce des retards et des efforts supplémentaires.",
+      "conseil": "Préparez vos chaussures, vous allez grimper ! Le succès est à portée de main, mais il demande de l'organisation et de la concentration. Listez vos priorités, ne vous laissez pas freiner par les doutes et avancez avec stratégie pour récolter les fruits de votre labeur."
+    },
+    "domaines": {
+      "amour": "Suggère des relations épanouissantes, basées sur la sincérité et des fondations solides. Il n'y a pas de place pour les promesses en l'air. Avec des cartes de cœur, cela peut indiquer une rencontre marquante qui mêle travail et émotion, ou le soutien d'une personne influente et tendre.",
+      "travail": "Carte très positive pour le domaine professionnel. Annonce une promotion, une reconnaissance, le jackpot pour un projet ambitieux. C'est le signe que le travail acharné va enfin être récompensé et que les ambitions se matérialisent.",
+      "finances": "Annonce la prospérité et la récompense des efforts. Avec le 10 de Carreau, c'est la concrétisation financière d'un projet. Avec le Valet de Carreau, c'est une nouvelle financière inattendue. La chance est présente, mais elle est le fruit d'un travail intelligent.",
+      "spirituel": "Symbolise un pont entre le ciel et la terre, entre la magie du monde et le travail concret. C'est la fin d'un cycle karmique (le chiffre 9) et le début d'un nouveau. Invite à travailler dur tout en gardant un œil sur les signes et les synchronicités."
+    },
+    "prompts_visuels": [
+      "une personne atteignant le sommet d'une montagne au lever du soleil",
+      "un jardinier récoltant les fruits et légumes de son potager bien entretenu",
+      "une main recevant une médaille ou un diplôme",
+      "quelqu'un ouvrant une porte qui donne sur un paysage nouveau et prometteur",
+      "des rouages s'emboîtant parfaitement pour faire fonctionner une machine complexe"
+    ],
+    "prompts_conversationnels": [
+      "La fiche dit : 'Tu vas y arriver, mais prépare tes chaussures !'. Que signifie cette métaphore en termes de préparation de projet ?",
+      "Le 9 de Trèfle est lié au chiffre 9, symbole d'achèvement et de nouveau départ. Donnez un exemple concret de situation qui représente à la fois une fin et un commencement.",
+      "Le côté 'ombre' de cette carte met en garde contre l'éparpillement, comparé à 'vouloir attraper tous les papillons'. Comment cette idée s'applique-t-elle à la gestion du temps et des priorités ?",
+      "Comment la 'réussite' du 9 de Trèfle, basée sur l'effort, se distingue-t-elle de la 'chance pure' que pourrait symboliser une autre carte ?",
+      "Avec la Dame de Pique, le 9 de Trèfle avertit des 'serpents dans l'ombre'. Quel type de stratégie faut-il adopter face à un obstacle humain plutôt qu'un obstacle matériel ?"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "coeur_as", "signification": "Une nouveauté éclot, nourrie par la passion ou l'affection. Un projet mêlant travail et émotion." },
+      { "carte_associee_id": "coeur_roi", "signification": "Le soutien d'une personne influente et bienveillante qui vous tend la main et vous offre un conseil précieux." },
+      { "carte_associee_id": "pique_07", "signification": "Des retards ou des démarches ennuyeuses sont à prévoir, mais ce ne sont pas des obstacles insurmontables." },
+      { "carte_associee_id": "pique_dame", "signification": "Mise en garde contre une personne qui pourrait freiner vos projets. La stratégie est de mise." },
+      { "carte_associee_id": "carreau_10", "signification": "Le jackpot est proche. C'est la récompense concrète et matérielle d'un projet ambitieux." },
+      { "carte_associee_id": "carreau_valet", "signification": "Une nouvelle inattendue, via un message ou une rencontre, vient débloquer une situation." },
+      { "carte_associee_id": "trefle_08", "signification": "Une montée en puissance. Les efforts et l'énergie investis vont porter leurs fruits très prochainement." },
+      { "carte_associee_id": "trefle_roi", "signification": "Une figure d'autorité vous ouvre la voie. Écoutez ses conseils tout en gardant votre indépendance." }
+    ]
   }
 ];
