@@ -1,3 +1,4 @@
+import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { Hero } from "@/components/sections/hero";
 
@@ -8,6 +9,7 @@ export default function HomePage() {
       <main className="flex-grow">
         <Hero />
       </main>
+      <Footer />
     </div>
   );
 }
