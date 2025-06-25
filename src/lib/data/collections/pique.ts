@@ -329,5 +329,47 @@ export const piqueCards: Card[] = [
       { "carte_associee_id": "pique_09", "signification": "Mort ou décès en lien avec une maladie." },
       { "carte_associee_id": "pique_07", "signification": "Un décès laissera un chagrin profond et durable." }
     ]
+  },
+  {
+    "id": "pique_07",
+    "nom_carte": "Sept de Pique",
+    "valeur": 7,
+    "couleur": "Pique",
+    "image_url": "/images/cards/pique_07.png",
+    "resume_general": "Carte de transformation par l'épreuve. Elle symbolise la réflexion intérieure, l'adversité à surmonter et les décisions difficiles. C'est un passage nécessaire vers la sagesse, un appel à la patience et à la libération de ce qui ne sert plus.",
+    "phrase_cle": "Après la tempête vient le calme, persévérez.",
+    "mots_cles": [
+      "transformation", "épreuve", "introspection", "défis", "patience", "libération", "purification",
+      "résilience", "sagesse", "décision difficile", "intuition"
+    ],
+    "interpretations": {
+      "general": "Le 7 de Pique associe le chiffre mystérieux 7 au pique, symbole de transformation. Ce n'est pas une carte 'contre vous', mais 'pour ouvrir les yeux'. Elle représente un passage nécessaire, une épreuve qui teste la résilience. C'est le caillou dans la chaussure qui pousse à s'arrêter pour l'enlever.",
+      "endroit": "Indique une période de défis qui sont là pour vous faire grandir. C'est un appel à persévérer et à ne pas baisser les bras. C'est la promesse d'une nouvelle clarté après la tempête, un moment de libération et de connexion à son intuition.",
+      "ombre_et_defis": "Peut annoncer des chagrins d'amour, des disputes, des médisances ou des difficultés financières passagères. Symbolise une période de doutes, un carrefour où il faut faire des choix difficiles. Peut représenter un bagage émotionnel non digéré qui refait surface.",
+      "conseil": "Lâchez prise sur ce qui ne fonctionne plus. Cherchez des solutions créatives pour contourner les obstacles. Faites confiance à votre intuition et écoutez vos ressentis. Acceptez que les changements prennent du temps. C'est le moment de faire le tri et de vous recentrer."
+    },
+    "domaines": {
+      "amour": "Peut pointer un malentendu, une période de flou, une blessure non digérée ou une dispute. C'est rarement une condamnation, mais un appel à la sincérité pour secouer la relation et la faire évoluer. Invite à plus d'écoute et de compréhension.",
+      "travail": "Signale une ambiance tendue ou des décisions qui coincent. Pousse à faire le tri et à ne pas se laisser embrouiller par le bruit ambiant. C'est une invitation à se recentrer pour trouver la clarté nécessaire pour avancer.",
+      "finances": "Suggère des difficultés passagères qui nécessitent de la prudence dans les décisions financières. Demande de l'attention et de la patience avant de voir une amélioration.",
+      "spirituel": "C'est une carte de purification. Elle demande de faire le tri, d'éliminer le toxique pour trouver une nouvelle légèreté. Elle invite à l'introspection, à se poser des questions essentielles et à chercher les réponses en soi-même. C'est une étape inconfortable mais toujours utile."
+    },
+    "prompts_visuels": [
+      "un arbre perdant ses feuilles en automne, avec de jeunes bourgeons déjà visibles",
+      "une personne naviguant sur une mer agitée, mais gardant le cap vers un phare au loin",
+      "un miroir inconfortable qui révèle une vérité cachée plutôt qu'un reflet flatteur",
+      "quelqu'un retirant un caillou de sa chaussure avant de reprendre sa route",
+      "une main qui fait le tri entre des objets utiles et inutiles"
+    ],
+    "prompts_conversationnels": [
+      "Le 7 de Pique est décrit comme 'un passage nécessaire vers la sagesse'. Comment une épreuve peut-elle mener à la sagesse ?",
+      "La fiche dit que cette carte 'dérange, mais elle éclaire'. Expliquez cette dualité avec un exemple concret.",
+      "Cette carte invite à 'lâcher prise'. Comment distinguer le lâcher-prise bénéfique de la simple résignation ?",
+      "En quoi la 'transformation' du 7 de Pique, qui est un processus, diffère-t-elle de la 'rupture' soudaine de l'As de Pique ?",
+      "La patience est la clé de cette carte. Pourquoi le temps est-il un facteur si important dans une 'évolution profonde' ?"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "pique_as", "signification": "Une révélation inévitable et explosive. Après l'obscurité du 7, l'éclair de l'As illumine tout. Un changement radical qui demande une préparation mentale." }
+    ]
   }
 ]
