@@ -88,5 +88,51 @@ export const coeurCards: Card[] = [
       { "carte_associee_id": "coeur_valet", "signification": "Un rafraîchissement ou un renouveau dans les relations, apportant une nouvelle perspective ou une énergie jeune." },
       { "carte_associee_id": "coeur_dame", "signification": "Représente un partenariat fort et un amour profond et mature, où le soutien mutuel est au premier plan." }
     ]
+  },
+  {
+    "id": "coeur_dame",
+    "nom_carte": "Dame de Cœur",
+    "valeur": 12,
+    "couleur": "Cœur",
+    "image_url": "/images/cards/coeur_dame.png",
+    "resume_general": "Carte de l'intuition, de la compassion et de l'amour inconditionnel. C'est la souveraine de l'émotion, une gardienne qui protège le cœur. Elle incarne la féminité magnétique, la bienveillance, et la capacité à aimer sans se perdre.",
+    "phrase_cle": "Votre douceur n'est pas une faiblesse, c'est un pouvoir.",
+    "mots_cles": [
+      "intuition", "amour profond", "compassion", "bienveillance", "protection", "intelligence émotionnelle", "féminin sacré",
+      "gardienne", "douceur", "loyauté", "femme aimante", "amour de soi"
+    ],
+    "interpretations": {
+      "general": "La Dame de Cœur est une initiée, une souveraine de l'émotion qui règne dans l'invisible. Elle représente l'amour qui sait sans poser de questions, l'amour tourné vers les autres mais aussi vers soi. Elle est mi-lune, mi-feu : elle calme, mais peut brûler ; elle guérit, mais pose ses limites.",
+      "endroit": "Symbolise une femme proche, forte, aimante et secrète, une épouse, une amante, une mère spirituelle. Incarne la loyauté du cœur, l'intelligence émotionnelle et l'énergie du féminin sacré. Elle invite à regarder à l'intérieur et à se reconnecter à sa puissance douce.",
+      "ombre_et_defis": "Son amour peut devenir sacrificiel, menant à s'oublier derrière ses élans. Elle peut aussi représenter une forme de manipulation fine. La Reine de Cœur d'Alice au Pays des Merveilles est un bon exemple de son ombre : un cœur perverti par le pouvoir, coupé de l'amour vrai.",
+      "conseil": "Reprenez votre pouvoir, celui qui aime en conscience. Votre cœur est un royaume, pas une prison. Écoutez l'intuition féminine qui tambourine en vous. C'est le moment de vous replacer au centre du jeu et de réparer votre amour-propre si nécessaire."
+    },
+    "domaines": {
+      "amour": "Représente un amour profond, la figure de l'épouse ou de l'amante. Elle invite à se reconnecter à un amour non sacrificiel. Sa présence indique que l'amour est prêt, soit en soi, soit à venir. Elle peut aussi mettre en garde contre le fait d'aimer 'trop' et de s'oublier.",
+      "travail": "Son influence est moins matérielle qu'émotionnelle. Elle peut représenter une femme influente et protectrice dans le milieu professionnel, ou l'importance de l'intelligence émotionnelle et de l'intuition dans la prise de décision.",
+      "finances": "N'est pas directement une carte d'argent. Elle suggère que les décisions financières doivent être prises avec intuition et en accord avec ses valeurs profondes. Elle protège ses acquis plus qu'elle ne cherche à en obtenir de nouveaux.",
+      "spirituel": "Symbolise la capacité à aimer sans se perdre, la connexion à l'énergie du féminin sacré (guérisseuse, rêveuse, sorcière douce). Elle invite à regarder son monde intérieur pour y trouver les réponses et à se reconnecter à sa puissance douce."
+    },
+    "prompts_visuels": [
+      "une femme au regard doux mais déterminé, protégeant une flamme dans le creux de ses mains",
+      "une reine élégante assise sur un trône dans un jardin luxuriant",
+      "une main féminine tendant une tasse de thé réconfortante à une autre personne",
+      "une porte ancienne entrouverte, laissant filtrer une lumière chaude et douce",
+      "une femme regardant son reflet dans l'eau calme d'un puits"
+    ],
+    "prompts_conversationnels": [
+      "La Dame de Cœur est 'mi-lune, mi-feu'. Expliquez cette dualité à l'aide d'un exemple concret dans une relation amicale.",
+      "La fiche dit qu'elle 'voit tout' et 'agit dans l'ombre'. Comment cette compétence se distingue-t-elle de la stratégie du Roi de Trèfle ?",
+      "Elle représente 'l'amour non sacrificiel'. Quelle est la différence entre un acte d'amour et un acte de sacrifice ?",
+      "Si la Dame de Pique est l'amie qui dit la vérité qui blesse, quel type d'amie serait la Dame de Cœur ?",
+      "Son côté ombre est la 'manipulation fine'. Comment l'intelligence émotionnelle peut-elle être détournée pour devenir un outil de manipulation ?"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "trefle_dame", "signification": "Symbolise un équilibre entre les émotions (cœur) et la stabilité matérielle (trèfle). Indique la présence de deux femmes influentes apportant leur soutien." },
+      { "carte_associee_id": "carreau_dame", "signification": "Suggère un mélange d'émotions et d'intelligence. Indique une situation où l'équilibre entre le cœur et l'esprit est essentiel." },
+      { "carte_associee_id": "pique_dame", "signification": "Représente un contraste entre la compassion (cœur) et les défis émotionnels (pique). Peut symboliser une dualité dans les relations féminines." },
+      { "carte_associee_id": "coeur_valet", "signification": "Représente une alliance spéciale, une relation mère-fils ou une connexion amoureuse à différents stades de maturité, où la Dame offre sagesse et le Valet fraîcheur." },
+      { "carte_associee_id": "coeur_as", "signification": "Un duo puissant. Symbolise une relation harmonieuse ou un équilibre idéal entre l'amour pur (As) et la sagesse émotionnelle (Dame)." }
+    ]
   }
 ];
