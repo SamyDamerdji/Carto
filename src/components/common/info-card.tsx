@@ -15,7 +15,7 @@ export function InfoCard({ icon: Icon, title, children }: InfoCardProps) {
           <Icon className="h-7 w-7 text-primary" />
           <h2 className="font-headline text-xl font-bold uppercase tracking-wider text-foreground">{title}</h2>
         </div>
-        <div className="mt-4 rounded-lg bg-card-foreground/15 p-4">
+        <div className="mt-4 rounded-lg bg-card-foreground/20 p-4">
           <div className="space-y-2 text-secondary-foreground/90">
             {children}
           </div>

@@ -42,7 +42,7 @@ const FeatureCard = ({ feature, index }: { feature: (typeof features)[0], index:
             {feature.title}
           </h3>
         </div>
-        <div className="mt-4 flex-grow rounded-lg bg-card-foreground/15 p-4">
+        <div className="mt-4 flex-grow rounded-lg bg-card-foreground/20 p-4">
           <p className="text-secondary-foreground/90">{feature.description}</p>
         </div>
       </div>
