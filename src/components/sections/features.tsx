@@ -17,7 +17,7 @@ const features = [
   {
     id: "tirages",
     icon: <Rows3 className="h-7 w-7 text-primary" />,
-    title: "Tirages Personnalisés",
+    title: "Tirages",
     description: "Découvrez ce que l'avenir vous réserve et laissez l'Oracle interpréter le message des cartes.",
   },
 ];
