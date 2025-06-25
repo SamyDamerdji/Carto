@@ -41,5 +41,52 @@ export const coeurCards: Card[] = [
     ],
     "combinaisons": [
     ]
+  },
+  {
+    "id": "coeur_roi",
+    "nom_carte": "Roi de Cœur",
+    "valeur": 13,
+    "couleur": "Cœur",
+    "image_url": "/images/cards/coeur_roi.png",
+    "resume_general": "Carte de la maîtrise émotionnelle, de la compassion et de l'amour mature. Il incarne la bienveillance, la générosité et la sagesse du cœur. C'est un guide et un protecteur qui dirige avec équilibre, honnêteté et stabilité émotionnelle.",
+    "phrase_cle": "Gouvernez vos émotions avec un cœur sage et généreux.",
+    "mots_cles": [
+      "maîtrise émotionnelle", "compassion", "bienveillance", "amour mature", "générosité", "sagesse", "équilibre", 
+      "protecteur", "honnêteté", "stabilité", "conseiller", "homme blond"
+    ],
+    "interpretations": {
+      "general": "Le Roi de Cœur est le roi de l'amour, mais pas seulement de l'amour romantique. Il représente la compassion, la bienveillance, et la capacité à pardonner. C'est un protecteur silencieux qui guide avec une force tranquille, en écoutant son cœur tout en restant ancré dans la réalité.",
+      "endroit": "Symbolise un homme blond, mature, sage et fiable. Il annonce une période d'harmonie, de stabilité émotionnelle, de générosité et de relations sincères. Il est un guide bienveillant, un conseiller fiable, et un rappel que l'amour et la compassion sont des forces essentielles.",
+      "ombre_et_defis": "Son aspect de 'don' peut se transformer en un sacrifice excessif, où il donne sans réserve au point de s'épuiser. Peut aussi représenter une difficulté à gouverner ses émotions, menant à des décisions trop émotives ou à une vulnérabilité exploitée par autrui. Il invite à trouver l'équilibre entre donner et se préserver.",
+      "conseil": "Trouvez l'équilibre entre le cœur et l'esprit. Soyez généreux, mais sans vous oublier. Écoutez vos émotions, mais analysez la situation avec discernement. C'est un appel à l'introspection, à l'honnêteté et à l'amour de soi comme fondation de l'amour pour les autres."
+    },
+    "domaines": {
+      "amour": "Représente un partenaire fiable, un couple idéal, un mariage harmonieux ou un homme mature capable de surmonter les chagrins avec compassion. Il annonce souvent la réussite sentimentale, une connexion profonde et un soutien moral. C'est la promesse de relations authentiques et nourrissantes.",
+      "travail": "Moins direct que les Rois de Trèfle ou de Carreau, son influence est liée au facteur humain. Il représente un leader bienveillant, un manager qui guide avec compassion, ou l'importance de l'équilibre émotionnel pour la réussite d'un projet.",
+      "finances": "Son domaine est la générosité. Il n'est pas directement lié à l'accumulation de richesses, mais à la capacité de donner sans attendre en retour. Il peut conseiller d'aborder les questions financières avec sagesse et équilibre, sans se laisser aveugler par l'émotion.",
+      "spirituel": "C'est un guide spirituel puissant. Il rappelle que l'amour est au centre de tout et que l'amour pour les autres commence par l'amour de soi. Il est un 'phare dans la nuit' lors des moments difficiles, rappelant que la réponse est souvent déjà en nous. Il incarne la connexion avec l'univers par l'énergie de l'amour."
+    },
+    "prompts_visuels": [
+      "un roi au visage bienveillant tendant la main pour aider quelqu'un à se relever",
+      "un phare puissant illuminant une mer agitée",
+      "un homme mature et serein méditant près d'un lac calme",
+      "deux mains échangeant un cadeau avec générosité",
+      "une balance parfaitement équilibrée avec un cœur d'un côté et un cerveau de l'autre"
+    ],
+    "prompts_conversationnels": [
+      "Le Roi de Cœur est un 'protecteur silencieux'. Comment cette forme de protection diffère-t-elle de celle, plus active, du Roi de Trèfle ?",
+      "La fiche dit que 'l'équilibre entre cœur et esprit est essentiel' pour cette carte. Proposez un scénario où suivre son cœur sans écouter sa raison pourrait être un piège.",
+      "Le Roi de Cœur incarne une 'énergie masculine, mais douce'. Expliquez ce concept par opposition à une vision plus stéréotypée de la masculinité.",
+      "Cette carte invite à 'se détacher des relations toxiques'. Comment la compassion du Roi de Cœur peut-elle aider à poser des limites saines ?",
+      "Le Roi de Cœur et le Roi de Pique représentent deux formes de leadership. Mettez-les en opposition en décrivant comment chacun gérerait une crise au sein d'une équipe."
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "coeur_07", "signification": "L'arrivée de nouvelles opportunités amoureuses, avec un accent sur la fraîcheur et le renouvellement." },
+      { "carte_associee_id": "coeur_08", "signification": "Indique une période de stabilité émotionnelle et d'harmonie retrouvée dans les relations." },
+      { "carte_associee_id": "coeur_09", "signification": "Symbolise l'accomplissement des désirs amoureux, une période de contentement et de satisfaction." },
+      { "carte_associee_id": "coeur_10", "signification": "Un indicateur fort de bonheur et de stabilité dans la vie familiale et domestique." },
+      { "carte_associee_id": "coeur_valet", "signification": "Un rafraîchissement ou un renouveau dans les relations, apportant une nouvelle perspective ou une énergie jeune." },
+      { "carte_associee_id": "coeur_dame", "signification": "Représente un partenariat fort et un amour profond et mature, où le soutien mutuel est au premier plan." }
+    ]
   }
 ];
