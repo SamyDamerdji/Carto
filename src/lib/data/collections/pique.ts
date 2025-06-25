@@ -2,6 +2,52 @@ import type { Card } from '../cards';
 
 export const piqueCards: Card[] = [
   {
+    "id": "pique_as",
+    "nom_carte": "As de Pique",
+    "valeur": 1,
+    "couleur": "Pique",
+    "image_url": "/images/cards/pique_as.png",
+    "resume_general": "Carte puissante de transformation, de changement et de décision radicale. Elle annonce une rupture nécessaire, la fin d'un cycle et un renouveau. C'est un appel au courage pour affronter l'inconnu et accepter les vérités inconfortables.",
+    "phrase_cle": "Une page se tourne, une autre commence.",
+    "mots_cles": [
+      "transformation", "changement", "rupture", "décision", "fin de cycle", "renouveau", "vérité",
+      "courage", "lâcher-prise", "mystère", "introspection", "renaissance"
+    ],
+    "interpretations": {
+      "general": "L'As de Pique est une carte intimidante mais profondément spirituelle. Souvent associée à la mort, il s'agit d'une mort métaphorique : la fin d'un chapitre pour permettre à un autre, plus captivant, de commencer. Elle représente le vide qui précède le renouveau, une transition nécessaire mais parfois déroutante.",
+      "endroit": "Incarne un signal positif de transformation. C'est le moment de lâcher prise sur les anciens schémas pour accueillir le nouveau. Elle pousse à affronter ses peurs, à accepter les changements et à embrasser la prochaine étape avec confiance. C'est un guide dans l'inconnu qui promet que la lumière finit toujours par revenir.",
+      "ombre_et_defis": "Représente un changement difficile, des vérités inconfortables à accepter, des peurs à affronter. Peut symboliser une énergie sombre ou un chemin incertain. C'est un miroir qui montre les parts d'ombre qu'on préfère éviter.",
+      "conseil": "Ne paniquez pas. Cette carte est un signal qu'il est temps de laisser tomber ce qui n'a plus lieu d'être. Faites confiance au processus, même si la destination n'est pas claire. Affrontez l'inconnu avec courage, car c'est là que résident les plus grandes révélations."
+    },
+    "domaines": {
+      "amour": "Peut annoncer une rupture ou une transformation profonde d'une relation. C'est la fin d'un cycle pour permettre une renaissance, soit dans la même relation, soit dans une nouvelle. Invite à une introspection profonde sur les problèmes relationnels.",
+      "travail": "Signale un changement majeur : fin de contrat, changement de poste, abandon d'un projet. C'est une décision radicale qui doit être prise pour permettre un renouveau professionnel. Demande du courage pour laisser derrière soi une situation qui n'est plus viable.",
+      "finances": "Peut indiquer une décision financière difficile mais nécessaire. Une coupe dans les dépenses, la fin d'un investissement. C'est une phase de 'vide' pour permettre une meilleure santé financière future.",
+      "spirituel": "C'est un appel puissant à la transformation intérieure. Invite à plonger dans l'inconnu, à affronter ses peurs et à accepter la fin des cycles comme des opportunités de grandir et de renaître. C'est le serpent qui mue pour en ressortir plus fort."
+    },
+    "prompts_visuels": [
+      "un serpent qui mue, laissant derrière lui son ancienne peau",
+      "une porte massive qui se ferme, tandis qu'une autre, plus petite et lumineuse, s'ouvre à côté",
+      "un phénix renaissant de ses cendres",
+      "une main coupant un fil avec une paire de ciseaux anciens",
+      "une personne se tenant à l'entrée d'une forêt sombre, l'air à la fois hésitant et déterminé"
+    ],
+    "prompts_conversationnels": [
+      "L'As de Pique est souvent comparé à 'la nuit qui précède l'aube'. Expliquez cette métaphore dans le contexte d'un défi personnel ou professionnel.",
+      "Cette carte représente la 'mort' d'un cycle. Quelle est la différence fondamentale entre ce concept et la fin pure et simple ?",
+      "Décrivez comment un 'vide', comme celui symbolisé par l'As de Pique, peut être une source de renouveau plutôt que de peur.",
+      "La carte encourage à 'lâcher prise'. Comment distinguer un lâcher-prise courageux d'un simple abandon ?",
+      "Si l'As de Pique représente une décision radicale, comment se différencie-t-il de la décision 'structurée' du Roi de Pique ?"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "lune", "signification": "Révélation de secrets ou de vérités cachées. Période de prise de conscience émotionnelle profonde." },
+      { "carte_associee_id": "soleil", "signification": "Contraste fort entre les défis actuels (ombre) et une promesse de succès et de bonheur à venir (lumière)." },
+      { "carte_associee_id": "roue_de_fortune", "signification": "Un changement significatif de destin ou de circonstances. Un tournant décisif où les défis mènent à de nouvelles opportunités." },
+      { "carte_associee_id": "valet_de_pique", "signification": "Annonce de défis à venir. Le duo demande de rester vigilant et de prendre des décisions avec sagesse." },
+      { "carte_associee_id": "roi_de_pique", "signification": "Incarne la puissance et la sagesse. L'association des deux annonce des décisions majeures, demandant vigilance et stratégie." }
+    ]
+  },
+  {
     "id": "pique_valet",
     "nom_carte": "Valet de Pique",
     "valeur": 11,
