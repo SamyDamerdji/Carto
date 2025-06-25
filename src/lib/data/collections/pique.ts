@@ -49,5 +49,55 @@ export const piqueCards: Card[] = [
       { "carte_associee_id": "pique_roi", "signification": "L'énergie de la stratégie devient intense et complexe. Une situation demande une analyse très fine et prudente." },
       { "carte_associee_id": "pique_reine", "signification": "Peut représenter une femme rusée ou une protectrice qui agit dans l'ombre. Chaque déplacement compte." }
     ]
+  },
+  {
+    "id": "pique_roi",
+    "nom_carte": "Roi de Pique",
+    "valeur": 13,
+    "couleur": "Pique",
+    "image_url": "/images/cards/pique_roi.png",
+    "resume_general": "Carte de l'autorité, de la loi et de la structure. Représente un homme de pouvoir, la justice, les décisions mûrement réfléchies et l'ordre. Elle incarne la sagesse, la rigueur et la responsabilité.",
+    "phrase_cle": "La loi et la structure apportent la clarté.",
+    "mots_cles": [
+      "autorité", "loi", "justice", "structure", "décision", "rigueur", "responsabilité", 
+      "ordre", "pouvoir", "sagesse", "administratif", "protocole", "homme d'âge", "intellect"
+    ],
+    "interpretations": {
+      "general": "Le Roi de Pique est une figure emblématique qui impose le respect. Il incarne tout ce qui est protocolaire, administratif et profondément ancré dans la justice et la loi. Il représente la structure nécessaire pour avancer avec clarté, tel un joueur d'échecs planifiant ses coups.",
+      "endroit": "Symbolise la prise de décision éclairée, le recours à la loi ou à un expert (avocat, juge), la mise en place d'un projet structuré. Annonce une situation qui se régularise, un contrat à signer, une nécessité de faire preuve de rigueur et d'organisation.",
+      "ombre_et_defis": "Lorsqu'il représente un obstacle, le Roi de Pique devient rigide, froid et autoritaire. Il peut symboliser un blocage administratif, un procès, un jugement sévère ou un abus de pouvoir. Il incarne une logique froide dénuée de bienveillance.",
+      "conseil": "Faites appel à votre logique et à votre sens de l'organisation. C'est le moment de structurer vos pensées et vos actions, de regarder les choses en face et de trancher avec clarté. Ne laissez pas l'émotionnel prendre le dessus sur le rationnel."
+    },
+    "domaines": {
+      "amour": "Indique une relation où la logique et la sagesse priment sur la passion. Peut représenter un homme plus âgé, divorcé ou veuf. Avec la Reine de Coeur, c'est l'alliance de l'esprit et du coeur, un besoin d'équilibre entre la raison et les sentiments.",
+      "travail": "Domaine de prédilection de cette carte. Elle annonce des décisions importantes, des contrats, des négociations, la nécessité de suivre un protocole strict. Symbolise un patron, un expert ou un homme de loi influent.",
+      "finances": "Appelle à une gestion rigoureuse et structurée. Favorise les investissements à long terme et les décisions basées sur une analyse fine plutôt que sur l'impulsion. Peut annoncer un héritage ou des questions légales liées à l'argent.",
+      "spirituel": "Représente la recherche d'une structure et d'un ordre dans sa propre vie. C'est la sagesse acquise par l'expérience, la capacité à prendre des décisions alignées avec ses propres lois intérieures. Associé aux planètes Jupiter (ordre supérieur) et Saturne (rigueur, responsabilité)."
+    },
+    "prompts_visuels": [
+      "un juge dans un tribunal rendant son verdict",
+      "un homme d'affaires âgé signant un document important dans un bureau en acajou",
+      "une bibliothèque ancienne remplie de livres de loi",
+      "un joueur d'échecs en pleine réflexion stratégique",
+      "le sceau officiel d'un document administratif"
+    ],
+    "prompts_conversationnels": [
+      "Le Roi de Pique est souvent lié à la 'loi'. Donnez deux exemples concrets, l'un dans le domaine professionnel et l'un dans le domaine personnel, où cette carte pourrait apparaître.",
+      "Cette carte représente un 'homme d'un certain âge'. Quelles qualités spécifiques, autres que l'âge, ce personnage incarne-t-il ?",
+      "En quoi la 'décision' prise sous l'influence du Roi de Pique diffère-t-elle d'une décision prise sous l'influence du Roi de Coeur ?",
+      "Cette carte est associée à la fois à Jupiter (expansion, ordre supérieur) et Saturne (rigueur, responsabilité). Comment ces deux énergies, à première vue opposées, se combinent-elles dans la signification du Roi de Pique ?",
+      "Le texte mentionne que cette carte 'n'est pas là pour faire rêver, mais pour structurer'. Expliquez cette phrase avec vos propres mots."
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "coeur_reine", "signification": "L'alliance de l'esprit et du cœur. Une situation où il faut concilier logique froide et bienveillance émotionnelle pour trouver l'équilibre." },
+      { "carte_associee_id": "pique_as", "signification": "Stratégie pure. Annonce des décisions majeures, mûrement réfléchies qui demandent une planification experte. C'est le moment des négociations d'envergure." },
+      { "carte_associee_id": "trefle_03", "signification": "Action et opportunité. Une idée va pouvoir se transformer en réalité grâce à une organisation rigoureuse. Combinaison gagnante pour la concrétisation." },
+      { "carte_associee_id": "pique_valet", "signification": "Mise en garde contre des intrigues ou du double jeu. Il faut scruter les détails et ne rien prendre pour argent comptant. Une personne pourrait cacher ses intentions." },
+      { "carte_associee_id": "coeur_10", "signification": "Un succès acquis par la persévérance et la discipline, menant à un bonheur partagé." },
+      { "carte_associee_id": "carreau_04", "signification": "Stabilité matérielle acquise par la persévérance. Le travail acharné et la structure portent leurs fruits. Favorise les investissements solides et à long terme." },
+      { "carte_associee_id": "coeur_09", "signification": "Un rêve qui devient réalité grâce à la patience et à la discipline." },
+      { "carte_associee_id": "trefle_02", "signification": "Un partenariat fructueux se dessine à l'horizon, basé sur des bases solides et une stratégie claire." },
+      { "carte_associee_id": "carreau_07", "signification": "Patience nécessaire avant de voir les récompenses d'un effort structuré." }
+    ]
   }
 ];
