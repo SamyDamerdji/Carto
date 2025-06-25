@@ -186,5 +186,55 @@ export const piqueCards: Card[] = [
     ],
     "combinaisons": [
     ]
+  },
+  {
+    "id": "pique_10",
+    "nom_carte": "Dix de Pique",
+    "valeur": 10,
+    "couleur": "Pique",
+    "image_url": "/images/cards/pique_10.png",
+    "resume_general": "Carte de la transition et de la transformation nécessaire. Elle symbolise le passage d'une étape à une autre, souvent à travers des défis. Elle n'est pas négative, mais représente un moment délicat mais essentiel pour évoluer, comme la chenille devenant papillon.",
+    "phrase_cle": "Chaque épreuve est une leçon, chaque fin un nouveau départ.",
+    "mots_cles": [
+      "transition", "changement", "défi", "épreuve", "transformation", "réflexion", "sagesse",
+      "leçon", "questionnement", "fin d'étape", "conversation franche"
+    ],
+    "interpretations": {
+      "general": "Le 10 de Pique est une carte qui fait réagir. Le chiffre 10 symbolise le passage, le pont entre deux mondes. C'est la fin d'une étape et le début d'une nouvelle aventure. L'énergie des piques rappelle que ce passage se fait souvent à travers des défis, mais que chaque pas renforce.",
+      "endroit": "Indique un moment de transformation nécessaire pour évoluer. C'est le moment d'avoir une conversation franche, de chercher une clé pour ouvrir une porte fermée, ou de poser les bonnes questions sur la direction de sa vie. C'est une invitation à la sagesse et à la compréhension avant l'action.",
+      "ombre_et_defis": "Représente un avertissement, une 'route glissante'. Peut indiquer un malentendu, une distance dans les relations, ou un moment de réflexion profonde et de doute. C'est un simple rappel à rester vigilant, et non un signe de fatalité.",
+      "conseil": "Ne vous laissez pas impressionner. Faites confiance à votre intuition pour trouver les réponses cachées. Si vous vous sentez bloqué, changez d'angle pour trouver la clé. Décomposez vos objectifs en petites étapes. N'hésitez pas à avoir des conversations franches pour dénouer les situations."
+    },
+    "domaines": {
+      "amour": "Signale une phase de questionnement. Est-ce que la relation évolue dans la bonne direction ? C'est le moment de poser les bonnes questions, sans peur du résultat. Peut indiquer un malentendu à clarifier ou une distance à combler par une discussion honnête.",
+      "travail": "Vous vous sentez bloqué, comme si une porte était fermée ? Le 10 de Pique vous invite à chercher une clé, un changement d'angle qui ouvrira de nouvelles possibilités. Avec un Roi, il peut être temps de demander un coup de pouce à une figure d'autorité.",
+      "finances": "Avec des cartes de carreaux, il parle de projets et d'ambitions. Cependant, il suggère qu'un obstacle devra être franchi avant de récolter les fruits. C'est un test de persévérance. Avec le 9 de trèfle, il avertit de se méfier des faux espoirs et des succès éphémères.",
+      "spirituel": "C'est une carte de sagesse qui enseigne que chaque épreuve est une leçon. Représente l'air et la pensée, invitant à analyser et comprendre avant d'agir. C'est une invitation à regarder au-delà des apparences et à écouter ses instincts."
+    },
+    "prompts_visuels": [
+      "une chenille se transformant en papillon dans son cocon",
+      "un pont de pierre traversant une rivière agitée sous un ciel nuageux",
+      "une personne tenant une clé devant une serrure complexe",
+      "deux personnes ayant une conversation sérieuse et intense face à face",
+      "un panneau routier indiquant 'route glissante'"
+    ],
+    "prompts_conversationnels": [
+      "Le 10 de Pique est comparé à 'gravir une montagne'. Expliquez comment, dans ce contexte, un défi peut être une source de renforcement.",
+      "La fiche dit que 'les cœurs adoucissent le 10 de pique'. Proposez un scénario où l'ajout d'une carte de cœur change radicalement l'interprétation d'un défi professionnel.",
+      "Cette carte invite à 'changer d'angle' pour trouver des solutions. Donnez un exemple concret de ce que cela signifie.",
+      "Comment la 'transition' du 10 de Pique se différencie-t-elle du 'nouveau départ' plus brutal de l'As de Pique ?",
+      "Le 10 de Pique est comme un 'vieux sage qui dit ce dont on a besoin, pas ce qu'on veut entendre'. Quelle est la valeur de ce type de conseil ?"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "pique_roi", "signification": "Du sérieux en vue. Une figure d'autorité entre en jeu. Peut-être le moment de demander un coup de pouce." },
+      { "carte_associee_id": "pique_dame", "signification": "Une femme mystérieuse se profile. Un soutien discret ou un adversaire caché. Le contexte est clé." },
+      { "carte_associee_id": "pique_valet", "signification": "Place à l'action. Un défi à relever arrive, porté par un message ou une personne plus jeune." },
+      { "carte_associee_id": "coeur_as", "signification": "Promesse d'un nouveau départ émotionnel après une période de doute. Une amitié ou un amour ravivé." },
+      { "carte_associee_id": "coeur_07", "signification": "Illusions ou rêves brisés. Invite à trier le vrai du faux dans une situation émotionnelle." },
+      { "carte_associee_id": "carreau_08", "signification": "De bonnes nouvelles se dessinent, mais un obstacle devra être franchi avant la réussite. Un test de persévérance." },
+      { "carte_associee_id": "carreau_roi", "signification": "Un mentor ou un collègue influent peut ouvrir une porte, mais il faudra savoir saisir l'opportunité." },
+      { "carte_associee_id": "trefle_06", "signification": "Des démarches administratives ou un contrat pourraient aboutir, mais la prudence est de mise." },
+      { "carte_associee_id": "trefle_09", "signification": "Succès en vue, mais il faut se méfier des faux espoirs. Le succès pourrait être magnifique mais éphémère." }
+    ]
   }
-];
+]
