@@ -398,5 +398,43 @@ export const carreauCards: Card[] = [
     "combinaisons": [
       { "carte_associee_id": "carreau_07", "signification": "Avec le 7 de Carreau, cette association symbolise la progression, un mouvement vers l'avant malgré les obstacles et les incertitudes."}
     ]
+  },
+  {
+    "id": "carreau_05",
+    "nom_carte": "Cinq de Carreau",
+    "valeur": 5,
+    "couleur": "Carreau",
+    "image_url": "/images/cards/carreau_05.png",
+    "resume_general": "Carte de changement, de mouvement et de transition dans le domaine matériel. Elle annonce des bouleversements, des défis, mais aussi des opportunités déguisées. C'est une carte agitatrice qui invite à l'adaptation, à la résilience et à la flexibilité.",
+    "phrase_cle": "Tout est en mouvement, dansez avec les changements.",
+    "mots_cles": [
+      "changement", "mouvement", "transition", "instabilité", "défi", "opportunité", "adaptation",
+      "résilience", "bouleversement", "conflit interne", "réévaluation", "flexibilité"
+    ],
+    "interpretations": {
+      "general": "Le 5 de Carreau est une carte de transition, comme un vent qui souffle et bouscule les plans. Liée à l'élément Terre, elle parle de bouleversements dans les projets, les finances, le travail. Elle n'est pas là pour annoncer une période tranquille, mais pour indiquer que quelque chose de grand est sur le point de se produire.",
+      "endroit": "Annonce des défis et des obstacles qui sont en réalité des opportunités déguisées. C'est un appel à la résilience, à s'adapter aux nouvelles circonstances. Elle peut représenter un changement de poste, des imprévus financiers. C'est une chance de repenser ses priorités et de grandir.",
+      "ombre_et_defis": "Peut indiquer une période d'instabilité émotionnelle, un désaccord, une remise en question de la relation. Peut aussi signaler des tensions dans la communication, des désaccords mal exprimés ou des décisions précipitées. Le défi est de ne pas résister au changement.",
+      "conseil": "Restez flexible, la rigidité n'a pas sa place. Prenez du recul pour mieux voir et saisir la véritable essence des événements. Soyez à l'écoute des opportunités cachées. Évitez les décisions impulsives. Acceptez que vous ne contrôlez pas tout."
+    },
+    "domaines": {
+      "amour": "Peut évoquer une période d'instabilité émotionnelle, un désaccord, une remise en question. Parfois, c'est la rencontre avec quelqu'un de très différent qui chamboule tout. Invite à accepter que l'amour évolue et à se poser les bonnes questions.",
+      "travail": "Signale un changement d'équipe, une proposition inattendue, une adaptation forcée à une nouvelle organisation. C'est un ajustement subtil mais nécessaire. Elle peut déstabiliser, mais aussi ouvrir une porte là où on ne regardait pas.",
+      "finances": "Annonce des défis, des imprévus financiers, un budget à revoir ou un investissement qui demande réflexion. C'est une invitation à faire preuve de souplesse et à saisir les opportunités, même si la route semble chaotique.",
+      "spirituel": "C'est un véritable entraîneur de vie qui pousse à sortir de sa zone de confort. Représente l'équilibre à trouver entre l'agitation et la sérénité. C'est une invitation à lâcher l'ancien pour permettre au nouveau de naître, comme un serpent qui mue."
+    },
+    "prompts_visuels": [
+      "un arbre qui plie sous un vent fort mais ne rompt pas",
+      "un serpent qui mue, abandonnant son ancienne peau",
+      "un cours d'eau qui change de direction pour contourner un obstacle",
+      "une personne jonglant avec plusieurs objets, en plein effort de concentration",
+      "une porte qui s'ouvre brusquement à cause d'un coup de vent, révélant un nouveau paysage"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "coeur_as", "signification": "Indique l'émergence d'une nouvelle relation ou d'un sentiment qui nécessite un investissement et un travail émotionnel." },
+      { "carte_associee_id": "pique_roi", "signification": "Représente un défi ou un obstacle professionnel impliquant une figure d'autorité." },
+      { "carte_associee_id": "trefle_10", "signification": "Symbolise l'accomplissement d'un objectif financier ou professionnel après une période de travail acharné et de persévérance." },
+      { "carte_associee_id": "carreau_dame", "signification": "Évoque des questions matérielles et sentimentales, pouvant révéler des périodes difficiles ou des changements dans les relations amoureuses." }
+    ]
   }
 ]
