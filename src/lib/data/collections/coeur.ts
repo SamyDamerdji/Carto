@@ -358,7 +358,47 @@ export const coeurCards: Card[] = [
       { "carte_associee_id": "pique_10", "signification": "Indique une période de transition difficile dans les relations, pouvant mener à un renouveau émotionnel." },
       { "carte_associee_id": "coeur_08", "signification": "Renforce l'idée de bonheur émotionnel et de progression dans les relations. Symbolise le développement et la croissance." }
     ]
+  },
+  {
+    "id": "coeur_06",
+    "nom_carte": "Six de Cœur",
+    "valeur": 6,
+    "couleur": "Cœur",
+    "image_url": "/images/cards/coeur_06.png",
+    "resume_general": "Carte de la nostalgie, du retour aux sources et de la réconciliation. Elle symbolise les souvenirs, le pardon et le partage affectif. C'est une invitation à la douceur, à chérir le passé sans y rester coincé et à avancer avec un cœur ouvert.",
+    "phrase_cle": "Une émotion du passé refait surface pour être guérie.",
+    "mots_cles": [
+      "nostalgie", "réconciliation", "souvenirs", "pardon", "partage affectif", "douceur", "passé",
+      "paix intérieure", "bienveillance", "mémoire du cœur", "guérison", "complicité"
+    ],
+    "interpretations": {
+      "general": "Le 6 de Cœur est un petit bijou de tendresse qui parle d'amour, de pardon et de souvenirs doux. C'est l'énergie d'une douce brise d'automne, une réflexion sur le passé non pas pour s'y perdre, mais pour en tirer des leçons et savourer les moments partagés. C'est la mémoire du cœur.",
+      "endroit": "Annonce une période de calme, de compréhension mutuelle et d'harmonie. Peut indiquer un retour, une reconnexion ou une prise de conscience sur un lien ancien. C'est une invitation à se réconcilier avec quelqu'un ou avec soi-même. Elle favorise les moments simples et forts.",
+      "ombre_et_defis": "La nostalgie peut devenir un piège si l'on reste figé dans ses souvenirs. Le défi est de trouver l'équilibre entre la mémoire et le mouvement. Peut indiquer un schéma affectif qui se répète, une émotion jamais digérée qui tape doucement à la porte. C'est une carte douce mais qui peut pincer le cœur.",
+      "conseil": "Prenez un moment de réflexion. Est-il temps de renouer, de guérir une blessure ou simplement d'apprécier les souvenirs ? Soyez bienveillant envers vous-même et les autres. Acceptez que certaines choses ne peuvent être changées et embrassez-les avec tendresse pour avancer plus léger."
+    },
+    "domaines": {
+      "amour": "Évoque souvent un amour d'hier, une personne qui revient en pensée ou un lien karmique. C'est le parfum d'une lettre oubliée. Peut annoncer une rencontre qui ressemble à quelque chose de déjà vécu. Pour les célibataires, il faut peut-être libérer un espace intérieur avant d'accueillir du neuf.",
+      "travail": "Suggère un équilibre entre la vie personnelle et professionnelle. La numérologie du chiffre 6 évoque la responsabilité et le soin, ce qui peut se traduire par une période de succès et de stabilité au travail, issue d'une bonne gestion des relations humaines.",
+      "finances": "Son influence est plus émotionnelle que matérielle. Cependant, une période de paix intérieure et de réconciliation peut mener à des décisions financières plus saines et à une meilleure gestion des ressources, en se concentrant sur ce qui nourrit vraiment.",
+      "spirituel": "Encourage à trouver la paix intérieure en acceptant son passé. La sérénité se trouve une fois qu'on accepte ce qui a été et qu'on ouvre son cœur à ce qui est. C'est le moment de faire la paix avec certaines parties de soi pour avancer plus léger."
+    },
+    "prompts_visuels": [
+      "une personne regardant une vieille photo avec un sourire doux-amer",
+      "une main qui caresse les feuilles d'un arbre en automne",
+      "une lettre manuscrite à moitié sortie d'une enveloppe ancienne",
+      "deux personnes se retrouvant et se serrant la main chaleureusement après une longue absence",
+      "une main posée doucement sur l'épaule de quelqu'un, en signe de réconfort"
+    ],
+    "prompts_conversationnels": [
+      "Le 6 de Cœur est la 'mémoire du cœur'. Comment cette mémoire peut-elle être à la fois un réconfort et un obstacle ?",
+      "La fiche dit que la carte est 'juste'. Expliquez ce que cela signifie pour une carte qui invite à la 'réconciliation émotionnelle'.",
+      "Cette carte parle de 'retour affectif'. Comment distinguer un retour sain d'un schéma qui se répète de manière négative ?",
+      "En quoi consiste 'libérer un espace intérieur' avant d'accueillir une nouvelle relation ?",
+      "Si vous deviez faire une action concrète inspirée par le 6 de Cœur, quelle serait-elle et pourquoi ?"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "coeur_dame", "signification": "La Dame de Cœur, symbolisant la sensibilité, complète le Roi de Cœur, qui représente la sagesse, soulignant l'équilibre entre la force et la douceur dans les relations."}
+    ]
   }
 ];
-
-    
