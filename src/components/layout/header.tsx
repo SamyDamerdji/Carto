@@ -18,7 +18,7 @@ const HeaderComponent = () => {
 
   return (
     <header className="w-full p-4 sticky top-0 z-50">
-      <nav className="mx-auto flex max-w-md items-center justify-around rounded-2xl bg-secondary/20 p-1.5 backdrop-blur-lg border border-white/10 shadow-lg">
+      <nav className="mx-auto flex max-w-md items-center justify-around rounded-2xl bg-secondary/20 p-1.5 backdrop-blur-lg border border-primary/30 shadow-lg">
         {navItems.map((item) => {
           const isActive = item.href === "/" ? pathname === "/" : item.href !== "#" && pathname.startsWith(item.href);
           return (
