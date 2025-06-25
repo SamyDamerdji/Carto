@@ -3,6 +3,56 @@ import type { Card } from '../cards';
 
 export const trefleCards: Card[] = [
   {
+    "id": "trefle_as",
+    "nom_carte": "As de Trèfle",
+    "valeur": 1,
+    "couleur": "Trèfle",
+    "image_url": "/images/cards/trefle_as.png",
+    "resume_general": "Carte maîtresse de l'opportunité, de l'abondance et des nouveaux départs. C'est une porte qui s'ouvre, un potentiel à saisir, une 'clé magique'. Il symbolise la chance, l'espoir et l'invitation à agir pour concrétiser ses projets.",
+    "phrase_cle": "Tout est possible, es-tu prêt à saisir ta chance ?",
+    "mots_cles": [
+      "opportunité", "chance", "nouveau départ", "abondance", "potentiel", "action", "richesse",
+      "réussite personnelle", "espoir", "initiative", "croissance"
+    ],
+    "interpretations": {
+      "general": "L'As de Trèfle est une boussole intérieure qui murmure que tout est possible. Il est chargé des symboles de la chance et de la prospérité. Il ne demande pas d'être parfait, mais de tenter. Il rappelle que les graines plantées aujourd'hui donneront des fruits demain.",
+      "endroit": "Bingo ! Annonce des opportunités à saisir, un vent de chance, l'ouverture d'une porte inattendue. C'est la carte de la richesse, pas seulement financière, mais aussi de la réussite personnelle. C'est le moment de lancer une idée ou un projet.",
+      "ombre_et_defis": "Une opportunité peut cacher un défi. Il invite à la prudence et à ne pas se laisser aveugler par ce qui brille. Peut aussi représenter une grande transformation imprévisible (avec le Joker), qui demande d'être maniée avec précaution.",
+      "conseil": "Écoutez votre instinct pour faire les bons choix. C'est une carte qui invite à agir. Lancez-vous dans ce projet que vous avez en tête, passez cet appel. Restez attentif, les opportunités arrivent."
+    },
+    "domaines": {
+      "amour": "Avec le Roi de Coeur, il annonce l'arrivée d'un allié sincère, un mentor ou un amour. Avec la Dame de Coeur, c'est une énergie douce et protectrice qui entre dans votre vie. C'est le début de quelque chose de nouveau et de positif.",
+      "travail": "Symbole de réussite personnelle et d'opportunités professionnelles. Peut annoncer le début d'un grand projet (avec le 10 de Carreau) ou une période de bonheur et de succès dans ses entreprises (avec le 10 de Cœur).",
+      "finances": "Symbolise la richesse et l'abondance. Représente souvent une opportunité financière. Cependant, il faut rester sur ses gardes : un gain potentiel peut être précédé d'un petit coup dur (avec le 7 de Pique) ou demander de la prudence (avec le Roi de Pique).",
+      "spirituel": "C'est un messager universel qui symbolise un potentiel caché, une force intérieure à découvrir. Il est enraciné dans les croyances anciennes, où le trèfle est un symbole sacré de protection et d'équilibre. Il vous connecte à l'espoir et à l'action."
+    },
+    "prompts_visuels": [
+      "une main ouvrant une porte ancienne d'où s'échappe une lumière vive",
+      "une seule graine germant et devenant une plante robuste",
+      "une clé dorée et ornée posée sur une carte au trésor",
+      "une personne au bord d'une falaise, prête à sauter à l'élastique avec un air confiant",
+      "un trèfle à quatre feuilles brillant au milieu d'un champ"
+    ],
+    "prompts_conversationnels": [
+      "L'As de Trèfle est une 'porte ouverte'. Comment cette énergie de 'début' se différencie-t-elle de celle, plus progressive, du 2 de Trèfle ?",
+      "La fiche dit que 'tout ce qui brille n'est pas or'. Proposez un scénario où une opportunité alléchante présentée par l'As de Trèfle pourrait cacher un défi.",
+      "L'As de Trèfle touche à 'l'espoir, la chance, l'action'. Expliquez comment ces trois éléments sont interdépendants pour atteindre le succès.",
+      "Cette carte invite à 'agir'. Quelle est la différence entre l'action prônée par l'As de Trèfle et celle, plus stratégique, du Roi de Pique ?",
+      "Avec la Dame de Carreau, la fiche met en garde contre la 'manipulation ou la jalousie'. Comment l'énergie positive de l'As de Trèfle peut-elle être affectée par une telle influence ?"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "coeur_roi", "signification": "Un allié sincère est près de vous, que ce soit un mentor ou un amour, apportant un soutien de poids." },
+      { "carte_associee_id": "pique_roi", "signification": "Prudence requise. Une personne de pouvoir dans votre entourage est peut-être plus stratège qu'amie." },
+      { "carte_associee_id": "coeur_dame", "signification": "Une énergie douce et protectrice s'invite. Représente une confidente ou une figure maternelle spirituelle." },
+      { "carte_associee_id": "carreau_dame", "signification": "Attention à la manipulation ou à la jalousie. Une opportunité pourrait attiser la convoitise." },
+      { "carte_associee_id": "pique_07", "signification": "Un petit coup dur ou un défi peut précéder une belle récompense." },
+      { "carte_associee_id": "carreau_07", "signification": "Attendez-vous à une révélation, un virage inattendu qui peut être positif ou dérangeant." },
+      { "carte_associee_id": "carreau_10", "signification": "Un grand projet peut voir le jour, la chance est du côté des ambitions matérielles." },
+      { "carte_associee_id": "coeur_10", "signification": "Une période de bonheur profond et de réussite se profile." },
+      { "carte_associee_id": "pique_10", "signification": "Avertissement : ne laissez pas les ambitions éclipser vos valeurs fondamentales." }
+    ]
+  },
+  {
     "id": "trefle_valet",
     "nom_carte": "Valet de Trèfle",
     "valeur": 11,
