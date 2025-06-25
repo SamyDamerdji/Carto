@@ -175,5 +175,45 @@ export const coeurCards: Card[] = [
       { "carte_associee_id": "coeur_valet", "signification": "Représente une alliance spéciale, une relation mère-fils ou une connexion amoureuse à différents stades de maturité, où la Dame offre sagesse et le Valet fraîcheur." },
       { "carte_associee_id": "coeur_as", "signification": "Un duo puissant. Symbolise une relation harmonieuse ou un équilibre idéal entre l'amour pur (As) et la sagesse émotionnelle (Dame)." }
     ]
+  },
+  {
+    "id": "coeur_10",
+    "nom_carte": "Dix de Cœur",
+    "valeur": 10,
+    "couleur": "Cœur",
+    "image_url": "/images/cards/coeur_10.png",
+    "resume_general": "Carte de l'accomplissement émotionnel et de la joie partagée. Elle symbolise un alignement intérieur, la paix, la réconciliation et le bonheur familial. C'est un cercle qui se ferme, marquant à la fois une fin et un commencement.",
+    "phrase_cle": "Tu n'as pas besoin de plus. Tu as juste besoin d'en prendre conscience.",
+    "mots_cles": [
+      "accomplissement", "joie partagée", "harmonie", "réconciliation", "amour mature", "famille", "gratitude",
+      "célébration", "bonheur", "stabilité émotionnelle", "paix intérieure", "unité"
+    ],
+    "interpretations": {
+      "general": "Le 10 de Cœur représente un cœur éveillé et plein. Ce n'est pas un amour qui mendie, mais qui rayonne naturellement. Il symbolise un retour à soi, la réconciliation avec son passé et une énergie de gratitude profonde. C'est l'énergie d'un cycle qui s'accomplit dans la sérénité.",
+      "endroit": "Annonce une période de joie, d'harmonie et de célébration. C'est la carte des retrouvailles, de la famille, d'un mariage, d'une naissance ou d'un amour mature. Elle est un signal doux que l'on est sur la bonne voie, un phare qui guide vers un port serein.",
+      "ombre_et_defis": "Peut signaler des défis émotionnels nécessaires pour grandir. Ce n'est pas une carte négative, mais elle peut apparaître après une période difficile pour rassurer que des jours meilleurs arrivent. Le défi est d'accueillir le bonheur sans le saboter par peur de le perdre.",
+      "conseil": "Regarde ce que tu as déjà. Accueille la joie sans peur ni retenue. Le pardon te libère, l'amour te guide. Prends conscience que le bonheur émotionnel est à portée de main. Ouvre la porte, pas juste la fenêtre, à l'amour et à la sincérité."
+    },
+    "domaines": {
+      "amour": "Carte très positive annonçant l'arrivée d'un amour sincère ou le renforcement d'une relation. Parle de compréhension mutuelle, de respect et de croissance partagée. C'est l'assurance d'une relation solide, basée sur des fondations authentiques et durables.",
+      "travail": "Signe de réussite et de satisfaction personnelle dans un projet. Peut annoncer une célébration, un accomplissement d'équipe ou simplement une période de joie et d'harmonie dans son environnement professionnel.",
+      "finances": "Son abondance n'est pas matérielle, mais se mesure en moments de pur bonheur. Cependant, elle peut signifier que la stabilité émotionnelle et la chance favorisent aussi une amélioration de la situation matérielle.",
+      "spirituel": "Symbolise le 'cœur éveillé', la fin d'un cycle et un nouveau départ dans une même vibration. C'est la connexion au lien sacré de la lignée familiale et à l'amour de soi. Invite à l'introspection et à prendre soin de ses émotions avec tendresse."
+    },
+    "prompts_visuels": [
+      "une grande tablée familiale riant lors d'un repas de fête en plein air",
+      "un rocher solide au milieu d'une cascade, l'eau coulant tout autour sans le déplacer",
+      "une personne regardant un coucher de soleil avec un sentiment de paix profonde",
+      "une main tendant une flamme de bougie à une autre main pour allumer une nouvelle bougie (passage de flambeau)",
+      "un cercle de personnes se tenant par la main, formant une unité"
+    ],
+    "prompts_conversationnels": [
+      "Le 10 de Cœur est décrit comme un 'cœur éveillé, pas juste ouvert'. Quelle est la distinction entre ces deux états ?",
+      "La fiche dit que cette carte 'murmure plus qu'elle ne crie'. Expliquez cette idée par opposition à une carte plus extravertie comme le 10 de Trèfle.",
+      "Le chiffre 10 est un 'cycle complet'. Donnez un exemple de situation qui est à la fois une fin et un commencement.",
+      "Le défi de cette carte est de ne pas 'saboter le bonheur par peur de le perdre'. Comment cette peur peut-elle se manifester concrètement ?",
+      "Comment la 'réconciliation' du 10 de Cœur se différencie-t-elle de la 'transformation' par la rupture de l'As de Pique ?"
+    ],
+    "combinaisons": []
   }
 ];
