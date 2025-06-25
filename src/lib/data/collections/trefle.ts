@@ -1,3 +1,4 @@
+
 import type { Card } from '../cards';
 
 export const trefleCards: Card[] = [
@@ -138,6 +139,48 @@ export const trefleCards: Card[] = [
       { "carte_associee_id": "carreau_valet", "signification": "Une nouvelle inattendue, via un message ou une rencontre, vient débloquer une situation." },
       { "carte_associee_id": "trefle_08", "signification": "Une montée en puissance. Les efforts et l'énergie investis vont porter leurs fruits très prochainement." },
       { "carte_associee_id": "trefle_roi", "signification": "Une figure d'autorité vous ouvre la voie. Écoutez ses conseils tout en gardant votre indépendance." }
+    ]
+  },
+  {
+    "id": "trefle_dame",
+    "nom_carte": "Dame de Trèfle",
+    "valeur": 12,
+    "couleur": "Trèfle",
+    "image_url": "/images/cards/trefle_dame.png",
+    "resume_general": "Carte de l'intuition, de la stratégie et de l'action réfléchie. Elle représente une femme ambitieuse, lucide et indépendante qui gère sa vie avec maîtrise. Elle est une alliée, une protectrice et une guide pour les questions concrètes.",
+    "phrase_cle": "Ne te perds pas dans les nuages si tu n'as pas semé sur terre.",
+    "mots_cles": [
+      "femme d'action", "intuition", "stratégie", "lucidité", "ambition", "indépendance", "prospérité",
+      "maîtrise", "ancrage", "prudence", "alliée", "confiance"
+    ],
+    "interpretations": {
+      "general": "La Dame de Trèfle est une femme qui gère, qui avance et qui calcule. Silencieuse mais pas effacée, elle incarne la femme d'affaires, la stratège qui voit les opportunités et les failles avant les autres. Elle n'est pas froide, elle est lucide et n'a pas besoin d'être sauvée.",
+      "endroit": "Représente une femme de confiance, une amie, une collègue ou la consultante elle-même. Annonce une montée en puissance, une prise de pouvoir, et la réussite grâce à la réalisation personnelle et à un travail acharné. C'est une carte de prospérité, de patience et de sagesse.",
+      "ombre_et_defis": "Lorsqu'elle est en déséquilibre, elle devient méfiante, froide, calculatrice et peut avoir du mal à lâcher prise. Elle symbolise le contrôle excessif, la dureté et peut se fermer, devenant une forteresse derrière un sourire poli. Elle peut aussi représenter une rivale tenace et persuasive.",
+      "conseil": "Reprenez votre pouvoir. Soyez lucide, gardez vos cartes près du cœur et agissez avec intuition et stratégie. Fiez-vous à votre propre jugement et n'attendez pas l'autorisation des autres pour avancer. L'ancrage est une forme de spiritualité."
+    },
+    "domaines": {
+      "amour": "En amour, elle est prudente. Elle ne s'abandonne pas facilement, elle teste et observe, cherchant la profondeur plutôt que les promesses creuses. Elle peut représenter une rivale stratège, ou inviter à reprendre son pouvoir au sein de la relation.",
+      "travail": "C'est son domaine d'excellence. Elle incarne l'intuition au service de la décision. Elle voit les opportunités avant qu'elles n'éclosent et agit avant que la situation ne bascule. Elle annonce un mouvement, une montée en puissance et une prise de pouvoir.",
+      "finances": "Carte rassurante qui annonce la prospérité et la stabilité, à condition de rester prudent et organisé. Elle parle de réalisation personnelle et de récolter les fruits de ses efforts. Ce n'est pas le moment de prendre des risques inutiles.",
+      "spirituel": "C'est un rappel que l'ancrage est une forme de spiritualité. Elle enseigne la valeur du silence, des actes et du respect de soi. Elle relie le concret au subtil, la matière à l'intuition. Son message : prendre soin de son énergie et de ses limites est sacré."
+    },
+    "prompts_visuels": [
+      "une femme d'affaires élégante regardant un horizon urbain depuis un bureau en hauteur",
+      "une reine sur un échiquier, positionnée de manière stratégique",
+      "une femme jardinant avec soin et attention, s'occupant de plantes robustes",
+      "un chat noir marchant avec assurance et silence dans la pénombre",
+      "une femme tenant une clé ancienne, l'air de savoir quelle porte ouvrir"
+    ],
+    "prompts_conversationnels": [
+      "La Dame de Trèfle est décrite comme 'lucide' plutôt que 'froide'. Quelle est la différence fondamentale entre ces deux traits de caractère dans un contexte professionnel ?",
+      "La fiche dit qu'en amour, la Dame de Trèfle 'teste et observe'. Proposez un scénario où cette approche prudente est bénéfique pour construire une relation solide.",
+      "Le côté 'ombre' de cette carte est le 'contrôle excessif'. Comment une qualité de maîtrise peut-elle devenir un défaut ?",
+      "Son conseil spirituel est 'Ne te perds pas dans les nuages si tu n'as pas semé sur terre.' Expliquez cette phrase par opposition à une spiritualité plus éthérée.",
+      "Comparez la Dame de Trèfle au Roi de Trèfle. S'ils étaient en partenariat, quels seraient leurs rôles respectifs dans la gestion d'une entreprise ?"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "coeur_dame", "signification": "Indique une relation amicale ou des interactions avec une femme proche et bienveillante."}
     ]
   }
 ];
