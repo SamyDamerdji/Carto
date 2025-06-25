@@ -4,13 +4,13 @@ import { memo, type ReactNode } from "react";
 import { motion } from "framer-motion";
 
 interface FeatureCardProps {
-  icon: ReactNode;
+  children: ReactNode;
   title: string;
   description: string;
   index: number;
 }
 
-const FeatureCardComponent = ({ icon, title, description, index }: FeatureCardProps) => {
+const FeatureCardComponent = ({ children, title, description, index }: FeatureCardProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -22,7 +22,7 @@ const FeatureCardComponent = ({ icon, title, description, index }: FeatureCardPr
       <div className="absolute -right-4 -top-4 h-24 w-24 bg-[radial-gradient(closest-side,hsl(var(--primary)/0.1),transparent)]"></div>
       <div className="relative z-10 flex h-full flex-col">
         <div className="flex items-center gap-4">
-          {icon}
+          {children}
           <h3 className="font-headline text-xl font-bold uppercase tracking-wider text-card-foreground/90">
             {title}
           </h3>

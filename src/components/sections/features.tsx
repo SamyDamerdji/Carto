@@ -29,10 +29,11 @@ export function Features() {
         <div key={feature.id} id={feature.id} className="scroll-mt-24">
           <FeatureCard
             index={index}
-            icon={feature.icon}
             title={feature.title}
             description={feature.description}
-          />
+          >
+            {feature.icon}
+          </FeatureCard>
         </div>
       ))}
     </div>
