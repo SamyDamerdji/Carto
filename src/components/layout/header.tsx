@@ -8,8 +8,8 @@ import { Home, BookOpen, Crosshair, Sparkles } from "lucide-react";
 const navItems = [
   { href: "/", label: "Accueil", icon: Home },
   { href: "/apprentissage", label: "Apprentissage", icon: BookOpen },
-  { href: "#", label: "Entraînement", icon: Crosshair },
-  { href: "#", label: "Tirages", icon: Sparkles },
+  { href: "/entrainement", label: "Entraînement", icon: Crosshair },
+  { href: "/tirages", label: "Tirages", icon: Sparkles },
 ];
 
 export function Header() {
@@ -31,10 +31,7 @@ export function Header() {
                   : "text-accent hover:bg-accent/50 hover:text-accent-foreground"
               )}
             >
-              <item.icon className={cn(
-                "h-5 w-5",
-                !isActive && "text-primary"
-              )} />
+              <item.icon className="h-5 w-5" />
               <span>{item.label}</span>
             </Link>
           );
