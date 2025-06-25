@@ -32,7 +32,7 @@ const FeatureCard = ({ feature, index }: { feature: (typeof features)[0], index:
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.15 }}
       viewport={{ once: true, amount: 0.3 }}
-      className="relative h-full overflow-hidden rounded-2xl border border-primary/30 bg-secondary/20 p-6 shadow-lg shadow-primary/10 backdrop-blur-lg"
+      className="relative h-full overflow-hidden rounded-2xl border border-primary/10 bg-secondary/20 p-6 shadow-lg shadow-primary/10 backdrop-blur-lg"
     >
       <div className="absolute -right-4 -top-4 h-24 w-24 bg-[radial-gradient(closest-side,hsl(var(--primary)/0.1),transparent)]"></div>
       <div className="relative z-10 flex h-full flex-col">
