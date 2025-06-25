@@ -400,5 +400,45 @@ export const coeurCards: Card[] = [
     "combinaisons": [
       { "carte_associee_id": "coeur_dame", "signification": "La Dame de Cœur, symbolisant la sensibilité, complète le Roi de Cœur, qui représente la sagesse, soulignant l'équilibre entre la force et la douceur dans les relations."}
     ]
+  },
+  {
+    "id": "coeur_05",
+    "nom_carte": "Cinq de Cœur",
+    "valeur": 5,
+    "couleur": "Cœur",
+    "image_url": "/images/cards/coeur_05.png",
+    "resume_general": "Carte de transition émotionnelle, de déséquilibre et de changement. Elle symbolise les épreuves affectives, les émotions turbulentes et la nécessité de lâcher prise. C'est une opportunité de croissance et de renouveau après une période difficile.",
+    "phrase_cle": "Tout est en mouvement, accepte-le, et avance.",
+    "mots_cles": [
+      "transition émotionnelle", "déséquilibre", "changement", "épreuves affectives", "perte", "déception", "introspection",
+      "résilience", "opportunité", "adaptation", "lâcher-prise"
+    ],
+    "interpretations": {
+      "general": "Le 5 de Cœur est un miroir des tensions intérieures. C'est le cœur qui palpite mais qui doute. Il représente le changement (chiffre 5) dans les relations. Il invite à observer ce qui se passe en soi sans jugement, à lâcher les émotions qui pèsent pour avancer.",
+      "endroit": "Annonce une période de transition dans la vie sociale et affective. Des amitiés changent, des relations se renouvellent. C'est le moment de faire le tri dans son cœur et de faire de la place pour de nouvelles énergies. C'est une invitation à l'ouverture, à l'adaptation et à l'introspection.",
+      "ombre_et_defis": "Peut annoncer un déséquilibre amoureux, un chagrin passager, une rupture, un questionnement profond, voire une déception. Elle fait mal parfois, mais fait du bien après. Elle arrive quand on s'accroche à quelque chose qui ne nous nourrit plus vraiment.",
+      "conseil": "Acceptez le changement. Si vous résistez, cela peut créer des tensions. Si vous vous laissez porter, les choses peuvent se dénouer. C'est une lueur d'espoir : après l'orage, le ciel est plus clair. Prenez ce moment comme une invitation à grandir émotionnellement."
+    },
+    "domaines": {
+      "amour": "Annonce une rupture, un questionnement profond sur la relation, un revirement. C'est le 'réveil du cœur' qui ne veut plus dormir debout. Peut raviver les souvenirs d'un ancien amour, indiquant que le passé n'est pas tout à fait digéré. Invite à pardonner ou couper le fil.",
+      "travail": "L'impact est plus émotionnel que pratique. Peut indiquer une période où les relations de travail sont en transition, où des amitiés professionnelles changent. Le défi est de ne pas laisser ces turbulences affectives impacter la productivité.",
+      "finances": "Peut symboliser une période d'instabilité due à des décisions émotionnelles. Le 5, chiffre du mouvement, peut indiquer des dépenses ou des gains inattendus. Le conseil est de rester centré et de ne pas laisser les émotions guider les choix financiers.",
+      "spirituel": "Symbolise un nœud à défaire, un cycle à briser. Invite à se libérer d'une dépendance affective, à clarifier une relation bancale, à se choisir soi-même. C'est une carte qui demande de faire de la place à l'émotion vraie, pas à celle que l'on montre."
+    },
+    "prompts_visuels": [
+      "une personne marchant sur une corde raide avec une légère hésitation",
+      "un cours d'eau agité rencontrant des rochers, créant des remous",
+      "une personne faisant le ménage dans une pièce en désordre, créant de l'espace",
+      "un miroir reflétant une image légèrement déformée et questionnante",
+      "un orage d'été éclatant dans un ciel bleu, suivi d'un arc-en-ciel"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "coeur_10", "signification": "Suggère une profonde satisfaction et un accomplissement amoureux après une période de transition." },
+      { "carte_associee_id": "trefle_07", "signification": "Implique qu'un équilibre entre les émotions et les efforts pratiques est nécessaire pour surmonter les défis." },
+      { "carte_associee_id": "coeur_dame", "signification": "Évoque une influence féminine bienveillante, apportant soutien, compréhension et tendresse." },
+      { "carte_associee_id": "carreau_07", "signification": "Annonce des défis ou des obstacles dans la poursuite des objectifs amoureux." },
+      { "carte_associee_id": "pique_10", "signification": "Indique une période de transition difficile dans les relations, menant à une prise de conscience." },
+      { "carte_associee_id": "coeur_08", "signification": "Renforce l'idée de progression et de croissance dans les relations après une période de turbulence." }
+    ]
   }
 ];
