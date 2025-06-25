@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Home, BookOpen, Crosshair, Sparkles } from "lucide-react";
+import { memo } from "react";
 
 const navItems = [
   { href: "/", label: "Accueil", icon: Home },
@@ -12,7 +13,7 @@ const navItems = [
   { href: "/tirages", label: "Tirages", icon: Sparkles },
 ];
 
-export function Header() {
+const HeaderComponent = () => {
   const pathname = usePathname();
 
   return (
@@ -39,4 +40,8 @@ export function Header() {
       </nav>
     </header>
   );
-}
+};
+
+HeaderComponent.displayName = "Header";
+
+export const Header = memo(HeaderComponent);
