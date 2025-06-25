@@ -4,8 +4,8 @@
   "description": "Apprenez et mémorisez les significations divinatoires des 52 cartes à jouer.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#2a213c",
-  "theme_color": "#f97316",
+  "background_color": "#26233D",
+  "theme_color": "#E0D6F5",
   "icons": [
     {
       "src": "/icon-192x192.png",
