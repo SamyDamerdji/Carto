@@ -50,7 +50,7 @@ export default function RootLayout({
       <body className={cn(
         "font-body antialiased",
         "min-h-screen bg-background",
-        "bg-[url('https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/fond.png')] bg-cover bg-center bg-fixed",
+        "bg-[url('https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/fond.png?v=2')] bg-cover bg-center bg-fixed",
         cinzel.variable,
         ebGaramond.variable
       )}>
