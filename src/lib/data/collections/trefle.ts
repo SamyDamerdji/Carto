@@ -3,53 +3,85 @@ import type { Card } from '../cards';
 
 export const trefleCards: Card[] = [
   {
-    "id": "trefle_as",
-    "nom_carte": "As de Trèfle",
-    "valeur": 1,
+    "id": "trefle_roi",
+    "nom_carte": "Roi de Trèfle",
+    "valeur": 13,
     "couleur": "Trèfle",
-    "image_url": "/images/cards/trefle_as.png",
-    "resume_general": "Carte maîtresse de l'opportunité, de l'abondance et des nouveaux départs. C'est une porte qui s'ouvre, un potentiel à saisir, une 'clé magique'. Il symbolise la chance, l'espoir et l'invitation à agir pour concrétiser ses projets.",
-    "phrase_cle": "Tout est possible, es-tu prêt à saisir ta chance ?",
+    "image_url": "/images/cards/trefle_roi.png",
+    "resume_general": "Carte de la maîtrise, du pouvoir et de la réussite construite. C'est un stratège, un bâtisseur et un guide spirituel qui ne laisse rien au hasard. Il représente une personne influente, la sagesse, la discipline et la capacité à prendre les commandes de son destin.",
+    "phrase_cle": "Ne laissez pas le hasard décider, prenez les rênes.",
     "mots_cles": [
-      "opportunité", "chance", "nouveau départ", "abondance", "potentiel", "action", "richesse",
-      "réussite personnelle", "espoir", "initiative", "croissance"
+      "stratège", "pouvoir", "maîtrise", "réussite", "personne influente", "sagesse", "discipline", 
+      "stabilité", "construction", "affaires", "mentor", "leader"
     ],
     "interpretations": {
-      "general": "L'As de Trèfle est une boussole intérieure qui murmure que tout est possible. Il est chargé des symboles de la chance et de la prospérité. Il ne demande pas d'être parfait, mais de tenter. Il rappelle que les graines plantées aujourd'hui donneront des fruits demain.",
-      "endroit": "Bingo ! Annonce des opportunités à saisir, un vent de chance, l'ouverture d'une porte inattendue. C'est la carte de la richesse, pas seulement financière, mais aussi de la réussite personnelle. C'est le moment de lancer une idée ou un projet.",
-      "ombre_et_defis": "Une opportunité peut cacher un défi. Il invite à la prudence et à ne pas se laisser aveugler par ce qui brille. Peut aussi représenter une grande transformation imprévisible (avec le Joker), qui demande d'être maniée avec précaution.",
-      "conseil": "Écoutez votre instinct pour faire les bons choix. C'est une carte qui invite à agir. Lancez-vous dans ce projet que vous avez en tête, passez cet appel. Restez attentif, les opportunités arrivent."
+      "general": "Le Roi de Trèfle est un personnage puissant, un maître du jeu qui avance avec une vision claire. Il symbolise la réussite qui se prépare, se cultive et se travaille avec intelligence. Il pousse à agir avec stratégie, à anticiper et à bâtir sur des bases solides.",
+      "endroit": "Représente un homme de pouvoir, un mentor, un chef ou un protecteur qui peut ouvrir des portes. Annonce une période où il faut prendre le contrôle, structurer ses projets et agir avec sagesse. C'est le signe d'une réussite construite sur la patience et la discipline.",
+      "ombre_et_defis": "Son aspect de 'contrôle' peut devenir une faiblesse. Il peut représenter une rigidité excessive, un refus de l'imprévu ou une tendance à vouloir tout maîtriser, y compris les émotions. Peut indiquer un leader qui ne se laisse pas déstabiliser, mais qui manque de souplesse.",
+      "conseil": "Prenez le pouvoir sur votre vie. Fixez des objectifs clairs, soyez stratège, anticipez et ne vous laissez pas distraire. La prospérité se cultive et la chance n'existe pas sans action. Entourez-vous des bonnes personnes pour bâtir durablement."
     },
     "domaines": {
-      "amour": "Avec le Roi de Coeur, il annonce l'arrivée d'un allié sincère, un mentor ou un amour. Avec la Dame de Coeur, c'est une énergie douce et protectrice qui entre dans votre vie. C'est le début de quelque chose de nouveau et de positif.",
-      "travail": "Symbole de réussite personnelle et d'opportunités professionnelles. Peut annoncer le début d'un grand projet (avec le 10 de Carreau) ou une période de bonheur et de succès dans ses entreprises (avec le 10 de Cœur).",
-      "finances": "Symbolise la richesse et l'abondance. Représente souvent une opportunité financière. Cependant, il faut rester sur ses gardes : un gain potentiel peut être précédé d'un petit coup dur (avec le 7 de Pique) ou demander de la prudence (avec le Roi de Pique).",
-      "spirituel": "C'est un messager universel qui symbolise un potentiel caché, une force intérieure à découvrir. Il est enraciné dans les croyances anciennes, où le trèfle est un symbole sacré de protection et d'équilibre. Il vous connecte à l'espoir et à l'action."
+      "amour": "Incarne la recherche de solidité et d'engagement. Il ne représente pas la passion foudroyante, mais un amour bâti sur le long terme, la confiance et la loyauté. Annonce une phase de stabilité et d'évolution dans un couple ou, pour un célibataire, le conseil de choisir avec discernement.",
+      "travail": "Symbole de l'homme d'affaires, du dirigeant stable et réfléchi. Associé à l'argent, aux affaires et à la réussite matérielle. Il indique qu'il faut agir avec sagesse, ne pas brûler les étapes et garder son sang-froid pour mener à bien un projet.",
+      "finances": "C'est son domaine d'excellence. Il sait comment investir et gérer. Il représente la gestion, la prudence et l'anticipation. Il n'y a pas de place pour l'improvisation ; chaque mouvement financier doit être réfléchi et stratégique.",
+      "spirituel": "C'est un guide qui rappelle que la réussite ne tombe pas du ciel. Il invite à prendre conscience de sa puissance intérieure, à structurer ses ambitions et à maîtriser son destin avec intelligence. Il est la voix de la maturité qui sait que la patience est une vertu."
     },
     "prompts_visuels": [
-      "une main ouvrant une porte ancienne d'où s'échappe une lumière vive",
-      "une seule graine germant et devenant une plante robuste",
-      "une clé dorée et ornée posée sur une carte au trésor",
-      "une personne au bord d'une falaise, prête à sauter à l'élastique avec un air confiant",
-      "un trèfle à quatre feuilles brillant au milieu d'un champ"
+      "un grand entrepreneur regardant un plan de construction d'un building",
+      "un joueur d'échecs déplaçant sa pièce reine avec une confiance sereine",
+      "un mentor guidant un plus jeune dans un atelier",
+      "un homme tenant une hache (et non une épée), symbole de son autorité tranchante",
+      "une main solide posant la dernière brique d'un mur"
     ],
     "prompts_conversationnels": [
-      "L'As de Trèfle est une 'porte ouverte'. Comment cette énergie de 'début' se différencie-t-elle de celle, plus progressive, du 2 de Trèfle ?",
-      "La fiche dit que 'tout ce qui brille n'est pas or'. Proposez un scénario où une opportunité alléchante présentée par l'As de Trèfle pourrait cacher un défi.",
-      "L'As de Trèfle touche à 'l'espoir, la chance, l'action'. Expliquez comment ces trois éléments sont interdépendants pour atteindre le succès.",
-      "Cette carte invite à 'agir'. Quelle est la différence entre l'action prônée par l'As de Trèfle et celle, plus stratégique, du Roi de Pique ?",
-      "Avec la Dame de Carreau, la fiche met en garde contre la 'manipulation ou la jalousie'. Comment l'énergie positive de l'As de Trèfle peut-elle être affectée par une telle influence ?"
+      "Le Roi de Trèfle est un 'bâtisseur'. Quelle est la différence fondamentale entre 'bâtir' une relation et la 'laisser se développer' au hasard ?",
+      "La fiche dit qu'il est un 'protecteur, mais pas un sauveur'. Expliquez cette nuance dans le contexte d'un manager qui aide un employé.",
+      "Cette carte représente un leader qui 'calcule ses coups avant d'agir'. Comparez cette approche à celle du Valet de Carreau qui incarne plutôt 'l'élan et l'initiative'.",
+      "Le Roi de Trèfle 'ne se laisse pas emporter par le vent'. Dans quelle situation professionnelle concrète cette qualité de sang-froid serait-elle cruciale ?",
+      "On dit que pour incarner son énergie, il faut 'fixer des objectifs clairs' et 'ne pas se laisser distraire'. Pourquoi la discipline est-elle si centrale dans la symbolique de cette carte ?"
+    ],
+    "combinaisons": []
+  },
+  {
+    "id": "trefle_dame",
+    "nom_carte": "Dame de Trèfle",
+    "valeur": 12,
+    "couleur": "Trèfle",
+    "image_url": "/images/cards/trefle_dame.png",
+    "resume_general": "Carte de l'intuition, de la stratégie et de l'action réfléchie. Elle représente une femme ambitieuse, lucide et indépendante qui gère sa vie avec maîtrise. Elle est une alliée, une protectrice et une guide pour les questions concrètes.",
+    "phrase_cle": "Ne te perds pas dans les nuages si tu n'as pas semé sur terre.",
+    "mots_cles": [
+      "femme d'action", "intuition", "stratégie", "lucidité", "ambition", "indépendance", "prospérité",
+      "maîtrise", "ancrage", "prudence", "alliée", "confiance"
+    ],
+    "interpretations": {
+      "general": "La Dame de Trèfle est une femme qui gère, qui avance et qui calcule. Silencieuse mais pas effacée, elle incarne la femme d'affaires, la stratège qui voit les opportunités et les failles avant les autres. Elle n'est pas froide, elle est lucide et n'a pas besoin d'être sauvée.",
+      "endroit": "Représente une femme de confiance, une amie, une collègue ou la consultante elle-même. Annonce une montée en puissance, une prise de pouvoir, et la réussite grâce à la réalisation personnelle et à un travail acharné. C'est une carte de prospérité, de patience et de sagesse.",
+      "ombre_et_defis": "Lorsqu'elle est en déséquilibre, elle devient méfiante, froide, calculatrice et peut avoir du mal à lâcher prise. Elle symbolise le contrôle excessif, la dureté et peut se fermer, devenant une forteresse derrière un sourire poli. Elle peut aussi représenter une rivale tenace et persuasive.",
+      "conseil": "Reprenez votre pouvoir. Soyez lucide, gardez vos cartes près du cœur et agissez avec intuition et stratégie. Fiez-vous à votre propre jugement et n'attendez pas l'autorisation des autres pour avancer. L'ancrage est une forme de spiritualité."
+    },
+    "domaines": {
+      "amour": "En amour, elle est prudente. Elle ne s'abandonne pas facilement, elle teste et observe, cherchant la profondeur plutôt que les promesses creuses. Elle peut représenter une rivale stratège, ou inviter à reprendre son pouvoir au sein de la relation.",
+      "travail": "C'est son domaine d'excellence. Elle incarne l'intuition au service de la décision. Elle voit les opportunités avant qu'elles n'éclosent et agit avant que la situation ne bascule. Elle annonce un mouvement, une montée en puissance et une prise de pouvoir.",
+      "finances": "Carte rassurante qui annonce la prospérité et la stabilité, à condition de rester prudent et organisé. Elle parle de réalisation personnelle et de récolter les fruits de ses efforts. Ce n'est pas le moment de prendre des risques inutiles.",
+      "spirituel": "C'est un rappel que l'ancrage est une forme de spiritualité. Elle enseigne la valeur du silence, des actes et du respect de soi. Elle relie le concret au subtil, la matière à l'intuition. Son message : prendre soin de son énergie et de ses limites est sacré."
+    },
+    "prompts_visuels": [
+      "une femme d'affaires élégante regardant un horizon urbain depuis un bureau en hauteur",
+      "une reine sur un échiquier, positionnée de manière stratégique",
+      "une femme jardinant avec soin et attention, s'occupant de plantes robustes",
+      "un chat noir marchant avec assurance et silence dans la pénombre",
+      "une femme tenant une clé ancienne, l'air de savoir quelle porte ouvrir"
+    ],
+    "prompts_conversationnels": [
+      "La Dame de Trèfle est décrite comme 'lucide' plutôt que 'froide'. Quelle est la différence fondamentale entre ces deux traits de caractère dans un contexte professionnel ?",
+      "La fiche dit qu'en amour, la Dame de Trèfle 'teste et observe'. Proposez un scénario où cette approche prudente est bénéfique pour construire une relation solide.",
+      "Le côté 'ombre' de cette carte est le 'contrôle excessif'. Comment une qualité de maîtrise peut-elle devenir un défaut ?",
+      "Son conseil spirituel est 'Ne te perds pas dans les nuages si tu n'as pas semé sur terre.' Expliquez cette phrase par opposition à une spiritualité plus éthérée.",
+      "Comparez la Dame de Trèfle au Roi de Trèfle. S'ils étaient en partenariat, quels seraient leurs rôles respectifs dans la gestion d'une entreprise ?"
     ],
     "combinaisons": [
-      { "carte_associee_id": "coeur_roi", "signification": "Un allié sincère est près de vous, que ce soit un mentor ou un amour, apportant un soutien de poids." },
-      { "carte_associee_id": "pique_roi", "signification": "Prudence requise. Une personne de pouvoir dans votre entourage est peut-être plus stratège qu'amie." },
-      { "carte_associee_id": "coeur_dame", "signification": "Une énergie douce et protectrice s'invite. Représente une confidente ou une figure maternelle spirituelle." },
-      { "carte_associee_id": "carreau_dame", "signification": "Attention à la manipulation ou à la jalousie. Une opportunité pourrait attiser la convoitise." },
-      { "carte_associee_id": "pique_07", "signification": "Un petit coup dur ou un défi peut précéder une belle récompense." },
-      { "carte_associee_id": "carreau_07", "signification": "Attendez-vous à une révélation, un virage inattendu qui peut être positif ou dérangeant." },
-      { "carte_associee_id": "carreau_10", "signification": "Un grand projet peut voir le jour, la chance est du côté des ambitions matérielles." },
-      { "carte_associee_id": "coeur_10", "signification": "Une période de bonheur profond et de réussite se profile." },
-      { "carte_associee_id": "pique_10", "signification": "Avertissement : ne laissez pas les ambitions éclipser vos valeurs fondamentales." }
+      { "carte_associee_id": "coeur_dame", "signification": "Indique une relation amicale ou des interactions avec une femme proche et bienveillante."}
     ]
   },
   {
@@ -103,44 +135,54 @@ export const trefleCards: Card[] = [
     ]
   },
   {
-    "id": "trefle_roi",
-    "nom_carte": "Roi de Trèfle",
-    "valeur": 13,
+    "id": "trefle_10",
+    "nom_carte": "Dix de Trèfle",
+    "valeur": 10,
     "couleur": "Trèfle",
-    "image_url": "/images/cards/trefle_roi.png",
-    "resume_general": "Carte de la maîtrise, du pouvoir et de la réussite construite. C'est un stratège, un bâtisseur et un guide spirituel qui ne laisse rien au hasard. Il représente une personne influente, la sagesse, la discipline et la capacité à prendre les commandes de son destin.",
-    "phrase_cle": "Ne laissez pas le hasard décider, prenez les rênes.",
+    "image_url": "/images/cards/trefle_10.png",
+    "resume_general": "Carte de la prospérité, de la réussite et de la chance. Elle représente l'abondance matérielle, la récolte des efforts et des projets qui fleurissent. C'est un 'feu vert' qui invite à avancer, mais en gardant l'équilibre et le discernement.",
+    "phrase_cle": "La roue tourne dans le bon sens, foncez avec discernement.",
     "mots_cles": [
-      "stratège", "pouvoir", "maîtrise", "réussite", "personne influente", "sagesse", "discipline", 
-      "stabilité", "construction", "affaires", "mentor", "leader"
+      "prospérité", "réussite", "chance", "abondance", "récolte", "opportunité", "stabilité",
+      "élan", "partenariat", "argent", "union prospère", "équilibre"
     ],
     "interpretations": {
-      "general": "Le Roi de Trèfle est un personnage puissant, un maître du jeu qui avance avec une vision claire. Il symbolise la réussite qui se prépare, se cultive et se travaille avec intelligence. Il pousse à agir avec stratégie, à anticiper et à bâtir sur des bases solides.",
-      "endroit": "Représente un homme de pouvoir, un mentor, un chef ou un protecteur qui peut ouvrir des portes. Annonce une période où il faut prendre le contrôle, structurer ses projets et agir avec sagesse. C'est le signe d'une réussite construite sur la patience et la discipline.",
-      "ombre_et_defis": "Son aspect de 'contrôle' peut devenir une faiblesse. Il peut représenter une rigidité excessive, un refus de l'imprévu ou une tendance à vouloir tout maîtriser, y compris les émotions. Peut indiquer un leader qui ne se laisse pas déstabiliser, mais qui manque de souplesse.",
-      "conseil": "Prenez le pouvoir sur votre vie. Fixez des objectifs clairs, soyez stratège, anticipez et ne vous laissez pas distraire. La prospérité se cultive et la chance n'existe pas sans action. Entourez-vous des bonnes personnes pour bâtir durablement."
+      "general": "Le 10 de Trèfle est comme un champ fertile ou un jardin en fleurs. Il symbolise la chance, la prospérité, mais aussi un défi caché. C'est l'image de la roue qui tourne dans le bon sens, un élan pour avancer et bâtir. Il représente à la fois la richesse matérielle et les récompenses intérieures.",
+      "endroit": "Annonce une réussite financière, une prospérité dans le foyer, une stabilité retrouvée. Les dettes s'effacent, un projet décolle, une promotion ou une reconnaissance arrive. C'est un feu vert pour saisir une opportunité, un signe que la chance est de votre côté.",
+      "ombre_et_defis": "Alerte sur les excès. L'élan peut devenir déséquilibré. Dans sa facette négative, la carte annonce des défis financiers, des dépenses inattendues, des opportunités manquées ou des relations tendues. C'est une invitation à la prudence et à ne pas laisser passer le train.",
+      "conseil": "Foncez, mais ouvrez bien les yeux. Soyez à l'écoute, car chaque détail compte. Agissez avec discernement et ne cédez pas à la précipitation. Restez optimiste, car les opportunités sont souvent bien cachées. Tout doit rester équilibré, comme un funambule sur son fil."
     },
     "domaines": {
-      "amour": "Incarne la recherche de solidité et d'engagement. Il ne représente pas la passion foudroyante, mais un amour bâti sur le long terme, la confiance et la loyauté. Annonce une phase de stabilité et d'évolution dans un couple ou, pour un célibataire, le conseil de choisir avec discernement.",
-      "travail": "Symbole de l'homme d'affaires, du dirigeant stable et réfléchi. Associé à l'argent, aux affaires et à la réussite matérielle. Il indique qu'il faut agir avec sagesse, ne pas brûler les étapes et garder son sang-froid pour mener à bien un projet.",
-      "finances": "C'est son domaine d'excellence. Il sait comment investir et gérer. Il représente la gestion, la prudence et l'anticipation. Il n'y a pas de place pour l'improvisation ; chaque mouvement financier doit être réfléchi et stratégique.",
-      "spirituel": "C'est un guide qui rappelle que la réussite ne tombe pas du ciel. Il invite à prendre conscience de sa puissance intérieure, à structurer ses ambitions et à maîtriser son destin avec intelligence. Il est la voix de la maturité qui sait que la patience est une vertu."
+      "amour": "Représente une union prospère, une relation harmonieuse où chacun s'épanouit. Parle d'échanges fructueux, de partenariats et de discussions qui ouvrent des portes. C'est une relation qui demande à être 'arrosée' régulièrement pour continuer à fleurir.",
+      "travail": "C'est la carte de la 'récolte des efforts'. Elle annonce qu'un travail acharné va payer. Peut signifier une promotion, une reconnaissance ou un projet qui décolle enfin. C'est un signal très positif pour les affaires et la carrière.",
+      "finances": "Thème central de cette carte. Elle souffle que tout pourrait bien rouler, que la prospérité arrive. Annonce une aide inattendue, un coup de pouce providentiel, une rentrée d'argent importante ou un succès financier majeur, surtout en association avec l'As de Trèfle.",
+      "spirituel": "Symbolise une période de chance et de magie dans l'air. C'est un présage de fortune et de bons vents. Elle invite à tenter quelque chose de nouveau et à profiter de cette énergie positive pour avancer sur son chemin personnel."
     },
     "prompts_visuels": [
-      "un grand entrepreneur regardant un plan de construction d'un building",
-      "un joueur d'échecs déplaçant sa pièce reine avec une confiance sereine",
-      "un mentor guidant un plus jeune dans un atelier",
-      "un homme tenant une hache (et non une épée), symbole de son autorité tranchante",
-      "une main solide posant la dernière brique d'un mur"
+      "un jardin luxuriant, rempli de fleurs et de fruits mûrs",
+      "un funambule marchant avec assurance sur un fil, parfaitement équilibré",
+      "un feu de signalisation passant au vert",
+      "une porte mystérieuse qui s'ouvre sur un paysage ensoleillé",
+      "des mains qui récoltent une moisson abondante dans un champ de blé doré"
     ],
     "prompts_conversationnels": [
-      "Le Roi de Trèfle est un 'bâtisseur'. Quelle est la différence fondamentale entre 'bâtir' une relation et la 'laisser se développer' au hasard ?",
-      "La fiche dit qu'il est un 'protecteur, mais pas un sauveur'. Expliquez cette nuance dans le contexte d'un manager qui aide un employé.",
-      "Cette carte représente un leader qui 'calcule ses coups avant d'agir'. Comparez cette approche à celle du Valet de Carreau qui incarne plutôt 'l'élan et l'initiative'.",
-      "Le Roi de Trèfle 'ne se laisse pas emporter par le vent'. Dans quelle situation professionnelle concrète cette qualité de sang-froid serait-elle cruciale ?",
-      "On dit que pour incarner son énergie, il faut 'fixer des objectifs clairs' et 'ne pas se laisser distraire'. Pourquoi la discipline est-elle si centrale dans la symbolique de cette carte ?"
+      "Le 10 de Trèfle est comparé à un 'funambule sur son fil'. Qu'est-ce que cela implique en termes de gestion de la réussite ?",
+      "La fiche dit : 'un simple sourire ouvre des portes'. Expliquez comment cette idée s'applique dans le contexte d'un partenariat professionnel.",
+      "En amour, la carte est un 'jardin en fleurs qu'il faut arroser'. Que représente cet 'arrosage' dans une relation à long terme ?",
+      "Comment la 'prospérité' du 10 de Trèfle se différencie-t-elle du 'potentiel brut' de l'As de Trèfle ?",
+      "Le côté ombre du 10 de Trèfle est 'laisser passer le train'. Donnez un exemple concret d'opportunité manquée à cause d'un manque de discernement."
     ],
-    "combinaisons": []
+    "combinaisons": [
+      { "carte_associee_id": "trefle_as", "signification": "Succès financier majeur pour le consultant. Une combinaison très puissante." },
+      { "carte_associee_id": "trefle_roi", "signification": "Une rentrée d'argent importante est à prévoir." },
+      { "carte_associee_id": "trefle_dame", "signification": "Une liaison avec une personne inconnue." },
+      { "carte_associee_id": "coeur_as", "signification": "Une grande réussite dans les affaires." },
+      { "carte_associee_id": "coeur_dame", "signification": "Un succès amoureux durable et une relation solide." },
+      { "carte_associee_id": "carreau_dix", "signification": "Un succès juridique ou la résolution positive d'un conflit." },
+      { "carte_associee_id": "pique_roi", "signification": "Des pertes financières liées à des difficultés ou des décisions malheureuses." },
+      { "carte_associee_id": "pique_dame", "signification": "Une femme causera un préjudice financier grave." },
+      { "carte_associee_id": "pique_valet", "signification": "Attention, un vol pourrait survenir. Prudence requise." }
+    ]
   },
   {
     "id": "trefle_09",
@@ -192,95 +234,103 @@ export const trefleCards: Card[] = [
     ]
   },
   {
-    "id": "trefle_10",
-    "nom_carte": "Dix de Trèfle",
-    "valeur": 10,
+    "id": "trefle_08",
+    "nom_carte": "Huit de Trèfle",
+    "valeur": 8,
     "couleur": "Trèfle",
-    "image_url": "/images/cards/trefle_10.png",
-    "resume_general": "Carte de la prospérité, de la réussite et de la chance. Elle représente l'abondance matérielle, la récolte des efforts et des projets qui fleurissent. C'est un 'feu vert' qui invite à avancer, mais en gardant l'équilibre et le discernement.",
-    "phrase_cle": "La roue tourne dans le bon sens, foncez avec discernement.",
+    "image_url": "/images/cards/trefle_08.png",
+    "resume_general": "Carte d'équilibre, d'opportunité et de prospérité. Elle représente la chance à saisir, l'équilibre entre la matérialité et la spiritualité, et l'évolution. C'est un guide qui pousse à l'action et rappelle que la véritable richesse nourrit l'âme.",
+    "phrase_cle": "La prospérité est un équilibre, saisissez l'opportunité de l'atteindre.",
     "mots_cles": [
-      "prospérité", "réussite", "chance", "abondance", "récolte", "opportunité", "stabilité",
-      "élan", "partenariat", "argent", "union prospère", "équilibre"
+      "équilibre", "opportunité", "prospérité", "évolution", "action", "chance", "décision",
+      "réflexion", "richesse intérieure", "croissance", "transition"
     ],
     "interpretations": {
-      "general": "Le 10 de Trèfle est comme un champ fertile ou un jardin en fleurs. Il symbolise la chance, la prospérité, mais aussi un défi caché. C'est l'image de la roue qui tourne dans le bon sens, un élan pour avancer et bâtir. Il représente à la fois la richesse matérielle et les récompenses intérieures.",
-      "endroit": "Annonce une réussite financière, une prospérité dans le foyer, une stabilité retrouvée. Les dettes s'effacent, un projet décolle, une promotion ou une reconnaissance arrive. C'est un feu vert pour saisir une opportunité, un signe que la chance est de votre côté.",
-      "ombre_et_defis": "Alerte sur les excès. L'élan peut devenir déséquilibré. Dans sa facette négative, la carte annonce des défis financiers, des dépenses inattendues, des opportunités manquées ou des relations tendues. C'est une invitation à la prudence et à ne pas laisser passer le train.",
-      "conseil": "Foncez, mais ouvrez bien les yeux. Soyez à l'écoute, car chaque détail compte. Agissez avec discernement et ne cédez pas à la précipitation. Restez optimiste, car les opportunités sont souvent bien cachées. Tout doit rester équilibré, comme un funambule sur son fil."
+      "general": "Le 8 de Trèfle, avec sa forme d'infini, parle d'équilibre entre ce que l'on possède et ce que l'on ressent. Ce n'est pas une carte de chance brute, mais de la manière dont on l'utilise. Elle symbolise un coup de pouce de la vie, une occasion à ne pas manquer pour créer une vie plus riche et significative.",
+      "endroit": "Annonce une opportunité à saisir, un nouveau projet ou une aventure inédite. C'est le moment de prendre des décisions et de passer à l'action. Peut annoncer des rentrées d'argent, des contrats ou des investissements fructueux. C'est une carte d'évolution et de transition positive.",
+      "ombre_et_defis": "Le défi principal est de trouver le bon équilibre et de ne pas se sentir tiré d'un côté ou de l'autre (matériel vs spirituel). Un manque de réflexion avant d'agir peut faire manquer l'opportunité. La carte peut aussi avertir de certains obstacles financiers ou sentimentaux à venir.",
+      "conseil": "Saisissez les opportunités, mais évaluez-les bien avant de foncer. Jonglez avec vos ressources matérielles sans oublier que le bonheur n'est pas que tangible. Redéfinissez ce que la prospérité signifie pour vous. Utilisez vos biens pour grandir et offrir du bonheur."
     },
     "domaines": {
-      "amour": "Représente une union prospère, une relation harmonieuse où chacun s'épanouit. Parle d'échanges fructueux, de partenariats et de discussions qui ouvrent des portes. C'est une relation qui demande à être 'arrosée' régulièrement pour continuer à fleurir.",
-      "travail": "C'est la carte de la 'récolte des efforts'. Elle annonce qu'un travail acharné va payer. Peut signifier une promotion, une reconnaissance ou un projet qui décolle enfin. C'est un signal très positif pour les affaires et la carrière.",
-      "finances": "Thème central de cette carte. Elle souffle que tout pourrait bien rouler, que la prospérité arrive. Annonce une aide inattendue, un coup de pouce providentiel, une rentrée d'argent importante ou un succès financier majeur, surtout en association avec l'As de Trèfle.",
-      "spirituel": "Symbolise une période de chance et de magie dans l'air. C'est un présage de fortune et de bons vents. Elle invite à tenter quelque chose de nouveau et à profiter de cette énergie positive pour avancer sur son chemin personnel."
+      "amour": "Symbolise l'équilibre dans les échanges affectifs. Invite à réfléchir sur la balance entre ce que l'on donne et ce que l'on reçoit dans ses relations. L'amour est une forme de prospérité qui se mesure en moments partagés et en écoute.",
+      "travail": "Annonce une opportunité à ne pas manquer, un nouveau projet à lancer. Le message est clair : il est temps de prendre des décisions et de passer à l'action. Le dévouement finira par payer.",
+      "finances": "Peut annoncer des rentrées d'argent, des contrats juteux ou des investissements fructueux. Rappelle que l'argent est un outil, pas une fin en soi. Il doit être utilisé pour réaliser des aspirations profondes et non juste pour collectionner des biens.",
+      "spirituel": "C'est un guide qui rappelle l'importance de l'équilibre entre la matière et l'esprit. La véritable richesse est celle qui nourrit l'âme. La carte invite à repenser sa définition de la prospérité pour y inclure des expériences profondes et significatives."
     },
     "prompts_visuels": [
-      "un jardin luxuriant, rempli de fleurs et de fruits mûrs",
-      "un funambule marchant avec assurance sur un fil, parfaitement équilibré",
-      "un feu de signalisation passant au vert",
-      "une porte mystérieuse qui s'ouvre sur un paysage ensoleillé",
-      "des mains qui récoltent une moisson abondante dans un champ de blé doré"
+      "une personne jonglant habilement avec des pièces d'or et des cœurs lumineux",
+      "le symbole de l'infini dessiné dans le sable d'une plage",
+      "une main attrapant au vol une clé dorée qui tombait du ciel",
+      "une balance de justice équilibrant parfaitement un lingot d'or et une plume",
+      "une porte entrouverte laissant entrevoir un chemin prometteur"
     ],
     "prompts_conversationnels": [
-      "Le 10 de Trèfle est comparé à un 'funambule sur son fil'. Qu'est-ce que cela implique en termes de gestion de la réussite ?",
-      "La fiche dit : 'un simple sourire ouvre des portes'. Expliquez comment cette idée s'applique dans le contexte d'un partenariat professionnel.",
-      "En amour, la carte est un 'jardin en fleurs qu'il faut arroser'. Que représente cet 'arrosage' dans une relation à long terme ?",
-      "Comment la 'prospérité' du 10 de Trèfle se différencie-t-elle du 'potentiel brut' de l'As de Trèfle ?",
-      "Le côté ombre du 10 de Trèfle est 'laisser passer le train'. Donnez un exemple concret d'opportunité manquée à cause d'un manque de discernement."
+      "Le 8 de Trèfle parle d'un 'équilibre entre ce que vous possédez et ce que vous ressentez'. Donnez un exemple concret de déséquilibre dans ce domaine.",
+      "La fiche dit que les ressources matérielles sont un 'outil pour créer une vie riche'. Comment cela se différencie-t-il de la simple accumulation de biens ?",
+      "Le message de la carte est 'Vas-y !'. Comment distinguer cet appel à l'action de l'impulsivité, que la carte met aussi en garde ?",
+      "En amour, cette carte invite à réfléchir sur 'l'équilibre dans les échanges'. Quelle forme peut prendre un 'échange' autre que financier dans une relation ?",
+      "Comparez la 'prospérité' du 8 de Trèfle à celle du 10 de Trèfle. Quelle est la nuance entre ces deux cartes positives ?"
     ],
     "combinaisons": [
-      { "carte_associee_id": "trefle_as", "signification": "Succès financier majeur pour le consultant. Une combinaison très puissante." },
-      { "carte_associee_id": "trefle_roi", "signification": "Une rentrée d'argent importante est à prévoir." },
-      { "carte_associee_id": "trefle_dame", "signification": "Une liaison avec une personne inconnue." },
-      { "carte_associee_id": "coeur_as", "signification": "Une grande réussite dans les affaires." },
-      { "carte_associee_id": "coeur_dame", "signification": "Un succès amoureux durable et une relation solide." },
-      { "carte_associee_id": "carreau_dix", "signification": "Un succès juridique ou la résolution positive d'un conflit." },
-      { "carte_associee_id": "pique_roi", "signification": "Des pertes financières liées à des difficultés ou des décisions malheureuses." },
-      { "carte_associee_id": "pique_dame", "signification": "Une femme causera un préjudice financier grave." },
-      { "carte_associee_id": "pique_valet", "signification": "Attention, un vol pourrait survenir. Prudence requise." }
+      { "carte_associee_id": "trefle_as", "signification": "Grande réussite dans la vie sentimentale." },
+      { "carte_associee_id": "trefle_roi", "signification": "Rencontre avec une personne brune et financièrement stable." },
+      { "carte_associee_id": "coeur_dame", "signification": "Vous êtes aimé par une femme blonde." },
+      { "carte_associee_id": "carreau_as", "signification": "Réception d'une petite somme d'argent par virement." },
+      { "carte_associee_id": "carreau_dame", "signification": "Votre bonne foi sera mise à l'épreuve." },
+      { "carte_associee_id": "carreau_09", "signification": "Des problèmes financiers majeurs sont à venir." },
+      { "carte_associee_id": "pique_roi", "signification": "Victoire juridique ou procès gagné." },
+      { "carte_associee_id": "pique_dame", "signification": "Médisances sans conséquences." },
+      { "carte_associee_id": "pique_09", "signification": "Liaison dangereuse avec de lourdes conséquences." }
     ]
   },
   {
-    "id": "trefle_dame",
-    "nom_carte": "Dame de Trèfle",
-    "valeur": 12,
+    "id": "trefle_as",
+    "nom_carte": "As de Trèfle",
+    "valeur": 1,
     "couleur": "Trèfle",
-    "image_url": "/images/cards/trefle_dame.png",
-    "resume_general": "Carte de l'intuition, de la stratégie et de l'action réfléchie. Elle représente une femme ambitieuse, lucide et indépendante qui gère sa vie avec maîtrise. Elle est une alliée, une protectrice et une guide pour les questions concrètes.",
-    "phrase_cle": "Ne te perds pas dans les nuages si tu n'as pas semé sur terre.",
+    "image_url": "/images/cards/trefle_as.png",
+    "resume_general": "Carte maîtresse de l'opportunité, de l'abondance et des nouveaux départs. C'est une porte qui s'ouvre, un potentiel à saisir, une 'clé magique'. Il symbolise la chance, l'espoir et l'invitation à agir pour concrétiser ses projets.",
+    "phrase_cle": "Tout est possible, es-tu prêt à saisir ta chance ?",
     "mots_cles": [
-      "femme d'action", "intuition", "stratégie", "lucidité", "ambition", "indépendance", "prospérité",
-      "maîtrise", "ancrage", "prudence", "alliée", "confiance"
+      "opportunité", "chance", "nouveau départ", "abondance", "potentiel", "action", "richesse",
+      "réussite personnelle", "espoir", "initiative", "croissance"
     ],
     "interpretations": {
-      "general": "La Dame de Trèfle est une femme qui gère, qui avance et qui calcule. Silencieuse mais pas effacée, elle incarne la femme d'affaires, la stratège qui voit les opportunités et les failles avant les autres. Elle n'est pas froide, elle est lucide et n'a pas besoin d'être sauvée.",
-      "endroit": "Représente une femme de confiance, une amie, une collègue ou la consultante elle-même. Annonce une montée en puissance, une prise de pouvoir, et la réussite grâce à la réalisation personnelle et à un travail acharné. C'est une carte de prospérité, de patience et de sagesse.",
-      "ombre_et_defis": "Lorsqu'elle est en déséquilibre, elle devient méfiante, froide, calculatrice et peut avoir du mal à lâcher prise. Elle symbolise le contrôle excessif, la dureté et peut se fermer, devenant une forteresse derrière un sourire poli. Elle peut aussi représenter une rivale tenace et persuasive.",
-      "conseil": "Reprenez votre pouvoir. Soyez lucide, gardez vos cartes près du cœur et agissez avec intuition et stratégie. Fiez-vous à votre propre jugement et n'attendez pas l'autorisation des autres pour avancer. L'ancrage est une forme de spiritualité."
+      "general": "L'As de Trèfle est une boussole intérieure qui murmure que tout est possible. Il est chargé des symboles de la chance et de la prospérité. Il ne demande pas d'être parfait, mais de tenter. Il rappelle que les graines plantées aujourd'hui donneront des fruits demain.",
+      "endroit": "Bingo ! Annonce des opportunités à saisir, un vent de chance, l'ouverture d'une porte inattendue. C'est la carte de la richesse, pas seulement financière, mais aussi de la réussite personnelle. C'est le moment de lancer une idée ou un projet.",
+      "ombre_et_defis": "Une opportunité peut cacher un défi. Il invite à la prudence et à ne pas se laisser aveugler par ce qui brille. Peut aussi représenter une grande transformation imprévisible (avec le Joker), qui demande d'être maniée avec précaution.",
+      "conseil": "Écoutez votre instinct pour faire les bons choix. C'est une carte qui invite à agir. Lancez-vous dans ce projet que vous avez en tête, passez cet appel. Restez attentif, les opportunités arrivent."
     },
     "domaines": {
-      "amour": "En amour, elle est prudente. Elle ne s'abandonne pas facilement, elle teste et observe, cherchant la profondeur plutôt que les promesses creuses. Elle peut représenter une rivale stratège, ou inviter à reprendre son pouvoir au sein de la relation.",
-      "travail": "C'est son domaine d'excellence. Elle incarne l'intuition au service de la décision. Elle voit les opportunités avant qu'elles n'éclosent et agit avant que la situation ne bascule. Elle annonce un mouvement, une montée en puissance et une prise de pouvoir.",
-      "finances": "Carte rassurante qui annonce la prospérité et la stabilité, à condition de rester prudent et organisé. Elle parle de réalisation personnelle et de récolter les fruits de ses efforts. Ce n'est pas le moment de prendre des risques inutiles.",
-      "spirituel": "C'est un rappel que l'ancrage est une forme de spiritualité. Elle enseigne la valeur du silence, des actes et du respect de soi. Elle relie le concret au subtil, la matière à l'intuition. Son message : prendre soin de son énergie et de ses limites est sacré."
+      "amour": "Avec le Roi de Coeur, il annonce l'arrivée d'un allié sincère, un mentor ou un amour. Avec la Dame de Coeur, c'est une énergie douce et protectrice qui entre dans votre vie. C'est le début de quelque chose de nouveau et de positif.",
+      "travail": "Symbole de réussite personnelle et d'opportunités professionnelles. Peut annoncer le début d'un grand projet (avec le 10 de Carreau) ou une période de bonheur et de succès dans ses entreprises (avec le 10 de Cœur).",
+      "finances": "Symbolise la richesse et l'abondance. Représente souvent une opportunité financière. Cependant, il faut rester sur ses gardes : un gain potentiel peut être précédé d'un petit coup dur (avec le 7 de Pique) ou demander de la prudence (avec le Roi de Pique).",
+      "spirituel": "C'est un messager universel qui symbolise un potentiel caché, une force intérieure à découvrir. Il est enraciné dans les croyances anciennes, où le trèfle est un symbole sacré de protection et d'équilibre. Il vous connecte à l'espoir et à l'action."
     },
     "prompts_visuels": [
-      "une femme d'affaires élégante regardant un horizon urbain depuis un bureau en hauteur",
-      "une reine sur un échiquier, positionnée de manière stratégique",
-      "une femme jardinant avec soin et attention, s'occupant de plantes robustes",
-      "un chat noir marchant avec assurance et silence dans la pénombre",
-      "une femme tenant une clé ancienne, l'air de savoir quelle porte ouvrir"
+      "une main ouvrant une porte ancienne d'où s'échappe une lumière vive",
+      "une seule graine germant et devenant une plante robuste",
+      "une clé dorée et ornée posée sur une carte au trésor",
+      "une personne au bord d'une falaise, prête à sauter à l'élastique avec un air confiant",
+      "un trèfle à quatre feuilles brillant au milieu d'un champ"
     ],
     "prompts_conversationnels": [
-      "La Dame de Trèfle est décrite comme 'lucide' plutôt que 'froide'. Quelle est la différence fondamentale entre ces deux traits de caractère dans un contexte professionnel ?",
-      "La fiche dit qu'en amour, la Dame de Trèfle 'teste et observe'. Proposez un scénario où cette approche prudente est bénéfique pour construire une relation solide.",
-      "Le côté 'ombre' de cette carte est le 'contrôle excessif'. Comment une qualité de maîtrise peut-elle devenir un défaut ?",
-      "Son conseil spirituel est 'Ne te perds pas dans les nuages si tu n'as pas semé sur terre.' Expliquez cette phrase par opposition à une spiritualité plus éthérée.",
-      "Comparez la Dame de Trèfle au Roi de Trèfle. S'ils étaient en partenariat, quels seraient leurs rôles respectifs dans la gestion d'une entreprise ?"
+      "L'As de Trèfle est une 'porte ouverte'. Comment cette énergie de 'début' se différencie-t-elle de celle, plus progressive, du 2 de Trèfle ?",
+      "La fiche dit que 'tout ce qui brille n'est pas or'. Proposez un scénario où une opportunité alléchante présentée par l'As de Trèfle pourrait cacher un défi.",
+      "L'As de Trèfle touche à 'l'espoir, la chance, l'action'. Expliquez comment ces trois éléments sont interdépendants pour atteindre le succès.",
+      "Cette carte invite à 'agir'. Quelle est la différence entre l'action prônée par l'As de Trèfle et celle, plus stratégique, du Roi de Pique ?",
+      "Avec la Dame de Carreau, la fiche met en garde contre la 'manipulation ou la jalousie'. Comment l'énergie positive de l'As de Trèfle peut-elle être affectée par une telle influence ?"
     ],
     "combinaisons": [
-      { "carte_associee_id": "coeur_dame", "signification": "Indique une relation amicale ou des interactions avec une femme proche et bienveillante."}
+      { "carte_associee_id": "coeur_roi", "signification": "Un allié sincère est près de vous, que ce soit un mentor ou un amour, apportant un soutien de poids." },
+      { "carte_associee_id": "pique_roi", "signification": "Prudence requise. Une personne de pouvoir dans votre entourage est peut-être plus stratège qu'amie." },
+      { "carte_associee_id": "coeur_dame", "signification": "Une énergie douce et protectrice s'invite. Représente une confidente ou une figure maternelle spirituelle." },
+      { "carte_associee_id": "carreau_dame", "signification": "Attention à la manipulation ou à la jalousie. Une opportunité pourrait attiser la convoitise." },
+      { "carte_associee_id": "pique_07", "signification": "Un petit coup dur ou un défi peut précéder une belle récompense." },
+      { "carte_associee_id": "carreau_07", "signification": "Attendez-vous à une révélation, un virage inattendu qui peut être positif ou dérangeant." },
+      { "carte_associee_id": "carreau_10", "signification": "Un grand projet peut voir le jour, la chance est du côté des ambitions matérielles." },
+      { "carte_associee_id": "coeur_10", "signification": "Une période de bonheur profond et de réussite se profile." },
+      { "carte_associee_id": "pique_10", "signification": "Avertissement : ne laissez pas les ambitions éclipser vos valeurs fondamentales." }
     ]
   }
 ];
