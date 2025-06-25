@@ -306,7 +306,59 @@ export const carreauCards: Card[] = [
       { "carte_associee_id": "trefle_10", "signification": "Accomplissement d'un objectif financier ou professionnel après une période de travail acharné." },
       { "carte_associee_id": "carreau_dame", "signification": "Interactions complexes liées à des questions financières, impliquant une femme influente." }
     ]
+  },
+  {
+    "id": "carreau_07",
+    "nom_carte": "Sept de Carreau",
+    "valeur": 7,
+    "couleur": "Carreau",
+    "image_url": "/images/cards/carreau_07.png",
+    "resume_general": "Carte du défi matériel, de la transformation et du réajustement. Elle annonce des complications, des doutes ou des paroles à double tranchant, mais cache toujours une opportunité de croissance. C'est une invitation à la patience et à la prise de recul.",
+    "phrase_cle": "Ne crois pas tout ce que tu entends, prends du recul.",
+    "mots_cles": [
+      "défi", "dilemme", "réflexion", "patience", "transformation", "communication", "incertitude",
+      "croissance", "ressources", "priorités", "recul", "message"
+    ],
+    "interpretations": {
+      "general": "Le 7 de Carreau combine la quête spirituelle du chiffre 7 à la matérialité des carreaux, créant un dilemme. C'est une carte qui annonce des défis, mais encourage à voir au-delà des apparences. Un problème apparent peut être une chance déguisée, une invitation à un saut spirituel.",
+      "endroit": "Annonce des complications dans les finances ou les projets, mais aussi l'opportunité de grandir. C'est un vent qui souffle, obligeant à ajuster ses voiles. Encourage l'adaptabilité et la résilience. Peut annoncer une bonne nouvelle inattendue ou un déclic libérateur si elle est bien entourée.",
+      "ombre_et_defis": "Carte qui 'met en garde'. Elle parle d'informations floues, de nouvelles contradictoires, de paroles à double tranchant. Peut annoncer une rumeur, une fausse promesse, un malentendu. Mal entourée, elle peut indiquer un mensonge ou une manipulation.",
+      "conseil": "Prenez du recul pour peser le pour et le contre. Ne vous laissez pas submerger par les problèmes matériels. Faites confiance à votre intuition, soyez patient et ne forcez pas les choses. Questionnez vos priorités et embrassez la transformation, même si elle est inconfortable."
+    },
+    "domaines": {
+      "amour": "Suggère une distance émotionnelle ou un besoin de clarification. Peut indiquer des non-dits, des doutes, une mauvaise interprétation des intentions. Pousse à parler vrai et à clarifier les zones floues pour permettre une discussion importante.",
+      "travail": "Peut annoncer une réunion tendue, un mail mal interprété, une attente administrative frustrante. C'est aussi le signe qu'une décision est sur le point d'être prise et qu'il faut rester concentré, sans se précipiter.",
+      "finances": "Peut suggérer des finances qui deviennent instables ou des projets qui prennent du retard. Invite à prendre du recul et à trouver une solution qui n'est pas dans le matériel, mais dans le spirituel (patience, confiance, réévaluation des priorités).",
+      "spirituel": "C'est une carte de réajustement intérieur. Elle pousse à remettre de l'ordre dans ses pensées et à faire le tri entre l'intuition et l'illusion. Invite à lâcher prise et à laisser les choses évoluer à leur propre rythme, comme dans un jardin."
+    },
+    "prompts_visuels": [
+      "une personne se tenant à un carrefour, hésitant entre plusieurs chemins",
+      "un voilier naviguant habilement dans une tempête, ajustant ses voiles",
+      "un jardinier regardant ses plantes avec patience, attendant qu'elles poussent",
+      "une personne regardant à travers une vitre embuée, essayant de distinguer le paysage",
+      "un message écrit sur un papier froissé, difficile à déchiffrer"
+    ],
+    "prompts_conversationnels": [
+      "Le 7 de Carreau est comparé à un 'vent qui souffle, obligeant à ajuster ses voiles'. Expliquez cette métaphore dans le contexte d'un projet professionnel qui rencontre un obstacle.",
+      "La carte suggère de trouver des solutions 'dans le spirituel' plutôt que 'dans le matériel'. Que cela signifie-t-il concrètement ?",
+      "En amour, le 7 de Carreau pousse à 'clarifier les zones floues'. Pourquoi est-ce parfois plus difficile que d'affronter un conflit ouvert ?",
+      "Comment la 'patience' du 7 de Carreau se distingue-t-elle de 'l'attente' passive ?",
+      "Si cette carte est un 'défi', quelle est la différence avec l'épreuve du 7 de Pique ? L'un est matériel, l'autre plus psychologique. Développez."
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "carreau_03", "signification": "Suggère une période de communication active, invitant à l'expression pour résoudre conflits et malentendus." },
+      { "carte_associee_id": "carreau_04", "signification": "Évoque la recherche de stabilité et un besoin d'ancrage dans une période de changement." },
+      { "carte_associee_id": "carreau_05", "signification": "Indique une phase d'adaptation, soulignant la nécessité d'être flexible face aux changements imprévus." },
+      { "carte_associee_id": "carreau_06", "signification": "Symbolise la progression, un mouvement vers l'avant malgré les obstacles et les incertitudes." },
+      { "carte_associee_id": "coeur_07", "signification": "Met l'accent sur les aspects émotionnels, suggérant une période de transformation et de réévaluation des relations personnelles." },
+      { "carte_associee_id": "pique_07", "signification": "Représente un double défi, mettant en lumière des luttes à la fois internes (psychologiques) et externes (situations)." },
+      { "carte_associee_id": "trefle_07", "signification": "Parle de chance et d'opportunité. Suggère que les changements en cours peuvent mener à des bénéfices inattendus." },
+      { "carte_associee_id": "carreau_08", "signification": "Indique un travail acharné vers un objectif, représentant la persévérance nécessaire pour réaliser des ambitions." },
+      { "carte_associee_id": "carreau_09", "signification": "Symbolise l'accomplissement et l'aboutissement. Invite à réfléchir sur le chemin parcouru avant la conclusion d'une étape." }
+    ]
   }
 ]
+
+    
 
     
