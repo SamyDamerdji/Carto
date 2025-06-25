@@ -1,3 +1,4 @@
+
 import type { Card } from '../cards';
 
 export const carreauCards: Card[] = [
@@ -40,50 +41,6 @@ export const carreauCards: Card[] = [
       "La carte conseille d'écouter son intuition face à un 'carrefour'. Dans un contexte professionnel, que pourrait représenter ce carrefour ?"
     ],
     "combinaisons": []
-  },
-  {
-    "id": "carreau_valet",
-    "nom_carte": "Valet de Carreau",
-    "valeur": 11,
-    "couleur": "Carreau",
-    "image_url": "/images/cards/carreau_valet.png",
-    "resume_general": "Carte du mouvement, de l'initiative et de l'énergie jeune. Il symbolise un esprit vif, curieux et créatif, prêt à agir et à prendre les devants. C'est un messager apportant de nouvelles idées, des opportunités concrètes et un encouragement à oser.",
-    "phrase_cle": "Courage, fonce ! Il est temps d'agir.",
-    "mots_cles": [
-      "mouvement", "initiative", "jeunesse", "énergie", "action", "audace", "créativité", 
-      "intelligence pratique", "messager", "opportunité", "projet", "apprentissage"
-    ],
-    "interpretations": {
-      "general": "Le Valet de Carreau est associé à l'énergie, à un esprit vif toujours en mouvement. Il représente quelqu'un qui cherche sa voie, avec une curiosité insatiable. Il incarne le moment parfait pour agir, foncer et prendre les devants, mais avec finesse et réflexion.",
-      "endroit": "Symbolise l'élan, la créativité, l'audace calculée et l'intelligence pratique. Annonce une nouvelle idée, une opportunité, une proposition de collaboration ou un nouveau départ. C'est un encouragement à prendre des initiatives et à ne pas rester inactif.",
-      "ombre_et_defis": "Représente un blocage, une confusion dans les actions, une dispersion de l'énergie ou un excès d'impulsivité. C'est une invitation à faire une pause, à réfléchir avant d'agir et à réorganiser ses priorités pour ne pas s'éparpiller.",
-      "conseil": "Avancez avec sagesse. L'élan est essentiel, mais l'imprudence est un piège. Osez prendre des risques calculés, pensez en dehors des sentiers battus et utilisez votre intelligence pratique pour concrétiser vos projets."
-    },
-    "domaines": {
-      "amour": "Associé à la Reine de Coeur, il peut signaler un lien affectif et encourage à prendre des initiatives pour faire avancer la relation. Il représente un élan, une envie de construire et d'aller de l'avant dans le couple.",
-      "travail": "C'est son domaine de prédilection. Il incite à rester motivé, à ne pas abandonner face à la première difficulté. Il représente une nouvelle idée, une opportunité à saisir ou le début d'un projet concret et tangible.",
-      "finances": "Peut annoncer l'arrivée d'informations liées aux affaires ou à des questions financières. Avec l'As de Carreau, il suggère le début d'un projet matériel avec un dynamisme accru. Il éclaire les aspects pratiques et les perspectives juridiques ou financières.",
-      "spirituel": "Symbolise un lien avec l'apprentissage. Il pousse à élargir ses connaissances, à envisager une nouvelle formation ou à découvrir un domaine inconnu. C'est un encouragement à affronter les défis pour grandir et à ne pas avoir peur de l'inconnu."
-    },
-    "prompts_visuels": [
-      "un jeune athlète dans les starting-blocks, prêt à s'élancer",
-      "un papillon coloré prenant son envol avec détermination",
-      "une personne au pied de plusieurs chemins, choisissant d'en explorer un avec un air curieux",
-      "une ampoule s'allumant au-dessus de la tête de quelqu'un qui travaille sur un projet",
-      "un jeune coursier remettant un message important"
-    ],
-    "prompts_conversationnels": [
-      "Le Valet de Carreau incarne l''intelligence pratique'. Donnez un exemple qui différencie cette forme d'intelligence d'une intelligence purement théorique.",
-      "Cette carte pousse à 'agir avec finesse', comparant son énergie à un 'papillon qui sait où il va'. Expliquez cette métaphore dans le contexte du lancement d'un nouveau projet.",
-      "Son côté 'ombre' est l'éparpillement. Dans un scénario professionnel, comment le Valet de Carreau pourrait-il passer d'un atout créatif à un élément de confusion pour une équipe ?",
-      "Le Valet de Carreau est un messager, tout comme les autres Valets. Quelle est la 'saveur' spécifique du message qu'il apporte, par rapport à celui du Valet de Cœur ?",
-      "Si le Valet de Carreau apparaît avec le Roi de Pique, la fiche suggère un 'défi à relever'. Décrivez la nature de ce conflit entre l'élan jeune (Valet) et la structure établie (Roi)."
-    ],
-    "combinaisons": [
-      { "carte_associee_id": "coeur_reine", "signification": "Signale un lien affectif où la prise d'initiative est encouragée pour faire avancer la relation." },
-      { "carte_associee_id": "pique_roi", "signification": "Annonce un défi, une opposition ou un blocage. L'élan du Valet est freiné par la structure ou l'autorité du Roi." },
-      { "carte_associee_id": "carreau_as", "signification": "Combinaison très dynamique indiquant le début d'une entreprise ou d'un projet matériel avec un fort élan et des initiatives réussies." }
-    ]
   },
   {
     "id": "carreau_roi",
@@ -174,6 +131,50 @@ export const carreauCards: Card[] = [
     ]
   },
   {
+    "id": "carreau_valet",
+    "nom_carte": "Valet de Carreau",
+    "valeur": 11,
+    "couleur": "Carreau",
+    "image_url": "/images/cards/carreau_valet.png",
+    "resume_general": "Carte du mouvement, de l'initiative et de l'énergie jeune. Il symbolise un esprit vif, curieux et créatif, prêt à agir et à prendre les devants. C'est un messager apportant de nouvelles idées, des opportunités concrètes et un encouragement à oser.",
+    "phrase_cle": "Courage, fonce ! Il est temps d'agir.",
+    "mots_cles": [
+      "mouvement", "initiative", "jeunesse", "énergie", "action", "audace", "créativité", 
+      "intelligence pratique", "messager", "opportunité", "projet", "apprentissage"
+    ],
+    "interpretations": {
+      "general": "Le Valet de Carreau est associé à l'énergie, à un esprit vif toujours en mouvement. Il représente quelqu'un qui cherche sa voie, avec une curiosité insatiable. Il incarne le moment parfait pour agir, foncer et prendre les devants, mais avec finesse et réflexion.",
+      "endroit": "Symbolise l'élan, la créativité, l'audace calculée et l'intelligence pratique. Annonce une nouvelle idée, une opportunité, une proposition de collaboration ou un nouveau départ. C'est un encouragement à prendre des initiatives et à ne pas rester inactif.",
+      "ombre_et_defis": "Représente un blocage, une confusion dans les actions, une dispersion de l'énergie ou un excès d'impulsivité. C'est une invitation à faire une pause, à réfléchir avant d'agir et à réorganiser ses priorités pour ne pas s'éparpiller.",
+      "conseil": "Avancez avec sagesse. L'élan est essentiel, mais l'imprudence est un piège. Osez prendre des risques calculés, pensez en dehors des sentiers battus et utilisez votre intelligence pratique pour concrétiser vos projets."
+    },
+    "domaines": {
+      "amour": "Associé à la Reine de Coeur, il peut signaler un lien affectif et encourage à prendre des initiatives pour faire avancer la relation. Il représente un élan, une envie de construire et d'aller de l'avant dans le couple.",
+      "travail": "C'est son domaine de prédilection. Il incite à rester motivé, à ne pas abandonner face à la première difficulté. Il représente une nouvelle idée, une opportunité à saisir ou le début d'un projet concret et tangible.",
+      "finances": "Peut annoncer l'arrivée d'informations liées aux affaires ou à des questions financières. Avec l'As de Carreau, il suggère le début d'un projet matériel avec un dynamisme accru. Il éclaire les aspects pratiques et les perspectives juridiques ou financières.",
+      "spirituel": "Symbolise un lien avec l'apprentissage. Il pousse à élargir ses connaissances, à envisager une nouvelle formation ou à découvrir un domaine inconnu. C'est un encouragement à affronter les défis pour grandir et à ne pas avoir peur de l'inconnu."
+    },
+    "prompts_visuels": [
+      "un jeune athlète dans les starting-blocks, prêt à s'élancer",
+      "un papillon coloré prenant son envol avec détermination",
+      "une personne au pied de plusieurs chemins, choisissant d'en explorer un avec un air curieux",
+      "une ampoule s'allumant au-dessus de la tête de quelqu'un qui travaille sur un projet",
+      "un jeune coursier remettant un message important"
+    ],
+    "prompts_conversationnels": [
+      "Le Valet de Carreau incarne l''intelligence pratique'. Donnez un exemple qui différencie cette forme d'intelligence d'une intelligence purement théorique.",
+      "Cette carte pousse à 'agir avec finesse', comparant son énergie à un 'papillon qui sait où il va'. Expliquez cette métaphore dans le contexte du lancement d'un nouveau projet.",
+      "Son côté 'ombre' est l'éparpillement. Dans un scénario professionnel, comment le Valet de Carreau pourrait-il passer d'un atout créatif à un élément de confusion pour une équipe ?",
+      "Le Valet de Carreau est un messager, tout comme les autres Valets. Quelle est la 'saveur' spécifique du message qu'il apporte, par rapport à celui du Valet de Cœur ?",
+      "Si le Valet de Carreau apparaît avec le Roi de Pique, la fiche suggère un 'défi à relever'. Décrivez la nature de ce conflit entre l'élan jeune (Valet) et la structure établie (Roi)."
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "coeur_reine", "signification": "Signale un lien affectif où la prise d'initiative est encouragée pour faire avancer la relation." },
+      { "carte_associee_id": "pique_roi", "signification": "Annonce un défi, une opposition ou un blocage. L'élan du Valet est freiné par la structure ou l'autorité du Roi." },
+      { "carte_associee_id": "carreau_as", "signification": "Combinaison très dynamique indiquant le début d'une entreprise ou d'un projet matériel avec un fort élan et des initiatives réussies." }
+    ]
+  },
+  {
     "id": "carreau_10",
     "nom_carte": "Dix de Carreau",
     "valeur": 10,
@@ -212,5 +213,55 @@ export const carreauCards: Card[] = [
       "La vibration de cette carte est 'dynamique, presque électrique'. Comment gérer une telle énergie pour qu'elle soit constructive et non chaotique ?"
     ],
     "combinaisons": []
+  },
+  {
+    "id": "carreau_09",
+    "nom_carte": "Neuf de Carreau",
+    "valeur": 9,
+    "couleur": "Carreau",
+    "image_url": "/images/cards/carreau_09.png",
+    "resume_general": "Carte de mouvement, de transition et de résilience. Elle annonce un changement, un déplacement, la fin d'un cycle et la préparation d'un nouveau départ. C'est un appel à l'action pour quitter une situation figée, même si cela demande de la patience.",
+    "phrase_cle": "Tu n'es plus là où tu étais. Avance.",
+    "mots_cles": [
+      "mouvement", "transition", "changement", "départ", "résilience", "patience", "force intérieure",
+      "défis", "encouragement", "appel", "nouvelle", "choix"
+    ],
+    "interpretations": {
+      "general": "Le 9 est le chiffre de l'aboutissement d'un processus. Associé au Carreau, il marque une transition concrète. La carte bouscule, mais pour une bonne raison : elle invite à oser le changement. Elle n'est pas mauvaise, mais elle peut déranger car elle sort rarement pour rien.",
+      "endroit": "Annonce un changement, une nouvelle, un appel qui change la donne. C'est un signal d'encouragement à ne pas lâcher maintenant. La fin de l'épreuve est proche. Représente la force intérieure, la persévérance et la capacité à transformer les défis en opportunités.",
+      "ombre_et_defis": "Peut symboliser des défis, un projet bloqué, une fatigue morale ou physique. Représente un tournant, un carrefour où il faut faire un choix. Les résultats ne sont pas immédiats, demandant de la patience. Peut indiquer un événement déstabilisant qui prépare le terrain pour autre chose.",
+      "conseil": "Tenez bon ! Vous avez la force intérieure pour surmonter les obstacles. C'est le moment de faire le point sur vos priorités, de mesurer le chemin parcouru et de vous préparer à la prochaine étape. Acceptez le changement et ne restez pas coincé."
+    },
+    "domaines": {
+      "amour": "Parle souvent de distance, qu'elle soit géographique ou émotionnelle. Peut annoncer une rupture à venir, ou au contraire une rencontre avec quelqu'un de loin. C'est la carte d'un choix décisif à faire dans la relation : rester ou partir.",
+      "travail": "Annonce souvent une mutation, un changement de poste, un voyage professionnel ou une offre à l'étranger. C'est un besoin de changer de direction, un appel à ne pas s'endormir dans l'habitude. Pousse à surmonter les difficultés d'un projet.",
+      "finances": "Avec le 9 de cœur, elle suggère que les difficultés financières peuvent être compensées par des satisfactions personnelles. Avec le 8 de carreau, elle indique des défis continus nécessitant une gestion prudente. C'est la persévérance qui mènera à une amélioration.",
+      "spirituel": "C'est une porte qui s'ouvre, une mue intérieure. Un appel à lâcher l'ancien pour laisser entrer le nouveau, même si cela est inconfortable. C'est la capacité à accepter que tout ne se passe pas comme prévu et à voir cela comme une manifestation de sa force."
+    },
+    "prompts_visuels": [
+      "une personne à un carrefour, regardant une nouvelle route avec détermination",
+      "une main qui coupe les cordes retenant une montgolfière, la laissant s'élever",
+      "une porte qui s'ouvre sur un paysage inconnu et brumeux",
+      "un coureur de marathon sur la dernière ligne droite, visiblement fatigué mais persévérant",
+      "un pont enjambant un ravin, symbolisant un passage difficile"
+    ],
+    "prompts_conversationnels": [
+      "Le 9 de Carreau est une 'carte de transition, mais aussi de résilience'. Expliquez le lien entre ces deux concepts.",
+      "Comment la 'patience' préconisée par cette carte se distingue-t-elle de la 'procrastination' ?",
+      "La fiche dit que cette carte 'bouscule, mais pour une bonne raison'. Quel pourrait être le bénéfice d'être 'bousculé' dans sa zone de confort ?",
+      "En amour, cette carte propose un choix : 'rester ou partir'. Quels éléments dans un tirage pourraient aider à orienter cette décision ?",
+      "Comparez le 'mouvement' du 9 de Carreau avec celui du 10 de Carreau. Quelle est la nuance principale entre les deux ?"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "carreau_10", "signification": "Suggère un progrès significatif malgré les défis initiaux. L'aboutissement des efforts est proche." },
+      { "carte_associee_id": "coeur_09", "signification": "Indique un équilibre à trouver entre les défis matériels et le bonheur émotionnel." },
+      { "carte_associee_id": "trefle_09", "signification": "La persévérance est nécessaire pour surmonter les difficultés financières et transformer les défis en opportunités." },
+      { "carte_associee_id": "carreau_08", "signification": "Annonce des défis continus dans le domaine financier, nécessitant une attention et une gestion prudentes." },
+      { "carte_associee_id": "coeur_roi", "signification": "Un départ amoureux, un voyage à deux ou un message sentimental important." },
+      { "carte_associee_id": "trefle_dame", "signification": "L'aide d'une femme protectrice et stratège est cruciale dans un déménagement ou un projet." },
+      { "carte_associee_id": "pique_valet", "signification": "Un retard, de la paperasse ou un problème administratif lié à un déplacement ou un changement." }
+    ]
   }
 ]
+
+    
