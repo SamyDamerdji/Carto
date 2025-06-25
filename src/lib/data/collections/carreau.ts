@@ -261,6 +261,51 @@ export const carreauCards: Card[] = [
       { "carte_associee_id": "trefle_dame", "signification": "L'aide d'une femme protectrice et stratège est cruciale dans un déménagement ou un projet." },
       { "carte_associee_id": "pique_valet", "signification": "Un retard, de la paperasse ou un problème administratif lié à un déplacement ou un changement." }
     ]
+  },
+  {
+    "id": "carreau_08",
+    "nom_carte": "Huit de Carreau",
+    "valeur": 8,
+    "couleur": "Carreau",
+    "image_url": "/images/cards/carreau_08.png",
+    "resume_general": "Carte du mouvement, de la transition et de la persévérance. Elle symbolise le travail acharné, la concentration sur un objectif et un changement positif. C'est une carte optimiste qui pousse à l'action et rappelle que les efforts seront récompensés.",
+    "phrase_cle": "Le changement est en route, les efforts paieront.",
+    "mots_cles": [
+      "mouvement", "changement", "transition", "travail acharné", "effort", "persévérance", "opportunité",
+      "progrès", "optimisme", "récompense", "stabilité", "communication"
+    ],
+    "interpretations": {
+      "general": "Le 8 de Carreau évoque un mouvement et un changement positif. Ce n'est pas un chaos, mais une réorganisation nécessaire. Lié à la carrière et aux projets, il encourage à avancer et à saisir les opportunités. C'est aussi une carte de patience, rappelant que les récompenses viennent avec le temps.",
+      "endroit": "Symbolise le travail acharné, l'effort et la concentration sur un objectif. C'est un signe de persévérance et de succès à venir. Elle annonce un déplacement agréable, une nouvelle relation, ou un projet qui avance. C'est un message d'optimisme et une invitation à embrasser le changement.",
+      "ombre_et_defis": "Peut symboliser des moments de tension où les choses s'accumulent. Ces obstacles sont là pour faire grandir. Peut indiquer des défis continus dans le domaine financier ou des efforts vains si l'on ne fait pas preuve de patience. Demande un recul pour réévaluer ses priorités.",
+      "conseil": "Tenez bon et persévérez. Vous êtes sur la bonne voie, même si les résultats ne sont pas encore visibles. Prenez du recul, observez, et décidez si vous voulez embrasser le changement ou y résister. N'ayez pas peur de lâcher prise si nécessaire pour trouver un nouvel équilibre."
+    },
+    "domaines": {
+      "amour": "Indique une évolution dans les interactions. Une relation peut passer à un niveau supérieur. Avec l'As de Cœur, cela peut signifier l'émergence d'un nouveau sentiment amoureux qui demandera un investissement émotionnel.",
+      "travail": "Symbole de travail acharné et de concentration sur un objectif. Encourage à ne pas rester bloqué et à saisir les opportunités. Avec le 10 de Trèfle, il symbolise l'accomplissement d'un objectif après une période de travail et de persévérance.",
+      "finances": "Pousse à réfléchir à des choix stratégiques. Peut indiquer un investissement mûrement réfléchi ou la nécessité de réévaluer sa gestion de l'argent. Ce n'est pas une promesse de richesse instantanée, mais un encouragement à la patience pour obtenir un gain mérité.",
+      "spirituel": "C'est un guide qui invite à trouver l'équilibre entre l'agitation et la sérénité. Lié à l'élément terre, il rappelle l'importance de la stabilité dans le changement. Le 8, symbole de l'infini, suggère que chaque effort est une étape dans un cycle continu de croissance."
+    },
+    "prompts_visuels": [
+      "une personne poussant un gros rocher en haut d'une colline, avec un sommet ensoleillé visible au loin",
+      "un vent de fraîcheur qui fait tourner les pages d'un livre",
+      "une personne à un carrefour, choisissant avec confiance une nouvelle direction",
+      "une chaîne de montage où chaque pièce s'assemble parfaitement",
+      "une plante qui pousse lentement mais sûrement à travers une fissure dans le béton"
+    ],
+    "prompts_conversationnels": [
+      "Le 8 de Carreau est une carte de 'transition vers l'inconnu'. Comment le concept de 'patience' peut-il être une 'meilleure alliée' dans ce contexte ?",
+      "La fiche dit que les obstacles sont des 'opportunités déguisées'. Développez cette idée avec un exemple concret.",
+      "Comment l'énergie de 'mouvement' du 8 de Carreau se différencie-t-elle du 'passage' plus radical du 10 de Pique ?",
+      "Cette carte invite à 'trouver l'équilibre entre l'agitation et la sérénité'. Expliquez comment ces deux états peuvent coexister.",
+      "Si le 8 de Carreau est un 'message d'optimisme', comment peut-il aussi annoncer des 'moments de tension' ?"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "coeur_as", "signification": "Émergence d'une nouvelle relation ou d'un sentiment amoureux nécessitant un investissement émotionnel." },
+      { "carte_associee_id": "pique_roi", "signification": "Un défi ou un obstacle professionnel impliquant une figure d'autorité." },
+      { "carte_associee_id": "trefle_10", "signification": "Accomplissement d'un objectif financier ou professionnel après une période de travail acharné." },
+      { "carte_associee_id": "carreau_dame", "signification": "Interactions complexes liées à des questions financières, impliquant une femme influente." }
+    ]
   }
 ]
 
