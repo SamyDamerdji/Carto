@@ -48,55 +48,6 @@ export const piqueCards: Card[] = [
     ]
   },
   {
-    "id": "pique_valet",
-    "nom_carte": "Valet de Pique",
-    "valeur": 11,
-    "couleur": "Pique",
-    "image_url": "/images/cards/pique_valet.png",
-    "resume_general": "Personnage complexe et intrigant. C'est le messager des ombres, un stratège silencieux et un révélateur de vérités. Il incarne les secrets, la prudence, l'observation et les efforts discrets qui portent leurs fruits.",
-    "phrase_cle": "Observe dans l'ombre, car la vérité est cachée.",
-    "mots_cles": [
-      "stratège", "secret", "prudence", "observation", "révélation", "vérité", "discrétion", 
-      "allié caché", "mystère", "test de confiance", "ruse", "vigilance"
-    ],
-    "interpretations": {
-      "general": "Contrairement aux autres valets, celui de Pique porte un poids. Il est associé à des traits sombres ou mélancoliques, mais n'est pas fondamentalement négatif. Il est un stratège qui observe avant d'agir, un révélateur qui peut changer le cours du jeu. Il représente les zones grises de la vie, où tout n'est pas noir ou blanc.",
-      "endroit": "Incarne un allié discret, un 'héros de l'ombre' qui aide sans se mettre en avant. Il est le signe que des efforts discrets porteront leurs fruits. C'est un guerrier fidèle, un poète réfléchi. Il invite à avancer prudemment, à la manière d'un joueur d'échecs.",
-      "ombre_et_defis": "Représente un trouble-fête, une personne qui porte un masque ou dont les intentions sont cachées. Annonce un message caché, un avertissement, un test de confiance ou une trahison en embuscade. Il demande une vigilance accrue et de ne pas se fier aux apparences.",
-      "conseil": "Soyez un stratège. Observez le contexte dans son ensemble avant de prendre une décision. Fiez-vous à votre intuition pour 'gratter sous la surface' et découvrir la vérité. C'est un appel à rester vigilant et à avancer prudemment."
-    },
-    "domaines": {
-      "amour": "Annonce des surprises. Peut représenter un 'mystérieux amoureux' qui cache ses vraies émotions. C'est souvent un test de confiance, un défi à relever pour découvrir la vérité de la relation. Avec les cartes de Coeur, il signale des émotions contrariées ou un amour caché.",
-      "travail": "C'est le stratège en coulisses. Représente un 'allié discret' qui aide dans l'ombre, ou le signe que des efforts, même invisibles, seront récompensés. Invite à agir comme dans un jeu d'échecs : réfléchir avant d'agir, avancer prudemment.",
-      "finances": "Demande de la prudence. Avec l'As de Trèfle, il annonce une opportunité financière qui cache des détails importants. Avec les cartes rouges, il ajoute une dose de tension ou de risque. Il faut bien analyser avant de s'engager.",
-      "spirituel": "C'est un miroir de nos propres choix, entre prudence et audace. Il nous confronte aux zones grises de notre vie et nous invite à chercher les vérités cachées, à nous fier à notre intuition plus qu'aux interprétations toutes faites. Il parle des secrets que l'on se chuchote à soi-même."
-    },
-    "prompts_visuels": [
-      "une personne regardant une scène à travers des persiennes, dans la pénombre",
-      "une pièce d'échec (pion) placée de manière stratégique sur un échiquier",
-      "un détective observant un indice avec une loupe",
-      "deux personnes se chuchotant un secret à l'oreille dans un couloir sombre",
-      "une silhouette masquée lors d'un bal vénitien"
-    ],
-    "prompts_conversationnels": [
-      "Le Valet de Pique est un 'stratège silencieux'. Décrivez une situation hypothétique où le silence et l'observation sont plus efficaces que l'action directe.",
-      "Cette carte est vue comme un 'révélateur de vérités'. Comment quelque chose de caché (une information, une intention) peut-il changer le cours d'un projet ?",
-      "Le Valet de Pique est comparé à 'un jeu d'échecs'. Quelle est la différence fondamentale entre une approche 'jeu d'échecs' et une approche 'coup de poker' dans une négociation ?",
-      "La fiche mentionne 'le cœur sous la carapace' pour le domaine amoureux. Expliquez ce que cette image signifie en termes de dynamique relationnelle.",
-      "Si le Valet de Pique est un allié, il est un 'allié discret'. Pourquoi un soutien caché serait-il parfois plus précieux qu'un soutien public et visible ?"
-    ],
-    "combinaisons": [
-      { "carte_associee_id": "coeur_as", "signification": "Alerte sur les émotions. Un amour caché ou une trahison potentielle est présente. L'intuition est primordiale." },
-      { "carte_associee_id": "coeur_roi", "signification": "Mêmes significations qu'avec l'As de Coeur : émotions contrariées, amour caché. Prudence dans les relations." },
-      { "carte_associee_id": "carreau_roi", "signification": "Un conflit potentiel avec une figure d'autorité. La stratégie et la discrétion sont nécessaires pour naviguer la situation." },
-      { "carte_associee_id": "carreau_07", "signification": "Nécessité de clarifier une situation qui semble floue. Un malentendu ou un manque d'information crée un obstacle." },
-      { "carte_associee_id": "trefle_as", "signification": "Une opportunité financière se présente, mais il faut être très attentif aux détails et aux conditions cachées." },
-      { "carte_associee_id": "trefle_10", "signification": "Un succès est possible, mais il viendra après une lutte ou des efforts importants. Ce ne sera pas facile." },
-      { "carte_associee_id": "pique_roi", "signification": "L'énergie de la stratégie devient intense et complexe. Une situation demande une analyse très fine et prudente." },
-      { "carte_associee_id": "pique_reine", "signification": "Peut représenter une femme rusée ou une protectrice qui agit dans l'ombre. Chaque déplacement compte." }
-    ]
-  },
-  {
     "id": "pique_roi",
     "nom_carte": "Roi de Pique",
     "valeur": 13,
@@ -188,6 +139,55 @@ export const piqueCards: Card[] = [
     ]
   },
   {
+    "id": "pique_valet",
+    "nom_carte": "Valet de Pique",
+    "valeur": 11,
+    "couleur": "Pique",
+    "image_url": "/images/cards/pique_valet.png",
+    "resume_general": "Personnage complexe et intrigant. C'est le messager des ombres, un stratège silencieux et un révélateur de vérités. Il incarne les secrets, la prudence, l'observation et les efforts discrets qui portent leurs fruits.",
+    "phrase_cle": "Observe dans l'ombre, car la vérité est cachée.",
+    "mots_cles": [
+      "stratège", "secret", "prudence", "observation", "révélation", "vérité", "discrétion", 
+      "allié caché", "mystère", "test de confiance", "ruse", "vigilance"
+    ],
+    "interpretations": {
+      "general": "Contrairement aux autres valets, celui de Pique porte un poids. Il est associé à des traits sombres ou mélancoliques, mais n'est pas fondamentalement négatif. Il est un stratège qui observe avant d'agir, un révélateur qui peut changer le cours du jeu. Il représente les zones grises de la vie, où tout n'est pas noir ou blanc.",
+      "endroit": "Incarne un allié discret, un 'héros de l'ombre' qui aide sans se mettre en avant. Il est le signe que des efforts discrets porteront leurs fruits. C'est un guerrier fidèle, un poète réfléchi. Il invite à avancer prudemment, à la manière d'un joueur d'échecs.",
+      "ombre_et_defis": "Représente un trouble-fête, une personne qui porte un masque ou dont les intentions sont cachées. Annonce un message caché, un avertissement, un test de confiance ou une trahison en embuscade. Il demande une vigilance accrue et de ne pas se fier aux apparences.",
+      "conseil": "Soyez un stratège. Observez le contexte dans son ensemble avant de prendre une décision. Fiez-vous à votre intuition pour 'gratter sous la surface' et découvrir la vérité. C'est un appel à rester vigilant et à avancer prudemment."
+    },
+    "domaines": {
+      "amour": "Annonce des surprises. Peut représenter un 'mystérieux amoureux' qui cache ses vraies émotions. C'est souvent un test de confiance, un défi à relever pour découvrir la vérité de la relation. Avec les cartes de Coeur, il signale des émotions contrariées ou un amour caché.",
+      "travail": "C'est le stratège en coulisses. Représente un 'allié discret' qui aide dans l'ombre, ou le signe que des efforts, même invisibles, seront récompensés. Invite à agir comme dans un jeu d'échecs : réfléchir avant d'agir, avancer prudemment.",
+      "finances": "Demande de la prudence. Avec l'As de Trèfle, il annonce une opportunité financière qui cache des détails importants. Avec les cartes rouges, il ajoute une dose de tension ou de risque. Il faut bien analyser avant de s'engager.",
+      "spirituel": "C'est un miroir de nos propres choix, entre prudence et audace. Il nous confronte aux zones grises de notre vie et nous invite à chercher les vérités cachées, à nous fier à notre intuition plus qu'aux interprétations toutes faites. Il parle des secrets que l'on se chuchote à soi-même."
+    },
+    "prompts_visuels": [
+      "une personne regardant une scène à travers des persiennes, dans la pénombre",
+      "une pièce d'échec (pion) placée de manière stratégique sur un échiquier",
+      "un détective observant un indice avec une loupe",
+      "deux personnes se chuchotant un secret à l'oreille dans un couloir sombre",
+      "une silhouette masquée lors d'un bal vénitien"
+    ],
+    "prompts_conversationnels": [
+      "Le Valet de Pique est un 'stratège silencieux'. Décrivez une situation hypothétique où le silence et l'observation sont plus efficaces que l'action directe.",
+      "Cette carte est vue comme un 'révélateur de vérités'. Comment quelque chose de caché (une information, une intention) peut-il changer le cours d'un projet ?",
+      "Le Valet de Pique est comparé à 'un jeu d'échecs'. Quelle est la différence fondamentale entre une approche 'jeu d'échecs' et une approche 'coup de poker' dans une négociation ?",
+      "La fiche mentionne 'le cœur sous la carapace' pour le domaine amoureux. Expliquez ce que cette image signifie en termes de dynamique relationnelle.",
+      "Si le Valet de Pique est un allié, il est un 'allié discret'. Pourquoi un soutien caché serait-il parfois plus précieux qu'un soutien public et visible ?"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "coeur_as", "signification": "Alerte sur les émotions. Un amour caché ou une trahison potentielle est présente. L'intuition est primordiale." },
+      { "carte_associee_id": "coeur_roi", "signification": "Mêmes significations qu'avec l'As de Coeur : émotions contrariées, amour caché. Prudence dans les relations." },
+      { "carte_associee_id": "carreau_roi", "signification": "Un conflit potentiel avec une figure d'autorité. La stratégie et la discrétion sont nécessaires pour naviguer la situation." },
+      { "carte_associee_id": "carreau_07", "signification": "Nécessité de clarifier une situation qui semble floue. Un malentendu ou un manque d'information crée un obstacle." },
+      { "carte_associee_id": "trefle_as", "signification": "Une opportunité financière se présente, mais il faut être très attentif aux détails et aux conditions cachées." },
+      { "carte_associee_id": "trefle_10", "signification": "Un succès est possible, mais il viendra après une lutte ou des efforts importants. Ce ne sera pas facile." },
+      { "carte_associee_id": "pique_roi", "signification": "L'énergie de la stratégie devient intense et complexe. Une situation demande une analyse très fine et prudente." },
+      { "carte_associee_id": "pique_reine", "signification": "Peut représenter une femme rusée ou une protectrice qui agit dans l'ombre. Chaque déplacement compte." }
+    ]
+  },
+  {
     "id": "pique_10",
     "nom_carte": "Dix de Pique",
     "valeur": 10,
@@ -235,6 +235,56 @@ export const piqueCards: Card[] = [
       { "carte_associee_id": "carreau_roi", "signification": "Un mentor ou un collègue influent peut ouvrir une porte, mais il faudra savoir saisir l'opportunité." },
       { "carte_associee_id": "trefle_06", "signification": "Des démarches administratives ou un contrat pourraient aboutir, mais la prudence est de mise." },
       { "carte_associee_id": "trefle_09", "signification": "Succès en vue, mais il faut se méfier des faux espoirs. Le succès pourrait être magnifique mais éphémère." }
+    ]
+  },
+  {
+    "id": "pique_09",
+    "nom_carte": "Neuf de Pique",
+    "valeur": 9,
+    "couleur": "Pique",
+    "image_url": "/images/cards/pique_09.png",
+    "resume_general": "Carte de la fin d'un cycle, des épreuves et des transformations nécessaires. Elle invite à l'introspection, au recul et à la patience. Ce n'est pas une carte de malheur, mais une pause pour réfléchir avant d'avancer vers une clairière.",
+    "phrase_cle": "Il est temps de tourner une page, doucement mais sûrement.",
+    "mots_cles": [
+      "fin de cycle", "épreuve", "transformation", "introspection", "réflexion", "patience", "choix compliqué",
+      "renouveau", "alerte", "difficultés", "espoir", "dialogue"
+    ],
+    "interpretations": {
+      "general": "Le 9 de Pique est une carte qui intrigue et pousse à la réflexion. Elle marque la fin d'un cycle pour en commencer un autre. Elle est liée à la transformation, comme un guerrier prêt à affronter des épreuves pour en sortir plus fort. Elle murmure qu'il est temps de tourner la page.",
+      "endroit": "Annonce un renouveau et une envie de changement. C'est une invitation à accueillir ce changement, même s'il est précédé d'une phase de réflexion. Elle guide et invite à l'introspection pour trouver une belle vue, comme une échelle à gravir.",
+      "ombre_et_defis": "Représente des difficultés à surmonter. Peut signaler un projet bloqué, une relation tendue ou un coup de fatigue. C'est un message d'alerte qui demande une réflexion et du recul. Ce n'est pas une carte à fuir, mais à comprendre.",
+      "conseil": "Prenez du recul. Faites face aux choix compliqués avec patience. Si une relation est tendue, le dialogue aide. Si un projet est bloqué, il s'éclairera. Gardez espoir, car les piques montrent la voie, même dans l'ombre."
+    },
+    "domaines": {
+      "amour": "Peut annoncer des émotions intenses, voire des 'montagnes russes'. Avec l'As de Cœur, c'est un coup de foudre à double tranchant. Avec le 10 de Cœur, des retrouvailles teintées de nostalgie. Avec le Roi de Cœur, c'est une relation importante où des blessures peuvent être pansées.",
+      "travail": "Peut indiquer un projet bloqué qui demande de la patience. Avec un As de Carreau, c'est une nouvelle proposition professionnelle avec des risques cachés. Avec un Valet de Carreau, une opportunité se présente mais l'intention de l'autre n'est pas claire.",
+      "finances": "Avec l'As de Carreau, la chance financière est là, mais avec des risques. Avec le 8 de Carreau, des démarches stagnent avant un vrai départ. C'est une carte qui demande de la prudence et de ne pas se fier aux apparences.",
+      "spirituel": "Le 9 de Pique pousse à l'introspection et à la réflexion. C'est la carte des rêves prémonitoires dans certaines traditions, invitant à ouvrir l'œil sur les messages de l'inconscient. C'est une pause pour avancer plus sûrement vers une nouvelle étape."
+    },
+    "prompts_visuels": [
+      "une personne au pied d'une échelle menant vers un ciel nuageux mais avec une éclaircie au loin",
+      "un chemin sinueux et étroit qui monte à travers une forêt dense vers une clairière",
+      "quelqu'un fermant doucement un livre ancien et usé",
+      "un phénix commençant à peine à renaître de ses cendres, encore fumantes",
+      "deux personnes en pleine conversation sérieuse, cherchant à résoudre un malentendu"
+    ],
+    "prompts_conversationnels": [
+      "Le 9 de Pique est comparé à 'une échelle à gravir. Fatigant, mais à la clé, une belle vue'. Expliquez cette métaphore dans le contexte d'un apprentissage difficile.",
+      "Cette carte représente la 'fin d'un cycle'. Comment cette fin se différencie-t-elle de la 'rupture' plus nette de l'As de Pique ?",
+      "Avec l'As de Cœur, le 9 de Pique forme un 'coup de foudre à double tranchant'. Quels sont les deux tranchants de cette combinaison ?",
+      "Le conseil est 'patience, tout s'éclairera' pour un projet bloqué. Pourquoi la patience est-elle parfois l'action la plus efficace ?",
+      "Si le 9 de Pique était une étape dans un voyage de héros, quelle étape serait-ce ?"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "coeur_as", "signification": "Un coup de foudre à double tranchant. La passion s'allie à la peur de perdre. Une relation qui transforme." },
+      { "carte_associee_id": "coeur_10", "signification": "Des retrouvailles ou une fête empreinte de nostalgie. Une joie teintée d'émotions passées." },
+      { "carte_associee_id": "coeur_roi", "signification": "Le mentor émotionnel. Une relation importante où des blessures peuvent être pansées." },
+      { "carte_associee_id": "carreau_as", "signification": "Une nouvelle proposition professionnelle se présente, mais il faut se méfier des détails. Une chance avec des risques cachés." },
+      { "carte_associee_id": "carreau_08", "signification": "Des démarches ou des échanges stagnent avant un vrai départ." },
+      { "carte_associee_id": "trefle_as", "signification": "Une grande victoire est possible, mais elle demande une résolution émotionnelle préalable." },
+      { "carte_associee_id": "trefle_07", "signification": "Des opportunités sont en vue, mais elles n'arriveront pas sans retards." },
+      { "carte_associee_id": "pique_roi", "signification": "Une figure d'autorité entre en jeu. La situation présente un conseil ou un défi." },
+      { "carte_associee_id": "pique_10", "signification": "La fin d'un chapitre est actée. Une porte se ferme, et une autre s'ouvre." }
     ]
   }
 ]
