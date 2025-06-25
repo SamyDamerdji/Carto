@@ -284,6 +284,48 @@ export const trefleCards: Card[] = [
     ]
   },
   {
+    "id": "trefle_07",
+    "nom_carte": "Sept de Trèfle",
+    "valeur": 7,
+    "couleur": "Trèfle",
+    "image_url": "/images/cards/trefle_07.png",
+    "resume_general": "Carte du travail acharné, de la patience et des récompenses méritées. Elle symbolise la persévérance, l'effort stratégique et les opportunités qui s'ouvrent grâce au travail. C'est un coach qui motive et pousse à donner le meilleur de soi.",
+    "phrase_cle": "Continuez sur cette voie, le travail finit toujours par payer.",
+    "mots_cles": [
+      "travail acharné", "effort", "patience", "récompense", "persévérance", "stratégie", "opportunités",
+      "prudence financière", "action", "objectifs", "résultat"
+    ],
+    "interpretations": {
+      "general": "Le 7 de Trèfle est une carte nuancée qui allie le mystère du chiffre 7 à la dimension matérielle du trèfle. Elle parle de chance, mais surtout de la chance que l'on provoque par le travail et l'effort. C'est un symbole à deux faces : chance et effort, les deux étant indissociables.",
+      "endroit": "Annonce que vous êtes sur la bonne voie grâce à un travail acharné. C'est un encouragement à continuer. Des portes vont s'ouvrir, des opportunités se présenteront. Le résultat de vos efforts vaudra le coup. C'est le moment de se préparer à agir.",
+      "ombre_et_defis": "Révèle des épreuves, notamment en amour. Peut indiquer une période où il faut faire ses preuves par des actes. C'est un test de patience. Il faut faire attention à ne pas se comparer aux autres et à rester concentré sur son propre chemin.",
+      "conseil": "Soyez stratégique. Faites une liste de vos objectifs et priorisez-les. Ne vous laissez pas tenter par des folies inutiles. Consacrez du temps à vos passions. Continuez à semer, car vous récolterez bientôt. Chaque brique compte pour bâtir la maison."
+    },
+    "domaines": {
+      "amour": "Révèle des épreuves. Ce n'est pas toujours simple, mais les récompenses sont belles. C'est un test de patience qui demande de prouver son amour par des actes concrets plutôt que par des mots. Les petits gestes comptent énormément.",
+      "travail": "Symbole de travail acharné et de récompenses méritées. Indique que vous êtes sur la bonne voie et qu'il faut continuer vos efforts. C'est le coach qui vous motive et vous pousse à donner le meilleur de vous-même pour atteindre vos objectifs.",
+      "finances": "Invite à la prudence et à la stratégie. Chaque économie compte. Réfléchissez bien à vos investissements et à vos priorités. Cette carte ne promet pas de gains faciles, mais des récompenses solides issues d'un travail réfléchi.",
+      "spirituel": "Le chiffre 7, magique et spirituel, prend une dimension matérielle avec le trèfle. C'est un rappel que même dans l'effort concret, il y a une dimension plus grande. Le travail peut être une forme de méditation, une voie vers l'accomplissement de soi."
+    },
+    "prompts_visuels": [
+      "une personne plantant une graine dans un potager bien entretenu",
+      "un artisan polissant méticuleusement un bijou",
+      "une fourmi portant une charge bien plus grosse qu'elle, avec persévérance",
+      "une personne construisant un mur, brique par brique",
+      "une porte sur le point de s'ouvrir, avec une lumière qui filtre par la serrure"
+    ],
+    "prompts_conversationnels": [
+      "Le 7 de Trèfle est un 'symbole à deux faces : chance ou effort'. Expliquez comment ces deux concepts peuvent être liés.",
+      "La fiche compare cette carte à 'planter un potager'. Développez cette métaphore dans le contexte d'une carrière professionnelle.",
+      "Cette carte est vue comme un 'coach'. Quelle est la différence entre un coach et un simple supporter ?",
+      "En amour, cette carte demande des 'actes, pas seulement des mots'. Donnez des exemples concrets de ces 'petits gestes qui comptent'.",
+      "Comment la 'prudence financière' du 7 de Trèfle se distingue-t-elle de la 'peur de manquer' ?"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "trefle_08", "signification": "Avec le 8 de trèfle, cette carte annonce une lueur d'espoir : la fin d'une maladie et la guérison."}
+    ]
+  },
+  {
     "id": "trefle_as",
     "nom_carte": "As de Trèfle",
     "valeur": 1,
