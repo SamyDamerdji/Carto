@@ -1,6 +1,47 @@
+
 import type { Card } from '../cards';
 
 export const coeurCards: Card[] = [
+  {
+    "id": "coeur_as",
+    "nom_carte": "As de Cœur",
+    "valeur": 1,
+    "couleur": "Cœur",
+    "image_url": "/images/cards/coeur_as.png",
+    "resume_general": "Carte de l'origine de l'émotion, de l'amour pur et des nouveaux départs sentimentaux. C'est une onde concentrée, un appel du cœur. Elle annonce une rencontre, une réconciliation, une nouvelle source de bonheur ou un projet porté par la passion.",
+    "phrase_cle": "Une porte douce s'ouvre, écoutez votre cœur.",
+    "mots_cles": [
+      "amour", "nouveau départ", "émotion forte", "joie", "tendresse", "connexion sincère", "réconciliation",
+      "paix intérieure", "intuition", "bonheur", "terrain fertile", "vulnérabilité"
+    ],
+    "interpretations": {
+      "general": "L'As de Cœur est un battement pur, une bénédiction émotionnelle. Il représente l'origine de tous les possibles affectifs : amour, joie, tendresse, connexion. C'est une carte qui rassure et qui dit que l'on est exactement là où l'on doit être, émotionnellement parlant. C'est un baume, un moment de paix intérieure.",
+      "endroit": "Annonce une rencontre touchante, la renaissance d'un couple, une amitié qui se transforme ou un nouvel amour pour soi. C'est un terrain fertile pour cultiver des relations authentiques. Symbolise une nouvelle source de bonheur, un projet porté par le cœur ou une intuition à suivre.",
+      "ombre_et_defis": "Son aspect pur peut se confronter à l'illusion. Peut indiquer un amour non réciproque, une trop grande naïveté, une attente déçue ou un besoin d'amour mal placé. C'est une alarme douce qui rappelle que le cœur mérite mieux et qu'il faut s'aimer d'abord.",
+      "conseil": "Ouvrez la porte douce que cette carte présente. Écoutez votre cœur et osez être authentique. C'est le moment d'ouvrir son cœur, de montrer ses émotions et de laisser tomber les barrières. Aimez pleinement et soyez prêt à être aimé en retour, mais ne confondez pas l'amour avec le besoin."
+    },
+    "domaines": {
+      "amour": "C'est son domaine d'excellence. Annonce un beau potentiel, une vibration pure. Indique une rencontre touchante, une renaissance dans le couple ou une amitié qui se transforme. C'est un terrain fertile qui demande à être cultivé avec écoute et respect.",
+      "travail": "Peut symboliser un projet porté par le cœur et la passion, plutôt que par l'ego ou l'ambition pure. C'est une carte qui rassure sur la direction prise si elle est alignée avec les valeurs profondes.",
+      "finances": "Son influence est moins matérielle qu'émotionnelle. Elle suggère que la joie et le bonheur ne dépendent pas des finances. Elle peut indiquer qu'un geste généreux ou une décision prise avec le cœur aura un impact positif.",
+      "spirituel": "Représente le cœur à son état brut, avant les peurs et les blessures. C'est un appel à l'écoute de soi, à l'amour-propre comme point de départ. Dans un rêve, c'est une alerte douce, un message de l'inconscient sur un besoin affectif ou une blessure oubliée."
+    },
+    "prompts_visuels": [
+      "une main tenant une vieille clé devant une porte en bois d'où émane une douce lumière",
+      "une simple plume flottant et se posant délicatement à la surface de l'eau",
+      "une source d'eau pure jaillissant de la terre dans une clairière",
+      "deux mains se tendant l'une vers l'autre sans se toucher, avec une énergie palpable entre elles",
+      "un cœur dessiné dans le sable, sur le point d'être touché par une vague douce"
+    ],
+    "prompts_conversationnels": [
+      "L'As de Cœur est décrit comme 'l'amour quand il n'a pas encore été compliqué par les histoires'. Expliquez cette idée.",
+      "La fiche mentionne que cette carte est un 'terrain fertile'. Quelle est la différence entre un terrain fertile et un 'conte de fées tout cuit' ?",
+      "Comment distinguer l' 'amour pur' de l'As de Cœur de la 'naïveté' de son côté ombre ?",
+      "Si l'As de Pique représente la fin d'un cycle, que représente l'As de Cœur par rapport à ce concept de cycle ?",
+      "Cette carte parle de 'réconciliation'. Proposez un scénario où la réconciliation n'est pas avec une autre personne, mais avec une partie de soi-même."
+    ],
+    "combinaisons": []
+  },
   {
     "id": "coeur_valet",
     "nom_carte": "Valet de Cœur",
