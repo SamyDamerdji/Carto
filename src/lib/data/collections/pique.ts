@@ -99,5 +99,46 @@ export const piqueCards: Card[] = [
       { "carte_associee_id": "trefle_02", "signification": "Un partenariat fructueux se dessine à l'horizon, basé sur des bases solides et une stratégie claire." },
       { "carte_associee_id": "carreau_07", "signification": "Patience nécessaire avant de voir les récompenses d'un effort structuré." }
     ]
+  },
+  {
+    "id": "pique_dame",
+    "nom_carte": "Dame de Pique",
+    "valeur": 12,
+    "couleur": "Pique",
+    "image_url": "/images/cards/pique_dame.png",
+    "resume_general": "Carte de la clarté, de l'intelligence et de l'indépendance. Elle représente une femme forte qui tranche avec fermeté et voit la vérité sans illusion. Figure de dualité, elle est à la fois rigueur et protection, invitant à prendre des décisions difficiles mais justes.",
+    "phrase_cle": "La vérité n'a pas besoin d'être aimée, juste d'être entendue.",
+    "mots_cles": [
+      "vérité", "clarté", "intelligence", "indépendance", "rigueur", "détachement", "protection",
+      "décision", "fermeté", "transformation", "sagesse", "femme forte"
+    ],
+    "interpretations": {
+      "general": "La Dame de Pique est une figure mystérieuse et fascinante. Souvent perçue comme distante ou froide, elle est en réalité une alliée qui dit la vérité, même quand c'est dur à entendre. Elle ne s'embarrasse pas de sentiments inutiles et pousse à voir la réalité sans filtres ni illusions, ce qui est une forme de protection.",
+      "endroit": "Incarne une femme forte, intelligente et indépendante, qui n'a pas peur de l'adversité. Elle est un guide pour prendre des décisions difficiles avec une main ferme. Elle symbolise la sagesse, la clarté et la capacité à se libérer des chaînes invisibles. Elle est un bouclier face aux tempêtes émotionnelles.",
+      "ombre_et_defis": "Représente la froideur, la distance et le détachement excessif. Elle peut être perçue comme une figure de malchance ou de trahison. Elle symbolise une période où il faut trancher de manière impopulaire, ou faire face à une vérité qui dérange. Elle peut aussi indiquer une relation qui épuise.",
+      "conseil": "Soyez fidèle à vous-même. Mettez des limites, dites non, protégez-vous. Tranchez avec clarté, en faisant ce qui est juste et non ce qui est facile. Voyez les obstacles comme des opportunités de croissance et prenez le contrôle de votre destin."
+    },
+    "domaines": {
+      "amour": "Peut sembler froide, mais cherche en réalité un amour authentique, sans faux-semblants. Indique une période où il faut réfléchir avec la tête et non avec le cœur. Invite à analyser ce qui est bon pour soi et à se protéger avant de pouvoir aimer pleinement.",
+      "travail": "Représente l'intelligence stratégique, la capacité à prendre des décisions fermes et à voir la vérité d'une situation. Elle est l'alliée qui aide à couper les liens avec un projet ou un environnement de travail toxique.",
+      "finances": "Demande de la clarté et de l'objectivité. Elle invite à analyser les situations financières sans illusion et à prendre des décisions courageuses pour se protéger. Elle n'est pas une carte de gain facile, mais de gestion intelligente et protectrice.",
+      "spirituel": "Figure de transformation qui rappelle de ne pas avoir peur de l'inconnu. Elle est la voix intérieure qui dit de lâcher prise et de faire confiance au processus. Elle rappelle que la vérité et la clarté sont de grands actes d'amour envers soi-même et les autres."
+    },
+    "prompts_visuels": [
+      "une femme élégante tenant une épée pointée vers le bas, avec une expression déterminée",
+      "une silhouette se détachant de chaînes brisées",
+      "un bouclier de cristal reflétant une tempête sans se briser",
+      "un chirurgien effectuant une incision précise et nette",
+      "une reine assise sur un trône de pierre dans un paysage d'hiver, l'air sage et distant"
+    ],
+    "prompts_conversationnels": [
+      "La Dame de Pique incarne une dualité : 'rigueur' et 'protection'. Comment ces deux concepts peuvent-ils être liés ?",
+      "La fiche dit qu'elle 'fait ce qui est juste, pas ce qui est facile'. Donnez un exemple de décision difficile dans un contexte de gestion de projet qui illustre ce principe.",
+      "En amour, elle invite à 'réfléchir avec la tête, et non avec le cœur'. Comment cela se différencie-t-il de l'approche du Roi de Cœur qui prône 'l'équilibre entre cœur et esprit' ?",
+      "Expliquez comment la capacité à 'couper les liens avec quelque chose de toxique' est une forme de force et de sagesse.",
+      "Si la Dame de Pique était une conseillère, quel serait son premier conseil à quelqu'un qui hésite à prendre une décision importante ?"
+    ],
+    "combinaisons": [
+    ]
   }
 ];
