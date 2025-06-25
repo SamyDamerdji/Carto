@@ -265,5 +265,90 @@ export const coeurCards: Card[] = [
       { "carte_associee_id": "coeur_07", "signification": "Parle de choix ou de décisions à prendre dans le domaine amoureux, impliquant une réflexion sur les sentiments." },
       { "carte_associee_id": "carreau_09", "signification": "Indique un changement ou une transition importante dans la vie sentimentale, impliquant des ajustements." }
     ]
+  },
+  {
+    "id": "coeur_08",
+    "nom_carte": "Huit de Cœur",
+    "valeur": 8,
+    "couleur": "Cœur",
+    "image_url": "/images/cards/coeur_08.png",
+    "resume_general": "Carte du retour du sentiment, de la transformation émotionnelle et de la guérison. Elle symbolise l'énergie qui revient, les émotions enfouies qui ressurgissent et les leçons non apprises qui demandent une résolution. C'est une invitation à regarder en soi.",
+    "phrase_cle": "Une onde du passé vient taper à la surface.",
+    "mots_cles": [
+      "retour affectif", "transformation émotionnelle", "guérison", "karma", "émotions enfouies", "attachement", "réconciliation",
+      "passé", "mémoire affective", "correspondance", "équilibre"
+    ],
+    "interpretations": {
+      "general": "Le 8 de Cœur est une carte énigmatique. Le chiffre 8, symbole de l'infini et du karma, annonce une énergie qui revient, une boucle. Associé au Cœur, il parle du grand retour du sentiment, de l'attachement, de la mémoire affective. Ce n'est pas une carte de comédie romantique, mais de liens invisibles et profonds.",
+      "endroit": "Annonce le retour d'une personne, de sentiments après un silence, ou la résurgence d'émotions enfouies. Spirituellement, elle pousse à regarder en soi, à se réconcilier avec son passé et à guérir. Elle peut aussi signifier une correspondance, un message inattendu.",
+      "ombre_et_defis": "La carte peut être piégeuse. Ce qui revient n'est pas toujours ce dont on a besoin. Elle invite à se demander si l'on veut vraiment revivre une situation. En cas de déséquilibre, elle peut indiquer des malentendus, une insatisfaction ou une tendance à idéaliser les relations.",
+      "conseil": "Regardez en vous. C'est le moment de recontacter ce qui fait battre votre âme, de guérir une blessure amoureuse, de vous réconcilier avec votre passé. Demandez-vous si vous avancez ou si vous tournez en rond. C'est une carte initiatique qui vous teste : avez-vous compris la leçon ?"
+    },
+    "domaines": {
+      "amour": "C'est son domaine d'excellence. Parle du retour d'une personne, d'un amour qui fait demi-tour. Peut annoncer une explosion émotionnelle, une réconciliation ou une ouverture du cœur. Avec un pique, c'est un amour compliqué qui refait surface. C'est une invitation à aimer différemment, plus fort, plus vrai.",
+      "travail": "L'énergie du 8 de Cœur au travail suggère que des émotions passées ou des relations anciennes influencent la situation actuelle. Il peut être question d'équilibrer les affaires professionnelles avec les aspirations du cœur, ou de recevoir un soutien inattendu dans un projet.",
+      "finances": "Avec le Roi de Carreau, le 8 de Cœur peut indiquer un soutien financier ou matériel dans une relation, une alliance entre amour et ambition.",
+      "spirituel": "Le chiffre 8 représente le karma : ce que l'on envoie, on le reçoit. C'est une leçon non apprise qui revient. La carte est une invitation à la guérison amoureuse, non seulement avec l'autre, mais aussi avec soi-même. C'est une carte révélatrice, un miroir flou à nettoyer doucement."
+    },
+    "prompts_visuels": [
+      "une porte qui s'entrouvre, laissant passer un message glissé en dessous",
+      "une vieille photo de couple regardée avec une émotion douce-amère",
+      "le symbole de l'infini dessiné sur une vitre embuée",
+      "deux rivières qui se rejoignent pour n'en former qu'une",
+      "une personne rouvrant un tiroir longtemps resté fermé"
+    ],
+    "prompts_conversationnels": [
+      "Le 8 de Cœur est décrit comme 'l'énergie qui revient'. Comment cette notion de 'retour' se différencie-t-elle du 'nouveau départ' de l'As de Cœur ?",
+      "La carte est dite 'initiatique'. Qu'est-ce qu'une expérience initiatique dans le contexte d'une relation amoureuse ?",
+      "Expliquez le concept de 'karma' (ce que l'on envoie, on le reçoit) à travers un exemple relationnel concret.",
+      "La carte demande : 'Est-ce que j'avance ou est-ce que je tourne en rond ?'. Comment peut-on faire la différence entre les deux ?",
+      "Si le 8 de Cœur représente la 'mémoire affective', comment cette énergie peut-elle être à la fois une force et un obstacle ?"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "pique_as", "signification": "Signale une transformation majeure dans les relations ou les sentiments, un nouveau départ après une période difficile." },
+      { "carte_associee_id": "carreau_roi", "signification": "Représente l'équilibre entre les affaires du cœur et les aspirations professionnelles. Peut indiquer un soutien financier." },
+      { "carte_associee_id": "trefle_dame", "signification": "Symbolise une femme influente dans la sphère émotionnelle, une amie fidèle ou une conseillère en matière d'amour." },
+      { "carte_associee_id": "coeur_valet", "signification": "L'arrivée de nouvelles affectives ou de messages liés à l'amour. Période d'évolution émotionnelle." },
+      { "carte_associee_id": "coeur_07", "signification": "Symbolise une phase de choix et de décisions dans les affaires du cœur. Période de maturité émotionnelle." }
+    ]
+  },
+  {
+    "id": "coeur_07",
+    "nom_carte": "Sept de Cœur",
+    "valeur": 7,
+    "couleur": "Cœur",
+    "image_url": "/images/cards/coeur_07.png",
+    "resume_general": "Le Sept de Cœur est la carte du choix et de l'illusion. Elle représente une situation où de nombreuses options se présentent, mais où l'imagination et la rêverie prennent le pas sur la réalité.",
+    "phrase_cle": "Faites un choix éclairé et ancré dans le réel.",
+    "mots_cles": [
+      "Choix", "illusions", "rêverie", "fantasmes", "indécision", "procrastination", "pragmatisme", "clarification"
+    ],
+    "interpretations": {
+      "general": "Le Sept de Cœur est la carte du choix et de l'illusion. Elle représente une situation où de nombreuses options se présentent, mais où l'imagination et la rêverie prennent le pas sur la réalité. Il y a un risque de se perdre dans des fantasmes, d'idéaliser des personnes ou des situations, et de manquer de pragmatisme. C'est l'indécision causée par une surabondance de possibilités. La carte met en garde contre la procrastination et la dispersion, et invite à faire un choix éclairé et ancré dans le réel.",
+      "endroit": "De nombreuses options se présentent, mais l'imagination prend le pas sur la réalité. Risque de se perdre dans des fantasmes et de manquer de pragmatisme.",
+      "ombre_et_defis": "Indécision causée par une surabondance de possibilités, procrastination et dispersion.",
+      "conseil": "Faites un choix éclairé et ancré dans le réel. Méfiez-vous des illusions et ne reportez pas vos décisions."
+    },
+    "domaines": {
+      "amour": "Période de rêverie et d'idéalisation. Il est important de distinguer les fantasmes de la réalité de la relation et de faire des choix basés sur des faits concrets.",
+      "travail": "Face à de multiples opportunités, le risque est de se disperser ou de procrastiner. La carte invite à analyser les options de manière pragmatique avant de s'engager.",
+      "finances": "Attention aux investissements ou aux dépenses basés sur des illusions ou des promesses irréalistes. Une clarification et une approche terre-à-terre sont nécessaires.",
+      "spirituel": "L'imagination est fertile, mais il est crucial de ne pas se déconnecter de la réalité. La spiritualité doit être ancrée dans le quotidien pour être constructive."
+    },
+    "prompts_visuels": [
+      "une personne devant plusieurs miroirs déformants, ne sachant lequel reflete la réalité",
+      "un chemin qui se divise en de multiples sentiers brumeux",
+      "des châteaux de sable élaborés, menacés par la marée montante",
+      "quelqu'un regardant des bulles de savon colorées, fasciné",
+      "une boussole dont l'aiguille tourne sans jamais s'arrêter"
+    ],
+    "prompts_conversationnels": [
+      "Le Sept de Cœur met en garde contre le 'mirage émotionnel'. Donnez un exemple de ce que cela pourrait être dans une amitié naissante.",
+      "Comment peut-on utiliser l'imagination de manière constructive, sans tomber dans le piège de l'illusion dénoncé par cette carte ?",
+      "La carte suggère une 'indécision causée par une surabondance de possibilités'. Quelle est la première étape pour sortir de cette paralysie ?",
+      "Comparez 'l'indécision' du Sept de Cœur avec le 'questionnement' du Dix de Pique. Quelle est la nuance ?",
+      "Si vous deviez donner un conseil simple à quelqu'un qui tire cette carte, quel serait-il ?"
+    ],
+    "combinaisons": []
   }
 ];
