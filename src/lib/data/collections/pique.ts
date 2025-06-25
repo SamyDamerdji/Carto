@@ -371,5 +371,38 @@ export const piqueCards: Card[] = [
     "combinaisons": [
       { "carte_associee_id": "pique_as", "signification": "Une révélation inévitable et explosive. Après l'obscurité du 7, l'éclair de l'As illumine tout. Un changement radical qui demande une préparation mentale." }
     ]
+  },
+  {
+    "id": "pique_06",
+    "nom_carte": "Six de Pique",
+    "valeur": 6,
+    "couleur": "Pique",
+    "image_url": "/images/cards/pique_06.png",
+    "resume_general": "Carte de contretemps mineur, de patience et de légèreté. Elle annonce un petit obstacle, un retard ou un souci éphémère. Ce n'est pas une alarme, mais un rappel que la vie n'est pas linéaire et qu'il faut relativiser.",
+    "phrase_cle": "Patience, ce n'est qu'un grain de sable, pas une avalanche.",
+    "mots_cles": [
+      "contretemps", "patience", "retard", "souci mineur", "éphémère", "relativiser", "calme",
+      "résolution rapide", "légèreté", "neutralité"
+    ],
+    "interpretations": {
+      "general": "Le 6 de Pique est comme un petit caillou dans la chaussure : embêtant mais pas dramatique. Il annonce un contretemps qui s'effacera rapidement. Sa magie réside dans sa légèreté, il est comme un nuage qui assombrit un instant le ciel avant que la lumière ne revienne.",
+      "endroit": "Annonce des problèmes temporaires : une dispute, un rendez-vous manqué, un retard. C'est une invitation à la patience et au calme. C'est une toile de fond, un murmure qui incite à ne pas dramatiser les petits riens et à faire confiance au temps.",
+      "ombre_et_defis": "Le défi est de ne pas dramatiser un petit souci. Cette carte teste la patience et la capacité à relativiser. Elle peut représenter un tracas venu d'un proche, un ami en retard, un collègue distrait, qui demandent de la patience pour ne pas créer de tension inutile.",
+      "conseil": "Prenez une grande inspiration et attendez. Prenez du recul et relativisez. Observez votre entourage pour comprendre qui a besoin de patience. Faites confiance au temps, car comme la pluie qui cesse, tout finit par passer. Accueillez cette carte comme une amie discrète qui vous souffle : 'Patience, tout ira bien.'"
+    },
+    "domaines": {
+      "amour": "Peut indiquer un petit malentendu, un rendez-vous manqué. Ce sont des secousses mineures qui rappellent que la vie n'est pas toujours parfaite. La carte invite à ne pas dramatiser et à éclaircir la situation avec calme.",
+      "travail": "Peut signaler des tensions à dénouer ou un retard dans un projet. C'est un simple contretemps qui sera vite résolu. Invite à la patience et à ne pas s'énerver pour des soucis mineurs qui ne remettent pas en cause l'ensemble du projet.",
+      "finances": "Son impact est léger. Il ne s'agit pas de grands bouleversements financiers, mais de petits contretemps, comme une dépense imprévue ou un petit retard de paiement. La situation s'arrangera vite.",
+      "spirituel": "C'est une leçon de calme et de relativisme. Elle apprend à lire entre les lignes et à trouver des indices dans les petits riens. La patience devient une vertu, et l'éphémère, un allié. Elle rappelle que la vie n'est jamais linéaire, mais toujours résoluble."
+    },
+    "prompts_visuels": [
+      "un petit nuage gris passant rapidement devant un soleil éclatant",
+      "une personne attendant patiemment un bus qui arrive au loin",
+      "un petit caillou dans une chaussure, que la personne s'apprête à retirer calmement",
+      "une goutte de pluie tombant sur une surface d'eau, créant une petite ondulation",
+      "un calendrier où une date a été décalée d'un jour avec une petite note souriante"
+    ],
+    "combinaisons": []
   }
 ]
