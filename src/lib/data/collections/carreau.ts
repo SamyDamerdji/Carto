@@ -88,5 +88,49 @@ export const carreauCards: Card[] = [
       { "carte_associee_id": "carreau_09", "signification": "Période de solitude ou de remise en question sur les aspects matériels de la vie."},
       { "carte_associee_id": "carreau_10", "signification": "Transition, transformation et fin de cycle dans le domaine financier."}
     ]
+  },
+  {
+    "id": "carreau_dame",
+    "nom_carte": "Dame de Carreau",
+    "valeur": 12,
+    "couleur": "Carreau",
+    "image_url": "/images/cards/carreau_dame.png",
+    "resume_general": "Carte de la force mentale, du pragmatisme et de l'intelligence stratégique. Elle représente une femme influente, réfléchie et indépendante, qui maîtrise les sphères matérielles. Elle incarne l'équilibre entre l'émotion et la logique.",
+    "phrase_cle": "Écoute ta tête, mais n'oublie pas ton cœur.",
+    "mots_cles": [
+      "stratège", "intelligence", "pragmatisme", "indépendance", "ambition", "pouvoir", "force mentale",
+      "analyse", "communication", "réussite", "femme d'influence", "prudence"
+    ],
+    "interpretations": {
+      "general": "La Dame de Carreau est une figure de pouvoir et de calcul. Contrairement à la Dame de Cœur, elle symbolise la raison, l'ambition et la stratégie. Elle maîtrise les sphères matérielles, sait où elle va et comment y arriver, utilisant son intelligence pour obtenir ce qu'elle désire. C'est une figure complexe, puissante et nuancée.",
+      "endroit": "Symbolise une femme forte, ambitieuse, une amie précieuse ou une femme d'influence (collègue, cheffe). Elle annonce la réussite dans un projet professionnel, une nouvelle opportunité et invite à la clairvoyance. Elle est une source d'inspiration pour ceux qui ont besoin de structure et de clarté.",
+      "ombre_et_defis": "Peut devenir froide, trop calculatrice, manipulatrice et jalouse. Elle peut signaler une personne dans l'entourage qui cherche à influencer ou contrôler. Son ombre est le danger de se perdre dans la poursuite des objectifs matériels et de se laisser dominer par l'ambition.",
+      "conseil": "Utilisez votre intelligence et votre discernement pour prendre des décisions justes. Restez ancré dans vos valeurs et trouvez l'équilibre entre l'ambition et le cœur, entre la logique et l'émotion. Parfois, il faut être stratégique pour avancer."
+    },
+    "domaines": {
+      "amour": "N'est pas une carte romantique. Elle parle d'amours rationnels, de relations où le mental domine. Elle invite à regarder la relation avec un œil critique, à calculer les risques et à s'assurer qu'elle est bénéfique. Peut représenter une rivalité féminine ou une personne qui protège son cœur.",
+      "travail": "Figure de leadership et de réussite. Annonce un succès imminent. C'est un signe favorable pour les démarches administratives et les déplacements d'affaires. Elle représente une femme d'influence, une femme d'affaires déterminée et indépendante.",
+      "finances": "Liée à la réussite matérielle. Elle pousse à réfléchir à son rapport à l'argent. Elle n'invite pas à la spéculation mais à la gestion intelligente et stratégique des finances. Elle peut suggérer un défi à surmonter, comme la gestion de pertes financières.",
+      "spirituel": "Pousse à voir au-delà des apparences et à se détacher des émotions parasites pour entendre son intuition. Elle enseigne la maîtrise de soi et la capacité à lire entre les lignes. Elle est la 'reine du silence stratégique', rappelant que la sagesse est parfois de ne pas répondre tout de suite."
+    },
+    "prompts_visuels": [
+      "une femme en tailleur jouant seule à une partie d'échecs, très concentrée",
+      "une reine élégante tenant une balance, pesant une plume et une pièce d'or",
+      "une femme regardant une feuille de calcul complexe avec un léger sourire",
+      "un plan d'architecte détaillé avec une main féminine traçant une ligne dessus",
+      "une femme au sommet d'une tour d'entreprise, regardant la ville en contrebas"
+    ],
+    "prompts_conversationnels": [
+      "La Dame de Carreau incarne l'équilibre entre 'émotions et logique'. Comment ces deux forces peuvent-elles collaborer plutôt que s'opposer dans une prise de décision ?",
+      "La fiche dit qu'elle est une 'amie précieuse ou une rivale redoutable'. Quels facteurs ou quelles cartes voisines pourraient aider à déterminer son rôle dans un tirage ?",
+      "En amour, son message est 'écoute ta tête, pas ton cœur'. Proposez un scénario relationnel où ce conseil serait particulièrement judicieux.",
+      "Décrivez la différence fondamentale entre la 'force mentale' de la Dame de Carreau et la 'rigueur' du Roi de Pique.",
+      "Son côté ombre est la 'manipulation'. Comment le pouvoir de persuasion, une qualité, peut-il dériver vers la manipulation, un défaut ?"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "carreau_roi", "signification": "Suggère une dynamique puissante dans le domaine professionnel ou financier, un partenariat d'affaires influent ou une relation conjugale partageant des objectifs de succès." },
+      { "carte_associee_id": "carreau_valet", "signification": "Indique une nouvelle ou un message important concernant des affaires financières. Symbolise aussi un mentorat, où la Dame (experte) guide le Valet (dynamique)." },
+      { "carte_associee_id": "carreau_as", "signification": "Renforce les thèmes de réussite et d'opportunités, indiquant un succès imminent et des portes qui s'ouvrent dans le domaine matériel." }
+    ]
   }
-];
+]
