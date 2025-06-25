@@ -2,7 +2,7 @@ export function Footer() {
   return (
     <footer className="w-full py-4">
       <div className="container mx-auto px-4 text-center md:px-6">
-        <p className="text-sm text-primary">
+        <p className="text-sm text-card-foreground/90">
           © {new Date().getFullYear()} Le Cartomancien. Tous droits réservés.
         </p>
       </div>
