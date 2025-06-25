@@ -3,7 +3,6 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { cn } from '@/lib/utils';
 import { Cinzel, EB_Garamond } from 'next/font/google';
-import { PwaInstaller } from '@/components/pwa-installer';
 
 const cinzel = Cinzel({
   subsets: ['latin'],
@@ -24,7 +23,6 @@ export const metadata: Metadata = {
   applicationName: "Le Cartomancien",
   title: "Le Cartomancien",
   description: "Apprenez et mémorisez les significations divinatoires des 52 cartes à jouer.",
-  manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
@@ -56,7 +54,6 @@ export default function RootLayout({
       )}>
         {children}
         <Toaster />
-        <PwaInstaller />
       </body>
     </html>
   );
