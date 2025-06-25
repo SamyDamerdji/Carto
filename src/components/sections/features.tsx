@@ -41,7 +41,7 @@ const FeatureCard = ({ feature, index }: { feature: (typeof features)[0], index:
         <div className="rounded-lg bg-primary/10 p-3">
           <feature.icon className="h-8 w-8 text-primary" />
         </div>
-        <h3 className="font-headline text-2xl font-bold text-foreground">
+        <h3 className="font-headline text-2xl font-bold text-white">
           {feature.title}
         </h3>
       </div>
