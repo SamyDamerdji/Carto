@@ -4,12 +4,22 @@
   "description": "Apprenez et mémorisez les significations divinatoires des 52 cartes à jouer.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#24253D",
+  "background_color": "#2a213c",
   "theme_color": "#f97316",
   "icons": [
     {
       "src": "/icon-192x192.png",
       "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-384x384.png",
+      "sizes": "384x384",
       "type": "image/png"
     },
     {
