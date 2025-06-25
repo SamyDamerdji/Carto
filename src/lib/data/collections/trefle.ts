@@ -192,6 +192,56 @@ export const trefleCards: Card[] = [
     ]
   },
   {
+    "id": "trefle_10",
+    "nom_carte": "Dix de Trèfle",
+    "valeur": 10,
+    "couleur": "Trèfle",
+    "image_url": "/images/cards/trefle_10.png",
+    "resume_general": "Carte de la prospérité, de la réussite et de la chance. Elle représente l'abondance matérielle, la récolte des efforts et des projets qui fleurissent. C'est un 'feu vert' qui invite à avancer, mais en gardant l'équilibre et le discernement.",
+    "phrase_cle": "La roue tourne dans le bon sens, foncez avec discernement.",
+    "mots_cles": [
+      "prospérité", "réussite", "chance", "abondance", "récolte", "opportunité", "stabilité",
+      "élan", "partenariat", "argent", "union prospère", "équilibre"
+    ],
+    "interpretations": {
+      "general": "Le 10 de Trèfle est comme un champ fertile ou un jardin en fleurs. Il symbolise la chance, la prospérité, mais aussi un défi caché. C'est l'image de la roue qui tourne dans le bon sens, un élan pour avancer et bâtir. Il représente à la fois la richesse matérielle et les récompenses intérieures.",
+      "endroit": "Annonce une réussite financière, une prospérité dans le foyer, une stabilité retrouvée. Les dettes s'effacent, un projet décolle, une promotion ou une reconnaissance arrive. C'est un feu vert pour saisir une opportunité, un signe que la chance est de votre côté.",
+      "ombre_et_defis": "Alerte sur les excès. L'élan peut devenir déséquilibré. Dans sa facette négative, la carte annonce des défis financiers, des dépenses inattendues, des opportunités manquées ou des relations tendues. C'est une invitation à la prudence et à ne pas laisser passer le train.",
+      "conseil": "Foncez, mais ouvrez bien les yeux. Soyez à l'écoute, car chaque détail compte. Agissez avec discernement et ne cédez pas à la précipitation. Restez optimiste, car les opportunités sont souvent bien cachées. Tout doit rester équilibré, comme un funambule sur son fil."
+    },
+    "domaines": {
+      "amour": "Représente une union prospère, une relation harmonieuse où chacun s'épanouit. Parle d'échanges fructueux, de partenariats et de discussions qui ouvrent des portes. C'est une relation qui demande à être 'arrosée' régulièrement pour continuer à fleurir.",
+      "travail": "C'est la carte de la 'récolte des efforts'. Elle annonce qu'un travail acharné va payer. Peut signifier une promotion, une reconnaissance ou un projet qui décolle enfin. C'est un signal très positif pour les affaires et la carrière.",
+      "finances": "Thème central de cette carte. Elle souffle que tout pourrait bien rouler, que la prospérité arrive. Annonce une aide inattendue, un coup de pouce providentiel, une rentrée d'argent importante ou un succès financier majeur, surtout en association avec l'As de Trèfle.",
+      "spirituel": "Symbolise une période de chance et de magie dans l'air. C'est un présage de fortune et de bons vents. Elle invite à tenter quelque chose de nouveau et à profiter de cette énergie positive pour avancer sur son chemin personnel."
+    },
+    "prompts_visuels": [
+      "un jardin luxuriant, rempli de fleurs et de fruits mûrs",
+      "un funambule marchant avec assurance sur un fil, parfaitement équilibré",
+      "un feu de signalisation passant au vert",
+      "une porte mystérieuse qui s'ouvre sur un paysage ensoleillé",
+      "des mains qui récoltent une moisson abondante dans un champ de blé doré"
+    ],
+    "prompts_conversationnels": [
+      "Le 10 de Trèfle est comparé à un 'funambule sur son fil'. Qu'est-ce que cela implique en termes de gestion de la réussite ?",
+      "La fiche dit : 'un simple sourire ouvre des portes'. Expliquez comment cette idée s'applique dans le contexte d'un partenariat professionnel.",
+      "En amour, la carte est un 'jardin en fleurs qu'il faut arroser'. Que représente cet 'arrosage' dans une relation à long terme ?",
+      "Comment la 'prospérité' du 10 de Trèfle se différencie-t-elle du 'potentiel brut' de l'As de Trèfle ?",
+      "Le côté ombre du 10 de Trèfle est 'laisser passer le train'. Donnez un exemple concret d'opportunité manquée à cause d'un manque de discernement."
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "trefle_as", "signification": "Succès financier majeur pour le consultant. Une combinaison très puissante." },
+      { "carte_associee_id": "trefle_roi", "signification": "Une rentrée d'argent importante est à prévoir." },
+      { "carte_associee_id": "trefle_dame", "signification": "Une liaison avec une personne inconnue." },
+      { "carte_associee_id": "coeur_as", "signification": "Une grande réussite dans les affaires." },
+      { "carte_associee_id": "coeur_dame", "signification": "Un succès amoureux durable et une relation solide." },
+      { "carte_associee_id": "carreau_dix", "signification": "Un succès juridique ou la résolution positive d'un conflit." },
+      { "carte_associee_id": "pique_roi", "signification": "Des pertes financières liées à des difficultés ou des décisions malheureuses." },
+      { "carte_associee_id": "pique_dame", "signification": "Une femme causera un préjudice financier grave." },
+      { "carte_associee_id": "pique_valet", "signification": "Attention, un vol pourrait survenir. Prudence requise." }
+    ]
+  },
+  {
     "id": "trefle_dame",
     "nom_carte": "Dame de Trèfle",
     "valeur": 12,
