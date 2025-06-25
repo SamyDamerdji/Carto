@@ -44,5 +44,49 @@ export const carreauCards: Card[] = [
       { "carte_associee_id": "pique_roi", "signification": "Annonce un défi, une opposition ou un blocage. L'élan du Valet est freiné par la structure ou l'autorité du Roi." },
       { "carte_associee_id": "carreau_as", "signification": "Combinaison très dynamique indiquant le début d'une entreprise ou d'un projet matériel avec un fort élan et des initiatives réussies." }
     ]
+  },
+  {
+    "id": "carreau_roi",
+    "nom_carte": "Roi de Carreau",
+    "valeur": 13,
+    "couleur": "Carreau",
+    "image_url": "/images/cards/carreau_roi.png",
+    "resume_general": "Carte de pouvoir, d'action et de dynamisme. Il représente l'autorité, la force pour diriger et la capacité à passer à l'action. C'est un homme d'action, un négociateur et un leader qui avance avec confiance et détermination.",
+    "phrase_cle": "C'est le moment d'agir, fonce avec confiance !",
+    "mots_cles": [
+      "pouvoir", "action", "autorité", "dynamisme", "négociateur", "leader", "confiance",
+      "détermination", "passion", "affaires", "initiative", "homme influent"
+    ],
+    "interpretations": {
+      "general": "Le Roi de Carreau est une figure de puissance et un homme d'action. Contrairement à des rois plus introspectifs, il est en mouvement, prêt à accomplir de grandes choses et à prendre les rênes d'une situation complexe. Il incarne la responsabilité et encourage à ne pas rester bloqué.",
+      "endroit": "Symbolise un personnage masculin influent, un leader qui maîtrise l'art de négocier avec intelligence et fermeté. Son apparition est de bon augure pour les projets, indiquant que c'est le moment d'agir et de prendre des décisions éclairées. Il représente une passion constructive et une énergie positive.",
+      "ombre_et_defis": "Son pouvoir peut se transformer en un excès de contrôle ou une tendance à être autoritaire et dominateur. Il peut indiquer une difficulté à déléguer et à faire confiance, menant à des situations tendues. Sa passion, si mal dirigée, peut devenir destructrice.",
+      "conseil": "Prenez les rênes de votre vie et avancez avec confiance et détermination. C'est le moment d'agir, mais n'oubliez pas de réfléchir à votre relation avec l'autorité et le pouvoir. Trouvez l'équilibre entre la force et la douceur, entre le contrôle et la confiance."
+    },
+    "domaines": {
+      "amour": "Peut symboliser un partenaire fort, parfois un peu dominateur. C'est une invitation à rétablir l'harmonie si l'un des deux prend trop de place. Conseille de montrer sa force intérieure sans écraser l'autre pour attirer une relation équilibrée.",
+      "travail": "C'est son domaine principal. Il est un guide pour les affaires, indiquant que c'est le moment d'agir sur un projet. Il représente la maîtrise de la négociation, la gestion de situations complexes avec fermeté et la prise de décisions éclairées et calculées.",
+      "finances": "Associé au monde du commerce, il est de bon augure pour les initiatives financières. Il symbolise la capacité à prendre des décisions calculées et à faire confiance à son instinct pour mener à bien des projets matériels.",
+      "spirituel": "Le Roi de Carreau est un guide qui rappelle que chaque décision a une portée spirituelle. Il encourage à regarder au-delà des apparences et à utiliser son énergie de passion de manière constructive. Il invite à reconnaître l'influence que l'on a sur sa propre vie."
+    },
+    "prompts_visuels": [
+      "un chef d'entreprise charismatique menant une réunion importante",
+      "un homme se tenant droit et confiant face à une tempête",
+      "une main puissante saisissant les rênes d'un cheval fougueux",
+      "une flamme vive et contrôlée dans une forge",
+      "deux personnes se serrant la main pour conclure un accord"
+    ],
+    "prompts_conversationnels": [
+      "Le Roi de Carreau est un 'homme d'action'. Comment son approche pour résoudre un problème diffère-t-elle de celle, plus analytique, du Roi de Pique ?",
+      "La fiche mentionne 'trouver une danse entre force et douceur' en amour. Expliquez concrètement ce que cela signifie dans le cadre d'une relation.",
+      "Le côté 'ombre' de cette carte est l'excès de contrôle. Proposez un scénario où cette tendance, initialement positive, devient un handicap pour un chef de projet.",
+      "Le Roi de Carreau maîtrise l'art de 'négocier avec intelligence et fermeté'. Quels sont les deux piliers de cette compétence ?",
+      "La carte est associée à la 'passion constructive'. Quelle est la différence entre une passion constructive et une passion destructrice ?"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "carreau_08", "signification": "Mouvement et changement, souvent lié à des questions matérielles et à la nécessité de s'adapter."},
+      { "carte_associee_id": "carreau_09", "signification": "Période de solitude ou de remise en question sur les aspects matériels de la vie."},
+      { "carte_associee_id": "carreau_10", "signification": "Transition, transformation et fin de cycle dans le domaine financier."}
+    ]
   }
 ];
