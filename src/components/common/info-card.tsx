@@ -8,7 +8,7 @@ interface InfoCardProps {
 
 export function InfoCard({ icon: Icon, title, children }: InfoCardProps) {
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-primary/10 bg-secondary/20 p-6 shadow-lg shadow-primary/10 backdrop-blur-lg">
+    <div className="relative overflow-hidden rounded-2xl border border-primary bg-secondary/20 p-6 shadow-lg shadow-primary/20 backdrop-blur-lg">
        <div className="absolute -right-4 -top-4 h-24 w-24 bg-[radial-gradient(closest-side,hsl(var(--primary)/0.1),transparent)]"></div>
       <div className="relative z-10">
         <div className="flex items-center gap-4">
