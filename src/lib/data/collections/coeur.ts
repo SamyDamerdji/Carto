@@ -43,47 +43,6 @@ export const coeurCards: Card[] = [
     "combinaisons": []
   },
   {
-    "id": "coeur_valet",
-    "nom_carte": "Valet de Cœur",
-    "valeur": 11,
-    "couleur": "Cœur",
-    "image_url": "/images/cards/coeur_valet.png",
-    "resume_general": "Carte de l'émotion jeune et de l'élan sincère. Il est le messager du cœur, annonçant un nouvel amour, une passion naissante ou une déclaration. Il incarne la jeunesse, la gentillesse, la loyauté et la sincérité, mais aussi une potentielle immaturité ou naïveté.",
-    "phrase_cle": "Une émotion sincère se déclare, écoutez avec prudence.",
-    "mots_cles": [
-      "messager du cœur", "jeune homme", "nouvel amour", "passion naissante", "flirt", "sincérité", "loyauté", 
-      "innocence", "déclaration", "émotion", "spontanéité", "vulnérabilité", "naïveté"
-    ],
-    "interpretations": {
-      "general": "Le Valet de Cœur est un messager d'émotions, d'affection sincère et de compassion. Il représente l'élan du cœur, l'émotion jeune, parfois maladroite mais toujours habitée. Il peut incarner une personne, mais aussi une part de soi qui désire s'exprimer sans filtre.",
-      "endroit": "Symbolise un jeune homme (ou une personne à l'esprit jeune) charmant, loyal, sincère et gentil. Annonce un nouvel amour, un flirt, une déclaration spontanée, une passion naissante ou un nouveau chapitre sentimental. C'est une énergie tendre, intuitive et pleine de vie.",
-      "ombre_et_defis": "Représente l'aspect immature de l'émotion. Il peut devenir manipulateur, indécis ou excessif. Il prévient contre les amours floues, les belles paroles sans lendemain, l'instabilité affective et la naïveté. Il peut aussi représenter des émotions non digérées qui resurgissent.",
-      "conseil": "Accueillez l'émotion avec sincérité mais aussi avec prudence. Prenez du recul pour comprendre si vos sentiments sont alignés avec vos intentions profondes. Exprimez ce que vous avez sur le cœur, car la vérité est la meilleure voie, mais ne vous engagez pas à l'aveugle."
-    },
-    "domaines": {
-      "amour": "C'est son domaine de prédilection. Il annonce un nouvel amour, un flirt, une déclaration, un coup de cœur. Il peut être le gardien d'un amour secret qui attend de se dévoiler. Il invite à l'émerveillement, à la curiosité et à l'enthousiasme dans les relations naissantes.",
-      "travail": "Peut symboliser une relation affective ou un 'coup de cœur' pour un projet. Représente souvent un jeune collègue apportant fraîcheur et sensibilité. Cependant, il met aussi en garde contre une possible naïveté ou un excès de confiance dans le milieu professionnel.",
-      "finances": "Cette carte n'a pas une connotation financière forte. Son influence est indirecte, suggérant que des décisions émotionnelles pourraient impacter les finances. Une approche trop naïve ou impulsive n'est pas recommandée.",
-      "spirituel": "Le Valet de Cœur est un messager spirituel qui annonce une 'intuition à écouter'. Il agit comme un fil invisible avec notre monde intérieur. Il est fortement lié à 'l'enfant intérieur', cette partie de nous qui a besoin d'amour, d'écoute et de tendresse brute."
-    },
-    "prompts_visuels": [
-      "un jeune homme tendant une seule rose rouge, l'air timide",
-      "une lettre d'amour écrite à la main, posée sur une table",
-      "deux personnes échangeant un regard intense et un sourire timide lors d'une fête",
-      "une étincelle jaillissant entre deux silex",
-      "un adolescent rougissant après avoir fait un compliment"
-    ],
-    "prompts_conversationnels": [
-      "Le Valet de Cœur est le 'messager du cœur'. En quoi son message diffère-t-il de celui du Valet de Carreau, qui apporte aussi des nouvelles ?",
-      "La fiche mentionne que cette carte invite à la 'prudence' malgré son aspect positif. Proposez un scénario où une déclaration d'amour, bien que sincère, pourrait nécessiter du recul.",
-      "Cette carte est liée à l'enfant intérieur. Expliquez comment la vulnérabilité, souvent associée à l'enfance, peut être une force dans une relation naissante.",
-      "Le côté 'ombre' du Valet de Cœur est l'instabilité. Comment une 'flamme' peut-elle se transformer en 'feu de cheminée' ? Quels éléments de structure pourraient aider à solidifier cette énergie ?",
-      "Si le Valet de Pique est un 'jeu d'échecs', le Valet de Cœur pourrait être comparé à quel autre type de jeu ou d'activité ? Justifiez votre réponse."
-    ],
-    "combinaisons": [
-    ]
-  },
-  {
     "id": "coeur_roi",
     "nom_carte": "Roi de Cœur",
     "valeur": 13,
@@ -177,6 +136,47 @@ export const coeurCards: Card[] = [
     ]
   },
   {
+    "id": "coeur_valet",
+    "nom_carte": "Valet de Cœur",
+    "valeur": 11,
+    "couleur": "Cœur",
+    "image_url": "/images/cards/coeur_valet.png",
+    "resume_general": "Carte de l'émotion jeune et de l'élan sincère. Il est le messager du cœur, annonçant un nouvel amour, une passion naissante ou une déclaration. Il incarne la jeunesse, la gentillesse, la loyauté et la sincérité, mais aussi une potentielle immaturité ou naïveté.",
+    "phrase_cle": "Une émotion sincère se déclare, écoutez avec prudence.",
+    "mots_cles": [
+      "messager du cœur", "jeune homme", "nouvel amour", "passion naissante", "flirt", "sincérité", "loyauté", 
+      "innocence", "déclaration", "émotion", "spontanéité", "vulnérabilité", "naïveté"
+    ],
+    "interpretations": {
+      "general": "Le Valet de Cœur est un messager d'émotions, d'affection sincère et de compassion. Il représente l'élan du cœur, l'émotion jeune, parfois maladroite mais toujours habitée. Il peut incarner une personne, mais aussi une part de soi qui désire s'exprimer sans filtre.",
+      "endroit": "Symbolise un jeune homme (ou une personne à l'esprit jeune) charmant, loyal, sincère et gentil. Annonce un nouvel amour, un flirt, une déclaration spontanée, une passion naissante ou un nouveau chapitre sentimental. C'est une énergie tendre, intuitive et pleine de vie.",
+      "ombre_et_defis": "Représente l'aspect immature de l'émotion. Il peut devenir manipulateur, indécis ou excessif. Il prévient contre les amours floues, les belles paroles sans lendemain, l'instabilité affective et la naïveté. Il peut aussi représenter des émotions non digérées qui resurgissent.",
+      "conseil": "Accueillez l'émotion avec sincérité mais aussi avec prudence. Prenez du recul pour comprendre si vos sentiments sont alignés avec vos intentions profondes. Exprimez ce que vous avez sur le cœur, car la vérité est la meilleure voie, mais ne vous engagez pas à l'aveugle."
+    },
+    "domaines": {
+      "amour": "C'est son domaine de prédilection. Il annonce un nouvel amour, un flirt, une déclaration, un coup de cœur. Il peut être le gardien d'un amour secret qui attend de se dévoiler. Il invite à l'émerveillement, à la curiosité et à l'enthousiasme dans les relations naissantes.",
+      "travail": "Peut symboliser une relation affective ou un 'coup de cœur' pour un projet. Représente souvent un jeune collègue apportant fraîcheur et sensibilité. Cependant, il met aussi en garde contre une possible naïveté ou un excès de confiance dans le milieu professionnel.",
+      "finances": "Cette carte n'a pas une connotation financière forte. Son influence est indirecte, suggérant que des décisions émotionnelles pourraient impacter les finances. Une approche trop naïve ou impulsive n'est pas recommandée.",
+      "spirituel": "Le Valet de Cœur est un messager spirituel qui annonce une 'intuition à écouter'. Il agit comme un fil invisible avec notre monde intérieur. Il est fortement lié à 'l'enfant intérieur', cette partie de nous qui a besoin d'amour, d'écoute et de tendresse brute."
+    },
+    "prompts_visuels": [
+      "un jeune homme tendant une seule rose rouge, l'air timide",
+      "une lettre d'amour écrite à la main, posée sur une table",
+      "deux personnes échangeant un regard intense et un sourire timide lors d'une fête",
+      "une étincelle jaillissant entre deux silex",
+      "un adolescent rougissant après avoir fait un compliment"
+    ],
+    "prompts_conversationnels": [
+      "Le Valet de Cœur est le 'messager du cœur'. En quoi son message diffère-t-il de celui du Valet de Carreau, qui apporte aussi des nouvelles ?",
+      "La fiche mentionne que cette carte invite à la 'prudence' malgré son aspect positif. Proposez un scénario où une déclaration d'amour, bien que sincère, pourrait nécessiter du recul.",
+      "Cette carte est liée à l'enfant intérieur. Expliquez comment la vulnérabilité, souvent associée à l'enfance, peut être une force dans une relation naissante.",
+      "Le côté 'ombre' du Valet de Cœur est l'instabilité. Comment une 'flamme' peut-elle se transformer en 'feu de cheminée' ? Quels éléments de structure pourraient aider à solidifier cette énergie ?",
+      "Si le Valet de Pique est un 'jeu d'échecs', le Valet de Cœur pourrait être comparé à quel autre type de jeu ou d'activité ? Justifiez votre réponse."
+    ],
+    "combinaisons": [
+    ]
+  },
+  {
     "id": "coeur_10",
     "nom_carte": "Dix de Cœur",
     "valeur": 10,
@@ -215,5 +215,55 @@ export const coeurCards: Card[] = [
       "Comment la 'réconciliation' du 10 de Cœur se différencie-t-elle de la 'transformation' par la rupture de l'As de Pique ?"
     ],
     "combinaisons": []
+  },
+  {
+    "id": "coeur_09",
+    "nom_carte": "Neuf de Cœur",
+    "valeur": 9,
+    "couleur": "Cœur",
+    "image_url": "/images/cards/coeur_09.png",
+    "resume_general": "Carte de l'accomplissement émotionnel, des désirs réalisés et de la satisfaction intérieure. Elle symbolise une période de joie, de gratitude et d'harmonie. C'est la carte qui annonce que l'on récolte les fruits de ses efforts émotionnels.",
+    "phrase_cle": "C'est la fin d'un cycle, un amour qui s'accomplit.",
+    "mots_cles": [
+      "accomplissement", "satisfaction", "désirs réalisés", "joie", "gratitude", "harmonie", "amour universel",
+      "fin de cycle", "guérison", "espoir", "connexion forte", "plénitude"
+    ],
+    "interpretations": {
+      "general": "Le 9 de Cœur parle d'amour universel, celui qui relie tous les êtres. Le chiffre 9 marque l'achèvement d'un cycle émotionnel, un moment de complétion qui amène le renouveau. C'est une carte miroir qui invite à contempler le chemin parcouru et les leçons apprises.",
+      "endroit": "Indique que vous êtes sur le point de vivre une expérience d'amour plus vaste, une connexion spirituelle profonde. C'est une bénédiction, un signe que vous êtes sur la bonne voie. Apporte l'espoir dans les périodes difficiles, rappelant qu'il y a une lumière au bout du tunnel.",
+      "ombre_et_defis": "Peut représenter une intensité émotionnelle déroutante. Le défi est de traverser ces vagues émotionnelles en restant ancré. Avec le 9 de Pique, il peut indiquer des obstacles à surmonter dans la sphère émotionnelle, un mélange d'amour et de défis.",
+      "conseil": "Suivez votre cœur et faites-lui confiance. Arrêtez de douter et lancez-vous dans ce qui vous attend. C'est le moment de pardonner, de laisser partir et de boucler une histoire affective pour avancer. N'ayez pas peur d'aimer pleinement."
+    },
+    "domaines": {
+      "amour": "Parle d'une connexion forte, presque karmique, qui a une signification profonde. Encourage à explorer ce lien et à apprendre les leçons de patience et d'empathie. C'est la promesse de pouvoir réparer, guérir et repartir de plus belle dans ses relations.",
+      "travail": "L'accomplissement n'est pas matériel mais émotionnel. Peut indiquer la fin réussie d'un projet qui tenait à cœur, ou une grande satisfaction et harmonie au sein d'une équipe. C'est le fruit des efforts émotionnels et relationnels investis.",
+      "finances": "Peu d'impact direct sur les finances. Son message est que la vraie richesse est la satisfaction intérieure et la joie. Une période d'harmonie émotionnelle peut cependant favoriser des décisions financières plus sereines et judicieuses.",
+      "spirituel": "C'est une vibration de guérison intérieure. Symbolise la fin d'un cycle émotionnel, une maturation du cœur. C'est la carte du recul affectif intelligent, qui enseigne à aimer sans s'attacher. C'est une ouverture spirituelle qui fait grandir."
+    },
+    "prompts_visuels": [
+      "une personne regardant avec gratitude un jardin fleuri et bien entretenu",
+      "un cercle lumineux se refermant doucement",
+      "des mains qui lâchent un oiseau qui s'envole librement dans le ciel",
+      "une personne au sommet d'une colline, regardant le chemin parcouru avec un sourire serein",
+      "un câlin chaleureux et réconfortant entre deux personnes"
+    ],
+    "prompts_conversationnels": [
+      "Le 9 de Cœur représente l''amour universel'. Comment ce concept se différencie-t-il de l'amour romantique ?",
+      "La fiche dit que cette carte est un 'miroir'. Quel est l'intérêt de contempler ses émotions passées, qu'elles soient joyeuses ou tristes ?",
+      "Le chiffre 9 marque un 'achèvement'. Comparez cet achèvement en douceur avec la 'fin' plus radicale de l'As de Pique.",
+      "Comment la 'connexion forte, presque karmique' du 9 de Cœur se distingue-t-elle du 'nouvel amour' du Valet de Cœur ?",
+      "Cette carte est un 'baume', une 'lumière au bout du tunnel'. Dans quelle situation difficile cette carte pourrait-elle apporter un message d'espoir ?"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "coeur_roi", "signification": "Suggère une relation amoureuse stable et mature, soulignant la solidité et la profondeur de l'amour." },
+      { "carte_associee_id": "trefle_09", "signification": "Indique la chance dans les efforts, surtout en lien avec les affaires du cœur. Peut introduire des imprévus bénéfiques." },
+      { "carte_associee_id": "pique_09", "signification": "Association complexe, mêlant amour et défis. Peut indiquer des obstacles ou des épreuves à surmonter dans la sphère émotionnelle." },
+      { "carte_associee_id": "coeur_dame", "signification": "Symbolise l'amour romantique, la tendresse et l'affection. Une figure féminine clé accentue la douceur et la compréhension." },
+      { "carte_associee_id": "coeur_valet", "signification": "Parle de nouvelles rencontres amoureuses ou de renouveau sentimental." },
+      { "carte_associee_id": "coeur_08", "signification": "Évoque l'évolution des sentiments et le renforcement des liens. Indique une croissance émotionnelle." },
+      { "carte_associee_id": "coeur_10", "signification": "Symbolise la plénitude et l'accomplissement. Indique une période de bonheur total et d'harmonie." },
+      { "carte_associee_id": "coeur_07", "signification": "Parle de choix ou de décisions à prendre dans le domaine amoureux, impliquant une réflexion sur les sentiments." },
+      { "carte_associee_id": "carreau_09", "signification": "Indique un changement ou une transition importante dans la vie sentimentale, impliquant des ajustements." }
+    ]
   }
 ];
