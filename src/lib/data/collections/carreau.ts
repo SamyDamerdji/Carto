@@ -2,6 +2,46 @@ import type { Card } from '../cards';
 
 export const carreauCards: Card[] = [
   {
+    "id": "carreau_as",
+    "nom_carte": "As de Carreau",
+    "valeur": 1,
+    "couleur": "Carreau",
+    "image_url": "/images/cards/carreau_as.png",
+    "resume_general": "Carte du commencement matériel, de la prospérité et des opportunités concrètes. Elle représente le début d'un projet, un succès tangible, et une invitation à passer à l'action pour construire. C'est la carte des bâtisseurs et des visionnaires.",
+    "phrase_cle": "Tout est possible, mais c'est à vous d'agir et de construire.",
+    "mots_cles": [
+      "opportunité", "succès matériel", "nouveau départ", "projet", "communication", "stabilité", "prospérité",
+      "ambition", "création", "potentiel", "action", "récompense"
+    ],
+    "interpretations": {
+      "general": "L'As de Carreau est une carte puissante qui symbolise une autorité silencieuse dans le monde concret. Associé à l'élément terre, il évoque la stabilité et la matière. Il pousse à agir, à construire et à poser la première pierre d'un projet durable. C'est une carte de commencement, de changement et de défi.",
+      "endroit": "Annonce une nouvelle opportunité tangible, un contrat, une nouvelle offre ou une récompense financière. C'est la promesse d'un avenir radieux pour les entreprises, les bonnes affaires et les projets qui se signent. C'est le moment de créer son propre chemin.",
+      "ombre_et_defis": "La carte est ambivalente. Une nouvelle opportunité implique un risque d'échec. Elle peut signaler des déceptions liées à des questions matérielles, un projet qui n'aboutit pas, ou des efforts non récompensés. Elle rappelle le courage nécessaire pour affronter l'inconnu.",
+      "conseil": "Écoutez votre intuition pour faire le bon choix face à l'opportunité qui se présente. C'est le moment d'agir, de construire, mais avec prudence et discernement. Équilibrez le monde matériel et le monde spirituel pour ne pas laisser le succès matériel créer un vide intérieur."
+    },
+    "domaines": {
+      "amour": "Moins direct que l'As de Cœur, il peut néanmoins signifier le début d'une construction à deux sur des bases solides et matérielles. Il peut indiquer une phase où l'engagement concret et la stabilité sont au premier plan.",
+      "travail": "C'est son domaine d'excellence. Annonce une nouvelle offre, un contrat, la création d'une entreprise ou le début d'un projet prometteur. C'est un encouragement à prendre un premier pas décisif pour construire ou réinventer sa vie professionnelle.",
+      "finances": "Carte de prospérité et de succès financier. Représente souvent le 'jackpot' dans le monde des affaires. Annonce des récompenses financières, des succès matériels et des nouvelles importantes concernant les finances.",
+      "spirituel": "C'est une carte de guidance spirituelle qui invite à ne pas se focaliser uniquement sur le matériel. Elle rappelle que tout acte de construction a une portée spirituelle et qu'il faut cultiver son bien-être intérieur en même temps que sa réussite extérieure."
+    },
+    "prompts_visuels": [
+      "une main posant la première pierre d'une fondation de bâtiment",
+      "un architecte regardant avec satisfaction les plans d'un projet ambitieux",
+      "une porte s'ouvrant sur un chemin pavé d'or",
+      "une poignée de main ferme pour sceller un contrat important",
+      "une jeune pousse de plante sortant d'une terre riche et fertile"
+    ],
+    "prompts_conversationnels": [
+      "L'As de Carreau est la 'carte des bâtisseurs'. Quelle est la différence entre 'bâtir' quelque chose et simplement 'obtenir' quelque chose ?",
+      "La fiche mentionne la 'dualité' de la carte : réussite et défi. Expliquez comment une opportunité de succès peut simultanément représenter un défi.",
+      "Cette carte est un appel à 'équilibrer le monde matériel et le monde spirituel'. Donnez un exemple concret de la manière dont une personne pourrait le faire dans sa carrière.",
+      "Comment l'énergie de commencement de l'As de Carreau (terre, concret) se différencie-t-elle de celle de l'As de Cœur (eau, émotion) ?",
+      "La carte conseille d'écouter son intuition face à un 'carrefour'. Dans un contexte professionnel, que pourrait représenter ce carrefour ?"
+    ],
+    "combinaisons": []
+  },
+  {
     "id": "carreau_valet",
     "nom_carte": "Valet de Carreau",
     "valeur": 11,
