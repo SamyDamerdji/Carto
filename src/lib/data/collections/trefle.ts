@@ -50,5 +50,45 @@ export const trefleCards: Card[] = [
       { "carte_associee_id": "pique_dame", "signification": "Une menace plane sur les biens. Prudence financière et matérielle requise." },
       { "carte_associee_id": "pique_10", "signification": "Avertissement contre des gains malhonnêtes ou un piège financier." }
     ]
+  },
+  {
+    "id": "trefle_roi",
+    "nom_carte": "Roi de Trèfle",
+    "valeur": 13,
+    "couleur": "Trèfle",
+    "image_url": "/images/cards/trefle_roi.png",
+    "resume_general": "Carte de la maîtrise, du pouvoir et de la réussite construite. C'est un stratège, un bâtisseur et un guide spirituel qui ne laisse rien au hasard. Il représente une personne influente, la sagesse, la discipline et la capacité à prendre les commandes de son destin.",
+    "phrase_cle": "Ne laissez pas le hasard décider, prenez les rênes.",
+    "mots_cles": [
+      "stratège", "pouvoir", "maîtrise", "réussite", "personne influente", "sagesse", "discipline", 
+      "stabilité", "construction", "affaires", "mentor", "leader"
+    ],
+    "interpretations": {
+      "general": "Le Roi de Trèfle est un personnage puissant, un maître du jeu qui avance avec une vision claire. Il symbolise la réussite qui se prépare, se cultive et se travaille avec intelligence. Il pousse à agir avec stratégie, à anticiper et à bâtir sur des bases solides.",
+      "endroit": "Représente un homme de pouvoir, un mentor, un chef ou un protecteur qui peut ouvrir des portes. Annonce une période où il faut prendre le contrôle, structurer ses projets et agir avec sagesse. C'est le signe d'une réussite construite sur la patience et la discipline.",
+      "ombre_et_defis": "Son aspect de 'contrôle' peut devenir une faiblesse. Il peut représenter une rigidité excessive, un refus de l'imprévu ou une tendance à vouloir tout maîtriser, y compris les émotions. Peut indiquer un leader qui ne se laisse pas déstabiliser, mais qui manque de souplesse.",
+      "conseil": "Prenez le pouvoir sur votre vie. Fixez des objectifs clairs, soyez stratège, anticipez et ne vous laissez pas distraire. La prospérité se cultive et la chance n'existe pas sans action. Entourez-vous des bonnes personnes pour bâtir durablement."
+    },
+    "domaines": {
+      "amour": "Incarne la recherche de solidité et d'engagement. Il ne représente pas la passion foudroyante, mais un amour bâti sur le long terme, la confiance et la loyauté. Annonce une phase de stabilité et d'évolution dans un couple ou, pour un célibataire, le conseil de choisir avec discernement.",
+      "travail": "Symbole de l'homme d'affaires, du dirigeant stable et réfléchi. Associé à l'argent, aux affaires et à la réussite matérielle. Il indique qu'il faut agir avec sagesse, ne pas brûler les étapes et garder son sang-froid pour mener à bien un projet.",
+      "finances": "C'est son domaine d'excellence. Il sait comment investir et gérer. Il représente la gestion, la prudence et l'anticipation. Il n'y a pas de place pour l'improvisation ; chaque mouvement financier doit être réfléchi et stratégique.",
+      "spirituel": "C'est un guide qui rappelle que la réussite ne tombe pas du ciel. Il invite à prendre conscience de sa puissance intérieure, à structurer ses ambitions et à maîtriser son destin avec intelligence. Il est la voix de la maturité qui sait que la patience est une vertu."
+    },
+    "prompts_visuels": [
+      "un grand entrepreneur regardant un plan de construction d'un building",
+      "un joueur d'échecs déplaçant sa pièce reine avec une confiance sereine",
+      "un mentor guidant un plus jeune dans un atelier",
+      "un homme tenant une hache (et non une épée), symbole de son autorité tranchante",
+      "une main solide posant la dernière brique d'un mur"
+    ],
+    "prompts_conversationnels": [
+      "Le Roi de Trèfle est un 'bâtisseur'. Quelle est la différence fondamentale entre 'bâtir' une relation et la 'laisser se développer' au hasard ?",
+      "La fiche dit qu'il est un 'protecteur, mais pas un sauveur'. Expliquez cette nuance dans le contexte d'un manager qui aide un employé.",
+      "Cette carte représente un leader qui 'calcule ses coups avant d'agir'. Comparez cette approche à celle du Valet de Carreau qui incarne plutôt 'l'élan et l'initiative'.",
+      "Le Roi de Trèfle 'ne se laisse pas emporter par le vent'. Dans quelle situation professionnelle concrète cette qualité de sang-froid serait-elle cruciale ?",
+      "On dit que pour incarner son énergie, il faut 'fixer des objectifs clairs' et 'ne pas se laisser distraire'. Pourquoi la discipline est-elle si centrale dans la symbolique de cette carte ?"
+    ],
+    "combinaisons": []
   }
 ];
