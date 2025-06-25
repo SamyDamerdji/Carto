@@ -38,7 +38,7 @@ const FeatureCard = ({ feature, index }: { feature: (typeof features)[0], index:
       <div className="relative z-10 flex h-full flex-col">
         <div className="flex items-center gap-4">
           <feature.icon className="h-7 w-7 text-primary" />
-          <h3 className="font-headline text-xl font-bold uppercase tracking-wider text-foreground/90">
+          <h3 className="font-headline text-xl font-bold uppercase tracking-wider text-card-foreground/90">
             {feature.title}
           </h3>
         </div>
