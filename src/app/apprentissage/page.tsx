@@ -1,7 +1,6 @@
 import { Header } from "@/components/layout/header";
 import { BookOpen, Palette, KeyRound } from "lucide-react";
 import { InfoCard } from "@/components/common/info-card";
-import { Footer } from "@/components/layout/footer";
 
 export default function ApprentissagePage() {
   return (
@@ -30,7 +29,6 @@ export default function ApprentissagePage() {
           </InfoCard>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }
