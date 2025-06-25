@@ -373,6 +373,52 @@ export const trefleCards: Card[] = [
     ]
   },
   {
+    "id": "trefle_05",
+    "nom_carte": "Cinq de Trèfle",
+    "valeur": 5,
+    "couleur": "Trèfle",
+    "image_url": "/images/cards/trefle_05.png",
+    "resume_general": "Carte de transition et de dynamisme. Elle évoque une évolution naturelle, une bascule entre stabilité et nouveauté, et une invitation à s'adapter. Ce n'est pas une crise, mais une friction nécessaire pour avancer vers quelque chose de meilleur.",
+    "phrase_cle": "Quelque chose doit évoluer, adaptez-vous avec enthousiasme.",
+    "mots_cles": [
+      "transition", "adaptation", "dynamisme", "évolution", "ajustement", "secousse", "mouvement",
+      "opportunité", "changement", "réussite", "réconciliation"
+    ],
+    "interpretations": {
+      "general": "Le 5 de Trèfle parle de transition sans tension majeure. C'est la bascule entre stabilité (4) et nouveauté (6). Le chiffre 5 est une secousse, une friction qui pousse à reconsidérer et à ajuster les aspects concrets de la vie (travail, finances, organisation). C'est une invitation à vous adapter.",
+      "endroit": "Annonce que les événements à venir seront positifs et encourageants. C'est un signe de réussite personnelle, que ce soit une nouvelle rencontre, la consolidation d'une relation, une rentrée d'argent ou une évolution de carrière. Tout va s'aligner.",
+      "ombre_et_defis": "Peut représenter une résistance au changement, un entêtement qui empêche l'évolution naturelle. Peut aussi signaler de la fatigue ou du stress face à une situation. Avec la Dame de Pique, un défi pourrait venir compliquer le changement.",
+      "conseil": "N'ayez pas peur d'évoluer. Cette carte est une chance, même si elle peut sembler inconfortable. Il s'agit de reconnaître les opportunités, de bien les évaluer et de foncer une fois que tout est clair. Réalignez vos choix avec votre énergie profonde."
+    },
+    "domaines": {
+      "amour": "Évoque des changements affectifs positifs. Une nouvelle rencontre, une réconciliation, un nouveau départ amoureux ou une consolidation de relation sont à prévoir. Avec le Valet de Cœur, c'est un vent de fraîcheur qui souffle sur le cœur.",
+      "travail": "Peut parler d'un ajustement subtil mais nécessaire : revoir ses horaires, poser ses limites, oser une discussion importante. Le terrain professionnel bouge. Avec le Roi de Carreau, c'est un tournant dans la carrière, une invitation à prendre le leadership.",
+      "finances": "Ce n'est pas la fortune soudaine, mais un coup d'œil lucide sur sa gestion. Peut indiquer un budget à revoir, un investissement qui demande réflexion, ou des récompenses financières qui arrivent après des efforts constants (avec le 9 de trèfle).",
+      "spirituel": "C'est un appel à réaligner ses choix avec son énergie profonde. Le mouvement, même discret, fait partie du chemin. Le 5 de Trèfle pousse à respirer autrement, à ne pas rester figé dans ce qui ne nourrit plus, à réinjecter de la fluidité dans sa réalité."
+    },
+    "prompts_visuels": [
+      "une pièce de puzzle qui bouge légèrement, révélant une nouvelle image en dessous",
+      "un vent doux qui pousse une porte à s'ouvrir complètement",
+      "une personne ajustant la voile d'un bateau pour mieux prendre le vent",
+      "des dominos qui commencent à tomber en une chaîne harmonieuse",
+      "une main qui réorganise des objets sur un bureau pour créer un espace plus fluide"
+    ],
+    "prompts_conversationnels": [
+      "Le 5 de Trèfle représente une 'secousse bienveillante'. Comment une secousse peut-elle être bienveillante ?",
+      "La fiche dit : 'ce n'est pas une crise, mais une friction'. Expliquez la différence entre ces deux concepts dans le contexte d'un changement.",
+      "Cette carte invite à 'réajuster un projet'. Donnez un exemple concret d'ajustement subtil qui peut avoir un impact majeur.",
+      "Comment l'énergie de 'transition' du 5 de Trèfle se distingue-t-elle de la 'fin de cycle' du 9 de Pique ?",
+      "Si le 5 de Trèfle vous dit 'Tu peux faire autrement', que suggère-t-il sur la nature des règles que nous nous imposons ?"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "coeur_10", "signification": "La rencontre de l'amour ou une union renforcée. Un bonheur affectif se profile." },
+      { "carte_associee_id": "pique_dame", "signification": "Attention, un défi pourrait compliquer le changement positif. Une figure féminine pourrait semer le trouble." },
+      { "carte_associee_id": "carreau_roi", "signification": "Un tournant dans la carrière. Encourage à prendre le leadership dans ses projets professionnels." },
+      { "carte_associee_id": "trefle_09", "signification": "La persévérance est la clé. Continuez vos efforts, la récompense financière ou professionnelle est proche." },
+      { "carte_associee_id": "coeur_valet", "signification": "Un renouveau dans la vie sentimentale, un vent de fraîcheur, une nouvelle rencontre ou une réconciliation." }
+    ]
+  },
+  {
     "id": "trefle_as",
     "nom_carte": "As de Trèfle",
     "valeur": 1,
