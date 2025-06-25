@@ -356,9 +356,47 @@ export const carreauCards: Card[] = [
       { "carte_associee_id": "carreau_08", "signification": "Indique un travail acharné vers un objectif, représentant la persévérance nécessaire pour réaliser des ambitions." },
       { "carte_associee_id": "carreau_09", "signification": "Symbolise l'accomplissement et l'aboutissement. Invite à réfléchir sur le chemin parcouru avant la conclusion d'une étape." }
     ]
+  },
+  {
+    "id": "carreau_06",
+    "nom_carte": "Six de Carreau",
+    "valeur": 6,
+    "couleur": "Carreau",
+    "image_url": "/images/cards/carreau_06.png",
+    "resume_general": "Carte de mouvement progressif, de transition et d'équilibre. Elle symbolise un changement doux, une progression pas à pas, et l'importance de la patience et de la diplomatie. C'est un guide vers la nouveauté et un rappel que chaque petit pas compte.",
+    "phrase_cle": "Tu avances. Même si c'est lent, c'est juste.",
+    "mots_cles": [
+      "progression", "changement doux", "équilibre", "alignement", "diplomatie", "action", "patience",
+      "cheminement", "démarches", "organisation", "mouvement", "nouveauté"
+    ],
+    "interpretations": {
+      "general": "Le 6 de Carreau est une carte de cheminement. Elle symbolise un changement qui n'est pas brutal mais arrive comme une brise légère. Le chiffre 6 évoque l'équilibre, invitant à réorganiser ses priorités matérielles. Elle rappelle que le cheminement est souvent plus important que la destination.",
+      "endroit": "Carte d'évolution discrète mais prometteuse. Annonce des efforts qui portent leurs fruits, des déplacements utiles, et des échanges concrets. Symbolise une phase d'organisation, de mise en place, un projet en transition ou des démarches en cours (candidature, formation).",
+      "ombre_et_defis": "Tout changement s'accompagne de défis. Peut indiquer des obstacles, des retards (rendez-vous manqué, projet qui prend du temps). Entourée de cartes négatives, elle peut signaler des obstacles administratifs ou un besoin de réévaluer ses priorités. Le défi est de persévérer malgré la lenteur apparente.",
+      "conseil": "Ne brûlez pas les étapes, chaque action compte. Prenez le temps de la réflexion pour affiner vos plans. Faites preuve de diplomatie dans votre communication. C'est un appel à l'action, une invitation à prendre les rênes de votre destin, mais avec calme et maîtrise."
+    },
+    "domaines": {
+      "amour": "Indique une relation qui prend son temps. Peut évoquer une phase de réajustement, un rapprochement progressif ou un besoin de mieux communiquer pour avancer. Ce n'est pas la passion brûlante, mais l'amour qui se construit jour après jour avec patience.",
+      "travail": "C'est une bonne carte pour les projets professionnels. Elle signale des démarches en cours (candidature, formation, collaboration), une mobilité possible (mutation) ou un besoin de structurer ses ambitions. C'est un élan vers l'avant, une progression tangible.",
+      "finances": "Invite à revoir ses ambitions et ses objectifs financiers. C'est le moment de repenser son approche, de réorganiser ses priorités et de trouver un équilibre. La carte encourage une gestion réfléchie plutôt que des folies inutiles.",
+      "spirituel": "Parle du 'chemin d'âme'. Évoque le fait de trouver sa voie, même à tâtons. Encourage à écouter les petits signes et à ne pas minimiser les petits pas du quotidien. Rappelle que le sacré se cache aussi dans l'ordinaire et qu'il faut équilibrer le matériel et le spirituel."
+    },
+    "prompts_visuels": [
+      "une personne montant un escalier, marche par marche, avec concentration",
+      "une brise légère faisant doucement tourner les pales d'un moulin",
+      "un pont en construction, dont les fondations sont solides et l'avancement est visible",
+      "deux diplomates se serrant la main après une longue négociation",
+      "une personne faisant un 'ménage de printemps' méticuleux dans son bureau"
+    ],
+    "prompts_conversationnels": [
+      "Le 6 de Carreau est une carte de 'progression'. Comment cette progression se différencie-t-elle du 'mouvement' plus général du 8 de Carreau ?",
+      "La fiche dit : 'Le cheminement est souvent plus important que la destination'. Expliquez cette phrase dans le contexte d'un projet à long terme.",
+      "Cette carte apporte une 'touche de diplomatie'. Donnez un exemple concret où la diplomatie est plus efficace que la confrontation directe.",
+      "En amour, cette carte parle de 'l'amour qui se construit jour après jour'. Qu'est-ce que cela implique en termes d'efforts et d'attentes ?",
+      "Le message est 'Ne brûle pas les étapes'. Quel est le risque si l'on ignore ce conseil ?"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "carreau_07", "signification": "Avec le 7 de Carreau, cette association symbolise la progression, un mouvement vers l'avant malgré les obstacles et les incertitudes."}
+    ]
   }
 ]
-
-    
-
-    
