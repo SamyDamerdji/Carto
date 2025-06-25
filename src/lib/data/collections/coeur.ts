@@ -318,37 +318,47 @@ export const coeurCards: Card[] = [
     "valeur": 7,
     "couleur": "Cœur",
     "image_url": "/images/cards/coeur_07.png",
-    "resume_general": "Le Sept de Cœur est la carte du choix et de l'illusion. Elle représente une situation où de nombreuses options se présentent, mais où l'imagination et la rêverie prennent le pas sur la réalité.",
-    "phrase_cle": "Faites un choix éclairé et ancré dans le réel.",
+    "resume_general": "Carte du cœur en équilibre instable. Elle symbolise le doute affectif, les illusions douces, les désirs flous et les choix émotionnels. C'est un miroir qui révèle ce qui flotte dans notre monde émotionnel, invitant à faire le tri avec lucidité.",
+    "phrase_cle": "Est-ce réel, ou est-ce ce que je projette ?",
     "mots_cles": [
-      "Choix", "illusions", "rêverie", "fantasmes", "indécision", "procrastination", "pragmatisme", "clarification"
+      "doute affectif", "illusion", "choix émotionnel", "réflexion", "transition du cœur", "attachement confus", "intuition",
+      "désir flou", "sincérité", "tri émotionnel", "amour karmique"
     ],
     "interpretations": {
-      "general": "Le Sept de Cœur est la carte du choix et de l'illusion. Elle représente une situation où de nombreuses options se présentent, mais où l'imagination et la rêverie prennent le pas sur la réalité. Il y a un risque de se perdre dans des fantasmes, d'idéaliser des personnes ou des situations, et de manquer de pragmatisme. C'est l'indécision causée par une surabondance de possibilités. La carte met en garde contre la procrastination et la dispersion, et invite à faire un choix éclairé et ancré dans le réel.",
-      "endroit": "De nombreuses options se présentent, mais l'imagination prend le pas sur la réalité. Risque de se perdre dans des fantasmes et de manquer de pragmatisme.",
-      "ombre_et_defis": "Indécision causée par une surabondance de possibilités, procrastination et dispersion.",
-      "conseil": "Faites un choix éclairé et ancré dans le réel. Méfiez-vous des illusions et ne reportez pas vos décisions."
+      "general": "Le 7 de Cœur est le cœur qui hésite, ni tout à fait ouvert, ni tout à fait fermé. Il parle des histoires qu'on se raconte pour ne pas voir ce qui grince. Il ne juge pas, il révèle. Il nous pousse à regarder notre cœur avec tendresse et lucidité pour faire le tri entre l'amour vrai et le besoin d'être aimé.",
+      "endroit": "Signale une transition du cœur, un passage, un carrefour. C'est le moment de sentir sans s'accrocher et d'écouter son intuition sans la maquiller. C'est une carte précieuse qui, derrière le doute, cache une vérité fine qui éclaire tout.",
+      "ombre_et_defis": "Son côté ombre est l'illusion amoureuse, la déception, une vérité qui éclate. Il peut représenter une relation qui flotte, une peur d'aimer pleinement, ou un attachement confus. C'est le cœur qui plane, parfois sans parachute.",
+      "conseil": "Faites le tri émotionnel. Posez-vous les bonnes questions : est-ce que cette relation vous convient ? Est-ce le cœur qui parle ou l'ego ? Regardez vos illusions en face, avec douceur. Il faut oser la vérité émotionnelle, même si elle pique un peu."
     },
     "domaines": {
-      "amour": "Période de rêverie et d'idéalisation. Il est important de distinguer les fantasmes de la réalité de la relation et de faire des choix basés sur des faits concrets.",
-      "travail": "Face à de multiples opportunités, le risque est de se disperser ou de procrastiner. La carte invite à analyser les options de manière pragmatique avant de s'engager.",
-      "finances": "Attention aux investissements ou aux dépenses basés sur des illusions ou des promesses irréalistes. Une clarification et une approche terre-à-terre sont nécessaires.",
-      "spirituel": "L'imagination est fertile, mais il est crucial de ne pas se déconnecter de la réalité. La spiritualité doit être ancrée dans le quotidien pour être constructive."
+      "amour": "Parle de désirs flous, de relations qui flottent. Est-ce réciproque ? Est-ce réel ? C'est le domaine des amours qui reviennent, des leçons sentimentales qu'on rejoue sans en comprendre la trame. Un lien avec une décision : partir ou rester ?",
+      "travail": "Peut indiquer une période de doute concernant ses choix de carrière. Une hésitation à s'engager pleinement dans un projet ou une collaboration. La carte invite à écouter son intuition pour savoir si le chemin professionnel est vraiment aligné avec ses valeurs profondes.",
+      "finances": "Les décisions financières sont teintées d'émotion et de doute. Il faut se méfier des 'illusions douces' en matière d'argent et faire un tri entre les envies et les besoins réels. La carte suggère une réflexion avant tout investissement.",
+      "spirituel": "Symbolise l'intuition fragile, les messages du cœur qui n'ont pas encore trouvé leurs mots. Invite à ressentir sans se noyer, à écouter sans fantasmer. C'est une invitation à se reconnecter à son imaginaire affectif pour en comprendre les reflets. Peut indiquer un renouveau émotionnel si on accepte de lâcher les mirages."
     },
     "prompts_visuels": [
-      "une personne devant plusieurs miroirs déformants, ne sachant lequel reflete la réalité",
-      "un chemin qui se divise en de multiples sentiers brumeux",
-      "des châteaux de sable élaborés, menacés par la marée montante",
-      "quelqu'un regardant des bulles de savon colorées, fasciné",
-      "une boussole dont l'aiguille tourne sans jamais s'arrêter"
+      "une personne marchant dans une brume épaisse, ne distinguant que quelques pas devant elle",
+      "un miroir qui renvoie un reflet légèrement flou et poétique",
+      "deux chemins qui s'offrent dans une forêt, l'un ensoleillé, l'autre ombragé",
+      "un cœur enfermé dans une bulle de savon iridescente",
+      "une personne tenant un fil fragile entre ses doigts, comme si elle hésitait à le couper ou à le renforcer"
     ],
     "prompts_conversationnels": [
-      "Le Sept de Cœur met en garde contre le 'mirage émotionnel'. Donnez un exemple de ce que cela pourrait être dans une amitié naissante.",
-      "Comment peut-on utiliser l'imagination de manière constructive, sans tomber dans le piège de l'illusion dénoncé par cette carte ?",
-      "La carte suggère une 'indécision causée par une surabondance de possibilités'. Quelle est la première étape pour sortir de cette paralysie ?",
-      "Comparez 'l'indécision' du Sept de Cœur avec le 'questionnement' du Dix de Pique. Quelle est la nuance ?",
-      "Si vous deviez donner un conseil simple à quelqu'un qui tire cette carte, quel serait-il ?"
+      "Le 7 de Cœur est 'le cœur en équilibre instable'. Comment cette instabilité peut-elle être une étape nécessaire à la croissance émotionnelle ?",
+      "La fiche dit que la carte 'ne juge pas, elle révèle'. Quelle est la différence entre un jugement et une révélation ?",
+      "Expliquez le concept d' 'amour karmique' ou de 'leçon sentimentale qu'on rejoue'.",
+      "Comment peut-on 'faire le tri entre l'amour vrai et le besoin d'être aimé' ?",
+      "Si le 7 de Pique est un 'caillou dans la chaussure', quelle métaphore pourrait-on utiliser pour décrire le 7 de Cœur ?"
     ],
-    "combinaisons": []
+    "combinaisons": [
+      { "carte_associee_id": "coeur_10", "signification": "Suggère une profonde satisfaction et un accomplissement dans les relations amoureuses après une période de doute." },
+      { "carte_associee_id": "trefle_07", "signification": "Implique un équilibre nécessaire entre les émotions et les efforts pratiques. La persévérance sera récompensée." },
+      { "carte_associee_id": "coeur_dame", "signification": "Évoque une influence féminine bienveillante, apportant compréhension et tendresse dans une situation floue." },
+      { "carte_associee_id": "carreau_07", "signification": "Suggère des défis ou des obstacles dans la poursuite des objectifs amoureux. La nécessité de surmonter des difficultés." },
+      { "carte_associee_id": "pique_10", "signification": "Indique une période de transition difficile dans les relations, pouvant mener à un renouveau émotionnel." },
+      { "carte_associee_id": "coeur_08", "signification": "Renforce l'idée de bonheur émotionnel et de progression dans les relations. Symbolise le développement et la croissance." }
+    ]
   }
 ];
+
+    
