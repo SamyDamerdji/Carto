@@ -314,7 +314,7 @@ export const piqueCards: Card[] = [
     "prompts_conversationnels": [
       "Le 8 de Pique est décrit comme 'sombre, mais pas sinistre'. Quelle est la nuance entre ces deux termes dans le contexte d'une épreuve ?",
       "La carte est comparée à un 'chemin de montagne abrupt' où le chiffre 8 assure 'qu'un sommet attend'. Expliquez cette métaphore.",
-      "La fiche conseille de 'chercher l'équilibre'. Comment l'idée d'équilibre peut-elle être une réponse face à une série de défis ?",
+      "La fiche conseille de 'chercher l'équilibre'. Comment l'idée d'équilibre peut-être une réponse face à une série de défis ?",
       "Comment distinguer l' 'introspection' nécessaire du 8 de Pique de la 'paralysie par l'analyse' ?",
       "Avec le 7 de Trèfle, cette carte annonce 'la fin d'une maladie et la guérison'. Comment une carte d'épreuve peut-elle, en association, devenir un signe de guérison ?"
     ],
@@ -404,5 +404,40 @@ export const piqueCards: Card[] = [
       "un calendrier où une date a été décalée d'un jour avec une petite note souriante"
     ],
     "combinaisons": []
+  },
+  {
+    "id": "pique_05",
+    "nom_carte": "Cinq de Pique",
+    "valeur": 5,
+    "couleur": "Pique",
+    "image_url": "/images/cards/pique_05.png",
+    "resume_general": "Carte d'avertissement, de danger émotionnel et de contretemps. C'est le 'grain de sable dans l'engrenage'. Elle prévient des trahisons, des faux amis et des relations épuisantes. Elle n'est pas une fatalité, mais un appel à la vigilance et à la réflexion.",
+    "phrase_cle": "Attention, danger émotionnel ! Ralentissez et observez.",
+    "mots_cles": [
+      "avertissement", "danger émotionnel", "contretemps", "patience", "trahison", "faux amis", "rupture",
+      "réflexion", "épuisement", "mélancolie", "malentendus", "vigilance"
+    ],
+    "interpretations": {
+      "general": "Le 5 de Pique est comme un panneau 'virage dangereux'. Il annonce un retard, un contretemps ou un souci mineur qui teste la patience. Il n'est pas dramatique, mais embêtant. C'est une carte éphémère, comme un nuage qui passe, rappelant que la lumière revient vite.",
+      "endroit": "Murmure des avertissements sur des dangers émotionnels : un coup bas, une trahison inattendue. Peut signifier une rupture ou une période compliquée. C'est une opportunité de réfléchir et de voir si une situation mérite vos larmes. Il invite à la vigilance et au recul.",
+      "ombre_et_defis": "Le défi est de ne pas sombrer dans le pessimisme. La carte peut pointer des relations qui épuisent, des malentendus qui s'accumulent ou une sensation de solitude. Elle met en garde contre les faux amis, les 'vampires émotionnels' et les promesses vides.",
+      "conseil": "Ralentissez, observez, et ne donnez pas votre confiance les yeux fermés. Faites le tri dans vos relations. Ne confondez pas gentillesse et naïveté. Gardez vos projets pour vous. Apprenez à laisser partir ce qui n'a plus sa place pour faire de la place à un souffle nouveau."
+    },
+    "domaines": {
+      "amour": "Peut signifier une rupture, une période compliquée, ou une relation qui épuise plus qu'elle ne nourrit. C'est une invitation à réfléchir sur la relation et à se demander si c'est l'heure de tourner la page. Prévenir des malentendus qui s'accumulent.",
+      "travail": "Peut indiquer une période de stagnation ou de tension. Le conseil est de prendre du recul, de ne pas se laisser manipuler et d'observer les comportements plutôt que d'écouter les promesses. Le 5 de pique peut aussi inviter à transformer les souvenirs (projets passés) en forces.",
+      "finances": "Avec une carte de carreau, elle parle de mélancolie qui s'accroche au matériel ou au passé. C'est un avertissement contre des décisions financières basées sur la nostalgie ou l'attachement. Il faut garder l'essentiel et se défaire du superflu.",
+      "spirituel": "Agit comme un miroir, reflétant les zones d'ombre à explorer. Elle n'est jamais une fin en soi, mais une note dans une symphonie. Elle rappelle que la vie n'est jamais linéaire, mais toujours résoluble. C'est une invitation à la patience et au calme."
+    },
+    "prompts_visuels": [
+      "un panneau de signalisation 'virage dangereux' sur une route de campagne sinueuse",
+      "un grain de sable bloquant les rouages d'une montre ancienne",
+      "une personne regardant avec méfiance une autre qui lui tend la main avec un sourire forcé",
+      "un bouquet de roses avec de longues épines bien visibles",
+      "une personne triant de vieilles photos, en mettant certaines de côté avec une expression décidée"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "trefle_05", "signification": "Avec le 5 de Trèfle, cette carte met en garde contre un défi qui pourrait compliquer un changement positif. Une figure féminine ou une personne d'influence pourrait semer le trouble."}
+    ]
   }
 ]
