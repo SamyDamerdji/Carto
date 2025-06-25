@@ -326,6 +326,53 @@ export const trefleCards: Card[] = [
     ]
   },
   {
+    "id": "trefle_06",
+    "nom_carte": "Six de Trèfle",
+    "valeur": 6,
+    "couleur": "Trèfle",
+    "image_url": "/images/cards/trefle_06.png",
+    "resume_general": "Carte de l'effort récompensé, des opportunités discrètes et de l'énergie douce. Elle symbolise la patience, l'équilibre et le partage. C'est un rappel que les petits gestes et la persévérance mènent à la réussite et à l'harmonie.",
+    "phrase_cle": "Soyez curieux, le gain est à portée de main.",
+    "mots_cles": [
+      "effort", "récompense", "patience", "opportunité discrète", "douceur", "équilibre", "harmonie",
+      "partage", "soutien", "gain", "curiosité", "intuition"
+    ],
+    "interpretations": {
+      "general": "Le 6 de Trèfle est comme un potager : on plante, on arrose, on est patient, et la récolte arrive. Il parle de chances à saisir et d'opportunités discrètes. Il résonne avec le quotidien et rappelle que l'effort paie. C'est aussi une carte qui invite à ralentir et à observer les petits détails qui comptent.",
+      "endroit": "Annonce que les efforts finiront par payer. C'est une énergie douce et une belle énergie de partage. Les opportunités sont discrètes mais réelles. C'est un rappel que l'âme a besoin de repos et d'équilibre. Une invitation à donner autant qu'à recevoir.",
+      "ombre_et_defis": "Peut représenter une période où la vie va trop vite, un appel à ralentir. Le défi est de ne pas se décourager si la récompense tarde à venir. Il faut faire preuve de patience et de confiance dans le processus.",
+      "conseil": "Prenez le temps de décortiquer votre situation. Cherchez les opportunités cachées. Soyez curieux, parlez, explorez, lisez. Écoutez votre intuition, elle sait souvent mieux que vous. Ayez confiance en vos efforts."
+    },
+    "domaines": {
+      "amour": "Symbolise la douceur et les petits gestes qui comptent plus que les grandes déclarations. Pour les célibataires, elle murmure que l'amour peut être juste sous leur nez. C'est l'amitié à l'honneur, un lien profond, une aide discrète qui réchauffe le cœur.",
+      "travail": "Sur le plan matériel, c'est un message clair : les opportunités sont discrètes mais réelles. Une petite offre d'emploi, une astuce qui change la donne. Invite à la curiosité et à la recherche active. La collaboration est favorisée.",
+      "finances": "Annonce des gains inattendus avec l'As de Carreau. C'est un projet qui rapporte ou un cadeau du ciel. Le gain est à portée de main, mais il faut garder une part pour les imprévus. La prudence reste de mise avec le Roi de Pique.",
+      "spirituel": "Le 6 évoque l'équilibre et l'harmonie. C'est un rappel que l'âme a besoin de repos. C'est une invitation à la méditation, à la contemplation de la nature. Représente une spirale positive créée par les petits gestes de gentillesse et de partage."
+    },
+    "prompts_visuels": [
+      "une personne découvrant une petite clé oubliée dans la poche de son manteau",
+      "un potager où de jeunes pousses commencent à sortir de terre",
+      "deux personnes partageant un thé chaud, un moment simple et réconfortant",
+      "une main tendue offrant un parapluie à quelqu'un sous la pluie",
+      "un sourire échangé entre deux inconnus dans un café"
+    ],
+    "prompts_conversationnels": [
+      "Le 6 de Trèfle est comparé à un 'potager'. Développez cette métaphore pour expliquer la notion d'effort et de récompense.",
+      "Cette carte parle d' 'opportunités discrètes'. Comment peut-on entraîner son regard à repérer ces opportunités que d'autres ne voient pas ?",
+      "En amour, le 6 de Trèfle privilégie les 'petits gestes'. Pourquoi ces détails sont-ils parfois plus puissants que les 'grandéloquences' ?",
+      "Comment la notion d' 'équilibre' du chiffre 6 s'applique-t-elle à la fois au domaine matériel et au domaine spirituel ?",
+      "Avec le Roi de Pique, le 6 de Trèfle demande de la prudence. Quel type de 'détail important' une proposition pourrait-elle cacher dans ce contexte ?"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "coeur_10", "signification": "Promesse de bonheur, annonce des opportunités sentimentales et une possible réconciliation." },
+      { "carte_associee_id": "pique_roi", "signification": "Prudence avant tout. Appel à la vigilance dans les décisions stratégiques. Négociation en vue." },
+      { "carte_associee_id": "carreau_as", "signification": "Des finances au beau fixe. Annonce des gains inattendus, un projet qui rapporte." },
+      { "carte_associee_id": "coeur_dame", "signification": "L'amitié à l'honneur. Évoque un lien profond, des retrouvailles émouvantes ou un soutien discret." },
+      { "carte_associee_id": "trefle_valet", "signification": "Un coup de pouce inattendu. Un projet avance grâce à un allié, une collaboration efficace." },
+      { "carte_associee_id": "pique_08", "signification": "Un virage nécessaire. Invite au changement pour se sentir mieux, une décision courageuse à prendre." }
+    ]
+  },
+  {
     "id": "trefle_as",
     "nom_carte": "As de Trèfle",
     "valeur": 1,
