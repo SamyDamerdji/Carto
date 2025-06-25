@@ -42,7 +42,9 @@ const FeatureCard = ({ feature, index }: { feature: (typeof features)[0], index:
             {feature.title}
           </h3>
         </div>
-        <p className="mt-4 flex-grow text-secondary-foreground/90">{feature.description}</p>
+        <div className="mt-4 flex-grow rounded-lg bg-card-foreground/15 p-4">
+          <p className="text-secondary-foreground/90">{feature.description}</p>
+        </div>
       </div>
     </motion.div>
   );
