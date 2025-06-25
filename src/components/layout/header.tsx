@@ -28,7 +28,7 @@ export function Header() {
                 "flex flex-1 flex-col items-center gap-1 rounded-lg px-2 py-1.5 text-xs font-medium transition-all duration-300",
                 isActive
                   ? "text-primary"
-                  : "text-accent hover:bg-accent/50 hover:text-accent-foreground"
+                  : "text-muted-foreground hover:bg-accent/50 hover:text-accent-foreground"
               )}
             >
               <item.icon className="h-5 w-5" />
