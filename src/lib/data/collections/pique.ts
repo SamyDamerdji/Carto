@@ -169,13 +169,6 @@ export const piqueCards: Card[] = [
       "deux personnes se chuchotant un secret à l'oreille dans un couloir sombre",
       "une silhouette masquée lors d'un bal vénitien"
     ],
-    "prompts_conversationnels": [
-      "Le Valet de Pique est un 'stratège silencieux'. Décrivez une situation hypothétique où le silence et l'observation sont plus efficaces que l'action directe.",
-      "Cette carte est vue comme un 'révélateur de vérités'. Comment quelque chose de caché (une information, une intention) peut-il changer le cours d'un projet ?",
-      "Le Valet de Pique est comparé à 'un jeu d'échecs'. Quelle est la différence fondamentale entre une approche 'jeu d'échecs' et une approche 'coup de poker' dans une négociation ?",
-      "La fiche mentionne 'le cœur sous la carapace' pour le domaine amoureux. Expliquez ce que cette image signifie en termes de dynamique relationnelle.",
-      "Si le Valet de Pique est un allié, il est un 'allié discret'. Pourquoi un soutien caché serait-il parfois plus précieux qu'un soutien public et visible ?"
-    ],
     "combinaisons": [
       { "carte_associee_id": "coeur_as", "signification": "Alerte sur les émotions. Un amour caché ou une trahison potentielle est présente. L'intuition est primordiale." },
       { "carte_associee_id": "coeur_roi", "signification": "Mêmes significations qu'avec l'As de Coeur : émotions contrariées, amour caché. Prudence dans les relations." },
@@ -285,6 +278,56 @@ export const piqueCards: Card[] = [
       { "carte_associee_id": "trefle_07", "signification": "Des opportunités sont en vue, mais elles n'arriveront pas sans retards." },
       { "carte_associee_id": "pique_roi", "signification": "Une figure d'autorité entre en jeu. La situation présente un conseil ou un défi." },
       { "carte_associee_id": "pique_10", "signification": "La fin d'un chapitre est actée. Une porte se ferme, et une autre s'ouvre." }
+    ]
+  },
+  {
+    "id": "pique_08",
+    "nom_carte": "Huit de Pique",
+    "valeur": 8,
+    "couleur": "Pique",
+    "image_url": "/images/cards/pique_08.png",
+    "resume_general": "Carte d'obstacles, de défis et d'introspection. Elle n'est pas sinistre, mais demande un temps de recul et de réflexion. Symbolise la continuité (chiffre 8) après l'épreuve et rappelle que la vigilance est la meilleure alliée pour transformer les difficultés.",
+    "phrase_cle": "Affronte ce qui te freine, et avance.",
+    "mots_cles": [
+      "obstacle", "défi", "introspection", "réflexion", "avertissement", "tension", "maladie",
+      "chagrin", "continuité", "équilibre", "vigilance", "transformation"
+    ],
+    "interpretations": {
+      "general": "Le 8 de Pique est une carte qui intrigue et invite à la réflexion. Le pique rappelle les combats intérieurs, mais le chiffre 8, symbole de continuité et d'équilibre, assure qu'un chemin existe après chaque défi. Elle n'est pas forcément négative, mais demande d'observer avant d'agir.",
+      "endroit": "Murmure des avertissements : menaces, ennuis, trahisons, mauvaises nouvelles. Peut annoncer des médisances, des chagrins, voire des maladies. C'est une invitation à la vigilance et au courage pour déjouer les pièges du destin.",
+      "ombre_et_defis": "Lorsqu'elle est mal entourée, elle accentue les mauvais augures : ruptures (liaisons, mariages), perte financière, maladie, etc. C'est un signal clair de problèmes à venir qui demandent une grande prudence et une analyse fine de la situation.",
+      "conseil": "Prenez un moment de recul. Posez-vous les bonnes questions : est-ce le moment d'agir ou d'attendre ? Cherchez l'équilibre, car tout finit par se stabiliser. N'hésitez pas à éclaircir les malentendus et à libérer vos pensées qui tournent en boucle. La vigilance est votre meilleure alliée."
+    },
+    "domaines": {
+      "amour": "Annonce des chagrins et des blessures du cœur. Peut indiquer une rupture amoureuse inattendue (avec le Roi de Cœur), une liaison qui se brise (avec la Dame de Cœur) ou un amour qui vacille. Peut aussi représenter un amour malheureux.",
+      "travail": "Signale des tensions à dénouer ou un projet face à un obstacle. Invite à prendre les devants et à communiquer pour éclaircir les malentendus. Avec le Valet de Trèfle, il peut annoncer de mauvaises décisions ou une entreprise vouée à l'échec.",
+      "finances": "Souvent de mauvais augure. Annonce des pertes financières majeures (avec le 10 de Trèfle), des entreprises qui échouent (avec le Roi de Trèfle) ou des ennuis causés par des médisances (avec le 7 de Carreau). Demande une extrême prudence.",
+      "spirituel": "C'est une invitation à l'introspection, à explorer ses mystères. Représente le chemin de montagne abrupt, mais le chiffre 8 assure qu'un sommet attend. Rappelle que chaque épreuve peut mener à un renouveau, comme un fleuve qui trouve toujours son chemin."
+    },
+    "prompts_visuels": [
+      "une personne gravissant un chemin de montagne escarpé sous un ciel nuageux",
+      "un fleuve puissant contournant un gros rocher pour continuer son cours",
+      "une personne s'arrêtant devant un miroir qui reflète une version d'elle-même plus sombre",
+      "des cercles entrelacés formant le symbole de l'infini",
+      "une loupe examinant les petites fissures d'un mur"
+    ],
+    "prompts_conversationnels": [
+      "Le 8 de Pique est décrit comme 'sombre, mais pas sinistre'. Quelle est la nuance entre ces deux termes dans le contexte d'une épreuve ?",
+      "La carte est comparée à un 'chemin de montagne abrupt' où le chiffre 8 assure 'qu'un sommet attend'. Expliquez cette métaphore.",
+      "La fiche conseille de 'chercher l'équilibre'. Comment l'idée d'équilibre peut-elle être une réponse face à une série de défis ?",
+      "Comment distinguer l' 'introspection' nécessaire du 8 de Pique de la 'paralysie par l'analyse' ?",
+      "Avec le 7 de Trèfle, cette carte annonce 'la fin d'une maladie et la guérison'. Comment une carte d'épreuve peut-elle, en association, devenir un signe de guérison ?"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "trefle_as", "signification": "L'ombre de la pauvreté et de la misère se dessine." },
+      { "carte_associee_id": "trefle_roi", "signification": "Les entreprises s'écroulent, les affaires échouent." },
+      { "carte_associee_id": "trefle_07", "signification": "Une lueur d'espoir : la fin d'une maladie et la guérison." },
+      { "carte_associee_id": "coeur_roi", "signification": "Une rupture amoureuse inattendue frappe sans prévenir." },
+      { "carte_associee_id": "coeur_07", "signification": "Une imprévoyance provoque des regrets." },
+      { "carte_associee_id": "carreau_roi", "signification": "Un rival ou un ennemi apporte difficultés et soucis." },
+      { "carte_associee_id": "carreau_dame", "signification": "Une femme jalouse est source de chagrin." },
+      { "carte_associee_id": "pique_09", "signification": "Mort ou décès en lien avec une maladie." },
+      { "carte_associee_id": "pique_07", "signification": "Un décès laissera un chagrin profond et durable." }
     ]
   }
 ]
