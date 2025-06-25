@@ -5,7 +5,7 @@ const features = [
   {
     id: "apprentissage",
     icon: <BookOpen className="h-7 w-7 text-primary" />,
-    title: "Apprentissage Guidé",
+    title: "Centre d'apprentissage",
     description: "Plongez dans la signification divinatoire de chaque carte. Des leçons claires et concises pour construire une base solide.",
   },
   {
