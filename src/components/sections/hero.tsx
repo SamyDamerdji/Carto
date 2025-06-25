@@ -9,7 +9,7 @@ export function Hero() {
       ></div>
       <div className="container relative z-10 mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center text-center">
-          <h1 className="font-headline text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+          <h1 className="font-headline text-4xl font-bold tracking-tight text-primary sm:text-5xl md:text-6xl lg:text-7xl">
             Le Cartomancien
           </h1>
           <p className="mt-6 max-w-3xl text-lg text-card-foreground/90 md:text-xl">
