@@ -13,7 +13,7 @@ export function InfoCard({ icon: Icon, title, children }: InfoCardProps) {
       <div className="relative z-10">
         <div className="flex items-center gap-4">
           <Icon className="h-7 w-7 text-primary" />
-          <h2 className="font-headline text-xl font-bold uppercase tracking-wider text-muted-foreground">{title}</h2>
+          <h2 className="font-headline text-xl font-bold uppercase tracking-wider text-foreground">{title}</h2>
         </div>
         <div className="mt-4 space-y-2 text-secondary-foreground/90">
           {children}

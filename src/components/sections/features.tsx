@@ -37,10 +37,8 @@ const FeatureCard = ({ feature, index }: { feature: (typeof features)[0], index:
       <div className="absolute -right-4 -top-4 h-24 w-24 bg-[radial-gradient(closest-side,hsl(var(--primary)/0.1),transparent)]"></div>
       <div className="relative z-10 flex h-full flex-col">
         <div className="flex items-center gap-4">
-          <div className="flex-shrink-0 rounded-lg bg-primary/10 p-3">
-            <feature.icon className="h-8 w-8 text-primary" />
-          </div>
-          <h3 className="font-headline text-xl font-bold uppercase tracking-wider text-muted-foreground">
+          <feature.icon className="h-7 w-7 text-primary" />
+          <h3 className="font-headline text-xl font-bold uppercase tracking-wider text-foreground">
             {feature.title}
           </h3>
         </div>
