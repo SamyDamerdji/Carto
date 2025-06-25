@@ -11,7 +11,7 @@ const features = [
   {
     id: "entrainement",
     icon: <BrainCircuit className="h-7 w-7 text-primary" />,
-    title: "Entraînement Interactif",
+    title: "Entraînement",
     description: "Testez et renforcez vos connaissances avec des quiz assistés par IA. La mémorisation devient un jeu.",
   },
   {
