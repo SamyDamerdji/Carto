@@ -32,20 +32,20 @@ const FeatureCard = ({ feature, index }: { feature: (typeof features)[0], index:
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.15 }}
       viewport={{ once: true, amount: 0.3 }}
-      className="relative overflow-hidden rounded-2xl border border-primary/20 bg-card/25 p-8 shadow-xl backdrop-blur-md"
+      className="relative h-full overflow-hidden rounded-2xl border border-white/10 bg-secondary/15 p-6 shadow-lg backdrop-blur-md"
     >
-      <div
-        className="absolute right-0 top-0 h-32 w-32 bg-[radial-gradient(closest-side,hsl(var(--primary)/0.1),transparent)] -translate-y-1/2 translate-x-1/2"
-      ></div>
-      <div className="flex items-center gap-4">
-        <div className="rounded-lg bg-primary/10 p-3">
-          <feature.icon className="h-8 w-8 text-primary" />
+      <div className="absolute -right-4 -top-4 h-24 w-24 bg-[radial-gradient(closest-side,hsl(var(--primary)/0.1),transparent)]"></div>
+      <div className="relative z-10 flex h-full flex-col">
+        <div className="flex items-center gap-4">
+          <div className="flex-shrink-0 rounded-lg bg-primary/10 p-3">
+            <feature.icon className="h-8 w-8 text-primary" />
+          </div>
+          <h3 className="font-headline text-xl font-bold uppercase tracking-wider text-muted-foreground">
+            {feature.title}
+          </h3>
         </div>
-        <h3 className="font-headline text-2xl font-bold text-white">
-          {feature.title}
-        </h3>
+        <p className="mt-4 flex-grow text-secondary-foreground/90">{feature.description}</p>
       </div>
-      <p className="mt-4 text-card-foreground/80">{feature.description}</p>
     </motion.div>
   );
 };
