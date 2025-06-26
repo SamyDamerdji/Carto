@@ -40,9 +40,9 @@ export function CardDetailsView({ card }: { card: Card }) {
         <h1 className="font-headline text-4xl font-bold tracking-tight text-primary sm:text-5xl uppercase drop-shadow-lg">
           {card.nom_carte}
         </h1>
-        <div className="relative w-full max-w-[240px] mx-auto aspect-[2.5/3.5] mt-4">
-          <div className="absolute inset-0 bg-card rounded-xl shadow-lg p-2">
-            <div className="relative h-full w-full">
+        <div className="mt-4">
+          <div className="bg-card rounded-xl shadow-lg p-4 flex flex-col items-center">
+            <div className="relative w-full max-w-[200px] aspect-[2.5/3.5]">
               <Image
                 src={card.image_url}
                 alt={`Image de la carte ${card.nom_carte}`}
@@ -51,6 +51,9 @@ export function CardDetailsView({ card }: { card: Card }) {
                 sizes="(max-width: 640px) 100vw, 50vw"
               />
             </div>
+            <p className="mt-4 text-sm text-card-foreground/80 text-center">
+              {card.interpretations.general}
+            </p>
           </div>
         </div>
       </div>
@@ -71,16 +74,12 @@ export function CardDetailsView({ card }: { card: Card }) {
 
       {/* C. Interprétations Détaillées */}
       <SectionWrapper title="Interprétations">
-        <Tabs defaultValue="general" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 h-auto flex-wrap md:grid-cols-4">
-            <TabsTrigger value="general">Général</TabsTrigger>
+        <Tabs defaultValue="endroit" className="w-full">
+          <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="endroit">Aspect Lumineux</TabsTrigger>
             <TabsTrigger value="ombre_et_defis">Défis & Obstacles</TabsTrigger>
             <TabsTrigger value="conseil">Le Conseil</TabsTrigger>
           </TabsList>
-          <TabsContent value="general" className="mt-4 p-4 bg-background/20 rounded-lg border border-primary/20 text-white/90">
-            <p>{card.interpretations.general}</p>
-          </TabsContent>
           <TabsContent value="endroit" className="mt-4 p-4 bg-background/20 rounded-lg border border-primary/20 text-white/90">
             <p>{card.interpretations.endroit}</p>
           </TabsContent>
@@ -149,7 +148,7 @@ export function CardDetailsView({ card }: { card: Card }) {
            <div className="space-y-4">
                {/* Placeholder for chat history */}
                <div className="h-40 p-4 rounded-lg border border-primary/30 bg-background/20 text-white/70 overflow-y-auto">
-                   <p><span className="font-bold text-primary">Le Mentor:</span> Bonjour! En quoi puis-je vous éclairer sur le {card.nom_carte} aujourd'hui ?</p>
+                   <p><span className="font-bold text-primary">Le Mentor:</span> Bonjour! En quoi puis-je vous éclairer sur le ${card.nom_carte} aujourd'hui ?</p>
                </div>
                <div className="flex items-center gap-2">
                    <Input
