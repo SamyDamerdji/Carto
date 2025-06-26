@@ -4,6 +4,7 @@ import type { CardSummary } from "@/lib/data/cards";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { BrainCircuit } from "lucide-react";
+import Link from "next/link";
 
 interface CardGridProps {
   cards: CardSummary[];
@@ -16,7 +17,7 @@ export function CardGrid({ cards }: CardGridProps) {
         <div key={card.id} className="relative h-full overflow-hidden rounded-2xl border border-primary/30 bg-secondary/20 p-3 shadow-lg shadow-primary/20 backdrop-blur-lg flex flex-col">
           <div className="absolute -right-2 -top-2 h-16 w-16 bg-[radial-gradient(closest-side,hsl(var(--primary)/0.1),transparent)]"></div>
           
-          <h3 className="font-headline text-xs whitespace-nowrap font-bold text-center text-primary drop-shadow-lg uppercase mb-2 h-5 flex items-center justify-center">
+          <h3 className="font-headline text-xs whitespace-nowrap font-bold text-center text-primary drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)] uppercase mb-2 h-5 flex items-center justify-center">
             {card.nom_carte}
           </h3>
           
@@ -37,6 +38,11 @@ export function CardGrid({ cards }: CardGridProps) {
           </div>
 
           <div className="mt-auto pt-3 flex flex-col gap-2">
+            <Link href={`/apprentissage/${card.id}`} passHref>
+                <Button variant="secondary" size="sm" className="text-xs w-full">
+                    Fiche détaillée
+                </Button>
+            </Link>
             <Button variant="secondary" size="sm" disabled className="text-xs">
                 <BrainCircuit />
                 Leçon interactive
