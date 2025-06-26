@@ -75,19 +75,15 @@ export function CardDetailsView({ card }: { card: Card }) {
       {/* C. Interprétations Détaillées */}
       <SectionWrapper title="Interprétations">
         <Tabs defaultValue="endroit" className="w-full">
-          <TabsList className="grid w-full grid-cols-3">
+          <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="endroit">Aspect Lumineux</TabsTrigger>
             <TabsTrigger value="ombre_et_defis">Défis & Obstacles</TabsTrigger>
-            <TabsTrigger value="conseil">Le Conseil</TabsTrigger>
           </TabsList>
           <TabsContent value="endroit" className="mt-4 p-4 bg-background/20 rounded-lg border border-primary/20 text-white/90">
             <p>{card.interpretations.endroit}</p>
           </TabsContent>
           <TabsContent value="ombre_et_defis" className="mt-4 p-4 bg-background/20 rounded-lg border border-primary/20 text-white/90">
             <p>{card.interpretations.ombre_et_defis}</p>
-          </TabsContent>
-          <TabsContent value="conseil" className="mt-4 p-4 bg-background/20 rounded-lg border border-primary/20 text-white/90">
-            <p>{card.interpretations.conseil}</p>
           </TabsContent>
         </Tabs>
       </SectionWrapper>
@@ -134,7 +130,14 @@ export function CardDetailsView({ card }: { card: Card }) {
         </SectionWrapper>
       )}
 
-      {/* F. Mes Notes Personnelles */}
+      {/* F. Le Conseil */}
+      <SectionWrapper title="Le Conseil">
+        <div className="p-4 bg-background/20 rounded-lg border border-primary/20 text-white/90">
+          <p>{card.interpretations.conseil}</p>
+        </div>
+      </SectionWrapper>
+
+      {/* G. Mes Notes Personnelles */}
        <SectionWrapper title={`Mes Notes sur le ${card.nom_carte}`}>
            <Textarea
                placeholder="Mes réflexions, associations personnelles, ou interprétations..."
@@ -143,7 +146,7 @@ export function CardDetailsView({ card }: { card: Card }) {
            />
        </SectionWrapper>
 
-       {/* G. Chat avec le Mentor IA */}
+       {/* H. Chat avec le Mentor IA */}
        <SectionWrapper title="Discuter avec le Mentor">
            <div className="space-y-4">
                {/* Placeholder for chat history */}
