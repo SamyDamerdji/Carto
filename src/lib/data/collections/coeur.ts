@@ -397,9 +397,7 @@ export const coeurCards: Card[] = [
       "En quoi consiste 'libérer un espace intérieur' avant d'accueillir une nouvelle relation ?",
       "Si vous deviez faire une action concrète inspirée par le 6 de Cœur, quelle serait-elle et pourquoi ?"
     ],
-    "combinaisons": [
-      { "carte_associee_id": "coeur_dame", "signification": "La Dame de Cœur, symbolisant la sensibilité, complète le Roi de Cœur, qui représente la sagesse, soulignant l'équilibre entre la force et la douceur dans les relations."}
-    ]
+    "combinaisons": []
   },
   {
     "id": "coeur_05",
