@@ -124,12 +124,14 @@ export function CardDetailsView({ card }: { card: Card }) {
       setMessages(prev => [...prev, oracleMessage]);
 
       if (isTtsEnabled) {
-          try {
-              const audioData = await textToSpeech(oracleResponse);
-              setAudioUrl(audioData.media);
-          } catch (ttsError) {
-              console.error("Error generating speech:", ttsError);
-          }
+          // Fire-and-forget TTS generation
+          textToSpeech(oracleResponse)
+              .then(audioData => {
+                  setAudioUrl(audioData.media);
+              })
+              .catch(ttsError => {
+                  console.error("Error generating speech:", ttsError);
+              });
       }
 
     } catch (error) {
