@@ -27,23 +27,25 @@ export function CardGrid({ cards }: CardGridProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: index * 0.02 }}
             className={cn(
-                "group relative aspect-[2.5/3.5] w-full overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl",
+                "group relative aspect-[2.5/3.5] w-full overflow-hidden rounded-2xl bg-white p-2 shadow-lg transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl",
                 colorClasses[card.couleur]
             )}
           >
-            <Image
-              src={card.image_url}
-              alt={`Image de la carte ${card.nom_carte}`}
-              fill
-              className="object-contain transition-transform duration-300"
-              sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 15vw"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-            <div className="absolute bottom-0 left-0 p-2 md:p-3">
-              <h3 className="font-headline text-sm md:text-base font-bold text-white group-hover:text-primary transition-colors duration-300">
-                {card.nom_carte}
-              </h3>
+            <div className="relative h-full w-full">
+              <Image
+                src={card.image_url}
+                alt={`Image de la carte ${card.nom_carte}`}
+                fill
+                className="object-contain transition-transform duration-300"
+                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 15vw"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+              <div className="absolute bottom-0 left-0 p-2 md:p-3">
+                <h3 className="font-headline text-sm md:text-base font-bold text-white group-hover:text-primary transition-colors duration-300">
+                  {card.nom_carte}
+                </h3>
+              </div>
             </div>
           </motion.div>
         </Link>
