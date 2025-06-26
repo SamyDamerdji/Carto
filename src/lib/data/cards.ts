@@ -40,9 +40,32 @@ export interface Card {
   combinaisons: CardCombination[];
 }
 
-export const cardsData: Card[] = [
+export interface CardSummary {
+  id: string;
+  nom_carte: string;
+  image_url: string;
+  couleur: CardColor;
+}
+
+const allCardsData: Card[] = [
   ...trefleCards,
   ...piqueCards,
   ...coeurCards,
   ...carreauCards,
 ];
+
+// Create a map for efficient lookups by ID
+const cardsDataMap = new Map(allCardsData.map(card => [card.id, card]));
+
+// Create a lightweight list for summary views
+export const cardsList: CardSummary[] = allCardsData.map(card => ({
+  id: card.id,
+  nom_carte: card.nom_carte,
+  image_url: card.image_url,
+  couleur: card.couleur,
+}));
+
+// Function to get full details for a single card
+export function getCardDetails(id: string): Card | undefined {
+  return cardsDataMap.get(id);
+}

@@ -1,4 +1,4 @@
-import type {Metadata} from 'next';
+import type {Metadata, Viewport} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { cn } from '@/lib/utils';
@@ -19,14 +19,21 @@ const ebGaramond = EB_Garamond({
   weight: ['400', '500', '600', '700', '800'],
 });
 
+const APP_NAME = "L'Oracle Royal";
+const APP_DESCRIPTION = "Apprenez et mémorisez les significations divinatoires des 52 cartes à jouer.";
+
 export const metadata: Metadata = {
-  applicationName: "Le Cartomancien",
-  title: "Le Cartomancien",
-  description: "Apprenez et mémorisez les significations divinatoires des 52 cartes à jouer.",
+  applicationName: APP_NAME,
+  title: {
+    default: APP_NAME,
+    template: `%s - ${APP_NAME}`,
+  },
+  description: APP_DESCRIPTION,
+  manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Le Cartomancien",
+    title: APP_NAME,
   },
   formatDetection: {
     telephone: false,
@@ -34,8 +41,12 @@ export const metadata: Metadata = {
   other: {
     "mobile-web-app-capable": "yes",
   },
-  themeColor: '#E0D6F5'
 };
+
+export const viewport: Viewport = {
+  themeColor: "#191970",
+};
+
 
 export default function RootLayout({
   children,
