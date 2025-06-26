@@ -38,11 +38,11 @@ export function CardGrid({ cards }: CardGridProps) {
           </div>
 
           <div className="mt-auto pt-3 flex flex-col gap-2">
-            <Button variant="secondary" size="sm" disabled>
+            <Button variant="secondary" size="sm" disabled className="text-xs">
                 <BrainCircuit />
                 Leçon interactive
             </Button>
-            <Button asChild size="sm">
+            <Button asChild size="sm" className="text-xs">
               <Link href={`/apprentissage/${card.id}`}>
                 <BookOpen />
                 Fiche détaillée
