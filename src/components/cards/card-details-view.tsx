@@ -89,7 +89,7 @@ export function CardDetailsView({ card }: { card: Card }) {
             </div>
           </div>
           <p className="mt-4 text-sm text-white/90 text-center">
-            {card.interpretations.endroit}
+            {card.interpretations.general}
           </p>
         </div>
       </motion.div>
@@ -114,7 +114,7 @@ export function CardDetailsView({ card }: { card: Card }) {
             </TabsTrigger>
           </TabsList>
           <TabsContent value="endroit" className="mt-4 p-4 bg-background/20 rounded-lg border border-primary/20 text-white/90">
-            <p>{card.interpretations.general}</p>
+            <p>{card.interpretations.endroit}</p>
           </TabsContent>
           <TabsContent value="ombre_et_defis" className="mt-4 p-4 bg-background/20 rounded-lg border border-primary/20 text-white/90">
             <p>{card.interpretations.ombre_et_defis}</p>
