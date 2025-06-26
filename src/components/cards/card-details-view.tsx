@@ -156,14 +156,16 @@ export function CardDetailsView({ card }: { card: Card }) {
                 return (
                   <div key={combo.carte_associee_id} className="flex items-center gap-4 rounded-xl bg-secondary/20 p-3 backdrop-blur-lg border border-primary/30 shadow-md">
                     <div className="relative h-20 w-14 flex-shrink-0">
-                      <div className="relative bg-card rounded-md shadow-lg p-1 w-full h-full">
-                        <Image
-                          src={associatedCard.image_url}
-                          alt={associatedCard.nom_carte}
-                          fill
-                          className="object-contain rounded-sm"
-                        />
-                      </div>
+                        <div className="bg-card rounded-md shadow-lg p-1 w-full h-full">
+                            <div className="relative w-full h-full p-1">
+                                <Image
+                                    src={associatedCard.image_url}
+                                    alt={associatedCard.nom_carte}
+                                    fill
+                                    className="object-contain"
+                                />
+                            </div>
+                        </div>
                     </div>
                     <div className="flex-1">
                       <h4 className="font-headline font-bold text-lg text-primary">{associatedCard.nom_carte}</h4>
