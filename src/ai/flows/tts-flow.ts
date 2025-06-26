@@ -10,7 +10,7 @@ import { googleAI } from '@genkit-ai/googleai';
 import { z } from 'zod';
 import wav from 'wav';
 
-export const TtsOutputSchema = z.object({
+const TtsOutputSchema = z.object({
   media: z.string().describe("The generated audio as a data URI. Expected format: 'data:audio/wav;base64,<encoded_data>'."),
 });
 export type TtsOutput = z.infer<typeof TtsOutputSchema>;
