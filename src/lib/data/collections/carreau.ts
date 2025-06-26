@@ -7,7 +7,7 @@ export const carreauCards: Card[] = [
     "nom_carte": "As de Carreau",
     "valeur": 1,
     "couleur": "Carreau",
-    "image_url": "/images/cards/carreau_as.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/01-carreau.png",
     "resume_general": "Carte du commencement matériel, de la prospérité et des opportunités concrètes. Elle représente le début d'un projet, un succès tangible, et une invitation à passer à l'action pour construire. C'est la carte des bâtisseurs et des visionnaires.",
     "phrase_cle": "Tout est possible, mais c'est à vous d'agir et de construire.",
     "mots_cles": [
@@ -47,7 +47,7 @@ export const carreauCards: Card[] = [
     "nom_carte": "Roi de Carreau",
     "valeur": 13,
     "couleur": "Carreau",
-    "image_url": "/images/cards/carreau_roi.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/R-carreau.png",
     "resume_general": "Carte de pouvoir, d'action et de dynamisme. Il représente l'autorité, la force pour diriger et la capacité à passer à l'action. C'est un homme d'action, un négociateur et un leader qui avance avec confiance et détermination.",
     "phrase_cle": "C'est le moment d'agir, fonce avec confiance !",
     "mots_cles": [
@@ -91,7 +91,7 @@ export const carreauCards: Card[] = [
     "nom_carte": "Dame de Carreau",
     "valeur": 12,
     "couleur": "Carreau",
-    "image_url": "/images/cards/carreau_dame.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/D-carreau.png",
     "resume_general": "Carte de la force mentale, du pragmatisme et de l'intelligence stratégique. Elle représente une femme influente, réfléchie et indépendante, qui maîtrise les sphères matérielles. Elle incarne l'équilibre entre l'émotion et la logique.",
     "phrase_cle": "Écoute ta tête, mais n'oublie pas ton cœur.",
     "mots_cles": [
@@ -135,7 +135,7 @@ export const carreauCards: Card[] = [
     "nom_carte": "Valet de Carreau",
     "valeur": 11,
     "couleur": "Carreau",
-    "image_url": "/images/cards/carreau_valet.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/V-carreau.png",
     "resume_general": "Carte du mouvement, de l'initiative et de l'énergie jeune. Il symbolise un esprit vif, curieux et créatif, prêt à agir et à prendre les devants. C'est un messager apportant de nouvelles idées, des opportunités concrètes et un encouragement à oser.",
     "phrase_cle": "Courage, fonce ! Il est temps d'agir.",
     "mots_cles": [
@@ -179,7 +179,7 @@ export const carreauCards: Card[] = [
     "nom_carte": "Dix de Carreau",
     "valeur": 10,
     "couleur": "Carreau",
-    "image_url": "/images/cards/carreau_10.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/10-carreau.png",
     "resume_general": "Carte de mouvement, de transition et de changement visible. Elle représente un avancement, un tournant décisif, et l'aboutissement des efforts. C'est le 'feu vert' cosmique qui pousse à l'action et annonce un nouveau chapitre.",
     "phrase_cle": "Vous avez assez attendu, allez-y maintenant.",
     "mots_cles": [
@@ -219,7 +219,7 @@ export const carreauCards: Card[] = [
     "nom_carte": "Neuf de Carreau",
     "valeur": 9,
     "couleur": "Carreau",
-    "image_url": "/images/cards/carreau_09.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/09-carreau.png",
     "resume_general": "Carte de mouvement, de transition et de résilience. Elle annonce un changement, un déplacement, la fin d'un cycle et la préparation d'un nouveau départ. C'est un appel à l'action pour quitter une situation figée, même si cela demande de la patience.",
     "phrase_cle": "Tu n'es plus là où tu étais. Avance.",
     "mots_cles": [
@@ -267,7 +267,7 @@ export const carreauCards: Card[] = [
     "nom_carte": "Huit de Carreau",
     "valeur": 8,
     "couleur": "Carreau",
-    "image_url": "/images/cards/carreau_08.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/08-carreau.png",
     "resume_general": "Carte du mouvement, de la transition et de la persévérance. Elle symbolise le travail acharné, la concentration sur un objectif et un changement positif. C'est une carte optimiste qui pousse à l'action et rappelle que les efforts seront récompensés.",
     "phrase_cle": "Le changement est en route, les efforts paieront.",
     "mots_cles": [
@@ -312,7 +312,7 @@ export const carreauCards: Card[] = [
     "nom_carte": "Sept de Carreau",
     "valeur": 7,
     "couleur": "Carreau",
-    "image_url": "/images/cards/carreau_07.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/07-carreau.png",
     "resume_general": "Carte du défi matériel, de la transformation et du réajustement. Elle annonce des complications, des doutes ou des paroles à double tranchant, mais cache toujours une opportunité de croissance. C'est une invitation à la patience et à la prise de recul.",
     "phrase_cle": "Ne crois pas tout ce que tu entends, prends du recul.",
     "mots_cles": [
@@ -362,7 +362,7 @@ export const carreauCards: Card[] = [
     "nom_carte": "Six de Carreau",
     "valeur": 6,
     "couleur": "Carreau",
-    "image_url": "/images/cards/carreau_06.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/06-carreau.png",
     "resume_general": "Carte de mouvement progressif, de transition et d'équilibre. Elle symbolise un changement doux, une progression pas à pas, et l'importance de la patience et de la diplomatie. C'est un guide vers la nouveauté et un rappel que chaque petit pas compte.",
     "phrase_cle": "Tu avances. Même si c'est lent, c'est juste.",
     "mots_cles": [
@@ -404,7 +404,7 @@ export const carreauCards: Card[] = [
     "nom_carte": "Cinq de Carreau",
     "valeur": 5,
     "couleur": "Carreau",
-    "image_url": "/images/cards/carreau_05.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/05-carreau.png",
     "resume_general": "Carte de changement, de mouvement et de transition dans le domaine matériel. Elle annonce des bouleversements, des défis, mais aussi des opportunités déguisées. C'est une carte agitatrice qui invite à l'adaptation, à la résilience et à la flexibilité.",
     "phrase_cle": "Tout est en mouvement, dansez avec les changements.",
     "mots_cles": [
@@ -442,7 +442,7 @@ export const carreauCards: Card[] = [
     "nom_carte": "Quatre de Carreau",
     "valeur": 4,
     "couleur": "Carreau",
-    "image_url": "/images/cards/carreau_04.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/04-carreau.png",
     "resume_general": "Carte de la stabilité, de la fondation solide et de la sécurité matérielle. Elle représente un moment de consolidation, d'organisation et de persévérance. C'est une carte fiable et constructive qui invite à bâtir sur du solide avant d'explorer de nouveaux territoires.",
     "phrase_cle": "Pose tes bases, mais n'oublie pas de respirer.",
     "mots_cles": [
@@ -485,7 +485,7 @@ export const carreauCards: Card[] = [
     "nom_carte": "Trois de Carreau",
     "valeur": 3,
     "couleur": "Carreau",
-    "image_url": "/images/cards/carreau_03.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/03-carreau.png",
     "resume_general": "Carte de communication, de transition et d'opportunités concrètes. Elle porte un message précis, souvent lié au domaine professionnel ou matériel. C'est une carte de mouvement discret, qui invite à la vigilance et à l'action réfléchie.",
     "phrase_cle": "Un message est en route, un élément concret est en gestation.",
     "mots_cles": [
@@ -526,7 +526,7 @@ export const carreauCards: Card[] = [
     "nom_carte": "Deux de Carreau",
     "valeur": 2,
     "couleur": "Carreau",
-    "image_url": "/images/cards/carreau_02.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/02-carreau.png",
     "resume_general": "Carte de collaboration, de mouvement et d'équilibre. Elle symbolise les relations, les partenariats et les projets à deux. C'est une énergie fluide qui demande de la coordination, de la communication et de la confiance pour avancer.",
     "phrase_cle": "Collaborez, car l'entraide mène loin.",
     "mots_cles": [

@@ -7,7 +7,7 @@ export const trefleCards: Card[] = [
     "nom_carte": "Roi de Trèfle",
     "valeur": 13,
     "couleur": "Trèfle",
-    "image_url": "/images/cards/trefle_roi.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/R-trefle.png",
     "resume_general": "Carte de la maîtrise, du pouvoir et de la réussite construite. C'est un stratège, un bâtisseur et un guide spirituel qui ne laisse rien au hasard. Il représente une personne influente, la sagesse, la discipline et la capacité à prendre les commandes de son destin.",
     "phrase_cle": "Ne laissez pas le hasard décider, prenez les rênes.",
     "mots_cles": [
@@ -47,7 +47,7 @@ export const trefleCards: Card[] = [
     "nom_carte": "Dame de Trèfle",
     "valeur": 12,
     "couleur": "Trèfle",
-    "image_url": "/images/cards/trefle_dame.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/D-trefle.png",
     "resume_general": "Carte de l'intuition, de la stratégie et de l'action réfléchie. Elle représente une femme ambitieuse, lucide et indépendante qui gère sa vie avec maîtrise. Elle est une alliée, une protectrice et une guide pour les questions concrètes.",
     "phrase_cle": "Ne te perds pas dans les nuages si tu n'as pas semé sur terre.",
     "mots_cles": [
@@ -89,7 +89,7 @@ export const trefleCards: Card[] = [
     "nom_carte": "Valet de Trèfle",
     "valeur": 11,
     "couleur": "Trèfle",
-    "image_url": "/images/cards/trefle_valet.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/V-trefle.png",
     "resume_general": "Carte double-face qui incarne le messager loyal et l'opportuniste stratège. Il annonce souvent une nouvelle ou une occasion, mais demande de la prudence et du discernement. C'est le 'petit filou' du jeu, qui rappelle que la chance est une question d'attitude.",
     "phrase_cle": "Une occasion se présente, observe avant d'agir.",
     "mots_cles": [
@@ -139,7 +139,7 @@ export const trefleCards: Card[] = [
     "nom_carte": "Dix de Trèfle",
     "valeur": 10,
     "couleur": "Trèfle",
-    "image_url": "/images/cards/trefle_10.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/10-trefle.png",
     "resume_general": "Carte de la prospérité, de la réussite et de la chance. Elle représente l'abondance matérielle, la récolte des efforts et des projets qui fleurissent. C'est un 'feu vert' qui invite à avancer, mais en gardant l'équilibre et le discernement.",
     "phrase_cle": "La roue tourne dans le bon sens, foncez avec discernement.",
     "mots_cles": [
@@ -189,7 +189,7 @@ export const trefleCards: Card[] = [
     "nom_carte": "Neuf de Trèfle",
     "valeur": 9,
     "couleur": "Trèfle",
-    "image_url": "/images/cards/trefle_09.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/09-trefle.png",
     "resume_general": "Carte de la réussite méritée et des récompenses après l'effort. Elle symbolise les réussites inattendues, la prospérité issue du travail et l'aboutissement d'un projet. Elle représente aussi la fin d'un chapitre et l'aube d'un nouveau départ.",
     "phrase_cle": "Le travail paie, soyez prêt à saisir votre chance.",
     "mots_cles": [
@@ -238,7 +238,7 @@ export const trefleCards: Card[] = [
     "nom_carte": "Huit de Trèfle",
     "valeur": 8,
     "couleur": "Trèfle",
-    "image_url": "/images/cards/trefle_08.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/08-trefle.png",
     "resume_general": "Carte d'équilibre, d'opportunité et de prospérité. Elle représente la chance à saisir, l'équilibre entre la matérialité et la spiritualité, et l'évolution. C'est un guide qui pousse à l'action et rappelle que la véritable richesse nourrit l'âme.",
     "phrase_cle": "La prospérité est un équilibre, saisissez l'opportunité de l'atteindre.",
     "mots_cles": [
@@ -288,7 +288,7 @@ export const trefleCards: Card[] = [
     "nom_carte": "Sept de Trèfle",
     "valeur": 7,
     "couleur": "Trèfle",
-    "image_url": "/images/cards/trefle_07.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/07-trefle.png",
     "resume_general": "Carte du travail acharné, de la patience et des récompenses méritées. Elle symbolise la persévérance, l'effort stratégique et les opportunités qui s'ouvrent grâce au travail. C'est un coach qui motive et pousse à donner le meilleur de soi.",
     "phrase_cle": "Continuez sur cette voie, le travail finit toujours par payer.",
     "mots_cles": [
@@ -330,7 +330,7 @@ export const trefleCards: Card[] = [
     "nom_carte": "Six de Trèfle",
     "valeur": 6,
     "couleur": "Trèfle",
-    "image_url": "/images/cards/trefle_06.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/06-trefle.png",
     "resume_general": "Carte de l'effort récompensé, des opportunités discrètes et de l'énergie douce. Elle symbolise la patience, l'équilibre et le partage. C'est un rappel que les petits gestes et la persévérance mènent à la réussite et à l'harmonie.",
     "phrase_cle": "Soyez curieux, le gain est à portée de main.",
     "mots_cles": [
@@ -377,7 +377,7 @@ export const trefleCards: Card[] = [
     "nom_carte": "Cinq de Trèfle",
     "valeur": 5,
     "couleur": "Trèfle",
-    "image_url": "/images/cards/trefle_05.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/05-trefle.png",
     "resume_general": "Carte de transition et de dynamisme. Elle évoque une évolution naturelle, une bascule entre stabilité et nouveauté, et une invitation à s'adapter. Ce n'est pas une crise, mais une friction nécessaire pour avancer vers quelque chose de meilleur.",
     "phrase_cle": "Quelque chose doit évoluer, adaptez-vous avec enthousiasme.",
     "mots_cles": [
@@ -423,7 +423,7 @@ export const trefleCards: Card[] = [
     "nom_carte": "Quatre de Trèfle",
     "valeur": 4,
     "couleur": "Trèfle",
-    "image_url": "/images/cards/trefle_04.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/04-trefle.png",
     "resume_general": "Carte porte-bonheur qui annonce une petite chance cachée, une rencontre inattendue ou une opportunité. C'est un coup de pouce venu d'ailleurs, un rayon de soleil. Son message se nuance et s'amplifie au contact des autres cartes.",
     "phrase_cle": "Une petite chance se présente, ouvrez votre cœur.",
     "mots_cles": [
@@ -464,7 +464,7 @@ export const trefleCards: Card[] = [
     "nom_carte": "Trois de Trèfle",
     "valeur": 3,
     "couleur": "Trèfle",
-    "image_url": "/images/cards/trefle_03.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/03-trefle.png",
     "resume_general": "Carte de dynamisme, d'opportunité et de collaboration. C'est une clé qui, seule, ouvre une porte, mais qui, accompagnée, révèle un trésor. Elle représente un élan créatif, des efforts bien placés et la chance dans sa version malicieuse.",
     "phrase_cle": "Osez avancer, la chance est au rendez-vous.",
     "mots_cles": [
@@ -505,7 +505,7 @@ export const trefleCards: Card[] = [
     "nom_carte": "Deux de Trèfle",
     "valeur": 2,
     "couleur": "Trèfle",
-    "image_url": "/images/cards/trefle_02.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/02-trefle.png",
     "resume_general": "Carte de la dualité, du partenariat et de l'équilibre à trouver. Elle symbolise l'interaction entre deux forces, une collaboration naissante ou une décision à prendre à deux. C'est une invitation à la communication et à l'union pour croître.",
     "phrase_cle": "La vie est une danse, et c'est à deux qu'elle est la plus belle.",
     "mots_cles": [
@@ -538,7 +538,7 @@ export const trefleCards: Card[] = [
     "nom_carte": "As de Trèfle",
     "valeur": 1,
     "couleur": "Trèfle",
-    "image_url": "/images/cards/trefle_as.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/01-trefle.png",
     "resume_general": "Carte maîtresse de l'opportunité, de l'abondance et des nouveaux départs. C'est une porte qui s'ouvre, un potentiel à saisir, une 'clé magique'. Il symbolise la chance, l'espoir et l'invitation à agir pour concrétiser ses projets.",
     "phrase_cle": "Tout est possible, es-tu prêt à saisir ta chance ?",
     "mots_cles": [
@@ -583,4 +583,4 @@ export const trefleCards: Card[] = [
       { "carte_associee_id": "pique_10", "signification": "Avertissement : ne laissez pas les ambitions éclipser vos valeurs fondamentales." }
     ]
   }
-];
+]

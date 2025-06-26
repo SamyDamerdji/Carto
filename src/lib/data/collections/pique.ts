@@ -6,7 +6,7 @@ export const piqueCards: Card[] = [
     "nom_carte": "As de Pique",
     "valeur": 1,
     "couleur": "Pique",
-    "image_url": "/images/cards/pique_as.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/01-pique.png",
     "resume_general": "Carte puissante de transformation, de changement et de décision radicale. Elle annonce une rupture nécessaire, la fin d'un cycle et un renouveau. C'est un appel au courage pour affronter l'inconnu et accepter les vérités inconfortables.",
     "phrase_cle": "Une page se tourne, une autre commence.",
     "mots_cles": [
@@ -52,7 +52,7 @@ export const piqueCards: Card[] = [
     "nom_carte": "Roi de Pique",
     "valeur": 13,
     "couleur": "Pique",
-    "image_url": "/images/cards/pique_roi.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/R-pique.png",
     "resume_general": "Carte de l'autorité, de la loi et de la structure. Représente un homme de pouvoir, la justice, les décisions mûrement réfléchies et l'ordre. Elle incarne la sagesse, la rigueur et la responsabilité.",
     "phrase_cle": "La loi et la structure apportent la clarté.",
     "mots_cles": [
@@ -102,7 +102,7 @@ export const piqueCards: Card[] = [
     "nom_carte": "Dame de Pique",
     "valeur": 12,
     "couleur": "Pique",
-    "image_url": "/images/cards/pique_dame.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/D-pique.png",
     "resume_general": "Carte de la clarté, de l'intelligence et de l'indépendance. Elle représente une femme forte qui tranche avec fermeté et voit la vérité sans illusion. Figure de dualité, elle est à la fois rigueur et protection, invitant à prendre des décisions difficiles mais justes.",
     "phrase_cle": "La vérité n'a pas besoin d'être aimée, juste d'être entendue.",
     "mots_cles": [
@@ -143,7 +143,7 @@ export const piqueCards: Card[] = [
     "nom_carte": "Valet de Pique",
     "valeur": 11,
     "couleur": "Pique",
-    "image_url": "/images/cards/pique_valet.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/V-pique.png",
     "resume_general": "Personnage complexe et intrigant. C'est le messager des ombres, un stratège silencieux et un révélateur de vérités. Il incarne les secrets, la prudence, l'observation et les efforts discrets qui portent leurs fruits.",
     "phrase_cle": "Observe dans l'ombre, car la vérité est cachée.",
     "mots_cles": [
@@ -185,7 +185,7 @@ export const piqueCards: Card[] = [
     "nom_carte": "Dix de Pique",
     "valeur": 10,
     "couleur": "Pique",
-    "image_url": "/images/cards/pique_10.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/10-pique.png",
     "resume_general": "Carte de la transition et de la transformation nécessaire. Elle symbolise le passage d'une étape à une autre, souvent à travers des défis. Elle n'est pas négative, mais représente un moment délicat mais essentiel pour évoluer, comme la chenille devenant papillon.",
     "phrase_cle": "Chaque épreuve est une leçon, chaque fin un nouveau départ.",
     "mots_cles": [
@@ -235,7 +235,7 @@ export const piqueCards: Card[] = [
     "nom_carte": "Neuf de Pique",
     "valeur": 9,
     "couleur": "Pique",
-    "image_url": "/images/cards/pique_09.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/09-pique.png",
     "resume_general": "Carte de la fin d'un cycle, des épreuves et des transformations nécessaires. Elle invite à l'introspection, au recul et à la patience. Ce n'est pas une carte de malheur, mais une pause pour réfléchir avant d'avancer vers une clairière.",
     "phrase_cle": "Il est temps de tourner une page, doucement mais sûrement.",
     "mots_cles": [
@@ -285,7 +285,7 @@ export const piqueCards: Card[] = [
     "nom_carte": "Huit de Pique",
     "valeur": 8,
     "couleur": "Pique",
-    "image_url": "/images/cards/pique_08.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/08-pique.png",
     "resume_general": "Carte d'obstacles, de défis et d'introspection. Elle n'est pas sinistre, mais demande un temps de recul et de réflexion. Symbolise la continuité (chiffre 8) après l'épreuve et rappelle que la vigilance est la meilleure alliée pour transformer les difficultés.",
     "phrase_cle": "Affronte ce qui te freine, et avance.",
     "mots_cles": [
@@ -335,7 +335,7 @@ export const piqueCards: Card[] = [
     "nom_carte": "Sept de Pique",
     "valeur": 7,
     "couleur": "Pique",
-    "image_url": "/images/cards/pique_07.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/07-pique.png",
     "resume_general": "Carte de transformation par l'épreuve. Elle symbolise la réflexion intérieure, l'adversité à surmonter et les décisions difficiles. C'est un passage nécessaire vers la sagesse, un appel à la patience et à la libération de ce qui ne sert plus.",
     "phrase_cle": "Après la tempête vient le calme, persévérez.",
     "mots_cles": [
@@ -377,7 +377,7 @@ export const piqueCards: Card[] = [
     "nom_carte": "Six de Pique",
     "valeur": 6,
     "couleur": "Pique",
-    "image_url": "/images/cards/pique_06.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/06-pique.png",
     "resume_general": "Carte de contretemps mineur, de patience et de légèreté. Elle annonce un petit obstacle, un retard ou un souci éphémère. Ce n'est pas une alarme, mais un rappel que la vie n'est pas linéaire et qu'il faut relativiser.",
     "phrase_cle": "Patience, ce n'est qu'un grain de sable, pas une avalanche.",
     "mots_cles": [
@@ -410,7 +410,7 @@ export const piqueCards: Card[] = [
     "nom_carte": "Cinq de Pique",
     "valeur": 5,
     "couleur": "Pique",
-    "image_url": "/images/cards/pique_05.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/05-pique.png",
     "resume_general": "Carte d'avertissement, de danger émotionnel et de contretemps. C'est le 'grain de sable dans l'engrenage'. Elle prévient des trahisons, des faux amis et des relations épuisantes. Elle n'est pas une fatalité, mais un appel à la vigilance et à la réflexion.",
     "phrase_cle": "Attention, danger émotionnel ! Ralentissez et observez.",
     "mots_cles": [
@@ -445,7 +445,7 @@ export const piqueCards: Card[] = [
     "nom_carte": "Quatre de Pique",
     "valeur": 4,
     "couleur": "Pique",
-    "image_url": "/images/cards/pique_04.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/04-pique.png",
     "resume_general": "Carte de la stabilité mise au défi, de la pause et de la réflexion. Elle invite à renforcer ses bases, à prendre du recul et à se concentrer sur l'essentiel. C'est un miroir qui révèle une vérité qu'on ne veut pas voir pour forcer à l'action juste.",
     "phrase_cle": "Renforcez vos bases, prenez du recul.",
     "mots_cles": [
@@ -478,7 +478,7 @@ export const piqueCards: Card[] = [
     "nom_carte": "Trois de Pique",
     "valeur": 3,
     "couleur": "Pique",
-    "image_url": "/images/cards/pique_03.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/03-pique.png",
     "resume_general": "Carte de défi, de turbulence et de réflexion stratégique. Elle annonce des tensions, des obstacles ou des ruptures, mais aussi des révélations et un renouveau. C'est une invitation à la stratégie et à accepter les épreuves pour forger son caractère.",
     "phrase_cle": "Acceptez l'épreuve, elle forgera votre caractère.",
     "mots_cles": [
@@ -513,7 +513,7 @@ export const piqueCards: Card[] = [
     "nom_carte": "Deux de Pique",
     "valeur": 2,
     "couleur": "Pique",
-    "image_url": "/images/cards/pique_02.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/02-pique.png",
     "resume_general": "Carte de la dualité, du choix et de la tension à résoudre. Elle n'est pas un drame, mais un défi, une bifurcation à prendre. C'est une invitation à la réflexion, à la discussion et à l'introspection pour trouver l'équilibre.",
     "phrase_cle": "Une décision doit être prise, écoutez votre instinct.",
     "mots_cles": [

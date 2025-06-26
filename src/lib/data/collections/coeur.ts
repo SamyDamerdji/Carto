@@ -7,7 +7,7 @@ export const coeurCards: Card[] = [
     "nom_carte": "As de Cœur",
     "valeur": 1,
     "couleur": "Cœur",
-    "image_url": "/images/cards/coeur_as.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/01-coeur.png",
     "resume_general": "Carte de l'origine de l'émotion, de l'amour pur et des nouveaux départs sentimentaux. C'est une onde concentrée, un appel du cœur. Elle annonce une rencontre, une réconciliation, une nouvelle source de bonheur ou un projet porté par la passion.",
     "phrase_cle": "Une porte douce s'ouvre, écoutez votre cœur.",
     "mots_cles": [
@@ -47,7 +47,7 @@ export const coeurCards: Card[] = [
     "nom_carte": "Roi de Cœur",
     "valeur": 13,
     "couleur": "Cœur",
-    "image_url": "/images/cards/coeur_roi.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/R-coeur.png",
     "resume_general": "Carte de la maîtrise émotionnelle, de la compassion et de l'amour mature. Il incarne la bienveillance, la générosité et la sagesse du cœur. C'est un guide et un protecteur qui dirige avec équilibre, honnêteté et stabilité émotionnelle.",
     "phrase_cle": "Gouvernez vos émotions avec un cœur sage et généreux.",
     "mots_cles": [
@@ -94,7 +94,7 @@ export const coeurCards: Card[] = [
     "nom_carte": "Dame de Cœur",
     "valeur": 12,
     "couleur": "Cœur",
-    "image_url": "/images/cards/coeur_dame.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/D-coeur.png",
     "resume_general": "Carte de l'intuition, de la compassion et de l'amour inconditionnel. C'est la souveraine de l'émotion, une gardienne qui protège le cœur. Elle incarne la féminité magnétique, la bienveillance, et la capacité à aimer sans se perdre.",
     "phrase_cle": "Votre douceur n'est pas une faiblesse, c'est un pouvoir.",
     "mots_cles": [
@@ -140,7 +140,7 @@ export const coeurCards: Card[] = [
     "nom_carte": "Valet de Cœur",
     "valeur": 11,
     "couleur": "Cœur",
-    "image_url": "/images/cards/coeur_valet.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/V-coeur.png",
     "resume_general": "Carte de l'émotion jeune et de l'élan sincère. Il est le messager du cœur, annonçant un nouvel amour, une passion naissante ou une déclaration. Il incarne la jeunesse, la gentillesse, la loyauté et la sincérité, mais aussi une potentielle immaturité ou naïveté.",
     "phrase_cle": "Une émotion sincère se déclare, écoutez avec prudence.",
     "mots_cles": [
@@ -181,7 +181,7 @@ export const coeurCards: Card[] = [
     "nom_carte": "Dix de Cœur",
     "valeur": 10,
     "couleur": "Cœur",
-    "image_url": "/images/cards/coeur_10.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/10-coeur.png",
     "resume_general": "Carte de l'accomplissement émotionnel et de la joie partagée. Elle symbolise un alignement intérieur, la paix, la réconciliation et le bonheur familial. C'est un cercle qui se ferme, marquant à la fois une fin et un commencement.",
     "phrase_cle": "Tu n'as pas besoin de plus. Tu as juste besoin d'en prendre conscience.",
     "mots_cles": [
@@ -221,7 +221,7 @@ export const coeurCards: Card[] = [
     "nom_carte": "Neuf de Cœur",
     "valeur": 9,
     "couleur": "Cœur",
-    "image_url": "/images/cards/coeur_09.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/09-coeur.png",
     "resume_general": "Carte de l'accomplissement émotionnel, des désirs réalisés et de la satisfaction intérieure. Elle symbolise une période de joie, de gratitude et d'harmonie. C'est la carte qui annonce que l'on récolte les fruits de ses efforts émotionnels.",
     "phrase_cle": "C'est la fin d'un cycle, un amour qui s'accomplit.",
     "mots_cles": [
@@ -271,7 +271,7 @@ export const coeurCards: Card[] = [
     "nom_carte": "Huit de Cœur",
     "valeur": 8,
     "couleur": "Cœur",
-    "image_url": "/images/cards/coeur_08.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/08-coeur.png",
     "resume_general": "Carte du retour du sentiment, de la transformation émotionnelle et de la guérison. Elle symbolise l'énergie qui revient, les émotions enfouies qui ressurgissent et les leçons non apprises qui demandent une résolution. C'est une invitation à regarder en soi.",
     "phrase_cle": "Une onde du passé vient taper à la surface.",
     "mots_cles": [
@@ -317,7 +317,7 @@ export const coeurCards: Card[] = [
     "nom_carte": "Sept de Cœur",
     "valeur": 7,
     "couleur": "Cœur",
-    "image_url": "/images/cards/coeur_07.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/07-coeur.png",
     "resume_general": "Carte du cœur en équilibre instable. Elle symbolise le doute affectif, les illusions douces, les désirs flous et les choix émotionnels. C'est un miroir qui révèle ce qui flotte dans notre monde émotionnel, invitant à faire le tri avec lucidité.",
     "phrase_cle": "Est-ce réel, ou est-ce ce que je projette ?",
     "mots_cles": [
@@ -364,7 +364,7 @@ export const coeurCards: Card[] = [
     "nom_carte": "Six de Cœur",
     "valeur": 6,
     "couleur": "Cœur",
-    "image_url": "/images/cards/coeur_06.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/06-coeur.png",
     "resume_general": "Carte de la nostalgie, du retour aux sources et de la réconciliation. Elle symbolise les souvenirs, le pardon et le partage affectif. C'est une invitation à la douceur, à chérir le passé sans y rester coincé et à avancer avec un cœur ouvert.",
     "phrase_cle": "Une émotion du passé refait surface pour être guérie.",
     "mots_cles": [
@@ -406,7 +406,7 @@ export const coeurCards: Card[] = [
     "nom_carte": "Cinq de Cœur",
     "valeur": 5,
     "couleur": "Cœur",
-    "image_url": "/images/cards/coeur_05.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/05-coeur.png",
     "resume_general": "Carte de transition émotionnelle, de déséquilibre et de changement. Elle symbolise les épreuves affectives, les émotions turbulentes et la nécessité de lâcher prise. C'est une opportunité de croissance et de renouveau après une période difficile.",
     "phrase_cle": "Tout est en mouvement, accepte-le, et avance.",
     "mots_cles": [
@@ -446,7 +446,7 @@ export const coeurCards: Card[] = [
     "nom_carte": "Quatre de Cœur",
     "valeur": 4,
     "couleur": "Cœur",
-    "image_url": "/images/cards/coeur_04.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/04-coeur.png",
     "resume_general": "Carte de la stabilité émotionnelle, de l'introspection et de la pause. Elle symbolise un équilibre affectif, une période de calme et de réflexion pour consolider ce qui est présent. C'est un baume pour les cœurs fatigués, une invitation à la sérénité.",
     "phrase_cle": "Une pause douce pour recharger ses batteries émotionnelles.",
     "mots_cles": [
@@ -483,7 +483,7 @@ export const coeurCards: Card[] = [
     "nom_carte": "Trois de Cœur",
     "valeur": 3,
     "couleur": "Cœur",
-    "image_url": "/images/cards/coeur_03.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/03-coeur.png",
     "resume_general": "Carte de la joie, de la célébration et de la croissance émotionnelle. Elle symbolise l'harmonie dans les relations, les connexions sincères et les moments de partage. C'est une invitation à un voyage émotionnel, à la création et à l'écoute de son intuition.",
     "phrase_cle": "Célébrez les liens précieux, l'harmonie est à portée de main.",
     "mots_cles": [
@@ -519,7 +519,7 @@ export const coeurCards: Card[] = [
     "nom_carte": "Deux de Cœur",
     "valeur": 2,
     "couleur": "Cœur",
-    "image_url": "/images/cards/coeur_02.png",
+    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/02-coeur.png",
     "resume_general": "Carte du lien, de la relation et de la connexion. Elle symbolise le balbutiement d'une relation, la dualité, la réciprocité et l'équilibre à trouver. C'est une carte de douceur qui invite à la réconciliation, au dialogue et à l'union.",
     "phrase_cle": "Deux cœurs qui battent à l'unisson.",
     "mots_cles": [
@@ -544,6 +544,13 @@ export const coeurCards: Card[] = [
       "une corde fine tendue entre deux falaises, avec quelqu'un qui s'apprête à la traverser",
       "deux personnes dansant un slow, en parfaite harmonie",
       "un miroir reflétant le visage d'une personne, mais avec une expression légèrement différente"
+    ],
+    "prompts_conversationnels": [
+      "Le 2 de Cœur est décrit comme 'le lien, l'autre, la présence douce'. Expliquez comment cette idée de 'présence' peut se manifester de manière concrète dans une relation.",
+      "La fiche utilise la métaphore d'une 'corde fine entre deux falaises'. Que symbolise cette 'tension douce' dans le contexte d'une relation naissante ?",
+      "Cette carte est un 'miroir tendu par l'autre'. Quel genre de vérités sur soi-même peut-on découvrir à travers le regard ou le comportement d'une autre personne ?",
+      "Le conseil est 'Osez le dialogue, même s'il est difficile'. Proposez un scénario où une conversation difficile, mais nécessaire, permet de renforcer un lien.",
+      "Comment l'idée de 'réciprocité' du 2 de Cœur s'applique-t-elle non seulement aux relations amoureuses, mais aussi à une collaboration professionnelle ?"
     ],
     "combinaisons": [
       { "carte_associee_id": "coeur_04", "signification": "Avec le 4 de cœur, cette carte peut indiquer une rencontre romantique, ou un renforcement des liens existants."}
