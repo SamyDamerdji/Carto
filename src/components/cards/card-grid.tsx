@@ -17,6 +17,10 @@ export function CardGrid({ cards }: CardGridProps) {
         <div key={card.id} className="relative h-full overflow-hidden rounded-2xl border border-primary/30 bg-secondary/20 p-3 shadow-lg shadow-primary/20 backdrop-blur-lg flex flex-col">
           <div className="absolute -right-2 -top-2 h-16 w-16 bg-[radial-gradient(closest-side,hsl(var(--primary)/0.1),transparent)]"></div>
           
+          <h3 className="font-headline text-sm font-bold text-center text-primary drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)] uppercase mb-2 h-5 flex items-center justify-center">
+            {card.nom_carte}
+          </h3>
+          
           <div className="relative w-full aspect-[2.5/3.5]">
             <div className="relative h-full w-full">
                 <div className="absolute inset-0 bg-card rounded-xl shadow-lg p-2">
@@ -30,11 +34,7 @@ export function CardGrid({ cards }: CardGridProps) {
                         />
                     </div>
                 </div>
-                <div className="absolute inset-0 z-10 bg-gradient-to-tl from-black/60 to-transparent to-45% rounded-xl"></div>
             </div>
-             <h3 className="absolute bottom-3 left-0 right-0 z-20 font-headline text-base font-bold text-center text-foreground drop-shadow-[0_2px_4px_rgba(0,0,0,1)] uppercase">
-                {card.nom_carte}
-            </h3>
           </div>
 
           <div className="mt-auto pt-3 flex flex-col gap-2">
