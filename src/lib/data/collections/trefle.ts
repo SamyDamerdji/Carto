@@ -419,6 +419,47 @@ export const trefleCards: Card[] = [
     ]
   },
   {
+    "id": "trefle_04",
+    "nom_carte": "Quatre de Trèfle",
+    "valeur": 4,
+    "couleur": "Trèfle",
+    "image_url": "/images/cards/trefle_04.png",
+    "resume_general": "Carte porte-bonheur qui annonce une petite chance cachée, une rencontre inattendue ou une opportunité. C'est un coup de pouce venu d'ailleurs, un rayon de soleil. Son message se nuance et s'amplifie au contact des autres cartes.",
+    "phrase_cle": "Une petite chance se présente, ouvrez votre cœur.",
+    "mots_cles": [
+      "chance", "porte-bonheur", "opportunité", "rencontre", "amour", "soutien", "prospérité",
+      "protection", "choix", "réflexion", "imprévu"
+    ],
+    "interpretations": {
+      "general": "Le 4 de Trèfle est une carte porte-bonheur, une petite chance cachée, un coup de pouce venu d'ailleurs. Son interprétation change radicalement en fonction des cartes qui l'accompagnent, révélant des histoires différentes et des indices précieux pour avancer.",
+      "endroit": "Annonce une rencontre inattendue, une relation qui naît sans forcer les choses (avec l'As de Cœur), une période de prospérité (avec le 10 de Carreau), ou un soutien précieux (avec la Reine de Carreau). C'est une carte qui inspire et apporte de la douceur.",
+      "ombre_et_defis": "Peut annoncer un avertissement discret. Avec le 7 de Pique, elle met en garde contre les promesses trop belles et demande plus de réflexion. Le vrai gain peut se cacher derrière un petit effort. Le défi est de ne pas se laisser aveugler par l'enthousiasme.",
+      "conseil": "Ouvrez votre cœur et laissez-vous surprendre par des instants doux et spontanés. Avant d'accepter une offre, analysez bien. Si vous hésitez, faites confiance à une personne influente. Ne refusez pas l'aide, car les solutions viennent souvent des gens qui nous aiment."
+    },
+    "domaines": {
+      "amour": "Avec l'As de Cœur, c'est le jackpot : une rencontre inattendue, l'amour simple comme un rayon de soleil. Avec le Roi de Cœur, c'est une protection bienveillante, une figure masculine (père, ami, partenaire) prête à aider.",
+      "travail": "Avec la Reine de Carreau, elle devient ambitieuse et suggère une opportunité professionnelle où un mentor ou une alliée stratégique sera la clé de la réussite.",
+      "finances": "Avec le 10 de Carreau, elle annonce l'abondance, une période de prospérité, comme si les étoiles s'alignaient. C'est le moment de tenter sa chance (investissement, coup de poker), mais sans imprudence.",
+      "spirituel": "Avec le 8 de Trèfle, elle crée une énergie de choix et de réflexion. Elle parle de chemins multiples et de décisions à prendre, invitant à suivre son intuition car un peu de chance est de votre côté."
+    },
+    "prompts_visuels": [
+      "une main trouvant un trèfle à quatre feuilles dans une prairie",
+      "un rayon de soleil perçant à travers les nuages",
+      "deux personnes se rencontrant par hasard dans une librairie et souriant",
+      "une main recevant une étreinte rassurante d'une autre main",
+      "un pont en bois solide traversant un petit ruisseau"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "coeur_as", "signification": "Le jackpot ! Parle d'une rencontre inattendue, d'une relation qui naît simplement et sans forcer." },
+      { "carte_associee_id": "pique_07", "signification": "Avertissement discret. Un projet peut paraître chanceux mais demande plus de réflexion. Attention aux promesses trop belles." },
+      { "carte_associee_id": "carreau_dame", "signification": "Soutien précieux. La carte devient ambitieuse et suggère une opportunité professionnelle. Un mentor ou une alliée stratégique est la clé." },
+      { "carte_associee_id": "carreau_10", "signification": "L'abondance en vue. Annonce une période de prospérité. Les étoiles s'alignent pour réaliser vos rêves." },
+      { "carte_associee_id": "coeur_roi", "signification": "Protection bienveillante. Une figure masculine (père, ami, partenaire) est prête à vous aider." },
+      { "carte_associee_id": "trefle_08", "signification": "Un choix à faire. Parle de chemins multiples et de décisions à prendre. Une invitation à la réflexion et à l'intuition." },
+      { "carte_associee_id": "joker", "signification": "L'imprévisible. Annonce un événement inattendu, qui peut être une surprise heureuse ou un défi imprévu." }
+    ]
+  },
+  {
     "id": "trefle_as",
     "nom_carte": "As de Trèfle",
     "valeur": 1,
