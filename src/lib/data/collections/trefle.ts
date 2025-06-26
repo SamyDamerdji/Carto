@@ -442,6 +442,13 @@ export const trefleCards: Card[] = [
       "finances": "Avec le 10 de Carreau, elle annonce l'abondance, une période de prospérité, comme si les étoiles s'alignaient. C'est le moment de tenter sa chance (investissement, coup de poker), mais sans imprudence.",
       "spirituel": "Avec le 8 de Trèfle, elle crée une énergie de choix et de réflexion. Elle parle de chemins multiples et de décisions à prendre, invitant à suivre son intuition car un peu de chance est de votre côté."
     },
+    "prompts_visuels": [
+      "une main trouvant un trèfle à quatre feuilles dans une prairie",
+      "un rayon de soleil perçant à travers les nuages",
+      "deux personnes se rencontrant par hasard dans une librairie et souriant",
+      "une main recevant une étreinte rassurante d'une autre main",
+      "un pont en bois solide traversant un petit ruisseau"
+    ],
     "combinaisons": [
       { "carte_associee_id": "coeur_as", "signification": "Le jackpot ! Parle d'une rencontre inattendue, d'une relation qui naît simplement et sans forcer." },
       { "carte_associee_id": "pique_07", "signification": "Avertissement discret. Un projet peut paraître chanceux mais demande plus de réflexion. Attention aux promesses trop belles." },
@@ -492,6 +499,39 @@ export const trefleCards: Card[] = [
       { "carte_associee_id": "carreau_06", "signification": "Ensemble, ces cartes indiquent une aide précieuse et un coup de main bienvenu." },
       { "carte_associee_id": "pique_as", "signification": "Un choix difficile qui mène à un gain financier important, mais la prudence est de mise." }
     ]
+  },
+  {
+    "id": "trefle_02",
+    "nom_carte": "Deux de Trèfle",
+    "valeur": 2,
+    "couleur": "Trèfle",
+    "image_url": "/images/cards/trefle_02.png",
+    "resume_general": "Carte de la dualité, du partenariat et de l'équilibre à trouver. Elle symbolise l'interaction entre deux forces, une collaboration naissante ou une décision à prendre à deux. C'est une invitation à la communication et à l'union pour croître.",
+    "phrase_cle": "La vie est une danse, et c'est à deux qu'elle est la plus belle.",
+    "mots_cles": [
+      "dualité", "partenariat", "collaboration", "équilibre", "connexion", "union", "communication",
+      "croissance", "soutien", "relation", "choix"
+    ],
+    "interpretations": {
+      "general": "Le 2 de Trèfle est un symbole complexe évoquant un équilibre délicat et un dialogue entre les opposés. Le chiffre 2 (dualité) s'allie au trèfle (stabilité, croissance), créant une danse entre deux forces. Elle invite à réfléchir sur les collaborations et les relations.",
+      "endroit": "Évoque un partenariat naissant, que ce soit en amour ou en affaires. C'est un bon signe pour une collaboration, mais demande de veiller à l'équilibre. Elle pousse à chercher de l'aide, à ne pas tout faire en solo et à trouver les bonnes personnes qui partagent ses valeurs.",
+      "ombre_et_defis": "Peut parler de défis dans un partenariat, de malentendus ou de déséquilibres. C'est une mise en garde contre les petits obstacles qui, s'ils ne sont pas gérés par la communication, peuvent devenir des montagnes. Peut indiquer un moment de flottement entre deux décisions.",
+      "conseil": "Cherchez la voie du milieu, ne vous précipitez pas. Prenez un moment pour réfléchir calmement. La clé d'un partenariat réussi est la communication : parlez simplement, partagez vos idées et avancez ensemble. N'hésitez pas à demander de l'aide."
+    },
+    "domaines": {
+      "amour": "Souvent un signe de rapprochement. Peut indiquer une nouvelle relation, une période de doute à surmonter en couple, ou un besoin de cultiver la relation. Pour un célibataire, c'est un signe que l'amour est peut-être plus près qu'on ne le pense.",
+      "travail": "C'est la carte de la collaboration par excellence. Pousse à faire équipe, à ouvrir les bras aux autres. Rappelle qu'un projet est plus facile à mener ensemble. Si vous avez un projet, n'hésitez pas à demander de l'aide pour ne pas avancer seul.",
+      "finances": "Le trèfle étant lié à la terre et à la stabilité, cette carte peut indiquer un partenariat financier ou une décision matérielle à prendre à deux. La croissance financière ne se fait pas seule, elle nécessite des connexions et des collaborations.",
+      "spirituel": "Rappelle que la force vient aussi des autres et que la croissance se fait à deux, en équilibre. C'est un rappel de la terre, de la nature, une invitation à revenir à l'essentiel et à se reconnecter à ce qui compte vraiment pour apaiser son esprit."
+    },
+    "prompts_visuels": [
+      "deux personnes dansant un tango, parfaitement synchronisées",
+      "deux arbres dont les racines s'entremêlent pour plus de solidité",
+      "deux mains construisant ensemble un pont entre deux rives",
+      "une personne marchant sur un fil, tenant un balancier pour garder l'équilibre",
+      "deux personnes en pleine conversation, partageant des idées au-dessus d'un plan"
+    ],
+    "combinaisons": []
   },
   {
     "id": "trefle_as",
