@@ -158,7 +158,7 @@ export function CardDetailsView({ card }: { card: Card }) {
       </SectionWrapper>
 
       {/* H. Mes Notes Personnelles */}
-       <SectionWrapper title={`Mes Notes sur le ${card.nom_carte}`}>
+       <SectionWrapper title="Mes Notes">
            <Textarea
                placeholder="Mes réflexions, associations personnelles, ou interprétations..."
                className="bg-secondary/20 backdrop-blur-lg border-primary/30 text-white placeholder:text-white/60 focus:border-primary focus-visible:ring-primary"
