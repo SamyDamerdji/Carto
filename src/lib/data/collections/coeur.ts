@@ -513,5 +513,40 @@ export const coeurCards: Card[] = [
       { "carte_associee_id": "coeur_as", "signification": "Renforce le thème de l'amour profond et sincère. Symbolise la naissance et la célébration des sentiments amoureux." },
       { "carte_associee_id": "coeur_valet", "signification": "Annonce de nouvelles relations amoureuses ou l'arrivée d'un message important dans le domaine sentimental." }
     ]
+  },
+  {
+    "id": "coeur_02",
+    "nom_carte": "Deux de Cœur",
+    "valeur": 2,
+    "couleur": "Cœur",
+    "image_url": "/images/cards/coeur_02.png",
+    "resume_general": "Carte du lien, de la relation et de la connexion. Elle symbolise le balbutiement d'une relation, la dualité, la réciprocité et l'équilibre à trouver. C'est une carte de douceur qui invite à la réconciliation, au dialogue et à l'union.",
+    "phrase_cle": "Deux cœurs qui battent à l'unisson.",
+    "mots_cles": [
+      "relation", "lien", "connexion", "dualité", "partenariat", "rapprochement", "réconciliation",
+      "réciprocité", "équilibre", "engagement", "douceur"
+    ],
+    "interpretations": {
+      "general": "Le 2 de Cœur est un petit symbole avec une grande histoire. C'est le lien, l'autre, la présence douce. C'est une carte de tension douce, comme une corde fine entre deux falaises. Elle parle de débuts, de premiers frissons, de ce moment suspendu où tout peut basculer. Elle est aussi un miroir tendu par l'autre.",
+      "endroit": "Annonce l'éveil d'un 'nous', le balbutiement d'une relation, une promesse. Peut indiquer un rapprochement, une rencontre inattendue, une reconnexion. Symbolise une harmonie douce et naturelle, la réciprocité et l'équilibre dans les échanges.",
+      "ombre_et_defis": "Peut poser une question qui pique : 'Êtes-vous encore en lien avec ce qui compte ?'. Peut révéler un besoin de revenir à l'essentiel dans un couple, de retrouver un fil perdu. Le défi est de ne pas rester dans un silence qui éloigne, mais de communiquer.",
+      "conseil": "Regardez autour de soi. Qui est là vraiment ? La carte invite à construire du lien, un lien vrai et profond. Ne vous précipitez pas, mais ne ratez pas le message. Osez le dialogue, même s'il est difficile. Tendez la main."
+    },
+    "domaines": {
+      "amour": "C'est le balbutiement d'une relation. Une main tendue avant qu'on la prenne. Peut indiquer une rencontre, un nouveau départ amoureux ou une réconciliation. C'est une invitation à cultiver la relation, à l'arroser comme une plante.",
+      "travail": "Indique que le moment est venu de travailler en partenariat. Deux esprits se réunissent pour créer quelque chose de grand. C'est un appel à la collaboration, à unir les forces pour atteindre des objectifs plus grands. La communication est la clé.",
+      "finances": "Moins liée à l'argent qu'aux échanges, cette carte peut toutefois suggérer un partenariat financier ou une décision à prendre à deux. La réciprocité est importante : l'équilibre entre donner et recevoir s'applique aussi aux aspects matériels.",
+      "spirituel": "Parle d'union intérieure, de l'équilibre entre soi et soi-même, entre le mental et le cœur, l'action et le silence. Le chiffre 2, symbole de dualité, invite au dialogue intérieur pour réconcilier les parties de soi qui s'opposent."
+    },
+    "prompts_visuels": [
+      "deux cygnes formant un cœur avec leur cou sur un lac paisible",
+      "deux mains tendant l'une vers l'autre, sur le point de se toucher",
+      "une corde fine tendue entre deux falaises, avec quelqu'un qui s'apprête à la traverser",
+      "deux personnes dansant un slow, en parfaite harmonie",
+      "un miroir reflétant le visage d'une personne, mais avec une expression légèrement différente"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "coeur_04", "signification": "Avec le 4 de cœur, cette carte peut indiquer une rencontre romantique, ou un renforcement des liens existants."}
+    ]
   }
-];
+]
