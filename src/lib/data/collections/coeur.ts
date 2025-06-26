@@ -173,8 +173,7 @@ export const coeurCards: Card[] = [
       "Le côté 'ombre' du Valet de Cœur est l'instabilité. Comment une 'flamme' peut-elle se transformer en 'feu de cheminée' ? Quels éléments de structure pourraient aider à solidifier cette énergie ?",
       "Si le Valet de Pique est un 'jeu d'échecs', le Valet de Cœur pourrait être comparé à quel autre type de jeu ou d'activité ? Justifiez votre réponse."
     ],
-    "combinaisons": [
-    ]
+    "combinaisons": []
   },
   {
     "id": "coeur_10",

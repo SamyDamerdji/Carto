@@ -132,8 +132,7 @@ export const piqueCards: Card[] = [
       "Expliquez comment la capacité à 'couper les liens avec quelque chose de toxique' est une forme de force et de sagesse.",
       "Si la Dame de Pique était une conseillère, quel serait son premier conseil à quelqu'un qui hésite à prendre une décision importante ?"
     ],
-    "combinaisons": [
-    ]
+    "combinaisons": []
   },
   {
     "id": "pique_valet",

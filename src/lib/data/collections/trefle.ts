@@ -322,7 +322,7 @@ export const trefleCards: Card[] = [
       "Comment la 'prudence financière' du 7 de Trèfle se distingue-t-elle de la 'peur de manquer' ?"
     ],
     "combinaisons": [
-      { "carte_associee_id": "trefle_08", "signification": "Avec le 8 de trèfle, cette carte annonce une lueur d'espoir : la fin d'une maladie et la guérison."}
+      { "carte_associee_id": "pique_08", "signification": "Avec le 8 de pique, cette carte annonce une lueur d'espoir : la fin d'une maladie et la guérison."}
     ]
   },
   {

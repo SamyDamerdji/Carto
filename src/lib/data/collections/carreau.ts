@@ -149,7 +149,7 @@ export const carreauCards: Card[] = [
       "conseil": "Avancez avec sagesse. L'élan est essentiel, mais l'imprudence est un piège. Osez prendre des risques calculés, pensez en dehors des sentiers battus et utilisez votre intelligence pratique pour concrétiser vos projets."
     },
     "domaines": {
-      "amour": "Associé à la Reine de Coeur, il peut signaler un lien affectif et encourage à prendre des initiatives pour faire avancer la relation. Il représente un élan, une envie de construire et d'aller de l'avant dans le couple.",
+      "amour": "Associé à la Dame de Coeur, il peut signaler un lien affectif et encourage à prendre des initiatives pour faire avancer la relation. Il représente un élan, une envie de construire et d'aller de l'avant dans le couple.",
       "travail": "C'est son domaine de prédilection. Il incite à rester motivé, à ne pas abandonner face à la première difficulté. Il représente une nouvelle idée, une opportunité à saisir ou le début d'un projet concret et tangible.",
       "finances": "Peut annoncer l'arrivée d'informations liées aux affaires ou à des questions financières. Avec l'As de Carreau, il suggère le début d'un projet matériel avec un dynamisme accru. Il éclaire les aspects pratiques et les perspectives juridiques ou financières.",
       "spirituel": "Symbolise un lien avec l'apprentissage. Il pousse à élargir ses connaissances, à envisager une nouvelle formation ou à découvrir un domaine inconnu. C'est un encouragement à affronter les défis pour grandir et à ne pas avoir peur de l'inconnu."

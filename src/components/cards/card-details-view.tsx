@@ -206,7 +206,7 @@ export function CardDetailsView({ card }: { card: Card }) {
            <div className="space-y-4">
                {/* Placeholder for chat history */}
                <div className="h-40 p-4 rounded-lg border border-primary/30 bg-background/20 text-white/70 overflow-y-auto">
-                   <p><span className="font-bold text-primary">L'Oracle:</span> Bonjour! En quoi puis-je vous éclairer sur le ${card.nom_carte} aujourd'hui ?</p>
+                   <p><span className="font-bold text-primary">L'Oracle:</span> Bonjour! En quoi puis-je vous éclairer sur le {card.nom_carte} aujourd'hui ?</p>
                </div>
                <div className="flex items-center gap-2">
                    <Input
