@@ -17,7 +17,7 @@ export function CardGrid({ cards }: CardGridProps) {
         <div key={card.id} className="relative h-full overflow-hidden rounded-2xl border border-primary/30 bg-secondary/20 p-3 shadow-lg shadow-primary/20 backdrop-blur-lg flex flex-col">
           <div className="absolute -right-2 -top-2 h-16 w-16 bg-[radial-gradient(closest-side,hsl(var(--primary)/0.1),transparent)]"></div>
           
-          <h3 className="font-headline text-xs whitespace-nowrap font-bold text-center text-primary drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)] uppercase mb-2 h-5 flex items-center justify-center">
+          <h3 className="font-headline text-xs whitespace-nowrap font-bold text-center text-primary uppercase mb-2 h-5 flex items-center justify-center" style={{ textShadow: '0px 2px 3px rgba(0,0,0,0.7)' }}>
             {card.nom_carte}
           </h3>
           
@@ -43,7 +43,7 @@ export function CardGrid({ cards }: CardGridProps) {
                     Fiche détaillée
                 </Button>
             </Link>
-            <Button variant="default" size="sm" disabled className="text-xs">
+            <Button variant="default" size="sm" className="text-xs">
                 <BrainCircuit />
                 Leçon interactive
             </Button>
