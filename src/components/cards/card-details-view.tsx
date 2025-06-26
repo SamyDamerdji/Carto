@@ -1,6 +1,7 @@
 'use client';
 
 import type { ReactNode } from 'react';
+import { motion } from 'framer-motion';
 import type { Card } from '@/lib/data/cards';
 import { getCardDetails } from '@/lib/data/cards';
 import Image from 'next/image';
@@ -30,10 +31,17 @@ interface SectionWrapperProps {
   title: string;
   icon: React.ElementType;
   children: ReactNode;
+  index: number;
 }
 
-const SectionWrapper = ({ title, icon: Icon, children }: SectionWrapperProps) => (
-  <div className="mx-auto mt-6 max-w-md rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6">
+const SectionWrapper = ({ title, icon: Icon, children, index }: SectionWrapperProps) => (
+  <motion.div
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, delay: index * 0.15 }}
+    viewport={{ once: true, amount: 0.2 }}
+    className="mx-auto mt-6 max-w-md rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6"
+  >
     <div className="flex items-center gap-3 mb-4">
       <Icon className="h-6 w-6 text-primary" />
       <h2 className="font-headline text-xl font-bold uppercase tracking-wider text-card-foreground/90">
@@ -41,7 +49,7 @@ const SectionWrapper = ({ title, icon: Icon, children }: SectionWrapperProps) =>
       </h2>
     </div>
     {children}
-  </div>
+  </motion.div>
 );
 
 export function CardDetailsView({ card }: { card: Card }) {
@@ -52,10 +60,18 @@ export function CardDetailsView({ card }: { card: Card }) {
     spirituel: <Sparkles className="h-5 w-5" />,
   };
 
+  const hasCombinaisons = card.combinaisons && card.combinaisons.length > 0;
+
   return (
     <div className="container mx-auto px-4 pb-8">
       {/* A. En-tête */}
-      <div className="mx-auto mt-8 max-w-md rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6 text-center">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        className="mx-auto mt-8 max-w-md rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6 text-center"
+      >
         <h1 className="font-headline text-4xl font-bold tracking-tight text-primary sm:text-5xl uppercase drop-shadow-lg">
           {card.nom_carte}
         </h1>
@@ -75,10 +91,10 @@ export function CardDetailsView({ card }: { card: Card }) {
             {card.interpretations.endroit}
           </p>
         </div>
-      </div>
+      </motion.div>
       
       {/* C. Interprétations Détaillées */}
-      <SectionWrapper title="Interprétations" icon={Layers}>
+      <SectionWrapper title="Interprétations" icon={Layers} index={1}>
         <Tabs defaultValue="endroit" className="w-full">
           <TabsList className="h-auto grid grid-cols-2 items-stretch justify-around rounded-2xl bg-secondary/20 p-1.5 backdrop-blur-lg border border-primary/30 shadow-lg">
             <TabsTrigger
@@ -106,7 +122,7 @@ export function CardDetailsView({ card }: { card: Card }) {
       </SectionWrapper>
 
       {/* D. Application par Domaine */}
-      <SectionWrapper title="Application par Domaine" icon={LayoutGrid}>
+      <SectionWrapper title="Application par Domaine" icon={LayoutGrid} index={2}>
         <Tabs defaultValue="amour" className="w-full">
           <TabsList className="h-auto grid grid-cols-4 items-stretch justify-around rounded-2xl bg-secondary/20 p-1.5 backdrop-blur-lg border border-primary/30 shadow-lg">
             {Object.keys(card.domaines).map((key) => (
@@ -129,8 +145,8 @@ export function CardDetailsView({ card }: { card: Card }) {
       </SectionWrapper>
       
       {/* E. Associations Clés */}
-      {card.combinaisons && card.combinaisons.length > 0 && (
-        <SectionWrapper title="Associations Clés" icon={Link2}>
+      {hasCombinaisons && (
+        <SectionWrapper title="Associations Clés" icon={Link2} index={3}>
             <div className="space-y-4">
                 {card.combinaisons.map((combo) => {
                     const associatedCard = getCardDetails(combo.carte_associee_id);
@@ -156,14 +172,14 @@ export function CardDetailsView({ card }: { card: Card }) {
       )}
 
       {/* F. Le Conseil */}
-      <SectionWrapper title="Le Conseil" icon={Lightbulb}>
+      <SectionWrapper title="Le Conseil" icon={Lightbulb} index={hasCombinaisons ? 4 : 3}>
         <div className="p-4 bg-background/20 rounded-lg border border-primary/20 text-white/90">
           <p>{card.interpretations.conseil}</p>
         </div>
       </SectionWrapper>
 
       {/* G. Mots-clés */}
-      <SectionWrapper title="Mots-clés" icon={Tags}>
+      <SectionWrapper title="Mots-clés" icon={Tags} index={hasCombinaisons ? 5 : 4}>
         <blockquote className="border-l-4 border-primary pl-4 italic text-white/90 my-4">
           {card.phrase_cle}
         </blockquote>
@@ -176,8 +192,8 @@ export function CardDetailsView({ card }: { card: Card }) {
         </div>
       </SectionWrapper>
 
-      {/* H. Mes Notes Personnelles */}
-       <SectionWrapper title="Mes Notes" icon={NotebookText}>
+      {/* H. Mes Notes */}
+       <SectionWrapper title="Mes Notes" icon={NotebookText} index={hasCombinaisons ? 6 : 5}>
            <Textarea
                placeholder="Mes réflexions, associations personnelles, ou interprétations..."
                className="bg-secondary/20 backdrop-blur-lg border-primary/30 text-white placeholder:text-white/60 focus:border-primary focus-visible:ring-primary"
@@ -185,8 +201,8 @@ export function CardDetailsView({ card }: { card: Card }) {
            />
        </SectionWrapper>
 
-       {/* I. Chat avec le Mentor IA */}
-       <SectionWrapper title="Parler à l'oracle" icon={Sparkles}>
+       {/* I. Parler à l'oracle */}
+       <SectionWrapper title="Parler à l'oracle" icon={Sparkles} index={hasCombinaisons ? 7 : 6}>
            <div className="space-y-4">
                {/* Placeholder for chat history */}
                <div className="h-40 p-4 rounded-lg border border-primary/30 bg-background/20 text-white/70 overflow-y-auto">
