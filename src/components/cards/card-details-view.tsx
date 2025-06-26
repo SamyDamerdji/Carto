@@ -88,10 +88,18 @@ export function CardDetailsView({ card }: { card: Card }) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
   }, [messages]);
-
+  
   useEffect(() => {
-    if (audioUrl && audioRef.current) {
-        audioRef.current.play().catch(e => console.error("Audio playback failed:", e));
+    const audioElement = audioRef.current;
+    if (audioUrl && audioElement) {
+      const onCanPlay = () => {
+        audioElement.play().catch(e => console.error("Audio playback failed:", e));
+      };
+      audioElement.addEventListener('canplaythrough', onCanPlay);
+      audioElement.load(); // Explicitly load the new source
+      return () => {
+        audioElement.removeEventListener('canplaythrough', onCanPlay);
+      };
     }
   }, [audioUrl]);
 
@@ -104,7 +112,6 @@ export function CardDetailsView({ card }: { card: Card }) {
     const currentInput = inputValue;
     setInputValue('');
     setIsLoading(true);
-    setAudioUrl(null);
 
     try {
       const oracleResponse = await chatWithOracle({
