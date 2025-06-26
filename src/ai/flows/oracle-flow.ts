@@ -10,7 +10,7 @@ import { ai } from '@/ai/genkit';
 import { z } from 'zod';
 
 // Input Schema
-export const OracleInputSchema = z.object({
+const OracleInputSchema = z.object({
   cardName: z.string().describe('The name of the card the user is asking about.'),
   cardGeneralMeaning: z.string().describe('The general meaning of the card.'),
   userQuestion: z.string().describe("The user's question to the oracle."),
