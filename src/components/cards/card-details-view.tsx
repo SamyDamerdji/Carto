@@ -58,7 +58,7 @@ export function CardDetailsView({ card }: { card: Card }) {
         </div>
       </div>
       
-      {/* B. Interprétations Détaillées */}
+      {/* C. Interprétations Détaillées */}
       <SectionWrapper title="Interprétations">
         <Tabs defaultValue="endroit" className="w-full">
           <TabsList className="h-auto grid grid-cols-2 items-stretch justify-around rounded-2xl bg-secondary/20 p-1.5 backdrop-blur-lg border border-primary/30 shadow-lg">
@@ -167,11 +167,11 @@ export function CardDetailsView({ card }: { card: Card }) {
        </SectionWrapper>
 
        {/* I. Chat avec le Mentor IA */}
-       <SectionWrapper title="Discuter avec le Mentor">
+       <SectionWrapper title="Parler à l'oracle">
            <div className="space-y-4">
                {/* Placeholder for chat history */}
                <div className="h-40 p-4 rounded-lg border border-primary/30 bg-background/20 text-white/70 overflow-y-auto">
-                   <p><span className="font-bold text-primary">Le Mentor:</span> Bonjour! En quoi puis-je vous éclairer sur le ${card.nom_carte} aujourd'hui ?</p>
+                   <p><span className="font-bold text-primary">L'Oracle:</span> Bonjour! En quoi puis-je vous éclairer sur le ${card.nom_carte} aujourd'hui ?</p>
                </div>
                <div className="flex items-center gap-2">
                    <Input
