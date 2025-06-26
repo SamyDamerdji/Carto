@@ -18,7 +18,7 @@ interface SectionWrapperProps {
 
 const SectionWrapper = ({ title, children }: SectionWrapperProps) => (
   <div className="mx-auto mt-6 max-w-md rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6">
-    <h2 className="font-headline text-2xl font-bold tracking-tight text-card-foreground/90 uppercase mb-4">
+    <h2 className="font-headline text-xl font-bold uppercase tracking-wider text-card-foreground/90 mb-4">
       {title}
     </h2>
     {children}
@@ -41,7 +41,7 @@ export function CardDetailsView({ card }: { card: Card }) {
           {card.nom_carte}
         </h1>
         <div className="mt-4">
-          <div className="bg-card rounded-xl shadow-lg p-4 flex flex-col items-center">
+          <div className="bg-card rounded-xl shadow-lg p-4 inline-block">
             <div className="relative w-full max-w-[200px] aspect-[2.5/3.5]">
               <Image
                 src={card.image_url}
@@ -51,10 +51,10 @@ export function CardDetailsView({ card }: { card: Card }) {
                 sizes="(max-width: 640px) 100vw, 50vw"
               />
             </div>
-            <p className="mt-4 text-sm text-card-foreground/80 text-center">
-              {card.interpretations.general}
-            </p>
           </div>
+          <p className="mt-4 text-sm text-white/90 text-center">
+            {card.interpretations.general}
+          </p>
         </div>
       </div>
 
