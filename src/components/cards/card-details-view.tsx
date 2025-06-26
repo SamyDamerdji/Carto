@@ -40,14 +40,18 @@ export function CardDetailsView({ card }: { card: Card }) {
         <h1 className="font-headline text-4xl font-bold tracking-tight text-primary sm:text-5xl uppercase drop-shadow-lg">
           {card.nom_carte}
         </h1>
-        <div className="relative w-full max-w-xs mx-auto aspect-[2.5/3.5] mt-4">
-            <Image
-              src={card.image_url}
-              alt={`Image de la carte ${card.nom_carte}`}
-              fill
-              className="object-contain"
-              sizes="(max-width: 640px) 100vw, 50vw"
-            />
+        <div className="relative w-full max-w-[240px] mx-auto aspect-[2.5/3.5] mt-4">
+          <div className="absolute inset-0 bg-card rounded-xl shadow-lg p-2">
+            <div className="relative h-full w-full">
+              <Image
+                src={card.image_url}
+                alt={`Image de la carte ${card.nom_carte}`}
+                fill
+                className="object-contain"
+                sizes="(max-width: 640px) 100vw, 50vw"
+              />
+            </div>
+          </div>
         </div>
       </div>
 
