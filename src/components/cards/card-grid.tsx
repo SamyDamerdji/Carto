@@ -18,19 +18,21 @@ export function CardGrid({ cards }: CardGridProps) {
           <div className="absolute -right-2 -top-2 h-16 w-16 bg-[radial-gradient(closest-side,hsl(var(--primary)/0.1),transparent)]"></div>
           
           <div className="relative w-full aspect-[2.5/3.5]">
-            <div className="absolute inset-0 bg-card rounded-xl shadow-lg p-2">
-              <div className="relative h-full w-full">
-                <Image
-                  src={card.image_url}
-                  alt={`Image de la carte ${card.nom_carte}`}
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 640px) 100vw, 50vw"
-                />
-              </div>
-              <div className="absolute inset-0 z-10 bg-gradient-to-tl from-black/60 to-transparent to-45% rounded-xl"></div>
+            <div className="relative h-full w-full">
+                <div className="absolute inset-0 bg-card rounded-xl shadow-lg p-2">
+                    <div className="relative h-full w-full">
+                        <Image
+                        src={card.image_url}
+                        alt={`Image de la carte ${card.nom_carte}`}
+                        fill
+                        className="object-contain"
+                        sizes="(max-width: 640px) 100vw, 50vw"
+                        />
+                    </div>
+                </div>
+                <div className="absolute inset-0 z-10 bg-gradient-to-tl from-black/60 to-transparent to-45% rounded-xl"></div>
             </div>
-             <h3 className="absolute bottom-3 left-0 right-0 z-20 font-headline text-base font-bold text-center text-white drop-shadow-[0_2px_4px_rgba(0,0,0,1)] uppercase">
+             <h3 className="absolute bottom-3 left-0 right-0 z-20 font-headline text-base font-bold text-center text-card-foreground/90 drop-shadow-[0_2px_4px_rgba(0,0,0,1)] uppercase">
                 {card.nom_carte}
             </h3>
           </div>
