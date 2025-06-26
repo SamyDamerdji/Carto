@@ -43,7 +43,7 @@ export function CardGrid({ cards }: CardGridProps) {
                     Fiche détaillée
                 </Button>
             </Link>
-            <Button variant="secondary" size="sm" disabled className="text-xs">
+            <Button variant="default" size="sm" disabled className="text-xs">
                 <BrainCircuit />
                 Leçon interactive
             </Button>
