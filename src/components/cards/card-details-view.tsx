@@ -27,10 +27,10 @@ const SectionWrapper = ({ title, children }: SectionWrapperProps) => (
 
 export function CardDetailsView({ card }: { card: Card }) {
   const domainIcons: Record<string, ReactNode> = {
-    amour: <Heart className="h-6 w-6 text-primary" />,
-    travail: <Briefcase className="h-6 w-6 text-primary" />,
-    finances: <CircleDollarSign className="h-6 w-6 text-primary" />,
-    spirituel: <Sparkles className="h-6 w-6 text-primary" />,
+    amour: <Heart className="h-5 w-5" />,
+    travail: <Briefcase className="h-5 w-5" />,
+    finances: <CircleDollarSign className="h-5 w-5" />,
+    spirituel: <Sparkles className="h-5 w-5" />,
   };
 
   return (
@@ -40,7 +40,7 @@ export function CardDetailsView({ card }: { card: Card }) {
         <h1 className="font-headline text-4xl font-bold tracking-tight text-primary sm:text-5xl uppercase drop-shadow-lg">
           {card.nom_carte}
         </h1>
-        <div className="mt-4">
+        <div className="mt-4 flex flex-col items-center">
           <div className="bg-card rounded-xl shadow-lg p-2 inline-block">
             <div className="relative w-[200px] aspect-[2.5/3.5]">
               <Image
@@ -57,11 +57,11 @@ export function CardDetailsView({ card }: { card: Card }) {
           </p>
         </div>
       </div>
-
+      
       {/* B. Interprétations Détaillées */}
       <SectionWrapper title="Interprétations">
         <Tabs defaultValue="endroit" className="w-full">
-          <TabsList className="h-auto flex items-stretch justify-around rounded-2xl bg-secondary/20 p-1.5 backdrop-blur-lg border border-primary/30 shadow-lg">
+          <TabsList className="h-auto grid grid-cols-2 items-stretch justify-around rounded-2xl bg-secondary/20 p-1.5 backdrop-blur-lg border border-primary/30 shadow-lg">
             <TabsTrigger
               value="endroit"
               className="flex h-auto flex-1 flex-col items-center gap-1 rounded-lg bg-transparent p-2 text-xs font-medium text-card-foreground/90 shadow-none ring-offset-0 transition-all duration-300 hover:bg-accent/20 hover:text-primary focus:shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 data-[state=active]:bg-transparent data-[state=active]:text-primary data-[state=active]:shadow-none"
@@ -102,17 +102,25 @@ export function CardDetailsView({ card }: { card: Card }) {
 
       {/* D. Application par Domaine */}
       <SectionWrapper title="Application par Domaine">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <Tabs defaultValue="amour" className="w-full">
+          <TabsList className="h-auto grid grid-cols-4 items-stretch justify-around rounded-2xl bg-secondary/20 p-1.5 backdrop-blur-lg border border-primary/30 shadow-lg">
+            {Object.keys(card.domaines).map((key) => (
+              <TabsTrigger
+                key={key}
+                value={key}
+                className="flex h-auto flex-1 flex-col items-center gap-1 rounded-lg bg-transparent p-2 text-xs font-medium text-card-foreground/90 shadow-none ring-offset-0 transition-all duration-300 hover:bg-accent/20 hover:text-primary focus:shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 data-[state=active]:bg-transparent data-[state=active]:text-primary data-[state=active]:shadow-none"
+              >
+                {domainIcons[key]}
+                <span className="capitalize">{key}</span>
+              </TabsTrigger>
+            ))}
+          </TabsList>
           {Object.entries(card.domaines).map(([key, value]) => (
-             <div key={key} className="rounded-xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-md">
-               <div className="flex items-center gap-3 mb-2">
-                 {domainIcons[key]}
-                 <h3 className="font-headline text-lg font-semibold capitalize text-primary">{key}</h3>
-               </div>
-               <p className="text-sm text-white/80">{value}</p>
-             </div>
+            <TabsContent key={key} value={key} className="mt-4 p-4 bg-background/20 rounded-lg border border-primary/20 text-white/90">
+              <p>{value}</p>
+            </TabsContent>
           ))}
-        </div>
+        </Tabs>
       </SectionWrapper>
       
       {/* E. Associations Clés */}
