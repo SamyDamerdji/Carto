@@ -440,5 +440,42 @@ export const coeurCards: Card[] = [
       { "carte_associee_id": "pique_10", "signification": "Indique une période de transition difficile dans les relations, menant à une prise de conscience." },
       { "carte_associee_id": "coeur_08", "signification": "Renforce l'idée de progression et de croissance dans les relations après une période de turbulence." }
     ]
+  },
+  {
+    "id": "coeur_04",
+    "nom_carte": "Quatre de Cœur",
+    "valeur": 4,
+    "couleur": "Cœur",
+    "image_url": "/images/cards/coeur_04.png",
+    "resume_general": "Carte de la stabilité émotionnelle, de l'introspection et de la pause. Elle symbolise un équilibre affectif, une période de calme et de réflexion pour consolider ce qui est présent. C'est un baume pour les cœurs fatigués, une invitation à la sérénité.",
+    "phrase_cle": "Une pause douce pour recharger ses batteries émotionnelles.",
+    "mots_cles": [
+      "stabilité émotionnelle", "équilibre", "pause", "réflexion", "introspection", "sérénité", "guérison",
+      "amour simple", "complicité", "amour de soi", "fondation"
+    ],
+    "interpretations": {
+      "general": "Le 4 de Cœur évoque la stabilité (chiffre 4) dans le domaine des émotions. C'est un équilibre affectif, une fondation solide, un moment de paix et de sérénité. C'est une carte de complicité tranquille, d'amour sans drame, où l'on peut juste être, sans pression.",
+      "endroit": "Indique une phase de réflexion intérieure pour consolider ce qui est déjà présent. C'est un moment pour réévaluer ses relations et ses sentiments. Après une période difficile, elle est un baume, un retour à la paix, un espace pour guérir en douceur. Elle peut aussi célébrer l'amour de soi.",
+      "ombre_et_defis": "L'équilibre peut mener à la routine et à la stagnation émotionnelle. La carte peut mettre en garde contre l'ennui ou le refus d'ignorer des opportunités d'amour par confort. Le défi est de ne pas confondre tranquillité et immobilisme.",
+      "conseil": "Prenez le temps de vous poser. Rechargez vos batteries émotionnelles. C'est le moment idéal pour faire le point, sans pression. Prenez soin de votre cœur. Si vous êtes dans une phase de tranquillité, demandez-vous si quelques surprises ne feraient pas de mal."
+    },
+    "domaines": {
+      "amour": "En couple, parle d'une relation stable et harmonieuse, fluide et naturelle. Pour un célibataire, peut indiquer une période de solitude choisie et appréciée, une phase de tranquillité avant une nouvelle aventure. C'est une invitation à aimer sans complications.",
+      "travail": "Suggère une période de stabilité professionnelle, un moment de consolidation des acquis. Invite à prendre du recul pour mieux comprendre ses émotions vis-à-vis de son travail et à réfléchir avant de faire le prochain grand pas.",
+      "finances": "Indique une période de stabilité financière, sans grands bouleversements. C'est un moment pour savourer la sécurité matérielle et réfléchir à ses priorités sans la pression de l'urgence.",
+      "spirituel": "C'est un appel à la paix intérieure, à la sérénité et à la guérison. Rappelle qu'il n'est pas toujours nécessaire de courir après les grandes émotions. Invite à explorer ses émotions et à savourer les moments de tranquillité pour se reconnecter à soi-même."
+    },
+    "prompts_visuels": [
+      "une maison solide et accueillante au bord d'un lac parfaitement calme",
+      "un arbre aux racines profondes et visibles",
+      "une personne méditant paisiblement dans un jardin serein",
+      "une tasse de thé fumante posée à côté d'un livre ouvert",
+      "un baume apaisant appliqué sur une petite éraflure"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "coeur_02", "signification": "Indique une rencontre romantique ou un renforcement des liens existants." },
+      { "carte_associee_id": "pique_as", "signification": "Signale une période de réflexion plus profonde, une remise en question des émotions actuelles." },
+      { "carte_associee_id": "carreau_04", "signification": "Symbolise un équilibre entre les émotions et les aspects matériels, suggérant une phase de stabilité et de sécurité." }
+    ]
   }
 ];
