@@ -3,14 +3,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Home, BookOpen, Target, RectangleVertical } from "lucide-react";
+import { Home, BookOpen, Target, Stars } from "lucide-react";
 import { memo } from "react";
 
 const navItems = [
   { href: "/", label: "Accueil", icon: Home },
   { href: "/apprentissage", label: "Apprentissage", icon: BookOpen },
   { href: "/entrainement", label: "Entraînement", icon: Target },
-  { href: "/tirages", label: "Tirages", icon: RectangleVertical },
+  { href: "/tirages", label: "Tirages", icon: Stars },
 ];
 
 const HeaderComponent = () => {
