@@ -18,6 +18,7 @@ export function CardGrid({ cards }: CardGridProps) {
           <div className="absolute -right-2 -top-2 h-16 w-16 bg-[radial-gradient(closest-side,hsl(var(--primary)/0.1),transparent)]"></div>
           
           <div className="relative w-full aspect-[2.5/3.5] rounded-xl overflow-hidden shadow-lg">
+            <div className="absolute inset-0 bg-gradient-to-tr from-black/60 to-transparent"></div>
             <Image
               src={card.image_url}
               alt={`Image de la carte ${card.nom_carte}`}
@@ -27,7 +28,7 @@ export function CardGrid({ cards }: CardGridProps) {
             />
           </div>
 
-          <h3 className="font-headline text-base font-bold text-center mt-3 text-card-foreground/90">
+          <h3 className="font-headline text-base font-bold text-center mt-3 text-white drop-shadow-[0_2px_2px_rgba(0,0,0,1)] uppercase">
             {card.nom_carte}
           </h3>
 
