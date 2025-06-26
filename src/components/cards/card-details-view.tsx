@@ -280,7 +280,7 @@ export function CardDetailsView({ card }: { card: Card }) {
        <SectionWrapper title="Mes Notes" icon={NotebookText} index={hasCombinaisons ? 6 : 5}>
            <Textarea
                placeholder="Mes réflexions, associations personnelles, ou interprétations..."
-               className="bg-secondary/20 backdrop-blur-lg border-primary/30 text-white placeholder:text-white/60 focus:border-primary focus-visible:ring-primary"
+               className="bg-secondary/20 backdrop-blur-lg border-primary/30 text-white placeholder:text-white/60 focus-visible:ring-0"
                rows={5}
            />
        </SectionWrapper>
@@ -329,7 +329,7 @@ export function CardDetailsView({ card }: { card: Card }) {
                        value={inputValue}
                        onChange={(e) => setInputValue(e.target.value)}
                        disabled={isLoading}
-                       className="bg-secondary/20 backdrop-blur-lg border-primary/30 text-white placeholder:text-white/60 focus:border-primary focus-visible:ring-primary"
+                       className="bg-secondary/20 backdrop-blur-lg border-primary/30 text-white placeholder:text-white/60 focus-visible:ring-0"
                    />
                    <Button variant="ghost" size="icon" className="text-primary hover:bg-primary/20" disabled>
                        <Mic className="h-5 w-5" />
