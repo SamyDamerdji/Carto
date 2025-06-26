@@ -6,21 +6,40 @@ import { getCardDetails } from '@/lib/data/cards';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Heart, Briefcase, CircleDollarSign, Sparkles, Mic, Send, Sun, ShieldAlert } from 'lucide-react';
+import {
+  Heart,
+  Briefcase,
+  CircleDollarSign,
+  Sparkles,
+  Mic,
+  Send,
+  Sun,
+  ShieldAlert,
+  Layers,
+  LayoutGrid,
+  Link2,
+  Lightbulb,
+  Tags,
+  NotebookText,
+} from 'lucide-react';
 import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 
 interface SectionWrapperProps {
   title: string;
+  icon: React.ElementType;
   children: ReactNode;
 }
 
-const SectionWrapper = ({ title, children }: SectionWrapperProps) => (
+const SectionWrapper = ({ title, icon: Icon, children }: SectionWrapperProps) => (
   <div className="mx-auto mt-6 max-w-md rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6">
-    <h2 className="font-headline text-xl font-bold uppercase tracking-wider text-card-foreground/90 mb-4">
-      {title}
-    </h2>
+    <div className="flex items-center gap-3 mb-4">
+      <Icon className="h-6 w-6 text-primary" />
+      <h2 className="font-headline text-xl font-bold uppercase tracking-wider text-card-foreground/90">
+        {title}
+      </h2>
+    </div>
     {children}
   </div>
 );
@@ -59,7 +78,7 @@ export function CardDetailsView({ card }: { card: Card }) {
       </div>
       
       {/* C. Interprétations Détaillées */}
-      <SectionWrapper title="Interprétations">
+      <SectionWrapper title="Interprétations" icon={Layers}>
         <Tabs defaultValue="endroit" className="w-full">
           <TabsList className="h-auto grid grid-cols-2 items-stretch justify-around rounded-2xl bg-secondary/20 p-1.5 backdrop-blur-lg border border-primary/30 shadow-lg">
             <TabsTrigger
@@ -87,7 +106,7 @@ export function CardDetailsView({ card }: { card: Card }) {
       </SectionWrapper>
 
       {/* D. Application par Domaine */}
-      <SectionWrapper title="Application par Domaine">
+      <SectionWrapper title="Application par Domaine" icon={LayoutGrid}>
         <Tabs defaultValue="amour" className="w-full">
           <TabsList className="h-auto grid grid-cols-4 items-stretch justify-around rounded-2xl bg-secondary/20 p-1.5 backdrop-blur-lg border border-primary/30 shadow-lg">
             {Object.keys(card.domaines).map((key) => (
@@ -111,7 +130,7 @@ export function CardDetailsView({ card }: { card: Card }) {
       
       {/* E. Associations Clés */}
       {card.combinaisons && card.combinaisons.length > 0 && (
-        <SectionWrapper title="Associations Clés">
+        <SectionWrapper title="Associations Clés" icon={Link2}>
             <div className="space-y-4">
                 {card.combinaisons.map((combo) => {
                     const associatedCard = getCardDetails(combo.carte_associee_id);
@@ -137,14 +156,14 @@ export function CardDetailsView({ card }: { card: Card }) {
       )}
 
       {/* F. Le Conseil */}
-      <SectionWrapper title="Le Conseil">
+      <SectionWrapper title="Le Conseil" icon={Lightbulb}>
         <div className="p-4 bg-background/20 rounded-lg border border-primary/20 text-white/90">
           <p>{card.interpretations.conseil}</p>
         </div>
       </SectionWrapper>
 
       {/* G. Mots-clés */}
-      <SectionWrapper title="Mots-clés">
+      <SectionWrapper title="Mots-clés" icon={Tags}>
         <blockquote className="border-l-4 border-primary pl-4 italic text-white/90 my-4">
           {card.phrase_cle}
         </blockquote>
@@ -158,7 +177,7 @@ export function CardDetailsView({ card }: { card: Card }) {
       </SectionWrapper>
 
       {/* H. Mes Notes Personnelles */}
-       <SectionWrapper title="Mes Notes">
+       <SectionWrapper title="Mes Notes" icon={NotebookText}>
            <Textarea
                placeholder="Mes réflexions, associations personnelles, ou interprétations..."
                className="bg-secondary/20 backdrop-blur-lg border-primary/30 text-white placeholder:text-white/60 focus:border-primary focus-visible:ring-primary"
@@ -167,7 +186,7 @@ export function CardDetailsView({ card }: { card: Card }) {
        </SectionWrapper>
 
        {/* I. Chat avec le Mentor IA */}
-       <SectionWrapper title="Parler à l'oracle">
+       <SectionWrapper title="Parler à l'oracle" icon={Sparkles}>
            <div className="space-y-4">
                {/* Placeholder for chat history */}
                <div className="h-40 p-4 rounded-lg border border-primary/30 bg-background/20 text-white/70 overflow-y-auto">
