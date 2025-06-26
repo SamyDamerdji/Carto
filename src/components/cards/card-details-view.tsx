@@ -92,14 +92,14 @@ export function CardDetailsView({ card }: { card: Card }) {
   useEffect(() => {
     const audioElement = audioRef.current;
     if (audioUrl && audioElement) {
-      const onCanPlay = () => {
-        audioElement.play().catch(e => console.error("Audio playback failed:", e));
-      };
-      audioElement.addEventListener('canplaythrough', onCanPlay);
-      audioElement.load(); // Explicitly load the new source
-      return () => {
-        audioElement.removeEventListener('canplaythrough', onCanPlay);
-      };
+      audioElement.src = audioUrl;
+      const playPromise = audioElement.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.error("Audio playback failed:", error);
+          // Autoplay was prevented.
+        });
+      }
     }
   }, [audioUrl]);
 
@@ -159,7 +159,7 @@ export function CardDetailsView({ card }: { card: Card }) {
         </h1>
         <div className="mt-4 flex flex-col items-center">
           <div className="bg-card rounded-xl shadow-lg p-1 inline-block">
-            <div className="relative w-[200px] aspect-[2.5/3.5]">
+            <div className="relative w-[200px] aspect-[2.5/3.5] p-2">
               <Image
                 src={card.image_url}
                 alt={`Image de la carte ${card.nom_carte}`}
@@ -343,7 +343,7 @@ export function CardDetailsView({ card }: { card: Card }) {
                       {isLoading ? <Loader2 className="h-5 w-5 animate-spin" /> : <Send className="h-5 w-5" />}
                    </Button>
                </form>
-               <audio ref={audioRef} src={audioUrl ?? undefined} className="hidden" />
+               <audio ref={audioRef} className="hidden" />
            </div>
        </SectionWrapper>
 
