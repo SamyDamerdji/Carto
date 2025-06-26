@@ -1,15 +1,18 @@
 'use client';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { cardsList } from '@/lib/data/cards';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Dices } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
 
 interface CardNavigationProps {
   currentCardId: string;
 }
 
 export function CardNavigation({ currentCardId }: CardNavigationProps) {
+  const router = useRouter();
   const currentIndex = cardsList.findIndex((card) => card.id === currentCardId);
 
   if (currentIndex === -1) {
@@ -18,6 +21,22 @@ export function CardNavigation({ currentCardId }: CardNavigationProps) {
 
   const prevCard = currentIndex > 0 ? cardsList[currentIndex - 1] : null;
   const nextCard = currentIndex < cardsList.length - 1 ? cardsList[currentIndex + 1] : null;
+
+  const handleRandomClick = () => {
+    let randomIndex;
+    let randomCard;
+
+    // Ensure we don't navigate to the same card
+    do {
+      randomIndex = Math.floor(Math.random() * cardsList.length);
+      randomCard = cardsList[randomIndex];
+    } while (cardsList.length > 1 && randomCard.id === currentCardId);
+
+    if (randomCard) {
+      router.push(`/apprentissage/${randomCard.id}`);
+    }
+  };
+
 
   // Header is sticky top-0 with p-4. Nav inside is about 56px high. Total height ~88px.
   // The new nav should be sticky below the header.
@@ -38,7 +57,19 @@ export function CardNavigation({ currentCardId }: CardNavigationProps) {
           <span className="truncate sm:hidden">Préc.</span>
         </Link>
         
-        <div className="h-8 w-px bg-primary/30" />
+        <div className="h-8 w-px bg-primary/30 shrink-0" />
+
+        <Button
+            variant="ghost"
+            size="icon"
+            onClick={handleRandomClick}
+            className="text-primary hover:bg-primary/20 shrink-0"
+            aria-label="Carte aléatoire"
+        >
+            <Dices className="h-5 w-5" />
+        </Button>
+
+        <div className="h-8 w-px bg-primary/30 shrink-0" />
 
         <Link
           href={nextCard ? `/apprentissage/${nextCard.id}` : '#'}
