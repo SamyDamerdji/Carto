@@ -17,15 +17,17 @@ export function CardGrid({ cards }: CardGridProps) {
         <div key={card.id} className="relative h-full overflow-hidden rounded-2xl border border-primary/30 bg-secondary/20 p-3 shadow-lg shadow-primary/20 backdrop-blur-lg flex flex-col">
           <div className="absolute -right-2 -top-2 h-16 w-16 bg-[radial-gradient(closest-side,hsl(var(--primary)/0.1),transparent)]"></div>
           
-          <div className="relative w-full aspect-[2.5/3.5] rounded-xl overflow-hidden shadow-lg">
-            <div className="absolute inset-0 bg-gradient-to-tr from-black/60 to-transparent"></div>
-            <Image
-              src={card.image_url}
-              alt={`Image de la carte ${card.nom_carte}`}
-              fill
-              className="object-contain"
-              sizes="(max-width: 640px) 100vw, 50vw"
-            />
+          <div className="relative w-full aspect-[2.5/3.5] bg-card p-2 rounded-xl shadow-lg">
+            <div className="relative w-full h-full rounded-lg overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-tl from-black/60 via-transparent to-transparent z-10"></div>
+              <Image
+                src={card.image_url}
+                alt={`Image de la carte ${card.nom_carte}`}
+                fill
+                className="object-contain"
+                sizes="(max-width: 640px) 100vw, 50vw"
+              />
+            </div>
           </div>
 
           <h3 className="font-headline text-base font-bold text-center mt-3 text-white drop-shadow-[0_2px_2px_rgba(0,0,0,1)] uppercase">
