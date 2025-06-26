@@ -8,17 +8,18 @@ export default function ApprentissagePage() {
     <div className="flex min-h-dvh flex-col">
       <Header />
       <main className="flex-grow container mx-auto px-4 pb-8">
-        <div className="flex flex-col items-center text-center my-8">
-            <h1 className="font-headline text-4xl font-bold tracking-tight text-primary sm:text-5xl uppercase">
-              Apprentissage
-            </h1>
-            <p className="mt-4 max-w-2xl text-lg text-white">
-              Explorez la signification de chaque carte. Cliquez sur une carte pour en apprendre plus.
-            </p>
+        <div className="mx-auto mt-8 max-w-md rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6">
+            <div className="flex flex-col items-center text-center mb-6">
+                <h1 className="font-headline text-4xl font-bold tracking-tight text-primary sm:text-5xl uppercase">
+                  Apprentissage
+                </h1>
+                <p className="mt-4 max-w-2xl text-lg text-white">
+                  Explorez la signification de chaque carte.
+                </p>
+            </div>
+            
+            <CardGrid cards={cardsList} />
         </div>
-        
-        <CardGrid cards={cardsList} />
-        
       </main>
       <Footer />
     </div>

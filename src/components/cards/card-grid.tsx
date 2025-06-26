@@ -1,54 +1,49 @@
 "use client";
 
 import type { CardSummary } from "@/lib/data/cards";
-import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { BookOpen, BrainCircuit } from "lucide-react";
 
 interface CardGridProps {
   cards: CardSummary[];
 }
 
-const colorClasses = {
-  "Coeur": "hover:shadow-red-400/40",
-  "Carreau": "hover:shadow-blue-400/40",
-  "Trèfle": "hover:shadow-green-400/40",
-  "Pique": "hover:shadow-gray-400/40",
-}
-
 export function CardGrid({ cards }: CardGridProps) {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-4 md:gap-6">
-      {cards.map((card, index) => (
-        <Link href={`/apprentissage/${card.id}`} key={card.id}>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: index * 0.02 }}
-            className={cn(
-                "group relative aspect-[2.5/3.5] w-full overflow-hidden rounded-2xl bg-white p-2 shadow-lg transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl",
-                colorClasses[card.couleur]
-            )}
-          >
-            <div className="relative h-full w-full overflow-hidden rounded-xl">
-              <Image
-                src={card.image_url}
-                alt={`Image de la carte ${card.nom_carte}`}
-                fill
-                className="object-contain transition-transform duration-300"
-                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 15vw"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-tr from-black/60 to-transparent to-80%" />
-              <div className="absolute bottom-0 left-0 p-2 md:p-3">
-                <h3 className="font-headline text-sm md:text-base font-bold text-white [text-shadow:0_2px_4px_rgba(0,0,0,0.9)]">
-                  {card.nom_carte}
-                </h3>
-              </div>
-            </div>
-          </motion.div>
-        </Link>
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {cards.map((card) => (
+        <div key={card.id} className="relative h-full overflow-hidden rounded-2xl border border-primary/30 bg-secondary/20 p-3 shadow-lg shadow-primary/20 backdrop-blur-lg flex flex-col">
+          <div className="absolute -right-2 -top-2 h-16 w-16 bg-[radial-gradient(closest-side,hsl(var(--primary)/0.1),transparent)]"></div>
+          
+          <div className="relative w-full aspect-[2.5/3.5] rounded-xl overflow-hidden shadow-lg">
+            <Image
+              src={card.image_url}
+              alt={`Image de la carte ${card.nom_carte}`}
+              fill
+              className="object-contain"
+              sizes="(max-width: 640px) 100vw, 50vw"
+            />
+          </div>
+
+          <h3 className="font-headline text-base font-bold text-center mt-3 text-card-foreground/90">
+            {card.nom_carte}
+          </h3>
+
+          <div className="mt-auto pt-3 flex flex-col gap-2">
+            <Button variant="secondary" size="sm" disabled>
+                <BrainCircuit />
+                Leçon interactive
+            </Button>
+            <Button asChild size="sm">
+              <Link href={`/apprentissage/${card.id}`}>
+                <BookOpen />
+                Fiche détaillée
+              </Link>
+            </Button>
+          </div>
+        </div>
       ))}
     </div>
   );
