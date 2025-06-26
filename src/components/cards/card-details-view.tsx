@@ -55,8 +55,8 @@ export function CardDetailsView({ card }: { card: Card }) {
         </div>
       </div>
 
-      {/* B. Synthèse */}
-      <SectionWrapper title="Synthèse">
+      {/* B. Mots-clés */}
+      <SectionWrapper title="Mots-clés">
         <blockquote className="border-l-4 border-primary pl-4 italic text-white/90 my-4">
           {card.phrase_cle}
         </blockquote>
