@@ -89,12 +89,14 @@ export function CardDetailsView({ card }: { card: Card }) {
   }, [messages]);
 
   useEffect(() => {
+    // This effect runs once on component mount to create the audio element.
     audioRef.current = new Audio();
     audioRef.current.onerror = () => {
-        console.error("Error playing audio.");
+        console.error("Audio playback failed. The audio format may not be supported or the source is invalid.");
     };
 
     return () => {
+      // Cleanup on component unmount
       if (audioRef.current) {
         audioRef.current.pause();
         audioRef.current = null;
