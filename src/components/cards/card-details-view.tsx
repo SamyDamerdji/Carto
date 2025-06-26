@@ -18,7 +18,7 @@ interface SectionWrapperProps {
 
 const SectionWrapper = ({ title, children }: SectionWrapperProps) => (
   <div className="mx-auto mt-6 max-w-md rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6">
-    <h2 className="font-headline text-2xl font-bold tracking-tight text-primary uppercase drop-shadow-lg mb-4">
+    <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground uppercase mb-4">
       {title}
     </h2>
     {children}
