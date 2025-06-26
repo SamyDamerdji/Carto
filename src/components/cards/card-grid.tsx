@@ -17,8 +17,8 @@ export function CardGrid({ cards }: CardGridProps) {
         <div key={card.id} className="relative h-full overflow-hidden rounded-2xl border border-primary/30 bg-secondary/20 p-3 shadow-lg shadow-primary/20 backdrop-blur-lg flex flex-col">
           <div className="absolute -right-2 -top-2 h-16 w-16 bg-[radial-gradient(closest-side,hsl(var(--primary)/0.1),transparent)]"></div>
           
-          <div className="relative w-full aspect-[2.5/3.5] bg-card p-2 rounded-xl shadow-lg">
-            <div className="relative w-full h-full rounded-lg overflow-hidden">
+          <div className="relative w-full aspect-[2.5/3.5] bg-card rounded-xl shadow-lg">
+            <div className="relative w-full h-full rounded-lg overflow-hidden p-2">
               <div className="absolute inset-0 bg-gradient-to-tl from-black/60 via-transparent to-transparent z-10"></div>
               <Image
                 src={card.image_url}
