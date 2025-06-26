@@ -58,21 +58,7 @@ export function CardDetailsView({ card }: { card: Card }) {
         </div>
       </div>
 
-      {/* B. Mots-clés */}
-      <SectionWrapper title="Mots-clés">
-        <blockquote className="border-l-4 border-primary pl-4 italic text-white/90 my-4">
-          {card.phrase_cle}
-        </blockquote>
-        <div className="flex flex-wrap gap-2">
-          {card.mots_cles.map((mot) => (
-            <Badge key={mot} variant="secondary" className="bg-primary/20 text-primary-foreground/90 border border-primary/50">
-              {mot}
-            </Badge>
-          ))}
-        </div>
-      </SectionWrapper>
-
-      {/* C. Interprétations Détaillées */}
+      {/* B. Interprétations Détaillées */}
       <SectionWrapper title="Interprétations">
         <Tabs defaultValue="endroit" className="w-full">
           <TabsList className="grid w-full grid-cols-2">
@@ -86,6 +72,20 @@ export function CardDetailsView({ card }: { card: Card }) {
             <p>{card.interpretations.ombre_et_defis}</p>
           </TabsContent>
         </Tabs>
+      </SectionWrapper>
+
+      {/* C. Mots-clés */}
+      <SectionWrapper title="Mots-clés">
+        <blockquote className="border-l-4 border-primary pl-4 italic text-white/90 my-4">
+          {card.phrase_cle}
+        </blockquote>
+        <div className="flex flex-wrap gap-2">
+          {card.mots_cles.map((mot) => (
+            <Badge key={mot} variant="secondary" className="bg-primary/20 text-primary-foreground/90 border border-primary/50">
+              {mot}
+            </Badge>
+          ))}
+        </div>
       </SectionWrapper>
 
       {/* D. Application par Domaine */}
