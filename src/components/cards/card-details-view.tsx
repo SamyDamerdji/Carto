@@ -53,7 +53,7 @@ export function CardDetailsView({ card }: { card: Card }) {
             </div>
           </div>
           <p className="mt-4 text-sm text-white/90 text-center">
-            {card.interpretations.general}
+            {card.interpretations.endroit}
           </p>
         </div>
       </div>
@@ -78,26 +78,12 @@ export function CardDetailsView({ card }: { card: Card }) {
             </TabsTrigger>
           </TabsList>
           <TabsContent value="endroit" className="mt-4 p-4 bg-background/20 rounded-lg border border-primary/20 text-white/90">
-            <p>{card.interpretations.endroit}</p>
+            <p>{card.interpretations.general}</p>
           </TabsContent>
           <TabsContent value="ombre_et_defis" className="mt-4 p-4 bg-background/20 rounded-lg border border-primary/20 text-white/90">
             <p>{card.interpretations.ombre_et_defis}</p>
           </TabsContent>
         </Tabs>
-      </SectionWrapper>
-
-      {/* C. Mots-clés */}
-      <SectionWrapper title="Mots-clés">
-        <blockquote className="border-l-4 border-primary pl-4 italic text-white/90 my-4">
-          {card.phrase_cle}
-        </blockquote>
-        <div className="flex flex-wrap gap-2">
-          {card.mots_cles.map((mot) => (
-            <Badge key={mot} variant="secondary" className="bg-primary/20 text-primary-foreground/90 border border-primary/50">
-              {mot}
-            </Badge>
-          ))}
-        </div>
       </SectionWrapper>
 
       {/* D. Application par Domaine */}
@@ -157,7 +143,21 @@ export function CardDetailsView({ card }: { card: Card }) {
         </div>
       </SectionWrapper>
 
-      {/* G. Mes Notes Personnelles */}
+      {/* G. Mots-clés */}
+      <SectionWrapper title="Mots-clés">
+        <blockquote className="border-l-4 border-primary pl-4 italic text-white/90 my-4">
+          {card.phrase_cle}
+        </blockquote>
+        <div className="flex flex-wrap gap-2">
+          {card.mots_cles.map((mot) => (
+            <Badge key={mot} variant="secondary" className="bg-primary/20 text-primary-foreground/90 border border-primary/50">
+              {mot}
+            </Badge>
+          ))}
+        </div>
+      </SectionWrapper>
+
+      {/* H. Mes Notes Personnelles */}
        <SectionWrapper title={`Mes Notes sur le ${card.nom_carte}`}>
            <Textarea
                placeholder="Mes réflexions, associations personnelles, ou interprétations..."
@@ -166,7 +166,7 @@ export function CardDetailsView({ card }: { card: Card }) {
            />
        </SectionWrapper>
 
-       {/* H. Chat avec le Mentor IA */}
+       {/* I. Chat avec le Mentor IA */}
        <SectionWrapper title="Discuter avec le Mentor">
            <div className="space-y-4">
                {/* Placeholder for chat history */}
