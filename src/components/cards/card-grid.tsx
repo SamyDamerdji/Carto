@@ -2,9 +2,8 @@
 
 import type { CardSummary } from "@/lib/data/cards";
 import Image from "next/image";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { BookOpen, BrainCircuit } from "lucide-react";
+import { BrainCircuit } from "lucide-react";
 
 interface CardGridProps {
   cards: CardSummary[];
@@ -17,7 +16,7 @@ export function CardGrid({ cards }: CardGridProps) {
         <div key={card.id} className="relative h-full overflow-hidden rounded-2xl border border-primary/30 bg-secondary/20 p-3 shadow-lg shadow-primary/20 backdrop-blur-lg flex flex-col">
           <div className="absolute -right-2 -top-2 h-16 w-16 bg-[radial-gradient(closest-side,hsl(var(--primary)/0.1),transparent)]"></div>
           
-          <h3 className="font-headline text-xs whitespace-nowrap font-bold text-center text-primary drop-shadow-[0_1.2px_1.5px_rgba(0,0,0,0.8)] uppercase mb-2 h-5 flex items-center justify-center">
+          <h3 className="font-headline text-xs whitespace-nowrap font-bold text-center text-primary drop-shadow-[0_2.5px_2.5px_rgba(255,140,0,0.5)] uppercase mb-2 h-5 flex items-center justify-center">
             {card.nom_carte}
           </h3>
           
@@ -41,12 +40,6 @@ export function CardGrid({ cards }: CardGridProps) {
             <Button variant="secondary" size="sm" disabled className="text-xs">
                 <BrainCircuit />
                 Leçon interactive
-            </Button>
-            <Button asChild size="sm" className="text-xs">
-              <Link href={`/apprentissage/${card.id}`}>
-                <BookOpen />
-                Fiche détaillée
-              </Link>
             </Button>
           </div>
         </div>
