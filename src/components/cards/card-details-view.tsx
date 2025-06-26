@@ -26,6 +26,8 @@ import {
 import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 interface SectionWrapperProps {
   title: string;
@@ -144,42 +146,15 @@ export function CardDetailsView({ card }: { card: Card }) {
         </Tabs>
       </SectionWrapper>
       
-      {/* D. Associations Clés */}
-      {hasCombinaisons && (
-        <SectionWrapper title="Associations Clés" icon={Link2} index={3}>
-            <div className="space-y-4">
-                {card.combinaisons.map((combo) => {
-                    const associatedCard = getCardDetails(combo.carte_associee_id);
-                    if (!associatedCard) return null;
-                    return (
-                        <div key={combo.carte_associee_id} className="flex items-center gap-4 rounded-xl bg-secondary/20 p-3 backdrop-blur-lg border border-primary/30 shadow-md">
-                            <div className="relative h-24 w-16 flex-shrink-0">
-                                <Image
-                                    src={associatedCard.image_url}
-                                    alt={associatedCard.nom_carte}
-                                    fill
-                                    className="object-contain rounded-md"
-                                />
-                            </div>
-                            <div className="flex-1">
-                                <p className="text-sm text-white/80">{combo.signification}</p>
-                            </div>
-                        </div>
-                    )
-                })}
-            </div>
-        </SectionWrapper>
-      )}
-
-      {/* E. Le Conseil */}
-      <SectionWrapper title="Le Conseil" icon={Lightbulb} index={hasCombinaisons ? 4 : 3}>
+      {/* D. Le Conseil */}
+      <SectionWrapper title="Le Conseil" icon={Lightbulb} index={3}>
         <div className="p-4 bg-background/20 rounded-lg border border-primary/20 text-white/90">
           <p>{card.interpretations.conseil}</p>
         </div>
       </SectionWrapper>
 
-      {/* F. Mots-clés */}
-      <SectionWrapper title="Mots-clés" icon={Tags} index={hasCombinaisons ? 5 : 4}>
+      {/* E. Mots-clés */}
+      <SectionWrapper title="Mots-clés" icon={Tags} index={4}>
         <blockquote className="border-l-4 border-primary pl-4 italic text-white/90 my-4">
           {card.phrase_cle}
         </blockquote>
@@ -191,6 +166,53 @@ export function CardDetailsView({ card }: { card: Card }) {
           ))}
         </div>
       </SectionWrapper>
+
+      {/* F. Associations Clés */}
+      {hasCombinaisons && (
+        <SectionWrapper title="Associations Clés" icon={Link2} index={5}>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button className="w-full">
+                Explorer les associations
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="max-w-[90vw] sm:max-w-md md:max-w-lg text-white">
+              <DialogHeader>
+                <DialogTitle className='font-headline text-2xl text-primary'>Associations avec le {card.nom_carte}</DialogTitle>
+                <DialogDescription className='text-white/80'>
+                  Découvrez comment la signification de cette carte change lorsqu'elle est associée à d'autres.
+                </DialogDescription>
+              </DialogHeader>
+              <ScrollArea className="h-96 w-full pr-4">
+                <div className="space-y-4">
+                  {card.combinaisons.map((combo) => {
+                    const associatedCard = getCardDetails(combo.carte_associee_id);
+                    if (!associatedCard) return null;
+                    return (
+                      <div key={combo.carte_associee_id} className="flex items-center gap-4 rounded-xl bg-secondary/20 p-3 backdrop-blur-lg border border-primary/30 shadow-md">
+                        <div className="relative h-24 w-16 flex-shrink-0">
+                          <div className="bg-card rounded-md shadow-lg p-1 w-full h-full">
+                            <Image
+                              src={associatedCard.image_url}
+                              alt={associatedCard.nom_carte}
+                              fill
+                              className="object-contain rounded-sm"
+                            />
+                          </div>
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="font-headline font-bold text-lg text-primary">{associatedCard.nom_carte}</h4>
+                          <p className="text-sm text-white/90">{combo.signification}</p>
+                        </div>
+                      </div>
+                    )
+                  })}
+                </div>
+              </ScrollArea>
+            </DialogContent>
+          </Dialog>
+        </SectionWrapper>
+      )}
 
       {/* G. Mes Notes */}
        <SectionWrapper title="Mes Notes" icon={NotebookText} index={hasCombinaisons ? 6 : 5}>
