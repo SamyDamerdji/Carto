@@ -6,7 +6,6 @@ import { motion } from 'framer-motion';
 import type { Card } from '@/lib/data/cards';
 import { getCardDetails } from '@/lib/data/cards';
 import { chatWithOracle } from '@/ai/flows/oracle-flow';
-import { textToSpeech } from '@/ai/flows/tts-flow';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -80,7 +79,6 @@ export function CardDetailsView({ card }: { card: Card }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isTtsEnabled, setIsTtsEnabled] = useState(true);
   const chatContainerRef = useRef<HTMLDivElement>(null);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     if (chatContainerRef.current) {
@@ -89,18 +87,9 @@ export function CardDetailsView({ card }: { card: Card }) {
   }, [messages]);
 
   useEffect(() => {
-    // This effect runs once on component mount to create the audio element.
-    audioRef.current = new Audio();
-    audioRef.current.onerror = () => {
-        console.error("Audio playback failed. The audio format may not be supported or the source is invalid.");
-    };
-
+    // Cleanup speech synthesis on component unmount
     return () => {
-      // Cleanup on component unmount
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current = null;
-      }
+      window.speechSynthesis.cancel();
     };
   }, []);
 
@@ -108,9 +97,7 @@ export function CardDetailsView({ card }: { card: Card }) {
     e.preventDefault();
     if (!inputValue.trim() || isLoading) return;
 
-    if (audioRef.current) {
-      audioRef.current.pause();
-    }
+    window.speechSynthesis.cancel(); // Stop any previous speech
     
     const userMessage = { role: 'user', content: inputValue };
     setMessages(prev => [...prev, userMessage]);
@@ -118,9 +105,8 @@ export function CardDetailsView({ card }: { card: Card }) {
     setInputValue('');
     setIsLoading(true);
 
-    let oracleResponseText = '';
     try {
-      oracleResponseText = await chatWithOracle({
+      const oracleResponseText = await chatWithOracle({
         cardName: card.nom_carte,
         cardGeneralMeaning: card.interpretations.general,
         userQuestion: currentInput,
@@ -129,6 +115,12 @@ export function CardDetailsView({ card }: { card: Card }) {
       const oracleMessage = { role: 'oracle', content: oracleResponseText };
       setMessages(prev => [...prev, oracleMessage]);
 
+      if (isTtsEnabled && oracleResponseText) {
+          const utterance = new SpeechSynthesisUtterance(oracleResponseText);
+          utterance.lang = 'fr-FR';
+          window.speechSynthesis.speak(utterance);
+      }
+
     } catch (error) {
       console.error("Error calling oracle flow:", error);
       const errorMessage = { role: 'oracle', content: "Désolé, une erreur s'est produite. Je ne peux pas répondre pour le moment." };
@@ -136,26 +128,13 @@ export function CardDetailsView({ card }: { card: Card }) {
     } finally {
       setIsLoading(false);
     }
-
-    if (isTtsEnabled && oracleResponseText && audioRef.current) {
-      try {
-        const { media } = await textToSpeech(oracleResponseText);
-        if (media && audioRef.current) {
-            audioRef.current.src = media;
-            audioRef.current.play().catch(e => console.error("Audio playback failed:", e));
-        }
-      } catch(ttsError) {
-        console.error("Error generating speech:", ttsError);
-      }
-    }
   };
 
   const toggleTts = () => {
     const newState = !isTtsEnabled;
     setIsTtsEnabled(newState);
-    if (!newState && audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current.src = '';
+    if (!newState) {
+        window.speechSynthesis.cancel();
     }
   };
 
