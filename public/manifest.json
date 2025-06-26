@@ -2,20 +2,23 @@
   "name": "L'Oracle Royal",
   "short_name": "L'Oracle",
   "description": "Apprenez et mémorisez les significations divinatoires des 52 cartes à jouer.",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#2E2E54",
-  "theme_color": "#191970",
   "icons": [
     {
-      "src": "/icons/icon-192x192.png",
+      "src": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/01-coeur.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
-      "src": "/icons/icon-512x512.png",
+      "src": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/01-coeur.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     }
-  ]
+  ],
+  "start_url": "/",
+  "display": "fullscreen",
+  "orientation": "portrait-primary",
+  "theme_color": "#191970",
+  "background_color": "#2d2d4d"
 }
