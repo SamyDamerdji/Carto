@@ -3,6 +3,7 @@ import { getCardDetails } from '@/lib/data/cards';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { CardDetailsView } from '@/components/cards/card-details-view';
+import { CardNavigation } from '@/components/cards/card-navigation';
 
 export default function CardDetailsPage({ params }: { params: { cardId: string } }) {
   const card = getCardDetails(params.cardId);
@@ -14,6 +15,7 @@ export default function CardDetailsPage({ params }: { params: { cardId: string }
   return (
     <div className="flex min-h-dvh flex-col">
       <Header />
+      <CardNavigation currentCardId={params.cardId} />
       <main className="flex-grow">
         <CardDetailsView card={card} />
       </main>
