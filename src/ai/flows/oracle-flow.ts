@@ -47,7 +47,8 @@ const oracleFlow = ai.defineFlow(
     outputSchema: z.string(), // The flow will output just the string response
   },
   async (input) => {
-    const { text } = await oraclePrompt(input);
-    return text;
+    const result = await oraclePrompt(input);
+    // Handle cases where the model returns no text, which can happen with safety flags etc.
+    return result.text ?? "Désolé, une interférence cosmique perturbe ma vision. L'oracle reste silencieux pour l'instant.";
   }
 );
