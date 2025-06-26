@@ -472,5 +472,40 @@ export const piqueCards: Card[] = [
       "une personne faisant une pause et s'asseyant sur un banc pour contempler le paysage"
     ],
     "combinaisons": []
+  },
+  {
+    "id": "pique_03",
+    "nom_carte": "Trois de Pique",
+    "valeur": 3,
+    "couleur": "Pique",
+    "image_url": "/images/cards/pique_03.png",
+    "resume_general": "Carte de défi, de turbulence et de réflexion stratégique. Elle annonce des tensions, des obstacles ou des ruptures, mais aussi des révélations et un renouveau. C'est une invitation à la stratégie et à accepter les épreuves pour forger son caractère.",
+    "phrase_cle": "Acceptez l'épreuve, elle forgera votre caractère.",
+    "mots_cles": [
+      "défi", "tension", "rupture", "réflexion", "stratégie", "épreuve", "obstacle",
+      "renouveau", "turbulences", "malentendu", "patience"
+    ],
+    "interpretations": {
+      "general": "Le 3 de Pique est le rebelle du jeu, une carte qui ne passe pas inaperçue. Elle symbolise les luttes, les épreuves et un équilibre précaire qui pousse à agir. Ce n'est pas qu'un signe d'obstacles ; c'est aussi un lot de révélations. Comme une pluie grise qui nourrit la terre, elle est un présage de défis, mais aussi de renouveau.",
+      "endroit": "Parle de rupture nette, de perte d'amitié ou d'amour, d'un lien brisé. Son énergie est tranchante et sans appel. Elle signale une zone de turbulence, un malentendu ou une petite dispute passagère. C'est une invitation à la stratégie et à la réflexion.",
+      "ombre_et_defis": "Peut symboliser un désordre mental, des problèmes passés qui laissent des cicatrices. Représente des blessures jamais vraiment refermées, le poids des échecs. Elle peut annoncer des rivalités, des tensions, des trahisons ou un projet qui échoue.",
+      "conseil": "Prenez du recul et observez. Votre esprit est votre boussole. Parlez, partagez, écoutez le soutien de vos proches. Soyez patient et stratège. Ne perdez pas courage, car après la pluie vient l'arc-en-ciel. Transformez les obstacles en opportunités."
+    },
+    "domaines": {
+      "amour": "C'est la carte des défis relationnels. Peut annoncer une rupture nette, une perte, un lien brisé. Peut aussi signaler une relation qui se refroidit ou la présence d'une personne perturbatrice. Elle pousse à la réflexion sur la nature de la relation.",
+      "travail": "Peut signaler un projet qui échoue ou qui demande une stratégie plus fine. C'est le moment de réfléchir, d'anticiper et de prendre le temps de penser chaque détail. La réflexion est votre meilleure arme pour surmonter les obstacles professionnels.",
+      "finances": "Le 3 de Pique n'est généralement pas un bon présage pour les finances. Il peut indiquer des pertes, des projets qui échouent, ou la nécessité de faire preuve d'une grande prudence dans ses investissements et ses décisions financières.",
+      "spirituel": "Symbolise une épreuve qui forge le caractère. C'est une leçon de vie qui, bien que difficile, est nécessaire. Représente la fin d'un cycle pour en commencer un autre. C'est comme tailler une branche pour laisser pousser de nouvelles feuilles : une porte se ferme, une autre s'ouvre."
+    },
+    "prompts_visuels": [
+      "une branche d'arbre en train d'être taillée pour favoriser de nouvelles pousses",
+      "un échiquier où une pièce est en situation de déséquilibre précaire",
+      "un nuage sombre cachant momentanément le soleil",
+      "une personne regardant une carte routière, cherchant une alternative à une route bloquée",
+      "une goutte de pluie tombant, avec la promesse d'un arc-en-ciel en arrière-plan"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "pique_04", "signification": "Avec le 4 de pique, cette carte peut annoncer une trahison, une peine ou de la confusion."}
+    ]
   }
 ]
