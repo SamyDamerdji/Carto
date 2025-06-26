@@ -6,7 +6,7 @@ import { getCardDetails } from '@/lib/data/cards';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Heart, Briefcase, CircleDollarSign, Sparkles, Mic, Send } from 'lucide-react';
+import { Heart, Briefcase, CircleDollarSign, Sparkles, Mic, Send, Sun, ShieldAlert } from 'lucide-react';
 import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -61,9 +61,21 @@ export function CardDetailsView({ card }: { card: Card }) {
       {/* B. Interprétations Détaillées */}
       <SectionWrapper title="Interprétations">
         <Tabs defaultValue="endroit" className="w-full">
-          <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="endroit">Aspect Lumineux</TabsTrigger>
-            <TabsTrigger value="ombre_et_defis">Défis & Obstacles</TabsTrigger>
+          <TabsList className="h-auto flex items-stretch justify-around rounded-2xl bg-secondary/20 p-1.5 backdrop-blur-lg border border-primary/30 shadow-lg">
+            <TabsTrigger
+              value="endroit"
+              className="flex h-auto flex-1 flex-col items-center gap-1 rounded-lg bg-transparent p-2 text-xs font-medium text-card-foreground/90 shadow-none ring-offset-0 transition-all duration-300 hover:bg-accent/20 hover:text-primary focus:shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 data-[state=active]:bg-transparent data-[state=active]:text-primary data-[state=active]:shadow-none"
+            >
+              <Sun className="h-5 w-5" />
+              <span>Aspect Lumineux</span>
+            </TabsTrigger>
+            <TabsTrigger
+              value="ombre_et_defis"
+              className="flex h-auto flex-1 flex-col items-center gap-1 rounded-lg bg-transparent p-2 text-xs font-medium text-card-foreground/90 shadow-none ring-offset-0 transition-all duration-300 hover:bg-accent/20 hover:text-primary focus:shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 data-[state=active]:bg-transparent data-[state=active]:text-primary data-[state=active]:shadow-none"
+            >
+              <ShieldAlert className="h-5 w-5" />
+              <span>Défis & Obstacles</span>
+            </TabsTrigger>
           </TabsList>
           <TabsContent value="endroit" className="mt-4 p-4 bg-background/20 rounded-lg border border-primary/20 text-white/90">
             <p>{card.interpretations.endroit}</p>
