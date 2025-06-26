@@ -49,28 +49,45 @@ const ttsFlow = ai.defineFlow(
     outputSchema: TtsOutputSchema,
   },
   async (query) => {
-    const { media } = await ai.generate({
-      model: googleAI.model('gemini-2.5-flash-preview-tts'),
-      config: {
-        responseModalities: ['AUDIO'],
-        speechConfig: {
-          voiceConfig: {
-            prebuiltVoiceConfig: { voiceName: 'Algenib' },
+    try {
+      if (!query) {
+        // Handle empty query to avoid unnecessary API calls
+        return { media: '' };
+      }
+      
+      const { media } = await ai.generate({
+        model: googleAI.model('gemini-2.5-flash-preview-tts'),
+        config: {
+          responseModalities: ['AUDIO'],
+          speechConfig: {
+            voiceConfig: {
+              prebuiltVoiceConfig: { voiceName: 'Algenib' },
+            },
           },
         },
-      },
-      prompt: query,
-    });
-    if (!media) {
-      throw new Error('no media returned');
+        prompt: query,
+      });
+
+      if (!media || !media.url) {
+        console.error('TTS flow: no media returned from Genkit for query:', query);
+        return { media: '' };
+      }
+
+      const audioBuffer = Buffer.from(
+        media.url.substring(media.url.indexOf(',') + 1),
+        'base64'
+      );
+      
+      const wavData = await toWav(audioBuffer);
+      
+      return {
+        media: 'data:audio/wav;base64,' + wavData,
+      };
+    } catch (error) {
+      console.error("Error in ttsFlow:", error);
+      // Return an empty media string to prevent client-side crash
+      return { media: '' };
     }
-    const audioBuffer = Buffer.from(
-      media.url.substring(media.url.indexOf(',') + 1),
-      'base64'
-    );
-    return {
-      media: 'data:audio/wav;base64,' + (await toWav(audioBuffer)),
-    };
   }
 );
 
