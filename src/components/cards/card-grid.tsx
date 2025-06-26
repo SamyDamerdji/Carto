@@ -31,7 +31,7 @@ export function CardGrid({ cards }: CardGridProps) {
                 colorClasses[card.couleur]
             )}
           >
-            <div className="relative h-full w-full">
+            <div className="relative h-full w-full overflow-hidden rounded-xl">
               <Image
                 src={card.image_url}
                 alt={`Image de la carte ${card.nom_carte}`}
