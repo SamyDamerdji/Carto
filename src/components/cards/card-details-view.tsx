@@ -93,7 +93,7 @@ export function CardDetailsView({ card }: { card: Card }) {
         </div>
       </motion.div>
       
-      {/* C. Interprétations Détaillées */}
+      {/* B. Interprétations Détaillées */}
       <SectionWrapper title="Interprétations" icon={Layers} index={1}>
         <Tabs defaultValue="endroit" className="w-full">
           <TabsList className="h-auto grid grid-cols-2 items-stretch justify-around rounded-2xl bg-secondary/20 p-1.5 backdrop-blur-lg border border-primary/30 shadow-lg">
@@ -121,7 +121,7 @@ export function CardDetailsView({ card }: { card: Card }) {
         </Tabs>
       </SectionWrapper>
 
-      {/* D. Application par Domaine */}
+      {/* C. Application par Domaine */}
       <SectionWrapper title="Application par Domaine" icon={LayoutGrid} index={2}>
         <Tabs defaultValue="amour" className="w-full">
           <TabsList className="h-auto grid grid-cols-4 items-stretch justify-around rounded-2xl bg-secondary/20 p-1.5 backdrop-blur-lg border border-primary/30 shadow-lg">
@@ -144,7 +144,7 @@ export function CardDetailsView({ card }: { card: Card }) {
         </Tabs>
       </SectionWrapper>
       
-      {/* E. Associations Clés */}
+      {/* D. Associations Clés */}
       {hasCombinaisons && (
         <SectionWrapper title="Associations Clés" icon={Link2} index={3}>
             <div className="space-y-4">
@@ -171,14 +171,14 @@ export function CardDetailsView({ card }: { card: Card }) {
         </SectionWrapper>
       )}
 
-      {/* F. Le Conseil */}
+      {/* E. Le Conseil */}
       <SectionWrapper title="Le Conseil" icon={Lightbulb} index={hasCombinaisons ? 4 : 3}>
         <div className="p-4 bg-background/20 rounded-lg border border-primary/20 text-white/90">
           <p>{card.interpretations.conseil}</p>
         </div>
       </SectionWrapper>
 
-      {/* G. Mots-clés */}
+      {/* F. Mots-clés */}
       <SectionWrapper title="Mots-clés" icon={Tags} index={hasCombinaisons ? 5 : 4}>
         <blockquote className="border-l-4 border-primary pl-4 italic text-white/90 my-4">
           {card.phrase_cle}
@@ -192,7 +192,7 @@ export function CardDetailsView({ card }: { card: Card }) {
         </div>
       </SectionWrapper>
 
-      {/* H. Mes Notes */}
+      {/* G. Mes Notes */}
        <SectionWrapper title="Mes Notes" icon={NotebookText} index={hasCombinaisons ? 6 : 5}>
            <Textarea
                placeholder="Mes réflexions, associations personnelles, ou interprétations..."
@@ -201,7 +201,7 @@ export function CardDetailsView({ card }: { card: Card }) {
            />
        </SectionWrapper>
 
-       {/* I. Parler à l'oracle */}
+       {/* H. Parler à l'oracle */}
        <SectionWrapper title="Parler à l'oracle" icon={Sparkles} index={hasCombinaisons ? 7 : 6}>
            <div className="space-y-4">
                {/* Placeholder for chat history */}
