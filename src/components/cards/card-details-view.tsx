@@ -263,7 +263,6 @@ export function CardDetailsView({ card }: { card: Card }) {
                        {messages.map((message, index) => (
                            <div key={index} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                                <div className={`max-w-xs lg:max-w-md p-3 rounded-lg ${message.role === 'user' ? 'bg-primary text-primary-foreground' : 'bg-background/20 text-white/90 border border-primary/20'}`}>
-                                   {message.role === 'oracle' && <span className="font-bold text-primary block mb-1">L'Oracle:</span>}
                                    <p className="text-sm">{message.content}</p>
                                </div>
                            </div>
