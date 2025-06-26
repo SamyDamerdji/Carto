@@ -438,17 +438,10 @@ export const trefleCards: Card[] = [
     },
     "domaines": {
       "amour": "Avec l'As de Cœur, c'est le jackpot : une rencontre inattendue, l'amour simple comme un rayon de soleil. Avec le Roi de Cœur, c'est une protection bienveillante, une figure masculine (père, ami, partenaire) prête à aider.",
-      "travail": "Avec la Reine de Carreau, elle devient ambitieuse et suggère une opportunité professionnelle où un mentor ou une alliée stratégique sera la clé de la réussite.",
+      "travail": "Avec la Dame de Carreau, elle devient ambitieuse et suggère une opportunité professionnelle où un mentor ou une alliée stratégique sera la clé de la réussite.",
       "finances": "Avec le 10 de Carreau, elle annonce l'abondance, une période de prospérité, comme si les étoiles s'alignaient. C'est le moment de tenter sa chance (investissement, coup de poker), mais sans imprudence.",
       "spirituel": "Avec le 8 de Trèfle, elle crée une énergie de choix et de réflexion. Elle parle de chemins multiples et de décisions à prendre, invitant à suivre son intuition car un peu de chance est de votre côté."
     },
-    "prompts_visuels": [
-      "une main trouvant un trèfle à quatre feuilles dans une prairie",
-      "un rayon de soleil perçant à travers les nuages",
-      "deux personnes se rencontrant par hasard dans une librairie et souriant",
-      "une main recevant une étreinte rassurante d'une autre main",
-      "un pont en bois solide traversant un petit ruisseau"
-    ],
     "combinaisons": [
       { "carte_associee_id": "coeur_as", "signification": "Le jackpot ! Parle d'une rencontre inattendue, d'une relation qui naît simplement et sans forcer." },
       { "carte_associee_id": "pique_07", "signification": "Avertissement discret. Un projet peut paraître chanceux mais demande plus de réflexion. Attention aux promesses trop belles." },
@@ -457,6 +450,47 @@ export const trefleCards: Card[] = [
       { "carte_associee_id": "coeur_roi", "signification": "Protection bienveillante. Une figure masculine (père, ami, partenaire) est prête à vous aider." },
       { "carte_associee_id": "trefle_08", "signification": "Un choix à faire. Parle de chemins multiples et de décisions à prendre. Une invitation à la réflexion et à l'intuition." },
       { "carte_associee_id": "joker", "signification": "L'imprévisible. Annonce un événement inattendu, qui peut être une surprise heureuse ou un défi imprévu." }
+    ]
+  },
+  {
+    "id": "trefle_03",
+    "nom_carte": "Trois de Trèfle",
+    "valeur": 3,
+    "couleur": "Trèfle",
+    "image_url": "/images/cards/trefle_03.png",
+    "resume_general": "Carte de dynamisme, d'opportunité et de collaboration. C'est une clé qui, seule, ouvre une porte, mais qui, accompagnée, révèle un trésor. Elle représente un élan créatif, des efforts bien placés et la chance dans sa version malicieuse.",
+    "phrase_cle": "Osez avancer, la chance est au rendez-vous.",
+    "mots_cles": [
+      "dynamisme", "opportunité", "collaboration", "élan créatif", "action", "chance", "victoire collective",
+      "persévérance", "aide précieuse", "optimisme", "alliance"
+    ],
+    "interpretations": {
+      "general": "Le 3 de Trèfle est un souffle d'énergie pure. Le chiffre 3 évoque un élan créatif, la collaboration et des efforts ciblés. Associé au trèfle, il parle d'opportunités qui demandent d'être saisies. C'est un rappel doux mais ferme que, avec un peu de patience et de cœur, tout est possible.",
+      "endroit": "Bien entourée, la carte annonce le succès. Avec les cartes de cœur, c'est l'optimisme, l'action et la victoire collective. Avec des figures, elle annonce une collaboration fructueuse, une aide précieuse ou un partenariat stratégique. C'est le moment de semer des graines.",
+      "ombre_et_defis": "Avec les cartes de pique, elle se fait plus sérieuse. Les projets demandent plus de travail, de stratégie et de prudence. Une opportunité peut cacher des détails épineux. Le défi est de ne pas se décourager et de se rappeler que la persévérance a son charme.",
+      "conseil": "Osez avancer, la chance est au rendez-vous. Regardez cette carte comme une alliée et une invitation à l'action. Observez les couleurs des cartes qui l'entourent pour nuancer son message. Faites confiance à vos sensations et à votre intuition pour interpréter les alliances."
+    },
+    "domaines": {
+      "amour": "Avec le 10 de Cœur, c'est une victoire collective, une harmonie familiale ou amicale. Avec le Valet de Cœur, c'est une aide précieuse d'un ami ou d'un collègue au moment idéal. C'est une carte qui favorise les unions et les collaborations affectives.",
+      "travail": "Avec l'As de Carreau, c'est une idée innovante qui ouvre de nouvelles perspectives de carrière. Avec le Roi de Trèfle, c'est une collaboration avec une personne influente et expérimentée. Elle demande du travail, mais promet de belles récompenses.",
+      "finances": "Avec l'As de Pique et le 4 de Trèfle, elle annonce un choix difficile qui peut mener à un gain financier important, mais qui demande de la prudence. Elle renforce l'idée de chance et d'argent lorsque plusieurs trèfles sont présents dans le tirage.",
+      "spirituel": "C'est une invitation à semer des graines et à collaborer. Elle rappelle que la vie est un jeu où il faut parfois risquer pour gagner. C'est un rappel que tout est possible si on y met du cœur et de la patience. C'est une carte qui veut réinjecter de la magie dans le quotidien."
+    },
+    "prompts_visuels": [
+      "deux mains se serrant pour signer un accord autour d'une table",
+      "une personne arrosant de jeunes pousses dans un jardin",
+      "une clé dorée insérée dans une serrure, sur le point de tourner",
+      "une équipe de randonneurs s'entraidant pour gravir une montagne",
+      "un rayon de soleil perçant un nuage gris"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "coeur_10", "signification": "Une victoire collective, un projet où l'harmonie règne, que ce soit en famille ou entre amis." },
+      { "carte_associee_id": "carreau_as", "signification": "Une idée innovante qui ouvre de nouvelles perspectives, surtout côté carrière." },
+      { "carte_associee_id": "pique_07", "signification": "Prudence avant tout. Une opportunité peut cacher des détails épineux qui demandent plus de réflexion." },
+      { "carte_associee_id": "trefle_roi", "signification": "Une collaboration avec une personne influente ou expérimentée. Un mentor peut-être ?" },
+      { "carte_associee_id": "coeur_valet", "signification": "Une aide précieuse d'un ami ou d'un collègue arrive au moment idéal." },
+      { "carte_associee_id": "carreau_06", "signification": "Ensemble, ces cartes indiquent une aide précieuse et un coup de main bienvenu." },
+      { "carte_associee_id": "pique_as", "signification": "Un choix difficile qui mène à un gain financier important, mais la prudence est de mise." }
     ]
   },
   {
