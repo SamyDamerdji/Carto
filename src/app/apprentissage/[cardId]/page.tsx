@@ -1,3 +1,6 @@
+
+"use client";
+
 import { Header } from "@/components/layout/header";
 import { 
   ArrowLeft, 
@@ -18,6 +21,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
+import type { ReactNode } from "react";
 
 export async function generateStaticParams() {
   return cardsList.map((card) => ({
@@ -25,8 +29,12 @@ export async function generateStaticParams() {
   }));
 }
 
-const Section = ({ title, children, className }: { title: string, children: React.ReactNode, className?: string }) => (
-  <div className={`relative overflow-hidden rounded-2xl border border-primary/30 bg-secondary/20 p-4 md:p-6 shadow-lg shadow-primary/20 backdrop-blur-lg ${className}`}>
+const getAssociatedCardImage = (id: string) => {
+  return cardsList.find(c => c.id === id)?.image_url;
+};
+
+const Section = ({ title, children, className }: { title: string, children: ReactNode, className?: string }) => (
+  <div className={`relative overflow-hidden rounded-2xl border border-primary/30 bg-secondary/20 p-4 shadow-lg shadow-primary/20 backdrop-blur-lg md:p-6 ${className}`}>
     <div className="absolute -right-4 -top-4 h-24 w-24 bg-[radial-gradient(closest-side,hsl(var(--primary)/0.1),transparent)]"></div>
     <div className="relative z-10">
       <h2 className="font-headline text-2xl font-bold uppercase tracking-wider text-primary mb-4">{title}</h2>
@@ -35,18 +43,20 @@ const Section = ({ title, children, className }: { title: string, children: Reac
   </div>
 );
 
-const DomainCard = ({ icon: Icon, title, children }: { icon: React.ElementType, title: string, children: React.ReactNode }) => (
-    <div className="flex flex-col gap-2">
-        <div className="flex items-center gap-3">
-            <Icon className="h-6 w-6 text-primary" />
-            <h3 className="font-headline text-xl font-bold uppercase tracking-wider text-card-foreground/90">{title}</h3>
-        </div>
-        <div className="rounded-lg border border-secondary-foreground/20 bg-card-foreground/10 p-3 shadow-inner shadow-black/20">
-            <p className="text-secondary-foreground/90 text-sm">{children}</p>
-        </div>
+const DomainCard = ({ icon: Icon, title, children }: { icon: React.ElementType, title: string, children: ReactNode }) => (
+  <div className="relative h-full overflow-hidden rounded-xl border border-primary/30 bg-secondary/20 p-4 shadow-md shadow-primary/10 backdrop-blur-lg">
+    <div className="absolute -right-2 -top-2 h-16 w-16 bg-[radial-gradient(closest-side,hsl(var(--primary)/0.1),transparent)]"></div>
+    <div className="relative z-10 flex h-full flex-col">
+      <div className="flex items-center gap-3 mb-3">
+        <Icon className="h-7 w-7 text-primary" />
+        <h3 className="font-headline text-xl font-bold uppercase tracking-wider text-card-foreground/90">{title}</h3>
+      </div>
+      <div className="flex-grow rounded-lg border border-secondary-foreground/20 bg-card-foreground/10 p-3 shadow-inner shadow-black/20">
+        <p className="text-secondary-foreground/90 text-sm">{children}</p>
+      </div>
     </div>
+  </div>
 );
-
 
 export default function CardDetailsPage({ params }: { params: { cardId: string } }) {
   const card = getCardDetails(params.cardId);
@@ -54,10 +64,6 @@ export default function CardDetailsPage({ params }: { params: { cardId: string }
   if (!card) {
     notFound();
   }
-
-  const getAssociatedCardImage = (id: string) => {
-    return cardsList.find(c => c.id === id)?.image_url;
-  };
 
   return (
     <div className="flex min-h-dvh flex-col">
@@ -140,7 +146,7 @@ export default function CardDetailsPage({ params }: { params: { cardId: string }
                     <div key={index} className="flex items-center gap-4 relative overflow-hidden rounded-xl border border-primary/30 bg-secondary/20 p-4 shadow-md shadow-primary/10 backdrop-blur-sm">
                       {associatedCardImage && (
                         <div className="flex-shrink-0 relative w-16 aspect-[2.5/3.5] rounded-md overflow-hidden border border-primary/50">
-                          <Image src={associatedCardImage} alt="" fill className="object-cover" />
+                          <Image src={associatedCardImage} alt={`Image de la carte associée`} fill className="object-cover" />
                         </div>
                       )}
                       <p className="text-sm text-foreground/90">{combo.signification}</p>
@@ -154,7 +160,7 @@ export default function CardDetailsPage({ params }: { params: { cardId: string }
           {/* F. Mes Notes Personnelles */}
           <Section title={`Mes Notes sur le ${card.nom_carte}`}>
             <Textarea 
-              className="bg-secondary/30 border-primary/50 min-h-[120px] text-base"
+              className="bg-secondary/20 border-primary/30 min-h-[120px] text-base placeholder:text-muted-foreground"
               placeholder="Mes réflexions, associations personnelles, ou interprétations..." 
             />
           </Section>
@@ -162,18 +168,18 @@ export default function CardDetailsPage({ params }: { params: { cardId: string }
           {/* G. Discuter avec le Mentor */}
           <Section title="Discuter avec le Mentor">
             <div className="space-y-4">
-              <div className="h-48 border border-primary/30 rounded-lg p-3 overflow-y-auto bg-secondary/30 text-sm text-muted-foreground flex items-center justify-center">
+              <div className="h-48 border border-primary/30 rounded-lg p-3 overflow-y-auto bg-secondary/20 text-sm text-muted-foreground flex items-center justify-center">
                  <p>La conversation avec le mentor apparaîtra ici.</p>
               </div>
               <div className="flex gap-2">
                  <Input 
-                   className="bg-secondary/30 border-primary/50 flex-grow text-base"
+                   className="bg-secondary/20 border-primary/30 flex-grow text-base placeholder:text-muted-foreground"
                    placeholder="Posez votre question ici..."
                  />
-                 <Button variant="outline" size="icon" aria-label="Saisie vocale" onClick={() => { /* TODO: Déclencher la reconnaissance vocale */ }}>
+                 <Button variant="outline" size="icon" aria-label="Saisie vocale">
                    <Mic className="h-5 w-5 text-primary" />
                  </Button>
-                 <Button variant="default" size="icon" aria-label="Envoyer" onClick={() => { /* TODO: Envoyer le message */ }}>
+                 <Button variant="default" size="icon" aria-label="Envoyer">
                    <Send className="h-5 w-5" />
                  </Button>
               </div>
