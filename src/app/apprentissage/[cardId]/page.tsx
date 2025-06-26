@@ -1,6 +1,13 @@
 import { Header } from "@/components/layout/header";
-import { BookOpen, Palette, KeyRound, ArrowLeft, Users, Brain, Coins, Sparkles } from "lucide-react";
-import { InfoCard } from "@/components/common/info-card";
+import { 
+  ArrowLeft, 
+  Heart, 
+  Briefcase, 
+  Coins, 
+  Sparkles,
+  Mic,
+  Send
+} from "lucide-react";
 import { Footer } from "@/components/layout/footer";
 import { getCardDetails, cardsList } from "@/lib/data/cards";
 import { notFound } from "next/navigation";
@@ -8,12 +15,38 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Textarea } from "@/components/ui/textarea";
+import { Input } from "@/components/ui/input";
 
 export async function generateStaticParams() {
   return cardsList.map((card) => ({
     cardId: card.id,
   }));
 }
+
+const Section = ({ title, children, className }: { title: string, children: React.ReactNode, className?: string }) => (
+  <div className={`relative overflow-hidden rounded-2xl border border-primary/30 bg-secondary/20 p-4 md:p-6 shadow-lg shadow-primary/20 backdrop-blur-lg ${className}`}>
+    <div className="absolute -right-4 -top-4 h-24 w-24 bg-[radial-gradient(closest-side,hsl(var(--primary)/0.1),transparent)]"></div>
+    <div className="relative z-10">
+      <h2 className="font-headline text-2xl font-bold uppercase tracking-wider text-primary mb-4">{title}</h2>
+      {children}
+    </div>
+  </div>
+);
+
+const DomainCard = ({ icon: Icon, title, children }: { icon: React.ElementType, title: string, children: React.ReactNode }) => (
+    <div className="flex flex-col gap-2">
+        <div className="flex items-center gap-3">
+            <Icon className="h-6 w-6 text-primary" />
+            <h3 className="font-headline text-xl font-bold uppercase tracking-wider text-card-foreground/90">{title}</h3>
+        </div>
+        <div className="rounded-lg border border-secondary-foreground/20 bg-card-foreground/10 p-3 shadow-inner shadow-black/20">
+            <p className="text-secondary-foreground/90 text-sm">{children}</p>
+        </div>
+    </div>
+);
+
 
 export default function CardDetailsPage({ params }: { params: { cardId: string } }) {
   const card = getCardDetails(params.cardId);
@@ -22,61 +55,130 @@ export default function CardDetailsPage({ params }: { params: { cardId: string }
     notFound();
   }
 
+  const getAssociatedCardImage = (id: string) => {
+    return cardsList.find(c => c.id === id)?.image_url;
+  };
+
   return (
     <div className="flex min-h-dvh flex-col">
       <Header />
-      <main className="flex-grow container mx-auto px-4 pb-8">
+      <main className="container mx-auto px-4 pb-12">
         <div className="my-8">
-            <Button asChild variant="outline">
-                <Link href="/apprentissage">
-                    <ArrowLeft />
-                    Retour à la liste
-                </Link>
-            </Button>
+          <Button asChild variant="outline">
+            <Link href="/apprentissage">
+              <ArrowLeft />
+              Retour à la liste
+            </Link>
+          </Button>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-1 flex flex-col items-center space-y-4">
-            <h1 className="font-headline text-4xl font-bold tracking-tight text-primary sm:text-5xl uppercase text-center">
-              {card.nom_carte}
-            </h1>
-            <div className="relative w-full max-w-sm aspect-[2.5/3.5] rounded-2xl overflow-hidden shadow-2xl shadow-primary/20 border-2 border-primary/50">
-              <Image
-                src={card.image_url}
-                alt={`Image de la carte ${card.nom_carte}`}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                priority
-              />
-            </div>
+
+        {/* A. En-tête */}
+        <header className="text-center mb-8">
+          <h1 className="font-headline text-4xl font-bold tracking-tight text-primary sm:text-5xl lg:text-6xl uppercase drop-shadow-lg">
+            {card.nom_carte}
+          </h1>
+          <div className="relative w-full max-w-sm aspect-[2.5/3.5] rounded-2xl overflow-hidden shadow-2xl shadow-primary/20 mx-auto mt-6">
+            <Image
+              src={card.image_url}
+              alt={`Image de la carte ${card.nom_carte}`}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              priority
+            />
           </div>
-          <div className="lg:col-span-2 space-y-6">
-            <InfoCard icon={BookOpen} title="Signification Générale">
-              <p>{card.resume_general}</p>
-            </InfoCard>
+        </header>
 
-            <InfoCard icon={Palette} title="Phrase Clé">
-              <p className="italic">« {card.phrase_cle} »</p>
-            </InfoCard>
+        <div className="space-y-8 max-w-4xl mx-auto">
+          {/* B. Synthèse */}
+          <Section title="Synthèse">
+            <p className="italic text-lg text-center text-foreground/90 my-4 p-4 border border-primary/20 rounded-lg bg-black/10">
+              « {card.phrase_cle} »
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              {card.mots_cles.map(keyword => (
+                <Badge key={keyword} variant="secondary" className="text-sm">{keyword}</Badge>
+              ))}
+            </div>
+          </Section>
 
-            <InfoCard icon={KeyRound} title="Mots-clés">
-              <div className="flex flex-wrap gap-2">
-                {card.mots_cles.map(keyword => (
-                  <Badge key={keyword} variant="secondary">{keyword}</Badge>
-                ))}
+          {/* C. Interprétations Détaillées */}
+          <Section title="Interprétations">
+            <Tabs defaultValue="general" className="w-full">
+              <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 h-auto">
+                <TabsTrigger value="general">Général</TabsTrigger>
+                <TabsTrigger value="lumineux">Aspect Lumineux</TabsTrigger>
+                <TabsTrigger value="defis">Défis & Obstacles</TabsTrigger>
+                <TabsTrigger value="conseil">Le Conseil</TabsTrigger>
+              </TabsList>
+              <div className="mt-4 p-4 rounded-lg border border-secondary-foreground/20 bg-card-foreground/10 shadow-inner text-secondary-foreground/90">
+                <TabsContent value="general"><p>{card.interpretations.general}</p></TabsContent>
+                <TabsContent value="lumineux"><p>{card.interpretations.endroit}</p></TabsContent>
+                <TabsContent value="defis"><p>{card.interpretations.ombre_et_defis}</p></TabsContent>
+                <TabsContent value="conseil"><p>{card.interpretations.conseil}</p></TabsContent>
               </div>
-            </InfoCard>
-          </div>
-        </div>
+            </Tabs>
+          </Section>
 
-        <div className="mt-12 space-y-8">
-            <h2 className="font-headline text-3xl font-bold tracking-tight text-primary sm:text-4xl uppercase text-center">Interprétations Détaillées</h2>
+          {/* D. Application par Domaine */}
+          <Section title="Application par Domaine">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <InfoCard icon={Users} title="Amour"><p>{card.domaines.amour}</p></InfoCard>
-                <InfoCard icon={Brain} title="Travail"><p>{card.domaines.travail}</p></InfoCard>
-                <InfoCard icon={Coins} title="Finances"><p>{card.domaines.finances}</p></InfoCard>
-                <InfoCard icon={Sparkles} title="Spirituel"><p>{card.domaines.spirituel}</p></InfoCard>
+                <DomainCard icon={Heart} title="Amour">{card.domaines.amour}</DomainCard>
+                <DomainCard icon={Briefcase} title="Travail">{card.domaines.travail}</DomainCard>
+                <DomainCard icon={Coins} title="Finances">{card.domaines.finances}</DomainCard>
+                <DomainCard icon={Sparkles} title="Spirituel">{card.domaines.spirituel}</DomainCard>
             </div>
+          </Section>
+          
+          {/* E. Associations Clés */}
+          {card.combinaisons && card.combinaisons.length > 0 && (
+            <Section title="Associations Clés">
+              <div className="space-y-4">
+                {card.combinaisons.map((combo, index) => {
+                  const associatedCardImage = getAssociatedCardImage(combo.carte_associee_id);
+                  return (
+                    <div key={index} className="flex items-center gap-4 relative overflow-hidden rounded-xl border border-primary/30 bg-secondary/20 p-4 shadow-md shadow-primary/10 backdrop-blur-sm">
+                      {associatedCardImage && (
+                        <div className="flex-shrink-0 relative w-16 aspect-[2.5/3.5] rounded-md overflow-hidden border border-primary/50">
+                          <Image src={associatedCardImage} alt="" fill className="object-cover" />
+                        </div>
+                      )}
+                      <p className="text-sm text-foreground/90">{combo.signification}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </Section>
+          )}
+
+          {/* F. Mes Notes Personnelles */}
+          <Section title={`Mes Notes sur le ${card.nom_carte}`}>
+            <Textarea 
+              className="bg-secondary/30 border-primary/50 min-h-[120px] text-base"
+              placeholder="Mes réflexions, associations personnelles, ou interprétations..." 
+            />
+          </Section>
+          
+          {/* G. Discuter avec le Mentor */}
+          <Section title="Discuter avec le Mentor">
+            <div className="space-y-4">
+              <div className="h-48 border border-primary/30 rounded-lg p-3 overflow-y-auto bg-secondary/30 text-sm text-muted-foreground flex items-center justify-center">
+                 <p>La conversation avec le mentor apparaîtra ici.</p>
+              </div>
+              <div className="flex gap-2">
+                 <Input 
+                   className="bg-secondary/30 border-primary/50 flex-grow text-base"
+                   placeholder="Posez votre question ici..."
+                 />
+                 <Button variant="outline" size="icon" aria-label="Saisie vocale" onClick={() => { /* TODO: Déclencher la reconnaissance vocale */ }}>
+                   <Mic className="h-5 w-5 text-primary" />
+                 </Button>
+                 <Button variant="default" size="icon" aria-label="Envoyer" onClick={() => { /* TODO: Envoyer le message */ }}>
+                   <Send className="h-5 w-5" />
+                 </Button>
+              </div>
+            </div>
+          </Section>
         </div>
       </main>
       <Footer />
