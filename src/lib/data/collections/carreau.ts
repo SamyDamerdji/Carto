@@ -520,5 +520,47 @@ export const carreauCards: Card[] = [
       { "carte_associee_id": "carreau_09", "signification": "Des défis financiers importants à anticiper." },
       { "carte_associee_id": "carreau_08", "signification": "Des démarches réussies, notamment en lien avec les finances." }
     ]
+  },
+  {
+    "id": "carreau_02",
+    "nom_carte": "Deux de Carreau",
+    "valeur": 2,
+    "couleur": "Carreau",
+    "image_url": "/images/cards/carreau_02.png",
+    "resume_general": "Carte de collaboration, de mouvement et d'équilibre. Elle symbolise les relations, les partenariats et les projets à deux. C'est une énergie fluide qui demande de la coordination, de la communication et de la confiance pour avancer.",
+    "phrase_cle": "Collaborez, car l'entraide mène loin.",
+    "mots_cles": [
+      "collaboration", "partenariat", "relations", "équilibre", "coordination", "mouvement", "alliance",
+      "confiance", "discussion", "opportunité", "projet à deux"
+    ],
+    "interpretations": {
+      "general": "Le 2 de Carreau est une danse. Un mouvement fluide qui demande de l'équilibre. Il parle de toutes les connexions humaines, du voisin au collègue. Les carreaux symbolisent l'action et le concret, et le chiffre 2 y ajoute un besoin de coordination, comme deux pierres qui se soutiennent mutuellement.",
+      "endroit": "C'est un message clair : 'Collabore'. Une idée prend forme, une alliance se renforce. C'est une opportunité déguisée dans le travail, une collaboration qui peut changer la donne. L'énergie relationnelle est au top. C'est aussi un appel à la confiance.",
+      "ombre_et_defis": "Le défi est de ne pas vouloir tout gérer seul. En négatif, elle met en garde contre le manque d'attention aux détails, qui peut faire déraper un projet. Elle peut aussi mettre en lumière des relations ambiguës ou des faux-semblants.",
+      "conseil": "Partagez la charge. Lancez cette discussion délicate mais nécessaire. Prenez le temps d'écouter l'autre, de créer des souvenirs, de faire confiance. Soyez adaptable, car les projets à plusieurs demandent des ajustements. N'hésitez pas à faire preuve d'audace."
+    },
+    "domaines": {
+      "amour": "Évoque les débuts fragiles, ces moments où tout est beau mais où le moindre faux-pas peut faire basculer la relation. C'est un appel à l'écoute, à la confiance et à l'initiation de projets communs (voyage, activité) pour renforcer le lien.",
+      "travail": "Annonce une collaboration qui peut changer la donne. Il faut s'impliquer, sans demi-mesure. C'est le moment d'identifier un allié, une personne avec qui tout semble fluide. Les projets à plusieurs demandent de l'adaptabilité et de l'audace.",
+      "finances": "Dans le domaine financier, le 2 de Carreau suggère une décision ou un choix à faire qui implique une autre personne. Il peut s'agir d'un investissement commun ou d'une négociation. L'équilibre et la communication sont essentiels.",
+      "spirituel": "Murmure de 'trouver son centre'. Rappelle que l'harmonie avec les autres commence par l'harmonie avec soi-même. Une méditation, une balade ou une simple tasse de thé en silence peuvent suffire à tout rééquilibrer."
+    },
+    "prompts_visuels": [
+      "deux personnes construisant un pont ensemble, chacune posant une pierre",
+      "deux danseurs exécutant une figure en parfait équilibre",
+      "une poignée de main scellant une collaboration devant un projet",
+      "deux personnes discutant calmement autour d'un plan ou d'un document",
+      "deux ruisseaux qui se rejoignent pour former une rivière plus grande"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "coeur_roi", "signification": "Une alliance douce et solide. Des promesses de collaboration réussie sur le plan affectif." },
+      { "carte_associee_id": "trefle_dame", "signification": "Attention aux faux-semblants. Invite à la vigilance dans les relations professionnelles ou les alliances." },
+      { "carte_associee_id": "carreau_07", "signification": "La planification en action. Annonce des projets concrets qui se mettent en place doucement mais sûrement." },
+      { "carte_associee_id": "pique_as", "signification": "Une décision importante approche. Un tournant à prendre, mais qui demande une réflexion calme." },
+      { "carte_associee_id": "coeur_09", "signification": "Un chemin intuitif. Parle d'introspection et d'écoute de soi dans les moments de doute." },
+      { "carte_associee_id": "carreau_valet", "signification": "Un message à ne pas ignorer. Une communication (courrier, nouvelle) pourrait changer la donne." },
+      { "carte_associee_id": "trefle_04", "signification": "Stabilité et équilibre. Un souffle rassurant, un moment où tout semble se mettre en ordre." },
+      { "carte_associee_id": "carreau_10", "signification": "Un voyage se prépare. Un déplacement imprévu ou une opportunité de découvrir quelque chose de nouveau." }
+    ]
   }
 ]
