@@ -439,5 +439,38 @@ export const piqueCards: Card[] = [
     "combinaisons": [
       { "carte_associee_id": "trefle_05", "signification": "Avec le 5 de Trèfle, cette carte met en garde contre un défi qui pourrait compliquer un changement positif. Une figure féminine ou une personne d'influence pourrait semer le trouble."}
     ]
+  },
+  {
+    "id": "pique_04",
+    "nom_carte": "Quatre de Pique",
+    "valeur": 4,
+    "couleur": "Pique",
+    "image_url": "/images/cards/pique_04.png",
+    "resume_general": "Carte de la stabilité mise au défi, de la pause et de la réflexion. Elle invite à renforcer ses bases, à prendre du recul et à se concentrer sur l'essentiel. C'est un miroir qui révèle une vérité qu'on ne veut pas voir pour forcer à l'action juste.",
+    "phrase_cle": "Renforcez vos bases, prenez du recul.",
+    "mots_cles": [
+      "stabilité", "réflexion", "pause", "bases", "vérité", "recul", "structure",
+      "essentiel", "prudence", "limites", "repos", "désordre matériel"
+    ],
+    "interpretations": {
+      "general": "Le 4 de Pique combine la stabilité du chiffre 4 avec l'énergie de défi du pique. Ce n'est pas une carte de chaos, mais elle signale un risque si les bases ne sont pas solides. C'est l'épine dans la rose qui force à réfléchir avant d'agir, une boussole pour naviguer les moments complexes.",
+      "endroit": "Dicte une pause, une réflexion. Si elle est entourée de cartes positives, elle appelle à l'équilibre. C'est une invitation à se restructurer, à reprendre les bases pour se sauver d'un projet mal ficelé. Elle apporte la clarté après une période de flou.",
+      "ombre_et_defis": "Peut annoncer des ennuis matériels, des défis professionnels, des factures oubliées ou des projets qui dérapent. C'est une invitation discrète à ne pas subir, mais à agir avec audace. Dans un contexte sombre, elle est le signal d'une transformation nécessaire.",
+      "conseil": "Simplifiez. Trop de stress ? Concentrez-vous sur l'essentiel. Prenez du recul pour analyser la situation. Osez dire non et poser vos limites pour vous préserver. Faites une liste de vos priorités pour éclaircir vos idées. Cette carte est ancrée dans le court terme."
+    },
+    "domaines": {
+      "amour": "Suggère une remise en question dans la relation. Pas un clap de fin, mais un besoin de clarté. C'est le moment d'ouvrir la fenêtre pour respirer, de creuser les malentendus. Le dialogue est la clé.",
+      "travail": "Peut signaler des doutes professionnels. Est-on à sa place ? Le projet est-il bien ficelé ? C'est une invitation à restructurer, à reprendre les bases. Appelle à se recentrer et à ne pas se laisser embrouiller par le bruit ambiant.",
+      "finances": "C'est une alerte à la prudence avec l'argent. Évitez les grosses dépenses et les décisions précipitées. C'est un conseil de structurer, de noter ses priorités pour apaiser les tensions financières.",
+      "spirituel": "C'est une carte miroir qui reflète une vérité qu'on préfère éviter. Elle invite à observer avec lucidité et à renforcer ses bases intérieures. Elle enseigne que la stabilité est essentielle pour naviguer les défis de la vie. Représente le repos nécessaire à la réflexion."
+    },
+    "prompts_visuels": [
+      "une chaise avec un pied légèrement bancal sur un sol plat",
+      "une personne regardant son reflet dans un miroir qui montre une vérité inconfortable",
+      "un architecte renforçant les fondations d'une maison",
+      "une boussole pointant fermement le nord au milieu d'une tempête",
+      "une personne faisant une pause et s'asseyant sur un banc pour contempler le paysage"
+    ],
+    "combinaisons": []
   }
 ]
