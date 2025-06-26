@@ -29,7 +29,7 @@ export const carreauCards: Card[] = [
     "prompts_visuels": [
       "une main posant la première pierre d'une fondation de bâtiment",
       "un architecte regardant avec satisfaction les plans d'un projet ambitieux",
-      "une porte s'ouvrant sur un chemin pavé d'or",
+      "une porte s'ouvant sur un chemin pavé d'or",
       "une poignée de main ferme pour sceller un contrat important",
       "une jeune pousse de plante sortant d'une terre riche et fertile"
     ],
@@ -478,6 +478,47 @@ export const carreauCards: Card[] = [
       { "carte_associee_id": "carreau_10", "signification": "Un aboutissement ou un succès significatif dans les affaires matérielles ou financières." },
       { "carte_associee_id": "carreau_05", "signification": "Des changements ou des perturbations dans la situation matérielle, demandant une adaptation." },
       { "carte_associee_id": "carreau_06", "signification": "Un équilibre retrouvé dans les finances après une période difficile, une aide arrivant." }
+    ]
+  },
+  {
+    "id": "carreau_03",
+    "nom_carte": "Trois de Carreau",
+    "valeur": 3,
+    "couleur": "Carreau",
+    "image_url": "/images/cards/carreau_03.png",
+    "resume_general": "Carte de communication, de transition et d'opportunités concrètes. Elle porte un message précis, souvent lié au domaine professionnel ou matériel. C'est une carte de mouvement discret, qui invite à la vigilance et à l'action réfléchie.",
+    "phrase_cle": "Un message est en route, un élément concret est en gestation.",
+    "mots_cles": [
+      "nouvelles", "communication", "transition", "gestation", "projet", "décision", "déplacement",
+      "vigilance", "attente", "administratif", "contrat", "opportunité"
+    ],
+    "interpretations": {
+      "general": "Le 3 de Carreau est une carte discrète mais pleine de sens. Elle ne crie pas, elle suggère. Elle indique un déplacement, un changement d'ambiance ou un message qui transite. Elle met en lumière un élément concret en gestation, comme un projet qui dépend d'une signature ou une opportunité non encore identifiée.",
+      "endroit": "Symbolise des décisions importantes à venir, souvent liées à la carrière ou aux finances. C'est le signe de nouvelles opportunités, d'un courrier, d'un contrat ou d'une réponse officielle. C'est une carte de mouvement discret et de transition.",
+      "ombre_et_defis": "Représente des difficultés financières, des erreurs de jugement ou des décisions précipitées. Peut indiquer des nouvelles retardées ou inattendues. En amour, elle peut évoquer une distance, une attente émotionnelle, une sensation de malaise flou.",
+      "conseil": "Invitez la vigilance dans votre vie. Ce n'est pas le moment de l'impulsivité, mais celui de la préparation et de l'observation. Soyez attentif aux communications et aux signes, car une information importante pourrait tout faire basculer."
+    },
+    "domaines": {
+      "amour": "Peut évoquer une relation à distance, une attente émotionnelle, ou ce moment où l'on sent qu'un changement va arriver sans savoir lequel. C'est un appel à communiquer pour clarifier une situation.",
+      "travail": "Annonce des nouvelles écrites ou administratives : un courrier, un contrat, une réponse officielle. C'est une transition qui se met en route, un projet qui dépend d'une signature, une opportunité à identifier.",
+      "finances": "Avec le 9 de Carreau, elle annonce des défis financiers importants à anticiper. Avec l'As de Carreau, c'est l'arrivée d'une somme d'argent ou d'une opportunité. Demande de la vigilance dans les transactions et les décisions financières.",
+      "spirituel": "C'est une carte de double lecture, entre attente et action. Elle invite à être attentif aux signes concrets qui se manifestent. Elle enseigne que même les plus petits mouvements et messages peuvent avoir un impact profond sur notre chemin."
+    },
+    "prompts_visuels": [
+      "une personne sur le point de signer un contrat avec un stylo en main",
+      "une lettre cachetée arrivant dans une boîte aux lettres",
+      "deux personnes en pleine discussion sérieuse autour d'une table de travail",
+      "un téléphone qui sonne, avec un nom inconnu affiché",
+      "un chemin qui se divise en deux, symbolisant une décision à prendre"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "carreau_as", "signification": "Réception d'une somme d'argent ou d'une nouvelle opportunité professionnelle." },
+      { "carte_associee_id": "carreau_roi", "signification": "Rencontre avec une personne influente dans le milieu professionnel." },
+      { "carte_associee_id": "carreau_dame", "signification": "Méfiance vis-à-vis de certaines personnes malintentionnées." },
+      { "carte_associee_id": "carreau_valet", "signification": "Une nouvelle importante arrive." },
+      { "carte_associee_id": "carreau_10", "signification": "Un voyage ou un déplacement bénéfique à venir." },
+      { "carte_associee_id": "carreau_09", "signification": "Des défis financiers importants à anticiper." },
+      { "carte_associee_id": "carreau_08", "signification": "Des démarches réussies, notamment en lien avec les finances." }
     ]
   }
 ]
