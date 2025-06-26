@@ -14,8 +14,8 @@ export const piqueCards: Card[] = [
       "courage", "lâcher-prise", "mystère", "introspection", "renaissance"
     ],
     "interpretations": {
-      "general": "L'As de Pique est une carte intimidante mais profondément spirituelle. Souvent associée à la mort, il s'agit d'une mort métaphorique : la fin d'un chapitre pour permettre à un autre, plus captivant, de commencer. Elle représente le vide qui précède le renouveau, une transition nécessaire mais parfois déroutante.",
-      "endroit": "Incarne un signal positif de transformation. C'est le moment de lâcher prise sur les anciens schémas pour accueillir le nouveau. Elle pousse à affronter ses peurs, à accepter les changements et à embrasser la prochaine étape avec confiance. C'est un guide dans l'inconnu qui promet que la lumière finit toujours par revenir.",
+      "general": "Incarne un signal positif de transformation. C'est le moment de lâcher prise sur les anciens schémas pour accueillir le nouveau. Elle pousse à affronter ses peurs, à accepter les changements et à embrasser la prochaine étape avec confiance. C'est un guide dans l'inconnu qui promet que la lumière finit toujours par revenir.",
+      "endroit": "L'As de Pique est une carte intimidante mais profondément spirituelle. Souvent associée à la mort, il s'agit d'une mort métaphorique : la fin d'un chapitre pour permettre à un autre, plus captivant, de commencer. Elle représente le vide qui précède le renouveau, une transition nécessaire mais parfois déroutante.",
       "ombre_et_defis": "Représente un changement difficile, des vérités inconfortables à accepter, des peurs à affronter. Peut symboliser une énergie sombre ou un chemin incertain. C'est un miroir qui montre les parts d'ombre qu'on préfère éviter.",
       "conseil": "Ne paniquez pas. Cette carte est un signal qu'il est temps de laisser tomber ce qui n'a plus lieu d'être. Faites confiance au processus, même si la destination n'est pas claire. Affrontez l'inconnu avec courage, car c'est là que résident les plus grandes révélations."
     },
@@ -60,8 +60,8 @@ export const piqueCards: Card[] = [
       "ordre", "pouvoir", "sagesse", "administratif", "protocole", "homme d'âge", "intellect"
     ],
     "interpretations": {
-      "general": "Le Roi de Pique est une figure emblématique qui impose le respect. Il incarne tout ce qui est protocolaire, administratif et profondément ancré dans la justice et la loi. Il représente la structure nécessaire pour avancer avec clarté, tel un joueur d'échecs planifiant ses coups.",
-      "endroit": "Symbolise la prise de décision éclairée, le recours à la loi ou à un expert (avocat, juge), la mise en place d'un projet structuré. Annonce une situation qui se régularise, un contrat à signer, une nécessité de faire preuve de rigueur et d'organisation.",
+      "general": "Symbolise la prise de décision éclairée, le recours à la loi ou à un expert (avocat, juge), la mise en place d'un projet structuré. Annonce une situation qui se régularise, un contrat à signer, une nécessité de faire preuve de rigueur et d'organisation.",
+      "endroit": "Le Roi de Pique est une figure emblématique qui impose le respect. Il incarne tout ce qui est protocolaire, administratif et profondément ancré dans la justice et la loi. Il représente la structure nécessaire pour avancer avec clarté, tel un joueur d'échecs planifiant ses coups.",
       "ombre_et_defis": "Lorsqu'il représente un obstacle, le Roi de Pique devient rigide, froid et autoritaire. Il peut symboliser un blocage administratif, un procès, un jugement sévère ou un abus de pouvoir. Il incarne une logique froide dénuée de bienveillance.",
       "conseil": "Faites appel à votre logique et à votre sens de l'organisation. C'est le moment de structurer vos pensées et vos actions, de regarder les choses en face et de trancher avec clarté. Ne laissez pas l'émotionnel prendre le dessus sur le rationnel."
     },
@@ -110,8 +110,8 @@ export const piqueCards: Card[] = [
       "décision", "fermeté", "transformation", "sagesse", "femme forte"
     ],
     "interpretations": {
-      "general": "La Dame de Pique est une figure mystérieuse et fascinante. Souvent perçue comme distante ou froide, elle est en réalité une alliée qui dit la vérité, même quand c'est dur à entendre. Elle ne s'embarrasse pas de sentiments inutiles et pousse à voir la réalité sans filtres ni illusions, ce qui est une forme de protection.",
-      "endroit": "Incarne une femme forte, intelligente et indépendante, qui n'a pas peur de l'adversité. Elle est un guide pour prendre des décisions difficiles avec une main ferme. Elle symbolise la sagesse, la clarté et la capacité à se libérer des chaînes invisibles. Elle est un bouclier face aux tempêtes émotionnelles.",
+      "general": "Incarne une femme forte, intelligente et indépendante, qui n'a pas peur de l'adversité. Elle est un guide pour prendre des décisions difficiles avec une main ferme. Elle symbolise la sagesse, la clarté et la capacité à se libérer des chaînes invisibles. Elle est un bouclier face aux tempêtes émotionnelles.",
+      "endroit": "La Dame de Pique est une figure mystérieuse et fascinante. Souvent perçue comme distante ou froide, elle est en réalité une alliée qui dit la vérité, même quand c'est dur à entendre. Elle ne s'embarrasse pas de sentiments inutiles et pousse à voir la réalité sans filtres ni illusions, ce qui est une forme de protection.",
       "ombre_et_defis": "Représente la froideur, la distance et le détachement excessif. Elle peut être perçue comme une figure de malchance ou de trahison. Elle symbolise une période où il faut trancher de manière impopulaire, ou faire face à une vérité qui dérange. Elle peut aussi indiquer une relation qui épuise.",
       "conseil": "Soyez fidèle à vous-même. Mettez des limites, dites non, protégez-vous. Tranchez avec clarté, en faisant ce qui est juste et non ce qui est facile. Voyez les obstacles comme des opportunités de croissance et prenez le contrôle de votre destin."
     },
@@ -151,8 +151,8 @@ export const piqueCards: Card[] = [
       "allié caché", "mystère", "test de confiance", "ruse", "vigilance"
     ],
     "interpretations": {
-      "general": "Contrairement aux autres valets, celui de Pique porte un poids. Il est associé à des traits sombres ou mélancoliques, mais n'est pas fondamentalement négatif. Il est un stratège qui observe avant d'agir, un révélateur qui peut changer le cours du jeu. Il représente les zones grises de la vie, où tout n'est pas noir ou blanc.",
-      "endroit": "Incarne un allié discret, un 'héros de l'ombre' qui aide sans se mettre en avant. Il est le signe que des efforts discrets porteront leurs fruits. C'est un guerrier fidèle, un poète réfléchi. Il invite à avancer prudemment, à la manière d'un joueur d'échecs.",
+      "general": "Incarne un allié discret, un 'héros de l'ombre' qui aide sans se mettre en avant. Il est le signe que des efforts discrets porteront leurs fruits. C'est un guerrier fidèle, un poète réfléchi. Il invite à avancer prudemment, à la manière d'un joueur d'échecs.",
+      "endroit": "Contrairement aux autres valets, celui de Pique porte un poids. Il est associé à des traits sombres ou mélancoliques, mais n'est pas fondamentalement négatif. Il est un stratège qui observe avant d'agir, un révélateur qui peut changer le cours du jeu. Il représente les zones grises de la vie, où tout n'est pas noir ou blanc.",
       "ombre_et_defis": "Représente un trouble-fête, une personne qui porte un masque ou dont les intentions sont cachées. Annonce un message caché, un avertissement, un test de confiance ou une trahison en embuscade. Il demande une vigilance accrue et de ne pas se fier aux apparences.",
       "conseil": "Soyez un stratège. Observez le contexte dans son ensemble avant de prendre une décision. Fiez-vous à votre intuition pour 'gratter sous la surface' et découvrir la vérité. C'est un appel à rester vigilant et à avancer prudemment."
     },
@@ -193,8 +193,8 @@ export const piqueCards: Card[] = [
       "leçon", "questionnement", "fin d'étape", "conversation franche"
     ],
     "interpretations": {
-      "general": "Le 10 de Pique est une carte qui fait réagir. Le chiffre 10 symbolise le passage, le pont entre deux mondes. C'est la fin d'une étape et le début d'une nouvelle aventure. L'énergie des piques rappelle que ce passage se fait souvent à travers des défis, mais que chaque pas renforce.",
-      "endroit": "Indique un moment de transformation nécessaire pour évoluer. C'est le moment d'avoir une conversation franche, de chercher une clé pour ouvrir une porte fermée, ou de poser les bonnes questions sur la direction de sa vie. C'est une invitation à la sagesse et à la compréhension avant l'action.",
+      "general": "Indique un moment de transformation nécessaire pour évoluer. C'est le moment d'avoir une conversation franche, de chercher une clé pour ouvrir une porte fermée, ou de poser les bonnes questions sur la direction de sa vie. C'est une invitation à la sagesse et à la compréhension avant l'action.",
+      "endroit": "Le 10 de Pique est une carte qui fait réagir. Le chiffre 10 symbolise le passage, le pont entre deux mondes. C'est la fin d'une étape et le début d'une nouvelle aventure. L'énergie des piques rappelle que ce passage se fait souvent à travers des défis, mais que chaque pas renforce.",
       "ombre_et_defis": "Représente un avertissement, une 'route glissante'. Peut indiquer un malentendu, une distance dans les relations, ou un moment de réflexion profonde et de doute. C'est un simple rappel à rester vigilant, et non un signe de fatalité.",
       "conseil": "Ne vous laissez pas impressionner. Faites confiance à votre intuition pour trouver les réponses cachées. Si vous vous sentez bloqué, changez d'angle pour trouver la clé. Décomposez vos objectifs en petites étapes. N'hésitez pas à avoir des conversations franches pour dénouer les situations."
     },
@@ -243,8 +243,8 @@ export const piqueCards: Card[] = [
       "renouveau", "alerte", "difficultés", "espoir", "dialogue"
     ],
     "interpretations": {
-      "general": "Le 9 de Pique est une carte qui intrigue et pousse à la réflexion. Elle marque la fin d'un cycle pour en commencer un autre. Elle est liée à la transformation, comme un guerrier prêt à affronter des épreuves pour en sortir plus fort. Elle murmure qu'il est temps de tourner la page.",
-      "endroit": "Annonce un renouveau et une envie de changement. C'est une invitation à accueillir ce changement, même s'il est précédé d'une phase de réflexion. Elle guide et invite à l'introspection pour trouver une belle vue, comme une échelle à gravir.",
+      "general": "Annonce un renouveau et une envie de changement. C'est une invitation à accueillir ce changement, même s'il est précédé d'une phase de réflexion. Elle guide et invite à l'introspection pour trouver une belle vue, comme une échelle à gravir.",
+      "endroit": "Le 9 de Pique est une carte qui intrigue et pousse à la réflexion. Elle marque la fin d'un cycle pour en commencer un autre. Elle est liée à la transformation, comme un guerrier prêt à affronter des épreuves pour en sortir plus fort. Elle murmure qu'il est temps de tourner la page.",
       "ombre_et_defis": "Représente des difficultés à surmonter. Peut signaler un projet bloqué, une relation tendue ou un coup de fatigue. C'est un message d'alerte qui demande une réflexion et du recul. Ce n'est pas une carte à fuir, mais à comprendre.",
       "conseil": "Prenez du recul. Faites face aux choix compliqués avec patience. Si une relation est tendue, le dialogue aide. Si un projet est bloqué, il s'éclairera. Gardez espoir, car les piques montrent la voie, même dans l'ombre."
     },
@@ -293,8 +293,8 @@ export const piqueCards: Card[] = [
       "chagrin", "continuité", "équilibre", "vigilance", "transformation"
     ],
     "interpretations": {
-      "general": "Le 8 de Pique est une carte qui intrigue et invite à la réflexion. Le pique rappelle les combats intérieurs, mais le chiffre 8, symbole de continuité et d'équilibre, assure qu'un chemin existe après chaque défi. Elle n'est pas forcément négative, mais demande d'observer avant d'agir.",
-      "endroit": "Murmure des avertissements : menaces, ennuis, trahisons, mauvaises nouvelles. Peut annoncer des médisances, des chagrins, voire des maladies. C'est une invitation à la vigilance et au courage pour déjouer les pièges du destin.",
+      "general": "Murmure des avertissements : menaces, ennuis, trahisons, mauvaises nouvelles. Peut annoncer des médisances, des chagrins, voire des maladies. C'est une invitation à la vigilance et au courage pour déjouer les pièges du destin.",
+      "endroit": "Le 8 de Pique est une carte qui intrigue et invite à la réflexion. Le pique rappelle les combats intérieurs, mais le chiffre 8, symbole de continuité et d'équilibre, assure qu'un chemin existe après chaque défi. Elle n'est pas forcément négative, mais demande d'observer avant d'agir.",
       "ombre_et_defis": "Lorsqu'elle est mal entourée, elle accentue les mauvais augures : ruptures (liaisons, mariages), perte financière, maladie, etc. C'est un signal clair de problèmes à venir qui demandent une grande prudence et une analyse fine de la situation.",
       "conseil": "Prenez un moment de recul. Posez-vous les bonnes questions : est-ce le moment d'agir ou d'attendre ? Cherchez l'équilibre, car tout finit par se stabiliser. N'hésitez pas à éclaircir les malentendus et à libérer vos pensées qui tournent en boucle. La vigilance est votre meilleure alliée."
     },
@@ -343,8 +343,8 @@ export const piqueCards: Card[] = [
       "résilience", "sagesse", "décision difficile", "intuition"
     ],
     "interpretations": {
-      "general": "Le 7 de Pique associe le chiffre mystérieux 7 au pique, symbole de transformation. Ce n'est pas une carte 'contre vous', mais 'pour ouvrir les yeux'. Elle représente un passage nécessaire, une épreuve qui teste la résilience. C'est le caillou dans la chaussure qui pousse à s'arrêter pour l'enlever.",
-      "endroit": "Indique une période de défis qui sont là pour vous faire grandir. C'est un appel à persévérer et à ne pas baisser les bras. C'est la promesse d'une nouvelle clarté après la tempête, un moment de libération et de connexion à son intuition.",
+      "general": "Indique une période de défis qui sont là pour vous faire grandir. C'est un appel à persévérer et à ne pas baisser les bras. C'est la promesse d'une nouvelle clarté après la tempête, un moment de libération et de connexion à son intuition.",
+      "endroit": "Le 7 de Pique associe le chiffre mystérieux 7 au pique, symbole de transformation. Ce n'est pas une carte 'contre vous', mais 'pour ouvrir les yeux'. Elle représente un passage nécessaire, une épreuve qui teste la résilience. C'est le caillou dans la chaussure qui pousse à s'arrêter pour l'enlever.",
       "ombre_et_defis": "Peut annoncer des chagrins d'amour, des disputes, des médisances ou des difficultés financières passagères. Symbolise une période de doutes, un carrefour où il faut faire des choix difficiles. Peut représenter un bagage émotionnel non digéré qui refait surface.",
       "conseil": "Lâchez prise sur ce qui ne fonctionne plus. Cherchez des solutions créatives pour contourner les obstacles. Faites confiance à votre intuition et écoutez vos ressentis. Acceptez que les changements prennent du temps. C'est le moment de faire le tri et de vous recentrer."
     },
@@ -385,8 +385,8 @@ export const piqueCards: Card[] = [
       "résolution rapide", "légèreté", "neutralité"
     ],
     "interpretations": {
-      "general": "Le 6 de Pique est comme un petit caillou dans la chaussure : embêtant mais pas dramatique. Il annonce un contretemps qui s'effacera rapidement. Sa magie réside dans sa légèreté, il est comme un nuage qui assombrit un instant le ciel avant que la lumière ne revienne.",
-      "endroit": "Annonce des problèmes temporaires : une dispute, un rendez-vous manqué, un retard. C'est une invitation à la patience et au calme. C'est une toile de fond, un murmure qui incite à ne pas dramatiser les petits riens et à faire confiance au temps.",
+      "general": "Annonce des problèmes temporaires : une dispute, un rendez-vous manqué, un retard. C'est une invitation à la patience et au calme. C'est une toile de fond, un murmure qui incite à ne pas dramatiser les petits riens et à faire confiance au temps.",
+      "endroit": "Le 6 de Pique est comme un petit caillou dans la chaussure : embêtant mais pas dramatique. Il annonce un contretemps qui s'effacera rapidement. Sa magie réside dans sa légèreté, il est comme un nuage qui assombrit un instant le ciel avant que la lumière ne revienne.",
       "ombre_et_defis": "Le défi est de ne pas dramatiser un petit souci. Cette carte teste la patience et la capacité à relativiser. Elle peut représenter un tracas venu d'un proche, un ami en retard, un collègue distrait, qui demandent de la patience pour ne pas créer de tension inutile.",
       "conseil": "Prenez une grande inspiration et attendez. Prenez du recul et relativisez. Observez votre entourage pour comprendre qui a besoin de patience. Faites confiance au temps, car comme la pluie qui cesse, tout finit par passer. Accueillez cette carte comme une amie discrète qui vous souffle : 'Patience, tout ira bien.'"
     },
@@ -418,8 +418,8 @@ export const piqueCards: Card[] = [
       "réflexion", "épuisement", "mélancolie", "malentendus", "vigilance"
     ],
     "interpretations": {
-      "general": "Le 5 de Pique est comme un panneau 'virage dangereux'. Il annonce un retard, un contretemps ou un souci mineur qui teste la patience. Il n'est pas dramatique, mais embêtant. C'est une carte éphémère, comme un nuage qui passe, rappelant que la lumière revient vite.",
-      "endroit": "Murmure des avertissements sur des dangers émotionnels : un coup bas, une trahison inattendue. Peut signifier une rupture ou une période compliquée. C'est une opportunité de réfléchir et de voir si une situation mérite vos larmes. Il invite à la vigilance et au recul.",
+      "general": "Murmure des avertissements sur des dangers émotionnels : un coup bas, une trahison inattendue. Peut signifier une rupture ou une période compliquée. C'est une opportunité de réfléchir et de voir si une situation mérite vos larmes. Il invite à la vigilance et au recul.",
+      "endroit": "Le 5 de Pique est comme un panneau 'virage dangereux'. Il annonce un retard, un contretemps ou un souci mineur qui teste la patience. Il n'est pas dramatique, mais embêtant. C'est une carte éphémère, comme un nuage qui passe, rappelant que la lumière revient vite.",
       "ombre_et_defis": "Le défi est de ne pas sombrer dans le pessimisme. La carte peut pointer des relations qui épuisent, des malentendus qui s'accumulent ou une sensation de solitude. Elle met en garde contre les faux amis, les 'vampires émotionnels' et les promesses vides.",
       "conseil": "Ralentissez, observez, et ne donnez pas votre confiance les yeux fermés. Faites le tri dans vos relations. Ne confondez pas gentillesse et naïveté. Gardez vos projets pour vous. Apprenez à laisser partir ce qui n'a plus sa place pour faire de la place à un souffle nouveau."
     },
@@ -453,8 +453,8 @@ export const piqueCards: Card[] = [
       "essentiel", "prudence", "limites", "repos", "désordre matériel"
     ],
     "interpretations": {
-      "general": "Le 4 de Pique combine la stabilité du chiffre 4 avec l'énergie de défi du pique. Ce n'est pas une carte de chaos, mais elle signale un risque si les bases ne sont pas solides. C'est l'épine dans la rose qui force à réfléchir avant d'agir, une boussole pour naviguer les moments complexes.",
-      "endroit": "Dicte une pause, une réflexion. Si elle est entourée de cartes positives, elle appelle à l'équilibre. C'est une invitation à se restructurer, à reprendre les bases pour se sauver d'un projet mal ficelé. Elle apporte la clarté après une période de flou.",
+      "general": "Dicte une pause, une réflexion. Si elle est entourée de cartes positives, elle appelle à l'équilibre. C'est une invitation à se restructurer, à reprendre les bases pour se sauver d'un projet mal ficelé. Elle apporte la clarté après une période de flou.",
+      "endroit": "Le 4 de Pique combine la stabilité du chiffre 4 avec l'énergie de défi du pique. Ce n'est pas une carte de chaos, mais elle signale un risque si les bases ne sont pas solides. C'est l'épine dans la rose qui force à réfléchir avant d'agir, une boussole pour naviguer les moments complexes.",
       "ombre_et_defis": "Peut annoncer des ennuis matériels, des défis professionnels, des factures oubliées ou des projets qui dérapent. C'est une invitation discrète à ne pas subir, mais à agir avec audace. Dans un contexte sombre, elle est le signal d'une transformation nécessaire.",
       "conseil": "Simplifiez. Trop de stress ? Concentrez-vous sur l'essentiel. Prenez du recul pour analyser la situation. Osez dire non et poser vos limites pour vous préserver. Faites une liste de vos priorités pour éclaircir vos idées. Cette carte est ancrée dans le court terme."
     },
@@ -486,8 +486,8 @@ export const piqueCards: Card[] = [
       "renouveau", "turbulences", "malentendu", "patience"
     ],
     "interpretations": {
-      "general": "Le 3 de Pique est le rebelle du jeu, une carte qui ne passe pas inaperçue. Elle symbolise les luttes, les épreuves et un équilibre précaire qui pousse à agir. Ce n'est pas qu'un signe d'obstacles ; c'est aussi un lot de révélations. Comme une pluie grise qui nourrit la terre, elle est un présage de défis, mais aussi de renouveau.",
-      "endroit": "Parle de rupture nette, de perte d'amitié ou d'amour, d'un lien brisé. Son énergie est tranchante et sans appel. Elle signale une zone de turbulence, un malentendu ou une petite dispute passagère. C'est une invitation à la stratégie et à la réflexion.",
+      "general": "Parle de rupture nette, de perte d'amitié ou d'amour, d'un lien brisé. Son énergie est tranchante et sans appel. Elle signale une zone de turbulence, un malentendu ou une petite dispute passagère. C'est une invitation à la stratégie et à la réflexion.",
+      "endroit": "Le 3 de Pique est le rebelle du jeu, une carte qui ne passe pas inaperçue. Elle symbolise les luttes, les épreuves et un équilibre précaire qui pousse à agir. Ce n'est pas qu'un signe d'obstacles ; c'est aussi un lot de révélations. Comme une pluie grise qui nourrit la terre, elle est un présage de défis, mais aussi de renouveau.",
       "ombre_et_defis": "Peut symboliser un désordre mental, des problèmes passés qui laissent des cicatrices. Représente des blessures jamais vraiment refermées, le poids des échecs. Elle peut annoncer des rivalités, des tensions, des trahisons ou un projet qui échoue.",
       "conseil": "Prenez du recul et observez. Votre esprit est votre boussole. Parlez, partagez, écoutez le soutien de vos proches. Soyez patient et stratège. Ne perdez pas courage, car après la pluie vient l'arc-en-ciel. Transformez les obstacles en opportunités."
     },
@@ -521,8 +521,8 @@ export const piqueCards: Card[] = [
       "discussion", "pause", "équilibre", "yin-yang"
     ],
     "interpretations": {
-      "general": "Le 2 de Pique est une carte nuancée qui symbolise la dualité (chiffre 2) et l'introspection (couleur noire). C'est une intrigue, un choix, une bifurcation à prendre. Elle invite à ralentir, à observer, à respirer et à peser le pour et le contre pour retrouver sa tranquillité d'esprit.",
-      "endroit": "Indique un défi ou une tension à résoudre. C'est une invitation à ouvrir la discussion, à écouter son instinct et à prendre une décision. C'est le moment de faire la liste des avantages et inconvénients pour faire le bon choix, que ce soit en amour ou au travail.",
+      "general": "Indique un défi ou une tension à résoudre. C'est une invitation à ouvrir la discussion, à écouter son instinct et à prendre une décision. C'est le moment de faire la liste des avantages et inconvénients pour faire le bon choix, que ce soit en amour ou au travail.",
+      "endroit": "Le 2 de Pique est une carte nuancée qui symbolise la dualité (chiffre 2) et l'introspection (couleur noire). C'est une intrigue, un choix, une bifurcation à prendre. Elle invite à ralentir, à observer, à respirer et à peser le pour et le contre pour retrouver sa tranquillité d'esprit.",
       "ombre_et_defis": "Son aspect 'austère' peut se manifester par un léger tiraillement, un désaccord ou un doute qui plane. Le défi est de ne pas paniquer mais de voir cela comme une occasion de discussion et de clarification.",
       "conseil": "Prenez une pause. Observez le contexte et faites confiance à votre intuition. Si vous faites face à un dilemme, écrivez-le pour éclaircir vos idées ou demandez conseil à un ami. C'est un moment pour la réflexion, pas pour la précipitation."
     },

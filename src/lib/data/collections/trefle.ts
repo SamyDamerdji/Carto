@@ -15,8 +15,8 @@ export const trefleCards: Card[] = [
       "stabilité", "construction", "affaires", "mentor", "leader"
     ],
     "interpretations": {
-      "general": "Le Roi de Trèfle est un personnage puissant, un maître du jeu qui avance avec une vision claire. Il symbolise la réussite qui se prépare, se cultive et se travaille avec intelligence. Il pousse à agir avec stratégie, à anticiper et à bâtir sur des bases solides.",
-      "endroit": "Représente un homme de pouvoir, un mentor, un chef ou un protecteur qui peut ouvrir des portes. Annonce une période où il faut prendre le contrôle, structurer ses projets et agir avec sagesse. C'est le signe d'une réussite construite sur la patience et la discipline.",
+      "general": "Représente un homme de pouvoir, un mentor, un chef ou un protecteur qui peut ouvrir des portes. Annonce une période où il faut prendre le contrôle, structurer ses projets et agir avec sagesse. C'est le signe d'une réussite construite sur la patience et la discipline.",
+      "endroit": "Le Roi de Trèfle est un personnage puissant, un maître du jeu qui avance avec une vision claire. Il symbolise la réussite qui se prépare, se cultive et se travaille avec intelligence. Il pousse à agir avec stratégie, à anticiper et à bâtir sur des bases solides.",
       "ombre_et_defis": "Son aspect de 'contrôle' peut devenir une faiblesse. Il peut représenter une rigidité excessive, un refus de l'imprévu ou une tendance à vouloir tout maîtriser, y compris les émotions. Peut indiquer un leader qui ne se laisse pas déstabiliser, mais qui manque de souplesse.",
       "conseil": "Prenez le pouvoir sur votre vie. Fixez des objectifs clairs, soyez stratège, anticipez et ne vous laissez pas distraire. La prospérité se cultive et la chance n'existe pas sans action. Entourez-vous des bonnes personnes pour bâtir durablement."
     },
@@ -55,8 +55,8 @@ export const trefleCards: Card[] = [
       "maîtrise", "ancrage", "prudence", "alliée", "confiance"
     ],
     "interpretations": {
-      "general": "La Dame de Trèfle est une femme qui gère, qui avance et qui calcule. Silencieuse mais pas effacée, elle incarne la femme d'affaires, la stratège qui voit les opportunités et les failles avant les autres. Elle n'est pas froide, elle est lucide et n'a pas besoin d'être sauvée.",
-      "endroit": "Représente une femme de confiance, une amie, une collègue ou la consultante elle-même. Annonce une montée en puissance, une prise de pouvoir, et la réussite grâce à la réalisation personnelle et à un travail acharné. C'est une carte de prospérité, de patience et de sagesse.",
+      "general": "Représente une femme de confiance, une amie, une collègue ou la consultante elle-même. Annonce une montée en puissance, une prise de pouvoir, et la réussite grâce à la réalisation personnelle et à un travail acharné. C'est une carte de prospérité, de patience et de sagesse.",
+      "endroit": "La Dame de Trèfle est une femme qui gère, qui avance et qui calcule. Silencieuse mais pas effacée, elle incarne la femme d'affaires, la stratège qui voit les opportunités et les failles avant les autres. Elle n'est pas froide, elle est lucide et n'a pas besoin d'être sauvée.",
       "ombre_et_defis": "Lorsqu'elle est en déséquilibre, elle devient méfiante, froide, calculatrice et peut avoir du mal à lâcher prise. Elle symbolise le contrôle excessif, la dureté et peut se fermer, devenant une forteresse derrière un sourire poli. Elle peut aussi représenter une rivale tenace et persuasive.",
       "conseil": "Reprenez votre pouvoir. Soyez lucide, gardez vos cartes près du cœur et agissez avec intuition et stratégie. Fiez-vous à votre propre jugement et n'attendez pas l'autorisation des autres pour avancer. L'ancrage est une forme de spiritualité."
     },
@@ -97,8 +97,8 @@ export const trefleCards: Card[] = [
       "adaptabilité", "prévoyance", "ruse", "discrétion", "nouvelle"
     ],
     "interpretations": {
-      "general": "Le Valet de Trèfle est un personnage intriguant et nuancé. Il joue le rôle de messager discret, mais peut aussi cacher une ruse. C'est une carte qui murmure 'Ouvre l'œil, tout n'est pas ce qu'il semble' et invite à l'analyse avant l'action.",
-      "endroit": "Représente un jeune homme brun, loyal et plein d'entrain. Il est honnête, sympathique et dévoué. Il annonce un succès dans les entreprises, de bonnes nouvelles, voire un fiancé pour une consultante.",
+      "general": "Représente un jeune homme brun, loyal et plein d'entrain. Il est honnête, sympathique et dévoué. Il annonce un succès dans les entreprises, de bonnes nouvelles, voire un fiancé pour une consultante.",
+      "endroit": "Le Valet de Trèfle est un personnage intriguant et nuancé. Il joue le rôle de messager discret, mais peut aussi cacher une ruse. C'est une carte qui murmure 'Ouvre l'œil, tout n'est pas ce qu'il semble' et invite à l'analyse avant l'action.",
       "ombre_et_defis": "Incarne un jeune homme peu fiable, porteur d'obstacles, de retards ou d'imprévus. Il peut représenter des conseils rusés, des tensions ou des disputes dans un couple. Sa présence incite à la méfiance et à la vérification des informations.",
       "conseil": "Faites preuve d'intelligence et de stratégie. C'est le moment de jongler, de vous adapter et de saisir les opportunités tout en gardant les yeux ouverts. Analysez le contexte, faites confiance à votre instinct et jouez intelligemment."
     },
@@ -147,8 +147,8 @@ export const trefleCards: Card[] = [
       "élan", "partenariat", "argent", "union prospère", "équilibre"
     ],
     "interpretations": {
-      "general": "Le 10 de Trèfle est comme un champ fertile ou un jardin en fleurs. Il symbolise la chance, la prospérité, mais aussi un défi caché. C'est l'image de la roue qui tourne dans le bon sens, un élan pour avancer et bâtir. Il représente à la fois la richesse matérielle et les récompenses intérieures.",
-      "endroit": "Annonce une réussite financière, une prospérité dans le foyer, une stabilité retrouvée. Les dettes s'effacent, un projet décolle, une promotion ou une reconnaissance arrive. C'est un feu vert pour saisir une opportunité, un signe que la chance est de votre côté.",
+      "general": "Annonce une réussite financière, une prospérité dans le foyer, une stabilité retrouvée. Les dettes s'effacent, un projet décolle, une promotion ou une reconnaissance arrive. C'est un feu vert pour saisir une opportunité, un signe que la chance est de votre côté.",
+      "endroit": "Le 10 de Trèfle est comme un champ fertile ou un jardin en fleurs. Il symbolise la chance, la prospérité, mais aussi un défi caché. C'est l'image de la roue qui tourne dans le bon sens, un élan pour avancer et bâtir. Il représente à la fois la richesse matérielle et les récompenses intérieures.",
       "ombre_et_defis": "Alerte sur les excès. L'élan peut devenir déséquilibré. Dans sa facette négative, la carte annonce des défis financiers, des dépenses inattendues, des opportunités manquées ou des relations tendues. C'est une invitation à la prudence et à ne pas laisser passer le train.",
       "conseil": "Foncez, mais ouvrez bien les yeux. Soyez à l'écoute, car chaque détail compte. Agissez avec discernement et ne cédez pas à la précipitation. Restez optimiste, car les opportunités sont souvent bien cachées. Tout doit rester équilibré, comme un funambule sur son fil."
     },
@@ -197,8 +197,8 @@ export const trefleCards: Card[] = [
       "nouveau départ", "satisfaction", "opportunité", "concrétisation", "réflexion"
     ],
     "interpretations": {
-      "general": "Le 9 de Trèfle est une carte d'énergie fascinante qui évoque des réussites inattendues. Cependant, rien n'arrive par magie ; elle rappelle que chaque succès demande un effort et une préparation. C'est la satisfaction de voir son travail porter ses fruits.",
-      "endroit": "Annonce une réussite méritée, une récompense pour le travail fourni, la fin d'un chapitre et le début d'un nouveau. Elle suggère des relations épanouissantes construites sur des bases solides et la concrétisation d'un projet ambitieux.",
+      "general": "Annonce une réussite méritée, une récompense pour le travail fourni, la fin d'un chapitre et le début d'un nouveau. Elle suggère des relations épanouissantes construites sur des bases solides et la concrétisation d'un projet ambitieux.",
+      "endroit": "Le 9 de Trèfle est une carte d'énergie fascinante qui évoque des réussites inattendues. Cependant, rien n'arrive par magie ; elle rappelle que chaque succès demande un effort et une préparation. C'est la satisfaction de voir son travail porter ses fruits.",
       "ombre_et_defis": "Peut murmurer un avertissement sur les excès. Trop d'efforts sans réflexion peuvent mener à l'épuisement. Elle invite à ne pas s'éparpiller et à ne pas se laisser paralyser par la procrastination ou les doutes. Avec des piques, elle annonce des retards et des efforts supplémentaires.",
       "conseil": "Préparez vos chaussures, vous allez grimper ! Le succès est à portée de main, mais il demande de l'organisation et de la concentration. Listez vos priorités, ne vous laissez pas freiner par les doutes et avancez avec stratégie pour récolter les fruits de votre labeur."
     },
@@ -246,8 +246,8 @@ export const trefleCards: Card[] = [
       "réflexion", "richesse intérieure", "croissance", "transition"
     ],
     "interpretations": {
-      "general": "Le 8 de Trèfle, avec sa forme d'infini, parle d'équilibre entre ce que l'on possède et ce que l'on ressent. Ce n'est pas une carte de chance brute, mais de la manière dont on l'utilise. Elle symbolise un coup de pouce de la vie, une occasion à ne pas manquer pour créer une vie plus riche et significative.",
-      "endroit": "Annonce une opportunité à saisir, un nouveau projet ou une aventure inédite. C'est le moment de prendre des décisions et de passer à l'action. Peut annoncer des rentrées d'argent, des contrats ou des investissements fructueux. C'est une carte d'évolution et de transition positive.",
+      "general": "Annonce une opportunité à saisir, un nouveau projet ou une aventure inédite. C'est le moment de prendre des décisions et de passer à l'action. Peut annoncer des rentrées d'argent, des contrats ou des investissements fructueux. C'est une carte d'évolution et de transition positive.",
+      "endroit": "Le 8 de Trèfle, avec sa forme d'infini, parle d'équilibre entre ce que l'on possède et ce que l'on ressent. Ce n'est pas une carte de chance brute, mais de la manière dont on l'utilise. Elle symbolise un coup de pouce de la vie, une occasion à ne pas manquer pour créer une vie plus riche et significative.",
       "ombre_et_defis": "Le défi principal est de trouver le bon équilibre et de ne pas se sentir tiré d'un côté ou de l'autre (matériel vs spirituel). Un manque de réflexion avant d'agir peut faire manquer l'opportunité. La carte peut aussi avertir de certains obstacles financiers ou sentimentaux à venir.",
       "conseil": "Saisissez les opportunités, mais évaluez-les bien avant de foncer. Jonglez avec vos ressources matérielles sans oublier que le bonheur n'est pas que tangible. Redéfinissez ce que la prospérité signifie pour vous. Utilisez vos biens pour grandir et offrir du bonheur."
     },
@@ -296,8 +296,8 @@ export const trefleCards: Card[] = [
       "prudence financière", "action", "objectifs", "résultat"
     ],
     "interpretations": {
-      "general": "Le 7 de Trèfle est une carte nuancée qui allie le mystère du chiffre 7 à la dimension matérielle du trèfle. Elle parle de chance, mais surtout de la chance que l'on provoque par le travail et l'effort. C'est un symbole à deux faces : chance et effort, les deux étant indissociables.",
-      "endroit": "Annonce que vous êtes sur la bonne voie grâce à un travail acharné. C'est un encouragement à continuer. Des portes vont s'ouvrir, des opportunités se présenteront. Le résultat de vos efforts vaudra le coup. C'est le moment de se préparer à agir.",
+      "general": "Annonce que vous êtes sur la bonne voie grâce à un travail acharné. C'est un encouragement à continuer. Des portes vont s'ouvrir, des opportunités se présenteront. Le résultat de vos efforts vaudra le coup. C'est le moment de se préparer à agir.",
+      "endroit": "Le 7 de Trèfle est une carte nuancée qui allie le mystère du chiffre 7 à la dimension matérielle du trèfle. Elle parle de chance, mais surtout de la chance que l'on provoque par le travail et l'effort. C'est un symbole à deux faces : chance et effort, les deux étant indissociables.",
       "ombre_et_defis": "Révèle des épreuves, notamment en amour. Peut indiquer une période où il faut faire ses preuves par des actes. C'est un test de patience. Il faut faire attention à ne pas se comparer aux autres et à rester concentré sur son propre chemin.",
       "conseil": "Soyez stratégique. Faites une liste de vos objectifs et priorisez-les. Ne vous laissez pas tenter par des folies inutiles. Consacrez du temps à vos passions. Continuez à semer, car vous récolterez bientôt. Chaque brique compte pour bâtir la maison."
     },
@@ -338,8 +338,8 @@ export const trefleCards: Card[] = [
       "partage", "soutien", "gain", "curiosité", "intuition"
     ],
     "interpretations": {
-      "general": "Le 6 de Trèfle est comme un potager : on plante, on arrose, on est patient, et la récolte arrive. Il parle de chances à saisir et d'opportunités discrètes. Il résonne avec le quotidien et rappelle que l'effort paie. C'est aussi une carte qui invite à ralentir et à observer les petits détails qui comptent.",
-      "endroit": "Annonce que les efforts finiront par payer. C'est une énergie douce et une belle énergie de partage. Les opportunités sont discrètes mais réelles. C'est un rappel que l'âme a besoin de repos et d'équilibre. Une invitation à donner autant qu'à recevoir.",
+      "general": "Annonce que les efforts finiront par payer. C'est une énergie douce et une belle énergie de partage. Les opportunités sont discrètes mais réelles. C'est un rappel que l'âme a besoin de repos et d'équilibre. Une invitation à donner autant qu'à recevoir.",
+      "endroit": "Le 6 de Trèfle est comme un potager : on plante, on arrose, on est patient, et la récolte arrive. Il parle de chances à saisir et d'opportunités discrètes. Il résonne avec le quotidien et rappelle que l'effort paie. C'est aussi une carte qui invite à ralentir et à observer les petits détails qui comptent.",
       "ombre_et_defis": "Peut représenter une période où la vie va trop vite, un appel à ralentir. Le défi est de ne pas se décourager si la récompense tarde à venir. Il faut faire preuve de patience et de confiance dans le processus.",
       "conseil": "Prenez le temps de décortiquer votre situation. Cherchez les opportunités cachées. Soyez curieux, parlez, explorez, lisez. Écoutez votre intuition, elle sait souvent mieux que vous. Ayez confiance en vos efforts."
     },
@@ -385,8 +385,8 @@ export const trefleCards: Card[] = [
       "opportunité", "changement", "réussite", "réconciliation"
     ],
     "interpretations": {
-      "general": "Le 5 de Trèfle parle de transition sans tension majeure. C'est la bascule entre stabilité (4) et nouveauté (6). Le chiffre 5 est une secousse, une friction qui pousse à reconsidérer et à ajuster les aspects concrets de la vie (travail, finances, organisation). C'est une invitation à vous adapter.",
-      "endroit": "Annonce que les événements à venir seront positifs et encourageants. C'est un signe de réussite personnelle, que ce soit une nouvelle rencontre, la consolidation d'une relation, une rentrée d'argent ou une évolution de carrière. Tout va s'aligner.",
+      "general": "Annonce que les événements à venir seront positifs et encourageants. C'est un signe de réussite personnelle, que ce soit une nouvelle rencontre, la consolidation d'une relation, une rentrée d'argent ou une évolution de carrière. Tout va s'aligner.",
+      "endroit": "Le 5 de Trèfle parle de transition sans tension majeure. C'est la bascule entre stabilité (4) et nouveauté (6). Le chiffre 5 est une secousse, une friction qui pousse à reconsidérer et à ajuster les aspects concrets de la vie (travail, finances, organisation). C'est une invitation à vous adapter.",
       "ombre_et_defis": "Peut représenter une résistance au changement, un entêtement qui empêche l'évolution naturelle. Peut aussi signaler de la fatigue ou du stress face à une situation. Avec la Dame de Pique, un défi pourrait venir compliquer le changement.",
       "conseil": "N'ayez pas peur d'évoluer. Cette carte est une chance, même si elle peut sembler inconfortable. Il s'agit de reconnaître les opportunités, de bien les évaluer et de foncer une fois que tout est clair. Réalignez vos choix avec votre énergie profonde."
     },
@@ -431,8 +431,8 @@ export const trefleCards: Card[] = [
       "protection", "choix", "réflexion", "imprévu"
     ],
     "interpretations": {
-      "general": "Le 4 de Trèfle est une carte porte-bonheur, une petite chance cachée, un coup de pouce venu d'ailleurs. Son interprétation change radicalement en fonction des cartes qui l'accompagnent, révélant des histoires différentes et des indices précieux pour avancer.",
-      "endroit": "Annonce une rencontre inattendue, une relation qui naît sans forcer les choses (avec l'As de Cœur), une période de prospérité (avec le 10 de Carreau), ou un soutien précieux (avec la Reine de Carreau). C'est une carte qui inspire et apporte de la douceur.",
+      "general": "Annonce une rencontre inattendue, une relation qui naît sans forcer les choses (avec l'As de Cœur), une période de prospérité (avec le 10 de Carreau), ou un soutien précieux (avec la Reine de Carreau). C'est une carte qui inspire et apporte de la douceur.",
+      "endroit": "Le 4 de Trèfle est une carte porte-bonheur, une petite chance cachée, un coup de pouce venu d'ailleurs. Son interprétation change radicalement en fonction des cartes qui l'accompagnent, révélant des histoires différentes et des indices précieux pour avancer.",
       "ombre_et_defis": "Peut annoncer un avertissement discret. Avec le 7 de Pique, elle met en garde contre les promesses trop belles et demande plus de réflexion. Le vrai gain peut se cacher derrière un petit effort. Le défi est de ne pas se laisser aveugler par l'enthousiasme.",
       "conseil": "Ouvrez votre cœur et laissez-vous surprendre par des instants doux et spontanés. Avant d'accepter une offre, analysez bien. Si vous hésitez, faites confiance à une personne influente. Ne refusez pas l'aide, car les solutions viennent souvent des gens qui nous aiment."
     },
@@ -472,8 +472,8 @@ export const trefleCards: Card[] = [
       "persévérance", "aide précieuse", "optimisme", "alliance"
     ],
     "interpretations": {
-      "general": "Le 3 de Trèfle est un souffle d'énergie pure. Le chiffre 3 évoque un élan créatif, la collaboration et des efforts ciblés. Associé au trèfle, il parle d'opportunités qui demandent d'être saisies. C'est un rappel doux mais ferme que, avec un peu de patience et de cœur, tout est possible.",
-      "endroit": "Bien entourée, la carte annonce le succès. Avec les cartes de cœur, c'est l'optimisme, l'action et la victoire collective. Avec des figures, elle annonce une collaboration fructueuse, une aide précieuse ou un partenariat stratégique. C'est le moment de semer des graines.",
+      "general": "Bien entourée, la carte annonce le succès. Avec les cartes de cœur, c'est l'optimisme, l'action et la victoire collective. Avec des figures, elle annonce une collaboration fructueuse, une aide précieuse ou un partenariat stratégique. C'est le moment de semer des graines.",
+      "endroit": "Le 3 de Trèfle est un souffle d'énergie pure. Le chiffre 3 évoque un élan créatif, la collaboration et des efforts ciblés. Associé au trèfle, il parle d'opportunités qui demandent d'être saisies. C'est un rappel doux mais ferme que, avec un peu de patience et de cœur, tout est possible.",
       "ombre_et_defis": "Avec les cartes de pique, elle se fait plus sérieuse. Les projets demandent plus de travail, de stratégie et de prudence. Une opportunité peut cacher des détails épineux. Le défi est de ne pas se décourager et de se rappeler que la persévérance a son charme.",
       "conseil": "Osez avancer, la chance est au rendez-vous. Regardez cette carte comme une alliée et une invitation à l'action. Observez les couleurs des cartes qui l'entourent pour nuancer son message. Faites confiance à vos sensations et à votre intuition pour interpréter les alliances."
     },
@@ -513,8 +513,8 @@ export const trefleCards: Card[] = [
       "croissance", "soutien", "relation", "choix"
     ],
     "interpretations": {
-      "general": "Le 2 de Trèfle est un symbole complexe évoquant un équilibre délicat et un dialogue entre les opposés. Le chiffre 2 (dualité) s'allie au trèfle (stabilité, croissance), créant une danse entre deux forces. Elle invite à réfléchir sur les collaborations et les relations.",
-      "endroit": "Évoque un partenariat naissant, que ce soit en amour ou en affaires. C'est un bon signe pour une collaboration, mais demande de veiller à l'équilibre. Elle pousse à chercher de l'aide, à ne pas tout faire en solo et à trouver les bonnes personnes qui partagent ses valeurs.",
+      "general": "Évoque un partenariat naissant, que ce soit en amour ou en affaires. C'est un bon signe pour une collaboration, mais demande de veiller à l'équilibre. Elle pousse à chercher de l'aide, à ne pas tout faire en solo et à trouver les bonnes personnes qui partagent ses valeurs.",
+      "endroit": "Le 2 de Trèfle est un symbole complexe évoquant un équilibre délicat et un dialogue entre les opposés. Le chiffre 2 (dualité) s'allie au trèfle (stabilité, croissance), créant une danse entre deux forces. Elle invite à réfléchir sur les collaborations et les relations.",
       "ombre_et_defis": "Peut parler de défis dans un partenariat, de malentendus ou de déséquilibres. C'est une mise en garde contre les petits obstacles qui, s'ils ne sont pas gérés par la communication, peuvent devenir des montagnes. Peut indiquer un moment de flottement entre deux décisions.",
       "conseil": "Cherchez la voie du milieu, ne vous précipitez pas. Prenez un moment pour réfléchir calmement. La clé d'un partenariat réussi est la communication : parlez simplement, partagez vos idées et avancez ensemble. N'hésitez pas à demander de l'aide."
     },
@@ -546,8 +546,8 @@ export const trefleCards: Card[] = [
       "réussite personnelle", "espoir", "initiative", "croissance"
     ],
     "interpretations": {
-      "general": "L'As de Trèfle est une boussole intérieure qui murmure que tout est possible. Il est chargé des symboles de la chance et de la prospérité. Il ne demande pas d'être parfait, mais de tenter. Il rappelle que les graines plantées aujourd'hui donneront des fruits demain.",
-      "endroit": "Bingo ! Annonce des opportunités à saisir, un vent de chance, l'ouverture d'une porte inattendue. C'est la carte de la richesse, pas seulement financière, mais aussi de la réussite personnelle. C'est le moment de lancer une idée ou un projet.",
+      "general": "Bingo ! Annonce des opportunités à saisir, un vent de chance, l'ouverture d'une porte inattendue. C'est la carte de la richesse, pas seulement financière, mais aussi de la réussite personnelle. C'est le moment de lancer une idée ou un projet.",
+      "endroit": "L'As de Trèfle est une boussole intérieure qui murmure que tout est possible. Il est chargé des symboles de la chance et de la prospérité. Il ne demande pas d'être parfait, mais de tenter. Il rappelle que les graines plantées aujourd'hui donneront des fruits demain.",
       "ombre_et_defis": "Une opportunité peut cacher un défi. Il invite à la prudence et à ne pas se laisser aveugler par ce qui brille. Peut aussi représenter une grande transformation imprévisible (avec le Joker), qui demande d'être maniée avec précaution.",
       "conseil": "Écoutez votre instinct pour faire les bons choix. C'est une carte qui invite à agir. Lancez-vous dans ce projet que vous avez en tête, passez cet appel. Restez attentif, les opportunités arrivent."
     },

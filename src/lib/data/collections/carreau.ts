@@ -15,8 +15,8 @@ export const carreauCards: Card[] = [
       "ambition", "création", "potentiel", "action", "récompense"
     ],
     "interpretations": {
-      "general": "L'As de Carreau est une carte puissante qui symbolise une autorité silencieuse dans le monde concret. Associé à l'élément terre, il évoque la stabilité et la matière. Il pousse à agir, à construire et à poser la première pierre d'un projet durable. C'est une carte de commencement, de changement et de défi.",
-      "endroit": "Annonce une nouvelle opportunité tangible, un contrat, une nouvelle offre ou une récompense financière. C'est la promesse d'un avenir radieux pour les entreprises, les bonnes affaires et les projets qui se signent. C'est le moment de créer son propre chemin.",
+      "general": "Annonce une nouvelle opportunité tangible, un contrat, une nouvelle offre ou une récompense financière. C'est la promesse d'un avenir radieux pour les entreprises, les bonnes affaires et les projets qui se signent. C'est le moment de créer son propre chemin.",
+      "endroit": "L'As de Carreau est une carte puissante qui symbolise une autorité silencieuse dans le monde concret. Associé à l'élément terre, il évoque la stabilité et la matière. Il pousse à agir, à construire et à poser la première pierre d'un projet durable. C'est une carte de commencement, de changement et de défi.",
       "ombre_et_defis": "La carte est ambivalente. Une nouvelle opportunité implique un risque d'échec. Elle peut signaler des déceptions liées à des questions matérielles, un projet qui n'aboutit pas, ou des efforts non récompensés. Elle rappelle le courage nécessaire pour affronter l'inconnu.",
       "conseil": "Écoutez votre intuition pour faire le bon choix face à l'opportunité qui se présente. C'est le moment d'agir, de construire, mais avec prudence et discernement. Équilibrez le monde matériel et le monde spirituel pour ne pas laisser le succès matériel créer un vide intérieur."
     },
@@ -55,8 +55,8 @@ export const carreauCards: Card[] = [
       "détermination", "passion", "affaires", "initiative", "homme influent"
     ],
     "interpretations": {
-      "general": "Le Roi de Carreau est une figure de puissance et un homme d'action. Contrairement à des rois plus introspectifs, il est en mouvement, prêt à accomplir de grandes choses et à prendre les rênes d'une situation complexe. Il incarne la responsabilité et encourage à ne pas rester bloqué.",
-      "endroit": "Symbolise un personnage masculin influent, un leader qui maîtrise l'art de négocier avec intelligence et fermeté. Son apparition est de bon augure pour les projets, indiquant que c'est le moment d'agir et de prendre des décisions éclairées. Il représente une passion constructive et une énergie positive.",
+      "general": "Symbolise un personnage masculin influent, un leader qui maîtrise l'art de négocier avec intelligence et fermeté. Son apparition est de bon augure pour les projets, indiquant que c'est le moment d'agir et de prendre des décisions éclairées. Il représente une passion constructive et une énergie positive.",
+      "endroit": "Le Roi de Carreau est une figure de puissance et un homme d'action. Contrairement à des rois plus introspectifs, il est en mouvement, prêt à accomplir de grandes choses et à prendre les rênes d'une situation complexe. Il incarne la responsabilité et encourage à ne pas rester bloqué.",
       "ombre_et_defis": "Son pouvoir peut se transformer en un excès de contrôle ou une tendance à être autoritaire et dominateur. Il peut indiquer une difficulté à déléguer et à faire confiance, menant à des situations tendues. Sa passion, si mal dirigée, peut devenir destructrice.",
       "conseil": "Prenez les rênes de votre vie et avancez avec confiance et détermination. C'est le moment d'agir, mais n'oubliez pas de réfléchir à votre relation avec l'autorité et le pouvoir. Trouvez l'équilibre entre la force et la douceur, entre le contrôle et la confiance."
     },
@@ -99,8 +99,8 @@ export const carreauCards: Card[] = [
       "analyse", "communication", "réussite", "femme d'influence", "prudence"
     ],
     "interpretations": {
-      "general": "La Dame de Carreau est une figure de pouvoir et de calcul. Contrairement à la Dame de Cœur, elle symbolise la raison, l'ambition et la stratégie. Elle maîtrise les sphères matérielles, sait où elle va et comment y arriver, utilisant son intelligence pour obtenir ce qu'elle désire. C'est une figure complexe, puissante et nuancée.",
-      "endroit": "Symbolise une femme forte, ambitieuse, une amie précieuse ou une femme d'influence (collègue, cheffe). Elle annonce la réussite dans un projet professionnel, une nouvelle opportunité et invite à la clairvoyance. Elle est une source d'inspiration pour ceux qui ont besoin de structure et de clarté.",
+      "general": "Symbolise une femme forte, ambitieuse, une amie précieuse ou une femme d'influence (collègue, cheffe). Elle annonce la réussite dans un projet professionnel, une nouvelle opportunité et invite à la clairvoyance. Elle est une source d'inspiration pour ceux qui ont besoin de structure et de clarté.",
+      "endroit": "La Dame de Carreau est une figure de pouvoir et de calcul. Contrairement à la Dame de Cœur, elle symbolise la raison, l'ambition et la stratégie. Elle maîtrise les sphères matérielles, sait où elle va et comment y arriver, utilisant son intelligence pour obtenir ce qu'elle désire. C'est une figure complexe, puissante et nuancée.",
       "ombre_et_defis": "Peut devenir froide, trop calculatrice, manipulatrice et jalouse. Elle peut signaler une personne dans l'entourage qui cherche à influencer ou contrôler. Son ombre est le danger de se perdre dans la poursuite des objectifs matériels et de se laisser dominer par l'ambition.",
       "conseil": "Utilisez votre intelligence et votre discernement pour prendre des décisions justes. Restez ancré dans vos valeurs et trouvez l'équilibre entre l'ambition et le cœur, entre la logique et l'émotion. Parfois, il faut être stratégique pour avancer."
     },
@@ -143,8 +143,8 @@ export const carreauCards: Card[] = [
       "intelligence pratique", "messager", "opportunité", "projet", "apprentissage"
     ],
     "interpretations": {
-      "general": "Le Valet de Carreau est associé à l'énergie, à un esprit vif toujours en mouvement. Il représente quelqu'un qui cherche sa voie, avec une curiosité insatiable. Il incarne le moment parfait pour agir, foncer et prendre les devants, mais avec finesse et réflexion.",
-      "endroit": "Symbolise l'élan, la créativité, l'audace calculée et l'intelligence pratique. Annonce une nouvelle idée, une opportunité, une proposition de collaboration ou un nouveau départ. C'est un encouragement à prendre des initiatives et à ne pas rester inactif.",
+      "general": "Symbolise l'élan, la créativité, l'audace calculée et l'intelligence pratique. Annonce une nouvelle idée, une opportunité, une proposition de collaboration ou un nouveau départ. C'est un encouragement à prendre des initiatives et à ne pas rester inactif.",
+      "endroit": "Le Valet de Carreau est associé à l'énergie, à un esprit vif toujours en mouvement. Il représente quelqu'un qui cherche sa voie, avec une curiosité insatiable. Il incarne le moment parfait pour agir, foncer et prendre les devants, mais avec finesse et réflexion.",
       "ombre_et_defis": "Représente un blocage, une confusion dans les actions, une dispersion de l'énergie ou un excès d'impulsivité. C'est une invitation à faire une pause, à réfléchir avant d'agir et à réorganiser ses priorités pour ne pas s'éparpiller.",
       "conseil": "Avancez avec sagesse. L'élan est essentiel, mais l'imprudence est un piège. Osez prendre des risques calculés, pensez en dehors des sentiers battus et utilisez votre intelligence pratique pour concrétiser vos projets."
     },
@@ -187,8 +187,8 @@ export const carreauCards: Card[] = [
       "opportunité", "avancement", "voyage", "déménagement", "alignement"
     ],
     "interpretations": {
-      "general": "Le 10 de Carreau déborde d'énergie. Il incarne un mouvement, une porte qui s'ouvre sur un nouveau chapitre. Symboliquement, il représente le travail, les efforts prolongés et la récompense qui en découle. C'est un rappel que chaque effort a une récompense et que le simple fait d'avancer est une victoire.",
-      "endroit": "Annonce un succès positif, un travail qui porte ses fruits, une entrée d'argent méritée. C'est un 'feu vert' pour une décision, une signature ou une ouverture professionnelle. Dans les relations, il indique une évolution, un passage à un niveau supérieur. C'est un signe d'évolution et d'alignement personnel.",
+      "general": "Annonce un succès positif, un travail qui porte ses fruits, une entrée d'argent méritée. C'est un 'feu vert' pour une décision, une signature ou une ouverture professionnelle. Dans les relations, il indique une évolution, un passage à un niveau supérieur. C'est un signe d'évolution et d'alignement personnel.",
+      "endroit": "Le 10 de Carreau déborde d'énergie. Il incarne un mouvement, une porte qui s'ouvre sur un nouveau chapitre. Symboliquement, il représente le travail, les efforts prolongés et la récompense qui en découle. C'est un rappel que chaque effort a une récompense et que le simple fait d'avancer est une victoire.",
       "ombre_et_defis": "Symbolise des moments de tension où les choses semblent s'accumuler. Ces obstacles sont vus comme des opportunités déguisées pour grandir. En négatif, il peut signaler un blocage, un frein intérieur, une peur du changement ou un manque de clarté qui empêche d'avancer.",
       "conseil": "Prenez cette carte comme un guide. Réévaluez vos priorités et préparez-vous pour la prochaine étape. Persévérez, car le succès est à portée de main. Prenez un moment pour respirer et réaligner vos actions avec votre cœur pour ne pas vous perdre dans la course."
     },
@@ -227,8 +227,8 @@ export const carreauCards: Card[] = [
       "défis", "encouragement", "appel", "nouvelle", "choix"
     ],
     "interpretations": {
-      "general": "Le 9 est le chiffre de l'aboutissement d'un processus. Associé au Carreau, il marque une transition concrète. La carte bouscule, mais pour une bonne raison : elle invite à oser le changement. Elle n'est pas mauvaise, mais elle peut déranger car elle sort rarement pour rien.",
-      "endroit": "Annonce un changement, une nouvelle, un appel qui change la donne. C'est un signal d'encouragement à ne pas lâcher maintenant. La fin de l'épreuve est proche. Représente la force intérieure, la persévérance et la capacité à transformer les défis en opportunités.",
+      "general": "Annonce un changement, une nouvelle, un appel qui change la donne. C'est un signal d'encouragement à ne pas lâcher maintenant. La fin de l'épreuve est proche. Représente la force intérieure, la persévérance et la capacité à transformer les défis en opportunités.",
+      "endroit": "Le 9 est le chiffre de l'aboutissement d'un processus. Associé au Carreau, il marque une transition concrète. La carte bouscule, mais pour une bonne raison : elle invite à oser le changement. Elle n'est pas mauvaise, mais elle peut déranger car elle sort rarement pour rien.",
       "ombre_et_defis": "Peut symboliser des défis, un projet bloqué, une fatigue morale ou physique. Représente un tournant, un carrefour où il faut faire un choix. Les résultats ne sont pas immédiats, demandant de la patience. Peut indiquer un événement déstabilisant qui prépare le terrain pour autre chose.",
       "conseil": "Tenez bon ! Vous avez la force intérieure pour surmonter les obstacles. C'est le moment de faire le point sur vos priorités, de mesurer le chemin parcouru et de vous préparer à la prochaine étape. Acceptez le changement et ne restez pas coincé."
     },
@@ -275,8 +275,8 @@ export const carreauCards: Card[] = [
       "progrès", "optimisme", "récompense", "stabilité", "communication"
     ],
     "interpretations": {
-      "general": "Le 8 de Carreau évoque un mouvement et un changement positif. Ce n'est pas un chaos, mais une réorganisation nécessaire. Lié à la carrière et aux projets, il encourage à avancer et à saisir les opportunités. C'est aussi une carte de patience, rappelant que les récompenses viennent avec le temps.",
-      "endroit": "Symbolise le travail acharné, l'effort et la concentration sur un objectif. C'est un signe de persévérance et de succès à venir. Elle annonce un déplacement agréable, une nouvelle relation, ou un projet qui avance. C'est un message d'optimisme et une invitation à embrasser le changement.",
+      "general": "Symbolise le travail acharné, l'effort et la concentration sur un objectif. C'est un signe de persévérance et de succès à venir. Elle annonce un déplacement agréable, une nouvelle relation, ou un projet qui avance. C'est un message d'optimisme et une invitation à embrasser le changement.",
+      "endroit": "Le 8 de Carreau évoque un mouvement et un changement positif. Ce n'est pas un chaos, mais une réorganisation nécessaire. Lié à la carrière et aux projets, il encourage à avancer et à saisir les opportunités. C'est aussi une carte de patience, rappelant que les récompenses viennent avec le temps.",
       "ombre_et_defis": "Peut symboliser des moments de tension où les choses s'accumulent. Ces obstacles sont là pour faire grandir. Peut indiquer des défis continus dans le domaine financier ou des efforts vains si l'on ne fait pas preuve de patience. Demande un recul pour réévaluer ses priorités.",
       "conseil": "Tenez bon et persévérez. Vous êtes sur la bonne voie, même si les résultats ne sont pas encore visibles. Prenez du recul, observez, et décidez si vous voulez embrasser le changement ou y résister. N'ayez pas peur de lâcher prise si nécessaire pour trouver un nouvel équilibre."
     },
@@ -320,8 +320,8 @@ export const carreauCards: Card[] = [
       "croissance", "ressources", "priorités", "recul", "message"
     ],
     "interpretations": {
-      "general": "Le 7 de Carreau combine la quête spirituelle du chiffre 7 à la matérialité des carreaux, créant un dilemme. C'est une carte qui annonce des défis, mais encourage à voir au-delà des apparences. Un problème apparent peut être une chance déguisée, une invitation à un saut spirituel.",
-      "endroit": "Annonce des complications dans les finances ou les projets, mais aussi l'opportunité de grandir. C'est un vent qui souffle, obligeant à ajuster ses voiles. Encourage l'adaptabilité et la résilience. Peut annoncer une bonne nouvelle inattendue ou un déclic libérateur si elle est bien entourée.",
+      "general": "Annonce des complications dans les finances ou les projets, mais aussi l'opportunité de grandir. C'est un vent qui souffle, obligeant à ajuster ses voiles. Encourage l'adaptabilité et la résilience. Peut annoncer une bonne nouvelle inattendue ou un déclic libérateur si elle est bien entourée.",
+      "endroit": "Le 7 de Carreau combine la quête spirituelle du chiffre 7 à la matérialité des carreaux, créant un dilemme. C'est une carte qui annonce des défis, mais encourage à voir au-delà des apparences. Un problème apparent peut être une chance déguisée, une invitation à un saut spirituel.",
       "ombre_et_defis": "Carte qui 'met en garde'. Elle parle d'informations floues, de nouvelles contradictoires, de paroles à double tranchant. Peut annoncer une rumeur, une fausse promesse, un malentendu. Mal entourée, elle peut indiquer un mensonge ou une manipulation.",
       "conseil": "Prenez du recul pour peser le pour et le contre. Ne vous laissez pas submerger par les problèmes matériels. Faites confiance à votre intuition, soyez patient et ne forcez pas les choses. Questionnez vos priorités et embrassez la transformation, même si elle est inconfortable."
     },
@@ -370,8 +370,8 @@ export const carreauCards: Card[] = [
       "cheminement", "démarches", "organisation", "mouvement", "nouveauté"
     ],
     "interpretations": {
-      "general": "Le 6 de Carreau est une carte de cheminement. Elle symbolise un changement qui n'est pas brutal mais arrive comme une brise légère. Le chiffre 6 évoque l'équilibre, invitant à réorganiser ses priorités matérielles. Elle rappelle que le cheminement est souvent plus important que la destination.",
-      "endroit": "Carte d'évolution discrète mais prometteuse. Annonce des efforts qui portent leurs fruits, des déplacements utiles, et des échanges concrets. Symbolise une phase d'organisation, de mise en place, un projet en transition ou des démarches en cours (candidature, formation).",
+      "general": "Carte d'évolution discrète mais prometteuse. Annonce des efforts qui portent leurs fruits, des déplacements utiles, et des échanges concrets. Symbolise une phase d'organisation, de mise en place, un projet en transition ou des démarches en cours (candidature, formation).",
+      "endroit": "Le 6 de Carreau est une carte de cheminement. Elle symbolise un changement qui n'est pas brutal mais arrive comme une brise légère. Le chiffre 6 évoque l'équilibre, invitant à réorganiser ses priorités matérielles. Elle rappelle que le cheminement est souvent plus important que la destination.",
       "ombre_et_defis": "Tout changement s'accompagne de défis. Peut indiquer des obstacles, des retards (rendez-vous manqué, projet qui prend du temps). Entourée de cartes négatives, elle peut signaler des obstacles administratifs ou un besoin de réévaluer ses priorités. Le défi est de persévérer malgré la lenteur apparente.",
       "conseil": "Ne brûlez pas les étapes, chaque action compte. Prenez le temps de la réflexion pour affiner vos plans. Faites preuve de diplomatie dans votre communication. C'est un appel à l'action, une invitation à prendre les rênes de votre destin, mais avec calme et maîtrise."
     },
@@ -412,8 +412,8 @@ export const carreauCards: Card[] = [
       "résilience", "bouleversement", "conflit interne", "réévaluation", "flexibilité"
     ],
     "interpretations": {
-      "general": "Le 5 de Carreau est une carte de transition, comme un vent qui souffle et bouscule les plans. Liée à l'élément Terre, elle parle de bouleversements dans les projets, les finances, le travail. Elle n'est pas là pour annoncer une période tranquille, mais pour indiquer que quelque chose de grand est sur le point de se produire.",
-      "endroit": "Annonce des défis et des obstacles qui sont en réalité des opportunités déguisées. C'est un appel à la résilience, à s'adapter aux nouvelles circonstances. Elle peut représenter un changement de poste, des imprévus financiers. C'est une chance de repenser ses priorités et de grandir.",
+      "general": "Annonce des défis et des obstacles qui sont en réalité des opportunités déguisées. C'est un appel à la résilience, à s'adapter aux nouvelles circonstances. Elle peut représenter un changement de poste, des imprévus financiers. C'est une chance de repenser ses priorités et de grandir.",
+      "endroit": "Le 5 de Carreau est une carte de transition, comme un vent qui souffle et bouscule les plans. Liée à l'élément Terre, elle parle de bouleversements dans les projets, les finances, le travail. Elle n'est pas là pour annoncer une période tranquille, mais pour indiquer que quelque chose de grand est sur le point de se produire.",
       "ombre_et_defis": "Peut indiquer une période d'instabilité émotionnelle, un désaccord, une remise en question de la relation. Peut aussi signaler des tensions dans la communication, des désaccords mal exprimés ou des décisions précipitées. Le défi est de ne pas résister au changement.",
       "conseil": "Restez flexible, la rigidité n'a pas sa place. Prenez du recul pour mieux voir et saisir la véritable essence des événements. Soyez à l'écoute des opportunités cachées. Évitez les décisions impulsives. Acceptez que vous ne contrôlez pas tout."
     },
@@ -450,8 +450,8 @@ export const carreauCards: Card[] = [
       "structure", "fiabilité", "ancrage", "rigueur", "opportunité"
     ],
     "interpretations": {
-      "general": "Le 4 de Carreau est une carte de stabilité matérielle. Le chiffre 4 évoque une base solide, les carreaux symbolisent le monde concret. Elle parle de projets qui prennent forme, d'entreprises qui s'installent. Mais cette stabilité est dynamique et doit être entretenue avec attention et rigueur.",
-      "endroit": "Annonce un message positif, une réussite professionnelle, un projet qui prend une belle tournure. C'est une carte fiable, calme et constructive. Elle indique une période de sécurité, une situation stable, une réussite modeste mais durable. Elle invite à consolider ses acquis.",
+      "general": "Annonce un message positif, une réussite professionnelle, un projet qui prend une belle tournure. C'est une carte fiable, calme et constructive. Elle indique une période de sécurité, une situation stable, une réussite modeste mais durable. Elle invite à consolider ses acquis.",
+      "endroit": "Le 4 de Carreau est une carte de stabilité matérielle. Le chiffre 4 évoque une base solide, les carreaux symbolisent le monde concret. Elle parle de projets qui prennent forme, d'entreprises qui s'installent. Mais cette stabilité est dynamique et doit être entretenue avec attention et rigueur.",
       "ombre_et_defis": "La routine peut devenir étouffante. La carte peut mettre en garde contre l'immobilisme, une peur du changement, ou une stagnation inconfortable. Mal entourée, elle peut annoncer des retards ou des obstacles administratifs qui demandent de réévaluer ses priorités.",
       "conseil": "Prenez le temps d'évaluer vos fondations. Êtes-vous sur une base solide ? Priorisez, planifiez, mettez de l'ordre. Cette stabilité acquise vous donnera la force d'oser des nouveautés. Ne foncez pas tête baissée, avancez sereinement."
     },
@@ -493,8 +493,8 @@ export const carreauCards: Card[] = [
       "vigilance", "attente", "administratif", "contrat", "opportunité"
     ],
     "interpretations": {
-      "general": "Le 3 de Carreau est une carte discrète mais pleine de sens. Elle ne crie pas, elle suggère. Elle indique un déplacement, un changement d'ambiance ou un message qui transite. Elle met en lumière un élément concret en gestation, comme un projet qui dépend d'une signature ou une opportunité non encore identifiée.",
-      "endroit": "Symbolise des décisions importantes à venir, souvent liées à la carrière ou aux finances. C'est le signe de nouvelles opportunités, d'un courrier, d'un contrat ou d'une réponse officielle. C'est une carte de mouvement discret et de transition.",
+      "general": "Symbolise des décisions importantes à venir, souvent liées à la carrière ou aux finances. C'est le signe de nouvelles opportunités, d'un courrier, d'un contrat ou d'une réponse officielle. C'est une carte de mouvement discret et de transition.",
+      "endroit": "Le 3 de Carreau est une carte discrète mais pleine de sens. Elle ne crie pas, elle suggère. Elle indique un déplacement, un changement d'ambiance ou un message qui transite. Elle met en lumière un élément concret en gestation, comme un projet qui dépend d'une signature ou une opportunité non encore identifiée.",
       "ombre_et_defis": "Représente des difficultés financières, des erreurs de jugement ou des décisions précipitées. Peut indiquer des nouvelles retardées ou inattendues. En amour, elle peut évoquer une distance, une attente émotionnelle, une sensation de malaise flou.",
       "conseil": "Invitez la vigilance dans votre vie. Ce n'est pas le moment de l'impulsivité, mais celui de la préparation et de l'observation. Soyez attentif aux communications et aux signes, car une information importante pourrait tout faire basculer."
     },
@@ -534,8 +534,8 @@ export const carreauCards: Card[] = [
       "confiance", "discussion", "opportunité", "projet à deux"
     ],
     "interpretations": {
-      "general": "Le 2 de Carreau est une danse. Un mouvement fluide qui demande de l'équilibre. Il parle de toutes les connexions humaines, du voisin au collègue. Les carreaux symbolisent l'action et le concret, et le chiffre 2 y ajoute un besoin de coordination, comme deux pierres qui se soutiennent mutuellement.",
-      "endroit": "C'est un message clair : 'Collabore'. Une idée prend forme, une alliance se renforce. C'est une opportunité déguisée dans le travail, une collaboration qui peut changer la donne. L'énergie relationnelle est au top. C'est aussi un appel à la confiance.",
+      "general": "C'est un message clair : 'Collabore'. Une idée prend forme, une alliance se renforce. C'est une opportunité déguisée dans le travail, une collaboration qui peut changer la donne. L'énergie relationnelle est au top. C'est aussi un appel à la confiance.",
+      "endroit": "Le 2 de Carreau est une danse. Un mouvement fluide qui demande de l'équilibre. Il parle de toutes les connexions humaines, du voisin au collègue. Les carreaux symbolisent l'action et le concret, et le chiffre 2 y ajoute un besoin de coordination, comme deux pierres qui se soutiennent mutuellement.",
       "ombre_et_defis": "Le défi est de ne pas vouloir tout gérer seul. En négatif, elle met en garde contre le manque d'attention aux détails, qui peut faire déraper un projet. Elle peut aussi mettre en lumière des relations ambiguës ou des faux-semblants.",
       "conseil": "Partagez la charge. Lancez cette discussion délicate mais nécessaire. Prenez le temps d'écouter l'autre, de créer des souvenirs, de faire confiance. Soyez adaptable, car les projets à plusieurs demandent des ajustements. N'hésitez pas à faire preuve d'audace."
     },

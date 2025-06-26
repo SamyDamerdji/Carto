@@ -15,8 +15,8 @@ export const coeurCards: Card[] = [
       "paix intérieure", "intuition", "bonheur", "terrain fertile", "vulnérabilité"
     ],
     "interpretations": {
-      "general": "L'As de Cœur est un battement pur, une bénédiction émotionnelle. Il représente l'origine de tous les possibles affectifs : amour, joie, tendresse, connexion. C'est une carte qui rassure et qui dit que l'on est exactement là où l'on doit être, émotionnellement parlant. C'est un baume, un moment de paix intérieure.",
-      "endroit": "Annonce une rencontre touchante, la renaissance d'un couple, une amitié qui se transforme ou un nouvel amour pour soi. C'est un terrain fertile pour cultiver des relations authentiques. Symbolise une nouvelle source de bonheur, un projet porté par le cœur ou une intuition à suivre.",
+      "general": "Annonce une rencontre touchante, la renaissance d'un couple, une amitié qui se transforme ou un nouvel amour pour soi. C'est un terrain fertile pour cultiver des relations authentiques. Symbolise une nouvelle source de bonheur, un projet porté par le cœur ou une intuition à suivre.",
+      "endroit": "L'As de Cœur est un battement pur, une bénédiction émotionnelle. Il représente l'origine de tous les possibles affectifs : amour, joie, tendresse, connexion. C'est une carte qui rassure et qui dit que l'on est exactement là où l'on doit être, émotionnellement parlant. C'est un baume, un moment de paix intérieure.",
       "ombre_et_defis": "Son aspect pur peut se confronter à l'illusion. Peut indiquer un amour non réciproque, une trop grande naïveté, une attente déçue ou un besoin d'amour mal placé. C'est une alarme douce qui rappelle que le cœur mérite mieux et qu'il faut s'aimer d'abord.",
       "conseil": "Ouvrez la porte douce que cette carte présente. Écoutez votre cœur et osez être authentique. C'est le moment d'ouvrir son cœur, de montrer ses émotions et de laisser tomber les barrières. Aimez pleinement et soyez prêt à être aimé en retour, mais ne confondez pas l'amour avec le besoin."
     },
@@ -55,8 +55,8 @@ export const coeurCards: Card[] = [
       "protecteur", "honnêteté", "stabilité", "conseiller", "homme blond"
     ],
     "interpretations": {
-      "general": "Le Roi de Cœur est le roi de l'amour, mais pas seulement de l'amour romantique. Il représente la compassion, la bienveillance, et la capacité à pardonner. C'est un protecteur silencieux qui guide avec une force tranquille, en écoutant son cœur tout en restant ancré dans la réalité.",
-      "endroit": "Symbolise un homme blond, mature, sage et fiable. Il annonce une période d'harmonie, de stabilité émotionnelle, de générosité et de relations sincères. Il est un guide bienveillant, un conseiller fiable, et un rappel que l'amour et la compassion sont des forces essentielles.",
+      "general": "Symbolise un homme blond, mature, sage et fiable. Il annonce une période d'harmonie, de stabilité émotionnelle, de générosité et de relations sincères. Il est un guide bienveillant, un conseiller fiable, et un rappel que l'amour et la compassion sont des forces essentielles.",
+      "endroit": "Le Roi de Cœur est le roi de l'amour, mais pas seulement de l'amour romantique. Il représente la compassion, la bienveillance, et la capacité à pardonner. C'est un protecteur silencieux qui guide avec une force tranquille, en écoutant son cœur tout en restant ancré dans la réalité.",
       "ombre_et_defis": "Son aspect de 'don' peut se transformer en un sacrifice excessif, où il donne sans réserve au point de s'épuiser. Peut aussi représenter une difficulté à gouverner ses émotions, menant à des décisions trop émotives ou à une vulnérabilité exploitée par autrui. Il invite à trouver l'équilibre entre donner et se préserver.",
       "conseil": "Trouvez l'équilibre entre le cœur et l'esprit. Soyez généreux, mais sans vous oublier. Écoutez vos émotions, mais analysez la situation avec discernement. C'est un appel à l'introspection, à l'honnêteté et à l'amour de soi comme fondation de l'amour pour les autres."
     },
@@ -102,8 +102,8 @@ export const coeurCards: Card[] = [
       "gardienne", "douceur", "loyauté", "femme aimante", "amour de soi"
     ],
     "interpretations": {
-      "general": "La Dame de Cœur est une initiée, une souveraine de l'émotion qui règne dans l'invisible. Elle représente l'amour qui sait sans poser de questions, l'amour tourné vers les autres mais aussi vers soi. Elle est mi-lune, mi-feu : elle calme, mais peut brûler ; elle guérit, mais pose ses limites.",
-      "endroit": "Symbolise une femme proche, forte, aimante et secrète, une épouse, une amante, une mère spirituelle. Incarne la loyauté du cœur, l'intelligence émotionnelle et l'énergie du féminin sacré. Elle invite à regarder à l'intérieur et à se reconnecter à sa puissance douce.",
+      "general": "Symbolise une femme proche, forte, aimante et secrète, une épouse, une amante, une mère spirituelle. Incarne la loyauté du cœur, l'intelligence émotionnelle et l'énergie du féminin sacré. Elle invite à regarder à l'intérieur et à se reconnecter à sa puissance douce.",
+      "endroit": "La Dame de Cœur est une initiée, une souveraine de l'émotion qui règne dans l'invisible. Elle représente l'amour qui sait sans poser de questions, l'amour tourné vers les autres mais aussi vers soi. Elle est mi-lune, mi-feu : elle calme, mais peut brûler ; elle guérit, mais pose ses limites.",
       "ombre_et_defis": "Son amour peut devenir sacrificiel, menant à s'oublier derrière ses élans. Elle peut aussi représenter une forme de manipulation fine. La Reine de Cœur d'Alice au Pays des Merveilles est un bon exemple de son ombre : un cœur perverti par le pouvoir, coupé de l'amour vrai.",
       "conseil": "Reprenez votre pouvoir, celui qui aime en conscience. Votre cœur est un royaume, pas une prison. Écoutez l'intuition féminine qui tambourine en vous. C'est le moment de vous replacer au centre du jeu et de réparer votre amour-propre si nécessaire."
     },
@@ -148,8 +148,8 @@ export const coeurCards: Card[] = [
       "innocence", "déclaration", "émotion", "spontanéité", "vulnérabilité", "naïveté"
     ],
     "interpretations": {
-      "general": "Le Valet de Cœur est un messager d'émotions, d'affection sincère et de compassion. Il représente l'élan du cœur, l'émotion jeune, parfois maladroite mais toujours habitée. Il peut incarner une personne, mais aussi une part de soi qui désire s'exprimer sans filtre.",
-      "endroit": "Symbolise un jeune homme (ou une personne à l'esprit jeune) charmant, loyal, sincère et gentil. Annonce un nouvel amour, un flirt, une déclaration spontanée, une passion naissante ou un nouveau chapitre sentimental. C'est une énergie tendre, intuitive et pleine de vie.",
+      "general": "Symbolise un jeune homme (ou une personne à l'esprit jeune) charmant, loyal, sincère et gentil. Annonce un nouvel amour, un flirt, une déclaration spontanée, une passion naissante ou un nouveau chapitre sentimental. C'est une énergie tendre, intuitive et pleine de vie.",
+      "endroit": "Le Valet de Cœur est un messager d'émotions, d'affection sincère et de compassion. Il représente l'élan du cœur, l'émotion jeune, parfois maladroite mais toujours habitée. Il peut incarner une personne, mais aussi une part de soi qui désire s'exprimer sans filtre.",
       "ombre_et_defis": "Représente l'aspect immature de l'émotion. Il peut devenir manipulateur, indécis ou excessif. Il prévient contre les amours floues, les belles paroles sans lendemain, l'instabilité affective et la naïveté. Il peut aussi représenter des émotions non digérées qui resurgissent.",
       "conseil": "Accueillez l'émotion avec sincérité mais aussi avec prudence. Prenez du recul pour comprendre si vos sentiments sont alignés avec vos intentions profondes. Exprimez ce que vous avez sur le cœur, car la vérité est la meilleure voie, mais ne vous engagez pas à l'aveugle."
     },
@@ -189,8 +189,8 @@ export const coeurCards: Card[] = [
       "célébration", "bonheur", "stabilité émotionnelle", "paix intérieure", "unité"
     ],
     "interpretations": {
-      "general": "Le 10 de Cœur représente un cœur éveillé et plein. Ce n'est pas un amour qui mendie, mais qui rayonne naturellement. Il symbolise un retour à soi, la réconciliation avec son passé et une énergie de gratitude profonde. C'est l'énergie d'un cycle qui s'accomplit dans la sérénité.",
-      "endroit": "Annonce une période de joie, d'harmonie et de célébration. C'est la carte des retrouvailles, de la famille, d'un mariage, d'une naissance ou d'un amour mature. Elle est un signal doux que l'on est sur la bonne voie, un phare qui guide vers un port serein.",
+      "general": "Annonce une période de joie, d'harmonie et de célébration. C'est la carte des retrouvailles, de la famille, d'un mariage, d'une naissance ou d'un amour mature. Elle est un signal doux que l'on est sur la bonne voie, un phare qui guide vers un port serein.",
+      "endroit": "Le 10 de Cœur représente un cœur éveillé et plein. Ce n'est pas un amour qui mendie, mais qui rayonne naturellement. Il symbolise un retour à soi, la réconciliation avec son passé et une énergie de gratitude profonde. C'est l'énergie d'un cycle qui s'accomplit dans la sérénité.",
       "ombre_et_defis": "Peut signaler des défis émotionnels nécessaires pour grandir. Ce n'est pas une carte négative, mais elle peut apparaître après une période difficile pour rassurer que des jours meilleurs arrivent. Le défi est d'accueillir le bonheur sans le saboter par peur de le perdre.",
       "conseil": "Regarde ce que tu as déjà. Accueille la joie sans peur ni retenue. Le pardon te libère, l'amour te guide. Prends conscience que le bonheur émotionnel est à portée de main. Ouvre la porte, pas juste la fenêtre, à l'amour et à la sincérité."
     },
@@ -229,8 +229,8 @@ export const coeurCards: Card[] = [
       "fin de cycle", "guérison", "espoir", "connexion forte", "plénitude"
     ],
     "interpretations": {
-      "general": "Le 9 de Cœur parle d'amour universel, celui qui relie tous les êtres. Le chiffre 9 marque l'achèvement d'un cycle émotionnel, un moment de complétion qui amène le renouveau. C'est une carte miroir qui invite à contempler le chemin parcouru et les leçons apprises.",
-      "endroit": "Indique que vous êtes sur le point de vivre une expérience d'amour plus vaste, une connexion spirituelle profonde. C'est une bénédiction, un signe que vous êtes sur la bonne voie. Apporte l'espoir dans les périodes difficiles, rappelant qu'il y a une lumière au bout du tunnel.",
+      "general": "Indique que vous êtes sur le point de vivre une expérience d'amour plus vaste, une connexion spirituelle profonde. C'est une bénédiction, un signe que vous êtes sur la bonne voie. Apporte l'espoir dans les périodes difficiles, rappelant qu'il y a une lumière au bout du tunnel.",
+      "endroit": "Le 9 de Cœur parle d'amour universel, celui qui relie tous les êtres. Le chiffre 9 marque l'achèvement d'un cycle émotionnel, un moment de complétion qui amène le renouveau. C'est une carte miroir qui invite à contempler le chemin parcouru et les leçons apprises.",
       "ombre_et_defis": "Peut représenter une intensité émotionnelle déroutante. Le défi est de traverser ces vagues émotionnelles en restant ancré. Avec le 9 de Pique, il peut indiquer des obstacles à surmonter dans la sphère émotionnelle, un mélange d'amour et de défis.",
       "conseil": "Suivez votre cœur et faites-lui confiance. Arrêtez de douter et lancez-vous dans ce qui vous attend. C'est le moment de pardonner, de laisser partir et de boucler une histoire affective pour avancer. N'ayez pas peur d'aimer pleinement."
     },
@@ -279,8 +279,8 @@ export const coeurCards: Card[] = [
       "passé", "mémoire affective", "correspondance", "équilibre"
     ],
     "interpretations": {
-      "general": "Le 8 de Cœur est une carte énigmatique. Le chiffre 8, symbole de l'infini et du karma, annonce une énergie qui revient, une boucle. Associé au Cœur, il parle du grand retour du sentiment, de l'attachement, de la mémoire affective. Ce n'est pas une carte de comédie romantique, mais de liens invisibles et profonds.",
-      "endroit": "Annonce le retour d'une personne, de sentiments après un silence, ou la résurgence d'émotions enfouies. Spirituellement, elle pousse à regarder en soi, à se réconcilier avec son passé et à guérir. Elle peut aussi signifier une correspondance, un message inattendu.",
+      "general": "Annonce le retour d'une personne, de sentiments après un silence, ou la résurgence d'émotions enfouies. Spirituellement, elle pousse à regarder en soi, à se réconcilier avec son passé et à guérir. Elle peut aussi signifier une correspondance, un message inattendu.",
+      "endroit": "Le 8 de Cœur est une carte énigmatique. Le chiffre 8, symbole de l'infini et du karma, annonce une énergie qui revient, une boucle. Associé au Cœur, il parle du grand retour du sentiment, de l'attachement, de la mémoire affective. Ce n'est pas une carte de comédie romantique, mais de liens invisibles et profonds.",
       "ombre_et_defis": "La carte peut être piégeuse. Ce qui revient n'est pas toujours ce dont on a besoin. Elle invite à se demander si l'on veut vraiment revivre une situation. En cas de déséquilibre, elle peut indiquer des malentendus, une insatisfaction ou une tendance à idéaliser les relations.",
       "conseil": "Regardez en vous. C'est le moment de recontacter ce qui fait battre votre âme, de guérir une blessure amoureuse, de vous réconcilier avec votre passé. Demandez-vous si vous avancez ou si vous tournez en rond. C'est une carte initiatique qui vous teste : avez-vous compris la leçon ?"
     },
@@ -325,8 +325,8 @@ export const coeurCards: Card[] = [
       "désir flou", "sincérité", "tri émotionnel", "amour karmique"
     ],
     "interpretations": {
-      "general": "Le 7 de Cœur est le cœur qui hésite, ni tout à fait ouvert, ni tout à fait fermé. Il parle des histoires qu'on se raconte pour ne pas voir ce qui grince. Il ne juge pas, il révèle. Il nous pousse à regarder notre cœur avec tendresse et lucidité pour faire le tri entre l'amour vrai et le besoin d'être aimé.",
-      "endroit": "Signale une transition du cœur, un passage, un carrefour. C'est le moment de sentir sans s'accrocher et d'écouter son intuition sans la maquiller. C'est une carte précieuse qui, derrière le doute, cache une vérité fine qui éclaire tout.",
+      "general": "Signale une transition du cœur, un passage, un carrefour. C'est le moment de sentir sans s'accrocher et d'écouter son intuition sans la maquiller. C'est une carte précieuse qui, derrière le doute, cache une vérité fine qui éclaire tout.",
+      "endroit": "Le 7 de Cœur est le cœur qui hésite, ni tout à fait ouvert, ni tout à fait fermé. Il parle des histoires qu'on se raconte pour ne pas voir ce qui grince. Il ne juge pas, il révèle. Il nous pousse à regarder notre cœur avec tendresse et lucidité pour faire le tri entre l'amour vrai et le besoin d'être aimé.",
       "ombre_et_defis": "Son côté ombre est l'illusion amoureuse, la déception, une vérité qui éclate. Il peut représenter une relation qui flotte, une peur d'aimer pleinement, ou un attachement confus. C'est le cœur qui plane, parfois sans parachute.",
       "conseil": "Faites le tri émotionnel. Posez-vous les bonnes questions : est-ce que cette relation vous convient ? Est-ce le cœur qui parle ou l'ego ? Regardez vos illusions en face, avec douceur. Il faut oser la vérité émotionnelle, même si elle pique un peu."
     },
@@ -372,8 +372,8 @@ export const coeurCards: Card[] = [
       "paix intérieure", "bienveillance", "mémoire du cœur", "guérison", "complicité"
     ],
     "interpretations": {
-      "general": "Le 6 de Cœur est un petit bijou de tendresse qui parle d'amour, de pardon et de souvenirs doux. C'est l'énergie d'une douce brise d'automne, une réflexion sur le passé non pas pour s'y perdre, mais pour en tirer des leçons et savourer les moments partagés. C'est la mémoire du cœur.",
-      "endroit": "Annonce une période de calme, de compréhension mutuelle et d'harmonie. Peut indiquer un retour, une reconnexion ou une prise de conscience sur un lien ancien. C'est une invitation à se réconcilier avec quelqu'un ou avec soi-même. Elle favorise les moments simples et forts.",
+      "general": "Annonce une période de calme, de compréhension mutuelle et d'harmonie. Peut indiquer un retour, une reconnexion ou une prise de conscience sur un lien ancien. C'est une invitation à se réconcilier avec quelqu'un ou avec soi-même. Elle favorise les moments simples et forts.",
+      "endroit": "Le 6 de Cœur est un petit bijou de tendresse qui parle d'amour, de pardon et de souvenirs doux. C'est l'énergie d'une douce brise d'automne, une réflexion sur le passé non pas pour s'y perdre, mais pour en tirer des leçons et savourer les moments partagés. C'est la mémoire du cœur.",
       "ombre_et_defis": "La nostalgie peut devenir un piège si l'on reste figé dans ses souvenirs. Le défi est de trouver l'équilibre entre la mémoire et le mouvement. Peut indiquer un schéma affectif qui se répète, une émotion jamais digérée qui tape doucement à la porte. C'est une carte douce mais qui peut pincer le cœur.",
       "conseil": "Prenez un moment de réflexion. Est-il temps de renouer, de guérir une blessure ou simplement d'apprécier les souvenirs ? Soyez bienveillant envers vous-même et les autres. Acceptez que certaines choses ne peuvent être changées et embrassez-les avec tendresse pour avancer plus léger."
     },
@@ -414,8 +414,8 @@ export const coeurCards: Card[] = [
       "résilience", "opportunité", "adaptation", "lâcher-prise"
     ],
     "interpretations": {
-      "general": "Le 5 de Cœur est un miroir des tensions intérieures. C'est le cœur qui palpite mais qui doute. Il représente le changement (chiffre 5) dans les relations. Il invite à observer ce qui se passe en soi sans jugement, à lâcher les émotions qui pèsent pour avancer.",
-      "endroit": "Annonce une période de transition dans la vie sociale et affective. Des amitiés changent, des relations se renouvellent. C'est le moment de faire le tri dans son cœur et de faire de la place pour de nouvelles énergies. C'est une invitation à l'ouverture, à l'adaptation et à l'introspection.",
+      "general": "Annonce une période de transition dans la vie sociale et affective. Des amitiés changent, des relations se renouvellent. C'est le moment de faire le tri dans son cœur et de faire de la place pour de nouvelles énergies. C'est une invitation à l'ouverture, à l'adaptation et à l'introspection.",
+      "endroit": "Le 5 de Cœur est un miroir des tensions intérieures. C'est le cœur qui palpite mais qui doute. Il représente le changement (chiffre 5) dans les relations. Il invite à observer ce qui se passe en soi sans jugement, à lâcher les émotions qui pèsent pour avancer.",
       "ombre_et_defis": "Peut annoncer un déséquilibre amoureux, un chagrin passager, une rupture, un questionnement profond, voire une déception. Elle fait mal parfois, mais fait du bien après. Elle arrive quand on s'accroche à quelque chose qui ne nous nourrit plus vraiment.",
       "conseil": "Acceptez le changement. Si vous résistez, cela peut créer des tensions. Si vous vous laissez porter, les choses peuvent se dénouer. C'est une lueur d'espoir : après l'orage, le ciel est plus clair. Prenez ce moment comme une invitation à grandir émotionnellement."
     },
@@ -454,8 +454,8 @@ export const coeurCards: Card[] = [
       "amour simple", "complicité", "amour de soi", "fondation"
     ],
     "interpretations": {
-      "general": "Le 4 de Cœur évoque la stabilité (chiffre 4) dans le domaine des émotions. C'est un équilibre affectif, une fondation solide, un moment de paix et de sérénité. C'est une carte de complicité tranquille, d'amour sans drame, où l'on peut juste être, sans pression.",
-      "endroit": "Indique une phase de réflexion intérieure pour consolider ce qui est déjà présent. C'est un moment pour réévaluer ses relations et ses sentiments. Après une période difficile, elle est un baume, un retour à la paix, un espace pour guérir en douceur. Elle peut aussi célébrer l'amour de soi.",
+      "general": "Indique une phase de réflexion intérieure pour consolider ce qui est déjà présent. C'est un moment pour réévaluer ses relations et ses sentiments. Après une période difficile, elle est un baume, un retour à la paix, un espace pour guérir en douceur. Elle peut aussi célébrer l'amour de soi.",
+      "endroit": "Le 4 de Cœur évoque la stabilité (chiffre 4) dans le domaine des émotions. C'est un équilibre affectif, une fondation solide, un moment de paix et de sérénité. C'est une carte de complicité tranquille, d'amour sans drame, où l'on peut juste être, sans pression.",
       "ombre_et_defis": "L'équilibre peut mener à la routine et à la stagnation émotionnelle. La carte peut mettre en garde contre l'ennui ou le refus d'ignorer des opportunités d'amour par confort. Le défi est de ne pas confondre tranquillité et immobilisme.",
       "conseil": "Prenez le temps de vous poser. Rechargez vos batteries émotionnelles. C'est le moment idéal pour faire le point, sans pression. Prenez soin de votre cœur. Si vous êtes dans une phase de tranquillité, demandez-vous si quelques surprises ne feraient pas de mal."
     },
@@ -491,8 +491,8 @@ export const coeurCards: Card[] = [
       "complicité", "création", "intuition", "voyage émotionnel", "amour multiforme"
     ],
     "interpretations": {
-      "general": "Le 3 de Cœur est une carte fascinante liée à l'amour et aux émotions profondes. Elle représente l'amitié, la famille et toutes les relations qui réchauffent le cœur. Le chiffre 3 est synonyme de création et de mouvement, symbolisant les trois stades d'une relation : rencontre, évolution et maturation.",
-      "endroit": "Annonce des moments heureux, des retrouvailles ou une célébration à venir (mariage, naissance). C'est un présage de joie et de bonheur affectif. Elle suggère un moment de célébration, l'aboutissement d'un projet ou un tournant positif dans les relations.",
+      "general": "Annonce des moments heureux, des retrouvailles ou une célébration à venir (mariage, naissance). C'est un présage de joie et de bonheur affectif. Elle suggère un moment de célébration, l'aboutissement d'un projet ou un tournant positif dans les relations.",
+      "endroit": "Le 3 de Cœur est une carte fascinante liée à l'amour et aux émotions profondes. Elle représente l'amitié, la famille et toutes les relations qui réchauffent le cœur. Le chiffre 3 est synonyme de création et de mouvement, symbolisant les trois stades d'une relation : rencontre, évolution et maturation.",
       "ombre_et_defis": "Tout n'est pas toujours doux. Le 3 de Cœur a son lot de défis. Il peut symboliser l'indécision, la tentation ou une relation triangulaire. L'équilibre peut être fragile. Il invite à faire un pas en arrière pour réfléchir à ce que l'on veut vraiment, sans se précipiter.",
       "conseil": "Prêtez attention à vos sentiments. Chérissez toutes les formes d'amour (amical, familial, romantique). Écoutez votre intuition, cette petite voix intérieure qui sait déjà la direction à prendre. C'est une invitation à prendre soin de son cœur et à honorer ses émotions."
     },
@@ -527,8 +527,8 @@ export const coeurCards: Card[] = [
       "réciprocité", "équilibre", "engagement", "douceur"
     ],
     "interpretations": {
-      "general": "Le 2 de Cœur est un petit symbole avec une grande histoire. C'est le lien, l'autre, la présence douce. C'est une carte de tension douce, comme une corde fine entre deux falaises. Elle parle de débuts, de premiers frissons, de ce moment suspendu où tout peut basculer. Elle est aussi un miroir tendu par l'autre.",
-      "endroit": "Annonce l'éveil d'un 'nous', le balbutiement d'une relation, une promesse. Peut indiquer un rapprochement, une rencontre inattendue, une reconnexion. Symbolise une harmonie douce et naturelle, la réciprocité et l'équilibre dans les échanges.",
+      "general": "Annonce l'éveil d'un 'nous', le balbutiement d'une relation, une promesse. Peut indiquer un rapprochement, une rencontre inattendue, une reconnexion. Symbolise une harmonie douce et naturelle, la réciprocité et l'équilibre dans les échanges.",
+      "endroit": "Le 2 de Cœur est un petit symbole avec une grande histoire. C'est le lien, l'autre, la présence douce. C'est une carte de tension douce, comme une corde fine entre deux falaises. Elle parle de débuts, de premiers frissons, de ce moment suspendu où tout peut basculer. Elle est aussi un miroir tendu par l'autre.",
       "ombre_et_defis": "Peut poser une question qui pique : 'Êtes-vous encore en lien avec ce qui compte ?'. Peut révéler un besoin de revenir à l'essentiel dans un couple, de retrouver un fil perdu. Le défi est de ne pas rester dans un silence qui éloigne, mais de communiquer.",
       "conseil": "Regardez autour de soi. Qui est là vraiment ? La carte invite à construire du lien, un lien vrai et profond. Ne vous précipitez pas, mais ne ratez pas le message. Osez le dialogue, même s'il est difficile. Tendez la main."
     },
