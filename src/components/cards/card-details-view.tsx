@@ -6,7 +6,6 @@ import { motion } from 'framer-motion';
 import type { Card } from '@/lib/data/cards';
 import { getCardDetails } from '@/lib/data/cards';
 import { chatWithOracle } from '@/ai/flows/oracle-flow';
-import { textToSpeech, type TtsOutput } from '@/ai/flows/tts-flow';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -78,34 +77,32 @@ export function CardDetailsView({ card }: { card: Card }) {
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [isTtsEnabled, setIsTtsEnabled] = useState(false);
-  const [audioUrl, setAudioUrl] = useState<string | null>(null);
+  const [isTtsEnabled, setIsTtsEnabled] = useState(true);
   const chatContainerRef = useRef<HTMLDivElement>(null);
-  const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
   }, [messages]);
-  
+
   useEffect(() => {
-    const audioElement = audioRef.current;
-    if (audioUrl && audioElement) {
-      audioElement.src = audioUrl;
-      const playPromise = audioElement.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(error => {
-          console.error("Audio playback failed:", error);
-          // Autoplay was prevented.
-        });
+    // Cleanup function to cancel speech when the component unmounts
+    return () => {
+      if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
       }
-    }
-  }, [audioUrl]);
+    };
+  }, []);
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!inputValue.trim() || isLoading) return;
+
+    // Stop any currently playing speech before sending a new message
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
 
     const userMessage = { role: 'user', content: inputValue };
     setMessages(prev => [...prev, userMessage]);
@@ -123,15 +120,10 @@ export function CardDetailsView({ card }: { card: Card }) {
       const oracleMessage = { role: 'oracle', content: oracleResponse };
       setMessages(prev => [...prev, oracleMessage]);
 
-      if (isTtsEnabled) {
-          // Fire-and-forget TTS generation
-          textToSpeech(oracleResponse)
-              .then(audioData => {
-                  setAudioUrl(audioData.media);
-              })
-              .catch(ttsError => {
-                  console.error("Error generating speech:", ttsError);
-              });
+      if (isTtsEnabled && typeof window !== 'undefined' && 'speechSynthesis' in window) {
+        const utterance = new SpeechSynthesisUtterance(oracleResponse);
+        utterance.lang = 'fr-FR';
+        window.speechSynthesis.speak(utterance);
       }
 
     } catch (error) {
@@ -140,6 +132,14 @@ export function CardDetailsView({ card }: { card: Card }) {
       setMessages(prev => [...prev, errorMessage]);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const toggleTts = () => {
+    const newTtsState = !isTtsEnabled;
+    setIsTtsEnabled(newTtsState);
+    if (!newTtsState && typeof window !== 'undefined' && 'speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
     }
   };
 
@@ -299,7 +299,7 @@ export function CardDetailsView({ card }: { card: Card }) {
             <Button
                 variant="ghost"
                 size="icon"
-                onClick={() => setIsTtsEnabled((prev) => !prev)}
+                onClick={toggleTts}
                 className="text-primary hover:bg-primary/20"
                 aria-label={isTtsEnabled ? "Désactiver la synthèse vocale" : "Activer la synthèse vocale"}
             >
@@ -343,7 +343,6 @@ export function CardDetailsView({ card }: { card: Card }) {
                       {isLoading ? <Loader2 className="h-5 w-5 animate-spin" /> : <Send className="h-5 w-5" />}
                    </Button>
                </form>
-               <audio ref={audioRef} className="hidden" />
            </div>
        </SectionWrapper>
 
