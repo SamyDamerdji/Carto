@@ -42,7 +42,7 @@ export function CardDetailsView({ card }: { card: Card }) {
         </h1>
         <div className="mt-4">
           <div className="bg-card rounded-xl shadow-lg p-4 inline-block">
-            <div className="relative w-full max-w-[200px] aspect-[2.5/3.5]">
+            <div className="relative w-[200px] aspect-[2.5/3.5]">
               <Image
                 src={card.image_url}
                 alt={`Image de la carte ${card.nom_carte}`}
