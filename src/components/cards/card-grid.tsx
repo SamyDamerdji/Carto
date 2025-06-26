@@ -42,7 +42,7 @@ export function CardGrid({ cards }: CardGridProps) {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-0 left-0 p-2 md:p-3">
-                <h3 className="font-headline text-sm md:text-base font-bold text-foreground">
+                <h3 className="font-headline text-sm md:text-base font-bold text-orange-200">
                   {card.nom_carte}
                 </h3>
               </div>
