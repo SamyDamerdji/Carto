@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import type { Card } from '@/lib/data/cards';
 import { getCardDetails } from '@/lib/data/cards';
 import { chatWithOracle } from '@/ai/flows/oracle-flow';
+import { textToSpeech, type TtsOutput } from '@/ai/flows/tts-flow';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -25,6 +26,8 @@ import {
   Tags,
   NotebookText,
   Loader2,
+  Volume2,
+  VolumeX,
 } from 'lucide-react';
 import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
@@ -36,9 +39,10 @@ interface SectionWrapperProps {
   icon: React.ElementType;
   children: ReactNode;
   index: number;
+  action?: ReactNode;
 }
 
-const SectionWrapper = ({ title, icon: Icon, children, index }: SectionWrapperProps) => (
+const SectionWrapper = ({ title, icon: Icon, children, index, action }: SectionWrapperProps) => (
   <motion.div
     initial={{ opacity: 0, y: 50 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -46,11 +50,14 @@ const SectionWrapper = ({ title, icon: Icon, children, index }: SectionWrapperPr
     viewport={{ once: true, amount: 0.2 }}
     className="mx-auto mt-6 max-w-md rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6"
   >
-    <div className="flex items-center gap-3 mb-4">
-      <Icon className="h-6 w-6 text-primary" />
-      <h2 className="font-headline text-xl font-bold uppercase tracking-wider text-card-foreground/90">
-        {title}
-      </h2>
+    <div className="flex items-center justify-between gap-3 mb-4">
+      <div className="flex items-center gap-3">
+        <Icon className="h-6 w-6 text-primary" />
+        <h2 className="font-headline text-xl font-bold uppercase tracking-wider text-card-foreground/90">
+          {title}
+        </h2>
+      </div>
+      {action}
     </div>
     {children}
   </motion.div>
@@ -71,13 +78,22 @@ export function CardDetailsView({ card }: { card: Card }) {
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isTtsEnabled, setIsTtsEnabled] = useState(false);
+  const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
   }, [messages]);
+
+  useEffect(() => {
+    if (audioUrl && audioRef.current) {
+        audioRef.current.play().catch(e => console.error("Audio playback failed:", e));
+    }
+  }, [audioUrl]);
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -88,6 +104,7 @@ export function CardDetailsView({ card }: { card: Card }) {
     const currentInput = inputValue;
     setInputValue('');
     setIsLoading(true);
+    setAudioUrl(null);
 
     try {
       const oracleResponse = await chatWithOracle({
@@ -95,9 +112,18 @@ export function CardDetailsView({ card }: { card: Card }) {
         cardGeneralMeaning: card.interpretations.general,
         userQuestion: currentInput,
       });
-
+      
       const oracleMessage = { role: 'oracle', content: oracleResponse };
       setMessages(prev => [...prev, oracleMessage]);
+
+      if (isTtsEnabled) {
+          try {
+              const audioData = await textToSpeech(oracleResponse);
+              setAudioUrl(audioData.media);
+          } catch (ttsError) {
+              console.error("Error generating speech:", ttsError);
+          }
+      }
 
     } catch (error) {
       console.error("Error calling oracle flow:", error);
@@ -203,7 +229,7 @@ export function CardDetailsView({ card }: { card: Card }) {
                   <div key={combo.carte_associee_id} className="flex items-center gap-4 rounded-xl bg-secondary/20 p-3 backdrop-blur-lg border border-primary/30 shadow-md">
                     <div className="relative h-20 w-14 flex-shrink-0">
                         <div className="bg-card rounded shadow-lg p-1 w-full h-full">
-                            <div className="relative w-full h-full p-1">
+                            <div className="relative h-full w-full p-1">
                                 <Image
                                     src={associatedCard.image_url}
                                     alt={associatedCard.nom_carte}
@@ -256,7 +282,22 @@ export function CardDetailsView({ card }: { card: Card }) {
        </SectionWrapper>
 
        {/* H. Parler à l'oracle */}
-       <SectionWrapper title="Parler à l'oracle" icon={Sparkles} index={hasCombinaisons ? 7 : 6}>
+       <SectionWrapper 
+        title="Parler à l'oracle" 
+        icon={Sparkles} 
+        index={hasCombinaisons ? 7 : 6}
+        action={
+            <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setIsTtsEnabled((prev) => !prev)}
+                className="text-primary hover:bg-primary/20"
+                aria-label={isTtsEnabled ? "Désactiver la synthèse vocale" : "Activer la synthèse vocale"}
+            >
+                {isTtsEnabled ? <Volume2 className="h-5 w-5" /> : <VolumeX className="h-5 w-5" />}
+            </Button>
+        }
+       >
            <div className="space-y-4">
                <ScrollArea className="h-60 w-full pr-4" ref={chatContainerRef}>
                    <div className="space-y-4">
@@ -293,6 +334,7 @@ export function CardDetailsView({ card }: { card: Card }) {
                       {isLoading ? <Loader2 className="h-5 w-5 animate-spin" /> : <Send className="h-5 w-5" />}
                    </Button>
                </form>
+               <audio ref={audioRef} src={audioUrl ?? undefined} className="hidden" />
            </div>
        </SectionWrapper>
 
