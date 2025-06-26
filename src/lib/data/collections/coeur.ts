@@ -477,5 +477,41 @@ export const coeurCards: Card[] = [
       { "carte_associee_id": "pique_as", "signification": "Signale une période de réflexion plus profonde, une remise en question des émotions actuelles." },
       { "carte_associee_id": "carreau_04", "signification": "Symbolise un équilibre entre les émotions et les aspects matériels, suggérant une phase de stabilité et de sécurité." }
     ]
+  },
+  {
+    "id": "coeur_03",
+    "nom_carte": "Trois de Cœur",
+    "valeur": 3,
+    "couleur": "Cœur",
+    "image_url": "/images/cards/coeur_03.png",
+    "resume_general": "Carte de la joie, de la célébration et de la croissance émotionnelle. Elle symbolise l'harmonie dans les relations, les connexions sincères et les moments de partage. C'est une invitation à un voyage émotionnel, à la création et à l'écoute de son intuition.",
+    "phrase_cle": "Célébrez les liens précieux, l'harmonie est à portée de main.",
+    "mots_cles": [
+      "joie", "célébration", "harmonie", "amitié", "famille", "partage", "croissance émotionnelle",
+      "complicité", "création", "intuition", "voyage émotionnel", "amour multiforme"
+    ],
+    "interpretations": {
+      "general": "Le 3 de Cœur est une carte fascinante liée à l'amour et aux émotions profondes. Elle représente l'amitié, la famille et toutes les relations qui réchauffent le cœur. Le chiffre 3 est synonyme de création et de mouvement, symbolisant les trois stades d'une relation : rencontre, évolution et maturation.",
+      "endroit": "Annonce des moments heureux, des retrouvailles ou une célébration à venir (mariage, naissance). C'est un présage de joie et de bonheur affectif. Elle suggère un moment de célébration, l'aboutissement d'un projet ou un tournant positif dans les relations.",
+      "ombre_et_defis": "Tout n'est pas toujours doux. Le 3 de Cœur a son lot de défis. Il peut symboliser l'indécision, la tentation ou une relation triangulaire. L'équilibre peut être fragile. Il invite à faire un pas en arrière pour réfléchir à ce que l'on veut vraiment, sans se précipiter.",
+      "conseil": "Prêtez attention à vos sentiments. Chérissez toutes les formes d'amour (amical, familial, romantique). Écoutez votre intuition, cette petite voix intérieure qui sait déjà la direction à prendre. C'est une invitation à prendre soin de son cœur et à honorer ses émotions."
+    },
+    "domaines": {
+      "amour": "Symbolise la croissance dans l'amour. Peut évoquer une histoire à trois, un attachement partagé, ou un moment où le cœur cherche à comprendre ce qu'il ressent. C'est une carte qui ouvre une porte, pas qui la ferme. Annonce un renouveau sentimental.",
+      "travail": "Suggère un projet mené avec émotion, une collaboration avec du 'feeling'. Peut aussi pointer un manque d'équilibre entre le cœur et la raison au travail. Elle pousse à regarder au fond des choses pour trouver l'harmonie.",
+      "finances": "Son message n'est pas directement financier. Cependant, une période de joie et d'harmonie relationnelle peut créer un environnement propice à la prospérité et à la prise de décisions financières plus sereines et plus justes.",
+      "spirituel": "C'est un appel à écouter son intuition et son sixième sens. Une prémonition douce qui guide vers les bons choix de cœur. C'est aussi un rappel à l'amour de soi, à prendre soin de ses propres besoins et à se reconnecter à ses désirs."
+    },
+    "prompts_visuels": [
+      "trois personnes trinquant joyeusement autour d'une table",
+      "un bourgeon de fleur qui commence à peine à éclore",
+      "une personne écoutant attentivement un coquillage comme si c'était un téléphone",
+      "un carrefour où trois routes se rejoignent, baignées d'une lumière douce",
+      "une main qui arrose une petite plante en pot avec soin"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "coeur_as", "signification": "Renforce le thème de l'amour profond et sincère. Symbolise la naissance et la célébration des sentiments amoureux." },
+      { "carte_associee_id": "coeur_valet", "signification": "Annonce de nouvelles relations amoureuses ou l'arrivée d'un message important dans le domaine sentimental." }
+    ]
   }
 ];
