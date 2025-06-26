@@ -1,9 +1,11 @@
 'use client';
 
 import type { ReactNode } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import type { Card } from '@/lib/data/cards';
 import { getCardDetails } from '@/lib/data/cards';
+import { chatWithOracle } from '@/ai/flows/oracle-flow';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -22,6 +24,7 @@ import {
   Lightbulb,
   Tags,
   NotebookText,
+  Loader2,
 } from 'lucide-react';
 import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
@@ -62,6 +65,49 @@ export function CardDetailsView({ card }: { card: Card }) {
   };
 
   const hasCombinaisons = card.combinaisons && card.combinaisons.length > 0;
+  
+  const [messages, setMessages] = useState([
+    { role: 'oracle', content: `Bonjour! En quoi puis-je vous éclairer sur le ${card.nom_carte} aujourd'hui ?` }
+  ]);
+  const [inputValue, setInputValue] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
+  }, [messages]);
+
+  const handleSendMessage = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!inputValue.trim() || isLoading) return;
+
+    const userMessage = { role: 'user', content: inputValue };
+    setMessages(prev => [...prev, userMessage]);
+    const currentInput = inputValue;
+    setInputValue('');
+    setIsLoading(true);
+
+    try {
+      const oracleResponse = await chatWithOracle({
+        cardName: card.nom_carte,
+        cardGeneralMeaning: card.interpretations.general,
+        userQuestion: currentInput,
+      });
+
+      const oracleMessage = { role: 'oracle', content: oracleResponse };
+      setMessages(prev => [...prev, oracleMessage]);
+
+    } catch (error) {
+      console.error("Error calling oracle flow:", error);
+      const errorMessage = { role: 'oracle', content: "Désolé, une erreur s'est produite. Je ne peux pas répondre pour le moment." };
+      setMessages(prev => [...prev, errorMessage]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
 
   return (
     <div className="container mx-auto px-4 pb-8">
@@ -212,23 +258,42 @@ export function CardDetailsView({ card }: { card: Card }) {
        {/* H. Parler à l'oracle */}
        <SectionWrapper title="Parler à l'oracle" icon={Sparkles} index={hasCombinaisons ? 7 : 6}>
            <div className="space-y-4">
-               {/* Placeholder for chat history */}
-               <div className="h-40 p-4 rounded-lg border border-primary/30 bg-background/20 text-white/70 overflow-y-auto">
-                   <p><span className="font-bold text-primary">L'Oracle:</span> Bonjour! En quoi puis-je vous éclairer sur le {card.nom_carte} aujourd'hui ?</p>
-               </div>
-               <div className="flex items-center gap-2">
+               <ScrollArea className="h-60 w-full pr-4" ref={chatContainerRef}>
+                   <div className="space-y-4">
+                       {messages.map((message, index) => (
+                           <div key={index} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                               <div className={`max-w-xs lg:max-w-md p-3 rounded-lg ${message.role === 'user' ? 'bg-primary text-primary-foreground' : 'bg-background/20 text-white/90 border border-primary/20'}`}>
+                                   {message.role === 'oracle' && <span className="font-bold text-primary block mb-1">L'Oracle:</span>}
+                                   <p className="text-sm">{message.content}</p>
+                               </div>
+                           </div>
+                       ))}
+                        {isLoading && (
+                           <div className="flex justify-start">
+                               <div className="max-w-xs lg:max-w-md p-3 rounded-lg bg-background/20 text-white/90 border border-primary/20 flex items-center gap-2">
+                                  <Loader2 className="h-5 w-5 animate-spin text-primary" />
+                                  <p className="text-sm italic">L'Oracle réfléchit...</p>
+                               </div>
+                           </div>
+                       )}
+                   </div>
+               </ScrollArea>
+               <form onSubmit={handleSendMessage} className="flex items-center gap-2">
                    <Input
                        type="text"
                        placeholder="Posez votre question ici..."
+                       value={inputValue}
+                       onChange={(e) => setInputValue(e.target.value)}
+                       disabled={isLoading}
                        className="bg-secondary/20 backdrop-blur-lg border-primary/30 text-white placeholder:text-white/60 focus:border-primary focus-visible:ring-primary"
                    />
-                   <Button variant="ghost" size="icon" className="text-primary hover:bg-primary/20">
+                   <Button variant="ghost" size="icon" className="text-primary hover:bg-primary/20" disabled>
                        <Mic className="h-5 w-5" />
                    </Button>
-                   <Button variant="default" size="icon" className="bg-primary hover:bg-primary/90">
-                       <Send className="h-5 w-5" />
+                   <Button type="submit" variant="default" size="icon" className="bg-primary hover:bg-primary/90" disabled={isLoading || !inputValue.trim()}>
+                      {isLoading ? <Loader2 className="h-5 w-5 animate-spin" /> : <Send className="h-5 w-5" />}
                    </Button>
-               </div>
+               </form>
            </div>
        </SectionWrapper>
 
