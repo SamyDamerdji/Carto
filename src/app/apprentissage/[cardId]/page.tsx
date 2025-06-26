@@ -23,12 +23,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import type { ReactNode } from "react";
 
-export async function generateStaticParams() {
-  return cardsList.map((card) => ({
-    cardId: card.id,
-  }));
-}
-
 const getAssociatedCardImage = (id: string) => {
   return cardsList.find(c => c.id === id)?.image_url;
 };
