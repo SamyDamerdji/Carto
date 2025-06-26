@@ -436,5 +436,48 @@ export const carreauCards: Card[] = [
       { "carte_associee_id": "trefle_10", "signification": "Symbolise l'accomplissement d'un objectif financier ou professionnel après une période de travail acharné et de persévérance." },
       { "carte_associee_id": "carreau_dame", "signification": "Évoque des questions matérielles et sentimentales, pouvant révéler des périodes difficiles ou des changements dans les relations amoureuses." }
     ]
+  },
+  {
+    "id": "carreau_04",
+    "nom_carte": "Quatre de Carreau",
+    "valeur": 4,
+    "couleur": "Carreau",
+    "image_url": "/images/cards/carreau_04.png",
+    "resume_general": "Carte de la stabilité, de la fondation solide et de la sécurité matérielle. Elle représente un moment de consolidation, d'organisation et de persévérance. C'est une carte fiable et constructive qui invite à bâtir sur du solide avant d'explorer de nouveaux territoires.",
+    "phrase_cle": "Pose tes bases, mais n'oublie pas de respirer.",
+    "mots_cles": [
+      "stabilité", "fondation", "sécurité", "construction", "organisation", "persévérance", "équilibre",
+      "structure", "fiabilité", "ancrage", "rigueur", "opportunité"
+    ],
+    "interpretations": {
+      "general": "Le 4 de Carreau est une carte de stabilité matérielle. Le chiffre 4 évoque une base solide, les carreaux symbolisent le monde concret. Elle parle de projets qui prennent forme, d'entreprises qui s'installent. Mais cette stabilité est dynamique et doit être entretenue avec attention et rigueur.",
+      "endroit": "Annonce un message positif, une réussite professionnelle, un projet qui prend une belle tournure. C'est une carte fiable, calme et constructive. Elle indique une période de sécurité, une situation stable, une réussite modeste mais durable. Elle invite à consolider ses acquis.",
+      "ombre_et_defis": "La routine peut devenir étouffante. La carte peut mettre en garde contre l'immobilisme, une peur du changement, ou une stagnation inconfortable. Mal entourée, elle peut annoncer des retards ou des obstacles administratifs qui demandent de réévaluer ses priorités.",
+      "conseil": "Prenez le temps d'évaluer vos fondations. Êtes-vous sur une base solide ? Priorisez, planifiez, mettez de l'ordre. Cette stabilité acquise vous donnera la force d'oser des nouveautés. Ne foncez pas tête baissée, avancez sereinement."
+    },
+    "domaines": {
+      "amour": "Parle de relations stables, qui fonctionnent bien mais peuvent manquer de spontanéité. C'est l'amour 'maison bien rangée', rassurant mais avec le risque que la routine s'installe. Peut indiquer une personne qui cherche à construire quelque chose de sérieux.",
+      "travail": "Synonyme de rigueur, d'organisation et de planification. Annonce une stabilité professionnelle, un poste fiable mais parfois peu stimulant, ou une évolution lente mais sûre. C'est le moment d'ancrer ses projets, de prévoir, de budgétiser, de sécuriser.",
+      "finances": "Évoque des dépenses raisonnables, une gestion financière équilibrée et une envie de mettre de côté. C'est une carte qui pousse à préparer l'avenir et à créer un cocon sécurisant. Le succès matériel est lié à la persévérance et au travail acharné.",
+      "spirituel": "C'est un rappel à la réalité, au concret. Elle encourage à poser les fondations, à honorer les choses simples et à respecter son propre rythme. C'est la reconnaissance que le sacré se cache aussi dans l'ordinaire et que ce que l'on fait aujourd'hui porte déjà ses fruits."
+    },
+    "prompts_visuels": [
+      "une chaise à quatre pieds, solide et stable, sur un sol plat",
+      "les fondations en pierre d'une maison en construction",
+      "un agenda ou un carnet de notes parfaitement organisé",
+      "un arbre majestueux aux racines profondes et solides",
+      "un coffre-fort bien fermé, symbolisant la sécurité"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "coeur_04", "signification": "Une stabilité émotionnelle et matérielle. Une harmonie dans les relations et les finances." },
+      { "carte_associee_id": "carreau_valet", "signification": "Une opportunité de croissance financière ou professionnelle, apportée par un jeune individu." },
+      { "carte_associee_id": "carreau_07", "signification": "Des défis ou des obstacles dans la situation matérielle, nécessitant une réévaluation des priorités." },
+      { "carte_associee_id": "carreau_08", "signification": "Un travail acharné menant à une progression stable dans les affaires ou les finances." },
+      { "carte_associee_id": "carreau_09", "signification": "Des inquiétudes ou des craintes liées à la sécurité matérielle, une réflexion sur l'insatisfaction." },
+      { "carte_associee_id": "carreau_dame", "signification": "Une figure féminine influençant la situation financière, apportant une intelligence pratique." },
+      { "carte_associee_id": "carreau_10", "signification": "Un aboutissement ou un succès significatif dans les affaires matérielles ou financières." },
+      { "carte_associee_id": "carreau_05", "signification": "Des changements ou des perturbations dans la situation matérielle, demandant une adaptation." },
+      { "carte_associee_id": "carreau_06", "signification": "Un équilibre retrouvé dans les finances après une période difficile, une aide arrivant." }
+    ]
   }
 ]
