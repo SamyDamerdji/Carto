@@ -507,5 +507,40 @@ export const piqueCards: Card[] = [
     "combinaisons": [
       { "carte_associee_id": "pique_04", "signification": "Avec le 4 de pique, cette carte peut annoncer une trahison, une peine ou de la confusion."}
     ]
+  },
+  {
+    "id": "pique_02",
+    "nom_carte": "Deux de Pique",
+    "valeur": 2,
+    "couleur": "Pique",
+    "image_url": "/images/cards/pique_02.png",
+    "resume_general": "Carte de la dualité, du choix et de la tension à résoudre. Elle n'est pas un drame, mais un défi, une bifurcation à prendre. C'est une invitation à la réflexion, à la discussion et à l'introspection pour trouver l'équilibre.",
+    "phrase_cle": "Une décision doit être prise, écoutez votre instinct.",
+    "mots_cles": [
+      "dualité", "choix", "décision", "tension", "défi", "réflexion", "introspection",
+      "discussion", "pause", "équilibre", "yin-yang"
+    ],
+    "interpretations": {
+      "general": "Le 2 de Pique est une carte nuancée qui symbolise la dualité (chiffre 2) et l'introspection (couleur noire). C'est une intrigue, un choix, une bifurcation à prendre. Elle invite à ralentir, à observer, à respirer et à peser le pour et le contre pour retrouver sa tranquillité d'esprit.",
+      "endroit": "Indique un défi ou une tension à résoudre. C'est une invitation à ouvrir la discussion, à écouter son instinct et à prendre une décision. C'est le moment de faire la liste des avantages et inconvénients pour faire le bon choix, que ce soit en amour ou au travail.",
+      "ombre_et_defis": "Son aspect 'austère' peut se manifester par un léger tiraillement, un désaccord ou un doute qui plane. Le défi est de ne pas paniquer mais de voir cela comme une occasion de discussion et de clarification.",
+      "conseil": "Prenez une pause. Observez le contexte et faites confiance à votre intuition. Si vous faites face à un dilemme, écrivez-le pour éclaircir vos idées ou demandez conseil à un ami. C'est un moment pour la réflexion, pas pour la précipitation."
+    },
+    "domaines": {
+      "amour": "Invite à la discussion pour désamorcer une 'bombe émotionnelle'. Un doute ou un désaccord plane sur la relation. Ce n'est pas une fatalité, mais une opportunité de raviver la flamme en communiquant ouvertement.",
+      "travail": "Parle de décisions et de choix épineux : rester ou partir, progresser ou patienter. La carte conseille de garder le contrôle, de lister les avantages et inconvénients, mais surtout d'écouter son instinct qui est le meilleur conseiller.",
+      "finances": "Peut indiquer une décision financière importante qui demande réflexion. Faut-il investir ou économiser ? C'est le moment de peser le pour et le contre et de ne pas agir sur un coup de tête.",
+      "spirituel": "Symbolise la dualité (yin/yang), l'opposition ou la complémentarité. La couleur noire invite à l'introspection et à la profondeur. C'est une invitation à calmer ses pensées par la méditation pour trouver l'équilibre intérieur."
+    },
+    "prompts_visuels": [
+      "une personne se tenant à une bifurcation, deux chemins s'offrant à elle dans une forêt brumeuse",
+      "une balance de justice en parfait équilibre",
+      "deux personnes assises à un café, engagées dans une discussion sérieuse mais calme",
+      "le symbole du Yin et du Yang",
+      "une personne en train de faire une pause sur un sentier de randonnée pour regarder une carte"
+    ],
+    "combinaisons": [
+      { "carte_associee_id": "pique_04", "signification": "Avec le 4 de pique, cette carte peut annoncer un conflit, une division ou un choix à faire."}
+    ]
   }
 ]
