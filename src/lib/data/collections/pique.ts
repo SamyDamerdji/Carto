@@ -40,11 +40,8 @@ export const piqueCards: Card[] = [
       "Si l'As de Pique représente une décision radicale, comment se différencie-t-il de la décision 'structurée' du Roi de Pique ?"
     ],
     "combinaisons": [
-      { "carte_associee_id": "lune", "signification": "Révélation de secrets ou de vérités cachées. Période de prise de conscience émotionnelle profonde." },
-      { "carte_associee_id": "soleil", "signification": "Contraste fort entre les défis actuels (ombre) et une promesse de succès et de bonheur à venir (lumière)." },
-      { "carte_associee_id": "roue_de_fortune", "signification": "Un changement significatif de destin ou de circonstances. Un tournant décisif où les défis mènent à de nouvelles opportunités." },
-      { "carte_associee_id": "valet_de_pique", "signification": "Annonce de défis à venir. Le duo demande de rester vigilant et de prendre des décisions avec sagesse." },
-      { "carte_associee_id": "roi_de_pique", "signification": "Incarne la puissance et la sagesse. L'association des deux annonce des décisions majeures, demandant vigilance et stratégie." }
+      { "carte_associee_id": "pique_valet", "signification": "Annonce de défis à venir. Le duo demande de rester vigilant et de prendre des décisions avec sagesse." },
+      { "carte_associee_id": "pique_roi", "signification": "Incarne la puissance et la sagesse. L'association des deux annonce des décisions majeures, demandant vigilance et stratégie." }
     ]
   },
   {
@@ -66,7 +63,7 @@ export const piqueCards: Card[] = [
       "conseil": "Faites appel à votre logique et à votre sens de l'organisation. C'est le moment de structurer vos pensées et vos actions, de regarder les choses en face et de trancher avec clarté. Ne laissez pas l'émotionnel prendre le dessus sur le rationnel."
     },
     "domaines": {
-      "amour": "Indique une relation où la logique et la sagesse priment sur la passion. Peut représenter un homme plus âgé, divorcé ou veuf. Avec la Reine de Coeur, c'est l'alliance de l'esprit et du coeur, un besoin d'équilibre entre la raison et les sentiments.",
+      "amour": "Indique une relation où la logique et la sagesse priment sur la passion. Peut représenter un homme plus âgé, divorcé ou veuf. Avec la Dame de Coeur, c'est l'alliance de l'esprit et du coeur, un besoin d'équilibre entre la raison et les sentiments.",
       "travail": "Domaine de prédilection de cette carte. Elle annonce des décisions importantes, des contrats, des négociations, la nécessité de suivre un protocole strict. Symbolise un patron, un expert ou un homme de loi influent.",
       "finances": "Appelle à une gestion rigoureuse et structurée. Favorise les investissements à long terme et les décisions basées sur une analyse fine plutôt que sur l'impulsion. Peut annoncer un héritage ou des questions légales liées à l'argent.",
       "spirituel": "Représente la recherche d'une structure et d'un ordre dans sa propre vie. C'est la sagesse acquise par l'expérience, la capacité à prendre des décisions alignées avec ses propres lois intérieures. Associé aux planètes Jupiter (ordre supérieur) et Saturne (rigueur, responsabilité)."
@@ -86,7 +83,7 @@ export const piqueCards: Card[] = [
       "Le texte mentionne que cette carte 'n'est pas là pour faire rêver, mais pour structurer'. Expliquez cette phrase avec vos propres mots."
     ],
     "combinaisons": [
-      { "carte_associee_id": "coeur_reine", "signification": "L'alliance de l'esprit et du cœur. Une situation où il faut concilier logique froide et bienveillance émotionnelle pour trouver l'équilibre." },
+      { "carte_associee_id": "coeur_dame", "signification": "L'alliance de l'esprit et du cœur. Une situation où il faut concilier logique froide et bienveillance émotionnelle pour trouver l'équilibre." },
       { "carte_associee_id": "pique_as", "signification": "Stratégie pure. Annonce des décisions majeures, mûrement réfléchies qui demandent une planification experte. C'est le moment des négociations d'envergure." },
       { "carte_associee_id": "trefle_03", "signification": "Action et opportunité. Une idée va pouvoir se transformer en réalité grâce à une organisation rigoureuse. Combinaison gagnante pour la concrétisation." },
       { "carte_associee_id": "pique_valet", "signification": "Mise en garde contre des intrigues ou du double jeu. Il faut scruter les détails et ne rien prendre pour argent comptant. Une personne pourrait cacher ses intentions." },
@@ -177,7 +174,7 @@ export const piqueCards: Card[] = [
       { "carte_associee_id": "trefle_as", "signification": "Une opportunité financière se présente, mais il faut être très attentif aux détails et aux conditions cachées." },
       { "carte_associee_id": "trefle_10", "signification": "Un succès est possible, mais il viendra après une lutte ou des efforts importants. Ce ne sera pas facile." },
       { "carte_associee_id": "pique_roi", "signification": "L'énergie de la stratégie devient intense et complexe. Une situation demande une analyse très fine et prudente." },
-      { "carte_associee_id": "pique_reine", "signification": "Peut représenter une femme rusée ou une protectrice qui agit dans l'ombre. Chaque déplacement compte." }
+      { "carte_associee_id": "pique_dame", "signification": "Peut représenter une femme rusée ou une protectrice qui agit dans l'ombre. Chaque déplacement compte." }
     ]
   },
   {

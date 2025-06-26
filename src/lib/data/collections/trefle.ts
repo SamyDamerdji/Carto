@@ -178,7 +178,7 @@ export const trefleCards: Card[] = [
       { "carte_associee_id": "trefle_dame", "signification": "Une liaison avec une personne inconnue." },
       { "carte_associee_id": "coeur_as", "signification": "Une grande réussite dans les affaires." },
       { "carte_associee_id": "coeur_dame", "signification": "Un succès amoureux durable et une relation solide." },
-      { "carte_associee_id": "carreau_dix", "signification": "Un succès juridique ou la résolution positive d'un conflit." },
+      { "carte_associee_id": "carreau_10", "signification": "Un succès juridique ou la résolution positive d'un conflit." },
       { "carte_associee_id": "pique_roi", "signification": "Des pertes financières liées à des difficultés ou des décisions malheureuses." },
       { "carte_associee_id": "pique_dame", "signification": "Une femme causera un préjudice financier grave." },
       { "carte_associee_id": "pique_valet", "signification": "Attention, un vol pourrait survenir. Prudence requise." }
@@ -455,8 +455,7 @@ export const trefleCards: Card[] = [
       { "carte_associee_id": "carreau_dame", "signification": "Soutien précieux. La carte devient ambitieuse et suggère une opportunité professionnelle. Un mentor ou une alliée stratégique est la clé." },
       { "carte_associee_id": "carreau_10", "signification": "L'abondance en vue. Annonce une période de prospérité. Les étoiles s'alignent pour réaliser vos rêves." },
       { "carte_associee_id": "coeur_roi", "signification": "Protection bienveillante. Une figure masculine (père, ami, partenaire) est prête à vous aider." },
-      { "carte_associee_id": "trefle_08", "signification": "Un choix à faire. Parle de chemins multiples et de décisions à prendre. Une invitation à la réflexion et à l'intuition." },
-      { "carte_associee_id": "joker", "signification": "L'imprévisible. Annonce un événement inattendu, qui peut être une surprise heureuse ou un défi imprévu." }
+      { "carte_associee_id": "trefle_08", "signification": "Un choix à faire. Parle de chemins multiples et de décisions à prendre. Une invitation à la réflexion et à l'intuition." }
     ]
   },
   {

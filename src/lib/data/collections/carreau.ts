@@ -169,7 +169,7 @@ export const carreauCards: Card[] = [
       "Si le Valet de Carreau apparaît avec le Roi de Pique, la fiche suggère un 'défi à relever'. Décrivez la nature de ce conflit entre l'élan jeune (Valet) et la structure établie (Roi)."
     ],
     "combinaisons": [
-      { "carte_associee_id": "coeur_reine", "signification": "Signale un lien affectif où la prise d'initiative est encouragée pour faire avancer la relation." },
+      { "carte_associee_id": "coeur_dame", "signification": "Signale un lien affectif où la prise d'initiative est encouragée pour faire avancer la relation." },
       { "carte_associee_id": "pique_roi", "signification": "Annonce un défi, une opposition ou un blocage. L'élan du Valet est freiné par la structure ou l'autorité du Roi." },
       { "carte_associee_id": "carreau_as", "signification": "Combinaison très dynamique indiquant le début d'une entreprise ou d'un projet matériel avec un fort élan et des initiatives réussies." }
     ]
@@ -290,7 +290,7 @@ export const carreauCards: Card[] = [
       "une personne poussant un gros rocher en haut d'une colline, avec un sommet ensoleillé visible au loin",
       "un vent de fraîcheur qui fait tourner les pages d'un livre",
       "une personne à un carrefour, choisissant avec confiance une nouvelle direction",
-      "une chaîne de montage où chaque pièce s'assemble parfaitement",
+      "une chaîne de montage où chaque pièce s'assemble perfectly",
       "une plante qui pousse lentement mais sûrement à travers une fissure dans le béton"
     ],
     "prompts_conversationnels": [
