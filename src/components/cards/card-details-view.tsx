@@ -15,6 +15,7 @@ import {
   CircleDollarSign,
   Sparkles,
   Mic,
+  MicOff,
   Send,
   Sun,
   ShieldAlert,
@@ -32,6 +33,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { cn } from '@/lib/utils';
 
 interface SectionWrapperProps {
   title: string;
@@ -78,7 +80,9 @@ export function CardDetailsView({ card }: { card: Card }) {
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isTtsEnabled, setIsTtsEnabled] = useState(true);
+  const [isRecording, setIsRecording] = useState(false);
   const chatContainerRef = useRef<HTMLDivElement>(null);
+  const recognitionRef = useRef<SpeechRecognition | null>(null);
 
   useEffect(() => {
     if (chatContainerRef.current) {
@@ -92,6 +96,38 @@ export function CardDetailsView({ card }: { card: Card }) {
       window.speechSynthesis.cancel();
     };
   }, []);
+
+  useEffect(() => {
+    const SpeechRecognition =
+      (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+      console.warn('Speech Recognition not supported by this browser.');
+      return;
+    }
+
+    const recognition = new SpeechRecognition();
+    recognition.continuous = false;
+    recognition.lang = 'fr-FR';
+    recognition.interimResults = false;
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      setInputValue(transcript);
+    };
+
+    recognition.onerror = (event) => {
+      console.error('Speech recognition error:', event.error);
+      setIsRecording(false);
+    };
+    
+    recognition.onend = () => {
+      setIsRecording(false);
+    };
+
+    recognitionRef.current = recognition;
+  }, []);
+
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -137,7 +173,18 @@ export function CardDetailsView({ card }: { card: Card }) {
         window.speechSynthesis.cancel();
     }
   };
+  
+  const handleMicClick = () => {
+    if (isLoading || !recognitionRef.current) return;
 
+    if (isRecording) {
+      recognitionRef.current.stop();
+    } else {
+      setInputValue('');
+      recognitionRef.current.start();
+      setIsRecording(true);
+    }
+  };
 
   return (
     <div className="container mx-auto px-4 pb-8">
@@ -331,8 +378,19 @@ export function CardDetailsView({ card }: { card: Card }) {
                        disabled={isLoading}
                        className="bg-secondary/20 backdrop-blur-lg border-primary/30 text-white placeholder:text-white/60 focus-visible:ring-0"
                    />
-                   <Button variant="ghost" size="icon" className="text-primary hover:bg-primary/20" disabled>
-                       <Mic className="h-5 w-5" />
+                   <Button
+                       variant="ghost"
+                       size="icon"
+                       type="button"
+                       onClick={handleMicClick}
+                       disabled={isLoading || !recognitionRef.current}
+                       className={cn(
+                           "text-primary hover:bg-primary/20",
+                           isRecording && "bg-destructive/20 text-destructive animate-pulse"
+                       )}
+                       aria-label={isRecording ? "Arrêter l'enregistrement" : "Démarrer l'enregistrement vocal"}
+                   >
+                       {isRecording ? <MicOff className="h-5 w-5" /> : <Mic className="h-5 w-5" />}
                    </Button>
                    <Button type="submit" variant="default" size="icon" className="bg-primary hover:bg-primary/90" disabled={isLoading || !inputValue.trim()}>
                       {isLoading ? <Loader2 className="h-5 w-5 animate-spin" /> : <Send className="h-5 w-5" />}
