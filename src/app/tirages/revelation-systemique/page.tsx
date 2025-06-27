@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion } from 'framer-motion';
 import type { CardSummary } from '@/lib/data/cards';
 import { cardsList } from '@/lib/data/cards';
@@ -91,6 +91,7 @@ export default function RevelationSystemiquePage() {
   const [hasDeepened, setHasDeepened] = useState(false);
   const [deepenedInterpretation, setDeepenedInterpretation] = useState<DeepenRevelationOutput | null>(null);
   const { toast } = useToast();
+  const flipSoundRef = useRef<HTMLAudioElement | null>(null);
 
   const drawCards = useCallback(() => {
     setIsLoading(true);
@@ -115,6 +116,10 @@ export default function RevelationSystemiquePage() {
   }, [drawCards]);
 
   const handleReveal = () => {
+    if (flipSoundRef.current) {
+        flipSoundRef.current.currentTime = 0;
+        flipSoundRef.current.play().catch(e => console.error("Audio play failed", e));
+    }
     setIsRevealed(true);
   }
 
@@ -195,6 +200,7 @@ export default function RevelationSystemiquePage() {
   return (
     <div className="flex min-h-dvh flex-col">
       <Header />
+      <audio ref={flipSoundRef} src="https://actions.google.com/sounds/v1/cards/card_dealing_single.ogg" preload="auto" className="hidden" />
       <main className="flex-grow container mx-auto px-4 pb-8">
         <div className="mx-auto mt-8 max-w-4xl rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6">
 
