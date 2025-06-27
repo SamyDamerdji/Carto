@@ -9,17 +9,17 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
-import { Loader2, Dices, BrainCircuit } from 'lucide-react';
+import { Loader2, Dices, BrainCircuit, Eye } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 const cardPositions = [
-  { position: 1, title: 'Polarité dominante', description: 'La figure ou l’énergie la plus influente du système.' },
+  { position: 1, title: 'Polarité dominante', description: 'La figure ou l’énergie la plus influente.' },
   { position: 2, title: 'Polarité opposée', description: 'Le contre-pouvoir ou la résistance active.' },
-  { position: 3, title: 'Figure médiatrice ou instable', description: 'L’élément perturbateur ou stabilisateur.' },
-  { position: 4, title: 'Tension n°1', description: 'Source de conflit latente ou blessure non verbalisée.' },
-  { position: 5, title: 'Tension n°2', description: 'Élément extérieur perturbateur (pression sociale, peur).' },
-  { position: 6, title: 'Tension n°3', description: 'Impulsion interne ou émotionnellement chargée.' },
-  { position: 7, title: 'Résolution systémique', description: 'La tendance naturelle du système si rien ne change.' },
+  { position: 3, title: 'Figure médiatrice', description: 'L’élément perturbateur ou stabilisateur.' },
+  { position: 4, title: 'Tension n°1', description: 'Conflit latent ou blessure non verbalisée.' },
+  { position: 5, title: 'Tension n°2', description: 'Pression extérieure ou peur.' },
+  { position: 6, title: 'Tension n°3', description: 'Impulsion interne ou émotionnelle.' },
+  { position: 7, title: 'Résolution systémique', description: 'La tendance naturelle si rien ne change.' },
 ];
 
 interface DrawnCard {
@@ -29,26 +29,83 @@ interface DrawnCard {
   card: CardSummary;
 }
 
+const CardSlot = ({ drawnCard, isRevealed, index }: { drawnCard: DrawnCard; isRevealed: boolean; index: number }) => {
+  const cardBackUrl = "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/dos.png";
+
+  return (
+    <div className="[perspective:1000px] w-full aspect-[2.5/3.5]">
+      <motion.div
+        className="relative w-full h-full [transform-style:preserve-3d]"
+        initial={false}
+        animate={{ rotateY: isRevealed ? 180 : 0 }}
+        transition={{ duration: 0.6, delay: index * 0.1 }}
+      >
+        {/* Card Back */}
+        <div className="absolute w-full h-full [backface-visibility:hidden] rounded-2xl overflow-hidden shadow-lg shadow-primary/20">
+          <Image src={cardBackUrl} alt="Dos de carte" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" priority={index < 3} />
+        </div>
+
+        {/* Card Front */}
+        <div className="absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-2xl overflow-hidden border border-primary/30 bg-secondary/20 p-2 text-center shadow-lg shadow-primary/20 backdrop-blur-lg flex flex-col items-center">
+            <h3 className="font-headline text-sm font-bold uppercase tracking-wider text-primary">
+                {drawnCard.title}
+            </h3>
+            <p className="text-xs text-white/80 mb-1 h-8 flex items-center text-center">{drawnCard.description}</p>
+            <div className="relative flex-grow w-full">
+                <div className="relative h-full w-full">
+                    <div className="absolute inset-0 bg-card rounded-xl shadow-inner p-1">
+                    <div className="relative h-full w-full">
+                        <Image
+                        src={drawnCard.card.image_url}
+                        alt={`Image de la carte ${drawnCard.card.nom_carte}`}
+                        fill
+                        className="object-contain"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        />
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <p className="mt-1 font-body text-sm font-semibold text-card-foreground/90">
+                {drawnCard.card.nom_carte}
+            </p>
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
+
 export default function RevelationSystemiquePage() {
   const [drawnCards, setDrawnCards] = useState<DrawnCard[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isRevealed, setIsRevealed] = useState(false);
   const [isInterpreting, setIsInterpreting] = useState(false);
   const { toast } = useToast();
 
   const drawCards = useCallback(() => {
     setIsLoading(true);
-    const shuffled = [...cardsList].sort(() => 0.5 - Math.random());
-    const newDraw = cardPositions.map((pos, index) => ({
-      ...pos,
-      card: shuffled[index],
-    }));
-    setDrawnCards(newDraw);
-    setIsLoading(false);
+    setIsRevealed(false);
+    
+    // Give a moment for the flip-back animation to be noticeable
+    setTimeout(() => {
+        const shuffled = [...cardsList].sort(() => 0.5 - Math.random());
+        const newDraw = cardPositions.map((pos, index) => ({
+        ...pos,
+        card: shuffled[index],
+        }));
+        setDrawnCards(newDraw);
+        setIsLoading(false);
+    }, 300);
   }, []);
 
   useEffect(() => {
     drawCards();
   }, [drawCards]);
+
+  const handleReveal = () => {
+    setIsRevealed(true);
+  }
 
   const handleInterpret = async () => {
     if (drawnCards.length < 7) return;
@@ -65,7 +122,6 @@ export default function RevelationSystemiquePage() {
         card7: `${drawnCards[6].card.nom_carte}`,
       };
       
-      // We call the function but don't display the result yet as per instructions.
       await interpretSystemicRevelation(input);
 
       toast({
@@ -85,90 +141,67 @@ export default function RevelationSystemiquePage() {
     }
   };
 
-  const CardDisplay = ({ drawnCard, index }: { drawnCard: DrawnCard; index: number }) => (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="relative flex h-full flex-col items-center overflow-hidden rounded-2xl border border-primary/30 bg-secondary/20 p-4 text-center shadow-lg shadow-primary/20 backdrop-blur-lg"
-    >
-      <div className="absolute -right-2 -top-2 h-16 w-16 bg-[radial-gradient(closest-side,hsl(var(--primary)/0.1),transparent)]"></div>
-      <h3 className="font-headline text-lg font-bold uppercase tracking-wider text-primary">
-        {drawnCard.title}
-      </h3>
-      <p className="mb-3 text-sm text-white/80 h-10">{drawnCard.description}</p>
-      <div className="relative w-[150px] aspect-[2.5/3.5]">
-        <div className="relative h-full w-full">
-          <div className="absolute inset-0 bg-card rounded-xl shadow-lg p-2">
-            <div className="relative h-full w-full">
-              {drawnCard.card && (
-                <Image
-                  src={drawnCard.card.image_url}
-                  alt={`Image de la carte ${drawnCard.card.nom_carte}`}
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-      <p className="mt-3 font-body text-base font-semibold text-card-foreground/90">
-        {drawnCard.card.nom_carte}
-      </p>
-    </motion.div>
-  );
 
   return (
     <div className="flex min-h-dvh flex-col">
       <Header />
       <main className="flex-grow container mx-auto px-4 pb-8">
-        <div className="text-center my-8">
-          <h1 className="font-headline text-3xl font-bold tracking-tight text-primary sm:text-4xl uppercase drop-shadow-lg">
-            Tirage Révélation Systémique
-          </h1>
-          <p className="mt-2 max-w-2xl mx-auto text-lg text-white">
-            Analyse des forces et dynamiques relationnelles
-          </p>
-        </div>
+        <div className="mx-auto mt-8 max-w-5xl rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6">
 
-        <div className="mx-auto max-w-md flex justify-center gap-4 mb-8">
-          <Button onClick={drawCards} disabled={isLoading || isInterpreting}>
-            <Dices className="mr-2 h-4 w-4" /> Refaire le tirage
-          </Button>
-          <Button onClick={handleInterpret} disabled={isInterpreting || drawnCards.length < 7}>
-            {isInterpreting ? (
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+            <div className="text-center mb-8">
+                <h1 className="font-headline text-3xl font-bold tracking-tight text-primary sm:text-4xl uppercase drop-shadow-lg">
+                    Tirage Révélation Systémique
+                </h1>
+                <p className="mt-2 max-w-3xl mx-auto text-lg text-white">
+                    Analyse des forces et dynamiques relationnelles
+                </p>
+            </div>
+
+            <div className="mx-auto max-w-md flex justify-center gap-4 mb-8">
+                {!isRevealed ? (
+                    <Button onClick={handleReveal} disabled={isLoading || drawnCards.length < 7}>
+                        <Eye className="mr-2 h-4 w-4" /> Révéler les cartes
+                    </Button>
+                ) : (
+                    <>
+                        <Button onClick={drawCards} disabled={isLoading || isInterpreting}>
+                            <Dices className="mr-2 h-4 w-4" /> Refaire le tirage
+                        </Button>
+                        <Button onClick={handleInterpret} disabled={isInterpreting || drawnCards.length < 7}>
+                            {isInterpreting ? (
+                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            ) : (
+                            <BrainCircuit className="mr-2 h-4 w-4" />
+                            )}
+                            Interpréter avec l'IA
+                        </Button>
+                    </>
+                )}
+            </div>
+            
+            {isLoading && !isRevealed ? (
+            <div className="flex justify-center items-center h-64">
+                <Loader2 className="h-12 w-12 animate-spin text-primary" />
+            </div>
             ) : (
-              <BrainCircuit className="mr-2 h-4 w-4" />
+            <div className="space-y-6">
+                {/* Row 1 */}
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                {drawnCards.slice(0, 3).map((c, i) => <CardSlot key={c.position} drawnCard={c} isRevealed={isRevealed} index={i} />)}
+                </div>
+                {/* Row 2 */}
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                {drawnCards.slice(3, 6).map((c, i) => <CardSlot key={c.position} drawnCard={c} isRevealed={isRevealed} index={i + 3} />)}
+                </div>
+                {/* Row 3 */}
+                <div className="flex justify-center">
+                <div className="w-1/2 md:w-1/3">
+                    {drawnCards.slice(6, 7).map((c, i) => <CardSlot key={c.position} drawnCard={c} isRevealed={isRevealed} index={i + 6} />)}
+                </div>
+                </div>
+            </div>
             )}
-            Interpréter avec l'IA
-          </Button>
         </div>
-        
-        {isLoading ? (
-          <div className="flex justify-center items-center h-64">
-            <Loader2 className="h-12 w-12 animate-spin text-primary" />
-          </div>
-        ) : (
-          <div className="space-y-6">
-            {/* Row 1 */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {drawnCards.slice(0, 3).map((c, i) => <CardDisplay key={c.position} drawnCard={c} index={i} />)}
-            </div>
-            {/* Row 2 */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {drawnCards.slice(3, 6).map((c, i) => <CardDisplay key={c.position} drawnCard={c} index={i + 3} />)}
-            </div>
-            {/* Row 3 */}
-            <div className="flex justify-center">
-              <div className="w-full md:w-1/3">
-                 {drawnCards.slice(6, 7).map((c, i) => <CardDisplay key={c.position} drawnCard={c} index={i + 6} />)}
-              </div>
-            </div>
-          </div>
-        )}
       </main>
       <Footer />
     </div>
