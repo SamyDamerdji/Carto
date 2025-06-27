@@ -274,7 +274,11 @@ export default function RevelationSystemiquePage() {
 
         {interpretation && (
           <div className="mt-12 space-y-8">
-            <InfoCard title="Analyse des Polarités" icon={Users}>
+            <InfoCard 
+              title="Analyse des Polarités" 
+              icon={Users}
+              textContentToSpeak={`Analyse des Polarités. Pôle Dominant: ${interpretation.polarites.dominante}. Pôle Opposé: ${interpretation.polarites.opposee}. Pôle Médiateur: ${interpretation.polarites.mediatrice}`}
+            >
               <h4 className="font-headline text-lg font-bold text-primary">Pôle Dominant</h4>
               <p className="text-white/90">{interpretation.polarites.dominante}</p>
               <h4 className="font-headline text-lg font-bold text-primary mt-4">Pôle Opposé</h4>
@@ -283,7 +287,11 @@ export default function RevelationSystemiquePage() {
               <p className="text-white/90">{interpretation.polarites.mediatrice}</p>
             </InfoCard>
 
-            <InfoCard title="Analyse des Tensions" icon={Zap}>
+            <InfoCard 
+              title="Analyse des Tensions" 
+              icon={Zap}
+              textContentToSpeak={`Analyse des Tensions. Tension 1, Blessure latente: ${interpretation.tensions.tension1}. Tension 2, Pression externe: ${interpretation.tensions.tension2}. Tension 3, Impulsion interne: ${interpretation.tensions.tension3}`}
+            >
               <h4 className="font-headline text-lg font-bold text-primary">Tension 1 (Blessure latente)</h4>
               <p className="text-white/90">{interpretation.tensions.tension1}</p>
               <h4 className="font-headline text-lg font-bold text-primary mt-4">Tension 2 (Pression externe)</h4>
@@ -292,7 +300,11 @@ export default function RevelationSystemiquePage() {
               <p className="text-white/90">{interpretation.tensions.tension3}</p>
             </InfoCard>
 
-            <InfoCard title="Résolution & Synthèse" icon={Sunrise}>
+            <InfoCard 
+              title="Résolution & Synthèse" 
+              icon={Sunrise}
+              textContentToSpeak={`Résolution et Synthèse. Résolution Systémique: ${interpretation.resolution}. Synthèse Globale: ${interpretation.synthese}`}
+            >
               <h4 className="font-headline text-lg font-bold text-primary">Résolution Systémique</h4>
               <p className="text-white/90">{interpretation.resolution}</p>
               <h4 className="font-headline text-lg font-bold text-primary mt-4">Synthèse Globale</h4>
@@ -303,7 +315,11 @@ export default function RevelationSystemiquePage() {
 
         {deepenedInterpretation && (
           <div className="mt-8">
-            <InfoCard title="Approfondissement de l'Oracle" icon={BrainCircuit}>
+            <InfoCard 
+              title="Approfondissement de l'Oracle" 
+              icon={BrainCircuit}
+              textContentToSpeak={`Approfondissement de l'Oracle. Conseil Stratégique: ${deepenedInterpretation.conseilStrategique}. Levier de Changement: ${deepenedInterpretation.levierDeChangement}. Point de Vigilance: ${deepenedInterpretation.pointDeVigilance}. Question Réflexive: ${deepenedInterpretation.questionReflexive}`}
+            >
                 <h4 className="font-headline text-lg font-bold text-primary">Conseil Stratégique</h4>
                 <p className="text-white/90">{deepenedInterpretation.conseilStrategique}</p>
                 <h4 className="font-headline text-lg font-bold text-primary mt-4">Levier de Changement</h4>
