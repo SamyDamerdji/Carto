@@ -30,7 +30,7 @@ export function Features() {
   return (
     <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-3">
       {features.map((feature, index) => (
-        <Link href={feature.href} key={feature.id}>
+        <Link href={feature.href} key={feature.id} className="h-full">
           <FeatureCard
             id={feature.id}
             className="scroll-mt-24 h-full"
