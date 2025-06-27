@@ -42,9 +42,9 @@ const CardSlot = ({ drawnCard, isRevealed, index }: { drawnCard: DrawnCard; isRe
         transition={{ duration: 0.6, delay: index * 0.1 }}
       >
         {/* Card Back */}
-        <div className="absolute w-full h-full [backface-visibility:hidden] rounded-lg overflow-hidden border border-primary/30 bg-secondary/20 p-1 shadow-lg shadow-primary/20 backdrop-blur-lg flex items-center justify-center">
+        <div className="absolute w-full h-full [backface-visibility:hidden] rounded-2xl overflow-hidden border border-primary/30 bg-secondary/20 p-3 shadow-lg shadow-primary/20 backdrop-blur-lg flex items-center justify-center">
           <div className="relative h-full w-full">
-            <div className="absolute inset-0 bg-card rounded-md shadow-inner p-[2px]">
+            <div className="absolute inset-0 bg-card rounded-xl shadow-lg p-2">
               <div className="relative h-full w-full">
                 <Image src={cardBackUrl} alt="Dos de carte" fill className="object-contain" sizes="(max-width: 768px) 100vw, 33vw" priority={index < 3} />
               </div>
@@ -53,23 +53,23 @@ const CardSlot = ({ drawnCard, isRevealed, index }: { drawnCard: DrawnCard; isRe
         </div>
 
         {/* Card Front */}
-        <div className="absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-lg overflow-hidden border border-primary/30 bg-secondary/20 p-1 text-center shadow-lg shadow-primary/20 backdrop-blur-lg flex flex-col items-center justify-between">
-            <div className="relative flex-grow w-full my-1">
+        <div className="absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-2xl overflow-hidden border border-primary/30 bg-secondary/20 p-3 text-center shadow-lg shadow-primary/20 backdrop-blur-lg flex flex-col items-center justify-between">
+            <div className="relative w-full flex-grow">
                 <div className="relative h-full w-full">
-                    <div className="absolute inset-0 bg-card rounded-md shadow-inner p-[2px]">
-                    <div className="relative h-full w-full">
-                        <Image
-                        src={drawnCard.card.image_url}
-                        alt={`Image de la carte ${drawnCard.card.nom_carte}`}
-                        fill
-                        className="object-contain"
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                        />
-                    </div>
+                    <div className="absolute inset-0 bg-card rounded-xl shadow-lg p-2">
+                        <div className="relative h-full w-full">
+                            <Image
+                            src={drawnCard.card.image_url}
+                            alt={`Image de la carte ${drawnCard.card.nom_carte}`}
+                            fill
+                            className="object-contain"
+                            sizes="(max-width: 768px) 100vw, 33vw"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
-            <p className="mt-1 font-body text-[10px] font-semibold text-card-foreground/90 leading-tight">
+            <p className="font-headline text-xs whitespace-nowrap font-bold text-center text-primary uppercase pt-2 h-7 flex items-center justify-center" style={{ textShadow: '0px 2px 3px rgba(0,0,0,0.7)' }}>
                 {drawnCard.card.nom_carte}
             </p>
         </div>
