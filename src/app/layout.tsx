@@ -20,7 +20,7 @@ const ebGaramond = EB_Garamond({
   weight: ['400', '500', '600', '700', '800'],
 });
 
-const APP_NAME = "L'Oracle Royal";
+const APP_NAME = "Le Cartomancien";
 const APP_DESCRIPTION = "Apprenez et mémorisez les significations divinatoires des 52 cartes à jouer.";
 
 export const metadata: Metadata = {
