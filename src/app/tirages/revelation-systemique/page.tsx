@@ -278,6 +278,7 @@ export default function RevelationSystemiquePage() {
               title="Analyse des Polarités" 
               icon={Users}
               textContentToSpeak={`Analyse des Polarités. Pôle Dominant: ${interpretation.polarites.dominante}. Pôle Opposé: ${interpretation.polarites.opposee}. Pôle Médiateur: ${interpretation.polarites.mediatrice}`}
+              playOnMount
             >
               <h4 className="font-headline text-lg font-bold text-primary">Pôle Dominant</h4>
               <p className="text-white/90">{interpretation.polarites.dominante}</p>
@@ -319,6 +320,7 @@ export default function RevelationSystemiquePage() {
               title="Approfondissement de l'Oracle" 
               icon={BrainCircuit}
               textContentToSpeak={`Approfondissement de l'Oracle. Conseil Stratégique: ${deepenedInterpretation.conseilStrategique}. Levier de Changement: ${deepenedInterpretation.levierDeChangement}. Point de Vigilance: ${deepenedInterpretation.pointDeVigilance}. Question Réflexive: ${deepenedInterpretation.questionReflexive}`}
+              playOnMount
             >
                 <h4 className="font-headline text-lg font-bold text-primary">Conseil Stratégique</h4>
                 <p className="text-white/90">{deepenedInterpretation.conseilStrategique}</p>

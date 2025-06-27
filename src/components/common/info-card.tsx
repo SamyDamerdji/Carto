@@ -11,38 +11,34 @@ interface InfoCardProps {
   title: string;
   children: ReactNode;
   textContentToSpeak?: string;
+  playOnMount?: boolean;
 }
 
-export function InfoCard({ icon: Icon, title, children, textContentToSpeak }: InfoCardProps) {
+export function InfoCard({ icon: Icon, title, children, textContentToSpeak, playOnMount = false }: InfoCardProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const hasAutoPlayed = useRef(false);
 
   const handleSpeak = useCallback(async () => {
     if (!textContentToSpeak || isLoading) return;
 
-    // If audio is currently playing, pause it.
     if (isPlaying && audioRef.current) {
       audioRef.current.pause();
-      setIsPlaying(false);
       return;
     }
 
-    // If audio is loaded but paused, play it.
     if (!isPlaying && audioRef.current && audioRef.current.src && audioRef.current.readyState > 0 && !audioRef.current.ended) {
       audioRef.current.play().catch(e => console.error("Audio play failed", e));
-      setIsPlaying(true);
       return;
     }
 
-    // If audio is not loaded, generate it.
     setIsLoading(true);
     try {
       const result = await textToSpeech(textContentToSpeak);
       if (result && result.media && audioRef.current) {
         audioRef.current.src = result.media;
-        audioRef.current.play().catch(e => console.error("Audio play failed", e));
-        setIsPlaying(true);
+        await audioRef.current.play().catch(e => console.error("Audio play failed", e));
       }
     } catch (error) {
       console.error("TTS generation error", error);
@@ -50,6 +46,29 @@ export function InfoCard({ icon: Icon, title, children, textContentToSpeak }: In
       setIsLoading(false);
     }
   }, [textContentToSpeak, isLoading, isPlaying]);
+
+  useEffect(() => {
+    const autoPlay = async () => {
+      if (!textContentToSpeak) return;
+      setIsLoading(true);
+      try {
+        const { media } = await textToSpeech(textContentToSpeak);
+        if (media && audioRef.current) {
+          audioRef.current.src = media;
+          await audioRef.current.play();
+        }
+      } catch (error) {
+        console.error("TTS auto-play generation error", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    if (playOnMount && !hasAutoPlayed.current) {
+      hasAutoPlayed.current = true;
+      autoPlay();
+    }
+  }, [playOnMount, textContentToSpeak]);
 
   useEffect(() => {
     const audioElement = audioRef.current;
@@ -69,7 +88,6 @@ export function InfoCard({ icon: Icon, title, children, textContentToSpeak }: In
     }
   }, []);
 
-  // Cleanup on unmount
   useEffect(() => {
     return () => {
         if (audioRef.current) {
