@@ -14,7 +14,7 @@ export function Hero() {
             Le Cartomancien
           </h1>
           
-          <div className="relative mt-6 w-full max-w-2xl">
+          <div className="relative mt-4 w-full max-w-2xl">
             <Image
               src="https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/eventail.png"
               alt="Éventail de cartes à jouer"
