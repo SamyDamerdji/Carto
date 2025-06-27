@@ -44,7 +44,7 @@ const CardSlot = ({ drawnCard, isRevealed, index }: { drawnCard: DrawnCard; isRe
         {/* Card Back */}
         <div className="absolute w-full h-full [backface-visibility:hidden] rounded-2xl overflow-hidden border border-primary/30 bg-secondary/20 p-3 shadow-lg shadow-primary/20 backdrop-blur-lg flex items-center justify-center">
           <div className="relative h-full w-full">
-            <div className="absolute inset-0 bg-card rounded-xl shadow-lg p-2">
+            <div className="absolute inset-0 bg-card rounded-xl shadow-lg p-1">
               <div className="relative h-full w-full">
                 <Image src={cardBackUrl} alt="Dos de carte" fill className="object-contain" sizes="(max-width: 768px) 100vw, 33vw" priority={index < 3} />
               </div>
@@ -53,25 +53,20 @@ const CardSlot = ({ drawnCard, isRevealed, index }: { drawnCard: DrawnCard; isRe
         </div>
 
         {/* Card Front */}
-        <div className="absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-2xl overflow-hidden border border-primary/30 bg-secondary/20 p-3 text-center shadow-lg shadow-primary/20 backdrop-blur-lg flex flex-col items-center justify-between">
-            <div className="relative w-full flex-grow">
-                <div className="relative h-full w-full">
-                    <div className="absolute inset-0 bg-card rounded-xl shadow-lg p-2">
-                        <div className="relative h-full w-full">
-                            <Image
-                            src={drawnCard.card.image_url}
-                            alt={`Image de la carte ${drawnCard.card.nom_carte}`}
-                            fill
-                            className="object-contain"
-                            sizes="(max-width: 768px) 100vw, 33vw"
-                            />
-                        </div>
+        <div className="absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-2xl overflow-hidden border border-primary/30 bg-secondary/20 p-3 shadow-lg shadow-primary/20 backdrop-blur-lg flex items-center justify-center">
+            <div className="relative w-full h-full">
+                <div className="absolute inset-0 bg-card rounded-xl shadow-lg p-1">
+                    <div className="relative h-full w-full">
+                        <Image
+                        src={drawnCard.card.image_url}
+                        alt={`Image de la carte ${drawnCard.card.nom_carte}`}
+                        fill
+                        className="object-contain"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        />
                     </div>
                 </div>
             </div>
-            <p className="font-headline text-xs whitespace-nowrap font-bold text-center text-primary uppercase pt-2 h-7 flex items-center justify-center" style={{ textShadow: '0px 2px 3px rgba(0,0,0,0.7)' }}>
-                {drawnCard.card.nom_carte}
-            </p>
         </div>
       </motion.div>
     </div>
@@ -187,7 +182,7 @@ export default function RevelationSystemiquePage() {
                   <Loader2 className="h-12 w-12 animate-spin text-primary" />
               </div>
             ) : (
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-10 max-w-4xl mx-auto items-start">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-6 max-w-4xl mx-auto items-start">
                   {drawnCards.map((c, i) => (
                       <div key={c.position} className={`flex flex-col items-center text-center ${c.position === 7 ? 'col-span-2 md:col-span-1 md:col-start-2' : ''}`}>
                           <div className="mb-2 flex h-14 items-center justify-center">
@@ -195,6 +190,13 @@ export default function RevelationSystemiquePage() {
                           </div>
                           <div className="w-28 sm:w-32">
                               <CardSlot drawnCard={c} isRevealed={isRevealed} index={i} />
+                          </div>
+                          <div className="h-7 pt-2 flex items-center justify-center">
+                            {isRevealed && (
+                                <p className="font-headline text-xs whitespace-nowrap font-bold text-primary uppercase" style={{ textShadow: '0px 2px 3px rgba(0,0,0,0.7)' }}>
+                                    {c.card.nom_carte}
+                                </p>
+                            )}
                           </div>
                       </div>
                   ))}
