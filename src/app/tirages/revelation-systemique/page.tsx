@@ -5,12 +5,12 @@ import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import type { CardSummary } from '@/lib/data/cards';
 import { cardsList } from '@/lib/data/cards';
-import { interpretSystemicRevelation } from '@/ai/flows/systemic-revelation-flow';
+import { interpretSystemicRevelation, type SystemicRevelationOutput } from '@/ai/flows/systemic-revelation-flow';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
-import { Loader2, Dices, BrainCircuit, Eye } from 'lucide-react';
+import { Loader2, Dices, BrainCircuit, Eye, Sparkles, CheckCircle2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 const cardPositions = [
@@ -84,11 +84,16 @@ export default function RevelationSystemiquePage() {
   const [isLoading, setIsLoading] = useState(true);
   const [isRevealed, setIsRevealed] = useState(false);
   const [isInterpreting, setIsInterpreting] = useState(false);
+  const [interpretation, setInterpretation] = useState<SystemicRevelationOutput | null>(null);
+  const [isDeepening, setIsDeepening] = useState(false);
+  const [hasDeepened, setHasDeepened] = useState(false);
   const { toast } = useToast();
 
   const drawCards = useCallback(() => {
     setIsLoading(true);
     setIsRevealed(false);
+    setInterpretation(null);
+    setHasDeepened(false);
     
     // Give a moment for the flip-back animation to be noticeable
     setTimeout(() => {
@@ -125,11 +130,12 @@ export default function RevelationSystemiquePage() {
         card7: `${drawnCards[6].card.nom_carte}`,
       };
       
-      await interpretSystemicRevelation(input);
+      const result = await interpretSystemicRevelation(input);
+      setInterpretation(result);
 
       toast({
-        title: "Analyse en cours...",
-        description: "L'IA interprète votre tirage. La fonctionnalité d'affichage sera bientôt disponible.",
+        title: "Interprétation reçue !",
+        description: "L'analyse de votre tirage est prête. Vous pouvez maintenant approfondir.",
       });
 
     } catch (error) {
@@ -144,6 +150,17 @@ export default function RevelationSystemiquePage() {
     }
   };
 
+  const handleDeepen = async () => {
+    setIsDeepening(true);
+    // Placeholder for a future, more complex AI call
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    setHasDeepened(true);
+    setIsDeepening(false);
+    toast({
+      title: "Approfondissement terminé",
+      description: "L'oracle a livré tous ses secrets sur ce tirage.",
+    });
+  };
 
   return (
     <div className="flex min-h-dvh flex-col">
@@ -160,52 +177,72 @@ export default function RevelationSystemiquePage() {
                 </p>
             </div>
 
-            <div className="mx-auto max-w-md flex justify-center gap-4 mb-8">
-                {!isRevealed ? (
-                    <Button onClick={handleReveal} disabled={isLoading || drawnCards.length < 7}>
-                        <Eye className="mr-2 h-4 w-4" /> Révéler les cartes
-                    </Button>
-                ) : (
-                    <>
-                        <Button onClick={drawCards} disabled={isLoading || isInterpreting}>
-                            <Dices className="mr-2 h-4 w-4" /> Refaire le tirage
-                        </Button>
-                        <Button onClick={handleInterpret} disabled={isInterpreting || drawnCards.length < 7}>
-                            {isInterpreting ? (
-                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                            ) : (
-                            <BrainCircuit className="mr-2 h-4 w-4" />
-                            )}
-                            Interpréter avec l'IA
-                        </Button>
-                    </>
-                )}
-            </div>
             
             {isLoading ? (
               <div className="flex justify-center items-center min-h-[400px]">
                   <Loader2 className="h-12 w-12 animate-spin text-primary" />
               </div>
             ) : (
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-6 max-w-4xl mx-auto items-start">
-                  {drawnCards.map((c, i) => (
-                      <div key={c.position} className={`flex flex-col items-center text-center ${c.position === 7 ? 'col-span-2 md:col-span-1 md:col-start-2' : ''}`}>
-                          <div className="mb-2 flex h-14 items-center justify-center">
-                              <p className="text-xs text-white/80 px-2">{c.description}</p>
-                          </div>
-                          <div className="w-28 sm:w-32">
-                              <CardSlot drawnCard={c} isRevealed={isRevealed} index={i} />
-                          </div>
-                          <div className="h-7 pt-2 flex items-center justify-center">
-                            {isRevealed && (
-                                <p className="font-headline text-xs whitespace-nowrap font-bold text-primary uppercase" style={{ textShadow: '0px 2px 3px rgba(0,0,0,0.7)' }}>
-                                    {c.card.nom_carte}
-                                </p>
+              <>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-6 max-w-4xl mx-auto items-start">
+                    {drawnCards.map((c, i) => (
+                        <div key={c.position} className={`flex flex-col items-center text-center ${c.position === 7 ? 'col-span-2 md:col-span-1 md:col-start-2' : ''}`}>
+                            <div className="mb-2 flex h-14 items-center justify-center">
+                                <p className="text-xs text-white/80 px-2">{c.description}</p>
+                            </div>
+                            <div className="w-28 sm:w-32">
+                                <CardSlot drawnCard={c} isRevealed={isRevealed} index={i} />
+                            </div>
+                            <div className="h-7 pt-2 flex items-center justify-center">
+                              {isRevealed && (
+                                  <p className="font-headline text-xs whitespace-nowrap font-bold text-primary uppercase" style={{ textShadow: '0px 2px 3px rgba(0,0,0,0.7)' }}>
+                                      {c.card.nom_carte}
+                                  </p>
+                              )}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                <div className="mx-auto max-w-md flex justify-center gap-4 mt-8">
+                  {!isRevealed ? (
+                      <Button onClick={handleReveal} disabled={isLoading || drawnCards.length < 7}>
+                          <Eye className="mr-2 h-4 w-4" /> Révéler les cartes
+                      </Button>
+                  ) : (
+                      <>
+                        <Button onClick={drawCards} disabled={isLoading || isInterpreting || isDeepening}>
+                            <Dices className="mr-2 h-4 w-4" /> Refaire le tirage
+                        </Button>
+                        
+                        {!interpretation ? (
+                          <Button onClick={handleInterpret} disabled={isInterpreting || drawnCards.length < 7}>
+                            {isInterpreting ? (
+                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            ) : (
+                            <BrainCircuit className="mr-2 h-4 w-4" />
                             )}
-                          </div>
-                      </div>
-                  ))}
-              </div>
+                            Interpréter avec l'IA
+                          </Button>
+                        ) : !hasDeepened ? (
+                          <Button onClick={handleDeepen} disabled={isDeepening}>
+                            {isDeepening ? (
+                              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            ) : (
+                              <Sparkles className="mr-2 h-4 w-4" />
+                            )}
+                            Approfondir avec l'IA
+                          </Button>
+                        ) : (
+                          <Button disabled>
+                            <CheckCircle2 className="mr-2 h-4 w-4" />
+                            L'oracle a parlé
+                          </Button>
+                        )}
+                      </>
+                  )}
+                </div>
+              </>
             )}
         </div>
       </main>
