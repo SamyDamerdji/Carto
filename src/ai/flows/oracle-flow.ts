@@ -47,8 +47,13 @@ const oracleFlow = ai.defineFlow(
     outputSchema: z.string(), // The flow will output just the string response
   },
   async (input) => {
-    const result = await oraclePrompt(input);
-    // Handle cases where the model returns no text, which can happen with safety flags etc.
-    return result.text ?? "Désolé, une interférence cosmique perturbe ma vision. L'oracle reste silencieux pour l'instant.";
+    try {
+      const result = await oraclePrompt(input);
+      // Handle cases where the model returns no text, which can happen with safety flags etc.
+      return result.text ?? "Désolé, une interférence cosmique perturbe ma vision. L'oracle reste silencieux pour l'instant.";
+    } catch (error) {
+      console.error("Error in oracleFlow:", error);
+      return "Désolé, une erreur technique m'empêche de répondre. Veuillez réessayer plus tard.";
+    }
   }
 );
