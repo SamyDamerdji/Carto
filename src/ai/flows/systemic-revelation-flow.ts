@@ -11,7 +11,7 @@ import { ai } from '@/ai/genkit';
 import { z } from 'zod';
 
 // Input Schema
-export const SystemicRevelationInputSchema = z.object({
+const SystemicRevelationInputSchema = z.object({
   card1: z.string().describe('Carte 1: Polarité dominante – La figure ou l’énergie la plus influente du système.'),
   card2: z.string().describe('Carte 2: Polarité opposée – Le contre-pouvoir ou la résistance active.'),
   card3: z.string().describe('Carte 3: Figure médiatrice ou instable – L’élément perturbateur ou stabilisateur.'),
@@ -23,7 +23,7 @@ export const SystemicRevelationInputSchema = z.object({
 export type SystemicRevelationInput = z.infer<typeof SystemicRevelationInputSchema>;
 
 // Output Schema
-export const SystemicRevelationOutputSchema = z.object({
+const SystemicRevelationOutputSchema = z.object({
   polarites: z.object({
     dominante: z.string().describe("Analyse de la polarité dominante (Carte 1) et de son rôle dans le système."),
     opposee: z.string().describe("Analyse de la polarité opposée (Carte 2) et de sa dynamique de contre-pouvoir."),
