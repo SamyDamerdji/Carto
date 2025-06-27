@@ -10,7 +10,7 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
-import { Loader2, Dices, BrainCircuit, Eye, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Loader2, BrainCircuit, Eye, Sparkles, CheckCircle2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 const cardPositions = [
@@ -211,10 +211,6 @@ export default function RevelationSystemiquePage() {
                       </Button>
                   ) : (
                       <>
-                        <Button onClick={drawCards} disabled={isLoading || isInterpreting || isDeepening}>
-                            <Dices className="mr-2 h-4 w-4" /> Refaire le tirage
-                        </Button>
-                        
                         {!interpretation ? (
                           <Button onClick={handleInterpret} disabled={isInterpreting || drawnCards.length < 7}>
                             {isInterpreting ? (
