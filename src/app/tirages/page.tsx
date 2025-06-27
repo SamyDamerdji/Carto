@@ -42,9 +42,13 @@ const CardSlot = ({ drawnCard, isRevealed, index }: { drawnCard: DrawnCard; isRe
         transition={{ duration: 0.6, delay: index * 0.1 }}
       >
         {/* Card Back */}
-        <div className="absolute w-full h-full [backface-visibility:hidden] rounded-lg overflow-hidden shadow-lg shadow-primary/20 bg-card p-2">
+        <div className="absolute w-full h-full [backface-visibility:hidden] rounded-lg overflow-hidden border border-primary/30 bg-secondary/20 p-1 shadow-lg shadow-primary/20 backdrop-blur-lg flex items-center justify-center">
           <div className="relative h-full w-full">
-            <Image src={cardBackUrl} alt="Dos de carte" fill className="object-contain" sizes="(max-width: 768px) 100vw, 33vw" priority={index < 3} />
+            <div className="absolute inset-0 bg-card rounded-md shadow-inner p-1">
+              <div className="relative h-full w-full">
+                <Image src={cardBackUrl} alt="Dos de carte" fill className="object-contain" sizes="(max-width: 768px) 100vw, 33vw" priority={index < 3} />
+              </div>
+            </div>
           </div>
         </div>
 
