@@ -43,9 +43,9 @@ const CardSlot = ({ drawnCard, isRevealed, index }: { drawnCard: DrawnCard; isRe
         transition={{ duration: 0.6, delay: index * 0.1 }}
       >
         {/* Card Back */}
-        <div className="absolute w-full h-full [backface-visibility:hidden] rounded-2xl overflow-hidden border border-primary/30 bg-secondary/20 p-3 shadow-lg shadow-primary/20 backdrop-blur-lg flex flex-col">
+        <div className="absolute w-full h-full [backface-visibility:hidden] rounded-2xl overflow-hidden border border-primary/30 bg-secondary/20 p-2 shadow-lg shadow-primary/20 backdrop-blur-lg flex flex-col">
             <div className="relative h-full w-full">
-                <div className="absolute inset-0 bg-card rounded-xl shadow-lg p-2">
+                <div className="absolute inset-0 bg-card rounded-xl shadow-lg p-1">
                     <div className="relative h-full w-full">
                         <Image
                         src={cardBackUrl}
@@ -60,9 +60,9 @@ const CardSlot = ({ drawnCard, isRevealed, index }: { drawnCard: DrawnCard; isRe
         </div>
 
         {/* Card Front */}
-        <div className="absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-2xl overflow-hidden border border-primary/30 bg-secondary/20 p-3 shadow-lg shadow-primary/20 backdrop-blur-lg flex flex-col">
+        <div className="absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-2xl overflow-hidden border border-primary/30 bg-secondary/20 p-2 shadow-lg shadow-primary/20 backdrop-blur-lg flex flex-col">
             <div className="relative w-full h-full">
-                <div className="absolute inset-0 bg-card rounded-xl shadow-lg p-2">
+                <div className="absolute inset-0 bg-card rounded-xl shadow-lg p-1">
                     <div className="relative h-full w-full">
                         <Image
                         src={drawnCard.card.image_url}
