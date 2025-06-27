@@ -34,6 +34,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
+import { useToast } from '@/hooks/use-toast';
 
 interface SectionWrapperProps {
   title: string;
@@ -83,6 +84,7 @@ export function CardDetailsView({ card }: { card: Card }) {
   const [isRecording, setIsRecording] = useState(false);
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<SpeechRecognition | null>(null);
+  const { toast } = useToast();
 
   useEffect(() => {
     if (chatContainerRef.current) {
@@ -92,41 +94,51 @@ export function CardDetailsView({ card }: { card: Card }) {
 
   useEffect(() => {
     // Cleanup speech synthesis on component unmount
-    return () => {
+    const cleanupSpeechSynthesis = () => {
       window.speechSynthesis.cancel();
     };
-  }, []);
 
-  useEffect(() => {
     const SpeechRecognition =
       (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
 
-    if (!SpeechRecognition) {
+    if (SpeechRecognition) {
+      const recognition = new SpeechRecognition();
+      recognition.continuous = false;
+      recognition.lang = 'fr-FR';
+      recognition.interimResults = false;
+
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        setInputValue(transcript);
+      };
+
+      recognition.onerror = (event) => {
+        console.error('Speech recognition error:', event.error);
+        let errorMessage = "Une erreur est survenue avec la reconnaissance vocale.";
+        if (event.error === 'not-allowed' || event.error === 'service-not-allowed') {
+          errorMessage = "L'accès au microphone est refusé. Veuillez l'autoriser dans les paramètres de votre navigateur.";
+        } else if (event.error === 'no-speech') {
+          errorMessage = "Aucun son n'a été détecté. Veuillez réessayer.";
+        }
+        toast({
+          variant: 'destructive',
+          title: 'Erreur de saisie vocale',
+          description: errorMessage,
+        });
+        setIsRecording(false);
+      };
+
+      recognition.onend = () => {
+        setIsRecording(false);
+      };
+
+      recognitionRef.current = recognition;
+    } else {
       console.warn('Speech Recognition not supported by this browser.');
-      return;
     }
 
-    const recognition = new SpeechRecognition();
-    recognition.continuous = false;
-    recognition.lang = 'fr-FR';
-    recognition.interimResults = false;
-
-    recognition.onresult = (event) => {
-      const transcript = event.results[0][0].transcript;
-      setInputValue(transcript);
-    };
-
-    recognition.onerror = (event) => {
-      console.error('Speech recognition error:', event.error);
-      setIsRecording(false);
-    };
-    
-    recognition.onend = () => {
-      setIsRecording(false);
-    };
-
-    recognitionRef.current = recognition;
-  }, []);
+    return cleanupSpeechSynthesis;
+  }, [toast]);
 
 
   const handleSendMessage = async (e: React.FormEvent) => {
@@ -181,8 +193,18 @@ export function CardDetailsView({ card }: { card: Card }) {
       recognitionRef.current.stop();
     } else {
       setInputValue('');
-      recognitionRef.current.start();
-      setIsRecording(true);
+      try {
+        recognitionRef.current.start();
+        setIsRecording(true);
+      } catch (error) {
+        console.error('Error starting speech recognition:', error);
+        toast({
+          variant: 'destructive',
+          title: 'Erreur de saisie vocale',
+          description: "Impossible de démarrer l'enregistrement.",
+        });
+        setIsRecording(false);
+      }
     }
   };
 
@@ -327,7 +349,7 @@ export function CardDetailsView({ card }: { card: Card }) {
        <SectionWrapper title="Mes Notes" icon={NotebookText} index={hasCombinaisons ? 6 : 5}>
            <Textarea
                placeholder="Mes réflexions, associations personnelles, ou interprétations..."
-               className="bg-secondary/20 backdrop-blur-lg border-primary/30 text-white placeholder:text-white/60 focus-visible:ring-0"
+               className="bg-secondary/20 backdrop-blur-lg border-primary/30 text-white placeholder:text-white/60 focus-visible:ring-ring focus-visible:ring-offset-0"
                rows={5}
            />
        </SectionWrapper>
@@ -376,7 +398,7 @@ export function CardDetailsView({ card }: { card: Card }) {
                        value={inputValue}
                        onChange={(e) => setInputValue(e.target.value)}
                        disabled={isLoading}
-                       className="bg-secondary/20 backdrop-blur-lg border-primary/30 text-white placeholder:text-white/60 focus-visible:ring-0"
+                       className="bg-secondary/20 backdrop-blur-lg border-primary/30 text-white placeholder:text-white/60 focus-visible:ring-ring focus-visible:ring-offset-0"
                    />
                    <Button
                        variant="ghost"
