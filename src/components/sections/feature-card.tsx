@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 interface FeatureCardProps {
   children: ReactNode;
@@ -10,14 +11,18 @@ interface FeatureCardProps {
   index: number;
 }
 
-export function FeatureCard({ children, title, description, index }: FeatureCardProps) {
+export function FeatureCard({ children, title, description, index, className, ...props }: FeatureCardProps & React.ComponentPropsWithoutRef<'div'>) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.15 }}
       viewport={{ once: true, amount: 0.3 }}
-      className="relative h-full overflow-hidden rounded-2xl border border-primary/30 bg-secondary/20 p-6 shadow-lg shadow-primary/20 backdrop-blur-lg"
+      className={cn(
+        "relative h-full overflow-hidden rounded-2xl border border-primary/30 bg-secondary/20 p-6 shadow-lg shadow-primary/20 backdrop-blur-lg",
+        className
+      )}
+      {...props}
     >
       <div className="absolute -right-4 -top-4 h-24 w-24 bg-[radial-gradient(closest-side,hsl(var(--primary)/0.1),transparent)]"></div>
       <div className="relative z-10 flex h-full flex-col">

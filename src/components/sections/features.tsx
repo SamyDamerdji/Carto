@@ -31,15 +31,15 @@ export function Features() {
     <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-3">
       {features.map((feature, index) => (
         <Link href={feature.href} key={feature.id}>
-          <div id={feature.id} className="scroll-mt-24 h-full">
-            <FeatureCard
-              index={index}
-              title={feature.title}
-              description={feature.description}
-            >
-              {feature.icon}
-            </FeatureCard>
-          </div>
+          <FeatureCard
+            id={feature.id}
+            className="scroll-mt-24 h-full"
+            index={index}
+            title={feature.title}
+            description={feature.description}
+          >
+            {feature.icon}
+          </FeatureCard>
         </Link>
       ))}
     </div>
