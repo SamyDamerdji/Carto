@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
@@ -41,15 +42,15 @@ const CardSlot = ({ drawnCard, isRevealed, index }: { drawnCard: DrawnCard; isRe
         transition={{ duration: 0.6, delay: index * 0.1 }}
       >
         {/* Card Back */}
-        <div className="absolute w-full h-full [backface-visibility:hidden] rounded-2xl overflow-hidden shadow-lg shadow-primary/20">
+        <div className="absolute w-full h-full [backface-visibility:hidden] rounded-lg overflow-hidden shadow-lg shadow-primary/20">
           <Image src={cardBackUrl} alt="Dos de carte" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" priority={index < 3} />
         </div>
 
         {/* Card Front */}
-        <div className="absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-2xl overflow-hidden border border-primary/30 bg-secondary/20 p-2 text-center shadow-lg shadow-primary/20 backdrop-blur-lg flex flex-col items-center justify-between">
-            <div className="relative flex-grow w-full my-2">
+        <div className="absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-lg overflow-hidden border border-primary/30 bg-secondary/20 p-1 text-center shadow-lg shadow-primary/20 backdrop-blur-lg flex flex-col items-center justify-between">
+            <div className="relative flex-grow w-full my-1">
                 <div className="relative h-full w-full">
-                    <div className="absolute inset-0 bg-card rounded-xl shadow-inner p-1">
+                    <div className="absolute inset-0 bg-card rounded-md shadow-inner p-1">
                     <div className="relative h-full w-full">
                         <Image
                         src={drawnCard.card.image_url}
@@ -62,7 +63,7 @@ const CardSlot = ({ drawnCard, isRevealed, index }: { drawnCard: DrawnCard; isRe
                     </div>
                 </div>
             </div>
-            <p className="mt-1 font-body text-sm font-semibold text-card-foreground/90">
+            <p className="mt-1 font-body text-[10px] font-semibold text-card-foreground/90 leading-tight">
                 {drawnCard.card.nom_carte}
             </p>
         </div>
@@ -142,7 +143,7 @@ export default function RevelationSystemiquePage() {
     <div className="flex min-h-dvh flex-col">
       <Header />
       <main className="flex-grow container mx-auto px-4 pb-8">
-        <div className="mx-auto mt-8 max-w-5xl rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6">
+        <div className="mx-auto mt-8 max-w-4xl rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6">
 
             <div className="text-center mb-8">
                 <h1 className="font-headline text-3xl font-bold tracking-tight text-primary sm:text-4xl uppercase drop-shadow-lg">
@@ -180,14 +181,14 @@ export default function RevelationSystemiquePage() {
                   <Loader2 className="h-12 w-12 animate-spin text-primary" />
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-8 max-w-5xl mx-auto">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-10 max-w-4xl mx-auto items-start">
                   {drawnCards.map((c, i) => (
-                      <div key={c.position} className={`flex flex-col items-center text-center ${c.position === 7 ? 'md:col-start-2' : ''}`}>
-                          <div className="mb-2 h-16 flex flex-col justify-center">
-                              <h3 className="font-headline text-base font-bold uppercase tracking-wider text-primary drop-shadow-md">{c.title}</h3>
+                      <div key={c.position} className={`flex flex-col items-center text-center ${c.position === 7 ? 'col-span-2 md:col-span-1 md:col-start-2' : ''}`}>
+                          <div className="mb-2 h-14 flex flex-col justify-center">
+                              <h3 className="font-headline text-sm font-bold uppercase tracking-wider text-primary drop-shadow-md">{c.title}</h3>
                               <p className="text-xs text-white/80 mt-1 px-2">{c.description}</p>
                           </div>
-                          <div className="w-40 sm:w-48">
+                          <div className="w-28 sm:w-32">
                               <CardSlot drawnCard={c} isRevealed={isRevealed} index={i} />
                           </div>
                       </div>
