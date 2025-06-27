@@ -46,12 +46,8 @@ const CardSlot = ({ drawnCard, isRevealed, index }: { drawnCard: DrawnCard; isRe
         </div>
 
         {/* Card Front */}
-        <div className="absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-2xl overflow-hidden border border-primary/30 bg-secondary/20 p-2 text-center shadow-lg shadow-primary/20 backdrop-blur-lg flex flex-col items-center">
-            <h3 className="font-headline text-sm font-bold uppercase tracking-wider text-primary">
-                {drawnCard.title}
-            </h3>
-            <p className="text-xs text-white/80 mb-1 h-8 flex items-center text-center">{drawnCard.description}</p>
-            <div className="relative flex-grow w-full">
+        <div className="absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-2xl overflow-hidden border border-primary/30 bg-secondary/20 p-2 text-center shadow-lg shadow-primary/20 backdrop-blur-lg flex flex-col items-center justify-between">
+            <div className="relative flex-grow w-full my-2">
                 <div className="relative h-full w-full">
                     <div className="absolute inset-0 bg-card rounded-xl shadow-inner p-1">
                     <div className="relative h-full w-full">
@@ -179,18 +175,24 @@ export default function RevelationSystemiquePage() {
                 )}
             </div>
             
-            {isLoading && !isRevealed ? (
-            <div className="flex justify-center items-center h-64">
-                <Loader2 className="h-12 w-12 animate-spin text-primary" />
-            </div>
+            {isLoading ? (
+              <div className="flex justify-center items-center min-h-[400px]">
+                  <Loader2 className="h-12 w-12 animate-spin text-primary" />
+              </div>
             ) : (
-            <div className="grid grid-cols-3 gap-4 max-w-3xl mx-auto">
-                {drawnCards.map((c, i) => (
-                    <div key={c.position} className={c.position === 7 ? 'col-start-2' : ''}>
-                        <CardSlot drawnCard={c} isRevealed={isRevealed} index={i} />
-                    </div>
-                ))}
-            </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-8 max-w-5xl mx-auto">
+                  {drawnCards.map((c, i) => (
+                      <div key={c.position} className={`flex flex-col items-center text-center ${c.position === 7 ? 'md:col-start-2' : ''}`}>
+                          <div className="mb-2 h-16 flex flex-col justify-center">
+                              <h3 className="font-headline text-base font-bold uppercase tracking-wider text-primary drop-shadow-md">{c.title}</h3>
+                              <p className="text-xs text-white/80 mt-1 px-2">{c.description}</p>
+                          </div>
+                          <div className="w-40 sm:w-48">
+                              <CardSlot drawnCard={c} isRevealed={isRevealed} index={i} />
+                          </div>
+                      </div>
+                  ))}
+              </div>
             )}
         </div>
       </main>
