@@ -1,4 +1,4 @@
-import { BookOpen, BrainCircuit, Rows3 } from "lucide-react";
+import { BookOpen, BrainCircuit, Stars } from "lucide-react";
 import { FeatureCard } from "@/components/sections/feature-card";
 import Link from "next/link";
 
@@ -19,10 +19,10 @@ const features = [
   },
   {
     id: "tirages",
-    icon: <Rows3 className="h-7 w-7 text-primary" />,
+    icon: <Stars className="h-7 w-7 text-primary" />,
     title: "Tirages",
     description: "Découvrez ce que l'avenir vous réserve et laissez l'Oracle interpréter le message des cartes.",
-    href: "#",
+    href: "/tirages",
   },
 ];
 
