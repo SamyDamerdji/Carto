@@ -6,6 +6,26 @@ import { Button } from "@/components/ui/button";
 import { Volume2, VolumeX, Loader2 } from "lucide-react";
 import { textToSpeech } from "@/ai/flows/tts-flow";
 
+// This singleton object will manage the currently playing audio across all InfoCard instances
+const audioPlayerManager = {
+  current: null as HTMLAudioElement | null,
+
+  play(element: HTMLAudioElement) {
+    if (this.current && this.current !== element) {
+      this.current.pause();
+    }
+    this.current = element;
+    element.play().catch(e => console.error("Audio play failed", e));
+  },
+
+  pause() {
+    if (this.current) {
+      this.current.pause();
+    }
+  },
+};
+
+
 interface InfoCardProps {
   icon: ElementType;
   title: string;
@@ -24,12 +44,12 @@ export function InfoCard({ icon: Icon, title, children, textContentToSpeak, play
     if (!textContentToSpeak || isLoading) return;
 
     if (isPlaying && audioRef.current) {
-      audioRef.current.pause();
+      audioPlayerManager.pause();
       return;
     }
 
-    if (!isPlaying && audioRef.current && audioRef.current.src && audioRef.current.readyState > 0 && !audioRef.current.ended) {
-      audioRef.current.play().catch(e => console.error("Audio play failed", e));
+    if (audioRef.current && audioRef.current.src && audioRef.current.readyState > 0 && !audioRef.current.ended) {
+      audioPlayerManager.play(audioRef.current);
       return;
     }
 
@@ -38,7 +58,7 @@ export function InfoCard({ icon: Icon, title, children, textContentToSpeak, play
       const result = await textToSpeech(textContentToSpeak);
       if (result && result.media && audioRef.current) {
         audioRef.current.src = result.media;
-        await audioRef.current.play().catch(e => console.error("Audio play failed", e));
+        audioPlayerManager.play(audioRef.current);
       }
     } catch (error) {
       console.error("TTS generation error", error);
@@ -49,13 +69,13 @@ export function InfoCard({ icon: Icon, title, children, textContentToSpeak, play
 
   useEffect(() => {
     const autoPlay = async () => {
-      if (!textContentToSpeak) return;
+      if (!textContentToSpeak || !audioRef.current) return;
       setIsLoading(true);
       try {
         const { media } = await textToSpeech(textContentToSpeak);
         if (media && audioRef.current) {
           audioRef.current.src = media;
-          await audioRef.current.play();
+          audioPlayerManager.play(audioRef.current);
         }
       } catch (error) {
         console.error("TTS auto-play generation error", error);
@@ -72,27 +92,31 @@ export function InfoCard({ icon: Icon, title, children, textContentToSpeak, play
 
   useEffect(() => {
     const audioElement = audioRef.current;
-    const onEnded = () => setIsPlaying(false);
-    const onPlay = () => setIsPlaying(true);
-    const onPause = () => setIsPlaying(false);
-
     if (audioElement) {
-      audioElement.addEventListener('ended', onEnded);
-      audioElement.addEventListener('play', onPlay);
-      audioElement.addEventListener('pause', onPause);
-      return () => {
-        audioElement.removeEventListener('ended', onEnded);
-        audioElement.removeEventListener('play', onPlay);
-        audioElement.removeEventListener('pause', onPause);
-      };
+        const onPlay = () => setIsPlaying(true);
+        const onPauseOrEnd = () => {
+            setIsPlaying(false);
+            if (audioPlayerManager.current === audioElement) {
+                audioPlayerManager.current = null;
+            }
+        };
+
+        audioElement.addEventListener('play', onPlay);
+        audioElement.addEventListener('pause', onPauseOrEnd);
+        audioElement.addEventListener('ended', onPauseOrEnd);
+        return () => {
+            audioElement.removeEventListener('play', onPlay);
+            audioElement.removeEventListener('pause', onPauseOrEnd);
+            audioElement.removeEventListener('ended', onPauseOrEnd);
+        };
     }
   }, []);
 
   useEffect(() => {
+    const currentAudioEl = audioRef.current;
     return () => {
-        if (audioRef.current) {
-            audioRef.current.pause();
-            audioRef.current.src = "";
+        if (currentAudioEl && audioPlayerManager.current === currentAudioEl) {
+            audioPlayerManager.pause();
         }
     }
   }, []);
