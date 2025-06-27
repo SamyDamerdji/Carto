@@ -200,7 +200,7 @@ export default function RevelationSystemiquePage() {
   return (
     <div className="flex min-h-dvh flex-col">
       <Header />
-      <audio ref={flipSoundRef} src="https://actions.google.com/sounds/v1/cards/card_dealing_single.ogg" preload="auto" className="hidden" />
+      <audio ref={flipSoundRef} src="https://actions.google.com/sounds/v1/screen_effects/page_turn.ogg" preload="auto" className="hidden" />
       <main className="flex-grow container mx-auto px-4 pb-8">
         <div className="mx-auto mt-8 max-w-4xl rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6">
 
