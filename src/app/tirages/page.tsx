@@ -44,7 +44,7 @@ const CardSlot = ({ drawnCard, isRevealed, index }: { drawnCard: DrawnCard; isRe
         {/* Card Back */}
         <div className="absolute w-full h-full [backface-visibility:hidden] rounded-lg overflow-hidden border border-primary/30 bg-secondary/20 p-1 shadow-lg shadow-primary/20 backdrop-blur-lg flex items-center justify-center">
           <div className="relative h-full w-full">
-            <div className="absolute inset-0 bg-card rounded-md shadow-inner p-1">
+            <div className="absolute inset-0 bg-card rounded-md shadow-inner p-[2px]">
               <div className="relative h-full w-full">
                 <Image src={cardBackUrl} alt="Dos de carte" fill className="object-contain" sizes="(max-width: 768px) 100vw, 33vw" priority={index < 3} />
               </div>
@@ -56,7 +56,7 @@ const CardSlot = ({ drawnCard, isRevealed, index }: { drawnCard: DrawnCard; isRe
         <div className="absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-lg overflow-hidden border border-primary/30 bg-secondary/20 p-1 text-center shadow-lg shadow-primary/20 backdrop-blur-lg flex flex-col items-center justify-between">
             <div className="relative flex-grow w-full my-1">
                 <div className="relative h-full w-full">
-                    <div className="absolute inset-0 bg-card rounded-md shadow-inner p-1">
+                    <div className="absolute inset-0 bg-card rounded-md shadow-inner p-[2px]">
                     <div className="relative h-full w-full">
                         <Image
                         src={drawnCard.card.image_url}
