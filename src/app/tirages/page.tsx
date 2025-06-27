@@ -184,21 +184,12 @@ export default function RevelationSystemiquePage() {
                 <Loader2 className="h-12 w-12 animate-spin text-primary" />
             </div>
             ) : (
-            <div className="space-y-6">
-                {/* Row 1 */}
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-                {drawnCards.slice(0, 3).map((c, i) => <CardSlot key={c.position} drawnCard={c} isRevealed={isRevealed} index={i} />)}
-                </div>
-                {/* Row 2 */}
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-                {drawnCards.slice(3, 6).map((c, i) => <CardSlot key={c.position} drawnCard={c} isRevealed={isRevealed} index={i + 3} />)}
-                </div>
-                {/* Row 3 */}
-                <div className="flex justify-center">
-                <div className="w-1/2 md:w-1/3">
-                    {drawnCards.slice(6, 7).map((c, i) => <CardSlot key={c.position} drawnCard={c} isRevealed={isRevealed} index={i + 6} />)}
-                </div>
-                </div>
+            <div className="grid grid-cols-3 gap-4 max-w-3xl mx-auto">
+                {drawnCards.map((c, i) => (
+                    <div key={c.position} className={c.position === 7 ? 'col-start-2' : ''}>
+                        <CardSlot drawnCard={c} isRevealed={isRevealed} index={i} />
+                    </div>
+                ))}
             </div>
             )}
         </div>
