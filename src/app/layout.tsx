@@ -3,6 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { cn } from '@/lib/utils';
 import { Cinzel, EB_Garamond } from 'next/font/google';
+import { PwaInstaller } from '@/components/pwa-installer';
 
 const cinzel = Cinzel({
   subsets: ['latin'],
@@ -63,6 +64,7 @@ export default function RootLayout({
         cinzel.variable,
         ebGaramond.variable
       )}>
+        <PwaInstaller />
         {children}
         <Toaster />
       </body>

@@ -1,5 +1,12 @@
-// This is a basic service worker file.
-// It's here primarily to make the app installable.
-self.addEventListener('fetch', function(event) {
-  // We are not caching anything in this simple service worker.
+self.addEventListener('install', (event) => {
+  console.log('Service Worker: Installing...');
+});
+
+self.addEventListener('activate', (event) => {
+  console.log('Service Worker: Activating...');
+});
+
+self.addEventListener('fetch', (event) => {
+  // A basic fetch handler to make the app installable.
+  // This does not provide offline functionality.
 });
