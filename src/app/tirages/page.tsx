@@ -184,9 +184,8 @@ export default function RevelationSystemiquePage() {
               <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-10 max-w-4xl mx-auto items-start">
                   {drawnCards.map((c, i) => (
                       <div key={c.position} className={`flex flex-col items-center text-center ${c.position === 7 ? 'col-span-2 md:col-span-1 md:col-start-2' : ''}`}>
-                          <div className="mb-2 h-14 flex flex-col justify-center">
-                              <h3 className="font-headline text-sm font-bold uppercase tracking-wider text-primary drop-shadow-md">{c.title}</h3>
-                              <p className="text-xs text-white/80 mt-1 px-2">{c.description}</p>
+                          <div className="mb-2 flex h-14 items-center justify-center">
+                              <p className="text-xs text-white/80 px-2">{c.description}</p>
                           </div>
                           <div className="w-28 sm:w-32">
                               <CardSlot drawnCard={c} isRevealed={isRevealed} index={i} />
