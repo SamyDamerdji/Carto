@@ -74,10 +74,15 @@ const deepenRevelationFlow = ai.defineFlow(
     outputSchema: DeepenRevelationOutputSchema,
   },
   async (input) => {
-    const { output } = await deepenPrompt(input);
-    if (!output) {
-      throw new Error("L'approfondissement n'a pas pu être généré.");
+    try {
+      const { output } = await deepenPrompt(input);
+      if (!output) {
+        throw new Error("L'approfondissement n'a pas pu être généré.");
+      }
+      return output;
+    } catch (error) {
+      console.error("Error in deepenRevelationFlow:", error);
+      throw new Error("Une erreur est survenue lors de la communication avec l'oracle pour l'approfondissement.");
     }
-    return output;
   }
 );

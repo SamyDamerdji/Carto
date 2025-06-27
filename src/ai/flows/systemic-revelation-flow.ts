@@ -54,10 +54,15 @@ const systemicRevelationFlow = ai.defineFlow(
     outputSchema: SystemicRevelationOutputSchema,
   },
   async (input) => {
-    const { output } = await interpretationPrompt(input);
-    if (!output) {
-      throw new Error("L'analyse systémique n'a pas pu être générée.");
+    try {
+      const { output } = await interpretationPrompt(input);
+      if (!output) {
+        throw new Error("L'analyse systémique n'a pas pu être générée.");
+      }
+      return output;
+    } catch (error) {
+        console.error("Error in systemicRevelationFlow:", error);
+        throw new Error("Une erreur est survenue lors de la communication avec l'oracle pour l'interprétation.");
     }
-    return output;
   }
 );
