@@ -94,52 +94,10 @@ export function CardDetailsView({ card }: { card: Card }) {
 
   useEffect(() => {
     // Cleanup speech synthesis on component unmount
-    const cleanupSpeechSynthesis = () => {
+    return () => {
       window.speechSynthesis.cancel();
     };
-
-    const SpeechRecognition =
-      (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-
-    if (SpeechRecognition) {
-      const recognition = new SpeechRecognition();
-      recognition.continuous = false;
-      recognition.lang = 'fr-FR';
-      recognition.interimResults = false;
-
-      recognition.onresult = (event) => {
-        const transcript = event.results[0][0].transcript;
-        setInputValue(transcript);
-      };
-
-      recognition.onerror = (event) => {
-        console.error('Speech recognition error:', event.error);
-        let errorMessage = "Une erreur est survenue avec la reconnaissance vocale.";
-        if (event.error === 'not-allowed' || event.error === 'service-not-allowed') {
-          errorMessage = "L'accès au microphone est refusé. Veuillez l'autoriser dans les paramètres de votre navigateur.";
-        } else if (event.error === 'no-speech') {
-          errorMessage = "Aucun son n'a été détecté. Veuillez réessayer.";
-        }
-        toast({
-          variant: 'destructive',
-          title: 'Erreur de saisie vocale',
-          description: errorMessage,
-        });
-        setIsRecording(false);
-      };
-
-      recognition.onend = () => {
-        setIsRecording(false);
-      };
-
-      recognitionRef.current = recognition;
-    } else {
-      console.warn('Speech Recognition not supported by this browser.');
-    }
-
-    return cleanupSpeechSynthesis;
-  }, [toast]);
-
+  }, []);
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -187,24 +145,73 @@ export function CardDetailsView({ card }: { card: Card }) {
   };
   
   const handleMicClick = () => {
-    if (isLoading || !recognitionRef.current) return;
-
-    if (isRecording) {
+    if (isLoading) return;
+  
+    if (isRecording && recognitionRef.current) {
       recognitionRef.current.stop();
-    } else {
-      setInputValue('');
-      try {
-        recognitionRef.current.start();
-        setIsRecording(true);
-      } catch (error) {
-        console.error('Error starting speech recognition:', error);
-        toast({
-          variant: 'destructive',
-          title: 'Erreur de saisie vocale',
-          description: "Impossible de démarrer l'enregistrement.",
-        });
-        setIsRecording(false);
+      return;
+    }
+  
+    const SpeechRecognition =
+      (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+  
+    if (!SpeechRecognition) {
+      toast({
+        variant: 'destructive',
+        title: 'Non supporté',
+        description: "La reconnaissance vocale n'est pas supportée par votre navigateur.",
+      });
+      return;
+    }
+  
+    const recognition = new SpeechRecognition();
+    recognition.continuous = false;
+    recognition.lang = 'fr-FR';
+    recognition.interimResults = false;
+  
+    recognitionRef.current = recognition;
+  
+    recognition.onstart = () => {
+      setIsRecording(true);
+    };
+  
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      setInputValue(transcript);
+    };
+  
+    recognition.onerror = (event) => {
+      console.error('Speech recognition error:', event.error);
+      let errorMessage = "Une erreur est survenue avec la reconnaissance vocale.";
+      if (event.error === 'not-allowed' || event.error === 'service-not-allowed') {
+        errorMessage = "L'accès au microphone est refusé. Veuillez l'autoriser dans les paramètres de votre navigateur.";
+      } else if (event.error === 'no-speech') {
+        errorMessage = "Aucun son n'a été détecté. Veuillez réessayer.";
       }
+      toast({
+        variant: 'destructive',
+        title: 'Erreur de saisie vocale',
+        description: errorMessage,
+      });
+    };
+  
+    recognition.onend = () => {
+      setIsRecording(false);
+      recognitionRef.current = null;
+    };
+  
+    setInputValue('');
+    try {
+      recognition.start();
+    } catch (error) {
+      console.error("Error starting speech recognition:", error);
+      toast({
+        variant: 'destructive',
+        title: 'Erreur de saisie vocale',
+        description: "Impossible de démarrer l'enregistrement.",
+      });
+      setIsRecording(false);
+      recognitionRef.current = null;
     }
   };
 
@@ -349,7 +356,7 @@ export function CardDetailsView({ card }: { card: Card }) {
        <SectionWrapper title="Mes Notes" icon={NotebookText} index={hasCombinaisons ? 6 : 5}>
            <Textarea
                placeholder="Mes réflexions, associations personnelles, ou interprétations..."
-               className="bg-secondary/20 backdrop-blur-lg border-primary/30 text-white placeholder:text-white/60 focus-visible:ring-ring focus-visible:ring-offset-0"
+               className="bg-secondary/20 backdrop-blur-lg border-primary/30 text-white placeholder:text-white/60"
                rows={5}
            />
        </SectionWrapper>
@@ -398,14 +405,14 @@ export function CardDetailsView({ card }: { card: Card }) {
                        value={inputValue}
                        onChange={(e) => setInputValue(e.target.value)}
                        disabled={isLoading}
-                       className="bg-secondary/20 backdrop-blur-lg border-primary/30 text-white placeholder:text-white/60 focus-visible:ring-ring focus-visible:ring-offset-0"
+                       className="bg-secondary/20 backdrop-blur-lg border-primary/30 text-white placeholder:text-white/60"
                    />
                    <Button
                        variant="ghost"
                        size="icon"
                        type="button"
                        onClick={handleMicClick}
-                       disabled={isLoading || !recognitionRef.current}
+                       disabled={isLoading}
                        className={cn(
                            "text-primary hover:bg-primary/20",
                            isRecording && "bg-destructive/20 text-destructive animate-pulse"
