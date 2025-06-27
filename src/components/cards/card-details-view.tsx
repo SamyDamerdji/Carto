@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import type { Card } from '@/lib/data/cards';
 import { getCardDetails } from '@/lib/data/cards';
 import { chatWithOracle } from '@/ai/flows/oracle-flow';
+import { textToSpeech } from '@/ai/flows/tts-flow';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -81,8 +82,11 @@ export function CardDetailsView({ card }: { card: Card }) {
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isTtsEnabled, setIsTtsEnabled] = useState(true);
+  const [isTtsLoading, setIsTtsLoading] = useState(false);
+  const [isTtsPlaying, setIsTtsPlaying] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
   const chatContainerRef = useRef<HTMLDivElement>(null);
+  const ttsAudioRef = useRef<HTMLAudioElement | null>(null);
   const recognitionRef = useRef<SpeechRecognition | null>(null);
   const { toast } = useToast();
 
@@ -93,9 +97,31 @@ export function CardDetailsView({ card }: { card: Card }) {
   }, [messages]);
 
   useEffect(() => {
-    // Cleanup speech synthesis on component unmount
+    const audioElement = ttsAudioRef.current;
+    if (!audioElement) return;
+
+    const onPlay = () => setIsTtsPlaying(true);
+    const onPause = () => setIsTtsPlaying(false);
+    const onEnded = () => setIsTtsPlaying(false);
+
+    audioElement.addEventListener('play', onPlay);
+    audioElement.addEventListener('pause', onPause);
+    audioElement.addEventListener('ended', onEnded);
+
     return () => {
-      window.speechSynthesis.cancel();
+      audioElement.removeEventListener('play', onPlay);
+      audioElement.removeEventListener('pause', onPause);
+      audioElement.removeEventListener('ended', onEnded);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Cleanup audio on component unmount
+    return () => {
+      if (ttsAudioRef.current) {
+        ttsAudioRef.current.pause();
+        ttsAudioRef.current.src = "";
+      }
     };
   }, []);
 
@@ -103,7 +129,10 @@ export function CardDetailsView({ card }: { card: Card }) {
     e.preventDefault();
     if (!inputValue.trim() || isLoading) return;
 
-    window.speechSynthesis.cancel(); // Stop any previous speech
+    if (ttsAudioRef.current) {
+        ttsAudioRef.current.pause();
+        ttsAudioRef.current.src = "";
+    }
     
     const userMessage = { role: 'user', content: inputValue };
     setMessages(prev => [...prev, userMessage]);
@@ -122,9 +151,18 @@ export function CardDetailsView({ card }: { card: Card }) {
       setMessages(prev => [...prev, oracleMessage]);
 
       if (isTtsEnabled && oracleResponseText) {
-          const utterance = new SpeechSynthesisUtterance(oracleResponseText);
-          utterance.lang = 'fr-FR';
-          window.speechSynthesis.speak(utterance);
+          setIsTtsLoading(true);
+          try {
+              const { media } = await textToSpeech(oracleResponseText);
+              if (media && ttsAudioRef.current) {
+                  ttsAudioRef.current.src = media;
+                  await ttsAudioRef.current.play();
+              }
+          } catch (ttsError) {
+              console.error("TTS generation error", ttsError);
+          } finally {
+              setIsTtsLoading(false);
+          }
       }
 
     } catch (error) {
@@ -136,12 +174,16 @@ export function CardDetailsView({ card }: { card: Card }) {
     }
   };
 
-  const toggleTts = () => {
+  const handleTtsButtonClick = () => {
+    if (isTtsLoading) return;
+
+    if (isTtsPlaying) {
+      ttsAudioRef.current?.pause();
+      return;
+    }
+    
     const newState = !isTtsEnabled;
     setIsTtsEnabled(newState);
-    if (!newState) {
-        window.speechSynthesis.cancel();
-    }
   };
   
   const handleMicClick = () => {
@@ -215,8 +257,15 @@ export function CardDetailsView({ card }: { card: Card }) {
     }
   };
 
+  const TtsIcon = isTtsLoading ? Loader2 : isTtsPlaying ? VolumeX : isTtsEnabled ? Volume2 : VolumeX;
+  const ttsButtonLabel = isTtsLoading ? "Génération audio..." 
+    : isTtsPlaying ? "Arrêter la lecture" 
+    : isTtsEnabled ? "Désactiver la synthèse vocale" 
+    : "Activer la synthèse vocale";
+
   return (
     <div className="container mx-auto px-4 pb-8">
+      <audio ref={ttsAudioRef} className="hidden" />
       {/* A. En-tête */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -370,11 +419,11 @@ export function CardDetailsView({ card }: { card: Card }) {
             <Button
                 variant="ghost"
                 size="icon"
-                onClick={toggleTts}
+                onClick={handleTtsButtonClick}
                 className="text-primary hover:bg-primary/20"
-                aria-label={isTtsEnabled ? "Désactiver la synthèse vocale" : "Activer la synthèse vocale"}
+                aria-label={ttsButtonLabel}
             >
-                {isTtsEnabled ? <Volume2 className="h-5 w-5" /> : <VolumeX className="h-5 w-5" />}
+              <TtsIcon className={`h-5 w-5 ${isTtsLoading ? 'animate-spin' : ''}`} />
             </Button>
         }
        >
