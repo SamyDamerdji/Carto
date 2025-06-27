@@ -30,7 +30,7 @@ interface DrawnCard {
 }
 
 const CardSlot = ({ drawnCard, isRevealed, index }: { drawnCard: DrawnCard; isRevealed: boolean; index: number }) => {
-  const cardBackUrl = "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/dos.png";
+  const cardBackUrl = "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/back.png";
 
   return (
     <div className="[perspective:1000px] w-full aspect-[2.5/3.5]">
