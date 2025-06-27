@@ -6,11 +6,13 @@ import { motion } from 'framer-motion';
 import type { CardSummary } from '@/lib/data/cards';
 import { cardsList } from '@/lib/data/cards';
 import { interpretSystemicRevelation, type SystemicRevelationOutput } from '@/ai/flows/systemic-revelation-flow';
+import { deepenSystemicRevelation, type DeepenRevelationOutput } from '@/ai/flows/deepen-revelation-flow';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
+import { InfoCard } from '@/components/common/info-card';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
-import { Loader2, BrainCircuit, Eye, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Loader2, BrainCircuit, Eye, Sparkles, CheckCircle2, Users, Zap, Sunrise } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 const cardPositions = [
@@ -87,15 +89,16 @@ export default function RevelationSystemiquePage() {
   const [interpretation, setInterpretation] = useState<SystemicRevelationOutput | null>(null);
   const [isDeepening, setIsDeepening] = useState(false);
   const [hasDeepened, setHasDeepened] = useState(false);
+  const [deepenedInterpretation, setDeepenedInterpretation] = useState<DeepenRevelationOutput | null>(null);
   const { toast } = useToast();
 
   const drawCards = useCallback(() => {
     setIsLoading(true);
     setIsRevealed(false);
     setInterpretation(null);
+    setDeepenedInterpretation(null);
     setHasDeepened(false);
     
-    // Give a moment for the flip-back animation to be noticeable
     setTimeout(() => {
         const shuffled = [...cardsList].sort(() => 0.5 - Math.random());
         const newDraw = cardPositions.map((pos, index) => ({
@@ -151,15 +154,42 @@ export default function RevelationSystemiquePage() {
   };
 
   const handleDeepen = async () => {
+    if (!interpretation || drawnCards.length < 7) return;
     setIsDeepening(true);
-    // Placeholder for a future, more complex AI call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setHasDeepened(true);
-    setIsDeepening(false);
-    toast({
-      title: "Approfondissement terminé",
-      description: "L'oracle a livré tous ses secrets sur ce tirage.",
-    });
+
+    try {
+        const input = {
+            cards: {
+                card1: `${drawnCards[0].card.nom_carte}`,
+                card2: `${drawnCards[1].card.nom_carte}`,
+                card3: `${drawnCards[2].card.nom_carte}`,
+                card4: `${drawnCards[3].card.nom_carte}`,
+                card5: `${drawnCards[4].card.nom_carte}`,
+                card6: `${drawnCards[5].card.nom_carte}`,
+                card7: `${drawnCards[6].card.nom_carte}`,
+            },
+            initialInterpretation: interpretation,
+        };
+
+        const result = await deepenSystemicRevelation(input);
+        setDeepenedInterpretation(result);
+        setHasDeepened(true);
+
+        toast({
+            title: "Approfondissement terminé",
+            description: "L'oracle a livré des conseils supplémentaires sur ce tirage.",
+        });
+
+    } catch (error) {
+        console.error("Error fetching deepened interpretation:", error);
+        toast({
+            variant: 'destructive',
+            title: "Erreur d'approfondissement",
+            description: "L'IA n'a pas pu approfondir l'analyse. Veuillez réessayer.",
+        });
+    } finally {
+        setIsDeepening(false);
+    }
   };
 
   return (
@@ -241,6 +271,53 @@ export default function RevelationSystemiquePage() {
               </>
             )}
         </div>
+
+        {interpretation && (
+          <div className="mt-12 space-y-8">
+            <InfoCard title="Analyse des Polarités" icon={Users}>
+              <h4 className="font-headline text-lg font-bold text-primary">Pôle Dominant</h4>
+              <p className="text-white/90">{interpretation.polarites.dominante}</p>
+              <h4 className="font-headline text-lg font-bold text-primary mt-4">Pôle Opposé</h4>
+              <p className="text-white/90">{interpretation.polarites.opposee}</p>
+              <h4 className="font-headline text-lg font-bold text-primary mt-4">Pôle Médiateur</h4>
+              <p className="text-white/90">{interpretation.polarites.mediatrice}</p>
+            </InfoCard>
+
+            <InfoCard title="Analyse des Tensions" icon={Zap}>
+              <h4 className="font-headline text-lg font-bold text-primary">Tension 1 (Blessure latente)</h4>
+              <p className="text-white/90">{interpretation.tensions.tension1}</p>
+              <h4 className="font-headline text-lg font-bold text-primary mt-4">Tension 2 (Pression externe)</h4>
+              <p className="text-white/90">{interpretation.tensions.tension2}</p>
+              <h4 className="font-headline text-lg font-bold text-primary mt-4">Tension 3 (Impulsion interne)</h4>
+              <p className="text-white/90">{interpretation.tensions.tension3}</p>
+            </InfoCard>
+
+            <InfoCard title="Résolution & Synthèse" icon={Sunrise}>
+              <h4 className="font-headline text-lg font-bold text-primary">Résolution Systémique</h4>
+              <p className="text-white/90">{interpretation.resolution}</p>
+              <h4 className="font-headline text-lg font-bold text-primary mt-4">Synthèse Globale</h4>
+              <p className="text-white/90">{interpretation.synthese}</p>
+            </InfoCard>
+          </div>
+        )}
+
+        {deepenedInterpretation && (
+          <div className="mt-8">
+            <InfoCard title="Approfondissement de l'Oracle" icon={BrainCircuit}>
+                <h4 className="font-headline text-lg font-bold text-primary">Conseil Stratégique</h4>
+                <p className="text-white/90">{deepenedInterpretation.conseilStrategique}</p>
+                <h4 className="font-headline text-lg font-bold text-primary mt-4">Levier de Changement</h4>
+                <p className="text-white/90">{deepenedInterpretation.levierDeChangement}</p>
+                <h4 className="font-headline text-lg font-bold text-primary mt-4">Point de Vigilance</h4>
+                <p className="text-white/90">{deepenedInterpretation.pointDeVigilance}</p>
+                <h4 className="font-headline text-lg font-bold text-primary mt-4">Question Réflexive</h4>
+                <blockquote className="border-l-4 border-primary pl-4 italic text-white/90 my-2">
+                    {deepenedInterpretation.questionReflexive}
+                </blockquote>
+            </InfoCard>
+          </div>
+        )}
+
       </main>
       <Footer />
     </div>
