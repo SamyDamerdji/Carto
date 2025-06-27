@@ -51,7 +51,7 @@ const CardSlot = ({ drawnCard, isRevealed, index }: { drawnCard: DrawnCard; isRe
                         src={cardBackUrl}
                         alt="Dos de carte"
                         fill
-                        className="object-cover scale-105"
+                        className="object-cover scale-[1.07]"
                         sizes="(max-width: 768px) 100vw, 33vw"
                         />
                     </div>
