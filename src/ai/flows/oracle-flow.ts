@@ -140,6 +140,7 @@ Combinaisons:
         }
 
         const { output } = await ai.generate({
+            model: 'googleai/gemini-2.0-flash',
             system: fullSystemPrompt,
             prompt: promptForAI,
             output: { schema: LearningOutputSchema }

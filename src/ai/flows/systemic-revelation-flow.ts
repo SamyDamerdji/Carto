@@ -24,6 +24,7 @@ export async function interpretSystemicRevelation(input: SystemicRevelationInput
 // The Genkit Prompt
 const interpretationPrompt = ai.definePrompt({
     name: 'systemicRevelationPrompt',
+    model: 'googleai/gemini-2.0-flash',
     input: { schema: SystemicRevelationInputSchema },
     output: { schema: SystemicRevelationOutputSchema },
     prompt: `Tu es un analyste systémique expert, spécialisé dans la dynamique des relations humaines. Tu utilises un tirage de 7 cartes à jouer pour décrypter les rapports de force, les tensions et les issues probables d'une situation relationnelle ou collective complexe. Ton analyse est psychologique et stratégique, jamais divinatoire. Tu ne prédis pas l'avenir, tu éclaires le présent.
