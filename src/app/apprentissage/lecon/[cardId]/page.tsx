@@ -248,7 +248,7 @@ export default function LeconInteractivePage() {
                     </Button>
                 </div>
                 <div className="bg-card rounded-xl shadow-lg p-1 mx-auto w-fit mb-4"><div className="relative w-[150px] aspect-[2.5/3.5] p-2"><Image src={card.image_url} alt={`Image de la carte ${card.nom_carte}`} fill className="object-contain" sizes="150px" /></div></div>
-                <div className="h-28 text-white/90 text-center flex items-center justify-center p-2 rounded-lg bg-background/20 border border-primary/20">
+                <div className="min-h-28 text-white/90 text-center flex items-center justify-center p-2 rounded-lg bg-background/20 border border-primary/20">
                     <p className="text-sm whitespace-pre-wrap">{currentStep.paragraphe}</p>
                 </div>
 
