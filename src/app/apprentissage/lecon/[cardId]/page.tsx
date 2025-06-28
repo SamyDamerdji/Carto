@@ -7,7 +7,7 @@ import { getCardDetails } from '@/lib/data/cards';
 import { chatWithOracle, type LearningOutput } from '@/ai/flows/oracle-flow';
 import { textToSpeech } from '@/ai/flows/tts-flow';
 import Image from 'next/image';
-import { Loader2, Volume2, VolumeX, Check, X as XIcon } from 'lucide-react';
+import { Loader2, Volume2, VolumeX, Check, X as XIcon, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
@@ -45,12 +45,7 @@ export default function LeconInteractivePage() {
 
   const [isTtsPlaying, setIsTtsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const stateRefs = useRef({ uiSubState, lessonSteps, currentStepIndex });
-
-  useEffect(() => {
-    stateRefs.current = { uiSubState, lessonSteps, currentStepIndex };
-  }, [uiSubState, lessonSteps, currentStepIndex]);
-
+  
   const fetchStepAndAudio = useCallback(async (history: LessonStep[]) => {
     if (!card) return null;
     try {
@@ -85,8 +80,6 @@ export default function LeconInteractivePage() {
     });
   }, [card, fetchStepAndAudio]);
 
-  // This is the core function to move the lesson forward.
-  // It should ONLY be called when prefetchedData is available.
   const advanceToNextStep = useCallback(() => {
     if (!prefetchedData) return;
     setLessonSteps(prev => [...prev, { model: prefetchedData.step, user: { answer: null } }]);
@@ -146,22 +139,23 @@ export default function LeconInteractivePage() {
     const updatedSteps = [...lessonSteps];
     updatedSteps[currentStepIndex].user.answer = option;
     setLessonSteps(updatedSteps);
-
-    setTimeout(() => {
-      if (currentStepModel.finDeLecon) {
-        setLessonState('finished');
-        return;
-      }
-      
-      setCurrentStepIndex(prev => prev + 1);
-      
-      if (prefetchedData) {
-        advanceToNextStep();
-      } else {
-        setIsWaitingForNextStep(true);
-      }
-    }, 1500);
   };
+  
+  const handleContinue = () => {
+    const currentStepModel = lessonSteps[currentStepIndex].model;
+    if (currentStepModel.finDeLecon) {
+      setLessonState('finished');
+      return;
+    }
+    
+    setCurrentStepIndex(prev => prev + 1);
+    
+    if (prefetchedData) {
+      advanceToNextStep();
+    } else {
+      setIsWaitingForNextStep(true);
+    }
+  }
 
   useEffect(() => {
     const audioElement = audioRef.current;
@@ -170,19 +164,16 @@ export default function LeconInteractivePage() {
     const onPlay = () => setIsTtsPlaying(true);
     const onPauseOrEnded = () => {
       setIsTtsPlaying(false);
-      const { uiSubState, lessonSteps, currentStepIndex } = stateRefs.current;
-      if (uiSubState === 'explaining') {
-        const currentStepModel = lessonSteps[currentStepIndex]?.model;
-        if (currentStepModel) {
-          if (currentStepModel.finDeLecon) {
-            setLessonState('finished');
-          } else {
-            setUiSubState('exercising');
-          }
+      // We need to use a function form of setUiSubState to get the latest state
+      // This helps prevent race conditions
+      setUiSubState(currentUiSubState => {
+        if (currentUiSubState === 'explaining') {
+            return 'exercising';
         }
-      }
+        return currentUiSubState;
+      });
     };
-
+    
     audioElement.addEventListener('play', onPlay);
     audioElement.addEventListener('pause', onPauseOrEnded);
     audioElement.addEventListener('ended', onPauseOrEnded);
@@ -191,15 +182,19 @@ export default function LeconInteractivePage() {
       audioElement.removeEventListener('play', onPlay);
       audioElement.removeEventListener('pause', onPauseOrEnded);
       audioElement.removeEventListener('ended', onPauseOrEnded);
-      if (audioPlayerManager.current === audioElement) {
-        audioPlayerManager.pause();
-        audioPlayerManager.current = null;
-      }
-      if (audioElement) {
-        audioElement.src = '';
-      }
     };
+  }, []); // This effect should run only once.
+
+  useEffect(() => {
+    const audioElement = audioRef.current;
+    // This effect handles cleanup when the component truly unmounts.
+    return () => {
+        if (audioPlayerManager.current === audioElement) {
+            audioPlayerManager.pause();
+        }
+    }
   }, []);
+
 
   if (!card) {
     notFound();
@@ -247,7 +242,7 @@ export default function LeconInteractivePage() {
                     <p className="text-sm whitespace-pre-wrap">{currentStep.paragraphe}</p>
                 </div>
 
-                <div className="mt-4 min-h-[160px]">
+                <div className="mt-4 min-h-[210px] flex flex-col justify-center">
                   {uiSubState === 'exercising' || uiSubState === 'feedback' ? (
                     <div className="space-y-2 flex flex-col items-center text-center">
                         <p className="text-sm text-white/80 italic mb-2">{currentStep.exercice?.question}</p>
@@ -272,6 +267,13 @@ export default function LeconInteractivePage() {
                                 </Button>
                             );
                         })}
+                        {uiSubState === 'feedback' && (
+                           <div className="pt-4">
+                             <Button onClick={handleContinue}>
+                               Continuer <ArrowRight className="ml-2 h-4 w-4" />
+                             </Button>
+                           </div>
+                        )}
                     </div>
                   ) : lessonState === 'finished' ? (
                       <div className="text-center text-white/90 p-4">
