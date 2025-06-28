@@ -30,8 +30,7 @@ async function toWav(
 
     const bufs: Buffer[] = [];
     writer.on('error', reject);
-    // Using `any` for the chunk type is safer if type definitions are imprecise.
-    writer.on('data', (d: any) => {
+    writer.on('data', (d: Buffer) => {
       bufs.push(d);
     });
     writer.on('end', () => {
@@ -61,7 +60,7 @@ const ttsFlow = ai.defineFlow(
           responseModalities: ['AUDIO'],
           speechConfig: {
             voiceConfig: {
-              prebuiltVoiceConfig: { voiceName: 'Algenib' },
+              prebuiltVoiceConfig: { voiceName: 'fr-FR-Chirp3-HD-Charon' },
             },
           },
         },
