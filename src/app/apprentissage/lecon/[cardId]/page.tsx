@@ -36,6 +36,7 @@ export default function LeconInteractivePage() {
 
   const [lessonState, setLessonState] = useState<'preparing' | 'ready' | 'active'>('preparing');
   const [initialMessageText, setInitialMessageText] = useState('');
+  const [initialAudioUrl, setInitialAudioUrl] = useState('');
 
   const [messages, setMessages] = useState<{ role: 'user' | 'oracle'; content: string }[]>([]);
   const messagesRef = useRef(messages);
@@ -231,6 +232,12 @@ export default function LeconInteractivePage() {
       try {
         const initialMessage = await chatWithOracle({ card, history: [] });
         setInitialMessageText(initialMessage);
+
+        if (initialMessage) {
+            const { media } = await textToSpeech(initialMessage);
+            setInitialAudioUrl(media);
+        }
+
         setLessonState('ready');
       } catch (error) {
         console.error("Error starting lesson:", error);
@@ -240,7 +247,7 @@ export default function LeconInteractivePage() {
             description: "Désolé, je ne parviens pas à préparer la leçon pour le moment.",
         });
         setMessages([{ role: 'oracle', content: "Désolé, je ne parviens pas à préparer la leçon pour le moment." }]);
-        setLessonState('active'); // Show error in chat
+        setLessonState('active');
       }
     };
 
@@ -248,11 +255,14 @@ export default function LeconInteractivePage() {
   }, [card, toast]);
 
   const handleStartLesson = async () => {
-    if (initialMessageText) {
+    if (initialMessageText && initialAudioUrl) {
         const assistantMessage = { role: 'oracle' as const, content: initialMessageText };
         setMessages([assistantMessage]);
         setLessonState('active');
-        await playTts(initialMessageText); 
+        if (ttsAudioRef.current) {
+            ttsAudioRef.current.src = initialAudioUrl;
+            await audioPlayerManager.play(ttsAudioRef.current);
+        }
     }
   };
 
