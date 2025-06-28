@@ -99,13 +99,15 @@ export default function LeconInteractivePage() {
     setLessonSteps(prev => [...prev, newLessonStep]);
     setCurrentStepIndex(prev => prev + 1);
     
-    if (audioRef.current) {
+    if (audioRef.current && prefetchedData.audioUrl) {
       audioRef.current.src = prefetchedData.audioUrl;
       audioPlayerManager.play(audioRef.current).catch(e => console.error("Audio play failed on advance", e));
+      setUiSubState('explaining');
+    } else {
+      setUiSubState('exercising');
     }
     
     setPrefetchedData(null);
-    setUiSubState('explaining');
     setLastAnswerStatus(null);
     setSelectedOption(null);
     setIsWaitingForNextStep(false);
@@ -130,12 +132,14 @@ export default function LeconInteractivePage() {
     if (!prefetchedData) return;
     setLessonState('active');
     setLessonSteps([{ model: prefetchedData.step, user: { answer: null } }]);
-    if (audioRef.current) {
+    if (audioRef.current && prefetchedData.audioUrl) {
         audioRef.current.src = prefetchedData.audioUrl;
         audioPlayerManager.play(audioRef.current).catch(e => console.error("Audio play failed on start", e));
+        setUiSubState('explaining');
+    } else {
+        setUiSubState('exercising');
     }
     setPrefetchedData(null);
-    setUiSubState('explaining');
   }, [prefetchedData]);
 
   const handleAnswerClick = (option: string) => {
