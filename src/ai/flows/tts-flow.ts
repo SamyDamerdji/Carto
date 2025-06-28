@@ -68,7 +68,8 @@ const ttsFlow = ai.defineFlow(
       });
 
       if (!media || !media.url) {
-        throw new Error('TTS flow: no media returned from Genkit for query.');
+        console.warn(`TTS flow: no media returned from Genkit for query: "${query}"`);
+        return { media: '' };
       }
 
       const audioBuffer = Buffer.from(
@@ -76,13 +77,18 @@ const ttsFlow = ai.defineFlow(
         'base64'
       );
       
+      if (audioBuffer.length === 0) {
+        console.warn(`TTS flow: received empty audio buffer for query: "${query}"`);
+        return { media: '' };
+      }
+      
       const wavData = await toWav(audioBuffer);
       
       return {
         media: 'data:audio/wav;base64,' + wavData,
       };
     } catch (error) {
-      console.error("Error in ttsFlow:", error);
+      console.error("Error in ttsFlow for query:", `"${query}"`, "Error:", error);
       // Re-throw the error so the client can handle it.
       throw new Error("Une erreur est survenue lors de la génération de l'audio. Veuillez réessayer.");
     }
