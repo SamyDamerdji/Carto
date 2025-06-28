@@ -23,12 +23,14 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
 import { audioPlayerManager } from '@/lib/audio-manager';
-import { notFound } from 'next/navigation';
+import { notFound, useParams } from 'next/navigation';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { CardNavigation } from '@/components/cards/card-navigation';
 
-export default function LeconInteractivePage({ params: { cardId } }: { params: { cardId: string } }) {
+export default function LeconInteractivePage() {
+  const params = useParams();
+  const cardId = params.cardId as string;
   const card = getCardDetails(cardId);
   const lessonStarted = useRef(false);
 
@@ -94,7 +96,8 @@ export default function LeconInteractivePage({ params: { cardId } }: { params: {
 
     setIsLoading(true);
     try {
-      const oracleResponseText = await chatWithOracle({ card: card!, history: newHistory });
+      if (!card) return;
+      const oracleResponseText = await chatWithOracle({ card: card, history: newHistory });
       const oracleMessage = { role: 'oracle' as const, content: oracleResponseText };
       setMessages(prev => [...prev, oracleMessage]);
       await playTts(oracleResponseText);
@@ -197,8 +200,9 @@ export default function LeconInteractivePage({ params: { cardId } }: { params: {
     setIsLoading(true);
 
     try {
+      if (!card) return;
       const oracleResponseText = await chatWithOracle({
-        card: card!,
+        card: card,
         history: newHistory,
       });
       
