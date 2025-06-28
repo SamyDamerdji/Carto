@@ -43,10 +43,12 @@ export function CardGrid({ cards }: CardGridProps) {
                     Fiche détaillée
                 </Button>
             </Link>
-            <Button variant="default" size="sm" className="text-xs">
-                <BrainCircuit />
-                Leçon interactive
-            </Button>
+            <Link href={`/apprentissage/lecon/${card.id}`} passHref>
+                <Button variant="default" size="sm" className="text-xs w-full">
+                    <BrainCircuit />
+                    Leçon interactive
+                </Button>
+            </Link>
           </div>
         </div>
       ))}
