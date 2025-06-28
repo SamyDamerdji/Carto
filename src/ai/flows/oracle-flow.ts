@@ -4,12 +4,12 @@
  *
  * - chatWithOracle - A function that allows a user to have a guided lesson about a card.
  * - LearningInput - The input type for the function.
+ * - LearningOutput - The output type for the function.
  */
 
 import { ai } from '@/ai/genkit';
 import { z } from 'zod';
 import type { Card } from '@/lib/data/cards';
-import type { MessageData } from 'genkit';
 
 // Zod Schemas for Card data structure
 const CardCombinationSchema = z.object({
@@ -47,67 +47,76 @@ const CardSchema = z.object({
   combinaisons: z.array(CardCombinationSchema),
 });
 
-const MessageSchema = z.object({
-  role: z.enum(['user', 'oracle']), // Role from the UI
-  content: z.string(),
+
+// New Output Schema
+const QCMExerciceSchema = z.object({
+  question: z.string().describe("La question posée à l'utilisateur pour valider sa compréhension."),
+  options: z.array(z.string()).min(2).max(4).describe("Un tableau de 2 à 4 chaînes de caractères pour les options de réponse."),
+  reponseCorrecte: z.string().describe("Le texte exact de la réponse correcte parmi les options proposées."),
 });
+
+const LearningOutputSchema = z.object({
+  paragraphe: z.string().describe("Le segment textuel de la leçon à lire à haute voix. Doit être court (2-3 phrases) et ne JAMAIS se terminer par une question ouverte."),
+  exercice: QCMExerciceSchema.optional().describe("Un exercice simple (QCM) pour engager l'utilisateur. Doit être omis uniquement si la leçon est terminée."),
+  finDeLecon: z.boolean().describe("Mettre à true si c'est le dernier message de la leçon, auquel cas il n'y a pas d'exercice."),
+});
+export type LearningOutput = z.infer<typeof LearningOutputSchema>;
 
 // Input Schema for the flow
 const LearningInputSchema = z.object({
   card: CardSchema.describe("The full data object for the card being taught."),
-  history: z.array(MessageSchema).describe("The history of the conversation so far."),
+  history: z.array(z.any()).describe("The history of the conversation so far, containing previous steps and user answers."),
 });
 export type LearningInput = z.infer<typeof LearningInputSchema>;
 
+
 // The exported function that the UI will call
-export async function chatWithOracle(input: LearningInput): Promise<string> {
+export async function chatWithOracle(input: LearningInput): Promise<LearningOutput> {
     const flowResult = await learningFlow(input);
     return flowResult;
 }
 
-const systemPromptText = `Tu es un assistant pédagogique spécialisé en cartomancie dans le cadre d'une application interactive. Ta mission est de guider l’utilisateur dans l’apprentissage complet d’une carte à jouer, en t’appuyant sur les données de la carte fournies.
+const systemPromptText = `Tu es un tuteur expert en cartomancie. Ta mission est de créer une leçon interactive, étape par étape, pour enseigner une carte.
 
-**Structure de la Leçon :**
-Tu dois transmettre, de façon progressive, les informations suivantes :
-1.  **Signification de base** (ce que la carte évoque de manière générale)
-2.  **Essence symbolique profonde** (valeurs, archétype, posture existentielle)
-3.  **Significations contextuelles** (en amour, travail, spiritualité, etc.)
-4.  **Interactions et associations avec d'autres cartes** (si pertinentes)
+**Concept Clé : Leçon à "Latence Zéro"**
+Pour donner à l'utilisateur l'impression que tes réponses sont instantanées, tu dois structurer CHAQUE étape de la leçon de la manière très spécifique suivante :
+1.  **Explication Courte :** Tu fournis un paragraphe d'information sur un aspect de la carte. Ce texte sera lu à voix haute. Il doit être concis (2-3 phrases maximum) et ne JAMAIS se terminer par une question ouverte.
+2.  **Exercice d'Engagement :** Immédiatement après, tu proposes un petit exercice simple, toujours un Questionnaire à Choix Multiples (QCM). Cet exercice a un double but : renforcer l'apprentissage et occuper l'utilisateur pendant que l'application prépare la suite.
 
-**Pédagogie Active (TRÈS IMPORTANT) :**
-Ta méthode est un cycle simple : **1. Expliquer, 2. Questionner.**
--   **Étape 1 (Expliquer) :** Tu donnes une information claire et structurée sur un aspect de la carte.
--   **Étape 2 (Questionner) :** **Immédiatement après** ton explication, tu dois **toujours** terminer tes messages par une question ouverte et engageante pour inviter l'utilisateur à réfléchir, à reformuler ou à faire un lien. Par exemple : "Qu'est-ce que cela évoque pour vous ?", "Comment reformuleriez-vous cela avec vos propres mots ?", "Voyez-vous le lien avec... ?". N'enchaîne jamais deux blocs d'explication sans une question.
--   Utilise des métaphores, des images mentales ou des mises en situation pour favoriser la mémorisation.
--   Adopte un ton bienveillant, captivant, légèrement ludique, comme un mentor ou un conteur.
+**Structure de la Leçon (Flux Idéal) :**
+Tu dois guider l'utilisateur à travers les points suivants, en créant une étape (Explication + Exercice) pour chacun :
+1.  Introduction et signification de base.
+2.  Essence symbolique (archétype, posture).
+3.  Significations contextuelles (amour, travail, etc.).
+4.  Interactions avec d'autres cartes (si pertinent).
+5.  Conclusion et résumé.
 
-**Ton objectif :**
-Que l'utilisateur puisse **retenir durablement** l'ensemble des aspects de la carte.
+**Format de Sortie (TRÈS IMPORTANT) :**
+Ta réponse doit IMPÉRATIVEMENT suivre le schéma JSON demandé.
+-   \`paragraphe\`: Le texte de ton explication.
+-   \`exercice\`: Un objet QCM avec :
+    -   \`question\`: La question du QCM.
+    -   \`options\`: Un tableau de 2 à 4 chaînes de caractères (les choix).
+    -   \`reponseCorrecte\`: Le texte exact de la réponse correcte.
+-   \`finDeLecon\`: Un booléen. Mettre à \`true\` pour la toute dernière étape (la conclusion), qui n'aura pas d'exercice.
 
-**Contrainte pour la synthèse vocale (IMPORTANT) :**
-Pour réduire la latence perçue, tu dois structurer ton discours en plusieurs unités pédagogiques courtes, chacune ne dépassant pas 2 ou 3 phrases. Chaque unité doit former un paragraphe distinct. Cela permet de transmettre chaque segment à la synthèse vocale dès qu'il est prêt.
--   Chaque unité doit être un palier logique dans l'explication.
--   Chaque unité doit être grammaticalement complète.
--   Utilise une ponctuation forte et une syntaxe fluide pour faciliter la lecture à voix haute.
--   Anticipe la structure globale de ton explication, comme un exposé découpé en paragraphes courts mais liés. N’attends pas que l’explication complète soit rédigée pour commencer à produire les premiers segments.
+**Règles pour l'Exercice :**
+-   La question doit être directement liée au paragraphe que tu viens d'expliquer.
+-   Les options doivent être claires. Une seule doit être manifestement correcte.
+-   Sois créatif ! Varie les types de questions : "Laquelle de ces affirmations est correcte ?", "Quel mot-clé correspond le mieux à...", "Comment reformuler...".
 
-**Contrainte de Formatage (TRÈS IMPORTANT) :**
-Ta réponse ne doit contenir que du texte brut. N'inclus JAMAIS de démarque Markdown (comme des astérisques pour le gras ou des listes), de balises HTML, ou d'indications non vocales (comme (sourire)). Chaque mot que tu écris sera lu à voix haute. La seule mise en forme autorisée est le saut de ligne pour créer de nouveaux paragraphes.
+**Ton au premier tour :**
+Pour le premier message (historique vide), présente-toi brièvement et commence directement avec la première étape (paragraphe d'introduction + premier QCM).
 
-**Rôle de l'IA au premier tour :**
-Pour le premier message (quand l'historique de conversation est vide), présente-toi brièvement et commence la leçon en introduisant la carte et sa signification de base, en suivant la structure ci-dessus et en terminant par une question.
-
-**Gestion du silence de l'utilisateur :**
-Si l'utilisateur envoie le message "(L'utilisateur est resté silencieux. Continue la leçon.)", ne commente pas son silence. Continue simplement avec la prochaine étape de la leçon, en terminant comme toujours par une question.
-`;
+**Gestion de la conversation :**
+L'historique contiendra les étapes précédentes et les réponses de l'utilisateur. Utilise cet historique pour assurer une progression logique, ne pas te répéter, et faire évoluer la leçon.`;
 
 
-// The Genkit Flow
 const learningFlow = ai.defineFlow(
   {
     name: 'learningFlow',
     inputSchema: LearningInputSchema,
-    outputSchema: z.string(),
+    outputSchema: LearningOutputSchema,
   },
   async (input) => {
     try {
@@ -134,35 +143,32 @@ Combinaisons:
         `;
         
         const fullSystemPrompt = systemPromptText + '\n\n' + cardDataForPrompt;
+        
+        const serializedHistory = input.history.map((item: any, index: number) => 
+            `Étape ${index + 1}:\n- Oracle a dit: ${item.model.paragraphe}\n- Oracle a demandé: "${item.model.exercice.question}"\n- Utilisateur a répondu: "${item.user.answer}"`
+        ).join('\n\n');
 
-        const conversationHistory: MessageData[] = input.history.map((msg) => ({
-          role: msg.role === 'oracle' ? 'model' : 'user',
-          content: [{ text: msg.content }],
-        }));
+        let promptForAI: string;
+        if (input.history.length === 0) {
+            promptForAI = "Commence la leçon. C'est la toute première étape.";
+        } else {
+            promptForAI = `Voici l'historique de la leçon jusqu'à présent:\n${serializedHistory}\n\nTa mission est maintenant de générer la prochaine étape de la leçon. Continue la progression logique.`;
+        }
 
-      let promptForAI: MessageData[] | string;
+        const { output } = await ai.generate({
+            system: fullSystemPrompt,
+            prompt: promptForAI,
+            output: { schema: LearningOutputSchema }
+        });
 
-      if (conversationHistory.length === 0) {
-        // First turn, kick off with a simple user message. The system prompt will guide the AI.
-        promptForAI = "Bonjour, commence la leçon.";
-      } else {
-        // On subsequent turns, the history starts with the model's first response.
-        // To create a valid [user, model, user] sequence, we must prepend the initial user prompt.
-        promptForAI = [
-          { role: 'user', content: [{ text: "Bonjour, commence la leçon." }] },
-          ...conversationHistory
-        ];
-      }
+        if (!output) {
+            throw new Error("L'IA n'a pas pu générer la prochaine étape de la leçon.");
+        }
+        return output;
 
-      const result = await ai.generate({
-          system: fullSystemPrompt,
-          prompt: promptForAI,
-      });
-
-      return result.text ?? "Désolé, une interférence cosmique perturbe ma vision. L'assistant reste silencieux pour l'instant.";
     } catch (error) {
       console.error("Error in learningFlow:", error);
-      return "Désolé, une erreur technique m'empêche de répondre. Veuillez réessayer plus tard.";
+      throw new Error("Désolé, une erreur technique m'empêche de répondre. Veuillez réessayer plus tard.");
     }
   }
 );
