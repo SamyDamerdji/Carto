@@ -37,6 +37,7 @@ import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
+import { audioPlayerManager } from '@/lib/audio-manager';
 
 interface SectionWrapperProps {
   title: string;
@@ -111,7 +112,7 @@ export function CardDetailsView({ card }: { card: Card }) {
             const { media } = await textToSpeech(initialMessage);
             if (media && ttsAudioRef.current) {
               ttsAudioRef.current.src = media;
-              await ttsAudioRef.current.play();
+              await audioPlayerManager.play(ttsAudioRef.current);
             }
           } catch (ttsError) {
             console.error("TTS generation error", ttsError);
@@ -160,7 +161,7 @@ export function CardDetailsView({ card }: { card: Card }) {
     // Cleanup audio on component unmount
     return () => {
       if (ttsAudioRef.current) {
-        ttsAudioRef.current.pause();
+        audioPlayerManager.pause();
         ttsAudioRef.current.src = "";
       }
     };
@@ -170,8 +171,8 @@ export function CardDetailsView({ card }: { card: Card }) {
     e.preventDefault();
     if (!inputValue.trim() || isLoading) return;
 
+    audioPlayerManager.pause();
     if (ttsAudioRef.current) {
-        ttsAudioRef.current.pause();
         ttsAudioRef.current.src = "";
     }
     
@@ -196,7 +197,7 @@ export function CardDetailsView({ card }: { card: Card }) {
               const { media } = await textToSpeech(oracleResponseText);
               if (media && ttsAudioRef.current) {
                   ttsAudioRef.current.src = media;
-                  await ttsAudioRef.current.play();
+                  await audioPlayerManager.play(ttsAudioRef.current);
               }
           } catch (ttsError) {
               console.error("TTS generation error", ttsError);
@@ -223,7 +224,7 @@ export function CardDetailsView({ card }: { card: Card }) {
     if (isTtsLoading) return;
 
     if (isTtsPlaying) {
-      ttsAudioRef.current?.pause();
+      audioPlayerManager.pause();
       return;
     }
     

@@ -5,26 +5,7 @@ import { useState, useCallback, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Volume2, VolumeX, Loader2 } from "lucide-react";
 import { textToSpeech } from "@/ai/flows/tts-flow";
-
-// This singleton object will manage the currently playing audio across all InfoCard instances
-const audioPlayerManager = {
-  current: null as HTMLAudioElement | null,
-
-  play(element: HTMLAudioElement) {
-    if (this.current && this.current !== element) {
-      this.current.pause();
-    }
-    this.current = element;
-    element.play().catch(e => console.error("Audio play failed", e));
-  },
-
-  pause() {
-    if (this.current) {
-      this.current.pause();
-    }
-  },
-};
-
+import { audioPlayerManager } from "@/lib/audio-manager";
 
 interface InfoCardProps {
   icon: ElementType;
@@ -49,7 +30,7 @@ export function InfoCard({ icon: Icon, title, children, textContentToSpeak, play
     }
 
     if (audioRef.current && audioRef.current.src && audioRef.current.readyState > 0 && !audioRef.current.ended) {
-      audioPlayerManager.play(audioRef.current);
+      audioPlayerManager.play(audioRef.current).catch(e => console.error("Audio play failed", e));
       return;
     }
 
@@ -58,7 +39,7 @@ export function InfoCard({ icon: Icon, title, children, textContentToSpeak, play
       const result = await textToSpeech(textContentToSpeak);
       if (result && result.media && audioRef.current) {
         audioRef.current.src = result.media;
-        audioPlayerManager.play(audioRef.current);
+        await audioPlayerManager.play(audioRef.current);
       }
     } catch (error) {
       console.error("TTS generation error", error);
@@ -75,7 +56,7 @@ export function InfoCard({ icon: Icon, title, children, textContentToSpeak, play
         const { media } = await textToSpeech(textContentToSpeak);
         if (media && audioRef.current) {
           audioRef.current.src = media;
-          audioPlayerManager.play(audioRef.current);
+          await audioPlayerManager.play(audioRef.current);
         }
       } catch (error) {
         console.error("TTS auto-play generation error", error);
@@ -97,7 +78,7 @@ export function InfoCard({ icon: Icon, title, children, textContentToSpeak, play
         const onPauseOrEnd = () => {
             setIsPlaying(false);
             if (audioPlayerManager.current === audioElement) {
-                audioPlayerManager.current = null;
+                // Do not nullify, just update state
             }
         };
 
