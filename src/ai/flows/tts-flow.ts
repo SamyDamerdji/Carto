@@ -60,7 +60,7 @@ const ttsFlow = ai.defineFlow(
           responseModalities: ['AUDIO'],
           speechConfig: {
             voiceConfig: {
-              prebuiltVoiceConfig: { voiceName: 'fr-FR-Chirp3-HD-Charon' },
+              prebuiltVoiceConfig: { voiceName: 'fr-FR-Wavenet-A' },
             },
           },
         },
