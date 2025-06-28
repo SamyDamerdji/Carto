@@ -7,7 +7,7 @@ import { getCardDetails } from '@/lib/data/cards';
 import { chatWithOracle, type LearningOutput } from '@/ai/flows/oracle-flow';
 import { textToSpeech } from '@/ai/flows/tts-flow';
 import Image from 'next/image';
-import { Loader2, Volume2, VolumeX, Check, X as XIcon, ArrowRight } from 'lucide-react';
+import { Loader2, Volume2, VolumeX, Check, X as XIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
@@ -158,39 +158,47 @@ export default function LeconInteractivePage() {
     }, 1500);
   };
 
-  // This is the master effect for audio event handling.
-  // It's run only once to prevent issues with React's Strict Mode.
   useEffect(() => {
     const audioElement = audioRef.current;
     if (!audioElement) return;
 
-    const handlePlay = () => setIsTtsPlaying(true);
-    const handlePause = () => setIsTtsPlaying(false);
-    const handleEnded = () => {
-      setIsTtsPlaying(false);
-      // This is the key: only advance the UI when the audio *finishes* playing.
-      setUiSubState('exercising');
+    const onPlay = () => setIsTtsPlaying(true);
+    const onPause = () => setIsTtsPlaying(false);
+    const onEnded = () => {
+        setIsTtsPlaying(false);
+        setUiSubState('exercising');
     };
 
-    audioElement.addEventListener('play', handlePlay);
-    audioElement.addEventListener('pause', handlePause);
-    audioElement.addEventListener('ended', handleEnded);
-
-    // The cleanup function, runs when the component unmounts.
+    audioElement.addEventListener('play', onPlay);
+    audioElement.addEventListener('pause', onPause);
+    audioElement.addEventListener('ended', onEnded);
+    
     return () => {
-      audioElement.removeEventListener('play', handlePlay);
-      audioElement.removeEventListener('pause', handlePause);
-      audioElement.removeEventListener('ended', handleEnded);
-      
-      // Crucial check: only pause the audio if it's the one this component instance is managing.
-      // This prevents the Strict Mode cleanup of the first render from interfering with the second render.
-      if (audioPlayerManager.current === audioElement) {
-        audioPlayerManager.pause();
-      }
+        audioElement.removeEventListener('play', onPlay);
+        audioElement.removeEventListener('pause', onPause);
+        audioElement.removeEventListener('ended', onEnded);
+        // We only pause the audio globally if it's THIS audio element that's currently managed.
+        // This check is crucial for React's Strict Mode to work correctly without side effects.
+        if (audioPlayerManager.current === audioElement) {
+            audioPlayerManager.pause();
+        }
     };
-  }, []); // The empty dependency array is intentional and correct here.
+  }, []);
 
+  // Gracefully handle the case where cardId is not available on initial render.
+  if (!cardId) {
+    return (
+      <div className="flex min-h-dvh flex-col">
+        <Header />
+        <main className="flex-grow flex justify-center items-center">
+          <Loader2 className="h-12 w-12 animate-spin text-primary" />
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
+  // Once cardId is available, if the card is not found, render the 404 page.
   if (!card) {
     notFound();
   }
