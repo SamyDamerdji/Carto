@@ -5,9 +5,9 @@ import { motion } from 'framer-motion';
 import type { Card } from '@/lib/data/cards';
 import { getCardDetails } from '@/lib/data/cards';
 import { chatWithOracle, type LearningOutput } from '@/ai/flows/oracle-flow';
-import { textToSpeech, type TtsOutput } from '@/ai/flows/tts-flow';
+import { textToSpeech } from '@/ai/flows/tts-flow';
 import Image from 'next/image';
-import { Loader2, Volume2, VolumeX, BrainCircuit, Check, X as XIcon } from 'lucide-react';
+import { Loader2, Volume2, VolumeX, Check, X as XIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
@@ -32,22 +32,26 @@ export default function LeconInteractivePage() {
   const { toast } = useToast();
 
   const [lessonState, setLessonState] = useState<LessonState>('preparing');
-  const [initialStepData, setInitialStepData] = useState<{ step: LearningOutput; audioUrl: string } | null>(null);
-  
+  const [uiSubState, setUiSubState] = useState<UiSubState>('explaining');
   const [lessonSteps, setLessonSteps] = useState<LessonStep[]>([]);
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
 
-  const [nextStepData, setNextStepData] = useState<{ step: LearningOutput; audioUrl: string } | null>(null);
-  const [isFetchingNextStep, setIsFetchingNextStep] = useState(false);
-  
-  const [uiSubState, setUiSubState] = useState<UiSubState>('explaining');
+  const [prefetchedData, setPrefetchedData] = useState<{ step: LearningOutput; audioUrl: string } | null>(null);
+  const [isPrefetching, setIsPrefetching] = useState(false);
+
   const [lastAnswerStatus, setLastAnswerStatus] = useState<'correct' | 'incorrect' | null>(null);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   const [isTtsPlaying, setIsTtsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  // --- Data Fetching and Pipelining ---
+  // Refs to give callbacks access to the latest state without being in a dependency array.
+  const stateRefs = useRef({ uiSubState, lessonSteps, currentStepIndex });
+  useEffect(() => {
+    stateRefs.current = { uiSubState, lessonSteps, currentStepIndex };
+  }, [uiSubState, lessonSteps, currentStepIndex]);
+
+
   const fetchStepAndAudio = useCallback(async (history: LessonStep[]) => {
     if (!card) return null;
     try {
@@ -69,66 +73,65 @@ export default function LeconInteractivePage() {
     }
   }, [card, toast]);
 
-  // Pre-fetch initial step
+  // Initial fetch on mount
   useEffect(() => {
-    if (!card || initialStepData) return;
-    const prepareFirstStep = async () => {
-      setLessonState('preparing');
-      const data = await fetchStepAndAudio([]);
+    if (!card) return;
+    setIsPrefetching(true);
+    fetchStepAndAudio([]).then(data => {
       if (data) {
-        setInitialStepData(data);
+        setPrefetchedData(data);
         setLessonState('ready');
       }
-    };
-    prepareFirstStep();
-  }, [card, fetchStepAndAudio, initialStepData]);
+      setIsPrefetching(false);
+    });
+  }, [card, fetchStepAndAudio]);
 
-  // Pre-fetch next step
+  // Prefetching logic for subsequent steps
   useEffect(() => {
-    if (uiSubState === 'exercising' && !nextStepData && !isFetchingNextStep) {
-      setIsFetchingNextStep(true);
+    if (uiSubState === 'exercising' && !prefetchedData && !isPrefetching) {
+      setIsPrefetching(true);
       fetchStepAndAudio(lessonSteps).then(data => {
         if (data) {
-          setNextStepData(data);
+          setPrefetchedData(data);
         }
-        setIsFetchingNextStep(false);
+        setIsPrefetching(false);
       });
     }
-  }, [uiSubState, lessonSteps, nextStepData, isFetchingNextStep, fetchStepAndAudio]);
+  }, [uiSubState, prefetchedData, isPrefetching, lessonSteps, fetchStepAndAudio]);
 
-  // --- Lesson Flow Management ---
-  const handleStartLesson = () => {
-    if (!initialStepData) return;
-    setLessonSteps([{ model: initialStepData.step, user: { answer: null } }]);
-    setLessonState('active');
-  };
 
-  useEffect(() => {
-    if (lessonState !== 'active') return;
+  const advanceToNextStep = useCallback(() => {
+    if (!prefetchedData) return;
 
-    const currentStep = lessonSteps[currentStepIndex];
-    if (!currentStep) return;
-
+    setLessonSteps(prev => [...prev, { model: prefetchedData.step, user: { answer: null } }]);
+    
+    if (audioRef.current) {
+        audioRef.current.src = prefetchedData.audioUrl;
+        audioPlayerManager.play(audioRef.current).catch(e => console.error("Audio play failed on advance", e));
+    }
+    
+    setPrefetchedData(null);
     setUiSubState('explaining');
     setLastAnswerStatus(null);
     setSelectedOption(null);
+  }, [prefetchedData]);
 
-    const audioUrl = (currentStepIndex === 0 ? initialStepData?.audioUrl : nextStepData?.audioUrl);
 
-    if (audioUrl && audioRef.current) {
-      audioRef.current.src = audioUrl;
-      audioPlayerManager.play(audioRef.current).catch(e => console.error(e));
-    } else if (currentStep.paragraphe) {
-      // Fallback if audio wasn't pre-fetched
-      textToSpeech(currentStep.paragraphe).then(({ media }) => {
-        if (media && audioRef.current) {
-          audioRef.current.src = media;
-          audioPlayerManager.play(audioRef.current).catch(e => console.error(e));
-        }
-      });
+  const handleStartLesson = useCallback(() => {
+    if (!prefetchedData) return;
+    setLessonState('active');
+    
+    setLessonSteps([{ model: prefetchedData.step, user: { answer: null } }]);
+    
+    if (audioRef.current) {
+        audioRef.current.src = prefetchedData.audioUrl;
+        audioPlayerManager.play(audioRef.current).catch(e => console.error("Audio play failed on start", e));
     }
 
-  }, [lessonState, lessonSteps, currentStepIndex]);
+    setPrefetchedData(null);
+    setUiSubState('explaining');
+
+  }, [prefetchedData]);
   
   const handleAnswerClick = (option: string) => {
     if (uiSubState !== 'exercising') return;
@@ -140,7 +143,6 @@ export default function LeconInteractivePage() {
     setSelectedOption(option);
     setUiSubState('feedback');
 
-    // Update history
     const updatedSteps = [...lessonSteps];
     updatedSteps[currentStepIndex].user.answer = option;
     setLessonSteps(updatedSteps);
@@ -151,18 +153,22 @@ export default function LeconInteractivePage() {
         return;
       }
       
-      if (nextStepData) {
-        setLessonSteps(prev => [...prev, { model: nextStepData.step, user: { answer: null } }]);
-        setCurrentStepIndex(prev => prev + 1);
-        setNextStepData(null); // Reset for next pre-fetch
+      setCurrentStepIndex(prev => prev + 1);
+      if (prefetchedData) {
+        advanceToNextStep();
       } else {
-        // This case should be rare if pre-fetching works well
-        setIsFetchingNextStep(true); 
+        setIsPrefetching(true);
       }
-    }, 1500); // Wait 1.5s to show feedback
+    }, 1500);
   };
+  
+  useEffect(() => {
+    if(isPrefetching === false && lessonState === 'active' && uiSubState === 'feedback') {
+        advanceToNextStep();
+    }
+  }, [isPrefetching, lessonState, uiSubState, advanceToNextStep]);
 
-  // --- Audio Player Event Listeners ---
+  // Attach audio listeners ONCE
   useEffect(() => {
     const audioElement = audioRef.current;
     if (!audioElement) return;
@@ -170,12 +176,15 @@ export default function LeconInteractivePage() {
     const onPlay = () => setIsTtsPlaying(true);
     const onPauseOrEnded = () => {
       setIsTtsPlaying(false);
+      const { uiSubState, lessonSteps, currentStepIndex } = stateRefs.current;
       if (uiSubState === 'explaining') {
         const currentStepModel = lessonSteps[currentStepIndex]?.model;
-        if (currentStepModel && !currentStepModel.finDeLecon) {
-          setUiSubState('exercising');
-        } else if (currentStepModel?.finDeLecon) {
-          setLessonState('finished');
+        if (currentStepModel) {
+          if (currentStepModel.finDeLecon) {
+            setLessonState('finished');
+          } else {
+            setUiSubState('exercising');
+          }
         }
       }
     };
@@ -192,7 +201,7 @@ export default function LeconInteractivePage() {
         audioPlayerManager.pause();
       }
     };
-  }, [uiSubState, lessonSteps, currentStepIndex]);
+  }, []); // Empty dependency array is key
 
   // Cleanup on unmount
   useEffect(() => {
@@ -209,7 +218,7 @@ export default function LeconInteractivePage() {
   }
 
   const renderContent = () => {
-    if (lessonState === 'preparing') {
+    if (lessonState === 'preparing' || (lessonState === 'active' && isPrefetching)) {
       return <div className="flex justify-center items-center min-h-[400px]"><Loader2 className="h-12 w-12 animate-spin text-primary" /></div>;
     }
     if (lessonState === 'ready') {
@@ -218,7 +227,10 @@ export default function LeconInteractivePage() {
             <h2 className="font-headline text-xl font-bold uppercase tracking-wider text-card-foreground/90">Leçon : {card.nom_carte}</h2>
             <div className="bg-card rounded-xl shadow-lg p-1 mx-auto w-fit my-4"><div className="relative w-[150px] aspect-[2.5/3.5] p-2"><Image src={card.image_url} alt={`Image de la carte ${card.nom_carte}`} fill className="object-contain" sizes="150px" /></div></div>
             <p className="text-white/90 my-4">L'oracle est prêt à vous enseigner les secrets de cette carte.</p>
-            <Button onClick={handleStartLesson} size="lg"><Volume2 className="mr-2 h-5 w-5" />Commencer la leçon audio</Button>
+            <Button onClick={handleStartLesson} size="lg" disabled={isPrefetching}>
+              {isPrefetching ? <Loader2 className="mr-2 h-5 w-5 animate-spin" /> : <Volume2 className="mr-2 h-5 w-5" />}
+              Commencer la leçon audio
+            </Button>
         </div>
       );
     }
@@ -273,7 +285,7 @@ export default function LeconInteractivePage() {
                       </div>
                   ) : (
                     <div className="flex justify-center items-center h-full">
-                        {isFetchingNextStep || (isTtsPlaying && uiSubState === 'explaining') ? (
+                        {isPrefetching || (isTtsPlaying && uiSubState === 'explaining') ? (
                           <div className="flex items-center gap-2 text-primary">
                             <Loader2 className="h-5 w-5 animate-spin" />
                             <p className="text-sm italic">{isTtsPlaying ? 'Écoutez...' : 'L\'oracle prépare la suite...'}</p>
