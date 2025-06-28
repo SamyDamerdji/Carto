@@ -2,6 +2,10 @@
   "name": "Le Cartomancien",
   "short_name": "Cartomancien",
   "description": "Apprenez et mémorisez les significations divinatoires des 52 cartes à jouer.",
+  "start_url": "/",
+  "display": "fullscreen",
+  "background_color": "#191970",
+  "theme_color": "#191970",
   "icons": [
     {
       "src": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/icons/icon-192x192.png",
@@ -13,10 +17,5 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "theme_color": "#191970",
-  "background_color": "#191970",
-  "start_url": "/",
-  "display": "fullscreen",
-  "orientation": "portrait"
+  ]
 }
