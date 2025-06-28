@@ -7,7 +7,7 @@
  * - LearningOutput - The output type for the function.
  */
 
-import { ai } from '@/ai/genkit';
+import { ai, googleAI } from '@/ai/genkit';
 import { z } from 'zod';
 import type { Card } from '@/lib/data/cards';
 
@@ -140,7 +140,7 @@ Combinaisons:
         }
 
         const { output } = await ai.generate({
-            model: 'googleai/gemini-2.0-flash',
+            model: googleAI.model('gemini-2.0-flash'),
             system: fullSystemPrompt,
             prompt: promptForAI,
             output: { schema: LearningOutputSchema }
