@@ -93,8 +93,47 @@ Pour donner l'impression que tes réponses sont instantanées, tu dois structure
 - Soyez créatif et assurez-vous qu'une seule option soit manifestement la bonne réponse basée sur le concept expliqué.
 
 **Gestion de la conversation :**
-L'historique contiendra les étapes précédentes. Utilise-le pour ne pas te répéter et pour faire avancer la leçon de manière logique, en abordant un nouvel aspect de la carte à chaque fois. Termine la leçon quand tu juges que les aspects principaux ont été couverts, en mettant \`finDeLecon\` à \`true\`.`;
+L'historique contiendra les étapes précédentes. Utilise-le pour ne pas te répéter et pour faire avancer la leçon de manière logique, en abordant un nouvel aspect de la carte à chaque fois. Termine la leçon quand tu juges que les aspects principaux ont été couverts, en mettant \`finDeLecon\` à \`true\`.
+---
+DONNÉES DE RÉFÉRENCE POUR LA CARTE :
+Nom: {{card.nom_carte}}
+Résumé: {{card.resume_general}}
+Phrase-clé: {{card.phrase_cle}}
+Mots-clés: {{#each card.mots_cles}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}
+Interprétations:
+  - Générale: {{card.interpretations.general}}
+  - Aspect Lumineux: {{card.interpretations.endroit}}
+  - Défis & Obstacles: {{card.interpretations.ombre_et_defis}}
+  - Conseil: {{card.interpretations.conseil}}
+Domaines:
+  - Amour: {{card.domaines.amour}}
+  - Travail: {{card.domaines.travail}}
+  - Finances: {{card.domaines.finances}}
+  - Spirituel: {{card.domaines.spirituel}}
+Combinaisons:
+{{#if card.combinaisons}}
+  {{#each card.combinaisons}}- Avec {{this.carte_associee_id}}: {{this.signification}}
+  {{/each}}
+{{else}}
+  Aucune combinaison spécifique fournie.
+{{/if}}
+---`;
 
+// Internal schema for the prompt object
+const PromptInputSchema = z.object({
+  card: CardSchema,
+  userPrompt: z.string(),
+});
+
+// Define the prompt object for better structure and stability
+const learningPrompt = ai.definePrompt({
+  name: 'learningPrompt',
+  model: googleAI.model('gemini-2.0-flash'),
+  input: { schema: PromptInputSchema },
+  output: { schema: LearningOutputSchema },
+  system: systemPromptText,
+  prompt: `{{{userPrompt}}}`,
+});
 
 const learningFlow = ai.defineFlow(
   {
@@ -104,46 +143,20 @@ const learningFlow = ai.defineFlow(
   },
   async (input) => {
     try {
-        const cardDataForPrompt = `
----
-DONNÉES DE RÉFÉRENCE POUR LA CARTE :
-Nom: ${input.card.nom_carte}
-Résumé: ${input.card.resume_general}
-Phrase-clé: ${input.card.phrase_cle}
-Mots-clés: ${input.card.mots_cles.join(', ')}
-Interprétations:
-  - Générale: ${input.card.interpretations.general}
-  - Aspect Lumineux: ${input.card.interpretations.endroit}
-  - Défis & Obstacles: ${input.card.interpretations.ombre_et_defis}
-  - Conseil: ${input.card.interpretations.conseil}
-Domaines:
-  - Amour: ${input.card.domaines.amour}
-  - Travail: ${input.card.domaines.travail}
-  - Finances: ${input.card.domaines.finances}
-  - Spirituel: ${input.card.domaines.spirituel}
-Combinaisons:
-  ${input.card.combinaisons.map(c => `- Avec ${c.carte_associee_id}: ${c.signification}`).join('\n')}
----
-        `;
-        
-        const fullSystemPrompt = systemPromptText + '\n\n' + cardDataForPrompt;
-        
         const serializedHistory = input.history.map((item: any) => 
             `- Oracle a dit: ${item.model.paragraphe}`
         ).join('\n');
 
-        let promptForAI: string;
+        let userPrompt: string;
         if (input.history.length === 0) {
-            promptForAI = "Commence la leçon. C'est la toute première étape.";
+            userPrompt = "Commence la leçon. C'est la toute première étape.";
         } else {
-            promptForAI = `Voici l'historique de la leçon jusqu'à présent:\n${serializedHistory}\n\nTa mission est maintenant de générer la prochaine étape de la leçon. Aborde un nouvel aspect de la carte.`;
+            userPrompt = `Voici l'historique de la leçon jusqu'à présent:\n${serializedHistory}\n\nTa mission est maintenant de générer la prochaine étape de la leçon. Aborde un nouvel aspect de la carte.`;
         }
-
-        const { output } = await ai.generate({
-            model: googleAI.model('gemini-2.0-flash'),
-            system: fullSystemPrompt,
-            prompt: promptForAI,
-            output: { schema: LearningOutputSchema }
+        
+        const { output } = await learningPrompt({
+            card: input.card,
+            userPrompt: userPrompt,
         });
 
         if (!output) {
