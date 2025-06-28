@@ -143,17 +143,19 @@ export function CardDetailsView({ card }: { card: Card }) {
     if (!audioElement) return;
 
     const onPlay = () => setIsTtsPlaying(true);
-    const onPause = () => setIsTtsPlaying(false);
-    const onEnded = () => setIsTtsPlaying(false);
+    const onPauseOrEnded = () => setIsTtsPlaying(false);
 
     audioElement.addEventListener('play', onPlay);
-    audioElement.addEventListener('pause', onPause);
-    audioElement.addEventListener('ended', onEnded);
+    audioElement.addEventListener('pause', onPauseOrEnded);
+    audioElement.addEventListener('ended', onPauseOrEnded);
 
     return () => {
       audioElement.removeEventListener('play', onPlay);
-      audioElement.removeEventListener('pause', onPause);
-      audioElement.removeEventListener('ended', onEnded);
+      audioElement.removeEventListener('pause', onPauseOrEnded);
+      audioElement.removeEventListener('ended', onPauseOrEnded);
+      if (audioPlayerManager.current === audioElement) {
+        audioPlayerManager.pause();
+      }
     };
   }, []);
 
@@ -197,7 +199,7 @@ export function CardDetailsView({ card }: { card: Card }) {
               const { media } = await textToSpeech(oracleResponseText);
               if (media && ttsAudioRef.current) {
                   ttsAudioRef.current.src = media;
-                  await audioPlayerManager.play(ttsAudioRef.current);
+                  audioPlayerManager.play(ttsAudioRef.current)?.catch(e => console.error("Audio play failed", e));
               }
           } catch (ttsError) {
               console.error("TTS generation error", ttsError);

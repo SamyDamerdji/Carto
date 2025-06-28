@@ -30,7 +30,7 @@ export function InfoCard({ icon: Icon, title, children, textContentToSpeak, play
     }
 
     if (audioRef.current && audioRef.current.src && audioRef.current.readyState > 0 && !audioRef.current.ended) {
-      audioPlayerManager.play(audioRef.current).catch(e => console.error("Audio play failed", e));
+      audioPlayerManager.play(audioRef.current)?.catch(e => console.error("Audio play failed", e));
       return;
     }
 
@@ -73,24 +73,23 @@ export function InfoCard({ icon: Icon, title, children, textContentToSpeak, play
 
   useEffect(() => {
     const audioElement = audioRef.current;
-    if (audioElement) {
-        const onPlay = () => setIsPlaying(true);
-        const onPauseOrEnd = () => {
-            setIsPlaying(false);
-            if (audioPlayerManager.current === audioElement) {
-                // Do not nullify, just update state
-            }
-        };
+    if (!audioElement) return;
 
-        audioElement.addEventListener('play', onPlay);
-        audioElement.addEventListener('pause', onPauseOrEnd);
-        audioElement.addEventListener('ended', onPauseOrEnd);
-        return () => {
-            audioElement.removeEventListener('play', onPlay);
-            audioElement.removeEventListener('pause', onPauseOrEnd);
-            audioElement.removeEventListener('ended', onPauseOrEnd);
-        };
-    }
+    const onPlay = () => setIsPlaying(true);
+    const onPauseOrEnded = () => setIsPlaying(false);
+
+    audioElement.addEventListener('play', onPlay);
+    audioElement.addEventListener('pause', onPauseOrEnded);
+    audioElement.addEventListener('ended', onPauseOrEnded);
+    
+    return () => {
+        audioElement.removeEventListener('play', onPlay);
+        audioElement.removeEventListener('pause', onPauseOrEnded);
+        audioElement.removeEventListener('ended', onPauseOrEnded);
+        if (audioPlayerManager.current === audioElement) {
+            audioPlayerManager.pause();
+        }
+    };
   }, []);
 
   useEffect(() => {

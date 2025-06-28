@@ -10,8 +10,15 @@ export const audioPlayerManager = {
       // Pause the currently playing audio before starting a new one.
       this.current.pause();
     }
+    
+    // If we are asked to play the same element and it's already playing, do nothing.
+    // This prevents the audio from restarting from the beginning on re-renders.
+    if (this.current === element && !element.paused) {
+      return Promise.resolve();
+    }
+
     this.current = element;
-    // The play() method returns a promise, which can be useful.
+    // The play() method returns a promise, which should be handled by the caller.
     return element.play();
   },
 
