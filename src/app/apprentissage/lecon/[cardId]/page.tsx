@@ -248,7 +248,7 @@ export default function LeconInteractivePage() {
                     </Button>
                 </div>
                 <div className="bg-card rounded-xl shadow-lg p-1 mx-auto w-fit mb-4"><div className="relative w-[150px] aspect-[2.5/3.5] p-2"><Image src={card.image_url} alt={`Image de la carte ${card.nom_carte}`} fill className="object-contain" sizes="150px" /></div></div>
-                <div className="min-h-28 text-white/90 text-center flex items-center justify-center p-2 rounded-lg bg-background/20 border border-primary/20">
+                <div className="min-h-[7rem] text-white/90 text-center p-4 rounded-lg bg-background/20 border border-primary/20">
                     <p className="text-sm whitespace-pre-wrap">{currentStep.paragraphe}</p>
                 </div>
 
@@ -265,7 +265,7 @@ export default function LeconInteractivePage() {
                                     onClick={() => handleAnswerClick(opt)}
                                     disabled={uiSubState === 'feedback'}
                                     className={cn(
-                                        "w-full justify-start text-left",
+                                        "w-full justify-start text-left h-auto py-2",
                                         uiSubState === 'feedback' && isSelected && lastAnswerStatus === 'correct' && "bg-green-700 hover:bg-green-700",
                                         uiSubState === 'feedback' && isSelected && lastAnswerStatus === 'incorrect' && "bg-destructive hover:bg-destructive",
                                         uiSubState === 'feedback' && !isSelected && isCorrect && "bg-green-800/50 hover:bg-green-800/50"
@@ -273,7 +273,7 @@ export default function LeconInteractivePage() {
                                 >
                                     {uiSubState === 'feedback' && isSelected && lastAnswerStatus === 'correct' && <Check className="mr-2 h-4 w-4" />}
                                     {uiSubState === 'feedback' && isSelected && lastAnswerStatus === 'incorrect' && <XIcon className="mr-2 h-4 w-4" />}
-                                    {opt}
+                                    <span className="whitespace-pre-wrap">{opt}</span>
                                 </Button>
                             );
                         })}
