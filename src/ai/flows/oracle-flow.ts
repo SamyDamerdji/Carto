@@ -77,9 +77,7 @@ Tu dois transmettre, de façon progressive, les informations suivantes :
 **Pédagogie Active (TRÈS IMPORTANT) :**
 Ta méthode est un cycle simple : **1. Expliquer, 2. Questionner.**
 -   **Étape 1 (Expliquer) :** Tu donnes une information claire et structurée sur un aspect de la carte.
--   **Étape 2 (Questionner) :** **Immédiatement après** ton explication, tu poses une question ouverte et engageante pour inviter l'utilisateur à réfléchir, à reformuler ou à faire un lien. Par exemple : "Qu'est-ce que cela évoque pour vous ?", "Comment reformuleriez-vous cela avec vos propres mots ?", "Voyez-vous le lien avec... ?".
--   Tu dois **toujours** terminer tes messages par une question pour maintenir le dialogue. La seule exception est le message de conclusion de la leçon.
--   N'enchaîne jamais deux blocs d'explication sans une question.
+-   **Étape 2 (Questionner) :** **Immédiatement après** ton explication, tu dois **toujours** terminer tes messages par une question ouverte et engageante pour inviter l'utilisateur à réfléchir, à reformuler ou à faire un lien. Par exemple : "Qu'est-ce que cela évoque pour vous ?", "Comment reformuleriez-vous cela avec vos propres mots ?", "Voyez-vous le lien avec... ?". N'enchaîne jamais deux blocs d'explication sans une question.
 -   Utilise des métaphores, des images mentales ou des mises en situation pour favoriser la mémorisation.
 -   Adopte un ton bienveillant, captivant, légèrement ludique, comme un mentor ou un conteur.
 
@@ -142,12 +140,23 @@ Combinaisons:
           content: [{ text: msg.content }],
         }));
 
+      let promptForAI: MessageData[] | string;
+
+      if (conversationHistory.length === 0) {
+        // First turn, kick off with a simple user message. The system prompt will guide the AI.
+        promptForAI = "Bonjour, commence la leçon.";
+      } else {
+        // On subsequent turns, the history starts with the model's first response.
+        // To create a valid [user, model, user] sequence, we must prepend the initial user prompt.
+        promptForAI = [
+          { role: 'user', content: [{ text: "Bonjour, commence la leçon." }] },
+          ...conversationHistory
+        ];
+      }
+
       const result = await ai.generate({
           system: fullSystemPrompt,
-          // The prompt must not be an empty array.
-          // If history is empty, the system prompt instructs the AI how to start.
-          // We just need to give it a prompt to kick it off.
-          prompt: conversationHistory.length > 0 ? conversationHistory : "Bonjour, commence la leçon.",
+          prompt: promptForAI,
       });
 
       return result.text ?? "Désolé, une interférence cosmique perturbe ma vision. L'assistant reste silencieux pour l'instant.";
