@@ -51,7 +51,6 @@ export default function LeconInteractivePage() {
   const [isTtsPlaying, setIsTtsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   
-  // This ref ensures the initial fetch is only called once, preventing Strict Mode issues.
   const didInitialFetch = useRef(false);
 
   const fetchStepAndAudio = useCallback(async (history: LessonStep[]) => {
@@ -71,12 +70,11 @@ export default function LeconInteractivePage() {
         title: "Erreur de l'Oracle",
         description: "Impossible de continuer la leçon. Veuillez rafraîchir la page.",
       });
-      setLessonState('ready'); // Go back to a safe state
+      setLessonState('ready');
       return null;
     }
   }, [card, toast]);
 
-  // Initial fetch on mount
   useEffect(() => {
     if (!card || didInitialFetch.current) return;
     didInitialFetch.current = true;
@@ -94,17 +92,15 @@ export default function LeconInteractivePage() {
   const advanceToNextStep = useCallback(() => {
     if (!prefetchedData) return;
     
-    // The history is already updated from handleAnswerClick
     const newLessonStep = { model: prefetchedData.step, user: { answer: null } };
     setLessonSteps(prev => [...prev, newLessonStep]);
     setCurrentStepIndex(prev => prev + 1);
     
+    setUiSubState('explaining');
+
     if (audioRef.current && prefetchedData.audioUrl) {
       audioRef.current.src = prefetchedData.audioUrl;
       audioPlayerManager.play(audioRef.current).catch(e => console.error("Audio play failed on advance", e));
-      setUiSubState('explaining');
-    } else {
-      setUiSubState('exercising');
     }
     
     setPrefetchedData(null);
@@ -114,7 +110,6 @@ export default function LeconInteractivePage() {
   }, [prefetchedData]);
   
 
-  // Prefetching logic for subsequent steps
   useEffect(() => {
     if (uiSubState === 'feedback' && !prefetchedData && !isPrefetching) {
         setIsPrefetching(true);
@@ -132,12 +127,11 @@ export default function LeconInteractivePage() {
     if (!prefetchedData) return;
     setLessonState('active');
     setLessonSteps([{ model: prefetchedData.step, user: { answer: null } }]);
+    setUiSubState('explaining');
+
     if (audioRef.current && prefetchedData.audioUrl) {
         audioRef.current.src = prefetchedData.audioUrl;
         audioPlayerManager.play(audioRef.current).catch(e => console.error("Audio play failed on start", e));
-        setUiSubState('explaining');
-    } else {
-        setUiSubState('exercising');
     }
     setPrefetchedData(null);
   }, [prefetchedData]);
@@ -148,7 +142,6 @@ export default function LeconInteractivePage() {
     const currentStepModel = lessonSteps[currentStepIndex].model;
     const isCorrect = option === currentStepModel.exercice?.reponseCorrecte;
 
-    // Update history immediately for the next prefetch
     const updatedSteps = [...lessonSteps];
     updatedSteps[currentStepIndex].user.answer = option;
     setLessonSteps(updatedSteps);
@@ -172,7 +165,6 @@ export default function LeconInteractivePage() {
     }
   }
 
-  // This effect handles the case where user clicks "Continue" before prefetch is done.
   useEffect(() => {
     if (isWaitingForNextStep && prefetchedData) {
       advanceToNextStep();
@@ -184,31 +176,39 @@ export default function LeconInteractivePage() {
     const audioElement = audioRef.current;
     if (!audioElement) return;
 
+    let timeoutId: NodeJS.Timeout | null = null;
+
     const onPlay = () => setIsTtsPlaying(true);
     const onPauseOrEnded = () => setIsTtsPlaying(false);
     const onEnded = () => {
-        // Only transition if we were explaining. Prevents race conditions.
         if (uiSubState === 'explaining') {
             setUiSubState('exercising');
         }
     };
 
     audioElement.addEventListener('play', onPlay);
-    audioElement.addEventListener('playing', onPlay); // Some browsers use this
+    audioElement.addEventListener('playing', onPlay);
     audioElement.addEventListener('pause', onPauseOrEnded);
     audioElement.addEventListener('ended', onEnded);
     
-    // Cleanup function
+    // If we enter the 'explaining' state and there's no audio source,
+    // transition to 'exercising' after a delay to allow the user to read the text.
+    if (uiSubState === 'explaining' && !audioElement.src) {
+        timeoutId = setTimeout(() => {
+            setUiSubState('exercising');
+        }, 3000); // 3-second delay
+    }
+
     return () => {
         audioElement.removeEventListener('play', onPlay);
         audioElement.removeEventListener('playing', onPlay);
         audioElement.removeEventListener('pause', onPauseOrEnded);
         audioElement.removeEventListener('ended', onEnded);
+        if (timeoutId) clearTimeout(timeoutId);
     };
-  }, [uiSubState]); // Rerun when uiSubState changes to correctly handle the onEnded logic.
+  }, [uiSubState]);
 
 
-  // Gracefully handle the case where cardId is not available on initial render.
   if (!cardId) {
     return (
       <div className="flex min-h-dvh flex-col">
@@ -221,7 +221,6 @@ export default function LeconInteractivePage() {
     );
   }
 
-  // Once cardId is available, if the card is not found, render the 404 page.
   if (!card) {
     notFound();
   }
