@@ -30,6 +30,7 @@ import { CardNavigation } from '@/components/cards/card-navigation';
 
 export default function LeconInteractivePage({ params: { cardId } }: { params: { cardId: string } }) {
   const card = getCardDetails(cardId);
+  const lessonStarted = useRef(false);
 
   const [messages, setMessages] = useState<{ role: 'user' | 'oracle'; content: string }[]>([]);
   const [inputValue, setInputValue] = useState('');
@@ -50,9 +51,11 @@ export default function LeconInteractivePage({ params: { cardId } }: { params: {
   }, [messages]);
 
   useEffect(() => {
-    if (!card) return;
+    if (!card || lessonStarted.current) return;
+    lessonStarted.current = true;
     
     const startLesson = async () => {
+      audioPlayerManager.pause();
       setIsLoading(true);
       setMessages([]); // Clear previous lesson
       try {
@@ -81,6 +84,11 @@ export default function LeconInteractivePage({ params: { cardId } }: { params: {
         }
       } catch (error) {
         console.error("Error starting lesson:", error);
+        toast({
+            variant: 'destructive',
+            title: 'Erreur de l\'Oracle',
+            description: "Désolé, je ne parviens pas à préparer la leçon pour le moment.",
+        });
         setMessages([{ role: 'oracle', content: "Désolé, je ne parviens pas à préparer la leçon pour le moment." }]);
       } finally {
         setIsLoading(false);
@@ -89,7 +97,7 @@ export default function LeconInteractivePage({ params: { cardId } }: { params: {
 
     startLesson();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [card?.id]);
+  }, [card]);
 
   useEffect(() => {
     const audioElement = ttsAudioRef.current;
@@ -317,7 +325,7 @@ export default function LeconInteractivePage({ params: { cardId } }: { params: {
                        {messages.map((message, index) => (
                            <div key={index} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                                <div className={`max-w-xs lg:max-w-md p-3 rounded-lg ${message.role === 'user' ? 'bg-primary text-primary-foreground' : 'bg-background/20 text-white/90 border border-primary/20'}`}>
-                                   <p className="text-sm">{message.content}</p>
+                                   <p className="text-sm whitespace-pre-wrap">{message.content}</p>
                                </div>
                            </div>
                        ))}
