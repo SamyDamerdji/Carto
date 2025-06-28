@@ -28,8 +28,8 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { CardNavigation } from '@/components/cards/card-navigation';
 
-export default function LeconInteractivePage({ params }: { params: { cardId: string } }) {
-  const card = getCardDetails(params.cardId);
+export default function LeconInteractivePage({ params: { cardId } }: { params: { cardId: string } }) {
+  const card = getCardDetails(cardId);
 
   const [messages, setMessages] = useState<{ role: 'user' | 'oracle'; content: string }[]>([]);
   const [inputValue, setInputValue] = useState('');
@@ -272,7 +272,7 @@ export default function LeconInteractivePage({ params }: { params: { cardId: str
   return (
     <div className="flex min-h-dvh flex-col">
       <Header />
-      <CardNavigation currentCardId={params.cardId} />
+      <CardNavigation currentCardId={cardId} />
       <main className="flex-grow container mx-auto px-4 pb-8">
         <audio ref={ttsAudioRef} className="hidden" />
         <motion.div
