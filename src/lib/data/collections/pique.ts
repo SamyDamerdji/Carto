@@ -165,6 +165,13 @@ export const piqueCards: Card[] = [
       "deux personnes se chuchotant un secret à l'oreille dans un couloir sombre",
       "une silhouette masquée lors d'un bal vénitien"
     ],
+    "prompts_conversationnels": [
+      "Le Valet de Pique est un 'héros de l'ombre'. Comment cette image contraste-t-elle avec celle d'un héros plus traditionnel ?",
+      "La fiche dit qu'il représente les 'zones grises de la vie'. Donnez un exemple de situation qui n'est ni totalement positive, ni totalement négative.",
+      "Le conseil est d'agir comme dans un 'jeu d'échecs'. Quels sont les principes d'un bon joueur d'échecs qui peuvent s'appliquer à la vie réelle ?",
+      "Cette carte représente parfois un 'test de confiance'. Comment peut-on savoir si notre confiance est mise à l'épreuve dans une relation ?",
+      "Comment distinguer la 'prudence' du Valet de Pique de la 'peur' qui peut nous paralyser ?"
+    ],
     "combinaisons": [
       { "carte_associee_id": "coeur_as", "signification": "Alerte sur les émotions. Un amour caché ou une trahison potentielle est présente. L'intuition est primordiale." },
       { "carte_associee_id": "coeur_roi", "signification": "Mêmes significations qu'avec l'As de Coeur : émotions contrariées, amour caché. Prudence dans les relations." },
@@ -399,6 +406,13 @@ export const piqueCards: Card[] = [
       "une goutte de pluie tombant sur une surface d'eau, créant une petite ondulation",
       "un calendrier où une date a été décalée d'un jour avec une petite note souriante"
     ],
+    "prompts_conversationnels": [
+      "Le 6 de Pique est un 'contretemps mineur'. Donnez un exemple de situation où il est plus sage de patienter que de forcer une solution.",
+      "La fiche dit qu'il faut 'relativiser'. Comment faire la différence entre un problème important et un simple 'grain de sable' ?",
+      "Cette carte est comparée à un 'nuage qui passe'. Que suggère cette métaphore sur la façon de gérer les petits tracas du quotidien ?",
+      "Le conseil est de 'faire confiance au temps'. Pourquoi est-ce parfois si difficile d'attendre que les choses se résolvent d'elles-mêmes ?",
+      "Comment l'énergie 'légère' de cette carte contraste-t-elle avec le 'poids' du 7 de Pique, qui représente aussi un défi ?"
+    ],
     "combinaisons": []
   },
   {
@@ -431,6 +445,13 @@ export const piqueCards: Card[] = [
       "une personne regardant avec méfiance une autre qui lui tend la main avec un sourire forcé",
       "un bouquet de roses avec de longues épines bien visibles",
       "une personne triant de vieilles photos, en mettant certaines de côté avec une expression décidée"
+    ],
+    "prompts_conversationnels": [
+      "Le 5 de Pique est un 'panneau virage dangereux'. Expliquez cette métaphore dans le contexte d'une nouvelle amitié qui semble trop belle pour être vraie.",
+      "La fiche parle de 'vampires émotionnels'. À quels signes peut-on reconnaître une relation qui nous épuise plus qu'elle ne nous nourrit ?",
+      "Le conseil est de 'garder ses projets pour soi' un moment. Dans quelle situation professionnelle cette discrétion serait-elle une stratégie judicieuse ?",
+      "Comment distinguer la 'prudence' recommandée par cette carte de la 'méfiance' qui peut nous isoler ?",
+      "Cette carte invite à 'faire le tri dans ses relations'. Quel est le premier pas pour commencer ce processus de tri ?"
     ],
     "combinaisons": [
       { "carte_associee_id": "trefle_05", "signification": "Avec le 5 de Trèfle, cette carte met en garde contre un défi qui pourrait compliquer un changement positif. Une figure féminine ou une personne d'influence pourrait semer le trouble."}
@@ -467,6 +488,13 @@ export const piqueCards: Card[] = [
       "une boussole pointant fermement le nord au milieu d'une tempête",
       "une personne faisant une pause et s'asseyant sur un banc pour contempler le paysage"
     ],
+    "prompts_conversationnels": [
+      "Le 4 de Pique parle de 'stabilité mise au défi'. Donnez un exemple concret où des fondations, qu'elles soient professionnelles ou personnelles, peuvent sembler solides mais avoir en réalité des failles.",
+      "La fiche dit que cette carte est un 'miroir qui révèle une vérité qu'on ne veut pas voir'. Pourquoi est-il parfois nécessaire d'affronter une vérité inconfortable pour avancer ?",
+      "Le conseil est de 'simplifier' et de se 'concentrer sur l'essentiel'. Comment identifier ce qui est vraiment essentiel quand on se sent submergé ?",
+      "Cette carte invite à 'poser ses limites'. Proposez une phrase simple et respectueuse pour dire non à une demande qui ne nous convient pas.",
+      "Comment la 'pause' du 4 de Pique se différencie-t-elle de la 'stagnation' redoutée dans d'autres cartes ?"
+    ],
     "combinaisons": []
   },
   {
@@ -499,6 +527,13 @@ export const piqueCards: Card[] = [
       "un nuage sombre cachant momentanément le soleil",
       "une personne regardant une carte routière, cherchant une alternative à une route bloquée",
       "une goutte de pluie tombant, avec la promesse d'un arc-en-ciel en arrière-plan"
+    ],
+    "prompts_conversationnels": [
+      "Le 3 de Pique est décrit comme un 'rebelle'. Comment une énergie de rébellion peut-elle être constructive dans une situation qui stagne ?",
+      "La carte parle de 'pluie grise qui nourrit la terre'. Expliquez cette métaphore. Comment une difficulté peut-elle être source de croissance ?",
+      "Le conseil est d'être 'patient et stratège'. Proposez un scénario où la patience est une meilleure stratégie que l'action immédiate.",
+      "En amour, cette carte peut annoncer une 'rupture nette'. Dans quel cas une rupture peut-elle être considérée comme une libération plutôt qu'un échec ?",
+      "Comment distinguer une 'épreuve qui forge le caractère' d'une souffrance inutile ?"
     ],
     "combinaisons": [
       { "carte_associee_id": "pique_04", "signification": "Avec le 4 de pique, cette carte peut annoncer une trahison, une peine ou de la confusion."}
@@ -534,6 +569,13 @@ export const piqueCards: Card[] = [
       "deux personnes assises à un café, engagées dans une discussion sérieuse mais calme",
       "le symbole du Yin et du Yang",
       "une personne en train de faire une pause sur un sentier de randonnée pour regarder une carte"
+    ],
+    "prompts_conversationnels": [
+      "Le 2 de Pique représente une 'bifurcation'. Donnez un exemple de choix, autre qu'amoureux ou professionnel, où cette carte pourrait apparaître.",
+      "La fiche dit que la carte est 'austère mais pas dramatique'. Expliquez cette nuance. Quelle est la différence entre une tension et un conflit ouvert ?",
+      "Le conseil est d' 'ouvrir la discussion pour désamorcer une bombe émotionnelle'. Pourquoi la communication est-elle si cruciale face à une tension ?",
+      "La carte invite à 'écouter son instinct'. Comment faire la différence entre l'intuition et la peur lorsqu'on doit prendre une décision importante ?",
+      "Le symbole du Yin et du Yang est évoqué. Comment deux forces opposées peuvent-elles être complémentaires plutôt que destructrices ?"
     ],
     "combinaisons": [
       { "carte_associee_id": "pique_04", "signification": "Avec le 4 de pique, cette carte peut annoncer un conflit, une division ou un choix à faire."}
