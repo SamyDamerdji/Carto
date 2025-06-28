@@ -38,19 +38,18 @@ export default function LeconInteractivePage() {
 
   const [prefetchedData, setPrefetchedData] = useState<{ step: LearningOutput; audioUrl: string } | null>(null);
   const [isPrefetching, setIsPrefetching] = useState(false);
+  const [isWaitingForNextStep, setIsWaitingForNextStep] = useState(false);
 
   const [lastAnswerStatus, setLastAnswerStatus] = useState<'correct' | 'incorrect' | null>(null);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   const [isTtsPlaying, setIsTtsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-
-  // Refs to give callbacks access to the latest state without being in a dependency array.
   const stateRefs = useRef({ uiSubState, lessonSteps, currentStepIndex });
+
   useEffect(() => {
     stateRefs.current = { uiSubState, lessonSteps, currentStepIndex };
   }, [uiSubState, lessonSteps, currentStepIndex]);
-
 
   const fetchStepAndAudio = useCallback(async (history: LessonStep[]) => {
     if (!card) return null;
@@ -86,6 +85,22 @@ export default function LeconInteractivePage() {
     });
   }, [card, fetchStepAndAudio]);
 
+  // This is the core function to move the lesson forward.
+  // It should ONLY be called when prefetchedData is available.
+  const advanceToNextStep = useCallback(() => {
+    if (!prefetchedData) return;
+    setLessonSteps(prev => [...prev, { model: prefetchedData.step, user: { answer: null } }]);
+    if (audioRef.current) {
+      audioRef.current.src = prefetchedData.audioUrl;
+      audioPlayerManager.play(audioRef.current).catch(e => console.error("Audio play failed on advance", e));
+    }
+    setPrefetchedData(null);
+    setUiSubState('explaining');
+    setLastAnswerStatus(null);
+    setSelectedOption(null);
+    setIsWaitingForNextStep(false);
+  }, [prefetchedData]);
+
   // Prefetching logic for subsequent steps
   useEffect(() => {
     if (uiSubState === 'exercising' && !prefetchedData && !isPrefetching) {
@@ -98,41 +113,26 @@ export default function LeconInteractivePage() {
       });
     }
   }, [uiSubState, prefetchedData, isPrefetching, lessonSteps, fetchStepAndAudio]);
-
-
-  const advanceToNextStep = useCallback(() => {
-    if (!prefetchedData) return;
-
-    setLessonSteps(prev => [...prev, { model: prefetchedData.step, user: { answer: null } }]);
-    
-    if (audioRef.current) {
-        audioRef.current.src = prefetchedData.audioUrl;
-        audioPlayerManager.play(audioRef.current).catch(e => console.error("Audio play failed on advance", e));
+  
+  // Logic to advance after prefetch is complete
+  useEffect(() => {
+    if (isWaitingForNextStep && prefetchedData) {
+      advanceToNextStep();
     }
-    
-    setPrefetchedData(null);
-    setUiSubState('explaining');
-    setLastAnswerStatus(null);
-    setSelectedOption(null);
-  }, [prefetchedData]);
-
+  }, [isWaitingForNextStep, prefetchedData, advanceToNextStep]);
 
   const handleStartLesson = useCallback(() => {
     if (!prefetchedData) return;
     setLessonState('active');
-    
     setLessonSteps([{ model: prefetchedData.step, user: { answer: null } }]);
-    
     if (audioRef.current) {
         audioRef.current.src = prefetchedData.audioUrl;
         audioPlayerManager.play(audioRef.current).catch(e => console.error("Audio play failed on start", e));
     }
-
     setPrefetchedData(null);
     setUiSubState('explaining');
-
   }, [prefetchedData]);
-  
+
   const handleAnswerClick = (option: string) => {
     if (uiSubState !== 'exercising') return;
 
@@ -154,21 +154,15 @@ export default function LeconInteractivePage() {
       }
       
       setCurrentStepIndex(prev => prev + 1);
+      
       if (prefetchedData) {
         advanceToNextStep();
       } else {
-        setIsPrefetching(true);
+        setIsWaitingForNextStep(true);
       }
     }, 1500);
   };
-  
-  useEffect(() => {
-    if(isPrefetching === false && lessonState === 'active' && uiSubState === 'feedback') {
-        advanceToNextStep();
-    }
-  }, [isPrefetching, lessonState, uiSubState, advanceToNextStep]);
 
-  // Attach audio listeners ONCE
   useEffect(() => {
     const audioElement = audioRef.current;
     if (!audioElement) return;
@@ -201,9 +195,8 @@ export default function LeconInteractivePage() {
         audioPlayerManager.pause();
       }
     };
-  }, []); // Empty dependency array is key
+  }, []);
 
-  // Cleanup on unmount
   useEffect(() => {
     return () => {
       if (audioRef.current) {
@@ -218,7 +211,7 @@ export default function LeconInteractivePage() {
   }
 
   const renderContent = () => {
-    if (lessonState === 'preparing' || (lessonState === 'active' && isPrefetching)) {
+    if (lessonState === 'preparing') {
       return <div className="flex justify-center items-center min-h-[400px]"><Loader2 className="h-12 w-12 animate-spin text-primary" /></div>;
     }
     if (lessonState === 'ready') {
@@ -236,7 +229,15 @@ export default function LeconInteractivePage() {
     }
     if (lessonState === 'active' || lessonState === 'finished') {
         const currentStep = lessonSteps[currentStepIndex]?.model;
-        if (!currentStep) return <div className="flex justify-center items-center min-h-[400px]"><Loader2 className="h-12 w-12 animate-spin text-primary" /></div>;
+
+        if (isWaitingForNextStep || !currentStep) {
+          return (
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mx-auto mt-6 max-w-md rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6 min-h-[400px] flex flex-col justify-center items-center">
+              <Loader2 className="h-12 w-12 animate-spin text-primary" />
+              <p className="text-sm italic mt-4 text-primary">L'oracle prépare la suite...</p>
+            </motion.div>
+          );
+        }
 
         return (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mx-auto mt-6 max-w-md rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6">
@@ -285,10 +286,10 @@ export default function LeconInteractivePage() {
                       </div>
                   ) : (
                     <div className="flex justify-center items-center h-full">
-                        {isPrefetching || (isTtsPlaying && uiSubState === 'explaining') ? (
+                        {isTtsPlaying && uiSubState === 'explaining' ? (
                           <div className="flex items-center gap-2 text-primary">
                             <Loader2 className="h-5 w-5 animate-spin" />
-                            <p className="text-sm italic">{isTtsPlaying ? 'Écoutez...' : 'L\'oracle prépare la suite...'}</p>
+                            <p className="text-sm italic">Écoutez...</p>
                           </div>
                         ) : null}
                     </div>
@@ -299,7 +300,6 @@ export default function LeconInteractivePage() {
     }
     return null;
   };
-
 
   return (
     <div className="flex min-h-dvh flex-col">
