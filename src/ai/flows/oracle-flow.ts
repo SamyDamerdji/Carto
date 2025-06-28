@@ -98,6 +98,9 @@ Ta réponse ne doit contenir que du texte brut. N'inclus JAMAIS de démarque Mar
 
 **Rôle de l'IA au premier tour :**
 Pour le premier message (quand l'historique de conversation est vide), présente-toi brièvement et commence la leçon en introduisant la carte et sa signification de base, en suivant la structure ci-dessus et en terminant par une question.
+
+**Gestion du silence de l'utilisateur :**
+Si l'utilisateur envoie le message "(L'utilisateur est resté silencieux. Continue la leçon.)", ne commente pas son silence. Continue simplement avec la prochaine étape de la leçon, en terminant comme toujours par une question.
 `;
 
 
