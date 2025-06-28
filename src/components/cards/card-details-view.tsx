@@ -29,6 +29,7 @@ import {
   Loader2,
   Volume2,
   VolumeX,
+  BrainCircuit,
 } from 'lucide-react';
 import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
@@ -76,9 +77,7 @@ export function CardDetailsView({ card }: { card: Card }) {
 
   const hasCombinaisons = card.combinaisons && card.combinaisons.length > 0;
   
-  const [messages, setMessages] = useState([
-    { role: 'oracle', content: `Bonjour! En quoi puis-je vous éclairer sur le ${card.nom_carte} aujourd'hui ?` }
-  ]);
+  const [messages, setMessages] = useState<{ role: 'user' | 'oracle'; content: string }[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isTtsEnabled, setIsTtsEnabled] = useState(true);
@@ -95,6 +94,43 @@ export function CardDetailsView({ card }: { card: Card }) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
   }, [messages]);
+
+  useEffect(() => {
+    // Start the lesson when the card changes
+    const startLesson = async () => {
+      setIsLoading(true);
+      setMessages([]); // Clear previous lesson
+      try {
+        const initialMessage = await chatWithOracle({ card, history: [] });
+        const assistantMessage = { role: 'oracle' as const, content: initialMessage };
+        setMessages([assistantMessage]);
+
+        if (isTtsEnabled && initialMessage) {
+          setIsTtsLoading(true);
+          try {
+            const { media } = await textToSpeech(initialMessage);
+            if (media && ttsAudioRef.current) {
+              ttsAudioRef.current.src = media;
+              await ttsAudioRef.current.play();
+            }
+          } catch (ttsError) {
+            console.error("TTS generation error", ttsError);
+          } finally {
+            setIsTtsLoading(false);
+          }
+        }
+      } catch (error) {
+        console.error("Error starting lesson:", error);
+        setMessages([{ role: 'oracle', content: "Désolé, je ne parviens pas à préparer la leçon pour le moment." }]);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    startLesson();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [card.id]);
+
 
   useEffect(() => {
     const audioElement = ttsAudioRef.current;
@@ -134,20 +170,19 @@ export function CardDetailsView({ card }: { card: Card }) {
         ttsAudioRef.current.src = "";
     }
     
-    const userMessage = { role: 'user', content: inputValue };
-    setMessages(prev => [...prev, userMessage]);
-    const currentInput = inputValue;
+    const userMessage = { role: 'user' as const, content: inputValue };
+    const newHistory = [...messages, userMessage];
+    setMessages(newHistory);
     setInputValue('');
     setIsLoading(true);
 
     try {
       const oracleResponseText = await chatWithOracle({
-        cardName: card.nom_carte,
-        cardGeneralMeaning: card.interpretations.general,
-        userQuestion: currentInput,
+        card: card,
+        history: newHistory,
       });
       
-      const oracleMessage = { role: 'oracle', content: oracleResponseText };
+      const oracleMessage = { role: 'oracle' as const, content: oracleResponseText };
       setMessages(prev => [...prev, oracleMessage]);
 
       if (isTtsEnabled && oracleResponseText) {
@@ -167,7 +202,7 @@ export function CardDetailsView({ card }: { card: Card }) {
 
     } catch (error) {
       console.error("Error calling oracle flow:", error);
-      const errorMessage = { role: 'oracle', content: "Désolé, une erreur s'est produite. Je ne peux pas répondre pour le moment." };
+      const errorMessage = { role: 'oracle' as const, content: "Désolé, une erreur s'est produite. Je ne peux pas répondre pour le moment." };
       setMessages(prev => [...prev, errorMessage]);
     } finally {
       setIsLoading(false);
@@ -410,10 +445,10 @@ export function CardDetailsView({ card }: { card: Card }) {
            />
        </SectionWrapper>
 
-       {/* H. Parler à l'oracle */}
+       {/* H. Leçon Interactive */}
        <SectionWrapper 
-        title="Parler à l'oracle" 
-        icon={Sparkles} 
+        title="Leçon Interactive" 
+        icon={BrainCircuit} 
         index={hasCombinaisons ? 7 : 6}
         action={
             <Button
@@ -437,20 +472,25 @@ export function CardDetailsView({ card }: { card: Card }) {
                                </div>
                            </div>
                        ))}
-                        {isLoading && (
+                        {isLoading && messages.length > 0 && (
                            <div className="flex justify-start">
                                <div className="max-w-xs lg:max-w-md p-3 rounded-lg bg-background/20 text-white/90 border border-primary/20 flex items-center gap-2">
                                   <Loader2 className="h-5 w-5 animate-spin text-primary" />
-                                  <p className="text-sm italic">L'Oracle réfléchit...</p>
+                                  <p className="text-sm italic">L'assistant réfléchit...</p>
                                </div>
                            </div>
+                       )}
+                       {isLoading && messages.length === 0 && (
+                          <div className="flex justify-center items-center h-full">
+                            <Loader2 className="h-8 w-8 animate-spin text-primary" />
+                          </div>
                        )}
                    </div>
                </ScrollArea>
                <form onSubmit={handleSendMessage} className="flex items-center gap-2">
                    <Input
                        type="text"
-                       placeholder="Posez votre question ici..."
+                       placeholder="Écrivez votre réponse..."
                        value={inputValue}
                        onChange={(e) => setInputValue(e.target.value)}
                        disabled={isLoading}
