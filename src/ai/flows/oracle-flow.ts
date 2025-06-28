@@ -7,7 +7,7 @@
  * - LearningOutput - The output type for the function.
  */
 
-import { ai, googleAI } from '@/ai/genkit';
+import { ai } from '@/ai/genkit';
 import { z } from 'zod';
 import type { Card } from '@/lib/data/cards';
 
@@ -128,7 +128,7 @@ const PromptInputSchema = z.object({
 // Define the prompt object for better structure and stability
 const learningPrompt = ai.definePrompt({
   name: 'learningPrompt',
-  model: googleAI.model('gemini-2.0-flash'),
+  model: 'googleai/gemini-2.0-flash',
   input: { schema: PromptInputSchema },
   output: { schema: LearningOutputSchema },
   system: systemPromptText,
