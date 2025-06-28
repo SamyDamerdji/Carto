@@ -5,7 +5,7 @@
  * - textToSpeech - Converts text into spoken audio.
  * - TtsOutput - The return type for the textToSpeech function.
  */
-import { ai } from '@/ai/genkit';
+import { ai, googleAI } from '@/ai/genkit';
 import { z } from 'zod';
 import wav from 'wav';
 
@@ -54,7 +54,7 @@ const ttsFlow = ai.defineFlow(
       }
       
       const { media } = await ai.generate({
-        model: 'gemini-2.5-flash-preview-tts',
+        model: googleAI.model('gemini-2.5-flash-preview-tts'),
         config: {
           responseModalities: ['AUDIO'],
           speechConfig: {
