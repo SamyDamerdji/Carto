@@ -115,6 +115,11 @@ export function CardDetailsView({ card }: { card: Card }) {
             }
           } catch (ttsError) {
             console.error("TTS generation error", ttsError);
+            toast({
+                variant: 'destructive',
+                title: 'Erreur de Synthèse Vocale',
+                description: "Impossible de générer l'audio pour ce message.",
+            });
           } finally {
             setIsTtsLoading(false);
           }
@@ -195,6 +200,11 @@ export function CardDetailsView({ card }: { card: Card }) {
               }
           } catch (ttsError) {
               console.error("TTS generation error", ttsError);
+              toast({
+                  variant: 'destructive',
+                  title: 'Erreur de Synthèse Vocale',
+                  description: "Impossible de générer l'audio pour ce message.",
+              });
           } finally {
               setIsTtsLoading(false);
           }

@@ -30,7 +30,8 @@ async function toWav(
 
     const bufs: Buffer[] = [];
     writer.on('error', reject);
-    writer.on('data', (d: Buffer) => {
+    // Using `any` for the chunk type is safer if type definitions are imprecise.
+    writer.on('data', (d: any) => {
       bufs.push(d);
     });
     writer.on('end', () => {
@@ -51,7 +52,6 @@ const ttsFlow = ai.defineFlow(
   async (query) => {
     try {
       if (!query) {
-        // Handle empty query to avoid unnecessary API calls
         return { media: '' };
       }
       
@@ -69,8 +69,7 @@ const ttsFlow = ai.defineFlow(
       });
 
       if (!media || !media.url) {
-        console.error('TTS flow: no media returned from Genkit for query:', query);
-        return { media: '' };
+        throw new Error('TTS flow: no media returned from Genkit for query.');
       }
 
       const audioBuffer = Buffer.from(
@@ -85,8 +84,8 @@ const ttsFlow = ai.defineFlow(
       };
     } catch (error) {
       console.error("Error in ttsFlow:", error);
-      // Return an empty media string to prevent client-side crash
-      return { media: '' };
+      // Re-throw the error so the client can handle it.
+      throw new Error("Une erreur est survenue lors de la génération de l'audio. Veuillez réessayer.");
     }
   }
 );
