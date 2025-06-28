@@ -111,11 +111,10 @@ const learningFlow = ai.defineFlow(
           ${input.card.combinaisons.map(c => `- Avec ${c.carte_associee_id}: ${c.signification}`).join('\n')}
         `;
         
+        const fullSystemPrompt = systemPromptText + '\n\n' + cardDataForPrompt;
+
         const messages: MessageData[] = [
-            { role: 'system', content: [
-                { text: systemPromptText },
-                { text: cardDataForPrompt },
-            ] },
+            { role: 'system', content: [{ text: fullSystemPrompt }] },
             ...input.history.map((msg) => ({
                 role: msg.role === 'oracle' ? 'model' : 'user',
                 content: [{ text: msg.content }],
