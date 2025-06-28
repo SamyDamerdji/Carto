@@ -60,7 +60,7 @@ const ttsFlow = ai.defineFlow(
           responseModalities: ['AUDIO'],
           speechConfig: {
             voiceConfig: {
-              prebuiltVoiceConfig: { voiceName: 'fr-FR-Wavenet-A' },
+              prebuiltVoiceConfig: { voiceName: 'Algenib' },
             },
           },
         },
