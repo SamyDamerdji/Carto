@@ -28,6 +28,8 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { CardNavigation } from '@/components/cards/card-navigation';
 
+const SILENT_USER_MESSAGE = "(L'utilisateur est resté silencieux. Continue la leçon.)";
+
 export default function LeconInteractivePage() {
   const params = useParams();
   const cardId = params.cardId as string;
@@ -95,16 +97,19 @@ export default function LeconInteractivePage() {
         duration: 3000,
     });
     
-    const silenceMessageForAI = "(L'utilisateur est resté silencieux. Continue la leçon.)";
-    const newHistory = [...messagesRef.current, { role: 'user' as const, content: silenceMessageForAI }];
+    const silenceMessage = { role: 'user' as const, content: SILENT_USER_MESSAGE };
+    const newHistory = [...messages, silenceMessage];
 
+    // Add the silent message to the history for the AI, and update the state
+    // It will be filtered out from the UI during render
+    setMessages(newHistory);
     setIsLoading(true);
+
     try {
       if (!card) return;
       const oracleResponseText = await chatWithOracle({ card: card, history: newHistory });
       const oracleMessage = { role: 'oracle' as const, content: oracleResponseText };
       setMessages(prev => [...prev, oracleMessage]);
-      await playTts(oracleResponseText);
     } catch (error) {
       console.error("Error calling oracle flow on timeout:", error);
       const errorMessage = { role: 'oracle' as const, content: "Désolé, une erreur s'est produite. Je ne peux pas répondre pour le moment." };
@@ -112,7 +117,7 @@ export default function LeconInteractivePage() {
     } finally {
       setIsLoading(false);
     }
-  }, [card, playTts, toast]);
+  }, [card, playTts, toast, messages]);
 
   const handleMicClick = useCallback(() => {
     if (isLoading) return;
@@ -212,7 +217,6 @@ export default function LeconInteractivePage() {
       
       const oracleMessage = { role: 'oracle' as const, content: oracleResponseText };
       setMessages(prev => [...prev, oracleMessage]);
-      await playTts(oracleResponseText);
     } catch (error) {
       console.error("Error calling oracle flow:", error);
       const errorMessage = { role: 'oracle' as const, content: "Désolé, une erreur s'est produite. Je ne peux pas répondre pour le moment." };
@@ -220,7 +224,7 @@ export default function LeconInteractivePage() {
     } finally {
       setIsLoading(false);
     }
-  }, [isLoading, inputValue, messages, card, playTts]);
+  }, [isLoading, inputValue, messages, card]);
   
   useEffect(() => {
     if (!card || lessonStarted.current) return;
@@ -255,14 +259,11 @@ export default function LeconInteractivePage() {
   }, [card, toast]);
 
   const handleStartLesson = async () => {
-    if (initialMessageText && initialAudioUrl) {
+    if (initialMessageText) {
         const assistantMessage = { role: 'oracle' as const, content: initialMessageText };
         setMessages([assistantMessage]);
         setLessonState('active');
-        if (ttsAudioRef.current) {
-            ttsAudioRef.current.src = initialAudioUrl;
-            await audioPlayerManager.play(ttsAudioRef.current);
-        }
+        // Audio will be played by the useEffect that listens to `messages` changes
     }
   };
 
@@ -293,6 +294,21 @@ export default function LeconInteractivePage() {
       }
     };
   }, [isTtsEnabled, handleMicClick]);
+  
+  // This effect is added to play audio when a new oracle message comes in.
+  useEffect(() => {
+    const lastMessage = messages[messages.length - 1];
+    if (lastMessage?.role === 'oracle' && !isLoading) {
+      if (lastMessage.content === initialMessageText && initialAudioUrl) {
+          if (ttsAudioRef.current) {
+            ttsAudioRef.current.src = initialAudioUrl;
+            audioPlayerManager.play(ttsAudioRef.current).catch(e => console.error(e));
+          }
+      } else if (lastMessage.content !== initialMessageText) {
+          playTts(lastMessage.content);
+      }
+    }
+  }, [messages, isLoading, playTts, initialMessageText, initialAudioUrl]);
 
   useEffect(() => {
     if (chatContainerRef.current) {
@@ -425,7 +441,7 @@ export default function LeconInteractivePage() {
 
                  <ScrollArea className="h-80 w-full pr-4" ref={chatContainerRef}>
                      <div className="space-y-4">
-                         {messages.map((message, index) => (
+                         {messages.filter(msg => msg.content !== SILENT_USER_MESSAGE).map((message, index) => (
                              <div key={index} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                                  <div className={`max-w-xs lg:max-w-md p-3 rounded-lg ${message.role === 'user' ? 'bg-primary text-primary-foreground' : 'bg-background/20 text-white/90 border border-primary/20'}`}>
                                      <p className="text-sm whitespace-pre-wrap">{message.content}</p>
@@ -477,5 +493,3 @@ export default function LeconInteractivePage() {
     </div>
   );
 }
-
-    
