@@ -449,6 +449,13 @@ export const trefleCards: Card[] = [
       "une main recevant une étreinte rassurante d'une autre main",
       "un pont en bois solide traversant un petit ruisseau"
     ],
+    "prompts_conversationnels": [
+      "Le 4 de Trèfle est une 'petite chance cachée'. Comment peut-on s'entraîner à remarquer ces petites chances du quotidien ?",
+      "La fiche dit que 'son interprétation change radicalement' selon les cartes voisines. Pourquoi cette carte est-elle si sensible au contexte ?",
+      "Le conseil est 'Ne refusez pas l'aide'. Pourquoi est-il parfois difficile d'accepter un 'coup de pouce' ?",
+      "Comparez la 'chance' du 4 de Trèfle à 'l'opportunité' plus active de l'As de Trèfle. Quelle est la nuance ?",
+      "Avec le 7 de Pique, le 4 de Trèfle devient un 'avertissement'. Comment une carte de chance peut-elle se transformer en mise en garde ?"
+    ],
     "combinaisons": [
       { "carte_associee_id": "coeur_as", "signification": "Le jackpot ! Parle d'une rencontre inattendue, d'une relation qui naît simplement et sans forcer." },
       { "carte_associee_id": "pique_07", "signification": "Avertissement discret. Un projet peut paraître chanceux mais demande plus de réflexion. Attention aux promesses trop belles." },
@@ -488,6 +495,13 @@ export const trefleCards: Card[] = [
       "une clé dorée insérée dans une serrure, sur le point de tourner",
       "une équipe de randonneurs s'entraidant pour gravir une montagne",
       "un rayon de soleil perçant un nuage gris"
+    ],
+    "prompts_conversationnels": [
+      "Le 3 de Trèfle est une 'clé qui ouvre une porte'. En quoi cette image est-elle différente de celle de 'l'opportunité' de l'As de Trèfle ?",
+      "La fiche dit que cette carte est un 'souffle d'énergie pure'. Comment gérer cette énergie pour qu'elle soit constructive et non chaotique ?",
+      "Cette carte parle de 'victoire collective'. Expliquez l'importance de la collaboration par opposition à la réussite individuelle.",
+      "Le chiffre 3 est celui de la 'création'. Proposez un scénario où cette énergie créative est essentielle pour débloquer un projet professionnel.",
+      "Avec les piques, le message devient 'sérieux'. Comment l'énergie de 'chance' du 3 de Trèfle peut-elle interagir avec un 'défi' de pique ?"
     ],
     "combinaisons": [
       { "carte_associee_id": "coeur_10", "signification": "Une victoire collective, un projet où l'harmonie règne, que ce soit en famille ou entre amis." },
@@ -529,6 +543,13 @@ export const trefleCards: Card[] = [
       "deux mains construisant ensemble un pont entre deux rives",
       "une personne marchant sur un fil, tenant un balancier pour garder l'équilibre",
       "deux personnes en pleine conversation, partageant des idées au-dessus d'un plan"
+    ],
+    "prompts_conversationnels": [
+      "La fiche compare le 2 de Trèfle à une 'danse'. Expliquez cette métaphore dans le contexte d'une collaboration professionnelle.",
+      "Cette carte invite à 'trouver son équilibre'. Comment l'idée d'équilibre peut-elle s'appliquer non seulement aux relations avec les autres, mais aussi à notre relation avec nous-même ?",
+      "Le 2 de Trèfle est un appel à la 'communication'. Proposez un scénario où une simple conversation peut débloquer un partenariat qui semblait au point mort.",
+      "La carte suggère de ne 'pas tout faire en solo'. Pourquoi est-il parfois difficile de demander de l'aide, même quand on en a besoin ?",
+      "Si le 2 de Coeur est le début d'une romance, en quoi le 'partenariat' du 2 de Trèfle est-il différent ?"
     ],
     "combinaisons": []
   },
