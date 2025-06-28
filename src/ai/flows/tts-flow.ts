@@ -89,8 +89,9 @@ const ttsFlow = ai.defineFlow(
       };
     } catch (error) {
       console.error("Error in ttsFlow for query:", `"${query}"`, "Error:", error);
-      // Re-throw the error so the client can handle it.
-      throw new Error("Une erreur est survenue lors de la génération de l'audio. Veuillez réessayer.");
+      // Instead of re-throwing, which crashes the client, we'll return an empty media string.
+      // This allows the lesson to continue without audio for this step.
+      return { media: '' };
     }
   }
 );
