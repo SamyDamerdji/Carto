@@ -111,18 +111,23 @@ const learningFlow = ai.defineFlow(
           ${input.card.combinaisons.map(c => `- Avec ${c.carte_associee_id}: ${c.signification}`).join('\n')}
         `;
         
-        const fullSystemPrompt = systemPromptText + '\n\n' + cardDataForPrompt;
+        // The conversation history from the client
+        const conversationHistory: MessageData[] = input.history.map((msg) => ({
+          role: msg.role === 'oracle' ? 'model' : 'user',
+          content: [{ text: msg.content }],
+        }));
 
-        const messages: MessageData[] = [
-            { role: 'system', content: [{ text: fullSystemPrompt }] },
-            ...input.history.map((msg) => ({
-                role: msg.role === 'oracle' ? 'model' : 'user',
-                content: [{ text: msg.content }],
-            }))
+        // We build the full prompt for the model
+        const messagesForModel: MessageData[] = [
+          // This first "user" message provides the full context of the card for the AI to reference.
+          // It's structured this way so the system prompt remains clean and focused on instructions.
+          { role: 'user', content: [{ text: `CONTEXTE DE LA LEÇON (à utiliser comme référence pour tes réponses) :\n${cardDataForPrompt}\n\nMA DEMANDE : Conformément à tes instructions, commence la leçon. Si l'historique est vide, présente-toi et introduis la carte. Sinon, réponds au dernier message de l'utilisateur.` }] },
+          ...conversationHistory,
         ];
 
       const result = await ai.generate({
-          prompt: messages,
+          system: systemPromptText,
+          prompt: messagesForModel,
       });
 
       return result.text ?? "Désolé, une interférence cosmique perturbe ma vision. L'assistant reste silencieux pour l'instant.";
