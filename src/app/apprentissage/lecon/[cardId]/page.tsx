@@ -1,13 +1,14 @@
+
 'use client';
 
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import type { Card } from '@/lib/data/cards';
 import { getCardDetails } from '@/lib/data/cards';
 import { chatWithOracle, type LearningOutput } from '@/ai/flows/oracle-flow';
 import { textToSpeech } from '@/ai/flows/tts-flow';
 import Image from 'next/image';
-import { Loader2, Volume2, VolumeX, Check, X as XIcon } from 'lucide-react';
+import { Loader2, Volume2, VolumeX, Check, X as XIcon, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
@@ -28,8 +29,12 @@ type UiSubState = 'explaining' | 'exercising' | 'feedback';
 export default function LeconInteractivePage() {
   const params = useParams();
   const cardId = params.cardId as string;
-  const card = getCardDetails(cardId);
   const { toast } = useToast();
+
+  const card = useMemo(() => {
+    if (!cardId) return null;
+    return getCardDetails(cardId);
+  }, [cardId]);
 
   const [lessonState, setLessonState] = useState<LessonState>('preparing');
   const [uiSubState, setUiSubState] = useState<UiSubState>('explaining');
@@ -46,6 +51,9 @@ export default function LeconInteractivePage() {
   const [isTtsPlaying, setIsTtsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   
+  // This ref ensures the initial fetch is only called once, preventing Strict Mode issues.
+  const didInitialFetch = useRef(false);
+
   const fetchStepAndAudio = useCallback(async (history: LessonStep[]) => {
     if (!card) return null;
     try {
@@ -63,13 +71,15 @@ export default function LeconInteractivePage() {
         title: "Erreur de l'Oracle",
         description: "Impossible de continuer la leçon. Veuillez rafraîchir la page.",
       });
+      setLessonState('ready'); // Go back to a safe state
       return null;
     }
   }, [card, toast]);
 
   // Initial fetch on mount
   useEffect(() => {
-    if (lessonState !== 'preparing' || !card) return;
+    if (!card || didInitialFetch.current) return;
+    didInitialFetch.current = true;
 
     setIsPrefetching(true);
     fetchStepAndAudio([]).then(data => {
@@ -79,42 +89,43 @@ export default function LeconInteractivePage() {
       }
       setIsPrefetching(false);
     });
-  }, [card, fetchStepAndAudio, lessonState]);
+  }, [card, fetchStepAndAudio]);
 
   const advanceToNextStep = useCallback(() => {
     if (!prefetchedData) return;
-    setLessonSteps(prev => [...prev, { model: prefetchedData.step, user: { answer: null } }]);
+    
+    // The history is already updated from handleAnswerClick
+    const newLessonStep = { model: prefetchedData.step, user: { answer: null } };
+    setLessonSteps(prev => [...prev, newLessonStep]);
+    setCurrentStepIndex(prev => prev + 1);
+    
     if (audioRef.current) {
       audioRef.current.src = prefetchedData.audioUrl;
       audioPlayerManager.play(audioRef.current).catch(e => console.error("Audio play failed on advance", e));
     }
+    
     setPrefetchedData(null);
     setUiSubState('explaining');
     setLastAnswerStatus(null);
     setSelectedOption(null);
     setIsWaitingForNextStep(false);
   }, [prefetchedData]);
+  
 
   // Prefetching logic for subsequent steps
   useEffect(() => {
-    if (uiSubState === 'exercising' && !prefetchedData && !isPrefetching) {
-      setIsPrefetching(true);
-      fetchStepAndAudio(lessonSteps).then(data => {
-        if (data) {
-          setPrefetchedData(data);
-        }
-        setIsPrefetching(false);
-      });
+    if (uiSubState === 'feedback' && !prefetchedData && !isPrefetching) {
+        setIsPrefetching(true);
+        fetchStepAndAudio(lessonSteps).then(data => {
+            if (data) {
+                setPrefetchedData(data);
+            }
+            setIsPrefetching(false);
+        });
     }
   }, [uiSubState, prefetchedData, isPrefetching, lessonSteps, fetchStepAndAudio]);
-  
-  // Logic to advance after prefetch is complete
-  useEffect(() => {
-    if (isWaitingForNextStep && prefetchedData) {
-      advanceToNextStep();
-    }
-  }, [isWaitingForNextStep, prefetchedData, advanceToNextStep]);
 
+  
   const handleStartLesson = useCallback(() => {
     if (!prefetchedData) return;
     setLessonState('active');
@@ -133,57 +144,65 @@ export default function LeconInteractivePage() {
     const currentStepModel = lessonSteps[currentStepIndex].model;
     const isCorrect = option === currentStepModel.exercice?.reponseCorrecte;
 
-    setLastAnswerStatus(isCorrect ? 'correct' : 'incorrect');
-    setSelectedOption(option);
-    setUiSubState('feedback');
-
+    // Update history immediately for the next prefetch
     const updatedSteps = [...lessonSteps];
     updatedSteps[currentStepIndex].user.answer = option;
     setLessonSteps(updatedSteps);
 
-     setTimeout(() => {
-        const currentStep = lessonSteps[currentStepIndex]?.model;
-        if (currentStep.finDeLecon) {
-            setLessonState('finished');
-            return;
-        }
-
-        setCurrentStepIndex(prev => prev + 1);
-
-        if (prefetchedData) {
-            advanceToNextStep();
-        } else {
-            setIsWaitingForNextStep(true);
-        }
-    }, 1500);
+    setLastAnswerStatus(isCorrect ? 'correct' : 'incorrect');
+    setSelectedOption(option);
+    setUiSubState('feedback');
   };
+  
+  const handleContinue = () => {
+    const currentStep = lessonSteps[currentStepIndex]?.model;
+    if (currentStep.finDeLecon) {
+        setLessonState('finished');
+        return;
+    }
+
+    if (prefetchedData) {
+        advanceToNextStep();
+    } else {
+        setIsWaitingForNextStep(true);
+    }
+  }
+
+  // This effect handles the case where user clicks "Continue" before prefetch is done.
+  useEffect(() => {
+    if (isWaitingForNextStep && prefetchedData) {
+      advanceToNextStep();
+    }
+  }, [isWaitingForNextStep, prefetchedData, advanceToNextStep]);
+
 
   useEffect(() => {
     const audioElement = audioRef.current;
     if (!audioElement) return;
 
     const onPlay = () => setIsTtsPlaying(true);
-    const onPause = () => setIsTtsPlaying(false);
+    const onPauseOrEnded = () => setIsTtsPlaying(false);
     const onEnded = () => {
-        setIsTtsPlaying(false);
-        setUiSubState('exercising');
+        // Only transition if we were explaining. Prevents race conditions.
+        if (uiSubState === 'explaining') {
+            setUiSubState('exercising');
+        }
     };
 
     audioElement.addEventListener('play', onPlay);
-    audioElement.addEventListener('pause', onPause);
+    audioElement.addEventListener('playing', onPlay); // Some browsers use this
+    audioElement.addEventListener('pause', onPauseOrEnded);
     audioElement.addEventListener('ended', onEnded);
     
+    // Cleanup function
     return () => {
         audioElement.removeEventListener('play', onPlay);
-        audioElement.removeEventListener('pause', onPause);
+        audioElement.removeEventListener('playing', onPlay);
+        audioElement.removeEventListener('pause', onPauseOrEnded);
         audioElement.removeEventListener('ended', onEnded);
-        // We only pause the audio globally if it's THIS audio element that's currently managed.
-        // This check is crucial for React's Strict Mode to work correctly without side effects.
-        if (audioPlayerManager.current === audioElement) {
-            audioPlayerManager.pause();
-        }
     };
-  }, []);
+  }, [uiSubState]); // Rerun when uiSubState changes to correctly handle the onEnded logic.
+
 
   // Gracefully handle the case where cardId is not available on initial render.
   if (!cardId) {
@@ -223,7 +242,7 @@ export default function LeconInteractivePage() {
     if (lessonState === 'active' || lessonState === 'finished') {
         const currentStep = lessonSteps[currentStepIndex]?.model;
 
-        if (isWaitingForNextStep || !currentStep) {
+        if (!currentStep) {
           return (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mx-auto mt-6 max-w-md rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6 min-h-[400px] flex flex-col justify-center items-center">
               <Loader2 className="h-12 w-12 animate-spin text-primary" />
@@ -245,8 +264,13 @@ export default function LeconInteractivePage() {
                     <p className="text-sm whitespace-pre-wrap">{currentStep.paragraphe}</p>
                 </div>
 
-                <div className="mt-4 min-h-[210px] flex flex-col justify-center">
-                  {uiSubState === 'exercising' || uiSubState === 'feedback' ? (
+                <div className="mt-4 min-h-[250px] flex flex-col justify-center">
+                  {isWaitingForNextStep ? (
+                     <div className="flex flex-col justify-center items-center h-full">
+                       <Loader2 className="h-8 w-8 animate-spin text-primary" />
+                       <p className="text-sm italic mt-4 text-primary">L'oracle prépare la suite...</p>
+                     </div>
+                  ) : uiSubState === 'exercising' || uiSubState === 'feedback' ? (
                     <div className="space-y-2 flex flex-col items-center text-center">
                         <p className="text-sm text-white/80 italic mb-2">{currentStep.exercice?.question}</p>
                         {currentStep.exercice?.options.map(opt => {
@@ -270,6 +294,11 @@ export default function LeconInteractivePage() {
                                 </Button>
                             );
                         })}
+                         {uiSubState === 'feedback' && (
+                          <Button onClick={handleContinue} className="mt-4" disabled={isPrefetching}>
+                            Continuer <ArrowRight className="ml-2 h-4 w-4"/>
+                          </Button>
+                        )}
                     </div>
                   ) : lessonState === 'finished' ? (
                       <div className="text-center text-white/90 p-4">
@@ -283,6 +312,11 @@ export default function LeconInteractivePage() {
                           <div className="flex items-center gap-2 text-primary">
                             <Loader2 className="h-5 w-5 animate-spin" />
                             <p className="text-sm italic">Écoutez...</p>
+                          </div>
+                        ) : uiSubState === 'explaining' && !isTtsPlaying ? (
+                          <div className="flex items-center gap-2 text-primary">
+                            <Check className="h-5 w-5"/>
+                            <p className="text-sm italic">Préparez-vous pour l'exercice...</p>
                           </div>
                         ) : null}
                     </div>
