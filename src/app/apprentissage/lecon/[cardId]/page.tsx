@@ -1,6 +1,6 @@
+
 'use client';
 
-import type { ReactNode } from 'react';
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import type { Card } from '@/lib/data/cards';
@@ -33,6 +33,9 @@ export default function LeconInteractivePage() {
   const cardId = params.cardId as string;
   const card = getCardDetails(cardId);
   const lessonStarted = useRef(false);
+
+  const [lessonState, setLessonState] = useState<'preparing' | 'ready' | 'active'>('preparing');
+  const [initialMessageText, setInitialMessageText] = useState('');
 
   const [messages, setMessages] = useState<{ role: 'user' | 'oracle'; content: string }[]>([]);
   const messagesRef = useRef(messages);
@@ -222,16 +225,13 @@ export default function LeconInteractivePage() {
     if (!card || lessonStarted.current) return;
     lessonStarted.current = true;
     
-    const startLesson = async () => {
+    const prepareLesson = async () => {
+      setLessonState('preparing');
       audioPlayerManager.pause();
-      setIsLoading(true);
-      setMessages([]);
       try {
         const initialMessage = await chatWithOracle({ card, history: [] });
-        const assistantMessage = { role: 'oracle' as const, content: initialMessage };
-        setMessages([assistantMessage]);
-        // Do not autoplay the first message to comply with browser policies.
-        // await playTts(initialMessage); 
+        setInitialMessageText(initialMessage);
+        setLessonState('ready');
       } catch (error) {
         console.error("Error starting lesson:", error);
         toast({
@@ -240,13 +240,22 @@ export default function LeconInteractivePage() {
             description: "Désolé, je ne parviens pas à préparer la leçon pour le moment.",
         });
         setMessages([{ role: 'oracle', content: "Désolé, je ne parviens pas à préparer la leçon pour le moment." }]);
-      } finally {
-        setIsLoading(false);
+        setLessonState('active'); // Show error in chat
       }
     };
 
-    startLesson();
+    prepareLesson();
   }, [card, toast]);
+
+  const handleStartLesson = async () => {
+    if (initialMessageText) {
+        const assistantMessage = { role: 'oracle' as const, content: initialMessageText };
+        setMessages([assistantMessage]);
+        setLessonState('active');
+        await playTts(initialMessageText); 
+    }
+  };
+
 
   useEffect(() => {
     const audioElement = ttsAudioRef.current;
@@ -298,24 +307,20 @@ export default function LeconInteractivePage() {
   const handleTtsButtonClick = () => {
     if (isTtsLoading) return;
 
-    // If audio is currently playing, the button's only job is to stop it.
     if (isTtsPlaying) {
       audioPlayerManager.pause();
       return;
     }
 
-    // If nothing is playing, the button acts as a master toggle.
     const newState = !isTtsEnabled;
     setIsTtsEnabled(newState);
 
     if (newState) {
-      // If we just enabled TTS, play the last message if available.
       const lastMessage = messages[messages.length - 1];
       if (lastMessage?.role === 'oracle' && lastMessage.content) {
         playTts(lastMessage.content);
       }
     } else {
-      // If we just disabled TTS, stop any speech recognition.
       if (recognitionRef.current) {
         recognitionRef.current.stop();
       }
@@ -335,98 +340,132 @@ export default function LeconInteractivePage() {
       <CardNavigation currentCardId={cardId} />
       <main className="flex-grow container mx-auto px-4 pb-8">
         <audio ref={ttsAudioRef} className="hidden" />
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          className="mx-auto mt-6 max-w-md rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6"
-        >
-          <div className="flex items-center justify-between gap-3 mb-4">
-            <div className="flex items-center gap-3">
-              <BrainCircuit className="h-6 w-6 text-primary" />
-              <h2 className="font-headline text-xl font-bold uppercase tracking-wider text-card-foreground/90">
-                Leçon : {card.nom_carte}
-              </h2>
-            </div>
-            <Button
-                variant="ghost"
-                size="icon"
-                onClick={handleTtsButtonClick}
-                className="text-primary hover:bg-primary/20"
-                aria-label={ttsButtonLabel}
-            >
-              <TtsIcon className={`h-5 w-5 ${isTtsLoading ? 'animate-spin' : ''}`} />
-            </Button>
-          </div>
-           <div className="space-y-4">
-              <div className="bg-card rounded-xl shadow-lg p-1 mx-auto w-fit">
-                <div className="relative w-[150px] aspect-[2.5/3.5] p-2">
-                  <Image
-                    src={card.image_url}
-                    alt={`Image de la carte ${card.nom_carte}`}
-                    fill
-                    className="object-contain"
-                    sizes="(max-width: 640px) 100vw, 50vw"
-                  />
-                </div>
-              </div>
 
-               <ScrollArea className="h-80 w-full pr-4" ref={chatContainerRef}>
-                   <div className="space-y-4">
-                       {messages.map((message, index) => (
-                           <div key={index} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                               <div className={`max-w-xs lg:max-w-md p-3 rounded-lg ${message.role === 'user' ? 'bg-primary text-primary-foreground' : 'bg-background/20 text-white/90 border border-primary/20'}`}>
-                                   <p className="text-sm whitespace-pre-wrap">{message.content}</p>
-                               </div>
-                           </div>
-                       ))}
-                        {isLoading && messages.length > 0 && (
-                           <div className="flex justify-start">
-                               <div className="max-w-xs lg:max-w-md p-3 rounded-lg bg-background/20 text-white/90 border border-primary/20 flex items-center gap-2">
-                                  <Loader2 className="h-5 w-5 animate-spin text-primary" />
-                                  <p className="text-sm italic">L'assistant réfléchit...</p>
-                               </div>
-                           </div>
-                       )}
-                       {isLoading && messages.length === 0 && (
-                          <div className="flex justify-center items-center h-full p-10">
-                            <Loader2 className="h-8 w-8 animate-spin text-primary" />
-                          </div>
-                       )}
-                   </div>
-               </ScrollArea>
-               <form onSubmit={handleSendMessage} className="flex items-center gap-2">
-                   <Input
-                       type="text"
-                       placeholder="Écrivez votre réponse..."
-                       value={inputValue}
-                       onChange={(e) => setInputValue(e.target.value)}
-                       disabled={isLoading}
-                       className="bg-secondary/20 backdrop-blur-lg border-primary/30 text-white placeholder:text-white/60"
-                   />
-                   <Button
-                       variant="ghost"
-                       size="icon"
-                       type="button"
-                       onClick={handleMicClick}
-                       disabled={isLoading}
-                       className={cn(
-                           "text-primary hover:bg-primary/20",
-                           isRecording && "bg-destructive/20 text-destructive animate-pulse"
-                       )}
-                       aria-label={isRecording ? "Arrêter l'enregistrement" : "Démarrer l'enregistrement vocal"}
-                   >
-                       {isRecording ? <MicOff className="h-5 w-5" /> : <Mic className="h-5 w-5" />}
-                   </Button>
-                   <Button type="submit" variant="default" size="icon" className="bg-primary hover:bg-primary/90" disabled={isLoading || !inputValue.trim()}>
-                      {isLoading ? <Loader2 className="h-5 w-5 animate-spin" /> : <Send className="h-5 w-5" />}
-                   </Button>
-               </form>
-           </div>
-        </motion.div>
+        {lessonState === 'preparing' && (
+          <div className="flex justify-center items-center min-h-[400px]">
+            <Loader2 className="h-12 w-12 animate-spin text-primary" />
+          </div>
+        )}
+
+        {lessonState === 'ready' && (
+            <div className="mx-auto mt-6 max-w-md rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6 text-center">
+                <div className="flex items-center justify-center gap-3 mb-4">
+                  <BrainCircuit className="h-6 w-6 text-primary" />
+                  <h2 className="font-headline text-xl font-bold uppercase tracking-wider text-card-foreground/90">
+                    Leçon : {card.nom_carte}
+                  </h2>
+                </div>
+                <div className="bg-card rounded-xl shadow-lg p-1 mx-auto w-fit my-4">
+                  <div className="relative w-[150px] aspect-[2.5/3.5] p-2">
+                    <Image
+                      src={card.image_url}
+                      alt={`Image de la carte ${card.nom_carte}`}
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 640px) 100vw, 50vw"
+                    />
+                  </div>
+                </div>
+                <p className="text-white/90 my-4">
+                  L'oracle est prêt à vous enseigner les secrets de cette carte.
+                </p>
+                <Button onClick={handleStartLesson} size="lg">
+                    <Volume2 className="mr-2 h-5 w-5" />
+                    Commencer la leçon audio
+                </Button>
+            </div>
+        )}
+
+        {lessonState === 'active' && (
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mx-auto mt-6 max-w-md rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6"
+          >
+            <div className="flex items-center justify-between gap-3 mb-4">
+              <div className="flex items-center gap-3">
+                <BrainCircuit className="h-6 w-6 text-primary" />
+                <h2 className="font-headline text-xl font-bold uppercase tracking-wider text-card-foreground/90">
+                  Leçon : {card.nom_carte}
+                </h2>
+              </div>
+              <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={handleTtsButtonClick}
+                  className="text-primary hover:bg-primary/20"
+                  aria-label={ttsButtonLabel}
+              >
+                <TtsIcon className={`h-5 w-5 ${isTtsLoading ? 'animate-spin' : ''}`} />
+              </Button>
+            </div>
+             <div className="space-y-4">
+                <div className="bg-card rounded-xl shadow-lg p-1 mx-auto w-fit">
+                  <div className="relative w-[150px] aspect-[2.5/3.5] p-2">
+                    <Image
+                      src={card.image_url}
+                      alt={`Image de la carte ${card.nom_carte}`}
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 640px) 100vw, 50vw"
+                    />
+                  </div>
+                </div>
+
+                 <ScrollArea className="h-80 w-full pr-4" ref={chatContainerRef}>
+                     <div className="space-y-4">
+                         {messages.map((message, index) => (
+                             <div key={index} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                                 <div className={`max-w-xs lg:max-w-md p-3 rounded-lg ${message.role === 'user' ? 'bg-primary text-primary-foreground' : 'bg-background/20 text-white/90 border border-primary/20'}`}>
+                                     <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                                 </div>
+                             </div>
+                         ))}
+                          {isLoading && (
+                             <div className="flex justify-start">
+                                 <div className="max-w-xs lg:max-w-md p-3 rounded-lg bg-background/20 text-white/90 border border-primary/20 flex items-center gap-2">
+                                    <Loader2 className="h-5 w-5 animate-spin text-primary" />
+                                    <p className="text-sm italic">L'assistant réfléchit...</p>
+                                 </div>
+                             </div>
+                         )}
+                     </div>
+                 </ScrollArea>
+                 <form onSubmit={handleSendMessage} className="flex items-center gap-2">
+                     <Input
+                         type="text"
+                         placeholder="Écrivez votre réponse..."
+                         value={inputValue}
+                         onChange={(e) => setInputValue(e.target.value)}
+                         disabled={isLoading}
+                         className="bg-secondary/20 backdrop-blur-lg border-primary/30 text-white placeholder:text-white/60"
+                     />
+                     <Button
+                         variant="ghost"
+                         size="icon"
+                         type="button"
+                         onClick={handleMicClick}
+                         disabled={isLoading}
+                         className={cn(
+                             "text-primary hover:bg-primary/20",
+                             isRecording && "bg-destructive/20 text-destructive animate-pulse"
+                         )}
+                         aria-label={isRecording ? "Arrêter l'enregistrement" : "Démarrer l'enregistrement vocal"}
+                     >
+                         {isRecording ? <MicOff className="h-5 w-5" /> : <Mic className="h-5 w-5" />}
+                     </Button>
+                     <Button type="submit" variant="default" size="icon" className="bg-primary hover:bg-primary/90" disabled={isLoading || !inputValue.trim()}>
+                        {isLoading ? <Loader2 className="h-5 w-5 animate-spin" /> : <Send className="h-5 w-5" />}
+                     </Button>
+                 </form>
+             </div>
+          </motion.div>
+        )}
       </main>
       <Footer />
     </div>
   );
 }
+
+    
