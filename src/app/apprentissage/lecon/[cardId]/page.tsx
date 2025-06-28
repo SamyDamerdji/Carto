@@ -69,7 +69,8 @@ export default function LeconInteractivePage() {
 
   // Initial fetch on mount
   useEffect(() => {
-    if (!card) return;
+    if (lessonState !== 'preparing' || !card) return;
+
     setIsPrefetching(true);
     fetchStepAndAudio([]).then(data => {
       if (data) {
@@ -78,7 +79,7 @@ export default function LeconInteractivePage() {
       }
       setIsPrefetching(false);
     });
-  }, [card, fetchStepAndAudio]);
+  }, [card, fetchStepAndAudio, lessonState]);
 
   const advanceToNextStep = useCallback(() => {
     if (!prefetchedData) return;
@@ -139,61 +140,55 @@ export default function LeconInteractivePage() {
     const updatedSteps = [...lessonSteps];
     updatedSteps[currentStepIndex].user.answer = option;
     setLessonSteps(updatedSteps);
-  };
-  
-  const handleContinue = () => {
-    const currentStepModel = lessonSteps[currentStepIndex].model;
-    if (currentStepModel.finDeLecon) {
-      setLessonState('finished');
-      return;
-    }
-    
-    setCurrentStepIndex(prev => prev + 1);
-    
-    if (prefetchedData) {
-      advanceToNextStep();
-    } else {
-      setIsWaitingForNextStep(true);
-    }
-  }
 
+     setTimeout(() => {
+        const currentStep = lessonSteps[currentStepIndex]?.model;
+        if (currentStep.finDeLecon) {
+            setLessonState('finished');
+            return;
+        }
+
+        setCurrentStepIndex(prev => prev + 1);
+
+        if (prefetchedData) {
+            advanceToNextStep();
+        } else {
+            setIsWaitingForNextStep(true);
+        }
+    }, 1500);
+  };
+
+  // This is the master effect for audio event handling.
+  // It's run only once to prevent issues with React's Strict Mode.
   useEffect(() => {
     const audioElement = audioRef.current;
     if (!audioElement) return;
 
-    const onPlay = () => setIsTtsPlaying(true);
-    const onPauseOrEnded = () => {
+    const handlePlay = () => setIsTtsPlaying(true);
+    const handlePause = () => setIsTtsPlaying(false);
+    const handleEnded = () => {
       setIsTtsPlaying(false);
-      // We need to use a function form of setUiSubState to get the latest state
-      // This helps prevent race conditions
-      setUiSubState(currentUiSubState => {
-        if (currentUiSubState === 'explaining') {
-            return 'exercising';
-        }
-        return currentUiSubState;
-      });
+      // This is the key: only advance the UI when the audio *finishes* playing.
+      setUiSubState('exercising');
     };
-    
-    audioElement.addEventListener('play', onPlay);
-    audioElement.addEventListener('pause', onPauseOrEnded);
-    audioElement.addEventListener('ended', onPauseOrEnded);
-    
-    return () => {
-      audioElement.removeEventListener('play', onPlay);
-      audioElement.removeEventListener('pause', onPauseOrEnded);
-      audioElement.removeEventListener('ended', onPauseOrEnded);
-    };
-  }, []); // This effect should run only once.
 
-  useEffect(() => {
-    const audioElement = audioRef.current;
-    // This effect handles cleanup when the component truly unmounts.
+    audioElement.addEventListener('play', handlePlay);
+    audioElement.addEventListener('pause', handlePause);
+    audioElement.addEventListener('ended', handleEnded);
+
+    // The cleanup function, runs when the component unmounts.
     return () => {
-        if (audioPlayerManager.current === audioElement) {
-            audioPlayerManager.pause();
-        }
-    }
-  }, []);
+      audioElement.removeEventListener('play', handlePlay);
+      audioElement.removeEventListener('pause', handlePause);
+      audioElement.removeEventListener('ended', handleEnded);
+      
+      // Crucial check: only pause the audio if it's the one this component instance is managing.
+      // This prevents the Strict Mode cleanup of the first render from interfering with the second render.
+      if (audioPlayerManager.current === audioElement) {
+        audioPlayerManager.pause();
+      }
+    };
+  }, []); // The empty dependency array is intentional and correct here.
 
 
   if (!card) {
@@ -267,13 +262,6 @@ export default function LeconInteractivePage() {
                                 </Button>
                             );
                         })}
-                        {uiSubState === 'feedback' && (
-                           <div className="pt-4">
-                             <Button onClick={handleContinue}>
-                               Continuer <ArrowRight className="ml-2 h-4 w-4" />
-                             </Button>
-                           </div>
-                        )}
                     </div>
                   ) : lessonState === 'finished' ? (
                       <div className="text-center text-white/90 p-4">
