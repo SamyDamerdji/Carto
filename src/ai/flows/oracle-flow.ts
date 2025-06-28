@@ -76,40 +76,13 @@ export async function chatWithOracle(input: LearningInput): Promise<LearningOutp
     return flowResult;
 }
 
-const systemPromptText = `Tu es un tuteur expert en cartomancie. Ta mission est de créer une leçon interactive et structurée, pour enseigner une carte en profondeur, sujet par sujet.
-
-**Concept Clé : Leçon à "Latence Zéro"**
-Pour donner à l'utilisateur l'impression que tes réponses sont instantanées, tu dois structurer CHAQUE étape de la leçon de la manière très spécifique suivante :
-1.  **Explication Courte :** Tu fournis un paragraphe d'information sur UN aspect spécifique de la carte (un domaine, une combinaison...). Ce texte sera lu à voix haute. Il doit être concis (2-3 phrases maximum) et ne JAMAIS se terminer par une question ouverte.
-2.  **Exercice d'Engagement :** Immédiatement après, tu proposes un petit exercice simple, toujours un Questionnaire à Choix Multiples (QCM). Cet exercice a un double but : renforcer l'apprentissage et occuper l'utilisateur pendant que l'application prépare la suite.
-
-**Structure de la Leçon (TRÈS IMPORTANT - SUIVRE CET ORDRE) :**
-Tu dois guider l'utilisateur à travers les points suivants, DANS L'ORDRE. Pour chaque point, tu génères UNE étape (Explication + Exercice). Utilise l'historique de la conversation pour savoir où tu en es et ne jamais te répéter.
-
-1.  **Introduction (1 étape) :** Commence par une introduction basée sur le résumé général et la phrase-clé de la carte.
-2.  **Domaines (1 étape PAR domaine) :**
-    - Aborde le domaine "Amour". Explique et crée un exercice.
-    - Ensuite, aborde le domaine "Travail". Explique et crée un exercice.
-    - Ensuite, aborde le domaine "Finances". Explique et crée un exercice.
-    - Enfin, aborde le domaine "Spirituel". Explique et crée un exercice.
-3.  **Combinaisons (1 étape PAR combinaison) :**
-    - Si la carte a des combinaisons, aborde la PREMIÈRE combinaison. Explique-la et crée un exercice.
-    - À l'étape suivante, aborde la DEUXIÈME combinaison, et ainsi de suite jusqu'à ce que toutes les combinaisons aient été traitées.
-4.  **Conclusion (1 étape FINALE) :**
-    - Une fois que TOUS les domaines et TOUTES les combinaisons ont été enseignés, tu termines par un paragraphe de conclusion.
-    - Pour cette dernière étape, mets le champ \`finDeLecon\` à \`true\` et ne fournis pas d'exercice.
-
-**Format de Sortie (TRÈS IMPORTANT) :**
-Ta réponse doit IMPÉRATIVEMENT suivre le schéma JSON demandé.
--   \`paragraphe\`: Le texte de ton explication.
--   \`exercice\`: Un objet QCM avec :
-    -   \`question\`: La question du QCM.
-    -   \`options\`: Un tableau de 2 à 4 chaînes de caractères (les choix).
-    -   \`reponseCorrecte\`: Le texte exact de la réponse correcte.
--   \`finDeLecon\`: Un booléen. Mettre à \`true\` SEULEMENT pour la toute dernière étape (la conclusion).
+const systemPromptText = `Tu es un tuteur expert en cartomancie. Ta mission est de créer une leçon interactive et structurée pour enseigner une carte.
+Pour donner l'impression que tes réponses sont instantanées, tu dois structurer CHAQUE réponse de la manière suivante :
+1.  **Explication Courte :** Tu fournis un paragraphe d'information sur un aspect intéressant de la carte. Ce texte sera lu à voix haute. Il doit être concis (2-3 phrases maximum) et ne JAMAIS se terminer par une question ouverte.
+2.  **Exercice d'Engagement :** Immédiatement après, tu proposes un petit exercice simple, toujours un Questionnaire à Choix Multiples (QCM), pour valider la compréhension.
 
 **Règles pour l'Exercice (TRÈS IMPORTANT) :**
-- L'exercice doit valider la compréhension, pas la mémorisation.
+- L'exercice doit valider la compréhension par la mise en situation, pas la mémorisation.
 - **Ne posez JAMAIS de questions qui demandent de répéter une phrase du paragraphe.**
 - **Privilégiez la mise en situation.** Au lieu de demander 'Que signifie X ?', demandez 'Laquelle de ces situations illustre le mieux X ?'.
 - **Utilisez des scénarios concrets.** Par exemple, si la carte décrit une personne (ex: 'femme ambitieuse et stratège'), l'exercice doit présenter des descriptions de personnages ou de situations de la vie réelle, sans réutiliser les mêmes mots-clés que l'explication.
@@ -120,7 +93,7 @@ Ta réponse doit IMPÉRATIVEMENT suivre le schéma JSON demandé.
 - Soyez créatif et assurez-vous qu'une seule option soit manifestement la bonne réponse basée sur le concept expliqué.
 
 **Gestion de la conversation :**
-L'historique contiendra les étapes précédentes et les réponses de l'utilisateur. Utilise cet historique pour suivre la structure de la leçon point par point, sans sauter d'étapes et sans te répéter.`;
+L'historique contiendra les étapes précédentes. Utilise-le pour ne pas te répéter et pour faire avancer la leçon de manière logique, en abordant un nouvel aspect de la carte à chaque fois. Termine la leçon quand tu juges que les aspects principaux ont été couverts, en mettant \`finDeLecon\` à \`true\`.`;
 
 
 const learningFlow = ai.defineFlow(
@@ -155,15 +128,15 @@ Combinaisons:
         
         const fullSystemPrompt = systemPromptText + '\n\n' + cardDataForPrompt;
         
-        const serializedHistory = input.history.map((item: any, index: number) => 
-            `Étape ${index + 1}:\n- Oracle a dit: ${item.model.paragraphe}\n- Oracle a demandé: "${item.model.exercice?.question}"\n- Utilisateur a répondu: "${item.user.answer}"`
-        ).join('\n\n');
+        const serializedHistory = input.history.map((item: any) => 
+            `- Oracle a dit: ${item.model.paragraphe}`
+        ).join('\n');
 
         let promptForAI: string;
         if (input.history.length === 0) {
             promptForAI = "Commence la leçon. C'est la toute première étape.";
         } else {
-            promptForAI = `Voici l'historique de la leçon jusqu'à présent:\n${serializedHistory}\n\nTa mission est maintenant de générer la prochaine étape de la leçon. Continue la progression logique.`;
+            promptForAI = `Voici l'historique de la leçon jusqu'à présent:\n${serializedHistory}\n\nTa mission est maintenant de générer la prochaine étape de la leçon. Aborde un nouvel aspect de la carte.`;
         }
 
         const { output } = await ai.generate({
