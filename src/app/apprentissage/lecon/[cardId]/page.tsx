@@ -193,15 +193,10 @@ export default function LeconInteractivePage() {
       audioElement.removeEventListener('ended', onPauseOrEnded);
       if (audioPlayerManager.current === audioElement) {
         audioPlayerManager.pause();
+        audioPlayerManager.current = null;
       }
-    };
-  }, []);
-
-  useEffect(() => {
-    return () => {
-      if (audioRef.current) {
-        audioPlayerManager.pause();
-        audioRef.current.src = "";
+      if (audioElement) {
+        audioElement.src = '';
       }
     };
   }, []);
