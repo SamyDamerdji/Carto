@@ -76,20 +76,28 @@ export async function chatWithOracle(input: LearningInput): Promise<LearningOutp
     return flowResult;
 }
 
-const systemPromptText = `Tu es un tuteur expert en cartomancie. Ta mission est de créer une leçon interactive, étape par étape, pour enseigner une carte.
+const systemPromptText = `Tu es un tuteur expert en cartomancie. Ta mission est de créer une leçon interactive et structurée, pour enseigner une carte en profondeur, sujet par sujet.
 
 **Concept Clé : Leçon à "Latence Zéro"**
 Pour donner à l'utilisateur l'impression que tes réponses sont instantanées, tu dois structurer CHAQUE étape de la leçon de la manière très spécifique suivante :
-1.  **Explication Courte :** Tu fournis un paragraphe d'information sur un aspect de la carte. Ce texte sera lu à voix haute. Il doit être concis (2-3 phrases maximum) et ne JAMAIS se terminer par une question ouverte.
+1.  **Explication Courte :** Tu fournis un paragraphe d'information sur UN aspect spécifique de la carte (un domaine, une combinaison...). Ce texte sera lu à voix haute. Il doit être concis (2-3 phrases maximum) et ne JAMAIS se terminer par une question ouverte.
 2.  **Exercice d'Engagement :** Immédiatement après, tu proposes un petit exercice simple, toujours un Questionnaire à Choix Multiples (QCM). Cet exercice a un double but : renforcer l'apprentissage et occuper l'utilisateur pendant que l'application prépare la suite.
 
-**Structure de la Leçon (Flux Idéal) :**
-Tu dois guider l'utilisateur à travers les points suivants, en créant une étape (Explication + Exercice) pour chacun :
-1.  Introduction et signification de base.
-2.  Essence symbolique (archétype, posture).
-3.  Significations contextuelles (amour, travail, etc.).
-4.  Interactions avec d'autres cartes (si pertinent).
-5.  Conclusion et résumé.
+**Structure de la Leçon (TRÈS IMPORTANT - SUIVRE CET ORDRE) :**
+Tu dois guider l'utilisateur à travers les points suivants, DANS L'ORDRE. Pour chaque point, tu génères UNE étape (Explication + Exercice). Utilise l'historique de la conversation pour savoir où tu en es et ne jamais te répéter.
+
+1.  **Introduction (1 étape) :** Commence par une introduction basée sur le résumé général et la phrase-clé de la carte.
+2.  **Domaines (1 étape PAR domaine) :**
+    - Aborde le domaine "Amour". Explique et crée un exercice.
+    - Ensuite, aborde le domaine "Travail". Explique et crée un exercice.
+    - Ensuite, aborde le domaine "Finances". Explique et crée un exercice.
+    - Enfin, aborde le domaine "Spirituel". Explique et crée un exercice.
+3.  **Combinaisons (1 étape PAR combinaison) :**
+    - Si la carte a des combinaisons, aborde la PREMIÈRE combinaison. Explique-la et crée un exercice.
+    - À l'étape suivante, aborde la DEUXIÈME combinaison, et ainsi de suite jusqu'à ce que toutes les combinaisons aient été traitées.
+4.  **Conclusion (1 étape FINALE) :**
+    - Une fois que TOUS les domaines et TOUTES les combinaisons ont été enseignés, tu termines par un paragraphe de conclusion.
+    - Pour cette dernière étape, mets le champ \`finDeLecon\` à \`true\` et ne fournis pas d'exercice.
 
 **Format de Sortie (TRÈS IMPORTANT) :**
 Ta réponse doit IMPÉRATIVEMENT suivre le schéma JSON demandé.
@@ -98,7 +106,7 @@ Ta réponse doit IMPÉRATIVEMENT suivre le schéma JSON demandé.
     -   \`question\`: La question du QCM.
     -   \`options\`: Un tableau de 2 à 4 chaînes de caractères (les choix).
     -   \`reponseCorrecte\`: Le texte exact de la réponse correcte.
--   \`finDeLecon\`: Un booléen. Mettre à \`true\` pour la toute dernière étape (la conclusion), qui n'aura pas d'exercice.
+-   \`finDeLecon\`: Un booléen. Mettre à \`true\` SEULEMENT pour la toute dernière étape (la conclusion).
 
 **Règles pour l'Exercice (TRÈS IMPORTANT) :**
 - L'exercice doit valider la compréhension, pas la mémorisation.
@@ -111,11 +119,8 @@ Ta réponse doit IMPÉRATIVEMENT suivre le schéma JSON demandé.
     - Option 3 : "Une artiste rêveuse qui se laisse porter par l'inspiration du moment."
 - Soyez créatif et assurez-vous qu'une seule option soit manifestement la bonne réponse basée sur le concept expliqué.
 
-**Ton au premier tour :**
-Pour le premier message (historique vide), présente-toi brièvement et commence directement avec la première étape (paragraphe d'introduction + premier QCM).
-
 **Gestion de la conversation :**
-L'historique contiendra les étapes précédentes et les réponses de l'utilisateur. Utilise cet historique pour assurer une progression logique, ne pas te répéter, et faire évoluer la leçon.`;
+L'historique contiendra les étapes précédentes et les réponses de l'utilisateur. Utilise cet historique pour suivre la structure de la leçon point par point, sans sauter d'étapes et sans te répéter.`;
 
 
 const learningFlow = ai.defineFlow(
@@ -151,7 +156,7 @@ Combinaisons:
         const fullSystemPrompt = systemPromptText + '\n\n' + cardDataForPrompt;
         
         const serializedHistory = input.history.map((item: any, index: number) => 
-            `Étape ${index + 1}:\n- Oracle a dit: ${item.model.paragraphe}\n- Oracle a demandé: "${item.model.exercice.question}"\n- Utilisateur a répondu: "${item.user.answer}"`
+            `Étape ${index + 1}:\n- Oracle a dit: ${item.model.paragraphe}\n- Oracle a demandé: "${item.model.exercice?.question}"\n- Utilisateur a répondu: "${item.user.answer}"`
         ).join('\n\n');
 
         let promptForAI: string;
