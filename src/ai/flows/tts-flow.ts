@@ -50,7 +50,7 @@ const ttsFlow = ai.defineFlow(
   },
   async (query) => {
     try {
-      if (!query) {
+      if (!query || query.trim() === '') {
         return { media: '' };
       }
       
