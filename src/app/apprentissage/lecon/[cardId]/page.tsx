@@ -230,7 +230,8 @@ export default function LeconInteractivePage() {
         const initialMessage = await chatWithOracle({ card, history: [] });
         const assistantMessage = { role: 'oracle' as const, content: initialMessage };
         setMessages([assistantMessage]);
-        await playTts(initialMessage);
+        // Do not autoplay the first message to comply with browser policies.
+        // await playTts(initialMessage); 
       } catch (error) {
         console.error("Error starting lesson:", error);
         toast({
@@ -245,7 +246,7 @@ export default function LeconInteractivePage() {
     };
 
     startLesson();
-  }, [card, playTts, toast]);
+  }, [card, toast]);
 
   useEffect(() => {
     const audioElement = ttsAudioRef.current;
@@ -297,15 +298,27 @@ export default function LeconInteractivePage() {
   const handleTtsButtonClick = () => {
     if (isTtsLoading) return;
 
+    // If audio is currently playing, the button's only job is to stop it.
     if (isTtsPlaying) {
       audioPlayerManager.pause();
       return;
     }
-    
+
+    // If nothing is playing, the button acts as a master toggle.
     const newState = !isTtsEnabled;
     setIsTtsEnabled(newState);
-    if (!newState && recognitionRef.current) {
+
+    if (newState) {
+      // If we just enabled TTS, play the last message if available.
+      const lastMessage = messages[messages.length - 1];
+      if (lastMessage?.role === 'oracle' && lastMessage.content) {
+        playTts(lastMessage.content);
+      }
+    } else {
+      // If we just disabled TTS, stop any speech recognition.
+      if (recognitionRef.current) {
         recognitionRef.current.stop();
+      }
     }
   };
 
