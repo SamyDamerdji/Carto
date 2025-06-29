@@ -5,7 +5,8 @@
  * - textToSpeech - Converts text into spoken audio.
  * - TtsOutput - The return type for the textToSpeech function.
  */
-import { ai, googleAI } from '@/ai/genkit';
+import { ai } from '@/ai/genkit';
+import { googleAI } from '@genkit-ai/googleai';
 import { z } from 'zod';
 import wav from 'wav';
 
