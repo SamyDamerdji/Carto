@@ -76,27 +76,6 @@ export async function chatWithOracle(input: LearningInput): Promise<LearningOutp
     return flowResult;
 }
 
-const systemPrompt = `Tu es un tuteur expert en cartomancie. Ta mission est de créer une leçon interactive et structurée pour enseigner une carte.
-Ta réponse doit TOUJOURS suivre le format JSON demandé.
-
-Voici l'ordre PÉDAGOGIQUE OBLIGATOIRE de la leçon, basé sur le nombre d'étapes déjà présentes dans l'historique :
-1.  **Étape 1 (historique vide)** : Reformule la **Signification Principale**.
-2.  **Étape 2 (1 élément dans l'historique)** : Reformule l'**Aspect lumineux**.
-3.  **Étape 3 (2 éléments dans l'historique)** : Reformule les **Défis & Obstacles**.
-4.  **Étape 4 (3 éléments dans l'historique)** : Reformule le **Conseil**.
-5.  **Étape 5 (4 éléments dans l'historique)** : Reformule l'application dans le domaine de l'**Amour**.
-6.  **Étape 6 (5 éléments dans l'historique)** : Reformule l'application dans le domaine du **Travail**.
-7.  **Étape 7 (6 éléments dans l'historique)** : Reformule l'application dans le domaine des **Finances**.
-8.  **Étape 8 (7 éléments dans l'historique)** : Reformule l'application dans le domaine **Spirituel**. C'est la dernière étape, tu dois donc mettre 'finDeLecon' à 'true'.
-
-Pour chaque étape, tu dois fournir :
-1.  Un 'paragraphe' de 2-3 phrases, qui est une reformulation pédagogique du concept de l'étape. NE JAMAIS terminer par une question.
-2.  Un 'exercice' (QCM) créatif pour valider la compréhension du paragraphe.
-3.  'finDeLecon' doit être 'false', sauf pour la toute dernière étape (l'étape 8).
-
-Analyse l'historique pour savoir à quelle étape tu te trouves et suis l'ordre à la lettre.`;
-
-
 const learningFlow = ai.defineFlow(
   {
     name: 'learningFlow',
@@ -105,30 +84,66 @@ const learningFlow = ai.defineFlow(
   },
   async (input) => {
     try {
-      const cardDataString = `
-        DONNÉES COMPLETES DE LA CARTE À ENSEIGNER:
-        Nom: ${input.card.nom_carte}
-        Signification Principale: ${input.card.interpretations.general}
-        Aspect lumineux: ${input.card.interpretations.endroit}
-        Défis & Obstacles: ${input.card.interpretations.ombre_et_defis}
-        Conseil: ${input.card.interpretations.conseil}
-        Application Amour: ${input.card.domaines.amour}
-        Application Travail: ${input.card.domaines.travail}
-        Application Finances: ${input.card.domaines.finances}
-        Application Spirituel: ${input.card.domaines.spirituel}
-      `;
+      const stepIndex = input.history.length;
+      let stepTopic = '';
+      let stepContent = '';
+      let isFinalStep = false;
+      let systemPrompt = '';
 
-      const historyString = `L'historique contient ${input.history.length} étape(s) terminée(s).`;
+      switch (stepIndex) {
+          case 0:
+              stepTopic = "la Signification Principale";
+              stepContent = input.card.interpretations.general;
+              break;
+          case 1:
+              stepTopic = "l'Aspect lumineux";
+              stepContent = input.card.interpretations.endroit;
+              break;
+          case 2:
+              stepTopic = "les Défis & Obstacles";
+              stepContent = input.card.interpretations.ombre_et_defis;
+              break;
+          case 3:
+              stepTopic = "le Conseil";
+              stepContent = input.card.interpretations.conseil;
+              break;
+          case 4:
+              stepTopic = "l'application dans le domaine de l'Amour";
+              stepContent = input.card.domaines.amour;
+              break;
+          case 5:
+              stepTopic = "l'application dans le domaine du Travail";
+              stepContent = input.card.domaines.travail;
+              break;
+          case 6:
+              stepTopic = "l'application dans le domaine des Finances";
+              stepContent = input.card.domaines.finances;
+              break;
+          case 7:
+              stepTopic = "l'application dans le domaine Spirituel";
+              stepContent = input.card.domaines.spirituel;
+              isFinalStep = true;
+              break;
+          default:
+              throw new Error("Étape de leçon inconnue.");
+      }
 
-      const userPrompt = `
-        Voici les données de la carte :
-        ${cardDataString}
-        ---
-        ${historyString}
-        ---
-        Génère la prochaine étape.
-      `;
+      systemPrompt = `Tu es un tuteur expert en cartomancie. Ta mission est de créer une étape de leçon interactive sur un sujet précis.
+
+      Pour l'étape demandée, tu dois fournir :
+      1.  Un 'paragraphe' de 2-3 phrases, qui est une reformulation pédagogique du concept. NE JAMAIS terminer par une question.
+      2.  Un 'exercice' (QCM) créatif pour valider la compréhension du paragraphe.
+      3.  'finDeLecon' doit être mis à ${isFinalStep}.
       
+      Ta réponse doit TOUJOURS suivre le format JSON demandé.`;
+      
+      const userPrompt = `
+        Le sujet de cette étape est **${stepTopic}** de la carte ${input.card.nom_carte}.
+        Voici le contenu original à reformuler : "${stepContent}"
+        
+        Génère le paragraphe et un exercice QCM correspondants.
+      `;
+
       const { output } = await ai.generate({
         model: 'googleai/gemini-2.0-flash',
         system: systemPrompt,
