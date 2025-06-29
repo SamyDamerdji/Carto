@@ -2,7 +2,7 @@
 'use client';
 
 import { useState, useRef, useEffect, useCallback, useMemo } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import type { Card } from '@/lib/data/cards';
 import { getCardDetails } from '@/lib/data/cards';
 import { chatWithOracle, type LearningOutput } from '@/ai/flows/oracle-flow';
@@ -52,6 +52,24 @@ export default function LeconInteractivePage() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   
   const didInitialFetch = useRef(false);
+
+  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+  const loadingMessages = useMemo(() => [
+    "L'oracle consulte les astres...",
+    "Les cartes murmurent leurs secrets...",
+    "Préparation de votre leçon...",
+    "Alignement des énergies...",
+  ], []);
+
+  useEffect(() => {
+    if (lessonState !== 'preparing') return;
+
+    const intervalId = setInterval(() => {
+      setCurrentMessageIndex(prevIndex => (prevIndex + 1) % loadingMessages.length);
+    }, 2500);
+
+    return () => clearInterval(intervalId);
+  }, [lessonState, loadingMessages.length]);
 
   const fetchStepAndAudio = useCallback(async (history: LessonStep[]) => {
     if (!card) return null;
@@ -227,7 +245,37 @@ export default function LeconInteractivePage() {
 
   const renderContent = () => {
     if (lessonState === 'preparing') {
-      return <div className="flex justify-center items-center min-h-[400px]"><Loader2 className="h-12 w-12 animate-spin text-primary" /></div>;
+      return (
+        <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="mx-auto mt-6 max-w-md rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6 text-center min-h-[400px] flex flex-col justify-center items-center"
+        >
+            <h2 className="font-headline text-xl font-bold uppercase tracking-wider text-card-foreground/90">Leçon : {card.nom_carte}</h2>
+            <div className="bg-card rounded-xl shadow-lg p-1 mx-auto w-fit my-4">
+                <div className="relative w-[150px] aspect-[2.5/3.5] p-2">
+                    <Image src={card.image_url} alt={`Image de la carte ${card.nom_carte}`} fill className="object-contain" sizes="150px" />
+                </div>
+            </div>
+            <div className="flex items-center gap-4 text-primary mt-4">
+              <Loader2 className="h-6 w-6 animate-spin flex-shrink-0" />
+              <div className="relative h-6 w-64 text-left overflow-hidden">
+                  <AnimatePresence mode="wait">
+                      <motion.p
+                          key={currentMessageIndex}
+                          initial={{ y: 20, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          exit={{ y: -20, opacity: 0 }}
+                          transition={{ duration: 0.5 }}
+                          className="absolute w-full text-sm italic"
+                      >
+                          {loadingMessages[currentMessageIndex]}
+                      </motion.p>
+                  </AnimatePresence>
+              </div>
+            </div>
+        </motion.div>
+      );
     }
     if (lessonState === 'ready') {
       return (
@@ -343,3 +391,5 @@ export default function LeconInteractivePage() {
     </div>
   );
 }
+
+    
