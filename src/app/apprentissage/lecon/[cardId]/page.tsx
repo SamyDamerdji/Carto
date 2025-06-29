@@ -128,11 +128,18 @@ export default function LeconInteractivePage() {
     setIsWaitingForNextStep(false);
   }, [prefetchedData]);
   
+  // Pre-fetches the next lesson step as soon as the current one is displayed.
   useEffect(() => {
     const currentStep = lessonSteps[currentStepIndex];
 
+    // Conditions for pre-fetching:
+    // 1. The lesson must be active.
+    // 2. There must be a current step.
+    // 3. The current step must not be the final one.
+    // 4. We don't already have pre-fetched data.
+    // 5. We are not already in the process of pre-fetching.
     if (
-      uiSubState === 'exercising' &&
+      lessonState === 'active' &&
       currentStep &&
       !currentStep.model.finDeLecon &&
       !prefetchedData &&
@@ -147,11 +154,11 @@ export default function LeconInteractivePage() {
       });
     }
   }, [
-    uiSubState,
+    lessonState,
+    lessonSteps, // Triggers when a new step is added or an answer is recorded.
+    currentStepIndex,
     prefetchedData,
     isPrefetching,
-    lessonSteps,
-    currentStepIndex,
     fetchStepAndAudio,
   ]);
   
