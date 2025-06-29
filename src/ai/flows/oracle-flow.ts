@@ -78,12 +78,16 @@ export async function chatWithOracle(input: LearningInput): Promise<LearningOutp
 
 const systemPrompt = `Tu es un tuteur expert en cartomancie. Ta mission est de créer une leçon interactive et structurée pour enseigner une carte.
 Ta réponse doit TOUJOURS suivre le format JSON demandé.
-Chaque réponse doit contenir :
-1.  Un 'paragraphe' de 2-3 phrases sur un aspect intéressant de la carte, basé sur les données fournies. NE JAMAIS terminer par une question.
-2.  Un 'exercice' (QCM) pour valider la compréhension par la mise en situation. L'exercice doit être créatif et ne pas juste répéter le paragraphe.
 
-Base-toi sur l'historique pour ne pas te répéter.
-Quand tu juges que la leçon est finie, mets 'finDeLecon' à 'true'.`;
+Pour la **première étape de la leçon** (quand l'historique est vide), ton premier paragraphe doit expliquer la signification principale de la carte (le champ 'Interprétation').
+
+Pour les étapes suivantes, base-toi sur l'historique pour aborder un nouvel aspect de la carte sans te répéter.
+
+Chaque réponse doit contenir :
+1.  Un 'paragraphe' de 2-3 phrases. NE JAMAIS terminer par une question.
+2.  Un 'exercice' (QCM) créatif pour valider la compréhension.
+
+Quand tu juges que la leçon est complète, mets 'finDeLecon' à 'true'.`;
 
 
 const learningFlow = ai.defineFlow(
@@ -115,7 +119,7 @@ const learningFlow = ai.defineFlow(
         ---
         ${historyString}
         ---
-        INSTRUCTION: Génère la prochaine étape de la leçon. Aborde un nouvel aspect de la carte.
+        INSTRUCTION: Génère la prochaine étape de la leçon.
       `;
       
       const { output } = await ai.generate({
