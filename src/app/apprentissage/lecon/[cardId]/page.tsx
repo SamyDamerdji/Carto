@@ -97,6 +97,7 @@ export default function LeconInteractivePage() {
     if (!card || didInitialFetch.current) return;
     didInitialFetch.current = true;
 
+    setLessonState('preparing');
     setIsPrefetching(true);
     fetchStepAndAudio([]).then(data => {
       if (data) {
@@ -153,12 +154,12 @@ export default function LeconInteractivePage() {
     currentStepIndex,
     fetchStepAndAudio,
   ]);
-
   
   const handleStartLesson = useCallback(() => {
     if (!prefetchedData) return;
     setLessonState('active');
     setLessonSteps([{ model: prefetchedData.step, user: { answer: null } }]);
+    setCurrentStepIndex(0);
     setUiSubState('explaining');
 
     if (audioRef.current && prefetchedData.audioUrl) {
@@ -174,9 +175,11 @@ export default function LeconInteractivePage() {
     const currentStepModel = lessonSteps[currentStepIndex].model;
     const isCorrect = option === currentStepModel.exercice?.reponseCorrecte;
 
-    const updatedSteps = [...lessonSteps];
-    updatedSteps[currentStepIndex].user.answer = option;
-    setLessonSteps(updatedSteps);
+    setLessonSteps(prevSteps => 
+      prevSteps.map((step, index) => 
+        index === currentStepIndex ? { ...step, user: { answer: option } } : step
+      )
+    );
 
     setLastAnswerStatus(isCorrect ? 'correct' : 'incorrect');
     setSelectedOption(option);
@@ -208,8 +211,6 @@ export default function LeconInteractivePage() {
     const audioElement = audioRef.current;
     if (!audioElement) return;
 
-    let timeoutId: NodeJS.Timeout | null = null;
-
     const onPlay = () => setIsTtsPlaying(true);
     const onPauseOrEnded = () => setIsTtsPlaying(false);
     const onEnded = () => {
@@ -223,10 +224,9 @@ export default function LeconInteractivePage() {
     audioElement.addEventListener('pause', onPauseOrEnded);
     audioElement.addEventListener('ended', onEnded);
     
+    // If there is no audio source, immediately move to the next state
     if (uiSubState === 'explaining' && !audioElement.src) {
-        timeoutId = setTimeout(() => {
-            setUiSubState('exercising');
-        }, 3000); 
+        setUiSubState('exercising');
     }
 
     return () => {
@@ -234,9 +234,8 @@ export default function LeconInteractivePage() {
         audioElement.removeEventListener('playing', onPlay);
         audioElement.removeEventListener('pause', onPauseOrEnded);
         audioElement.removeEventListener('ended', onEnded);
-        if (timeoutId) clearTimeout(timeoutId);
     };
-  }, [uiSubState]);
+  }, [uiSubState, isTtsPlaying]);
 
 
   if (!cardId) {
@@ -359,7 +358,8 @@ export default function LeconInteractivePage() {
                         })}
                          {uiSubState === 'feedback' && (
                           <Button onClick={handleContinue} className="mt-4" disabled={isPrefetching}>
-                            Continuer <ArrowRight className="ml-2 h-4 w-4"/>
+                            {isPrefetching && isWaitingForNextStep ? (<Loader2 className="mr-2 h-4 w-4 animate-spin"/>) : "Continuer"}
+                            {!isPrefetching && !isWaitingForNextStep && <ArrowRight className="ml-2 h-4 w-4"/>}
                           </Button>
                         )}
                     </div>
