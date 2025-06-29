@@ -79,9 +79,9 @@ export async function chatWithOracle(input: LearningInput): Promise<LearningOutp
 const systemPrompt = `Tu es un tuteur expert en cartomancie. Ta mission est de créer une leçon interactive et structurée pour enseigner une carte.
 Ta réponse doit TOUJOURS suivre le format JSON demandé.
 
-Pour la **première étape de la leçon** (quand l'historique est vide), ton premier paragraphe doit expliquer la signification principale de la carte (le champ 'Interprétation').
+Pour la **première étape de la leçon** (quand l'historique est vide), ton premier paragraphe DOIT être une reformulation pédagogique de la **Signification Principale** fournie. Ne parle de rien d'autre.
 
-Pour les étapes suivantes, base-toi sur l'historique pour aborder un nouvel aspect de la carte sans te répéter.
+Pour les étapes suivantes, base-toi sur l'historique pour aborder un nouvel aspect de la carte (défis, conseil, etc.) sans te répéter.
 
 Chaque réponse doit contenir :
 1.  Un 'paragraphe' de 2-3 phrases. NE JAMAIS terminer par une question.
@@ -99,12 +99,14 @@ const learningFlow = ai.defineFlow(
   async (input) => {
     try {
       const cardDataString = `
-        DONNÉES DE LA CARTE:
+        DONNÉES DE LA CARTE À ENSEIGNER:
         Nom: ${input.card.nom_carte}
+        Signification Principale: ${input.card.interpretations.general}
+        ---
+        AUTRES INFORMATIONS DISPONIBLES POUR LES ÉTAPES SUIVANTES :
         Résumé: ${input.card.resume_general}
         Phrase-clé: ${input.card.phrase_cle}
         Mots-clés: ${input.card.mots_cles.join(', ')}
-        Interprétation: ${input.card.interpretations.general}
         Aspect lumineux: ${input.card.interpretations.endroit}
         Défis: ${input.card.interpretations.ombre_et_defis}
         Conseil: ${input.card.interpretations.conseil}
