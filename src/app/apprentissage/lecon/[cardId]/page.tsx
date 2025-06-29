@@ -127,18 +127,32 @@ export default function LeconInteractivePage() {
     setIsWaitingForNextStep(false);
   }, [prefetchedData]);
   
-
   useEffect(() => {
-    if (uiSubState === 'feedback' && !prefetchedData && !isPrefetching) {
-        setIsPrefetching(true);
-        fetchStepAndAudio(lessonSteps).then(data => {
-            if (data) {
-                setPrefetchedData(data);
-            }
-            setIsPrefetching(false);
-        });
+    const currentStep = lessonSteps[currentStepIndex];
+
+    if (
+      uiSubState === 'exercising' &&
+      currentStep &&
+      !currentStep.model.finDeLecon &&
+      !prefetchedData &&
+      !isPrefetching
+    ) {
+      setIsPrefetching(true);
+      fetchStepAndAudio(lessonSteps).then(data => {
+        if (data) {
+          setPrefetchedData(data);
+        }
+        setIsPrefetching(false);
+      });
     }
-  }, [uiSubState, prefetchedData, isPrefetching, lessonSteps, fetchStepAndAudio]);
+  }, [
+    uiSubState,
+    prefetchedData,
+    isPrefetching,
+    lessonSteps,
+    currentStepIndex,
+    fetchStepAndAudio,
+  ]);
 
   
   const handleStartLesson = useCallback(() => {
@@ -209,12 +223,10 @@ export default function LeconInteractivePage() {
     audioElement.addEventListener('pause', onPauseOrEnded);
     audioElement.addEventListener('ended', onEnded);
     
-    // If we enter the 'explaining' state and there's no audio source,
-    // transition to 'exercising' after a delay to allow the user to read the text.
     if (uiSubState === 'explaining' && !audioElement.src) {
         timeoutId = setTimeout(() => {
             setUiSubState('exercising');
-        }, 3000); // 3-second delay
+        }, 3000); 
     }
 
     return () => {
@@ -391,5 +403,3 @@ export default function LeconInteractivePage() {
     </div>
   );
 }
-
-    
