@@ -79,17 +79,22 @@ export async function chatWithOracle(input: LearningInput): Promise<LearningOutp
 const systemPrompt = `Tu es un tuteur expert en cartomancie. Ta mission est de créer une leçon interactive et structurée pour enseigner une carte.
 Ta réponse doit TOUJOURS suivre le format JSON demandé.
 
-Pour la **première étape de la leçon** (quand l'historique est vide), ton premier paragraphe DOIT être une reformulation pédagogique de la **Signification Principale** fournie. Ne parle de rien d'autre.
+Voici l'ordre PÉDAGOGIQUE OBLIGATOIRE de la leçon, basé sur le nombre d'étapes déjà présentes dans l'historique :
+1.  **Étape 1 (historique vide)** : Reformule la **Signification Principale**.
+2.  **Étape 2 (1 élément dans l'historique)** : Reformule l'**Aspect lumineux**.
+3.  **Étape 3 (2 éléments dans l'historique)** : Reformule les **Défis & Obstacles**.
+4.  **Étape 4 (3 éléments dans l'historique)** : Reformule le **Conseil**.
+5.  **Étape 5 (4 éléments dans l'historique)** : Reformule l'application dans le domaine de l'**Amour**.
+6.  **Étape 6 (5 éléments dans l'historique)** : Reformule l'application dans le domaine du **Travail**.
+7.  **Étape 7 (6 éléments dans l'historique)** : Reformule l'application dans le domaine des **Finances**.
+8.  **Étape 8 (7 éléments dans l'historique)** : Reformule l'application dans le domaine **Spirituel**. C'est la dernière étape, tu dois donc mettre 'finDeLecon' à 'true'.
 
-Pour la **deuxième étape de la leçon** (quand l'historique contient un seul élément), ton paragraphe DOIT être une reformulation pédagogique de l'**Aspect lumineux**. Ne parle de rien d'autre.
+Pour chaque étape, tu dois fournir :
+1.  Un 'paragraphe' de 2-3 phrases, qui est une reformulation pédagogique du concept de l'étape. NE JAMAIS terminer par une question.
+2.  Un 'exercice' (QCM) créatif pour valider la compréhension du paragraphe.
+3.  'finDeLecon' doit être 'false', sauf pour la toute dernière étape (l'étape 8).
 
-Pour les étapes suivantes, base-toi sur l'historique pour aborder un nouvel aspect de la carte (défis, conseil, etc.) sans te répéter.
-
-Chaque réponse doit contenir :
-1.  Un 'paragraphe' de 2-3 phrases. NE JAMAIS terminer par une question.
-2.  Un 'exercice' (QCM) créatif pour valider la compréhension.
-
-Quand tu juges que la leçon est complète, mets 'finDeLecon' à 'true'.`;
+Analyse l'historique pour savoir à quelle étape tu te trouves et suis l'ordre à la lettre.`;
 
 
 const learningFlow = ai.defineFlow(
@@ -101,29 +106,27 @@ const learningFlow = ai.defineFlow(
   async (input) => {
     try {
       const cardDataString = `
-        DONNÉES DE LA CARTE À ENSEIGNER:
+        DONNÉES COMPLETES DE LA CARTE À ENSEIGNER:
         Nom: ${input.card.nom_carte}
         Signification Principale: ${input.card.interpretations.general}
-        ---
-        AUTRES INFORMATIONS DISPONIBLES POUR LES ÉTAPES SUIVANTES :
-        Résumé: ${input.card.resume_general}
-        Phrase-clé: ${input.card.phrase_cle}
-        Mots-clés: ${input.card.mots_cles.join(', ')}
         Aspect lumineux: ${input.card.interpretations.endroit}
-        Défis: ${input.card.interpretations.ombre_et_defis}
+        Défis & Obstacles: ${input.card.interpretations.ombre_et_defis}
         Conseil: ${input.card.interpretations.conseil}
+        Application Amour: ${input.card.domaines.amour}
+        Application Travail: ${input.card.domaines.travail}
+        Application Finances: ${input.card.domaines.finances}
+        Application Spirituel: ${input.card.domaines.spirituel}
       `;
 
-      const historyString = input.history.length > 0
-        ? 'HISTORIQUE DES SUJETS DÉJÀ ABORDÉS:\n' + input.history.map((step: any) => `- ${step.model.paragraphe}`).join('\n')
-        : "C'est la première étape de la leçon.";
+      const historyString = `L'historique contient ${input.history.length} étape(s) terminée(s).`;
 
       const userPrompt = `
+        Voici les données de la carte :
         ${cardDataString}
         ---
         ${historyString}
         ---
-        INSTRUCTION: Génère la prochaine étape de la leçon.
+        Génère la prochaine étape.
       `;
       
       const { output } = await ai.generate({
