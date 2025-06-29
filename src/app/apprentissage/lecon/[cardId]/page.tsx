@@ -26,6 +26,30 @@ type LessonStep = {
 type LessonState = 'preparing' | 'ready' | 'active' | 'finished';
 type UiSubState = 'explaining' | 'exercising' | 'feedback';
 
+const AudioVisualizer = () => {
+  return (
+    <div className="flex items-end justify-center gap-1.5 h-8">
+      {[...Array(5)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="w-2 h-full bg-primary rounded-full"
+          style={{ transformOrigin: 'bottom' }}
+          animate={{
+            scaleY: [1, 1.8, 1, 0.7, 1.4, 1, 1],
+          }}
+          transition={{
+            delay: i * 0.15,
+            duration: 1.5,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
+
 export default function LeconInteractivePage() {
   const params = useParams();
   const cardId = params.cardId as string;
@@ -134,14 +158,11 @@ export default function LeconInteractivePage() {
 
     // Conditions for pre-fetching:
     // 1. The lesson must be active.
-    // 2. There must be a current step.
-    // 3. The current step must not be the final one.
-    // 4. We don't already have pre-fetched data.
-    // 5. We are not already in the process of pre-fetching.
+    // 2. We don't already have pre-fetched data.
+    // 3. We are not already in the process of pre-fetching.
     if (
       lessonState === 'active' &&
-      currentStep &&
-      !currentStep.model.finDeLecon &&
+      (!currentStep || !currentStep.model.finDeLecon) &&
       !prefetchedData &&
       !isPrefetching
     ) {
@@ -182,11 +203,11 @@ export default function LeconInteractivePage() {
     const currentStepModel = lessonSteps[currentStepIndex].model;
     const isCorrect = option === currentStepModel.exercice?.reponseCorrecte;
 
-    setLessonSteps(prevSteps => 
-      prevSteps.map((step, index) => 
-        index === currentStepIndex ? { ...step, user: { answer: option } } : step
-      )
-    );
+    setLessonSteps(prevSteps => {
+        const newSteps = [...prevSteps];
+        newSteps[currentStepIndex] = { ...newSteps[currentStepIndex], user: { answer: option } };
+        return newSteps;
+    });
 
     setLastAnswerStatus(isCorrect ? 'correct' : 'incorrect');
     setSelectedOption(option);
@@ -233,7 +254,7 @@ export default function LeconInteractivePage() {
     
     // If there is no audio source, immediately move to the next state
     if (uiSubState === 'explaining' && !audioElement.src) {
-        setUiSubState('exercising');
+        setTimeout(() => setUiSubState('exercising'), 100);
     }
 
     return () => {
@@ -242,7 +263,7 @@ export default function LeconInteractivePage() {
         audioElement.removeEventListener('pause', onPauseOrEnded);
         audioElement.removeEventListener('ended', onEnded);
     };
-  }, [uiSubState, isTtsPlaying]);
+  }, [uiSubState]);
 
 
   if (!cardId) {
@@ -379,9 +400,9 @@ export default function LeconInteractivePage() {
                   ) : (
                     <div className="flex justify-center items-center h-full">
                         {isTtsPlaying && uiSubState === 'explaining' ? (
-                          <div className="flex items-center gap-2 text-primary">
-                            <Loader2 className="h-5 w-5 animate-spin" />
-                            <p className="text-sm italic">Écoutez...</p>
+                          <div className="flex flex-col items-center justify-center gap-3 text-primary">
+                            <AudioVisualizer />
+                            <p className="text-sm italic">Écoutez l'oracle...</p>
                           </div>
                         ) : uiSubState === 'explaining' && !isTtsPlaying ? (
                           <div className="flex items-center gap-2 text-primary">
