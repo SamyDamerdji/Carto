@@ -1,9 +1,9 @@
 {
   "name": "Le Cartomancien",
-  "short_name": "Cartomancien",
+  "short_name": "Le Cartomancien",
   "description": "Apprenez et mémorisez les significations divinatoires des 52 cartes à jouer.",
   "start_url": "/",
-  "display": "fullscreen",
+  "display": "standalone",
   "background_color": "#191970",
   "theme_color": "#191970",
   "icons": [

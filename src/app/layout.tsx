@@ -42,6 +42,10 @@ export const metadata: Metadata = {
   other: {
     "mobile-web-app-capable": "yes",
   },
+  icons: {
+    icon: "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/icons/icon-512x512.png",
+    apple: "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/icons/icon-512x512.png",
+  },
 };
 
 export const viewport: Viewport = {
