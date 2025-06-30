@@ -53,6 +53,7 @@ export default function LeconInteractivePage() {
   const params = useParams();
   const cardId = params.cardId as string;
   const { toast } = useToast();
+  const cardBackUrl = "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/back.png";
 
   const card = useMemo(() => {
     if (!cardId) return null;
@@ -314,11 +315,44 @@ export default function LeconInteractivePage() {
             className="mx-auto mt-6 max-w-md rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6 text-center min-h-[400px] flex flex-col justify-center items-center"
         >
             <h2 className="font-headline text-xl font-bold uppercase tracking-wider text-card-foreground/90">Leçon : {card.nom_carte}</h2>
-            <div className="bg-card rounded-xl shadow-lg p-1 mx-auto w-fit my-4">
-                <div className="relative w-[150px] aspect-[2.5/3.5] p-2">
-                    <Image src={card.image_url} alt={`Image de la carte ${card.nom_carte}`} fill className="object-contain" sizes="150px" />
-                </div>
+            
+            <div className="[perspective:1000px] w-[150px] aspect-[2.5/3.5] my-4">
+                <motion.div
+                    className="relative w-full h-full [transform-style:preserve-3d]"
+                    animate={{ rotateY: [0, 0, 180, 180, 0, 0] }}
+                    transition={{
+                        duration: 5,
+                        ease: "easeInOut",
+                        repeat: Infinity,
+                        repeatDelay: 1,
+                        times: [0, 0.4, 0.5, 0.8, 0.9, 1],
+                    }}
+                >
+                    {/* Front */}
+                    <div className="absolute w-full h-full [backface-visibility:hidden]">
+                        <div className="bg-card rounded-xl shadow-lg p-1 h-full w-full">
+                            <div className="relative h-full w-full p-2">
+                                <Image src={card.image_url} alt={`Image de la carte ${card.nom_carte}`} fill className="object-contain" sizes="150px" />
+                            </div>
+                        </div>
+                    </div>
+                    {/* Back */}
+                    <div className="absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                        <div className="bg-card rounded-xl shadow-lg p-1 h-full w-full">
+                            <div className="relative h-full w-full">
+                                <Image
+                                    src={cardBackUrl}
+                                    alt="Dos de la carte"
+                                    fill
+                                    className="object-cover rounded-lg"
+                                    sizes="150px"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
             </div>
+
             <div className="flex items-center gap-4 text-primary mt-4">
               <Loader2 className="h-6 w-6 animate-spin flex-shrink-0" />
               <div className="relative h-6 w-64 text-left overflow-hidden">
