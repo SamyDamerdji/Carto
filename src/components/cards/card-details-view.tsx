@@ -76,7 +76,7 @@ export function CardDetailsView({ card }: { card: Card }) {
         viewport={{ once: true, amount: 0.2 }}
         className="mx-auto mt-8 max-w-md rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6 text-center"
       >
-        <h1 className="font-headline text-4xl font-bold tracking-tight text-primary sm:text-5xl uppercase drop-shadow-lg">
+        <h1 className="font-headline text-4xl font-bold tracking-tight text-primary sm:text-5xl uppercase drop-shadow-lg whitespace-nowrap">
           {card.nom_carte}
         </h1>
         <div className="mt-4 flex flex-col items-center">
