@@ -1,0 +1,171 @@
+### **PROMPT COMPLET POUR LA CRÉATION DE L'APPLICATION "L'ORACLE ROYAL"**
+
+**Objectif Global :**
+Votre mission est de développer une application web complète nommée "L'Oracle Royal". Cette application est un guide interactif et premium pour l'apprentissage et la pratique de la cartomancie avec un jeu de 52 cartes à jouer traditionnelles. Vous utiliserez le stack technologique spécifié et suivrez rigoureusement les directives de design, de fonctionnalités et d'architecture.
+
+---
+
+### **1. Stack Technique et Environnement**
+
+*   **Framework Principal :** Next.js (version 14+) avec l'App Router.
+*   **Langage :** TypeScript. Tous les fichiers de code devront être en `.tsx` ou `.ts`.
+*   **Style :** Tailwind CSS. La configuration doit être faite dans `tailwind.config.ts`.
+*   **Composants UI :** ShadCN/UI. Les composants de base (Button, Card, Tabs, etc.) sont pré-installés. Vous créerez des composants réutilisables sur cette base.
+*   **Animations :** Framer Motion pour des transitions fluides et des micro-interactions.
+*   **Intelligence Artificielle :** Genkit (version 1.x+) avec le plugin Google AI pour l'accès aux modèles Gemini.
+*   **Icônes :** Lucide React.
+
+---
+
+### **2. Identité Visuelle et Guide de Style (Style Guide)**
+
+L'ambiance doit être premium, mystique et élégante.
+
+**2.1. Palette de Couleurs :**
+Configurez le fichier `src/app/globals.css` avec les variables HSL suivantes pour le thème `.dark` :
+
+*   **Arrière-plan (`--background`) :** Bleu de minuit désaturé. `hsl(240, 28%, 25%)`. C'est la couleur principale du fond de l'application.
+*   **Couleur Primaire (`--primary`) :** Orange doré pour les titres, icônes et accents. `hsl(28, 98%, 62%)` (correspond à `#FF8C00`).
+*   **Couleur Secondaire (`--secondary`) :** Bleu-gris pour les fonds de cartes et conteneurs. `hsl(240, 24%, 30%)`.
+*   **Couleur d'Accent (`--accent`) :** Mauve pour les survols et états actifs. `hsl(280, 70%, 80%)`.
+*   **Texte Principal (`--foreground`) :** Blanc cassé/lavande. `hsl(250, 80%, 90%)`.
+*   **Texte sur les cartes (`--card-foreground`) :** Violet foncé. `hsl(260, 30%, 20%)`.
+
+**2.2. Typographie :**
+Utilisez Google Fonts via `next/font/google` dans le fichier `src/app/layout.tsx`.
+*   **Titres (`font-headline`) :** Police **Cinzel**.
+*   **Corps du texte (`font-body`) :** Police **EB Garamond**.
+
+**2.3. Layout et Effets Visuels :**
+*   **Layout Général :** Minimaliste, avec des espacements généreux.
+*   **Effet "Verre Dépoli" :** Les conteneurs principaux (cartes, modales) devront avoir un fond semi-transparent avec un flou d'arrière-plan. Utilisez les classes Tailwind : `bg-secondary/20 backdrop-blur-lg`.
+*   **Bordures :** Utilisez une bordure subtile de couleur primaire sur les conteneurs : `border border-primary/30`.
+*   **Ombres :** Utilisez des ombres douces pour donner de la profondeur : `shadow-lg shadow-primary/20`.
+
+**2.4. Ressources Graphiques et Audio (URLs exactes à utiliser) :**
+*   **Image de fond globale :** `https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/fond.png`
+*   **Dos des cartes :** `https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/back.png`
+*   **Image du "Héros" (page d'accueil) :** `https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/eventail.png`
+*   **Images des 52 cartes :** Le format est `https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/[ID-CARTE].png`. Exemples : `01-coeur.png`, `R-pique.png`, `V-trefle.png`.
+*   **Sons pour feedback :**
+    *   Correct : `https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/sounds/correct.mp3`
+    *   Incorrect : `https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/sounds/incorrect.mp3`
+*   **Son pour retourner les cartes :** `https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/sounds/flipcard-91468.mp3`
+
+---
+
+### **3. Données des Cartes (`/lib/data/`)**
+
+Créez un système de données pour les 52 cartes. Le modèle de données principal pour une carte (`Card`) doit inclure : `id`, `nom_carte`, `valeur`, `couleur`, `image_url`, `resume_general`, `phrase_cle`, `mots_cles`, et des objets pour `interpretations`, `domaines`, et `combinaisons`.
+
+Vous structurerez les données en 4 fichiers (un par couleur : `pique.ts`, `coeur.ts`, etc.) et un fichier principal `cards.ts` qui les agrège et exporte une `cardsList` (liste simplifiée) et une fonction `getCardDetails(id)`.
+
+**Exemple de structure pour une carte :**
+```typescript
+{
+  "id": "pique_as",
+  "nom_carte": "As de Pique",
+  "valeur": 1,
+  "couleur": "Pique",
+  "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/01-pique.png",
+  "resume_general": "Carte puissante de transformation, de changement et de décision radicale...",
+  "phrase_cle": "Une page se tourne, une autre commence.",
+  "mots_cles": ["transformation", "changement", "rupture", "décision"],
+  "interpretations": {
+    "general": "Incarne un signal positif de transformation...",
+    "endroit": "L'As de Pique est une carte intimidante...",
+    "ombre_et_defis": "Représente un changement difficile...",
+    "conseil": "Ne paniquez pas..."
+  },
+  // ... et ainsi de suite pour domaines, prompts, combinaisons.
+}
+```
+Vous devez recréer l'intégralité des données fournies dans les fichiers de l'application existante.
+
+---
+
+### **4. Structure de l'Application et Fonctionnalités**
+
+**4.1. Composants Réutilisables :**
+*   `CardGrid` : Affiche une grille de cartes avec leurs titres et des boutons d'action.
+*   `FeatureCard` : Une carte stylisée pour présenter les fonctionnalités principales.
+*   `InfoCard` : Une carte pour afficher les résultats d'interprétation de l'IA, incluant une icône, un titre et un bouton Text-to-Speech.
+*   `CardNavigation` : Barre de navigation sticky pour passer à la carte précédente/suivante/aléatoire.
+
+**4.2. Navigation et Pages Principales :**
+*   **`layout.tsx` :** Configure les polices, le thème `.dark`, et l'image de fond globale.
+*   **Header (`/components/layout/header.tsx`) :** Créez un header `sticky` avec une navigation contenant 4 liens : "Accueil", "Apprentissage", "Entraînement", et "Tirages". Chaque lien a une icône `lucide-react`. Le lien actif doit avoir la couleur primaire.
+*   **Page d'Accueil (`/app/page.tsx`) :**
+    *   Affichez un titre "L'Oracle Royal".
+    *   Affichez l'image "éventail".
+    *   Affichez une section "Features" avec 3 `FeatureCard` menant aux sections de l'application.
+
+**4.3. Section Apprentissage :**
+*   **`/apprentissage` :** Page principale de la section. Affiche la `CardGrid` avec les 52 cartes. Chaque carte a deux boutons : "Fiche détaillée" (vers `/apprentissage/[cardId]`) et "Leçon interactive" (vers `/apprentissage/lecon/[cardId]`).
+*   **`/apprentissage/[cardId]` :** Page de détail d'une carte.
+    *   Affiche l'image de la carte, son nom et son résumé.
+    *   Utilise des `Tabs` (ShadCN) pour afficher les interprétations, les domaines d'application.
+    *   Affiche les associations, le conseil, et les mots-clés.
+    *   Contient un champ `Textarea` pour les notes personnelles de l'utilisateur.
+    *   Inclut la `CardNavigation` en haut.
+*   **`/apprentissage/lecon/[cardId]` : Page de Leçon Interactive (Crucial et complexe)**
+    *   **Architecture :** La page doit faire **un seul appel** à un orchestrateur serveur (`getLessonStep`) pour récupérer chaque étape de la leçon (texte + audio).
+    *   **Déroulement :**
+        1.  **Écran de Chargement :** Affiche la carte qui tourne continuellement sur son axe Y pendant que la première étape est chargée. L'animation de rotation doit être une boucle continue dans le même sens (par exemple, `animate={{ rotateY: 360 }}` avec `repeat: Infinity, ease: "linear"`). Affichez des messages de chargement qui changent périodiquement ("L'oracle consulte les astres...").
+        2.  **Prêt :** Une fois la première étape chargée, affichez un bouton "Commencer la leçon audio".
+        3.  **Leçon Active :**
+            *   **Narration :** Le paragraphe de la leçon est affiché. L'audio généré se joue automatiquement. Un visualiseur audio simple s'anime pendant la lecture.
+            *   **Exercice :** Une fois l'audio terminé, l'exercice (QCM ou Mots-clés) apparaît.
+            *   **Feedback :** Après la réponse de l'utilisateur, affichez un feedback visuel (vert pour correct, rouge pour incorrect) et jouez le son correspondant (`correct.mp3` ou `incorrect.mp3`).
+            *   **Continuer :** Affichez un bouton "Continuer" pour passer à l'étape suivante, qui a été pré-chargée en arrière-plan.
+    *   **Gestion Audio :** Implémentez un `audio-manager.ts` qui exporte un singleton pour s'assurer qu'un seul son (narration ou feedback) est joué à la fois.
+
+**4.4. Section Tirages :**
+*   **`/tirages/revelation-systemique` :**
+    *   Au chargement, tirez 7 cartes aléatoirement et affichez-les face cachée.
+    *   Un bouton "Révéler les cartes" les retourne avec une animation `framer-motion` (`rotateY: 180`) et joue le son `flipcard-91468.mp3`.
+    *   Une fois révélées, un bouton "Interpréter avec l'IA" apparaît. Cliquer déclenche le flow `interpretSystemicRevelation`.
+    *   Les résultats s'affichent dans des `InfoCard` stylisées.
+    *   Après la première interprétation, un bouton "Approfondir avec l'IA" apparaît pour déclencher le flow `deepenSystemicRevelation`.
+
+---
+
+### **5. Intelligence Artificielle (Genkit)**
+
+Vous implémenterez plusieurs flux Genkit. Tous les flux doivent inclure `'use server';` au début.
+
+*   **`tts-flow.ts` : Synthèse Vocale (Text-to-Speech)**
+    *   Ce flux prend une chaîne de caractères en entrée et retourne un `TtsOutput` (`{ media: string }`).
+    *   **Crucial :** L'appel à `ai.generate` doit utiliser le modèle `googleAI.model('gemini-2.5-flash-preview-tts')`.
+    *   La configuration **doit** inclure `speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: 'Algenib' } } }`.
+    *   Le flux doit convertir la réponse audio PCM (encodée en base64) en format WAV (également en base64) en utilisant le package `wav`. Le data URI final doit être `data:audio/wav;base64,...`.
+    *   Gérez les cas où le texte d'entrée est vide pour éviter des appels inutiles.
+
+*   **`oracle-flow.ts` : Génération des Étapes de Leçon**
+    *   Ce flux (`chatWithOracle`) génère une seule étape de leçon à la fois.
+    *   **Entrée :** L'objet complet de la carte (`Card`) et la longueur de l'historique de la leçon (`historyLength`).
+    *   **Sortie :** `LearningOutput` (un paragraphe de texte, un exercice optionnel, et un booléen `finDeLecon`).
+    *   **Logique :** Le flux doit suivre une séquence de leçons :
+        1.  8 étapes fixes (signification générale, endroit, ombre, conseil, 4 domaines). Pour ces étapes, générer un QCM.
+        2.  N étapes pour les combinaisons de cartes. Pour ces étapes, générer un QCM.
+        3.  1 étape finale pour les mots-clés. Pour cette étape, générer un exercice de type `keywords`.
+    *   **Prompting (très important) :**
+        *   Pour les QCM, le prompt doit spécifiquement demander des options de réponse qui sont des **scénarios concrets de la vie quotidienne**, pas de simples définitions.
+        *   Les prompts doivent être structurés pour guider l'IA à produire une sortie JSON correspondant aux schémas Zod.
+
+*   **`systemic-revelation-flow.ts` et `deepen-revelation-flow.ts` :**
+    *   Recréez les prompts existants qui définissent le rôle de l'IA en tant qu'analyste systémique et coach spirituel.
+    *   Implémentez les schémas Zod d'entrée et de sortie tels que définis dans `revelation-schemas.ts`.
+
+*   **`lesson-orchestrator.ts` : L'Orchestrateur**
+    *   Créez un flux (`lessonOrchestratorFlow`) qui sera l'unique point d'entrée pour le client.
+    *   **Logique :**
+        1.  Reçoit l'entrée pour la leçon (`LearningInput`).
+        2.  Appelle `chatWithOracle` pour obtenir le contenu textuel (`stepResult`).
+        3.  Passe `stepResult.paragraphe` à `textToSpeech` pour obtenir l'audio.
+        4.  Retourne un objet combiné contenant à la fois le résultat de l'étape et l'URL de l'audio.
+    *   Cette architecture est non négociable pour assurer la robustesse.
+
+---
+
+Terminez en vous assurant que tous les composants sont réactifs et que l'expérience utilisateur est fluide sur mobile comme sur ordinateur. La qualité et la fidélité à la description sont primordiales.
