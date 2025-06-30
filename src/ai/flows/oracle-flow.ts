@@ -42,8 +42,8 @@ const CardSchema = z.object({
   mots_cles: z.array(z.string()),
   interpretations: CardInterpretationsSchema,
   domaines: CardDomainsSchema,
-  prompts_visuels: z.array(z.string()),
-  prompts_conversationnels: z.array(z.string()),
+  prompts_visuels: z.array(z.string()).optional(),
+  prompts_conversationnels: z.array(z.string()).optional(),
   combinaisons: z.array(CardCombinationSchema),
 });
 
