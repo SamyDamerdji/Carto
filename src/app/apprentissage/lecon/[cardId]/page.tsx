@@ -319,13 +319,13 @@ export default function LeconInteractivePage() {
             <div className="[perspective:1000px] w-[150px] aspect-[2.5/3.5] my-4">
                 <motion.div
                     className="relative w-full h-full [transform-style:preserve-3d]"
-                    animate={{ rotateY: [0, 0, 180, 180, 0, 0] }}
+                    animate={{ rotateY: [0, 0, 180, 180, 360] }}
                     transition={{
-                        duration: 5,
+                        duration: 4,
                         ease: "easeInOut",
                         repeat: Infinity,
                         repeatDelay: 1,
-                        times: [0, 0.4, 0.5, 0.8, 0.9, 1],
+                        times: [0, 0.4, 0.5, 0.9, 1],
                     }}
                 >
                     {/* Front */}
