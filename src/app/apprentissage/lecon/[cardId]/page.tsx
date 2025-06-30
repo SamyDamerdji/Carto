@@ -493,6 +493,7 @@ export default function LeconInteractivePage() {
       <Header />
       <CardNavigation currentCardId={cardId} />
       <main className="flex-grow container mx-auto px-4 pb-8">
+        {renderContent()}
         <audio ref={audioRef} className="hidden" />
         <audio ref={correctSoundRef} src="https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/sounds/correct.mp3" preload="auto" className="hidden" />
         <audio ref={incorrectSoundRef} src="https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/sounds/incorrect.mp3" preload="auto" className="hidden" />
