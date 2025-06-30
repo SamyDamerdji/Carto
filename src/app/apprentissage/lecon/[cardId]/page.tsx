@@ -494,7 +494,7 @@ export default function LeconInteractivePage() {
       <CardNavigation currentCardId={cardId} />
       <main className="flex-grow container mx-auto px-4 pb-8">
         <audio ref={audioRef} className="hidden" />
-        <audio ref={correctSoundRef} src="https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/sounds/correct-answer-94-183311.mp3" preload="auto" className="hidden" />
+        <audio ref={correctSoundRef} src="https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/sounds/correct.Mp3" preload="auto" className="hidden" />
         <audio ref={incorrectSoundRef} src="https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/sounds/wrong-answer-129254.mp3" preload="auto" className="hidden" />
         {renderContent()}
       </main>
@@ -502,3 +502,5 @@ export default function LeconInteractivePage() {
     </div>
   );
 }
+
+    
