@@ -433,22 +433,23 @@ export default function LeconInteractivePage() {
                                     onClick={() => handleAnswerClick(opt)}
                                     disabled={uiSubState === 'feedback'}
                                     className={cn(
-                                        "w-full rounded-lg border p-4 shadow-lg transition-all duration-200 text-left",
-                                        "disabled:pointer-events-none",
-                                        uiSubState !== 'feedback' && 
-                                            "border-secondary-foreground/30 bg-card-foreground/25 text-secondary-foreground/90 shadow-black/20 hover:border-primary hover:bg-card-foreground/40",
+                                        "relative h-full w-full overflow-hidden rounded-xl border border-primary/30 bg-secondary/20 p-4 shadow-lg shadow-primary/20 backdrop-blur-lg text-left transition-all duration-300 disabled:pointer-events-none",
+                                        uiSubState !== 'feedback' && "hover:border-primary/60 hover:scale-105",
                                         uiSubState === 'feedback' && {
-                                            'border-green-500 bg-green-900/40 text-white': isSelected && isCorrect,
-                                            'border-destructive bg-destructive/40 text-white': isSelected && !isCorrect,
+                                            'border-green-500/80 bg-green-900/40 text-white scale-105': isSelected && isCorrect,
+                                            'border-destructive/80 bg-destructive/40 text-white scale-105': isSelected && !isCorrect,
                                             'border-green-600/50 bg-green-900/30 text-white': !isSelected && isCorrect,
                                             'border-secondary-foreground/20 bg-card-foreground/10 text-secondary-foreground/80 opacity-60': !isSelected && !isCorrect,
                                         }
                                     )}
                                 >
-                                    <div className="flex items-start gap-3">
+                                    <div className="absolute -right-2 -top-2 h-16 w-16 bg-[radial-gradient(closest-side,hsl(var(--primary)/0.1),transparent)]"></div>
+                                    <div className="relative z-10 flex items-start gap-3">
                                         {uiSubState === 'feedback' && isCorrect && <Check className="h-5 w-5 flex-shrink-0 text-green-400 mt-0.5" />}
                                         {uiSubState === 'feedback' && isSelected && !isCorrect && <XIcon className="h-5 w-5 flex-shrink-0 text-red-400 mt-0.5" />}
-                                        <span className="whitespace-pre-wrap flex-1 text-sm">{opt}</span>
+                                        <div className="flex-1 rounded-lg border border-secondary-foreground/30 bg-card-foreground/25 p-3 shadow-lg shadow-black/20">
+                                            <p className="text-sm text-secondary-foreground/90 whitespace-pre-wrap">{opt}</p>
+                                        </div>
                                     </div>
                                 </button>
                             );
@@ -494,7 +495,7 @@ export default function LeconInteractivePage() {
       <CardNavigation currentCardId={cardId} />
       <main className="flex-grow container mx-auto px-4 pb-8">
         <audio ref={audioRef} className="hidden" />
-        <audio ref={correctSoundRef} src="https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/sounds/correct.Mp3" preload="auto" className="hidden" />
+        <audio ref={correctSoundRef} src="https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/sounds/correct.mp3" preload="auto" className="hidden" />
         <audio ref={incorrectSoundRef} src="https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/sounds/wrong-answer-129254.mp3" preload="auto" className="hidden" />
         {renderContent()}
       </main>
