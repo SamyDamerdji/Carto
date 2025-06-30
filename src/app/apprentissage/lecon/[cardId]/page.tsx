@@ -341,6 +341,7 @@ export default function LeconInteractivePage() {
     }
     if (lessonState === 'active' || lessonState === 'finished') {
         const currentStep = lessonSteps[currentStepIndex]?.model;
+        const associatedCardForStep = currentStep?.associatedCard;
 
         if (!currentStep) {
           return (
@@ -359,7 +360,43 @@ export default function LeconInteractivePage() {
                         {isTtsPlaying ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
                     </Button>
                 </div>
-                <div className="bg-card rounded-xl shadow-lg p-1 mx-auto w-fit mb-4"><div className="relative w-[150px] aspect-[2.5/3.5] p-2"><Image src={card.image_url} alt={`Image de la carte ${card.nom_carte}`} fill className="object-contain" sizes="150px" /></div></div>
+                
+                <div className="relative flex justify-center items-center min-h-[220px] mb-4 [perspective:1200px]">
+                    <motion.div
+                        className="relative w-[150px] aspect-[2.5/3.5] z-10"
+                        animate={{
+                            x: associatedCardForStep ? -40 : 0,
+                            rotateY: associatedCardForStep ? -5 : 0,
+                        }}
+                        transition={{ duration: 0.6, ease: 'easeOut' }}
+                    >
+                        <div className="bg-card rounded-xl shadow-lg p-1 h-full w-full">
+                            <div className="relative h-full w-full p-2">
+                                <Image src={card.image_url} alt={`Image de la carte ${card.nom_carte}`} fill className="object-contain" sizes="150px" />
+                            </div>
+                        </div>
+                    </motion.div>
+
+                    <AnimatePresence>
+                        {associatedCardForStep && (
+                            <motion.div
+                                key={associatedCardForStep.id}
+                                className="absolute w-[150px] aspect-[2.5/3.5] z-0"
+                                initial={{ x: 40, y: -10, opacity: 0, rotateY: 30, scale: 0.95 }}
+                                animate={{ x: 40, y: 0, opacity: 1, rotateY: 5, scale: 1 }}
+                                exit={{ x: 40, y: -10, opacity: 0, scale: 0.95 }}
+                                transition={{ duration: 0.6, ease: 'easeOut' }}
+                            >
+                                <div className="bg-card rounded-xl shadow-lg p-1 h-full w-full">
+                                    <div className="relative h-full w-full p-2">
+                                        <Image src={associatedCardForStep.image_url} alt={`Image de la carte ${associatedCardForStep.nom_carte}`} fill className="object-contain" sizes="150px" />
+                                    </div>
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
+
                 <div className="min-h-[7rem] text-white/90 text-center p-4 rounded-lg bg-background/20 border border-primary/20">
                     <p className="text-sm whitespace-pre-wrap">{currentStep.paragraphe}</p>
                 </div>

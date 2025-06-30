@@ -1,4 +1,3 @@
-
 'use server';
 /**
  * @fileOverview A Genkit flow that acts as a pedagogical assistant for learning cartomancy.
@@ -49,19 +48,32 @@ const CardSchema = z.object({
 });
 
 
-// New Output Schema
 const QCMExerciceSchema = z.object({
   question: z.string().describe("La question posée à l'utilisateur pour valider sa compréhension."),
   options: z.array(z.string()).min(2).max(4).describe("Un tableau de 2 à 4 chaînes de caractères pour les options de réponse."),
   reponseCorrecte: z.string().describe("Le texte exact de la réponse correcte parmi les options proposées."),
 });
 
+const CardSummarySchema = z.object({
+    id: z.string(),
+    nom_carte: z.string(),
+    image_url: z.string(),
+    couleur: z.enum(['Trèfle', 'Cœur', 'Carreau', 'Pique']),
+});
+
 const LearningOutputSchema = z.object({
   paragraphe: z.string().describe("Le segment textuel de la leçon à lire à haute voix. Doit être court (2-3 phrases) et ne JAMAIS se terminer par une question ouverte."),
   exercice: QCMExerciceSchema.optional().describe("Un exercice simple (QCM) pour engager l'utilisateur. Doit être omis uniquement si la leçon est terminée."),
   finDeLecon: z.boolean().describe("Mettre à true si c'est le dernier message de la leçon, auquel cas il n'y a pas d'exercice."),
+  associatedCard: CardSummarySchema.optional().describe("Les détails de la carte associée pour cette étape de leçon, si applicable."),
 });
 export type LearningOutput = z.infer<typeof LearningOutputSchema>;
+
+const ModelOutputSchema = z.object({
+    paragraphe: LearningOutputSchema.shape.paragraphe,
+    exercice: LearningOutputSchema.shape.exercice,
+    finDeLecon: LearningOutputSchema.shape.finDeLecon
+});
 
 // Input Schema for the flow
 const LearningInputSchema = z.object({
@@ -157,6 +169,18 @@ const learningFlow = ai.defineFlow(
           Génère le paragraphe et un exercice QCM correspondants.
         `;
 
+        const { output } = await ai.generate({
+            model: 'googleai/gemini-2.0-flash',
+            system: systemPrompt,
+            prompt: userPrompt,
+            output: { schema: ModelOutputSchema },
+        });
+
+        if (!output) {
+            throw new Error("L'IA n'a pas pu générer la prochaine étape de la leçon.");
+        }
+        return output;
+
       } else {
         // Handle combination steps
         const combinationIndex = stepIndex - totalFixedSteps;
@@ -199,20 +223,28 @@ const learningFlow = ai.defineFlow(
     
           Génère le paragraphe et un exercice QCM correspondants, en suivant les 4 étapes.
         `;
-      }
-
-
+      
       const { output } = await ai.generate({
         model: 'googleai/gemini-2.0-flash',
         system: systemPrompt,
         prompt: userPrompt,
-        output: { schema: LearningOutputSchema },
+        output: { schema: ModelOutputSchema },
       });
 
       if (!output) {
         throw new Error("L'IA n'a pas pu générer la prochaine étape de la leçon.");
       }
-      return output;
+
+      return {
+        ...output,
+        associatedCard: {
+            id: associatedCard.id,
+            nom_carte: associatedCard.nom_carte,
+            image_url: associatedCard.image_url,
+            couleur: associatedCard.couleur,
+        }
+      };
+    }
 
     } catch (error) {
       console.error("Error in learningFlow:", error);
