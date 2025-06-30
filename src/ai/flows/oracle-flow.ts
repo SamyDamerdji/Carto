@@ -1,3 +1,4 @@
+
 'use server';
 /**
  * @fileOverview A Genkit flow that acts as a pedagogical assistant for learning cartomancy.
@@ -133,6 +134,9 @@ const learningFlow = ai.defineFlow(
       Pour l'étape demandée, tu dois fournir :
       1.  Un 'paragraphe' de 2-3 phrases, qui est une reformulation pédagogique du concept. NE JAMAIS terminer par une question.
       2.  Un 'exercice' (QCM) créatif pour valider la compréhension du paragraphe.
+          **Règle cruciale pour l'exercice :** Les options de réponse ne doivent pas être des définitions génériques. Elles doivent être des scénarios concrets de la vie quotidienne, avec des personnages nommés (ex: Julie, Michel) et des actions réalistes. Chaque option doit peindre une scène plausible.
+          *   **Exemple de bonne option :** "Julie décide de confronter son père à un secret de famille qu’elle porte depuis l’adolescence."
+          *   **Exemple de mauvaise option :** "La carte représente la fin d'un cycle."
       3.  'finDeLecon' doit être mis à ${isFinalStep}.
       
       Ta réponse doit TOUJOURS suivre le format JSON demandé.`;
