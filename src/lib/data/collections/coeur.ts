@@ -429,6 +429,13 @@ export const coeurCards: Card[] = [
       "un miroir reflétant une image légèrement déformée et questionnante",
       "un orage d'été éclatant dans un ciel bleu, suivi d'un arc-en-ciel"
     ],
+    "prompts_conversationnels": [
+      "Le 5 de Cœur est une 'transition émotionnelle'. Comment distinguer une transition constructive d'une simple période de chaos ?",
+      "La fiche dit qu'elle 'fait mal, mais fait du bien après'. Expliquez cette idée avec un exemple de rupture amicale ou amoureuse.",
+      "Cette carte invite à 'lâcher prise'. Que peut-on faire concrètement pour lâcher prise sur une émotion ou une relation ?",
+      "Le 5 de Cœur est le 'réveil du cœur'. Contre quoi ou qui ce cœur se réveille-t-il ?",
+      "Comparez la 'transition' du 5 de Cœur avec la 'fin de cycle' du 10 de Cœur. Quelle est la principale différence d'énergie ?"
+    ],
     "combinaisons": [
       { "carte_associee_id": "coeur_10", "signification": "Suggère une profonde satisfaction et un accomplissement amoureux après une période de transition." },
       { "carte_associee_id": "trefle_07", "signification": "Implique qu'un équilibre entre les émotions et les efforts pratiques est nécessaire pour surmonter les défis." },
@@ -469,6 +476,13 @@ export const coeurCards: Card[] = [
       "une tasse de thé fumante posée à côté d'un livre ouvert",
       "un baume apaisant appliqué sur une petite éraflure"
     ],
+    "prompts_conversationnels": [
+        "Le 4 de Cœur est une carte de 'pause'. En quoi une pause peut-elle être une action constructive plutôt qu'une simple inaction ?",
+        "La fiche parle d' 'amour simple, sans drame'. Comment peut-on cultiver cette simplicité dans un monde souvent complexe ?",
+        "Cette carte est un 'baume pour les cœurs fatigués'. Quelle est la différence entre se reposer pour guérir et fuir une situation difficile ?",
+        "L'ombre de cette carte est la 'routine qui étouffe'. À quel moment la stabilité bascule-t-elle dans la stagnation ?",
+        "Le conseil est de 'recharger ses batteries émotionnelles'. Donnez trois exemples concrets de la manière dont une personne pourrait faire cela."
+    ],
     "combinaisons": [
       { "carte_associee_id": "coeur_02", "signification": "Indique une rencontre romantique ou un renforcement des liens existants." },
       { "carte_associee_id": "pique_as", "signification": "Signale une période de réflexion plus profonde, une remise en question des émotions actuelles." },
@@ -505,6 +519,13 @@ export const coeurCards: Card[] = [
       "une personne écoutant attentivement un coquillage comme si c'était un téléphone",
       "un carrefour où trois routes se rejoignent, baignées d'une lumière douce",
       "une main qui arrose une petite plante en pot avec soin"
+    ],
+    "prompts_conversationnels": [
+      "Le 3 de Cœur représente 'l'amour multiforme' (amitié, famille, romance). Comment ces différentes formes d'amour peuvent-elles s'enrichir mutuellement ?",
+      "La fiche mentionne que le chiffre 3 symbolise les trois stades d'une relation. Décrivez ces trois stades avec vos propres mots.",
+      "Son côté 'ombre' est la 'relation triangulaire'. Expliquez comment une situation à trois, même non-romantique (par exemple, un ami commun), peut créer une tension.",
+      "Le conseil est 'd'écouter son intuition'. Donnez un exemple où l'intuition a été un meilleur guide que la logique dans une décision relationnelle.",
+      "Comparez la 'célébration' du 3 de Cœur à 'l'accomplissement' du 10 de Cœur. Quelle est la principale différence ?"
     ],
     "combinaisons": [
       { "carte_associee_id": "coeur_as", "signification": "Renforce le thème de l'amour profond et sincère. Symbolise la naissance et la célébration des sentiments amoureux." },
