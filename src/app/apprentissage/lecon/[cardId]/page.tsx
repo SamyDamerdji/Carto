@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useRef, useEffect, useCallback, useMemo } from 'react';
@@ -321,10 +322,9 @@ export default function LeconInteractivePage() {
                     className="relative w-full h-full [transform-style:preserve-3d]"
                     animate={{ rotateY: [0, 0, 180, 180, 360] }}
                     transition={{
-                        duration: 4,
+                        duration: 5,
                         ease: "easeInOut",
                         repeat: Infinity,
-                        repeatDelay: 1,
                         times: [0, 0.4, 0.5, 0.9, 1],
                     }}
                 >
