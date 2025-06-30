@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import type { Card } from '@/lib/data/cards';
 import { getCardDetails } from '@/lib/data/cards';
 import Image from 'next/image';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
@@ -20,6 +22,7 @@ import {
   Lightbulb,
   Tags,
   NotebookText,
+  BrainCircuit,
 } from 'lucide-react';
 import { Textarea } from '@/components/ui/textarea';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -91,6 +94,14 @@ export function CardDetailsView({ card }: { card: Card }) {
           <p className="mt-4 text-sm text-white/90 text-center">
             {card.interpretations.general}
           </p>
+          <div className="mt-6">
+            <Link href={`/apprentissage/lecon/${card.id}`} passHref>
+                <Button size="lg">
+                    <BrainCircuit className="mr-2 h-5 w-5" />
+                    Leçon interactive
+                </Button>
+            </Link>
+          </div>
         </div>
       </motion.div>
       
