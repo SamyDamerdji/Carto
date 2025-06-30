@@ -49,10 +49,21 @@ const CardSchema = z.object({
 
 
 const QCMExerciceSchema = z.object({
+  type: z.literal('qcm'),
   question: z.string().describe("La question posée à l'utilisateur pour valider sa compréhension."),
   options: z.array(z.string()).min(2).max(4).describe("Un tableau de 2 à 4 chaînes de caractères pour les options de réponse."),
   reponseCorrecte: z.string().describe("Le texte exact de la réponse correcte parmi les options proposées."),
 });
+
+const KeywordsExerciceSchema = z.object({
+    type: z.literal('keywords'),
+    question: z.string().describe("La question pour l'exercice sur les mots-clés."),
+    all_keywords: z.array(z.string()).describe("Une liste de 6 à 8 mots-clés, incluant les corrects et des distracteurs plausibles."),
+    correct_keywords: z.array(z.string()).describe("Le sous-ensemble de mots-clés qui sont corrects pour la carte."),
+});
+
+const ExerciceSchema = z.union([QCMExerciceSchema, KeywordsExerciceSchema]);
+
 
 const CardSummarySchema = z.object({
     id: z.string(),
@@ -63,16 +74,22 @@ const CardSummarySchema = z.object({
 
 const LearningOutputSchema = z.object({
   paragraphe: z.string().describe("Le segment textuel de la leçon à lire à haute voix. Doit être court (2-3 phrases) et ne JAMAIS se terminer par une question ouverte."),
-  exercice: QCMExerciceSchema.optional().describe("Un exercice simple (QCM) pour engager l'utilisateur. Doit être omis uniquement si la leçon est terminée."),
+  exercice: ExerciceSchema.optional().describe("Un exercice simple (QCM ou sélection de mots-clés) pour engager l'utilisateur. Doit être omis uniquement si la leçon est terminée."),
   finDeLecon: z.boolean().describe("Mettre à true si c'est le dernier message de la leçon, auquel cas il n'y a pas d'exercice."),
   associatedCard: CardSummarySchema.optional().describe("Les détails de la carte associée pour cette étape de leçon, si applicable."),
 });
 export type LearningOutput = z.infer<typeof LearningOutputSchema>;
 
-const ModelOutputSchema = z.object({
+const QcmModelOutputSchema = z.object({
     paragraphe: LearningOutputSchema.shape.paragraphe,
-    exercice: LearningOutputSchema.shape.exercice,
-    finDeLecon: LearningOutputSchema.shape.finDeLecon
+    exercice: QCMExerciceSchema.omit({ type: true }).optional(),
+    finDeLecon: LearningOutputSchema.shape.finDeLecon,
+});
+
+const KeywordsModelOutputSchema = z.object({
+    paragraphe: LearningOutputSchema.shape.paragraphe,
+    exercice: KeywordsExerciceSchema.omit({ type: true }),
+    finDeLecon: LearningOutputSchema.shape.finDeLecon,
 });
 
 // Input Schema for the flow
@@ -104,7 +121,10 @@ const learningFlow = ai.defineFlow(
 
       const totalFixedSteps = 8;
       const totalCombinations = input.card.combinaisons?.length || 0;
-      const totalSteps = totalFixedSteps + totalCombinations;
+      const keywordsStepIndex = totalFixedSteps + totalCombinations;
+      const totalSteps = keywordsStepIndex + 1; // 8 fixed + N combinations + 1 keywords step
+
+      isFinalStep = (stepIndex === totalSteps - 1);
 
       if (stepIndex < totalFixedSteps) {
         // Handle the 8 fixed lesson steps
@@ -147,8 +167,6 @@ const learningFlow = ai.defineFlow(
             default:
                 throw new Error("Étape de leçon fixe inconnue.");
         }
-        
-        isFinalStep = (stepIndex === totalSteps - 1);
 
         systemPrompt = `Tu es un tuteur expert en cartomancie. Ta mission est de créer une étape de leçon interactive sur un sujet précis.
 
@@ -173,15 +191,15 @@ const learningFlow = ai.defineFlow(
             model: 'googleai/gemini-2.0-flash',
             system: systemPrompt,
             prompt: userPrompt,
-            output: { schema: ModelOutputSchema },
+            output: { schema: QcmModelOutputSchema },
         });
 
         if (!output) {
             throw new Error("L'IA n'a pas pu générer la prochaine étape de la leçon.");
         }
-        return output;
+        return { ...output, exercice: output.exercice ? { ...output.exercice, type: 'qcm' } : undefined };
 
-      } else {
+      } else if (stepIndex < keywordsStepIndex) {
         // Handle combination steps
         const combinationIndex = stepIndex - totalFixedSteps;
         if (combinationIndex >= totalCombinations) {
@@ -192,8 +210,6 @@ const learningFlow = ai.defineFlow(
         const associatedCard = getCardDetails(combination.carte_associee_id);
 
         if (!associatedCard) {
-            // If card is not found, we skip this step by returning the previous output.
-            // This is a graceful failure to avoid crashing the lesson.
             console.warn(`Carte associée introuvable : ${combination.carte_associee_id}, étape ignorée.`);
             const lastStepOutput = input.history[input.history.length - 1]?.model;
             if(lastStepOutput) {
@@ -201,8 +217,6 @@ const learningFlow = ai.defineFlow(
             }
             throw new Error(`Carte associée introuvable : ${combination.carte_associee_id}`);
         }
-        
-        isFinalStep = (stepIndex === totalSteps - 1);
 
         systemPrompt = `Tu es un tuteur expert en cartomancie. Ta mission est d'enseigner la signification d'une association de deux cartes de manière pédagogique.
 
@@ -228,7 +242,7 @@ const learningFlow = ai.defineFlow(
         model: 'googleai/gemini-2.0-flash',
         system: systemPrompt,
         prompt: userPrompt,
-        output: { schema: ModelOutputSchema },
+        output: { schema: QcmModelOutputSchema },
       });
 
       if (!output) {
@@ -237,6 +251,7 @@ const learningFlow = ai.defineFlow(
 
       return {
         ...output,
+        exercice: output.exercice ? { ...output.exercice, type: 'qcm' } : undefined,
         associatedCard: {
             id: associatedCard.id,
             nom_carte: associatedCard.nom_carte,
@@ -244,6 +259,53 @@ const learningFlow = ai.defineFlow(
             couleur: associatedCard.couleur,
         }
       };
+    } else if (stepIndex === keywordsStepIndex) {
+        // Handle Keywords step
+        systemPrompt = `Tu es un tuteur expert en cartomancie. Ta mission est d'enseigner la synthèse des mots-clés d'une carte.
+
+        Suis ces étapes dans ta réponse :
+        1.  **Synthèse :** Dans ton 'paragraphe', crée un texte court et inspirant qui résume l'essence de la carte en se basant sur sa phrase-clé et ses mots-clés principaux.
+        2.  **Exercice :** Crée un exercice de type 'keywords'.
+            -   La 'question' doit demander de sélectionner les mots-clés qui correspondent à la carte.
+            -   'all_keywords' doit être un tableau de 6 à 8 chaînes de caractères. Il doit contenir TOUS les 'correct_keywords' ainsi que des distracteurs plausibles mais incorrects. Mélange bien l'ordre.
+            -   'correct_keywords' doit être le tableau exact des mots-clés originaux fournis.
+        3.  **Fin de Leçon :** 'finDeLecon' doit être mis à ${isFinalStep}.
+
+        Ta réponse doit TOUJOURS suivre le format JSON demandé.`;
+
+        userPrompt = `
+          Le sujet de cette étape finale est la synthèse des mots-clés pour la carte **${input.card.nom_carte}**.
+    
+          - Phrase-clé à intégrer dans le paragraphe : "${input.card.phrase_cle}"
+          - Mots-clés corrects à utiliser pour l'exercice : ${JSON.stringify(input.card.mots_cles)}
+    
+          Génère le paragraphe et l'exercice 'keywords' correspondants. Assure-toi que les distracteurs que tu inventes sont pertinents (par exemple, des mots-clés d'autres cartes) mais faux.
+        `;
+        
+        const { output } = await ai.generate({
+            model: 'googleai/gemini-2.0-flash',
+            system: systemPrompt,
+            prompt: userPrompt,
+            output: { schema: KeywordsModelOutputSchema },
+        });
+
+        if (!output) {
+            throw new Error("L'IA n'a pas pu générer l'étape des mots-clés.");
+        }
+
+        return {
+            ...output,
+            exercice: {
+                ...output.exercice,
+                type: 'keywords'
+            },
+        };
+    } else {
+        // This should not be reached as the last exercise has finDeLecon=true
+        return {
+            paragraphe: `Vous avez terminé la leçon sur ${input.card.nom_carte}. Votre voyage dans la cartomancie continue !`,
+            finDeLecon: true,
+        };
     }
 
     } catch (error) {

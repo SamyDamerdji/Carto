@@ -10,6 +10,7 @@ import { textToSpeech } from '@/ai/flows/tts-flow';
 import Image from 'next/image';
 import { Loader2, Volume2, VolumeX, Check, X as XIcon, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
 import { audioPlayerManager } from '@/lib/audio-manager';
@@ -20,7 +21,7 @@ import { CardNavigation } from '@/components/cards/card-navigation';
 
 type LessonStep = {
   model: LearningOutput;
-  user: { answer: string | null };
+  user: { answer: string | string[] | null };
 };
 
 type LessonState = 'preparing' | 'ready' | 'active' | 'finished';
@@ -71,7 +72,8 @@ export default function LeconInteractivePage() {
   const [isWaitingForNextStep, setIsWaitingForNextStep] = useState(false);
 
   const [lastAnswerStatus, setLastAnswerStatus] = useState<'correct' | 'incorrect' | null>(null);
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [selectedQcmOption, setSelectedQcmOption] = useState<string | null>(null);
+  const [selectedKeywords, setSelectedKeywords] = useState<string[]>([]);
   const [shuffledOptions, setShuffledOptions] = useState<string[]>([]);
 
   const [isTtsPlaying, setIsTtsPlaying] = useState(false);
@@ -92,16 +94,21 @@ export default function LeconInteractivePage() {
   const currentStep = lessonSteps[currentStepIndex]?.model;
   
   useEffect(() => {
-    if (currentStep?.exercice?.options) {
-        const array = [...currentStep.exercice.options];
-        // Fisher-Yates shuffle to randomize options
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-        setShuffledOptions(array);
+    let optionsToShuffle: string[] = [];
+    if (currentStep?.exercice?.type === 'qcm' && currentStep.exercice.options) {
+      optionsToShuffle = [...currentStep.exercice.options];
+    } else if (currentStep?.exercice?.type === 'keywords' && currentStep.exercice.all_keywords) {
+      optionsToShuffle = [...currentStep.exercice.all_keywords];
+    }
+
+    if (optionsToShuffle.length > 0) {
+      for (let i = optionsToShuffle.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [optionsToShuffle[i], optionsToShuffle[j]] = [optionsToShuffle[j], optionsToShuffle[i]];
+      }
+      setShuffledOptions(optionsToShuffle);
     } else {
-        setShuffledOptions([]);
+      setShuffledOptions([]);
     }
   }, [currentStep]);
 
@@ -169,7 +176,8 @@ export default function LeconInteractivePage() {
     
     setPrefetchedData(null);
     setLastAnswerStatus(null);
-    setSelectedOption(null);
+    setSelectedQcmOption(null);
+    setSelectedKeywords([]);
     setIsWaitingForNextStep(false);
   }, [prefetchedData]);
   
@@ -177,10 +185,6 @@ export default function LeconInteractivePage() {
   useEffect(() => {
     const currentStep = lessonSteps[currentStepIndex];
 
-    // Conditions for pre-fetching:
-    // 1. The lesson must be active.
-    // 2. We don't already have pre-fetched data.
-    // 3. We are not already in the process of pre-fetching.
     if (
       lessonState === 'active' &&
       (!currentStep || !currentStep.model.finDeLecon) &&
@@ -197,7 +201,7 @@ export default function LeconInteractivePage() {
     }
   }, [
     lessonState,
-    lessonSteps, // Triggers when a new step is added or an answer is recorded.
+    lessonSteps,
     currentStepIndex,
     prefetchedData,
     isPrefetching,
@@ -218,12 +222,7 @@ export default function LeconInteractivePage() {
     setPrefetchedData(null);
   }, [prefetchedData]);
 
-  const handleAnswerClick = (option: string) => {
-    if (uiSubState !== 'exercising') return;
-
-    const currentStepModel = lessonSteps[currentStepIndex].model;
-    const isCorrect = option === currentStepModel.exercice?.reponseCorrecte;
-
+  const playFeedbackSound = (isCorrect: boolean) => {
     if (isCorrect) {
       if (correctSoundRef.current) {
         correctSoundRef.current.currentTime = 0;
@@ -235,18 +234,49 @@ export default function LeconInteractivePage() {
         audioPlayerManager.play(incorrectSoundRef.current).catch(e => console.error("Audio play failed", e));
       }
     }
+  };
+  
+  const handleQcmAnswer = (option: string) => {
+    if (uiSubState !== 'exercising' || currentStep?.exercice?.type !== 'qcm') return;
 
-    // Correctly update the state immutably using .map()
+    const isCorrect = option === currentStep.exercice.reponseCorrecte;
+    playFeedbackSound(isCorrect);
+    
     setLessonSteps(prevSteps =>
       prevSteps.map((step, index) =>
-        index === currentStepIndex
-          ? { ...step, user: { answer: option } }
-          : step
+        index === currentStepIndex ? { ...step, user: { answer: option } } : step
       )
     );
 
     setLastAnswerStatus(isCorrect ? 'correct' : 'incorrect');
-    setSelectedOption(option);
+    setSelectedQcmOption(option);
+    setUiSubState('feedback');
+  };
+
+  const handleKeywordToggle = (keyword: string) => {
+    setSelectedKeywords(prev => 
+        prev.includes(keyword) 
+        ? prev.filter(k => k !== keyword)
+        : [...prev, keyword]
+    );
+  };
+
+  const handleKeywordSubmit = () => {
+    if (uiSubState !== 'exercising' || currentStep?.exercice?.type !== 'keywords') return;
+
+    const correctKeywords = new Set(currentStep.exercice.correct_keywords);
+    const selected = new Set(selectedKeywords);
+    
+    const isCorrect = correctKeywords.size === selected.size && [...correctKeywords].every(keyword => selected.has(keyword));
+    playFeedbackSound(isCorrect);
+
+    setLessonSteps(prevSteps =>
+      prevSteps.map((step, index) =>
+        index === currentStepIndex ? { ...step, user: { answer: selectedKeywords } } : step
+      )
+    );
+
+    setLastAnswerStatus(isCorrect ? 'correct' : 'incorrect');
     setUiSubState('feedback');
   };
   
@@ -338,12 +368,12 @@ export default function LeconInteractivePage() {
             <div className="[perspective:1000px] w-[150px] aspect-[2.5/3.5] my-4">
                 <motion.div
                     className="relative w-full h-full [transform-style:preserve-3d]"
-                    animate={{ rotateY: [0, 0, 180, 180, 360] }}
+                    animate={{ rotateY: [0, 0, 180, 180, 0] }}
                     transition={{
-                        duration: 5,
+                        duration: 4,
                         ease: "easeInOut",
                         repeat: Infinity,
-                        times: [0, 0.4, 0.5, 0.9, 1],
+                        repeatDelay: 1,
                     }}
                 >
                     {/* Front */}
@@ -416,6 +446,8 @@ export default function LeconInteractivePage() {
           );
         }
 
+        const shouldBlurParagraph = currentStep.exercice?.type === 'keywords' && uiSubState === 'exercising';
+
         return (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mx-auto mt-6 max-w-md rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6">
                 <div className="flex items-center justify-between gap-3 mb-4">
@@ -461,7 +493,20 @@ export default function LeconInteractivePage() {
                     </AnimatePresence>
                 </div>
 
-                <div className="min-h-[7rem] text-white/90 text-center p-4 rounded-lg bg-background/20 border border-primary/20">
+                <div className="relative min-h-[7rem] text-white/90 text-center p-4 rounded-lg bg-background/20 border border-primary/20">
+                    <AnimatePresence>
+                    {shouldBlurParagraph && (
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="absolute inset-0 bg-secondary/30 backdrop-blur-md rounded-lg flex items-center justify-center z-10"
+                        >
+                            <p className="text-xs italic text-white/80 px-4">Faites votre choix pour révéler à nouveau le texte.</p>
+                        </motion.div>
+                    )}
+                    </AnimatePresence>
                     <p className="text-sm whitespace-pre-wrap">{currentStep.paragraphe}</p>
                 </div>
 
@@ -474,13 +519,14 @@ export default function LeconInteractivePage() {
                   ) : uiSubState === 'exercising' || uiSubState === 'feedback' ? (
                     <div className="space-y-3 flex flex-col items-center text-center">
                         {currentStep.exercice && <p className="text-sm text-white/80 italic mb-2">{currentStep.exercice.question}</p>}
-                        {shuffledOptions.map(opt => {
-                            const isSelected = selectedOption === opt;
+
+                        {currentStep.exercice?.type === 'qcm' && shuffledOptions.map(opt => {
+                            const isSelected = selectedQcmOption === opt;
                             const isCorrect = opt === currentStep.exercice?.reponseCorrecte;
                             return (
                                 <button
                                     key={opt}
-                                    onClick={() => handleAnswerClick(opt)}
+                                    onClick={() => handleQcmAnswer(opt)}
                                     disabled={uiSubState === 'feedback'}
                                     className={cn(
                                         "relative h-full w-full overflow-hidden rounded-xl border border-primary/30 bg-secondary/20 p-4 shadow-lg shadow-primary/20 backdrop-blur-lg text-left transition-all duration-300 disabled:pointer-events-none",
@@ -504,6 +550,46 @@ export default function LeconInteractivePage() {
                                 </button>
                             );
                         })}
+
+                        {currentStep.exercice?.type === 'keywords' && (
+                            <>
+                            <div className='w-full columns-2 gap-x-3 space-y-3'>
+                                {shuffledOptions.map(keyword => {
+                                    const isSelected = selectedKeywords.includes(keyword);
+                                    const isCorrect = currentStep.exercice?.type === 'keywords' && currentStep.exercice.correct_keywords.includes(keyword);
+                                    return (
+                                        <label
+                                            key={keyword}
+                                            htmlFor={keyword}
+                                            className={cn(
+                                                "flex items-center gap-3 w-full break-inside-avoid-column overflow-hidden rounded-lg border border-primary/30 bg-secondary/20 p-3 shadow-lg backdrop-blur-lg transition-all duration-300",
+                                                uiSubState === 'exercising' && "cursor-pointer hover:border-primary/60",
+                                                uiSubState === 'feedback' && {
+                                                    "border-green-500/80 bg-green-900/40": isSelected && isCorrect,
+                                                    "border-destructive/80 bg-destructive/40": isSelected && !isCorrect,
+                                                    "border-green-600/50 bg-green-900/30": !isSelected && isCorrect,
+                                                    "opacity-60": !isSelected && !isCorrect,
+                                                }
+                                            )}
+                                        >
+                                            <Checkbox
+                                                id={keyword}
+                                                checked={isSelected}
+                                                onCheckedChange={() => handleKeywordToggle(keyword)}
+                                                disabled={uiSubState === 'feedback'}
+                                                className="shrink-0"
+                                            />
+                                            <span className="text-sm text-white/90">{keyword}</span>
+                                        </label>
+                                    )
+                                })}
+                            </div>
+                            {uiSubState === 'exercising' && (
+                                <Button onClick={handleKeywordSubmit} className="mt-4">Valider</Button>
+                            )}
+                            </>
+                        )}
+                         
                          {uiSubState === 'feedback' && (
                           <Button onClick={handleContinue} className="mt-4" disabled={isPrefetching}>
                             {isPrefetching && isWaitingForNextStep ? (<Loader2 className="mr-2 h-4 w-4 animate-spin"/>) : "Continuer"}
