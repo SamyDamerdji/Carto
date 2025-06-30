@@ -72,6 +72,7 @@ export default function LeconInteractivePage() {
 
   const [lastAnswerStatus, setLastAnswerStatus] = useState<'correct' | 'incorrect' | null>(null);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [shuffledOptions, setShuffledOptions] = useState<string[]>([]);
 
   const [isTtsPlaying, setIsTtsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -87,6 +88,23 @@ export default function LeconInteractivePage() {
     "Préparation de votre leçon...",
     "Alignement des énergies...",
   ], []);
+
+  const currentStep = lessonSteps[currentStepIndex]?.model;
+  
+  useEffect(() => {
+    if (currentStep?.exercice?.options) {
+        const array = [...currentStep.exercice.options];
+        // Fisher-Yates shuffle to randomize options
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        setShuffledOptions(array);
+    } else {
+        setShuffledOptions([]);
+    }
+  }, [currentStep]);
+
 
   useEffect(() => {
     if (lessonState !== 'preparing') return;
@@ -387,7 +405,6 @@ export default function LeconInteractivePage() {
       );
     }
     if (lessonState === 'active' || lessonState === 'finished') {
-        const currentStep = lessonSteps[currentStepIndex]?.model;
         const associatedCardForStep = currentStep?.associatedCard;
 
         if (!currentStep) {
@@ -457,7 +474,7 @@ export default function LeconInteractivePage() {
                   ) : uiSubState === 'exercising' || uiSubState === 'feedback' ? (
                     <div className="space-y-3 flex flex-col items-center text-center">
                         {currentStep.exercice && <p className="text-sm text-white/80 italic mb-2">{currentStep.exercice.question}</p>}
-                        {currentStep.exercice?.options.map(opt => {
+                        {shuffledOptions.map(opt => {
                             const isSelected = selectedOption === opt;
                             const isCorrect = opt === currentStep.exercice?.reponseCorrecte;
                             return (
