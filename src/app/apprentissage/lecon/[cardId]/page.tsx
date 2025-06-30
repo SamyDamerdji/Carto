@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useRef, useEffect, useCallback, useMemo } from 'react';
@@ -496,8 +495,7 @@ export default function LeconInteractivePage() {
       <main className="flex-grow container mx-auto px-4 pb-8">
         <audio ref={audioRef} className="hidden" />
         <audio ref={correctSoundRef} src="https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/sounds/correct.mp3" preload="auto" className="hidden" />
-        <audio ref={incorrectSoundRef} src="https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/sounds/wrong-answer-129254.mp3" preload="auto" className="hidden" />
-        {renderContent()}
+        <audio ref={incorrectSoundRef} src="https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/sounds/incorrect.mp3" preload="auto" className="hidden" />
       </main>
       <Footer />
     </div>
