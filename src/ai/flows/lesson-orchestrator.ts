@@ -8,7 +8,7 @@
 
 import { z } from 'zod';
 import { ai } from '@/ai/genkit';
-import { chatWithOracle, type LearningInput, type LearningOutput } from './oracle-flow';
+import { chatWithOracle, LearningInputSchema, type LearningInput, type LearningOutput } from './oracle-flow';
 import { textToSpeech, type TtsOutput } from './tts-flow';
 
 // Output schema for the orchestrator, combining lesson and audio
@@ -26,7 +26,7 @@ export async function getLessonStep(input: LearningInput): Promise<{ step: Learn
 const lessonOrchestratorFlow = ai.defineFlow(
   {
     name: 'lessonOrchestratorFlow',
-    inputSchema: z.any(), // Using z.any to match LearningInput without redefining the large CardSchema
+    inputSchema: LearningInputSchema, // Using the specific schema from oracle-flow
     outputSchema: LessonStepOutputSchema,
   },
   async (input: LearningInput) => {

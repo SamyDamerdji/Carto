@@ -93,9 +93,9 @@ const KeywordsModelOutputSchema = z.object({
 });
 
 // Input Schema for the flow
-const LearningInputSchema = z.object({
+export const LearningInputSchema = z.object({
   card: CardSchema.describe("The full data object for the card being taught."),
-  history: z.array(z.any()).describe("The history of the conversation so far, containing previous steps and user answers."),
+  historyLength: z.number().describe("The number of steps already completed in the lesson."),
 });
 export type LearningInput = z.infer<typeof LearningInputSchema>;
 
@@ -114,7 +114,7 @@ const learningFlow = ai.defineFlow(
   },
   async (input) => {
     try {
-      const stepIndex = input.history.length;
+      const stepIndex = input.historyLength;
       let systemPrompt = '';
       let userPrompt = '';
       let isFinalStep = false;
@@ -211,10 +211,6 @@ const learningFlow = ai.defineFlow(
 
         if (!associatedCard) {
             console.warn(`Carte associée introuvable : ${combination.carte_associee_id}, étape ignorée.`);
-            const lastStepOutput = input.history[input.history.length - 1]?.model;
-            if(lastStepOutput) {
-              return { ...lastStepOutput, finDeLecon: true }; // End lesson if card is missing
-            }
             throw new Error(`Carte associée introuvable : ${combination.carte_associee_id}`);
         }
 

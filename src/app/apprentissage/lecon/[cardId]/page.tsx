@@ -123,11 +123,11 @@ export default function LeconInteractivePage() {
     return () => clearInterval(intervalId);
   }, [lessonState, loadingMessages.length]);
 
-  const fetchStep = useCallback(async (history: LessonStep[]) => {
+  const fetchStep = useCallback(async (historyLength: number) => {
     if (!card) return null;
     try {
-      // Single call to the orchestrator
-      const { step, audio } = await getLessonStep({ card, history });
+      // Single call to the orchestrator, passing only the history length
+      const { step, audio } = await getLessonStep({ card, historyLength });
       return { step, audioUrl: audio.media };
     } catch (error) {
       console.error("Error fetching lesson step:", error);
@@ -147,7 +147,7 @@ export default function LeconInteractivePage() {
 
     setLessonState('preparing');
     setIsPrefetching(true);
-    fetchStep([]).then(data => {
+    fetchStep(0).then(data => {
       if (data) {
         setPrefetchedData(data);
         setLessonState('ready');
@@ -188,7 +188,7 @@ export default function LeconInteractivePage() {
       !isPrefetching
     ) {
       setIsPrefetching(true);
-      fetchStep(lessonSteps).then(data => {
+      fetchStep(lessonSteps.length).then(data => {
         if (data) {
           setPrefetchedData(data);
         }
