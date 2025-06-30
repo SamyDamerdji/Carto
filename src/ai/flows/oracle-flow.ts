@@ -36,7 +36,7 @@ const CardSchema = z.object({
   id: z.string(),
   nom_carte: z.string(),
   valeur: z.number(),
-  couleur: z.enum(['Trèfle', 'Coeur', 'Carreau', 'Pique']),
+  couleur: z.enum(['Trèfle', 'Cœur', 'Carreau', 'Pique']),
   image_url: z.string(),
   resume_general: z.string(),
   phrase_cle: z.string(),

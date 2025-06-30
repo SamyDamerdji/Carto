@@ -3,7 +3,7 @@ import { trefleCards } from './collections/trefle';
 import { coeurCards } from './collections/coeur';
 import { carreauCards } from './collections/carreau';
 
-export type CardColor = 'Trèfle' | 'Coeur' | 'Carreau' | 'Pique';
+export type CardColor = 'Trèfle' | 'Cœur' | 'Carreau' | 'Pique';
 
 export interface CardCombination {
   carte_associee_id: string;
