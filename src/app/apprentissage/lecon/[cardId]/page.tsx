@@ -203,11 +203,14 @@ export default function LeconInteractivePage() {
     const currentStepModel = lessonSteps[currentStepIndex].model;
     const isCorrect = option === currentStepModel.exercice?.reponseCorrecte;
 
-    setLessonSteps(prevSteps => {
-        const newSteps = [...prevSteps];
-        newSteps[currentStepIndex] = { ...newSteps[currentStepIndex], user: { answer: option } };
-        return newSteps;
-    });
+    // Correctly update the state immutably using .map()
+    setLessonSteps(prevSteps =>
+      prevSteps.map((step, index) =>
+        index === currentStepIndex
+          ? { ...step, user: { answer: option } }
+          : step
+      )
+    );
 
     setLastAnswerStatus(isCorrect ? 'correct' : 'incorrect');
     setSelectedOption(option);
