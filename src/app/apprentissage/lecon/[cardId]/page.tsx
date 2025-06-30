@@ -5,8 +5,8 @@ import { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { Card } from '@/lib/data/cards';
 import { getCardDetails } from '@/lib/data/cards';
-import { chatWithOracle, type LearningOutput } from '@/ai/flows/oracle-flow';
-import { textToSpeech } from '@/ai/flows/tts-flow';
+import type { LearningOutput } from '@/ai/flows/oracle-flow';
+import { getLessonStep } from '@/ai/flows/lesson-orchestrator';
 import Image from 'next/image';
 import { Loader2, Volume2, VolumeX, Check, X as XIcon, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -123,24 +123,20 @@ export default function LeconInteractivePage() {
     return () => clearInterval(intervalId);
   }, [lessonState, loadingMessages.length]);
 
-  const fetchStepAndAudio = useCallback(async (history: LessonStep[]) => {
+  const fetchStep = useCallback(async (history: LessonStep[]) => {
     if (!card) return null;
     try {
-      const step = await chatWithOracle({ card, history });
-      let audioUrl = '';
-      if (step.paragraphe) {
-        const { media } = await textToSpeech(step.paragraphe);
-        audioUrl = media;
-      }
-      return { step, audioUrl };
+      // Single call to the orchestrator
+      const { step, audio } = await getLessonStep({ card, history });
+      return { step, audioUrl: audio.media };
     } catch (error) {
-      console.error("Error fetching step or audio:", error);
+      console.error("Error fetching lesson step:", error);
       toast({
         variant: 'destructive',
         title: "Erreur de l'Oracle",
         description: "Impossible de continuer la leçon. Veuillez rafraîchir la page.",
       });
-      setLessonState('ready');
+      setLessonState('ready'); // Or some error state
       return null;
     }
   }, [card, toast]);
@@ -151,14 +147,14 @@ export default function LeconInteractivePage() {
 
     setLessonState('preparing');
     setIsPrefetching(true);
-    fetchStepAndAudio([]).then(data => {
+    fetchStep([]).then(data => {
       if (data) {
         setPrefetchedData(data);
         setLessonState('ready');
       }
       setIsPrefetching(false);
     });
-  }, [card, fetchStepAndAudio]);
+  }, [card, fetchStep]);
 
   const advanceToNextStep = useCallback(() => {
     if (!prefetchedData) return;
@@ -192,7 +188,7 @@ export default function LeconInteractivePage() {
       !isPrefetching
     ) {
       setIsPrefetching(true);
-      fetchStepAndAudio(lessonSteps).then(data => {
+      fetchStep(lessonSteps).then(data => {
         if (data) {
           setPrefetchedData(data);
         }
@@ -205,7 +201,7 @@ export default function LeconInteractivePage() {
     currentStepIndex,
     prefetchedData,
     isPrefetching,
-    fetchStepAndAudio,
+    fetchStep,
   ]);
   
   const handleStartLesson = useCallback(() => {
@@ -368,12 +364,11 @@ export default function LeconInteractivePage() {
             <div className="[perspective:1000px] w-[150px] aspect-[2.5/3.5] my-4">
                 <motion.div
                     className="relative w-full h-full [transform-style:preserve-3d]"
-                    animate={{ rotateY: [0, 0, 180, 180, 0] }}
+                    animate={{ rotateY: 360 }}
                     transition={{
                         duration: 4,
-                        ease: "easeInOut",
+                        ease: "linear",
                         repeat: Infinity,
-                        repeatDelay: 1,
                     }}
                 >
                     {/* Front */}

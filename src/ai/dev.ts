@@ -3,3 +3,4 @@ import './flows/oracle-flow';
 import './flows/tts-flow';
 import './flows/systemic-revelation-flow';
 import './flows/deepen-revelation-flow';
+import './flows/lesson-orchestrator';
