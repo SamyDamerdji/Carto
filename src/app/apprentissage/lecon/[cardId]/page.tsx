@@ -245,8 +245,11 @@ export default function LeconInteractivePage() {
     const onPlay = () => setIsTtsPlaying(true);
     const onPauseOrEnded = () => setIsTtsPlaying(false);
     const onEnded = () => {
-        if (uiSubState === 'explaining') {
+        if (uiSubState === 'explaining' && lessonSteps[currentStepIndex]?.model.exercice) {
             setUiSubState('exercising');
+        } else if (uiSubState === 'explaining') {
+            // If no exercise, wait a bit and then show continue button
+            setTimeout(() => setUiSubState('feedback'), 500);
         }
     };
 
@@ -257,7 +260,11 @@ export default function LeconInteractivePage() {
     
     // If there is no audio source, immediately move to the next state
     if (uiSubState === 'explaining' && !audioElement.src) {
-        setTimeout(() => setUiSubState('exercising'), 100);
+        if (lessonSteps[currentStepIndex]?.model.exercice) {
+            setTimeout(() => setUiSubState('exercising'), 100);
+        } else {
+            setTimeout(() => setUiSubState('feedback'), 100);
+        }
     }
 
     return () => {
@@ -266,7 +273,7 @@ export default function LeconInteractivePage() {
         audioElement.removeEventListener('pause', onPauseOrEnded);
         audioElement.removeEventListener('ended', onEnded);
     };
-  }, [uiSubState]);
+  }, [uiSubState, lessonSteps, currentStepIndex]);
 
 
   if (!cardId) {
@@ -364,27 +371,35 @@ export default function LeconInteractivePage() {
                        <p className="text-sm italic mt-4 text-primary">L'oracle prépare la suite...</p>
                      </div>
                   ) : uiSubState === 'exercising' || uiSubState === 'feedback' ? (
-                    <div className="space-y-2 flex flex-col items-center text-center">
-                        <p className="text-sm text-white/80 italic mb-2">{currentStep.exercice?.question}</p>
+                    <div className="space-y-3 flex flex-col items-center text-center">
+                        {currentStep.exercice && <p className="text-sm text-white/80 italic mb-2">{currentStep.exercice.question}</p>}
                         {currentStep.exercice?.options.map(opt => {
                             const isSelected = selectedOption === opt;
                             const isCorrect = opt === currentStep.exercice?.reponseCorrecte;
                             return (
-                                <Button
+                                <button
                                     key={opt}
                                     onClick={() => handleAnswerClick(opt)}
                                     disabled={uiSubState === 'feedback'}
                                     className={cn(
-                                        "w-full justify-start text-left h-auto py-2",
-                                        uiSubState === 'feedback' && isSelected && lastAnswerStatus === 'correct' && "bg-green-700 hover:bg-green-700",
-                                        uiSubState === 'feedback' && isSelected && lastAnswerStatus === 'incorrect' && "bg-destructive hover:bg-destructive",
-                                        uiSubState === 'feedback' && !isSelected && isCorrect && "bg-green-800/50 hover:bg-green-800/50"
+                                        "w-full rounded-lg border p-4 shadow-lg transition-all duration-200 text-left",
+                                        "disabled:pointer-events-none",
+                                        uiSubState !== 'feedback' && 
+                                            "border-secondary-foreground/30 bg-card-foreground/25 text-secondary-foreground/90 shadow-black/20 hover:border-primary hover:bg-card-foreground/40",
+                                        uiSubState === 'feedback' && {
+                                            'border-green-500 bg-green-900/40 text-white': isSelected && isCorrect,
+                                            'border-destructive bg-destructive/40 text-white': isSelected && !isCorrect,
+                                            'border-green-600/50 bg-green-900/30 text-white': !isSelected && isCorrect,
+                                            'border-secondary-foreground/20 bg-card-foreground/10 text-secondary-foreground/80 opacity-60': !isSelected && !isCorrect,
+                                        }
                                     )}
                                 >
-                                    {uiSubState === 'feedback' && isSelected && lastAnswerStatus === 'correct' && <Check className="mr-2 h-4 w-4" />}
-                                    {uiSubState === 'feedback' && isSelected && lastAnswerStatus === 'incorrect' && <XIcon className="mr-2 h-4 w-4" />}
-                                    <span className="whitespace-pre-wrap">{opt}</span>
-                                </Button>
+                                    <div className="flex items-start gap-3">
+                                        {uiSubState === 'feedback' && isCorrect && <Check className="h-5 w-5 flex-shrink-0 text-green-400 mt-0.5" />}
+                                        {uiSubState === 'feedback' && isSelected && !isCorrect && <XIcon className="h-5 w-5 flex-shrink-0 text-red-400 mt-0.5" />}
+                                        <span className="whitespace-pre-wrap flex-1 text-sm">{opt}</span>
+                                    </div>
+                                </button>
                             );
                         })}
                          {uiSubState === 'feedback' && (
