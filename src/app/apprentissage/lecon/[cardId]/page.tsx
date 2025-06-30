@@ -74,6 +74,8 @@ export default function LeconInteractivePage() {
 
   const [isTtsPlaying, setIsTtsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const correctSoundRef = useRef<HTMLAudioElement | null>(null);
+  const incorrectSoundRef = useRef<HTMLAudioElement | null>(null);
   
   const didInitialFetch = useRef(false);
 
@@ -202,6 +204,18 @@ export default function LeconInteractivePage() {
 
     const currentStepModel = lessonSteps[currentStepIndex].model;
     const isCorrect = option === currentStepModel.exercice?.reponseCorrecte;
+
+    if (isCorrect) {
+      if (correctSoundRef.current) {
+        correctSoundRef.current.currentTime = 0;
+        audioPlayerManager.play(correctSoundRef.current).catch(e => console.error("Audio play failed", e));
+      }
+    } else {
+      if (incorrectSoundRef.current) {
+        incorrectSoundRef.current.currentTime = 0;
+        audioPlayerManager.play(incorrectSoundRef.current).catch(e => console.error("Audio play failed", e));
+      }
+    }
 
     // Correctly update the state immutably using .map()
     setLessonSteps(prevSteps =>
@@ -480,6 +494,8 @@ export default function LeconInteractivePage() {
       <CardNavigation currentCardId={cardId} />
       <main className="flex-grow container mx-auto px-4 pb-8">
         <audio ref={audioRef} className="hidden" />
+        <audio ref={correctSoundRef} src="https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/sounds/correct-answer-94-183311.mp3" preload="auto" className="hidden" />
+        <audio ref={incorrectSoundRef} src="https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/sounds/wrong-answer-129254.mp3" preload="auto" className="hidden" />
         {renderContent()}
       </main>
       <Footer />
