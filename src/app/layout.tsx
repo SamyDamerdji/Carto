@@ -67,7 +67,6 @@ export default function RootLayout({
         cinzel.variable,
         ebGaramond.variable
       )}>
-        <div className="absolute inset-0 z-[-1] bg-background/60 backdrop-blur-sm" />
         <PwaInstaller />
         {children}
         <Toaster />
