@@ -126,15 +126,15 @@ export default function LeconInteractivePage() {
   const fetchStep = useCallback(async (historyLength: number) => {
     if (!card) return null;
     try {
-      // Single call to the orchestrator, passing only the history length
       const { step, audio } = await getLessonStep({ card, historyLength });
       return { step, audioUrl: audio.media };
     } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : "Une erreur inconnue est survenue. Veuillez vérifier la console du serveur.";
       console.error("Error fetching lesson step:", error);
       toast({
         variant: 'destructive',
         title: "Erreur de l'Oracle",
-        description: "Impossible de continuer la leçon. Veuillez rafraîchir la page.",
+        description: errorMessage,
       });
       setLessonState('ready'); // Or some error state
       return null;

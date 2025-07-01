@@ -1,3 +1,4 @@
+
 'use server';
 /**
  * @fileOverview A Genkit flow that orchestrates the creation of an interactive lesson step.
@@ -31,12 +32,8 @@ const lessonOrchestratorFlow = ai.defineFlow(
   },
   async (input: LearningInput) => {
     try {
-      // DIAGNOSTIC STEP: Bypass complex text generation to isolate the TTS flow.
-      // const stepResult = await chatWithOracle(input);
-      const stepResult: LearningOutput = {
-        paragraphe: `Voici la leçon pour la carte ${input.card.nom_carte}. Ceci est un test pour confirmer que la synthèse vocale fonctionne.`,
-        finDeLecon: false,
-      };
+      // 1. Generate the lesson content
+      const stepResult = await chatWithOracle(input);
 
       // 2. Generate the audio for the lesson's paragraph
       let audioResult: TtsOutput = { media: '' };
@@ -50,8 +47,10 @@ const lessonOrchestratorFlow = ai.defineFlow(
         audio: audioResult,
       };
     } catch (error) {
-      console.error("Error in lessonOrchestratorFlow:", error);
-      throw new Error("L'orchestrateur de la leçon a rencontré une erreur.");
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      console.error("Error in lessonOrchestratorFlow:", errorMessage);
+      // Re-throw a detailed error to be caught by the client
+      throw new Error(`Erreur dans l'orchestrateur : ${errorMessage}`);
     }
   }
 );

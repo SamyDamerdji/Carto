@@ -1,3 +1,4 @@
+
 'use server';
 /**
  * @fileOverview A Genkit flow that acts as a pedagogical assistant for learning cartomancy.
@@ -305,8 +306,9 @@ const learningFlow = ai.defineFlow(
     }
 
     } catch (error) {
-      console.error("Error in learningFlow:", error);
-      throw new Error("Désolé, une erreur technique m'empêche de répondre. Veuillez réessayer plus tard.");
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        console.error("Error in learningFlow:", errorMessage);
+        throw new Error(`Erreur dans la génération de la leçon : ${errorMessage}`);
     }
   }
 );
