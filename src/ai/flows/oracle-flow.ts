@@ -7,7 +7,7 @@
  * - LearningOutput - The return type for the chatWithOracle function.
  */
 
-import { ai, googleAI } from '@/ai/genkit';
+import { ai } from '@/ai/genkit';
 import { z } from 'zod';
 import { getCardDetails } from '@/lib/data/cards';
 import { 
@@ -108,7 +108,7 @@ const chatWithOracleFlow = ai.defineFlow(
             `;
 
             const { output } = await ai.generate({
-                model: googleAI.model('gemini-2.0-flash'),
+                model: 'googleai/gemini-2.0-flash',
                 system: systemPrompt,
                 prompt: userPrompt,
                 output: { schema: QcmModelOutputSchema },
@@ -154,7 +154,7 @@ const chatWithOracleFlow = ai.defineFlow(
             `;
           
           const { output } = await ai.generate({
-            model: googleAI.model('gemini-2.0-flash'),
+            model: 'googleai/gemini-2.0-flash',
             system: systemPrompt,
             prompt: userPrompt,
             output: { schema: QcmModelOutputSchema },
@@ -197,7 +197,7 @@ const chatWithOracleFlow = ai.defineFlow(
             `;
             
             const { output } = await ai.generate({
-                model: googleAI.model('gemini-2.0-flash'),
+                model: 'googleai/gemini-2.0-flash',
                 system: systemPrompt,
                 prompt: userPrompt,
                 output: { schema: KeywordsModelOutputSchema },

@@ -7,7 +7,7 @@
  * - DeepenRevelationOutput - The output type for the flow.
  */
 
-import { ai, googleAI } from '@/ai/genkit';
+import { ai } from '@/ai/genkit';
 import { z } from 'zod';
 import { SystemicRevelationInputSchema, SystemicRevelationOutputSchema } from '@/ai/schemas/revelation-schemas';
 import type { SystemicRevelationInput, SystemicRevelationOutput } from '@/ai/schemas/revelation-schemas';
@@ -37,7 +37,7 @@ export async function deepenSystemicRevelation(input: DeepenRevelationInput): Pr
 // The Genkit Prompt
 const deepenPrompt = ai.definePrompt({
     name: 'deepenRevelationPrompt',
-    model: googleAI.model('gemini-2.0-flash'),
+    model: 'googleai/gemini-2.0-flash',
     input: { schema: DeepenRevelationInputSchema },
     output: { schema: DeepenRevelationOutputSchema },
     prompt: `Tu es un coach systémique et un mentor spirituel. Tu as déjà fourni une première analyse d'un tirage "Révélation Systémique". Maintenant, le consultant souhaite approfondir.
