@@ -5,7 +5,7 @@ import { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { Card } from '@/lib/data/cards';
 import { getCardDetails } from '@/lib/data/cards';
-import type { LearningOutput } from '@/ai/flows/oracle-flow';
+import type { LearningOutput } from '@/ai/schemas/lesson-schemas';
 import { getLessonStep } from '@/ai/flows/lesson-orchestrator';
 import Image from 'next/image';
 import { Loader2, Volume2, VolumeX, Check, X as XIcon, ArrowRight } from 'lucide-react';
