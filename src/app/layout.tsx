@@ -66,7 +66,7 @@ export default function RootLayout({
         "min-h-screen bg-background",
         // Animated aurora background effect
         "bg-[background-image:radial-gradient(ellipse_at_top,_var(--tw-gradient-stops)),radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))]",
-        "from-primary/20 via-background to-accent/20",
+        "from-primary/20 to-accent/20",
         "bg-[size:200%_200%]",
         "animate-aurora",
         cinzel.variable,
