@@ -15,12 +15,12 @@ export function Hero() {
             alt="Le Cartomancien"
             width={1024}
             height={226}
-            className="mx-auto object-contain"
+            className="mx-auto object-contain max-w-xl"
             priority
           />
           
           <motion.div
-            className="relative mt-4 w-full max-w-2xl"
+            className="relative -mt-4 md:-mt-8 w-full max-w-2xl"
             animate={{
               y: ["-8px", "8px"],
             }}
