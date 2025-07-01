@@ -3,6 +3,7 @@
 import { Features } from "@/components/sections/features";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { SparkleParticles } from "@/components/common/sparkle-particles";
 
 export function Hero() {
   return (
@@ -25,14 +26,21 @@ export function Hero() {
               ease: "easeInOut",
             }}
           >
-            <Image
-              src="https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/eventail.png"
-              alt="Éventail de cartes à jouer"
-              width={1024}
-              height={512}
-              className="mx-auto object-contain"
-              priority
-            />
+            {/* The image and particles are wrapped to contain the effect */}
+            <div className="relative">
+              <Image
+                src="https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/eventail.png"
+                alt="Éventail de cartes à jouer"
+                width={1024}
+                height={512}
+                className="mx-auto object-contain"
+                priority
+              />
+              <SparkleParticles
+                count={40}
+                className="absolute inset-0"
+              />
+            </div>
           </motion.div>
 
           <p className="mt-6 max-w-3xl text-lg text-white md:text-xl">
