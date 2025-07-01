@@ -22,7 +22,7 @@ export function Hero() {
           </div>
 
           <p className="mt-6 max-w-3xl text-lg text-white md:text-xl">
-            Maîtrisez l'art ancestral de la cartomancie traditionnelle.
+            Maîtrise l'art ancestral de la cartomancie traditionnelle.
             Le Cartomancien est votre guide personnel pour apprendre, pratiquer et interpréter le langage des 52 cartes.
           </p>
         </div>
