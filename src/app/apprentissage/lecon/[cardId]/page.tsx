@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import type { Card } from '@/lib/data/cards';
 import { getCardDetails } from '@/lib/data/cards';
 import type { LearningOutput } from '@/ai/schemas/lesson-schemas';
-import { getLessonStep } from '@/ai/flows/lesson-orchestrator';
+import { getLessonStep } from '@/ai/flows/oracle-flow';
 import Image from 'next/image';
 import { Loader2, Volume2, VolumeX, Check, X as XIcon, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -126,8 +126,8 @@ export default function LeconInteractivePage() {
   const fetchStep = useCallback(async (historyLength: number) => {
     if (!card) return null;
     try {
-      const { step, audio } = await getLessonStep({ card, historyLength });
-      return { step, audioUrl: audio.media };
+      const { step, audioUrl } = await getLessonStep({ card, historyLength });
+      return { step, audioUrl };
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : "Une erreur inconnue est survenue. Veuillez vérifier la console du serveur.";
       console.error("Error fetching lesson step:", error);

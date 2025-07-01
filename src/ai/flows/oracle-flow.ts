@@ -1,12 +1,16 @@
 
 'use server';
 /**
- * @fileOverview A Genkit flow that acts as a pedagogical assistant for learning cartomancy.
+ * @fileOverview A Genkit flow that generates a complete interactive lesson step, including text and audio.
+ * This is the single entry point for the client to get lesson data.
  *
- * - chatWithOracle - A function that allows a user to have a guided lesson about a card.
+ * - getLessonStep - The main function that generates a lesson step.
  */
 
 import { ai } from '@/ai/genkit';
+import { googleAI as googleAIPlugin } from '@genkit-ai/googleai';
+import { z } from 'zod';
+import wav from 'wav';
 import { getCardDetails } from '@/lib/data/cards';
 import { 
     LearningInputSchema, 
@@ -17,20 +21,55 @@ import {
     type LearningOutput
 } from '../schemas/lesson-schemas';
 
+// Create a local instance of the Google AI plugin to safely access its model helper.
+const googleAI = googleAIPlugin();
 
-// The exported function that the UI will call
-export async function chatWithOracle(input: LearningInput): Promise<LearningOutput> {
-    const flowResult = await learningFlow(input);
+// Define the output for this consolidated flow
+const InteractiveLessonStepOutputSchema = z.object({
+    step: LearningOutputSchema,
+    audioUrl: z.string().describe("The generated audio as a data URI in WAV format."),
+});
+type InteractiveLessonStepOutput = z.infer<typeof InteractiveLessonStepOutputSchema>;
+
+// Helper function to convert PCM audio data to WAV format (Base64)
+async function toWav(
+  pcmData: Buffer,
+  channels = 1,
+  rate = 24000,
+  sampleWidth = 2
+): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const writer = new wav.Writer({
+      channels,
+      sampleRate: rate,
+      bitDepth: sampleWidth * 8,
+    });
+
+    const bufs: Buffer[] = [];
+    writer.on('error', reject);
+    writer.on('data', (d) => bufs.push(d));
+    writer.on('end', () => resolve(Buffer.concat(bufs).toString('base64')));
+    writer.write(pcmData);
+    writer.end();
+  });
+}
+
+// The single exported function that the UI will call
+export async function getLessonStep(input: LearningInput): Promise<{ step: LearningOutput, audioUrl: string }> {
+    const flowResult = await lessonFlow(input);
     return flowResult;
 }
 
-const learningFlow = ai.defineFlow(
+const lessonFlow = ai.defineFlow(
   {
-    name: 'learningFlow',
+    name: 'lessonFlow',
     inputSchema: LearningInputSchema,
-    outputSchema: LearningOutputSchema,
+    outputSchema: InteractiveLessonStepOutputSchema,
   },
   async (input) => {
+    let lessonStepOutput: LearningOutput;
+    
+    // === 1. GENERATE LESSON TEXT CONTENT ===
     try {
       const stepIndex = input.historyLength;
       let systemPrompt = '';
@@ -40,12 +79,11 @@ const learningFlow = ai.defineFlow(
       const totalFixedSteps = 8;
       const totalCombinations = input.card.combinaisons?.length || 0;
       const keywordsStepIndex = totalFixedSteps + totalCombinations;
-      const totalSteps = keywordsStepIndex + 1; // 8 fixed + N combinations + 1 keywords step
+      const totalSteps = keywordsStepIndex + 1;
 
       isFinalStep = (stepIndex === totalSteps - 1);
 
       if (stepIndex < totalFixedSteps) {
-        // Handle the 8 fixed lesson steps
         let stepTopic = '';
         let stepContent = '';
         
@@ -115,10 +153,9 @@ const learningFlow = ai.defineFlow(
         if (!output) {
             throw new Error("L'IA n'a pas pu générer la prochaine étape de la leçon.");
         }
-        return { ...output, exercice: output.exercice ? { ...output.exercice, type: 'qcm' } : undefined };
+        lessonStepOutput = { ...output, exercice: output.exercice ? { ...output.exercice, type: 'qcm' } : undefined };
 
       } else if (stepIndex < keywordsStepIndex) {
-        // Handle combination steps
         const combinationIndex = stepIndex - totalFixedSteps;
         if (combinationIndex >= totalCombinations) {
             throw new Error("Étape de combinaison invalide.");
@@ -163,7 +200,7 @@ const learningFlow = ai.defineFlow(
         throw new Error("L'IA n'a pas pu générer la prochaine étape de la leçon.");
       }
 
-      return {
+      lessonStepOutput = {
         ...output,
         exercice: output.exercice ? { ...output.exercice, type: 'qcm' } : undefined,
         associatedCard: {
@@ -174,7 +211,6 @@ const learningFlow = ai.defineFlow(
         }
       };
     } else if (stepIndex === keywordsStepIndex) {
-        // Handle Keywords step
         systemPrompt = `Tu es un tuteur expert en cartomancie. Ta mission est d'enseigner la synthèse des mots-clés d'une carte.
 
         Suis ces étapes dans ta réponse :
@@ -207,7 +243,7 @@ const learningFlow = ai.defineFlow(
             throw new Error("L'IA n'a pas pu générer l'étape des mots-clés.");
         }
 
-        return {
+        lessonStepOutput = {
             ...output,
             exercice: {
                 ...output.exercice,
@@ -215,17 +251,57 @@ const learningFlow = ai.defineFlow(
             },
         };
     } else {
-        // This should not be reached as the last exercise has finDeLecon=true
-        return {
+        lessonStepOutput = {
             paragraphe: `Vous avez terminé la leçon sur ${input.card.nom_carte}. Votre voyage dans la cartomancie continue !`,
             finDeLecon: true,
         };
     }
-
     } catch (error) {
         const errorMessage = error instanceof Error ? error.message : String(error);
-        console.error("Error in learningFlow:", errorMessage);
-        throw new Error(`Erreur dans la génération de la leçon : ${errorMessage}`);
+        console.error("Error in lessonFlow (text generation):", errorMessage);
+        throw new Error(`Erreur dans la génération du texte de la leçon : ${errorMessage}`);
     }
+
+    // === 2. GENERATE AUDIO FROM THE TEXT ===
+    let audioUrl = '';
+    if (lessonStepOutput.paragraphe && lessonStepOutput.paragraphe.trim() !== '') {
+      try {
+        const { media } = await ai.generate({
+          model: googleAI.model('gemini-2.5-flash-preview-tts'),
+          config: {
+            responseModalities: ['AUDIO'],
+            speechConfig: {
+              voiceConfig: {
+                prebuiltVoiceConfig: { voiceName: 'Algenib' },
+              },
+            },
+          },
+          prompt: lessonStepOutput.paragraphe,
+        });
+
+        if (!media || !media.url) {
+          throw new Error('No media was returned from the TTS API.');
+        }
+
+        const audioBuffer = Buffer.from(
+          media.url.substring(media.url.indexOf(',') + 1),
+          'base64'
+        );
+
+        const wavBase64 = await toWav(audioBuffer);
+        audioUrl = `data:audio/wav;base64,${wavBase64}`;
+      } catch (error) {
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        console.error(`Error in lessonFlow (TTS generation) for query: "${lessonStepOutput.paragraphe}"`, error);
+        // Do not throw, just return empty audio. The lesson can proceed without audio.
+        audioUrl = '';
+      }
+    }
+
+    // === 3. RETURN COMBINED RESULT ===
+    return {
+        step: lessonStepOutput,
+        audioUrl: audioUrl,
+    };
   }
 );
