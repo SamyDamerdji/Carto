@@ -7,7 +7,7 @@ import { SparkleParticles } from "@/components/common/sparkle-particles";
 
 export function Hero() {
   return (
-    <section className="relative w-full overflow-hidden py-10 md:py-8">
+    <section className="relative w-full overflow-hidden py-8 md:py-8">
       <div className="container relative z-10 mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center text-center">
           <Image
@@ -20,7 +20,7 @@ export function Hero() {
           />
           
           <motion.div
-            className="relative -mt-8 md:-mt-10 w-full max-w-2xl"
+            className="relative -mt-12 md:-mt-12 w-full max-w-2xl"
             animate={{
               y: ["-8px", "8px"],
             }}
@@ -48,12 +48,12 @@ export function Hero() {
             </div>
           </motion.div>
 
-          <p className="mt-6 max-w-3xl text-lg text-white md:text-xl">
+          <p className="mt-4 max-w-3xl text-lg text-white md:text-xl">
             Maîtrise l'art ancestral de la cartomancie traditionnelle.
             Le Cartomancien est votre guide personnel pour apprendre, pratiquer et interpréter le langage des 52 cartes.
           </p>
         </div>
-        <div className="mt-8">
+        <div className="mt-6">
           <Features />
         </div>
       </div>
