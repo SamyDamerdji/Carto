@@ -10,7 +10,7 @@ export function Hero() {
     <section className="relative w-full overflow-hidden py-12 md:py-16">
       <div className="container relative z-10 mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center text-center">
-          <h1 className="font-headline text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl drop-shadow-lg bg-gradient-to-r from-primary to-accent text-transparent bg-clip-text">
+          <h1 className="font-headline text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl drop-shadow-lg bg-gradient-to-r from-accent to-primary text-transparent bg-clip-text">
             Le Cartomancien
           </h1>
           
