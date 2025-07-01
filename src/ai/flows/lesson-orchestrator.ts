@@ -31,8 +31,12 @@ const lessonOrchestratorFlow = ai.defineFlow(
   },
   async (input: LearningInput) => {
     try {
-      // 1. Get the lesson content
-      const stepResult = await chatWithOracle(input);
+      // DIAGNOSTIC STEP: Bypass complex text generation to isolate the TTS flow.
+      // const stepResult = await chatWithOracle(input);
+      const stepResult: LearningOutput = {
+        paragraphe: `Voici la leçon pour la carte ${input.card.nom_carte}. Ceci est un test pour confirmer que la synthèse vocale fonctionne.`,
+        finDeLecon: false,
+      };
 
       // 2. Generate the audio for the lesson's paragraph
       let audioResult: TtsOutput = { media: '' };
