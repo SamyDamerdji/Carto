@@ -8,7 +8,7 @@ import { SparkleParticles } from "@/components/common/sparkle-particles";
 
 export function Hero() {
   return (
-    <section className="relative w-full overflow-hidden py-8 md:py-12">
+    <section className="relative w-full overflow-hidden py-12 md:py-16">
       <div className="container relative z-10 mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center text-center">
           <Image
@@ -16,12 +16,12 @@ export function Hero() {
             alt="Le Cartomancien"
             width={1024}
             height={226}
-            className="mx-auto object-contain max-w-xs"
+            className="mx-auto object-contain max-w-xs drop-shadow-lg"
             priority
           />
           
           <motion.div
-            className="relative -mt-6 md:-mt-8 w-full max-w-2xl"
+            className="relative -mt-8 md:-mt-10 w-full max-w-2xl"
             animate={{
               y: ["-8px", "8px"],
             }}
