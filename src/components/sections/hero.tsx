@@ -10,9 +10,14 @@ export function Hero() {
     <section className="relative w-full overflow-hidden py-12 md:py-16">
       <div className="container relative z-10 mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center text-center">
-          <h1 className="font-headline text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl drop-shadow-lg bg-gradient-to-b from-foreground to-accent text-transparent bg-clip-text">
-            Le Cartomancien
-          </h1>
+          <Image
+            src="https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/assets/cartomancien.png"
+            alt="Le Cartomancien"
+            width={1024}
+            height={226}
+            className="mx-auto object-contain"
+            priority
+          />
           
           <motion.div
             className="relative mt-4 w-full max-w-2xl"
