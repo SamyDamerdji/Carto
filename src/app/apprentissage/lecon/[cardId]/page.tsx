@@ -8,7 +8,7 @@ import { getCardDetails } from '@/lib/data/cards';
 import type { LearningOutput } from '@/ai/schemas/lesson-schemas';
 import { getLessonStep } from '@/ai/flows/lesson-orchestrator';
 import Image from 'next/image';
-import { Loader2, Volume2, VolumeX, Check, X as XIcon, ArrowRight } from 'lucide-react';
+import { Loader2, Volume2, VolumeX, Check, X as XIcon, ArrowRight, AlertTriangle, RefreshCw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { cn } from '@/lib/utils';
@@ -24,7 +24,7 @@ type LessonStep = {
   user: { answer: string | string[] | null };
 };
 
-type LessonState = 'preparing' | 'ready' | 'active' | 'finished';
+type LessonState = 'preparing' | 'ready' | 'active' | 'finished' | 'error';
 type UiSubState = 'explaining' | 'exercising' | 'feedback';
 
 const AudioVisualizer = () => {
@@ -63,6 +63,7 @@ export default function LeconInteractivePage() {
   }, [cardId]);
 
   const [lessonState, setLessonState] = useState<LessonState>('preparing');
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [uiSubState, setUiSubState] = useState<UiSubState>('explaining');
   const [lessonSteps, setLessonSteps] = useState<LessonStep[]>([]);
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
@@ -129,32 +130,42 @@ export default function LeconInteractivePage() {
       const { step, audio } = await getLessonStep({ card, historyLength });
       return { step, audio };
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : "Une erreur inconnue est survenue. Veuillez vérifier la console du serveur.";
-      console.error("Error fetching lesson step:", error);
+      const err = error instanceof Error ? error : new Error("Une erreur inconnue est survenue.");
+      console.error("Error fetching lesson step:", err);
       toast({
         variant: 'destructive',
         title: "Erreur de l'Oracle",
-        description: errorMessage,
+        description: err.message,
       });
-      setLessonState('ready'); // Or some error state
+      setErrorMessage(err.message);
+      setLessonState('error');
       return null;
     }
   }, [card, toast]);
 
-  useEffect(() => {
-    if (!card || didInitialFetch.current) return;
-    didInitialFetch.current = true;
+  const performInitialFetch = useCallback(() => {
+    if (!card) return;
 
     setLessonState('preparing');
+    setErrorMessage(null);
     setIsPrefetching(true);
+
     fetchStep(0).then(data => {
       if (data) {
         setPrefetchedData(data);
         setLessonState('ready');
       }
+      // If data is null, the error state is already set by fetchStep
       setIsPrefetching(false);
     });
   }, [card, fetchStep]);
+
+
+  useEffect(() => {
+    if (!card || didInitialFetch.current) return;
+    didInitialFetch.current = true;
+    performInitialFetch();
+  }, [card, performInitialFetch]);
 
   const advanceToNextStep = useCallback(() => {
     if (!prefetchedData) return;
@@ -429,6 +440,28 @@ export default function LeconInteractivePage() {
         </div>
       );
     }
+    if (lessonState === 'error') {
+      return (
+        <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="mx-auto mt-6 max-w-md rounded-2xl bg-destructive/20 p-4 backdrop-blur-lg border border-destructive/50 shadow-lg sm:p-6 text-center"
+        >
+            <div className="flex flex-col items-center justify-center text-destructive">
+                <AlertTriangle className="h-12 w-12" />
+                <h2 className="mt-4 font-headline text-xl font-bold uppercase tracking-wider text-white">Une erreur est survenue</h2>
+            </div>
+            <div className="mt-4 bg-background/20 p-3 rounded-lg text-left text-sm text-white/80">
+                <p><strong>Détails de l'erreur :</strong></p>
+                <p className="font-mono text-xs mt-1 whitespace-pre-wrap">{errorMessage || "Aucun détail disponible."}</p>
+            </div>
+            <Button onClick={performInitialFetch} size="lg" className="mt-6">
+              <RefreshCw className="mr-2 h-5 w-5" />
+              Réessayer
+            </Button>
+        </motion.div>
+      );
+    }
     if (lessonState === 'active' || lessonState === 'finished') {
         const associatedCardForStep = currentStep?.associatedCard;
 
@@ -634,3 +667,5 @@ export default function LeconInteractivePage() {
     </div>
   );
 }
+
+    
