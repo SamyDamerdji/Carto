@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useMemo } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 
 interface SparkleParticlesProps {
   count?: number;
@@ -53,6 +53,16 @@ const Sparkle = () => {
 };
 
 export const SparkleParticles = ({ count = 50, className }: SparkleParticlesProps) => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
+
   return (
     // pointer-events-none ensures the particles don't block clicks on the image
     <div className={`pointer-events-none ${className || ''}`}>
