@@ -226,7 +226,9 @@ const chatWithOracleFlow = ai.defineFlow(
 
     } catch (error: any) {
         const errorMessage = error instanceof Error ? error.message : String(error);
-        console.error("Error in chatWithOracleFlow:", JSON.stringify(error, null, 2));
+        console.error("[ORACLE-FLOW-ERROR] Detailed Error:", JSON.stringify(error, null, 2));
+        console.error(`[ORACLE-FLOW-ERROR] Message: ${errorMessage}`);
+        console.error(`[ORACLE-FLOW-ERROR] Stack: ${error?.stack}`);
         throw new Error(`[Oracle] ${errorMessage}`);
     }
   }

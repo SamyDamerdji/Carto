@@ -18,6 +18,7 @@ const LessonStepOutputSchema = z.object({
     step: z.any(), // Using z.any() for simplicity, maps to LearningOutput
     audio: z.any(), // Using z.any() for simplicity, maps to TtsOutput
 });
+export type LessonStepOutput = z.infer<typeof LessonStepOutputSchema>;
 
 // The exported function that the UI will call
 export async function getLessonStep(input: LearningInput): Promise<{ step: LearningOutput, audio: TtsOutput }> {
@@ -32,26 +33,37 @@ const lessonOrchestratorFlow = ai.defineFlow(
     outputSchema: LessonStepOutputSchema,
   },
   async (input: LearningInput) => {
+    let stepResult: LearningOutput;
     try {
       // 1. Generate the lesson content
-      const stepResult = await chatWithOracle(input);
-
-      // 2. Generate the audio for the lesson's paragraph
-      let audioResult: TtsOutput = { media: '' };
-      if (stepResult && stepResult.paragraphe) {
-        audioResult = await textToSpeech(stepResult.paragraphe);
-      }
-
-      // 3. Return both results combined
-      return {
-        step: stepResult,
-        audio: audioResult,
-      };
+      console.log('Orchestrator: Generating lesson content...');
+      stepResult = await chatWithOracle(input);
+      console.log('Orchestrator: Lesson content generated successfully.');
     } catch (error: any) {
+      console.error("[ORCHESTRATOR-TEXT-ERROR] Failed to generate lesson content:", JSON.stringify(error, null, 2));
       const errorMessage = error instanceof Error ? error.message : String(error);
-      console.error("Error in lessonOrchestratorFlow:", JSON.stringify(error, null, 2));
-      // Re-throw a detailed error to be caught by the client
-      throw new Error(`Erreur dans l'orchestrateur. Details: ${errorMessage}`);
+      throw new Error(`[ORCHESTRATOR-TEXT-ERROR] ${errorMessage}`);
     }
+
+    let audioResult: TtsOutput = { media: '' };
+    if (stepResult && stepResult.paragraphe) {
+      try {
+        // 2. Generate the audio for the lesson's paragraph
+        console.log('Orchestrator: Generating audio for paragraph:', `"${stepResult.paragraphe}"`);
+        audioResult = await textToSpeech(stepResult.paragraphe);
+        console.log('Orchestrator: Audio generated successfully.');
+      } catch (error: any) {
+        console.error("[ORCHESTRATOR-AUDIO-ERROR] Failed to generate audio:", JSON.stringify(error, null, 2));
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        // We throw the error so the UI can handle it.
+        throw new Error(`[ORCHESTRATOR-AUDIO-ERROR] ${errorMessage}`);
+      }
+    }
+
+    // 3. Return both results combined
+    return {
+      step: stepResult,
+      audio: audioResult,
+    };
   }
 );
