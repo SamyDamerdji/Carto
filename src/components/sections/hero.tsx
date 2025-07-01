@@ -8,7 +8,7 @@ import { SparkleParticles } from "@/components/common/sparkle-particles";
 
 export function Hero() {
   return (
-    <section className="relative w-full overflow-hidden py-12 md:py-16">
+    <section className="relative w-full overflow-hidden py-8 md:py-12">
       <div className="container relative z-10 mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center text-center">
           <Image
@@ -16,7 +16,7 @@ export function Hero() {
             alt="Le Cartomancien"
             width={1024}
             height={226}
-            className="mx-auto object-contain max-w-sm"
+            className="mx-auto object-contain max-w-xs"
             priority
           />
           
