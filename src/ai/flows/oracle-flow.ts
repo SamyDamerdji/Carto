@@ -1,15 +1,12 @@
 
 'use server';
 /**
- * @fileOverview A Genkit flow that generates an interactive lesson step.
- *
- * - chatWithOracle - A function that handles the lesson step generation process.
- * - LearningInput - The input type for the chatWithOracle function.
- * - LearningOutput - The return type for the chatWithOracle function.
+ * @fileOverview A Genkit flow that orchestrates the creation of an interactive lesson step.
+ * It generates the lesson content and its corresponding audio.
  */
 
-import { ai } from '@/ai/genkit';
 import { z } from 'zod';
+import { ai } from '@/ai/genkit';
 import { getCardDetails } from '@/lib/data/cards';
 import { 
     LearningInputSchema, 
@@ -19,23 +16,123 @@ import {
     type LearningInput,
     type LearningOutput
 } from '../schemas/lesson-schemas';
+import wav from 'wav';
+import { googleAI } from '@/ai/genkit';
+
+// --- Text-to-Speech Sub-flow ---
+
+const TtsOutputSchema = z.object({
+  media: z.string().describe("The generated audio as a data URI."),
+});
+export type TtsOutput = z.infer<typeof TtsOutputSchema>;
+
+async function toWav(
+  pcmData: Buffer,
+  channels = 1,
+  rate = 24000,
+  sampleWidth = 2
+): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const writer = new wav.Writer({
+      channels,
+      sampleRate: rate,
+      bitDepth: sampleWidth * 8,
+    });
+
+    let bufs: Buffer[] = [];
+    writer.on('error', reject);
+    writer.on('data', (d: Buffer) => {
+      bufs.push(d);
+    });
+    writer.on('end', () => {
+      resolve(Buffer.concat(bufs).toString('base64'));
+    });
+
+    writer.write(pcmData);
+    writer.end();
+  });
+}
+
+const textToSpeech = ai.defineFlow(
+  {
+    name: 'textToSpeech',
+    inputSchema: z.string(),
+    outputSchema: TtsOutputSchema,
+  },
+  async (query) => {
+    if (!query || query.trim() === '') {
+      console.warn("TTS flow received an empty query.");
+      return { media: '' };
+    }
+    
+    let generatedMedia;
+    try {
+        const { media } = await ai.generate({
+            model: googleAI.model('gemini-2.5-flash-preview-tts'),
+            config: {
+                responseModalities: ['AUDIO'],
+                speechConfig: {
+                    voiceConfig: {
+                        prebuiltVoiceConfig: { voiceName: 'Algenib' },
+                    },
+                },
+            },
+            prompt: query,
+        });
+        generatedMedia = media;
+    } catch (error: any) {
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        console.error(`[TTS-GENERATE-ERROR] Detailed Error:`, JSON.stringify(error, null, 2));
+        throw new Error(`[TTS-GENERATE-ERROR] ${errorMessage}`);
+    }
+
+    if (!generatedMedia || !generatedMedia.url) {
+        throw new Error('[TTS] No media was returned from the TTS API.');
+    }
+    
+    try {
+        const audioBuffer = Buffer.from(
+          generatedMedia.url.substring(generatedMedia.url.indexOf(',') + 1),
+          'base64'
+        );
+        const wavBase64 = await toWav(audioBuffer);
+        return {
+            media: 'data:audio/wav;base64,' + wavBase64,
+        };
+    } catch (error: any) {
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        console.error(`[TTS-WAV-CONVERSION-ERROR] Detailed Error:`, JSON.stringify(error, null, 2));
+        throw new Error(`[TTS-WAV-CONVERSION-ERROR] ${errorMessage}`);
+    }
+  }
+);
+
+
+// --- Main Lesson Generation Flow ---
+
+const LessonStepOutputSchema = z.object({
+    step: LearningOutputSchema,
+    audio: TtsOutputSchema,
+});
+export type LessonStepOutput = z.infer<typeof LessonStepOutputSchema>;
 
 // The exported function that the UI will call
-export async function chatWithOracle(input: LearningInput): Promise<LearningOutput> {
-    const flowResult = await chatWithOracleFlow(input);
-    return flowResult;
+export async function getLessonStep(input: LearningInput): Promise<LessonStepOutput> {
+  const flowResult = await chatWithOracleFlow(input);
+  return flowResult;
 }
 
 const chatWithOracleFlow = ai.defineFlow(
   {
     name: 'chatWithOracleFlow',
     inputSchema: LearningInputSchema,
-    outputSchema: LearningOutputSchema,
+    outputSchema: LessonStepOutputSchema,
   },
   async (input) => {
+    let stepResult: LearningOutput;
+    
+    // --- Step 1: Generate Text Content ---
     try {
-        let lessonStepOutput: LearningOutput;
-        
         const stepIndex = input.historyLength;
         let systemPrompt = '';
         let userPrompt = '';
@@ -109,7 +206,7 @@ const chatWithOracleFlow = ai.defineFlow(
             `;
 
             const { output } = await ai.generate({
-                model: 'googleai/gemini-2.0-flash',
+                model: googleAI.model('gemini-2.0-flash'),
                 system: systemPrompt,
                 prompt: userPrompt,
                 output: { schema: QcmModelOutputSchema },
@@ -118,7 +215,7 @@ const chatWithOracleFlow = ai.defineFlow(
             if (!output) {
                 throw new Error("L'IA n'a pas pu générer la prochaine étape de la leçon.");
             }
-            lessonStepOutput = { ...output, exercice: output.exercice ? { ...output.exercice, type: 'qcm' } : undefined };
+            stepResult = { ...output, exercice: output.exercice ? { ...output.exercice, type: 'qcm' } : undefined };
 
         } else if (stepIndex < keywordsStepIndex) {
             const combinationIndex = stepIndex - totalFixedSteps;
@@ -155,7 +252,7 @@ const chatWithOracleFlow = ai.defineFlow(
             `;
           
           const { output } = await ai.generate({
-            model: 'googleai/gemini-2.0-flash',
+            model: googleAI.model('gemini-2.0-flash'),
             system: systemPrompt,
             prompt: userPrompt,
             output: { schema: QcmModelOutputSchema },
@@ -165,7 +262,7 @@ const chatWithOracleFlow = ai.defineFlow(
             throw new Error("L'IA n'a pas pu générer la prochaine étape de la leçon.");
           }
 
-          lessonStepOutput = {
+          stepResult = {
             ...output,
             exercice: output.exercice ? { ...output.exercice, type: 'qcm' } : undefined,
             associatedCard: {
@@ -182,7 +279,7 @@ const chatWithOracleFlow = ai.defineFlow(
             1.  **Synthèse :** Dans ton 'paragraphe', crée un texte court et inspirant qui résume l'essence de la carte en se basant sur sa phrase-clé et ses mots-clés principaux.
             2.  **Exercice :** Crée un exercice de type 'keywords'.
                 -   La 'question' doit demander de sélectionner les mots-clés qui correspondent à la carte.
-                -   'all_keywords' doit être un tableau de 6 à 8 chaînes de caractères. Il doit contenir TOUS les 'correct_keywords' ainsi que des distracteurs plausibles mais incorrects. Mélange bien l'ordre.
+                -   'all_keywords' doit être un tableau de 8 à 10 chaînes de caractères au total. Il doit contenir TOUS les 'correct_keywords' fournis, ainsi qu'un nombre au moins égal de distracteurs très plausibles (mots-clés de cartes similaires, synonymes, etc.). Le nombre de distracteurs doit être suffisant pour que l'exercice soit un véritable défi. Mélange bien l'ordre des mots-clés.
                 -   'correct_keywords' doit être le tableau exact des mots-clés originaux fournis.
             3.  **Fin de Leçon :** 'finDeLecon' doit être mis à ${isFinalStep}.
 
@@ -198,7 +295,7 @@ const chatWithOracleFlow = ai.defineFlow(
             `;
             
             const { output } = await ai.generate({
-                model: 'googleai/gemini-2.0-flash',
+                model: googleAI.model('gemini-2.0-flash'),
                 system: systemPrompt,
                 prompt: userPrompt,
                 output: { schema: KeywordsModelOutputSchema },
@@ -208,7 +305,7 @@ const chatWithOracleFlow = ai.defineFlow(
                 throw new Error("L'IA n'a pas pu générer l'étape des mots-clés.");
             }
 
-            lessonStepOutput = {
+            stepResult = {
                 ...output,
                 exercice: {
                     ...output.exercice,
@@ -216,20 +313,34 @@ const chatWithOracleFlow = ai.defineFlow(
                 },
             };
         } else {
-            lessonStepOutput = {
+            stepResult = {
                 paragraphe: `Vous avez terminé la leçon sur ${input.card.nom_carte}. Votre voyage dans la cartomancie continue !`,
                 finDeLecon: true,
             };
         }
-        
-        return lessonStepOutput;
-
     } catch (error: any) {
         const errorMessage = error instanceof Error ? error.message : String(error);
-        console.error("[ORACLE-FLOW-ERROR] Detailed Error:", JSON.stringify(error, null, 2));
-        console.error(`[ORACLE-FLOW-ERROR] Message: ${errorMessage}`);
-        console.error(`[ORACLE-FLOW-ERROR] Stack: ${error?.stack}`);
-        throw new Error(`[Oracle] ${errorMessage}`);
+        console.error("[ORACLE-FLOW-ERROR]", JSON.stringify(error, null, 2));
+        throw new Error(`[TEXT-GEN-ERROR] ${errorMessage}`);
     }
+
+    // --- Step 2: Generate Audio ---
+    let audioResult: TtsOutput = { media: '' };
+    if (stepResult && stepResult.paragraphe) {
+      try {
+        audioResult = await textToSpeech(stepResult.paragraphe);
+      } catch (error: any) {
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        console.error("[ORACLE-AUDIO-ERROR]", JSON.stringify(error, null, 2));
+        // We throw the error so the UI can handle it.
+        throw new Error(`[TTS-ERROR] ${errorMessage}`);
+      }
+    }
+
+    // --- Step 3: Return Combined Results ---
+    return {
+      step: stepResult,
+      audio: audioResult,
+    };
   }
 );

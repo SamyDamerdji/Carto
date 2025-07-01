@@ -5,8 +5,8 @@ import { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { Card } from '@/lib/data/cards';
 import { getCardDetails } from '@/lib/data/cards';
+import { getLessonStep, type LessonStepOutput } from '@/ai/flows/oracle-flow';
 import type { LearningOutput } from '@/ai/schemas/lesson-schemas';
-import { getLessonStep } from '@/ai/flows/lesson-orchestrator';
 import Image from 'next/image';
 import { Loader2, Volume2, VolumeX, Check, X as XIcon, ArrowRight, AlertTriangle, RefreshCw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -68,7 +68,7 @@ export default function LeconInteractivePage() {
   const [lessonSteps, setLessonSteps] = useState<LessonStep[]>([]);
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
 
-  const [prefetchedData, setPrefetchedData] = useState<{ step: LearningOutput; audio: { media: string } } | null>(null);
+  const [prefetchedData, setPrefetchedData] = useState<LessonStepOutput | null>(null);
   const [isPrefetching, setIsPrefetching] = useState(false);
   const [isWaitingForNextStep, setIsWaitingForNextStep] = useState(false);
 
@@ -127,21 +127,16 @@ export default function LeconInteractivePage() {
   const fetchStep = useCallback(async (historyLength: number) => {
     if (!card) return null;
     try {
-      const { step, audio } = await getLessonStep({ card, historyLength });
-      return { step, audio };
+      const data = await getLessonStep({ card, historyLength });
+      return data;
     } catch (error) {
       const err = error instanceof Error ? error : new Error("Une erreur inconnue est survenue.");
       console.error("Error fetching lesson step:", err);
-      toast({
-        variant: 'destructive',
-        title: "Erreur de l'Oracle",
-        description: err.message,
-      });
       setErrorMessage(err.message);
       setLessonState('error');
       return null;
     }
-  }, [card, toast]);
+  }, [card]);
 
   const performInitialFetch = useCallback(() => {
     if (!card) return;
@@ -218,7 +213,8 @@ export default function LeconInteractivePage() {
   const handleStartLesson = useCallback(() => {
     if (!prefetchedData) return;
     setLessonState('active');
-    setLessonSteps([{ model: prefetchedData.step, user: { answer: null } }]);
+    const firstStep = { model: prefetchedData.step, user: { answer: null } };
+    setLessonSteps([firstStep]);
     setCurrentStepIndex(0);
     setUiSubState('explaining');
 
@@ -529,7 +525,7 @@ export default function LeconInteractivePage() {
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             transition={{ duration: 0.3 }}
-                            className="absolute inset-0 bg-secondary/30 backdrop-blur-md rounded-lg flex items-center justify-center z-10"
+                            className="absolute inset-0 bg-secondary/80 backdrop-blur-lg rounded-lg flex items-center justify-center z-10"
                         >
                             <p className="text-xs italic text-white/80 px-4">Faites votre choix pour révéler à nouveau le texte.</p>
                         </motion.div>
@@ -667,5 +663,3 @@ export default function LeconInteractivePage() {
     </div>
   );
 }
-
-    
