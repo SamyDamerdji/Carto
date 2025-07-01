@@ -4,7 +4,6 @@ import { Toaster } from "@/components/ui/toaster";
 import { cn } from '@/lib/utils';
 import { Cinzel, EB_Garamond } from 'next/font/google';
 import { PwaInstaller } from '@/components/pwa-installer';
-import { ParallaxBackground } from '@/components/layout/parallax-background';
 
 const cinzel = Cinzel({
   subsets: ['latin'],
@@ -64,10 +63,11 @@ export default function RootLayout({
       <head />
       <body className={cn(
         "font-body antialiased min-h-dvh bg-background",
+        "bg-[url('https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/fond.png')] bg-cover bg-center bg-fixed",
         cinzel.variable,
         ebGaramond.variable
       )}>
-        <ParallaxBackground />
+        <div className="absolute inset-0 z-[-1] bg-background/60 backdrop-blur-sm" />
         <PwaInstaller />
         {children}
         <Toaster />
