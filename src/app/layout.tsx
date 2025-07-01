@@ -64,7 +64,11 @@ export default function RootLayout({
       <body className={cn(
         "font-body antialiased",
         "min-h-screen bg-background",
-        "bg-[url('https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/fond.png')] bg-cover bg-center bg-fixed",
+        // Animated aurora background effect
+        "bg-[background-image:radial-gradient(ellipse_at_top,_var(--tw-gradient-stops)),radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))]",
+        "from-primary/20 via-background to-accent/20",
+        "bg-[size:200%_200%]",
+        "animate-aurora",
         cinzel.variable,
         ebGaramond.variable
       )}>
