@@ -3,7 +3,7 @@
  * @fileOverview A Genkit flow for text-to-speech conversion.
  * It converts text to speech and returns the audio in WAV format.
  */
-import { ai } from '@/ai/genkit';
+import { ai, googleAI } from '@/ai/genkit';
 import { z } from 'zod';
 import wav from 'wav';
 
@@ -53,7 +53,7 @@ const ttsFlow = ai.defineFlow(
     
     try {
       const { media } = await ai.generate({
-        model: 'googleai/gemini-2.5-flash-preview-tts',
+        model: googleAI.model('gemini-2.5-flash-preview-tts'),
         config: {
           responseModalities: ['AUDIO'],
           speechConfig: {
