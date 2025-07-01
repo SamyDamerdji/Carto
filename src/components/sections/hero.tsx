@@ -1,5 +1,8 @@
+'use client';
+
 import { Features } from "@/components/sections/features";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export function Hero() {
   return (
@@ -10,7 +13,18 @@ export function Hero() {
             Le Cartomancien
           </h1>
           
-          <div className="relative mt-4 w-full max-w-2xl">
+          <motion.div
+            className="relative mt-4 w-full max-w-2xl"
+            animate={{
+              y: ["-8px", "8px"],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              repeatType: "mirror",
+              ease: "easeInOut",
+            }}
+          >
             <Image
               src="https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/eventail.png"
               alt="Éventail de cartes à jouer"
@@ -19,7 +33,7 @@ export function Hero() {
               className="mx-auto object-contain"
               priority
             />
-          </div>
+          </motion.div>
 
           <p className="mt-6 max-w-3xl text-lg text-white md:text-xl">
             Maîtrise l'art ancestral de la cartomancie traditionnelle.
