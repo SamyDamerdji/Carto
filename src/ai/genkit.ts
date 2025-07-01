@@ -1,9 +1,9 @@
 import {genkit} from 'genkit';
 import {googleAI as googleAIPlugin} from '@genkit-ai/googleai';
 
-// Initialize the plugin, but do not export the helper instance.
-// The global `ai` object will still have access to all registered plugins.
-const googleAI = googleAIPlugin();
+// Create and export the Google AI plugin helper instance.
+// This will be the single source of truth for model referencing.
+export const googleAI = googleAIPlugin();
 
 export const ai = genkit({
   plugins: [googleAI],

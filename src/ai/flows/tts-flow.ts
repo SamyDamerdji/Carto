@@ -3,13 +3,9 @@
  * @fileOverview A Genkit flow for text-to-speech conversion.
  * It converts text to speech and returns the audio in WAV format.
  */
-import { ai } from '@/ai/genkit';
-import { googleAI as googleAIPlugin } from '@genkit-ai/googleai';
+import { ai, googleAI } from '@/ai/genkit';
 import { z } from 'zod';
 import wav from 'wav';
-
-// Create a local instance of the Google AI plugin to safely access its model helper.
-const googleAI = googleAIPlugin();
 
 const TtsOutputSchema = z.object({
   media: z.string().describe("The generated audio as a data URI in WAV format."),

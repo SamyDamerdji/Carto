@@ -1,16 +1,14 @@
-
 'use server';
 /**
- * @fileOverview A Genkit flow that generates a complete interactive lesson step, including text and audio.
- * This is the single entry point for the client to get lesson data.
+ * @fileOverview A Genkit flow that generates an interactive lesson step.
  *
- * - getLessonStep - The main function that generates a lesson step.
+ * - chatWithOracle - A function that handles the lesson step generation process.
+ * - LearningInput - The input type for the chatWithOracle function.
+ * - LearningOutput - The return type for the chatWithOracle function.
  */
 
-import { ai } from '@/ai/genkit';
-import { googleAI as googleAIPlugin } from '@genkit-ai/googleai';
+import { ai, googleAI } from '@/ai/genkit';
 import { z } from 'zod';
-import wav from 'wav';
 import { getCardDetails } from '@/lib/data/cards';
 import { 
     LearningInputSchema, 
@@ -21,56 +19,22 @@ import {
     type LearningOutput
 } from '../schemas/lesson-schemas';
 
-// Create a local instance of the Google AI plugin to safely access its model helper.
-const googleAI = googleAIPlugin();
-
-// Define the output for this consolidated flow
-const InteractiveLessonStepOutputSchema = z.object({
-    step: LearningOutputSchema,
-    audioUrl: z.string().describe("The generated audio as a data URI in WAV format."),
-});
-type InteractiveLessonStepOutput = z.infer<typeof InteractiveLessonStepOutputSchema>;
-
-// Helper function to convert PCM audio data to WAV format (Base64)
-async function toWav(
-  pcmData: Buffer,
-  channels = 1,
-  rate = 24000,
-  sampleWidth = 2
-): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const writer = new wav.Writer({
-      channels,
-      sampleRate: rate,
-      bitDepth: sampleWidth * 8,
-    });
-
-    const bufs: Buffer[] = [];
-    writer.on('error', reject);
-    writer.on('data', (d) => bufs.push(d));
-    writer.on('end', () => resolve(Buffer.concat(bufs).toString('base64')));
-    writer.write(pcmData);
-    writer.end();
-  });
-}
-
-// The single exported function that the UI will call
-export async function getLessonStep(input: LearningInput): Promise<{ step: LearningOutput, audioUrl: string }> {
-    const flowResult = await lessonFlow(input);
+// The exported function that the UI will call
+export async function chatWithOracle(input: LearningInput): Promise<LearningOutput> {
+    const flowResult = await chatWithOracleFlow(input);
     return flowResult;
 }
 
-const lessonFlow = ai.defineFlow(
+const chatWithOracleFlow = ai.defineFlow(
   {
-    name: 'lessonFlow',
+    name: 'chatWithOracleFlow',
     inputSchema: LearningInputSchema,
-    outputSchema: InteractiveLessonStepOutputSchema,
+    outputSchema: LearningOutputSchema,
   },
   async (input) => {
     try {
         let lessonStepOutput: LearningOutput;
         
-        // === 1. GENERATE LESSON TEXT CONTENT ===
         const stepIndex = input.historyLength;
         let systemPrompt = '';
         let userPrompt = '';
@@ -144,7 +108,7 @@ const lessonFlow = ai.defineFlow(
             `;
 
             const { output } = await ai.generate({
-                model: 'googleai/gemini-2.0-flash',
+                model: googleAI.model('gemini-2.0-flash'),
                 system: systemPrompt,
                 prompt: userPrompt,
                 output: { schema: QcmModelOutputSchema },
@@ -190,7 +154,7 @@ const lessonFlow = ai.defineFlow(
             `;
           
           const { output } = await ai.generate({
-            model: 'googleai/gemini-2.0-flash',
+            model: googleAI.model('gemini-2.0-flash'),
             system: systemPrompt,
             prompt: userPrompt,
             output: { schema: QcmModelOutputSchema },
@@ -233,7 +197,7 @@ const lessonFlow = ai.defineFlow(
             `;
             
             const { output } = await ai.generate({
-                model: 'googleai/gemini-2.0-flash',
+                model: googleAI.model('gemini-2.0-flash'),
                 system: systemPrompt,
                 prompt: userPrompt,
                 output: { schema: KeywordsModelOutputSchema },
@@ -256,44 +220,12 @@ const lessonFlow = ai.defineFlow(
                 finDeLecon: true,
             };
         }
+        
+        return lessonStepOutput;
 
-        // === 2. GENERATE AUDIO FROM THE TEXT ===
-        let audioUrl = '';
-        if (lessonStepOutput.paragraphe && lessonStepOutput.paragraphe.trim() !== '') {
-            const { media } = await ai.generate({
-            model: googleAI.model('gemini-2.5-flash-preview-tts'),
-            config: {
-                responseModalities: ['AUDIO'],
-                speechConfig: {
-                voiceConfig: {
-                    prebuiltVoiceConfig: { voiceName: 'Algenib' },
-                },
-                },
-            },
-            prompt: lessonStepOutput.paragraphe,
-            });
-
-            if (!media || !media.url) {
-            throw new Error('No media was returned from the TTS API.');
-            }
-
-            const audioBuffer = Buffer.from(
-            media.url.substring(media.url.indexOf(',') + 1),
-            'base64'
-            );
-
-            const wavBase64 = await toWav(audioBuffer);
-            audioUrl = `data:audio/wav;base64,${wavBase64}`;
-        }
-
-        // === 3. RETURN COMBINED RESULT ===
-        return {
-            step: lessonStepOutput,
-            audioUrl: audioUrl,
-        };
     } catch (error) {
         const errorMessage = error instanceof Error ? error.message : String(error);
-        console.error("Error in lessonFlow:", errorMessage);
+        console.error("Error in chatWithOracleFlow:", errorMessage);
         throw new Error(`Erreur lors de la génération de l'étape de la leçon : ${errorMessage}`);
     }
   }
