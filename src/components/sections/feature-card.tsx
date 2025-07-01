@@ -16,6 +16,8 @@ export function FeatureCard({ children, title, description, index, className, ..
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
+      whileHover={{ scale: 1.03 }}
+      whileTap={{ scale: 0.97 }}
       transition={{ duration: 0.5, delay: index * 0.15 }}
       viewport={{ once: true, amount: 0.3 }}
       className={cn(
