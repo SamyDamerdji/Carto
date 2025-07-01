@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Features } from "@/components/sections/features";
@@ -7,7 +8,7 @@ import { SparkleParticles } from "@/components/common/sparkle-particles";
 
 export function Hero() {
   return (
-    <section className="relative w-full overflow-hidden py-4 md:py-8">
+    <section className="relative w-full overflow-hidden py-8 md:py-12">
       <div className="container relative z-10 mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center text-center">
           <Image
