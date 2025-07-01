@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Features } from "@/components/sections/features";
@@ -11,16 +12,16 @@ export function Hero() {
       <div className="container relative z-10 mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center text-center">
           <Image
-            src="https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/assets/cartomancien.png"
+            src="https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/assets/cartomancien2.png"
             alt="Le Cartomancien"
             width={1024}
             height={226}
-            className="mx-auto object-contain max-w-lg"
+            className="mx-auto object-contain max-w-sm"
             priority
           />
           
           <motion.div
-            className="relative -mt-8 md:-mt-12 w-full max-w-2xl"
+            className="relative -mt-6 md:-mt-8 w-full max-w-2xl"
             animate={{
               y: ["-8px", "8px"],
             }}
