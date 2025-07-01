@@ -62,8 +62,7 @@ export default function RootLayout({
     <html lang="fr" className="dark">
       <head />
       <body className={cn(
-        "font-body antialiased",
-        "min-h-screen bg-background",
+        "font-body antialiased min-h-dvh",
         cinzel.variable,
         ebGaramond.variable
       )} style={{
@@ -72,11 +71,9 @@ export default function RootLayout({
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
       }}>
-        <div className="bg-background/70 backdrop-blur-sm min-h-dvh">
-            <PwaInstaller />
-            {children}
-            <Toaster />
-        </div>
+        <PwaInstaller />
+        {children}
+        <Toaster />
       </body>
     </html>
   );
