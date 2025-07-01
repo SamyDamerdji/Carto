@@ -47,11 +47,11 @@ const lessonOrchestratorFlow = ai.defineFlow(
         step: stepResult,
         audio: audioResult,
       };
-    } catch (error) {
+    } catch (error: any) {
       const errorMessage = error instanceof Error ? error.message : String(error);
-      console.error("Error in lessonOrchestratorFlow:", errorMessage);
+      console.error("Error in lessonOrchestratorFlow:", JSON.stringify(error, null, 2));
       // Re-throw a detailed error to be caught by the client
-      throw new Error(`Erreur dans l'orchestrateur : ${errorMessage}`);
+      throw new Error(`Erreur dans l'orchestrateur. Details: ${errorMessage}`);
     }
   }
 );

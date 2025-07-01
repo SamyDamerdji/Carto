@@ -1,3 +1,4 @@
+
 'use server';
 /**
  * @fileOverview A Genkit flow for text-to-speech conversion.
@@ -53,7 +54,7 @@ const ttsFlow = ai.defineFlow(
     
     try {
       const { media } = await ai.generate({
-        model: 'googleai/gemini-2.5-flash-preview-tts',
+        model: 'gemini-2.5-flash-preview-tts',
         config: {
           responseModalities: ['AUDIO'],
           speechConfig: {
@@ -80,10 +81,11 @@ const ttsFlow = ai.defineFlow(
         media: `data:audio/wav;base64,${wavBase64}`,
       };
 
-    } catch (error) {
+    } catch (error: any) {
       const errorMessage = error instanceof Error ? error.message : String(error);
-      console.error(`Error in ttsFlow for query: "${query}"`, error);
-      throw new Error(`Failed to generate audio. Details: ${errorMessage}`);
+      const errorDetails = error?.details || 'No additional details available.';
+      console.error(`TTS Flow Error: ${errorMessage}`, JSON.stringify(error, null, 2));
+      throw new Error(`[TTS] ${errorMessage} - Details: ${errorDetails}`);
     }
   }
 );

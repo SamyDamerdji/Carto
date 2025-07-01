@@ -1,3 +1,4 @@
+
 'use server';
 /**
  * @fileOverview A Genkit flow that generates an interactive lesson step.
@@ -223,10 +224,10 @@ const chatWithOracleFlow = ai.defineFlow(
         
         return lessonStepOutput;
 
-    } catch (error) {
+    } catch (error: any) {
         const errorMessage = error instanceof Error ? error.message : String(error);
-        console.error("Error in chatWithOracleFlow:", errorMessage);
-        throw new Error(`Erreur lors de la génération de l'étape de la leçon : ${errorMessage}`);
+        console.error("Error in chatWithOracleFlow:", JSON.stringify(error, null, 2));
+        throw new Error(`[Oracle] ${errorMessage}`);
     }
   }
 );
