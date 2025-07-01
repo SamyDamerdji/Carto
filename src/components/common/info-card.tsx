@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Volume2, VolumeX, Loader2 } from "lucide-react";
 import { textToSpeech } from "@/ai/flows/tts-flow";
 import { audioPlayerManager } from "@/lib/audio-manager";
+import { useToast } from "@/hooks/use-toast";
 
 interface InfoCardProps {
   icon: ElementType;
@@ -20,6 +21,7 @@ export function InfoCard({ icon: Icon, title, children, textContentToSpeak, play
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const hasAutoPlayed = useRef(false);
+  const { toast } = useToast();
 
   const handleSpeak = useCallback(async () => {
     if (!textContentToSpeak || isLoading) return;
@@ -43,10 +45,16 @@ export function InfoCard({ icon: Icon, title, children, textContentToSpeak, play
       }
     } catch (error) {
       console.error("TTS generation error", error);
+      const errorMessage = error instanceof Error ? error.message : "Une erreur inconnue est survenue.";
+      toast({
+        variant: 'destructive',
+        title: "Erreur de synthèse vocale",
+        description: errorMessage,
+      });
     } finally {
       setIsLoading(false);
     }
-  }, [textContentToSpeak, isLoading, isPlaying]);
+  }, [textContentToSpeak, isLoading, isPlaying, toast]);
 
   useEffect(() => {
     const autoPlay = async () => {
@@ -60,6 +68,12 @@ export function InfoCard({ icon: Icon, title, children, textContentToSpeak, play
         }
       } catch (error) {
         console.error("TTS auto-play generation error", error);
+        const errorMessage = error instanceof Error ? error.message : "Une erreur inconnue est survenue.";
+        toast({
+          variant: 'destructive',
+          title: "Erreur de synthèse vocale",
+          description: errorMessage,
+        });
       } finally {
         setIsLoading(false);
       }
@@ -69,7 +83,7 @@ export function InfoCard({ icon: Icon, title, children, textContentToSpeak, play
       hasAutoPlayed.current = true;
       autoPlay();
     }
-  }, [playOnMount, textContentToSpeak]);
+  }, [playOnMount, textContentToSpeak, toast]);
 
   useEffect(() => {
     const audioElement = audioRef.current;

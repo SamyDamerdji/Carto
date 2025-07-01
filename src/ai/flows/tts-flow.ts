@@ -9,7 +9,6 @@ import { z } from 'zod';
 import wav from 'wav';
 
 // Create a local instance of the Google AI plugin to safely access its model helper.
-// This avoids a cross-file import issue with the Next.js server module compiler.
 const googleAI = googleAIPlugin();
 
 const TtsOutputSchema = z.object({
