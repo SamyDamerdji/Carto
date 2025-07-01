@@ -4,8 +4,13 @@
  * It converts text to speech and returns the audio in WAV format.
  */
 import { ai } from '@/ai/genkit';
+import { googleAI as googleAIPlugin } from '@genkit-ai/googleai';
 import { z } from 'zod';
 import wav from 'wav';
+
+// Create a local instance of the Google AI plugin to safely access its model helper.
+// This avoids a cross-file import issue with the Next.js server module compiler.
+const googleAI = googleAIPlugin();
 
 const TtsOutputSchema = z.object({
   media: z.string().describe("The generated audio as a data URI in WAV format."),
@@ -52,13 +57,8 @@ const ttsFlow = ai.defineFlow(
     }
     
     try {
-      const ttsModel = ai.registry.lookup('model', 'googleai/gemini-2.5-flash-preview-tts');
-      if (!ttsModel) {
-        throw new Error("The 'googleai/gemini-2.5-flash-preview-tts' model could not be found in the registry.");
-      }
-
       const { media } = await ai.generate({
-        model: ttsModel,
+        model: googleAI.model('gemini-2.5-flash-preview-tts'),
         config: {
           responseModalities: ['AUDIO'],
           speechConfig: {
