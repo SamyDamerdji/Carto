@@ -7,43 +7,16 @@
 import { ai } from '@/ai/genkit';
 import { googleAI as googleAIPlugin } from '@genkit-ai/googleai';
 import { z } from 'zod';
-import wav from 'wav';
 
 // Create a local, isolated instance of the Google AI plugin helper.
 // This avoids cross-file import issues with Next.js server components.
 const googleAI = googleAIPlugin();
 
 const TtsOutputSchema = z.object({
-  media: z.string().describe("The generated audio as a data URI in WAV format."),
+  media: z.string().describe("The generated audio as a data URI."),
 });
 export type TtsOutput = z.infer<typeof TtsOutputSchema>;
 
-async function toWav(
-  pcmData: Buffer,
-  channels = 1,
-  rate = 24000,
-  sampleWidth = 2
-): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const writer = new wav.Writer({
-      channels,
-      sampleRate: rate,
-      bitDepth: sampleWidth * 8,
-    });
-
-    const bufs: Buffer[] = [];
-    writer.on('error', reject);
-    writer.on('data', (d) => {
-      bufs.push(d);
-    });
-    writer.on('end', () => {
-      resolve(Buffer.concat(bufs).toString('base64'));
-    });
-
-    writer.write(pcmData);
-    writer.end();
-  });
-}
 
 const ttsFlow = ai.defineFlow(
   {
@@ -57,41 +30,38 @@ const ttsFlow = ai.defineFlow(
       return { media: '' };
     }
     
+    let generatedMedia;
     try {
-      const { media } = await ai.generate({
-        model: googleAI.model('gemini-2.5-flash-preview-tts'),
-        config: {
-          responseModalities: ['AUDIO'],
-          speechConfig: {
-            voiceConfig: {
-              prebuiltVoiceConfig: { voiceName: 'Algenib' },
+        const { media } = await ai.generate({
+            model: googleAI.model('gemini-2.5-flash-preview-tts'),
+            config: {
+            responseModalities: ['AUDIO'],
+            speechConfig: {
+                voiceConfig: {
+                prebuiltVoiceConfig: { voiceName: 'Algenib' },
+                },
             },
-          },
-        },
-        prompt: query,
-      });
-
-      if (!media || !media.url) {
-        throw new Error('No media was returned from the TTS API.');
-      }
-      
-      const audioBuffer = Buffer.from(
-        media.url.substring(media.url.indexOf(',') + 1),
-        'base64'
-      );
-
-      const wavBase64 = await toWav(audioBuffer);
-
-      return {
-        media: `data:audio/wav;base64,${wavBase64}`,
-      };
-
+            },
+            prompt: query,
+        });
+        generatedMedia = media;
     } catch (error: any) {
       const errorMessage = error instanceof Error ? error.message : String(error);
       const errorDetails = error?.details || 'No additional details available.';
-      console.error(`TTS Flow Error: ${errorMessage}`, JSON.stringify(error, null, 2));
-      throw new Error(`[TTS] ${errorMessage} - Details: ${errorDetails}`);
+      console.error(`TTS Flow - ai.generate call failed: ${errorMessage}`, JSON.stringify(error, null, 2));
+      throw new Error(`[TTS-GENERATE-ERROR] ${errorMessage} - Details: ${errorDetails}`);
     }
+
+
+    if (!generatedMedia || !generatedMedia.url) {
+        throw new Error('[TTS] No media was returned from the TTS API.');
+    }
+    
+    // For debugging: return raw PCM data without WAV conversion.
+    // The browser will not be able to play this, but it confirms the API call worked.
+    return {
+        media: generatedMedia.url,
+    };
   }
 );
 
