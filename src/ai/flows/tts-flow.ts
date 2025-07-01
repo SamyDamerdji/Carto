@@ -1,20 +1,45 @@
 'use server';
 /**
  * @fileOverview A Genkit flow for text-to-speech conversion.
- * This is a simplified diagnostic version to isolate potential issues.
- * It returns raw PCM audio data without WAV conversion.
+ * It converts text to speech and returns the audio in WAV format.
  */
-import { ai, googleAI } from '@/ai/genkit';
+import * as genkit_config from '@/ai/genkit';
 import { z } from 'zod';
-// The 'wav' package is removed for this diagnostic version.
+import wav from 'wav';
 
 const TtsOutputSchema = z.object({
-  media: z.string().describe("The generated audio as a data URI. This may be raw PCM data."),
+  media: z.string().describe("The generated audio as a data URI in WAV format."),
 });
 export type TtsOutput = z.infer<typeof TtsOutputSchema>;
 
+async function toWav(
+  pcmData: Buffer,
+  channels = 1,
+  rate = 24000,
+  sampleWidth = 2
+): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const writer = new wav.Writer({
+      channels,
+      sampleRate: rate,
+      bitDepth: sampleWidth * 8,
+    });
 
-const ttsFlow = ai.defineFlow(
+    const bufs: Buffer[] = [];
+    writer.on('error', reject);
+    writer.on('data', (d) => {
+      bufs.push(d);
+    });
+    writer.on('end', () => {
+      resolve(Buffer.concat(bufs).toString('base64'));
+    });
+
+    writer.write(pcmData);
+    writer.end();
+  });
+}
+
+const ttsFlow = genkit_config.ai.defineFlow(
   {
     name: 'ttsFlow',
     inputSchema: z.string(),
@@ -27,8 +52,8 @@ const ttsFlow = ai.defineFlow(
     }
     
     try {
-      const { media } = await ai.generate({
-        model: googleAI.model('gemini-2.5-flash-preview-tts'),
+      const { media } = await genkit_config.ai.generate({
+        model: genkit_config.googleAI.model('gemini-2.5-flash-preview-tts'),
         config: {
           responseModalities: ['AUDIO'],
           speechConfig: {
@@ -44,10 +69,17 @@ const ttsFlow = ai.defineFlow(
         throw new Error('No media was returned from the TTS API.');
       }
       
-      // DIAGNOSTIC: Return the raw PCM data URI directly without WAV conversion.
+      const audioBuffer = Buffer.from(
+        media.url.substring(media.url.indexOf(',') + 1),
+        'base64'
+      );
+
+      const wavBase64 = await toWav(audioBuffer);
+
       return {
-        media: media.url,
+        media: `data:audio/wav;base64,${wavBase64}`,
       };
+
     } catch (error) {
       console.error(`Error in ttsFlow for query: "${query}"`, error);
       throw new Error(`Failed to generate audio. Details: ${error instanceof Error ? error.message : String(error)}`);
