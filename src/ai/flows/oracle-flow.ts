@@ -17,7 +17,6 @@ import {
     type LearningOutput
 } from '../schemas/lesson-schemas';
 import wav from 'wav';
-import { googleAI } from '@/ai/genkit';
 
 // --- Text-to-Speech Sub-flow ---
 
@@ -68,7 +67,7 @@ const textToSpeech = ai.defineFlow(
     let generatedMedia;
     try {
         const { media } = await ai.generate({
-            model: googleAI.model('gemini-2.5-flash-preview-tts'),
+            model: 'googleai/gemini-2.5-flash-preview-tts',
             config: {
                 responseModalities: ['AUDIO'],
                 speechConfig: {
@@ -206,7 +205,7 @@ const chatWithOracleFlow = ai.defineFlow(
             `;
 
             const { output } = await ai.generate({
-                model: googleAI.model('gemini-2.0-flash'),
+                model: 'googleai/gemini-2.0-flash',
                 system: systemPrompt,
                 prompt: userPrompt,
                 output: { schema: QcmModelOutputSchema },
@@ -252,7 +251,7 @@ const chatWithOracleFlow = ai.defineFlow(
             `;
           
           const { output } = await ai.generate({
-            model: googleAI.model('gemini-2.0-flash'),
+            model: 'googleai/gemini-2.0-flash',
             system: systemPrompt,
             prompt: userPrompt,
             output: { schema: QcmModelOutputSchema },
@@ -295,7 +294,7 @@ const chatWithOracleFlow = ai.defineFlow(
             `;
             
             const { output } = await ai.generate({
-                model: googleAI.model('gemini-2.0-flash'),
+                model: 'googleai/gemini-2.0-flash',
                 system: systemPrompt,
                 prompt: userPrompt,
                 output: { schema: KeywordsModelOutputSchema },
