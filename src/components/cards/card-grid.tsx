@@ -21,21 +21,23 @@ export function CardGrid({ cards }: CardGridProps) {
             {card.nom_carte}
           </h3>
           
-          <div className="relative w-full aspect-[2.5/3.5]">
-            <div className="relative h-full w-full">
-                <div className="absolute inset-0 bg-card rounded-xl shadow-lg p-2">
-                    <div className="relative h-full w-full">
-                        <Image
-                        src={card.image_url}
-                        alt={`Image de la carte ${card.nom_carte}`}
-                        fill
-                        className="object-contain"
-                        sizes="(max-width: 640px) 100vw, 50vw"
-                        />
-                    </div>
-                </div>
+          <Link href={`/apprentissage/${card.id}`} className="block cursor-pointer group">
+            <div className="relative w-full aspect-[2.5/3.5]">
+              <div className="relative h-full w-full transition-transform duration-300 group-hover:scale-105">
+                  <div className="absolute inset-0 bg-card rounded-xl shadow-lg p-2">
+                      <div className="relative h-full w-full">
+                          <Image
+                          src={card.image_url}
+                          alt={`Image de la carte ${card.nom_carte}`}
+                          fill
+                          className="object-contain"
+                          sizes="(max-width: 640px) 100vw, 50vw"
+                          />
+                      </div>
+                  </div>
+              </div>
             </div>
-          </div>
+          </Link>
 
           <div className="mt-auto pt-3 flex flex-col gap-2">
             <Link href={`/apprentissage/${card.id}`} passHref>
