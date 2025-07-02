@@ -12,9 +12,9 @@ export function Hero() {
         <div className="flex flex-col items-center text-center">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 8 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative top-2 w-full flex justify-center"
+            className="w-full flex justify-center"
           >
             <motion.div
               animate={{
@@ -44,7 +44,7 @@ export function Hero() {
           </motion.div>
           
           <motion.div
-            className="relative -mt-8 md:-mt-10 w-full max-w-2xl"
+            className="relative -mt-12 md:-mt-16 w-full max-w-2xl"
             animate={{
               y: ["-8px", "8px"],
             }}
@@ -71,12 +71,12 @@ export function Hero() {
             </div>
           </motion.div>
 
-          <p className="mt-2 max-w-3xl text-lg text-white md:text-xl">
+          <p className="mt-1 max-w-3xl text-lg text-white md:text-xl">
             Maîtrise l'art ancestral de la cartomancie traditionnelle.
             Le Cartomancien est votre guide personnel pour apprendre, pratiquer et interpréter le langage des 52 cartes.
           </p>
         </div>
-        <div className="mt-4">
+        <div className="mt-3">
           <Features />
         </div>
       </div>
