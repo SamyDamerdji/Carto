@@ -9,6 +9,7 @@ import { piqueRoiCard } from './definitions/pique-roi';
 import { coeurRoiCard } from './definitions/coeur-roi';
 import { carreauRoiCard } from './definitions/carreau-roi';
 import { trefleRoiCard } from './definitions/trefle-roi';
+import { piqueDameCard } from './definitions/pique-dame';
 
 
 export type CardColor = 'Trèfle' | 'Cœur' | 'Carreau' | 'Pique';
@@ -106,6 +107,7 @@ const allCardsData: Card[] = [
   coeurRoiCard,
   carreauRoiCard,
   trefleRoiCard,
+  piqueDameCard,
 ];
 
 // Create a map for efficient lookups by ID
