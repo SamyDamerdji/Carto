@@ -5,7 +5,7 @@ export const piqueValetCard: Card = {
   "nom_carte": "Valet de Pique",
   "valeur": "Valet",
   "couleur": "Pique",
-  "image_url": "/cards/pique-valet.svg",
+  "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/V-pique.png",
   "symbolique_image": "Le Valet est traditionnellement un serviteur, un messager ou un subalterne. Armé d'une pique, il représente une force active mais de rang inférieur, souvent celle qui exécute les ordres ou agit dans l'ombre. Son regard peut être interprété comme fuyant ou observateur, incarnant le secret, la surveillance et la duplicité.",
   "narration_base": {
     "texte": "Voici une carte qui demande toute votre vigilance : le Valet de Pique. Dans la cartomancie traditionnelle, il est souvent surnommé 'le traître' ou 'l'espion'. Il incarne la figure de la personne fausse, de l'ami qui n'en est pas un, ou de l'individu malintentionné qui agit dans l'ombre. Il n'est pas toujours une personne physique ; il peut aussi symboliser des médisances, de mauvaises nouvelles, des pensées négatives ou des obstacles sournois qui freinent vos projets. Sa présence est un appel à la prudence et à la méfiance.",

@@ -5,7 +5,7 @@ export const coeurAsCard: Card = {
   "nom_carte": "As de Cœur",
   "valeur": "As",
   "couleur": "Cœur",
-  "image_url": "/cards/coeur-as.svg",
+  "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/01-coeur.png",
   "symbolique_image": "Un grand cœur unique au centre de la carte. Il représente l'unité, le point de départ d'une émotion pure, le foyer comme centre de la vie affective, et la graine de l'amour.",
   "narration_base": {
     "texte": "Voici l'As de Cœur, l'une des cartes les plus positives et les plus chères au cœur des cartomanciens. Considérez-la comme la fondation, la graine de tout ce qui touche à l'affectif. Elle symbolise le foyer, non seulement comme un lieu physique, mais aussi comme l'espace intérieur où naissent l'amour, la joie et la sécurité. C'est la carte du nouveau départ amoureux, de la nouvelle maison, d'une grande nouvelle qui réchauffe le cœur.",

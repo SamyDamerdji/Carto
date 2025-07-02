@@ -5,7 +5,7 @@ export const carreauAsCard: Card = {
   "nom_carte": "As de Carreau",
   "valeur": "As",
   "couleur": "Carreau",
-  "image_url": "/cards/carreau-as.svg",
+  "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/01-carreau.png",
   "symbolique_image": "Le carreau unique représente une nouvelle, un message, un point de départ matériel. Il peut être vu comme une lettre scellée, un document ou un diamant brut, symbolisant une information ou une opportunité de valeur.",
   "narration_base": {
     "texte": "Voici l'As de Carreau, la carte du messager par excellence. Considérez-la comme une notification, l'arrivée imminente d'une information cruciale. Le plus souvent, il s'agit d'un courrier, d'un email, d'un appel ou d'un document officiel. Cette nouvelle concerne généralement les domaines du Carreau : les finances, les affaires, les propositions ou les projets. Sa nature exacte, bonne ou mauvaise, dépendra souvent des cartes qui l'entourent, mais elle annonce toujours un début, un déclenchement.",

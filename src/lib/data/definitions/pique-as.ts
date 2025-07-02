@@ -5,7 +5,7 @@ export const piqueAsCard: Card = {
   "nom_carte": "As de Pique",
   "valeur": "As",
   "couleur": "Pique",
-  "image_url": "/cards/pique-as.svg",
+  "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/01-pique.png",
   "symbolique_image": "La pique unique et centrale représente la pointe de l'épée, le symbole de la décision tranchante, de la vérité qui perce, et de l'action finale. C'est l'essence concentrée de l'épreuve, du conflit et de la transformation radicale. Son unicité marque le caractère absolu et non négociable de l'événement qu'il annonce.",
   "narration_base": {
     "texte": "Nous abordons ici la carte la plus redoutée et la plus puissante du jeu : l'As de Pique. Ne vous laissez pas effrayer par sa réputation de 'carte de la mort'. En cartomancie, sa signification est bien plus nuancée. Elle est avant tout la carte de la finalité, de la décision tranchante et irrévocable. Elle annonce une fin, certes, mais cette fin est souvent nécessaire pour permettre un nouveau départ. Elle peut représenter un grand choc, une épreuve capitale, un acte officiel (contrat, jugement), ou une transformation profonde et inévitable.",

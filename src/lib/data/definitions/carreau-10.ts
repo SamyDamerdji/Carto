@@ -5,7 +5,7 @@ export const carreau10Card: Card = {
   "nom_carte": "Dix de Carreau",
   "valeur": "10",
   "couleur": "Carreau",
-  "image_url": "/cards/carreau-10.svg",
+  "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/10-carreau.png",
   "symbolique_image": "Les dix carreaux représentent une accumulation, un aboutissement matériel. C'est la plénitude dans le domaine des Carreaux (argent, communication, voyages). La symétrie de la carte évoque l'équilibre et la richesse bien établie.",
   "narration_base": {
     "texte": "Nous avons ici le Dix de Carreau, une des cartes les plus bénéfiques du jeu, synonyme de grande réussite matérielle. Considérez-la comme un signal de fortune et d'accomplissement. Le chiffre Dix marque une culmination, un cycle qui atteint son apogée. Associé au Carreau, il annonce un gain financier majeur, une réussite éclatante dans les affaires, mais aussi un voyage important, souvent lointain, ou un déménagement significatif qui change la vie. C'est la carte de l'abondance et du mouvement.",

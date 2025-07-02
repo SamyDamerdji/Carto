@@ -5,7 +5,7 @@ export const trefleAsCard: Card = {
   "nom_carte": "As de Trèfle",
   "valeur": "As",
   "couleur": "Trèfle",
-  "image_url": "/cards/trefle-as.svg",
+  "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/01-trefle.png",
   "symbolique_image": "Le trèfle unique est la graine de la réussite. Il symbolise le triomphe, la croissance par l'effort, et le point de départ d'une entreprise fructueuse. C'est la fondation solide d'un succès à venir.",
   "narration_base": {
     "texte": "Voici l'As de Trèfle, la carte du triomphe par excellence. Si l'As de Cœur est le foyer et l'As de Carreau la nouvelle, l'As de Trèfle est le succès concret, la réussite en affaires. Il représente le commencement d'une entreprise florissante, la signature d'un contrat avantageux, ou une victoire obtenue par le mérite et le travail. Sa présence dans un tirage est un feu vert, une confirmation que vos projets professionnels et financiers sont sur la bonne voie et voués au succès.",
