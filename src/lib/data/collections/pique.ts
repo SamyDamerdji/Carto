@@ -1,3 +1,4 @@
+
 import type { Card } from '../cards';
 
 export const piqueCards: Card[] = [
@@ -454,40 +455,125 @@ export const piqueCards: Card[] = [
     ],
     "interpretations": {
       "general": "Indique un moment de transformation nécessaire pour évoluer. C'est le moment d'avoir une conversation franche, de chercher une clé pour ouvrir une porte fermée, ou de poser les bonnes questions sur la direction de sa vie. C'est une invitation à la sagesse et à la compréhension avant l'action.",
-      "endroit": "Le 10 de Pique est une carte qui fait réagir. Le chiffre 10 symbolise le passage, le pont entre deux mondes. C'est la fin d'une étape et le début d'une nouvelle aventure. L'énergie des piques rappelle que ce passage se fait souvent à travers des défis, mais que chaque pas renforce.",
-      "ombre_et_defis": "Représente un avertissement, une 'route glissante'. Peut indiquer un malentendu, une distance dans les relations, ou un moment de réflexion profonde et de doute. C'est un simple rappel à rester vigilant, et non un signe de fatalité.",
-      "conseil": "Ne vous laissez pas impressionner. Faites confiance à votre intuition pour trouver les réponses cachées. Si vous vous sentez bloqué, changez d'angle pour trouver la clé. Décomposez vos objectifs en petites étapes. N'hésitez pas à avoir des conversations franches pour dénouer les situations."
+        "ton": "grave, avertisseur",
+        "perspective": "mentor"
+      },
+      "endroit": {
+        "texte": "Sa présence confirme qu'une influence négative est activement à l'œuvre. Une personne de votre entourage n'est pas sincère et pourrait vous nuire par des paroles ou des actes. Attendez-vous à des contrariétés, des nouvelles décevantes ou des blocages dans vos démarches. Cette carte vous demande d'être sur vos gardes, de ne pas partager d'informations confidentielles et d'observer attentivement les comportements autour de vous.",
+        "ton": "direct, préventif",
+        "perspective": "mentor"
+      },
+      "ombre_et_defis": {
+        "texte": "Le défi du Valet de Pique est de ne pas sombrer dans la paranoïa. L'ennemi est-il réellement extérieur ? Ou cette carte reflète-t-elle vos propres doutes, votre cynisme ou vos pensées auto-sabotrices ? Parfois, le 'traître' est notre propre esprit qui nous persuade que nous allons échouer ou que personne n'est digne de confiance. Il vous interroge sur votre capacité à discerner une menace réelle d'une peur infondée.",
+        "ton": "introspectif, nuancé",
+        "perspective": "mentor"
+      },
+      "conseil": {
+        "texte": "Le conseil est clair : la prudence est votre meilleure alliée. Ne faites pas confiance aveuglément. Prenez le temps d'analyser les situations et les intentions des gens. Protégez vos arrières, vos projets et vos secrets. Écoutez votre intuition, elle est probablement en train de vous signaler un danger. Ne vous engagez pas dans des médisances, car elles pourraient se retourner contre vous.",
+        "ton": "stratégique, protecteur",
+        "perspective": "mentor"
+      }
     },
     "domaines": {
-      "amour": "Signale une phase de questionnement. Est-ce que la relation évolue dans la bonne direction ? C'est le moment de poser les bonnes questions, sans peur du résultat. Peut indiquer un malentendu à clarifier ou une distance à combler par une discussion honnête.",
-      "travail": "Vous vous sentez bloqué, comme si une porte était fermée ? Le 10 de Pique vous invite à chercher une clé, un changement d'angle qui ouvrira de nouvelles possibilités. Avec un Roi, il peut être temps de demander un coup de pouce à une figure d'autorité.",
-      "finances": "Avec des cartes de carreaux, il parle de projets et d'ambitions. Cependant, il suggère qu'un obstacle devra être franchi avant de récolter les fruits. C'est un test de persévérance. Avec le 9 de trèfle, il avertit de se méfier des faux espoirs et des succès éphémères.",
-      "spirituel": "C'est une carte de sagesse qui enseigne que chaque épreuve est une leçon. Représente l'air et la pensée, invitant à analyser et comprendre avant d'agir. C'est une invitation à regarder au-delà des apparences et à écouter ses instincts."
+      "amour": {
+        "texte": "En amour, c'est un très mauvais présage. Il annonce la trahison, l'infidélité, les mensonges ou la présence d'un rival qui cherche à nuire à votre couple. Pour un célibataire, il prévient d'une rencontre avec une personne peu fiable et mal intentionnée. Une grande déception amoureuse est à craindre.",
+        "situation_type": "Infidélité, mensonge dans le couple, rivalité.",
+        "scenarios_associes": [
+          "Découvrir une tromperie.",
+          "Apprendre que son partenaire ment.",
+          "Une tierce personne sème la zizanie."
+        ]
+      },
+      "travail": {
+        "texte": "Au travail, le Valet de Pique est le collègue hypocrite, celui qui rapporte les conversations ou qui s'attribue votre travail. Il symbolise la trahison professionnelle, l'espionnage industriel à petite échelle, les coups bas et les projets qui sont sapés de l'intérieur. Méfiez-vous des alliances qui semblent trop belles pour être vraies.",
+        "situation_type": "Collègue déloyal, sabotage, ambiance de travail toxique.",
+        "scenarios_associes": [
+          "Être victime de médisance au bureau.",
+          "Un projet échoue à cause d'une 'fuite'.",
+          "Se sentir surveillé ou trahi par un collaborateur."
+        ]
+      },
+      "finances": {
+        "texte": "Le risque d'escroquerie, de vol ou de fraude est très élevé. Cette carte met en garde contre les mauvais conseils financiers, les propositions malhonnêtes et les personnes cherchant à abuser de votre confiance pour vous soutirer de l'argent. Soyez extrêmement vigilant avec vos biens, vos mots de passe et les contrats que vous signez.",
+        "situation_type": "Risque d'arnaque, vol, conseil financier frauduleux.",
+        "scenarios_associes": [
+          "Recevoir un email de phishing.",
+          "Se faire voler son portefeuille ou ses données bancaires.",
+          "Être poussé à un investissement douteux."
+        ]
+      },
+      "spirituel": {
+        "texte": "Sur le plan spirituel, le Valet de Pique représente l'ennemi intérieur : le doute paralysant, le cynisme, la pensée négative qui sabote toute progression. Il incarne la voix du critique intérieur qui vous dit que vous n'êtes pas à la hauteur. Le travail consiste à identifier cette voix et à ne pas la laisser prendre le contrôle de votre cheminement.",
+        "situation_type": "Auto-sabotage, pensées négatives, cynisme.",
+        "scenarios_associes": [
+          "Procrastiner sur un projet spirituel par peur de l'échec.",
+          "Se sentir bloqué par ses propres doutes.",
+          "Lutter contre une vision pessimiste du monde."
+        ]
+      }
     },
     "prompts_visuels": [
-      "une chenille se transformant en papillon dans son cocon",
-      "un pont de pierre traversant une rivière agitée sous un ciel nuageux",
-      "une personne tenant une clé devant une serrure complexe",
-      "deux personnes ayant une conversation sérieuse et intense face à face",
-      "un panneau routier indiquant 'route glissante'"
+      {
+        "scene": "Une personne tend une main en signe d'amitié, tandis que son ombre derrière elle tient un poignard.",
+        "symbolique": "La duplicité, la fausse amitié, l'intention cachée.",
+        "usage": "Illustrer le concept de trahison et d'hypocrisie."
+      },
+      {
+        "scene": "Un visage portant un masque souriant, mais le masque est légèrement fissuré, laissant entrevoir une expression méprisante en dessous.",
+        "symbolique": "Le mensonge, la façade sociale qui cache la malveillance.",
+        "usage": "Représenter la personne fausse et la médisance."
+      }
     ],
-    "prompts_conversationnels": [
-      "Le 10 de Pique est comparé à 'gravir une montagne'. Expliquez comment, dans ce contexte, un défi peut être une source de renforcement.",
-      "La fiche dit que 'les cœurs adoucissent le 10 de pique'. Proposez un scénario où l'ajout d'une carte de cœur change radicalement l'interprétation d'un défi professionnel.",
-      "Cette carte invite à 'changer d'angle' pour trouver des solutions. Donnez un exemple concret de ce que cela signifie.",
-      "Comment la 'transition' du 10 de Pique se différencie-t-elle du 'nouveau départ' plus brutal de l'As de Pique ?",
-      "Le 10 de Pique est comme un 'vieux sage qui dit ce dont on a besoin, pas ce qu'on veut entendre'. Quelle est la valeur de ce type de conseil ?"
+    "modules_interactifs": [
+      {
+        "id_module": "reflexion_mefiance_pique_valet",
+        "etapes": [
+          {
+            "type": "question_fermee",
+            "contenu": "Cette carte signale une menace. Pensez à votre situation actuelle. Votre intuition vous a-t-elle récemment alerté(e) au sujet d'une personne ou d'une situation, même sans preuve concrète ?",
+            "ton": "introspectif, direct",
+            "reponse_attendue": "Boutons 'Oui' / 'Non' / 'Je ne suis pas sûr(e)'."
+          }
+        ]
+      }
     ],
     "combinaisons": [
-      { "carte_associee_id": "pique_roi", "signification": "Du sérieux en vue. Une figure d'autorité entre en jeu. Peut-être le moment de demander un coup de pouce." },
-      { "carte_associee_id": "pique_dame", "signification": "Une femme mystérieuse se profile. Un soutien discret ou un adversaire caché. Le contexte est clé." },
-      { "carte_associee_id": "pique_valet", "signification": "Place à l'action. Un défi à relever arrive, porté par un message ou une personne plus jeune." },
-      { "carte_associee_id": "coeur_as", "signification": "Promesse d'un nouveau départ émotionnel après une période de doute. Une amitié ou un amour ravivé." },
-      { "carte_associee_id": "coeur_07", "signification": "Illusions ou rêves brisés. Invite à trier le vrai du faux dans une situation émotionnelle." },
-      { "carte_associee_id": "carreau_08", "signification": "De bonnes nouvelles se dessinent, mais un obstacle devra être franchi avant la réussite. Un test de persévérance." },
-      { "carte_associee_id": "carreau_roi", "signification": "Un mentor ou un collègue influent peut ouvrir une porte, mais il faudra savoir saisir l'opportunité." },
-      { "carte_associee_id": "trefle_06", "signification": "Des démarches administratives ou un contrat pourraient aboutir, mais la prudence est de mise." },
-      { "carte_associee_id": "trefle_09", "signification": "Succès en vue, mais il faut se méfier des faux espoirs. Le succès pourrait être magnifique mais éphémère." }
+      {
+        "carte_associee_id": "pique-dame",
+        "signification": "Association de deux personnes malveillantes, souvent un homme et une femme plus âgée. Complot, médisance organisée, trahison à grande échelle. C'est un duo extrêmement dangereux pour le consultant.",
+        "scenarios_associes": [
+          "Un couple ou deux collègues qui conspirent contre vous.",
+          "Calomnie et rumeurs destructrices."
+        ],
+        "tonalite": "Extrêmement négative"
+      },
+      {
+        "carte_associee_id": "coeur-as",
+        "signification": "La trahison pénètre le sanctuaire du foyer. Annonce une infidélité, un mensonge grave qui vient briser l'harmonie familiale, ou la présence d'un faux ami au sein de la maison.",
+        "scenarios_associes": [
+          "Découverte d'une liaison.",
+          "Un membre de la famille se révèle être un traître."
+        ],
+        "tonalite": "Très négative"
+      },
+      {
+        "carte_associee_id": "trefle-7",
+        "signification": "Trahison ou malhonnêteté pour une petite somme d'argent. Vol mineur, escroquerie sur un petit montant, ou mensonge concernant des finances modestes. La perte est faible, mais la déception est grande.",
+        "scenarios_associes": [
+          "Un ami qui ne vous rembourse pas un petit prêt.",
+          "Être floué de quelques euros lors d'une transaction."
+        ],
+        "tonalite": "Négative"
+      },
+      {
+        "carte_associee_id": "carreau-valet",
+        "signification": "Annonce l'arrivée imminente d'une mauvaise nouvelle par un moyen de communication (lettre, email, téléphone). La nouvelle elle-même est la trahison ou la source de la contrariété.",
+        "scenarios_associes": [
+          "Recevoir un courrier d'avocat ou d'huissier.",
+          "Apprendre une mauvaise nouvelle par un coup de fil."
+        ],
+        "tonalite": "Négative et imminente"
+      }
     ]
   },
   {
@@ -839,3 +925,4 @@ export const piqueCards: Card[] = [
     ]
   }
 ]
+
