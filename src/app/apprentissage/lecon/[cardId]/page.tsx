@@ -125,17 +125,8 @@ export default function LeconInteractivePage() {
   }, [lessonState, loadingMessages.length]);
 
   const fetchStep = useCallback(async (historyLength: number) => {
-    if (!card) return null;
-    try {
-      const data = await getLessonStep({ card, historyLength });
-      return data;
-    } catch (error) {
-      const err = error instanceof Error ? error : new Error("Une erreur inconnue est survenue.");
-      console.error("Error fetching lesson step:", err);
-      setErrorMessage(err.message);
-      setLessonState('error');
-      return null;
-    }
+    if (!card) throw new Error("Les données de la carte sont manquantes.");
+    return getLessonStep({ card, historyLength });
   }, [card]);
 
   const performInitialFetch = useCallback(() => {
@@ -145,14 +136,20 @@ export default function LeconInteractivePage() {
     setErrorMessage(null);
     setIsPrefetching(true);
 
-    fetchStep(0).then(data => {
-      if (data) {
+    fetchStep(0)
+      .then(data => {
         setPrefetchedData(data);
         setLessonState('ready');
-      }
-      // If data is null, the error state is already set by fetchStep
-      setIsPrefetching(false);
-    });
+      })
+      .catch(error => {
+        const err = error instanceof Error ? error : new Error("Une erreur inconnue est survenue.");
+        console.error("Error during initial fetch:", err);
+        setErrorMessage(err.message);
+        setLessonState('error');
+      })
+      .finally(() => {
+        setIsPrefetching(false);
+      });
   }, [card, fetchStep]);
 
 
@@ -174,6 +171,8 @@ export default function LeconInteractivePage() {
     if (audioRef.current && prefetchedData.audio.media) {
       audioRef.current.src = prefetchedData.audio.media;
       audioPlayerManager.play(audioRef.current).catch(e => console.error("Audio play failed on advance", e));
+    } else if (lessonSteps[currentStepIndex + 1]?.model.exercice) {
+      setTimeout(() => setUiSubState('exercising'), 100);
     }
     
     setPrefetchedData(null);
@@ -181,7 +180,7 @@ export default function LeconInteractivePage() {
     setSelectedQcmOption(null);
     setSelectedKeywords([]);
     setIsWaitingForNextStep(false);
-  }, [prefetchedData]);
+  }, [prefetchedData, currentStepIndex, lessonSteps]);
   
   // Pre-fetches the next lesson step as soon as the current one is displayed.
   useEffect(() => {
@@ -194,12 +193,22 @@ export default function LeconInteractivePage() {
       !isPrefetching
     ) {
       setIsPrefetching(true);
-      fetchStep(lessonSteps.length).then(data => {
-        if (data) {
+      fetchStep(lessonSteps.length)
+        .then(data => {
           setPrefetchedData(data);
-        }
-        setIsPrefetching(false);
-      });
+        })
+        .catch(error => {
+            const err = error instanceof Error ? error : new Error("Une erreur de pré-chargement est survenue.");
+            console.error("Error prefetching next step:", err);
+            toast({
+                variant: 'destructive',
+                title: 'Erreur de pré-chargement',
+                description: "Impossible de charger la prochaine étape. Vérifiez votre connexion."
+            });
+        })
+        .finally(() => {
+            setIsPrefetching(false);
+        });
     }
   }, [
     lessonState,
@@ -208,6 +217,7 @@ export default function LeconInteractivePage() {
     prefetchedData,
     isPrefetching,
     fetchStep,
+    toast,
   ]);
   
   const handleStartLesson = useCallback(() => {
@@ -221,7 +231,10 @@ export default function LeconInteractivePage() {
     if (audioRef.current && prefetchedData.audio.media) {
         audioRef.current.src = prefetchedData.audio.media;
         audioPlayerManager.play(audioRef.current).catch(e => console.error("Audio play failed on start", e));
+    } else if (firstStep.model.exercice) {
+        setTimeout(() => setUiSubState('exercising'), 100);
     }
+
     setPrefetchedData(null);
   }, [prefetchedData]);
 
@@ -314,7 +327,6 @@ export default function LeconInteractivePage() {
         if (uiSubState === 'explaining' && lessonSteps[currentStepIndex]?.model.exercice) {
             setUiSubState('exercising');
         } else if (uiSubState === 'explaining') {
-            // If no exercise, wait a bit and then show continue button
             setTimeout(() => setUiSubState('feedback'), 500);
         }
     };
@@ -324,15 +336,6 @@ export default function LeconInteractivePage() {
     audioElement.addEventListener('pause', onPauseOrEnded);
     audioElement.addEventListener('ended', onEnded);
     
-    // If there is no audio source, immediately move to the next state
-    if (uiSubState === 'explaining' && !audioElement.src) {
-        if (lessonSteps[currentStepIndex]?.model.exercice) {
-            setTimeout(() => setUiSubState('exercising'), 100);
-        } else {
-            setTimeout(() => setUiSubState('feedback'), 100);
-        }
-    }
-
     return () => {
         audioElement.removeEventListener('play', onPlay);
         audioElement.removeEventListener('playing', onPlay);
@@ -366,7 +369,7 @@ export default function LeconInteractivePage() {
             animate={{ opacity: 1 }}
             className="mx-auto mt-6 max-w-md rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6 text-center min-h-[400px] flex flex-col justify-center items-center"
         >
-            <h2 className="font-headline text-xl font-bold uppercase tracking-wider text-card-foreground/90">Leçon : {card.nom_carte}</h2>
+            <h2 className="font-headline text-xl font-bold uppercase tracking-wider text-card-foreground/90 whitespace-nowrap">Leçon : {card.nom_carte}</h2>
             
             <div className="[perspective:1000px] w-[150px] aspect-[2.5/3.5] my-4">
                 <motion.div
@@ -426,7 +429,7 @@ export default function LeconInteractivePage() {
     if (lessonState === 'ready') {
       return (
         <div className="mx-auto mt-6 max-w-md rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6 text-center">
-            <h2 className="font-headline text-xl font-bold uppercase tracking-wider text-card-foreground/90">Leçon : {card.nom_carte}</h2>
+            <h2 className="font-headline text-xl font-bold uppercase tracking-wider text-card-foreground/90 whitespace-nowrap">Leçon : {card.nom_carte}</h2>
             <div className="bg-card rounded-xl shadow-lg p-1 mx-auto w-fit my-4"><div className="relative w-[150px] aspect-[2.5/3.5] p-2"><Image src={card.image_url} alt={`Image de la carte ${card.nom_carte}`} fill className="object-contain" sizes="150px" /></div></div>
             <p className="text-white/90 my-4">L'oracle est prêt à vous enseigner les secrets de cette carte.</p>
             <Button onClick={handleStartLesson} size="lg" disabled={isPrefetching}>
@@ -475,7 +478,7 @@ export default function LeconInteractivePage() {
         return (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mx-auto mt-6 max-w-md rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6">
                 <div className="flex items-center justify-between gap-3 mb-4">
-                    <h2 className="font-headline text-xl font-bold uppercase tracking-wider text-card-foreground/90">Leçon : {card.nom_carte}</h2>
+                    <h2 className="font-headline text-xl font-bold uppercase tracking-wider text-card-foreground/90 whitespace-nowrap">Leçon : {card.nom_carte}</h2>
                     <Button variant="ghost" size="icon" onClick={() => audioPlayerManager.pause()} className="text-primary hover:bg-primary/20" aria-label="Arrêter la lecture">
                         {isTtsPlaying ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
                     </Button>
