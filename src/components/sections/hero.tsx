@@ -7,13 +7,14 @@ import { SparkleParticles } from "@/components/common/sparkle-particles";
 
 export function Hero() {
   return (
-    <section className="w-full overflow-hidden py-6 md:py-8">
+    <section className="w-full overflow-hidden py-4 md:py-6">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center text-center">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
+            className="relative top-2 w-full flex justify-center"
           >
             <motion.div
               animate={{
