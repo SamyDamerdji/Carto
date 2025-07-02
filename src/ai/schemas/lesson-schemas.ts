@@ -1,65 +1,38 @@
 
 import { z } from 'zod';
 
-// --- Schémas pour la nouvelle structure de données enrichie ---
-
-const StructuredInterpretationSchema = z.object({
-    texte: z.string(),
-    ton: z.string(),
-    perspective: z.string(),
-});
-
-const NewCardInterpretationsSchema = z.object({
-  general: StructuredInterpretationSchema,
-  endroit: StructuredInterpretationSchema,
-  ombre_et_defis: StructuredInterpretationSchema,
-  conseil: StructuredInterpretationSchema,
-});
-
-const StructuredDomainSchema = z.object({
-    texte: z.string(),
-    situation_type: z.string(),
-    scenarios_associes: z.array(z.string()),
-});
-
-const NewCardDomainsSchema = z.object({
-  amour: StructuredDomainSchema,
-  travail: StructuredDomainSchema,
-  finances: StructuredDomainSchema,
-  spirituel: StructuredDomainSchema,
-});
-
-const NewCardCombinationSchema = z.object({
+export const CardCombinationSchema = z.object({
   carte_associee_id: z.string(),
   signification: z.string(),
   scenarios_associes: z.array(z.string()).optional(),
   tonalite: z.string().optional(),
 });
 
-
-// --- Schémas pour l'ancienne structure de données (pour la compatibilité) ---
-
-const OldCardInterpretationsSchema = z.object({
-  general: z.string(),
-  endroit: z.string(),
-  ombre_et_defis: z.string(),
-  conseil: z.string(),
+export const StructuredInterpretationSchema = z.object({
+    texte: z.string(),
+    ton: z.string(),
+    perspective: z.string(),
 });
 
-const OldCardDomainsSchema = z.object({
-  amour: z.string(),
-  travail: z.string(),
-  finances: z.string(),
-  spirituel: z.string(),
+export const CardInterpretationsSchema = z.object({
+  general: StructuredInterpretationSchema,
+  endroit: StructuredInterpretationSchema,
+  ombre_et_defis: StructuredInterpretationSchema,
+  conseil: StructuredInterpretationSchema,
 });
 
-const OldCardCombinationSchema = z.object({
-  carte_associee_id: z.string(),
-  signification: z.string(),
+export const StructuredDomainSchema = z.object({
+    texte: z.string(),
+    situation_type: z.string(),
+    scenarios_associes: z.array(z.string()),
 });
 
-
-// --- Schéma `CardSchema` unifié et flexible ---
+export const CardDomainsSchema = z.object({
+  amour: StructuredDomainSchema,
+  travail: StructuredDomainSchema,
+  finances: StructuredDomainSchema,
+  spirituel: StructuredDomainSchema,
+});
 
 export const CardSchema = z.object({
   id: z.string(),
@@ -67,35 +40,29 @@ export const CardSchema = z.object({
   valeur: z.union([z.number(), z.string()]),
   couleur: z.enum(['Trèfle', 'Cœur', 'Carreau', 'Pique']),
   image_url: z.string(),
-  
-  // Champs avec types unis pour la compatibilité
-  phrase_cle: z.union([z.string(), z.object({ texte: z.string(), usage: z.string() })]),
-  mots_cles: z.union([z.array(z.string()), z.object({
-    positifs: z.array(z.string()),
-    negatifs: z.array(z.string()),
-    neutres: z.array(z.string()),
-    priorite: z.array(z.string()).optional(),
-  })]),
-  interpretations: z.union([OldCardInterpretationsSchema, NewCardInterpretationsSchema]),
-  domaines: z.union([OldCardDomainsSchema, NewCardDomainsSchema]),
-  combinaisons: z.array(z.union([OldCardCombinationSchema, NewCardCombinationSchema])),
-  
-  // Champs de l'ancien format rendus optionnels
-  resume_general: z.string().optional(),
-  prompts_visuels: z.array(z.union([z.string(), z.object({
-      scene: z.string(),
-      symbolique: z.string(),
-      usage: z.string(),
-  })])).optional(),
-  prompts_conversationnels: z.array(z.string()).optional(),
-
-  // Nouveaux champs rendus optionnels
   symbolique_image: z.string().optional(),
   narration_base: z.object({
     texte: z.string(),
     ton: z.string(),
     perspective: z.string(),
   }).optional(),
+  phrase_cle: z.object({ 
+    texte: z.string(), 
+    usage: z.string() 
+  }),
+  mots_cles: z.object({
+    positifs: z.array(z.string()),
+    negatifs: z.array(z.string()),
+    neutres: z.array(z.string()),
+    priorite: z.array(z.string()).optional(),
+  }),
+  interpretations: CardInterpretationsSchema,
+  domaines: CardDomainsSchema,
+  prompts_visuels: z.array(z.object({
+      scene: z.string(),
+      symbolique: z.string(),
+      usage: z.string(),
+  })).optional(),
   modules_interactifs: z.array(z.object({
     id_module: z.string(),
     etapes: z.array(z.object({
@@ -105,6 +72,7 @@ export const CardSchema = z.object({
       reponse_attendue: z.string(),
     })),
   })).optional(),
+  combinaisons: z.array(CardCombinationSchema).optional(),
 });
 
 

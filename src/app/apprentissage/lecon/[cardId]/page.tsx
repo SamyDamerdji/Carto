@@ -1,349 +1,42 @@
 
 'use client';
 
-import { useState, useRef, useEffect, useCallback, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import type { Card } from '@/lib/data/cards';
 import { getCardDetails } from '@/lib/data/cards';
-import { getLessonStep, type LessonStepOutput } from '@/ai/flows/oracle-flow';
-import type { LearningOutput } from '@/ai/schemas/lesson-schemas';
 import Image from 'next/image';
-import { Loader2, Volume2, VolumeX, Check, X as XIcon, ArrowRight, AlertTriangle, RefreshCw } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Checkbox } from '@/components/ui/checkbox';
-import { cn } from '@/lib/utils';
-import { useToast } from '@/hooks/use-toast';
-import { audioPlayerManager } from '@/lib/audio-manager';
+import { Loader2 } from 'lucide-react';
 import { notFound, useParams } from 'next/navigation';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { CardNavigation } from '@/components/cards/card-navigation';
 
-type LessonStep = {
-  model: LearningOutput;
-  user: { answer: string | string[] | null };
-};
-
-type LessonState = 'preparing' | 'ready' | 'active' | 'finished' | 'error';
-type UiSubState = 'explaining' | 'exercising' | 'feedback';
-
-const AudioVisualizer = () => {
-  return (
-    <div className="flex items-end justify-center gap-1.5 h-8">
-      {[...Array(5)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="w-2 h-full bg-primary rounded-full"
-          style={{ transformOrigin: 'bottom' }}
-          animate={{
-            scaleY: [1, 1.8, 1, 0.7, 1.4, 1, 1],
-          }}
-          transition={{
-            delay: i * 0.15,
-            duration: 1.5,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
-      ))}
-    </div>
-  );
-};
-
+const loadingMessages = [
+  "L'oracle consulte les astres...",
+  "Les cartes murmurent leurs secrets...",
+  "Préparation de votre leçon...",
+  "Alignement des énergies...",
+];
 
 export default function LeconInteractivePage() {
   const params = useParams();
   const cardId = params.cardId as string;
-  const { toast } = useToast();
   const cardBackUrl = "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/back.png";
 
   const card = useMemo(() => {
     if (!cardId) return null;
     return getCardDetails(cardId);
   }, [cardId]);
-
-  const [lessonState, setLessonState] = useState<LessonState>('preparing');
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [uiSubState, setUiSubState] = useState<UiSubState>('explaining');
-  const [lessonSteps, setLessonSteps] = useState<LessonStep[]>([]);
-  const [currentStepIndex, setCurrentStepIndex] = useState(0);
-
-  const [prefetchedData, setPrefetchedData] = useState<LessonStepOutput | null>(null);
-  const [isPrefetching, setIsPrefetching] = useState(false);
-  const [isWaitingForNextStep, setIsWaitingForNextStep] = useState(false);
-
-  const [lastAnswerStatus, setLastAnswerStatus] = useState<'correct' | 'incorrect' | null>(null);
-  const [selectedQcmOption, setSelectedQcmOption] = useState<string | null>(null);
-  const [selectedKeywords, setSelectedKeywords] = useState<string[]>([]);
-  const [shuffledOptions, setShuffledOptions] = useState<string[]>([]);
-
-  const [isTtsPlaying, setIsTtsPlaying] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  const correctSoundRef = useRef<HTMLAudioElement | null>(null);
-  const incorrectSoundRef = useRef<HTMLAudioElement | null>(null);
   
-  const didInitialFetch = useRef(false);
-
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
-  const loadingMessages = useMemo(() => [
-    "L'oracle consulte les astres...",
-    "Les cartes murmurent leurs secrets...",
-    "Préparation de votre leçon...",
-    "Alignement des énergies...",
-  ], []);
-
-  const currentStep = lessonSteps[currentStepIndex]?.model;
-  
-  useEffect(() => {
-    let optionsToShuffle: string[] = [];
-    if (currentStep?.exercice?.type === 'qcm' && currentStep.exercice.options) {
-      optionsToShuffle = [...currentStep.exercice.options];
-    } else if (currentStep?.exercice?.type === 'keywords' && currentStep.exercice.all_keywords) {
-      optionsToShuffle = [...currentStep.exercice.all_keywords];
-    }
-
-    if (optionsToShuffle.length > 0) {
-      for (let i = optionsToShuffle.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [optionsToShuffle[i], optionsToShuffle[j]] = [optionsToShuffle[j], optionsToShuffle[i]];
-      }
-      setShuffledOptions(optionsToShuffle);
-    } else {
-      setShuffledOptions([]);
-    }
-  }, [currentStep]);
-
 
   useEffect(() => {
-    if (lessonState !== 'preparing') return;
-
     const intervalId = setInterval(() => {
       setCurrentMessageIndex(prevIndex => (prevIndex + 1) % loadingMessages.length);
     }, 2500);
 
     return () => clearInterval(intervalId);
-  }, [lessonState, loadingMessages.length]);
-
-  const fetchStep = useCallback(async (historyLength: number) => {
-    if (!card) throw new Error("Les données de la carte sont manquantes.");
-    return getLessonStep({ card, historyLength });
-  }, [card]);
-
-  const performInitialFetch = useCallback(() => {
-    if (!card) return;
-
-    setLessonState('preparing');
-    setErrorMessage(null);
-    setIsPrefetching(true);
-
-    fetchStep(0)
-      .then(data => {
-        setPrefetchedData(data);
-        setLessonState('ready');
-      })
-      .catch(error => {
-        const err = error instanceof Error ? error : new Error("Une erreur inconnue est survenue.");
-        console.error("Error during initial fetch:", err);
-        setErrorMessage(err.message);
-        setLessonState('error');
-      })
-      .finally(() => {
-        setIsPrefetching(false);
-      });
-  }, [card, fetchStep]);
-
-
-  useEffect(() => {
-    if (!card || didInitialFetch.current) return;
-    didInitialFetch.current = true;
-    performInitialFetch();
-  }, [card, performInitialFetch]);
-
-  const advanceToNextStep = useCallback(() => {
-    if (!prefetchedData) return;
-    
-    const newLessonStep = { model: prefetchedData.step, user: { answer: null } };
-    setLessonSteps(prev => [...prev, newLessonStep]);
-    setCurrentStepIndex(prev => prev + 1);
-    
-    setUiSubState('explaining');
-
-    if (audioRef.current && prefetchedData.audio.media) {
-      audioRef.current.src = prefetchedData.audio.media;
-      audioPlayerManager.play(audioRef.current).catch(e => console.error("Audio play failed on advance", e));
-    } else if (lessonSteps[currentStepIndex + 1]?.model.exercice) {
-      setTimeout(() => setUiSubState('exercising'), 100);
-    }
-    
-    setPrefetchedData(null);
-    setLastAnswerStatus(null);
-    setSelectedQcmOption(null);
-    setSelectedKeywords([]);
-    setIsWaitingForNextStep(false);
-  }, [prefetchedData, currentStepIndex, lessonSteps]);
-  
-  // Pre-fetches the next lesson step as soon as the current one is displayed.
-  useEffect(() => {
-    const currentStep = lessonSteps[currentStepIndex];
-
-    if (
-      lessonState === 'active' &&
-      (!currentStep || !currentStep.model.finDeLecon) &&
-      !prefetchedData &&
-      !isPrefetching
-    ) {
-      setIsPrefetching(true);
-      fetchStep(lessonSteps.length)
-        .then(data => {
-          setPrefetchedData(data);
-        })
-        .catch(error => {
-            const err = error instanceof Error ? error : new Error("Une erreur de pré-chargement est survenue.");
-            console.error("Error prefetching next step:", err);
-            toast({
-                variant: 'destructive',
-                title: 'Erreur de pré-chargement',
-                description: "Impossible de charger la prochaine étape. Vérifiez votre connexion."
-            });
-        })
-        .finally(() => {
-            setIsPrefetching(false);
-        });
-    }
-  }, [
-    lessonState,
-    lessonSteps,
-    currentStepIndex,
-    prefetchedData,
-    isPrefetching,
-    fetchStep,
-    toast,
-  ]);
-  
-  const handleStartLesson = useCallback(() => {
-    if (!prefetchedData) return;
-    setLessonState('active');
-    const firstStep = { model: prefetchedData.step, user: { answer: null } };
-    setLessonSteps([firstStep]);
-    setCurrentStepIndex(0);
-    setUiSubState('explaining');
-
-    if (audioRef.current && prefetchedData.audio.media) {
-        audioRef.current.src = prefetchedData.audio.media;
-        audioPlayerManager.play(audioRef.current).catch(e => console.error("Audio play failed on start", e));
-    } else if (firstStep.model.exercice) {
-        setTimeout(() => setUiSubState('exercising'), 100);
-    }
-
-    setPrefetchedData(null);
-  }, [prefetchedData]);
-
-  const playFeedbackSound = (isCorrect: boolean) => {
-    if (isCorrect) {
-      if (correctSoundRef.current) {
-        correctSoundRef.current.currentTime = 0;
-        audioPlayerManager.play(correctSoundRef.current).catch(e => console.error("Audio play failed", e));
-      }
-    } else {
-      if (incorrectSoundRef.current) {
-        incorrectSoundRef.current.currentTime = 0;
-        audioPlayerManager.play(incorrectSoundRef.current).catch(e => console.error("Audio play failed", e));
-      }
-    }
-  };
-  
-  const handleQcmAnswer = (option: string) => {
-    if (uiSubState !== 'exercising' || currentStep?.exercice?.type !== 'qcm') return;
-
-    const isCorrect = option === currentStep.exercice.reponseCorrecte;
-    playFeedbackSound(isCorrect);
-    
-    setLessonSteps(prevSteps =>
-      prevSteps.map((step, index) =>
-        index === currentStepIndex ? { ...step, user: { answer: option } } : step
-      )
-    );
-
-    setLastAnswerStatus(isCorrect ? 'correct' : 'incorrect');
-    setSelectedQcmOption(option);
-    setUiSubState('feedback');
-  };
-
-  const handleKeywordToggle = (keyword: string) => {
-    setSelectedKeywords(prev => 
-        prev.includes(keyword) 
-        ? prev.filter(k => k !== keyword)
-        : [...prev, keyword]
-    );
-  };
-
-  const handleKeywordSubmit = () => {
-    if (uiSubState !== 'exercising' || currentStep?.exercice?.type !== 'keywords') return;
-
-    const correctKeywords = new Set(currentStep.exercice.correct_keywords);
-    const selected = new Set(selectedKeywords);
-    
-    const isCorrect = correctKeywords.size === selected.size && [...correctKeywords].every(keyword => selected.has(keyword));
-    playFeedbackSound(isCorrect);
-
-    setLessonSteps(prevSteps =>
-      prevSteps.map((step, index) =>
-        index === currentStepIndex ? { ...step, user: { answer: selectedKeywords } } : step
-      )
-    );
-
-    setLastAnswerStatus(isCorrect ? 'correct' : 'incorrect');
-    setUiSubState('feedback');
-  };
-  
-  const handleContinue = () => {
-    const currentStep = lessonSteps[currentStepIndex]?.model;
-    if (currentStep.finDeLecon) {
-        setLessonState('finished');
-        return;
-    }
-
-    if (prefetchedData) {
-        advanceToNextStep();
-    } else {
-        setIsWaitingForNextStep(true);
-    }
-  }
-
-  useEffect(() => {
-    if (isWaitingForNextStep && prefetchedData) {
-      advanceToNextStep();
-    }
-  }, [isWaitingForNextStep, prefetchedData, advanceToNextStep]);
-
-
-  useEffect(() => {
-    const audioElement = audioRef.current;
-    if (!audioElement) return;
-
-    const onPlay = () => setIsTtsPlaying(true);
-    const onPauseOrEnded = () => setIsTtsPlaying(false);
-    const onEnded = () => {
-        if (uiSubState === 'explaining' && lessonSteps[currentStepIndex]?.model.exercice) {
-            setUiSubState('exercising');
-        } else if (uiSubState === 'explaining') {
-            setTimeout(() => setUiSubState('feedback'), 500);
-        }
-    };
-
-    audioElement.addEventListener('play', onPlay);
-    audioElement.addEventListener('playing', onPlay);
-    audioElement.addEventListener('pause', onPauseOrEnded);
-    audioElement.addEventListener('ended', onEnded);
-    
-    return () => {
-        audioElement.removeEventListener('play', onPlay);
-        audioElement.removeEventListener('playing', onPlay);
-        audioElement.removeEventListener('pause', onPauseOrEnded);
-        audioElement.removeEventListener('ended', onEnded);
-    };
-  }, [uiSubState, lessonSteps, currentStepIndex]);
-
+  }, []);
 
   if (!cardId) {
     return (
@@ -356,14 +49,16 @@ export default function LeconInteractivePage() {
       </div>
     );
   }
-
+  
   if (!card) {
     notFound();
   }
 
-  const renderContent = () => {
-    if (lessonState === 'preparing') {
-      return (
+  return (
+    <div className="flex min-h-dvh flex-col">
+      <Header />
+      <CardNavigation currentCardId={cardId} />
+      <main className="flex-grow container mx-auto px-4 pb-8">
         <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -423,244 +118,8 @@ export default function LeconInteractivePage() {
                   </AnimatePresence>
               </div>
             </div>
+            <p className="text-center text-xs text-white/70 mt-4">La logique des leçons interactives est en cours de refonte.</p>
         </motion.div>
-      );
-    }
-    if (lessonState === 'ready') {
-      return (
-        <div className="mx-auto mt-6 max-w-md rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6 text-center">
-            <h2 className="font-headline text-xl font-bold uppercase tracking-wider text-card-foreground/90 whitespace-nowrap">Leçon : {card.nom_carte}</h2>
-            <div className="bg-card rounded-xl shadow-lg p-1 mx-auto w-fit my-4"><div className="relative w-[150px] aspect-[2.5/3.5] p-2"><Image src={card.image_url} alt={`Image de la carte ${card.nom_carte}`} fill className="object-contain" sizes="150px" /></div></div>
-            <p className="text-white/90 my-4">L'oracle est prêt à vous enseigner les secrets de cette carte.</p>
-            <Button onClick={handleStartLesson} size="lg" disabled={isPrefetching}>
-              {isPrefetching ? <Loader2 className="mr-2 h-5 w-5 animate-spin" /> : <Volume2 className="mr-2 h-5 w-5" />}
-              Commencer la leçon audio
-            </Button>
-        </div>
-      );
-    }
-    if (lessonState === 'error') {
-      return (
-        <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="mx-auto mt-6 max-w-md rounded-2xl bg-destructive/20 p-4 backdrop-blur-lg border border-destructive/50 shadow-lg sm:p-6 text-center"
-        >
-            <div className="flex flex-col items-center justify-center text-destructive">
-                <AlertTriangle className="h-12 w-12" />
-                <h2 className="mt-4 font-headline text-xl font-bold uppercase tracking-wider text-white">Une erreur est survenue</h2>
-            </div>
-            <div className="mt-4 bg-background/20 p-3 rounded-lg text-left text-sm text-white/80">
-                <p><strong>Détails de l'erreur :</strong></p>
-                <p className="font-mono text-xs mt-1 whitespace-pre-wrap">{errorMessage || "Aucun détail disponible."}</p>
-            </div>
-            <Button onClick={performInitialFetch} size="lg" className="mt-6">
-              <RefreshCw className="mr-2 h-5 w-5" />
-              Réessayer
-            </Button>
-        </motion.div>
-      );
-    }
-    if (lessonState === 'active' || lessonState === 'finished') {
-        const associatedCardForStep = currentStep?.associatedCard;
-
-        if (!currentStep) {
-          return (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mx-auto mt-6 max-w-md rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6 min-h-[400px] flex flex-col justify-center items-center">
-              <Loader2 className="h-12 w-12 animate-spin text-primary" />
-              <p className="text-sm italic mt-4 text-primary">L'oracle prépare la suite...</p>
-            </motion.div>
-          );
-        }
-
-        const shouldBlurParagraph = currentStep.exercice?.type === 'keywords' && uiSubState === 'exercising';
-
-        return (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mx-auto mt-6 max-w-md rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6">
-                <div className="flex items-center justify-between gap-3 mb-4">
-                    <h2 className="font-headline text-xl font-bold uppercase tracking-wider text-card-foreground/90 whitespace-nowrap">Leçon : {card.nom_carte}</h2>
-                    <Button variant="ghost" size="icon" onClick={() => audioPlayerManager.pause()} className="text-primary hover:bg-primary/20" aria-label="Arrêter la lecture">
-                        {isTtsPlaying ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
-                    </Button>
-                </div>
-                
-                <div className="relative flex justify-center items-center min-h-[220px] mb-4 [perspective:1200px]">
-                    <motion.div
-                        className="relative w-[150px] aspect-[2.5/3.5] z-10"
-                        animate={{
-                            x: associatedCardForStep ? -40 : 0,
-                            rotateY: associatedCardForStep ? -5 : 0,
-                        }}
-                        transition={{ duration: 0.6, ease: 'easeOut' }}
-                    >
-                        <div className="bg-card rounded-xl shadow-lg p-1 h-full w-full">
-                            <div className="relative h-full w-full p-2">
-                                <Image src={card.image_url} alt={`Image de la carte ${card.nom_carte}`} fill className="object-contain" sizes="150px" />
-                            </div>
-                        </div>
-                    </motion.div>
-
-                    <AnimatePresence>
-                        {associatedCardForStep && (
-                            <motion.div
-                                key={associatedCardForStep.id}
-                                className="absolute w-[150px] aspect-[2.5/3.5] z-0"
-                                initial={{ x: 40, y: -10, opacity: 0, rotateY: 30, scale: 0.95 }}
-                                animate={{ x: 40, y: 0, opacity: 1, rotateY: 5, scale: 1 }}
-                                exit={{ x: 40, y: -10, opacity: 0, scale: 0.95 }}
-                                transition={{ duration: 0.6, ease: 'easeOut' }}
-                            >
-                                <div className="bg-card rounded-xl shadow-lg p-1 h-full w-full">
-                                    <div className="relative h-full w-full p-2">
-                                        <Image src={associatedCardForStep.image_url} alt={`Image de la carte ${associatedCardForStep.nom_carte}`} fill className="object-contain" sizes="150px" />
-                                    </div>
-                                </div>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
-                </div>
-
-                <div className="relative min-h-[7rem] text-white/90 text-center p-4 rounded-lg bg-background/20 border border-primary/20">
-                    <AnimatePresence>
-                    {shouldBlurParagraph && (
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="absolute inset-0 bg-secondary/80 backdrop-blur-lg rounded-lg flex items-center justify-center z-10"
-                        >
-                            <p className="text-xs italic text-white/80 px-4">Faites votre choix pour révéler à nouveau le texte.</p>
-                        </motion.div>
-                    )}
-                    </AnimatePresence>
-                    <p className="text-sm whitespace-pre-wrap">{currentStep.paragraphe}</p>
-                </div>
-
-                <div className="mt-4 min-h-[250px] flex flex-col justify-center">
-                  {isWaitingForNextStep ? (
-                     <div className="flex flex-col justify-center items-center h-full">
-                       <Loader2 className="h-8 w-8 animate-spin text-primary" />
-                       <p className="text-sm italic mt-4 text-primary">L'oracle prépare la suite...</p>
-                     </div>
-                  ) : uiSubState === 'exercising' || uiSubState === 'feedback' ? (
-                    <div className="space-y-3 flex flex-col items-center text-center">
-                        {currentStep.exercice && <p className="text-sm text-white/80 italic mb-2">{currentStep.exercice.question}</p>}
-
-                        {currentStep.exercice?.type === 'qcm' && shuffledOptions.map(opt => {
-                            const isSelected = selectedQcmOption === opt;
-                            const isCorrect = opt === currentStep.exercice?.reponseCorrecte;
-                            return (
-                                <button
-                                    key={opt}
-                                    onClick={() => handleQcmAnswer(opt)}
-                                    disabled={uiSubState === 'feedback'}
-                                    className={cn(
-                                        "relative h-full w-full overflow-hidden rounded-xl border border-primary/30 bg-secondary/20 p-4 shadow-lg shadow-primary/20 backdrop-blur-lg text-left transition-all duration-300 disabled:pointer-events-none",
-                                        uiSubState !== 'feedback' && "hover:border-primary/60 hover:scale-105",
-                                        uiSubState === 'feedback' && {
-                                            'border-green-500/80 bg-green-900/40 text-white scale-105': isSelected && isCorrect,
-                                            'border-destructive/80 bg-destructive/40 text-white scale-105': isSelected && !isCorrect,
-                                            'border-green-600/50 bg-green-900/30 text-white': !isSelected && isCorrect,
-                                            'border-secondary-foreground/20 bg-card-foreground/10 text-secondary-foreground/80 opacity-60': !isSelected && !isCorrect,
-                                        }
-                                    )}
-                                >
-                                    <div className="absolute -right-2 -top-2 h-16 w-16 bg-[radial-gradient(closest-side,hsl(var(--primary)/0.1),transparent)]"></div>
-                                    <div className="relative z-10 flex items-start gap-3">
-                                        {uiSubState === 'feedback' && isCorrect && <Check className="h-5 w-5 flex-shrink-0 text-green-400 mt-0.5" />}
-                                        {uiSubState === 'feedback' && isSelected && !isCorrect && <XIcon className="h-5 w-5 flex-shrink-0 text-red-400 mt-0.5" />}
-                                        <div className="flex-1 rounded-lg border border-secondary-foreground/30 bg-card-foreground/25 p-3 shadow-lg shadow-black/20">
-                                            <p className="text-sm text-secondary-foreground/90 whitespace-pre-wrap">{opt}</p>
-                                        </div>
-                                    </div>
-                                </button>
-                            );
-                        })}
-
-                        {currentStep.exercice?.type === 'keywords' && (
-                            <>
-                            <div className='w-full columns-2 gap-x-3 space-y-3'>
-                                {shuffledOptions.map(keyword => {
-                                    const isSelected = selectedKeywords.includes(keyword);
-                                    const isCorrect = currentStep.exercice?.type === 'keywords' && currentStep.exercice.correct_keywords.includes(keyword);
-                                    return (
-                                        <label
-                                            key={keyword}
-                                            htmlFor={keyword}
-                                            className={cn(
-                                                "flex items-center gap-3 w-full break-inside-avoid-column overflow-hidden rounded-lg border border-primary/30 bg-secondary/20 p-3 shadow-lg backdrop-blur-lg transition-all duration-300",
-                                                uiSubState === 'exercising' && "cursor-pointer hover:border-primary/60",
-                                                uiSubState === 'feedback' && {
-                                                    "border-green-500/80 bg-green-900/40": isSelected && isCorrect,
-                                                    "border-destructive/80 bg-destructive/40": isSelected && !isCorrect,
-                                                    "border-green-600/50 bg-green-900/30": !isSelected && isCorrect,
-                                                    "opacity-60": !isSelected && !isCorrect,
-                                                }
-                                            )}
-                                        >
-                                            <Checkbox
-                                                id={keyword}
-                                                checked={isSelected}
-                                                onCheckedChange={() => handleKeywordToggle(keyword)}
-                                                disabled={uiSubState === 'feedback'}
-                                                className="shrink-0"
-                                            />
-                                            <span className="text-sm text-white/90">{keyword}</span>
-                                        </label>
-                                    )
-                                })}
-                            </div>
-                            {uiSubState === 'exercising' && (
-                                <Button onClick={handleKeywordSubmit} className="mt-4">Valider</Button>
-                            )}
-                            </>
-                        )}
-                         
-                         {uiSubState === 'feedback' && (
-                          <Button onClick={handleContinue} className="mt-4" disabled={isPrefetching}>
-                            {isPrefetching && isWaitingForNextStep ? (<Loader2 className="mr-2 h-4 w-4 animate-spin"/>) : "Continuer"}
-                            {!isPrefetching && !isWaitingForNextStep && <ArrowRight className="ml-2 h-4 w-4"/>}
-                          </Button>
-                        )}
-                    </div>
-                  ) : lessonState === 'finished' ? (
-                      <div className="text-center text-white/90 p-4">
-                        <Check className="h-8 w-8 mx-auto text-green-500 mb-2"/>
-                        <p>Leçon terminée !</p>
-                        <p className="text-xs text-white/70">Vous pouvez maintenant explorer une autre carte.</p>
-                      </div>
-                  ) : (
-                    <div className="flex justify-center items-center h-full">
-                        {isTtsPlaying && uiSubState === 'explaining' ? (
-                          <div className="flex flex-col items-center justify-center gap-3 text-primary">
-                            <AudioVisualizer />
-                            <p className="text-sm italic">Écoutez l'oracle...</p>
-                          </div>
-                        ) : uiSubState === 'explaining' && !isTtsPlaying ? (
-                          <div className="flex items-center gap-2 text-primary">
-                            <Check className="h-5 w-5"/>
-                            <p className="text-sm italic">Préparez-vous pour l'exercice...</p>
-                          </div>
-                        ) : null}
-                    </div>
-                  )}
-                </div>
-            </motion.div>
-        );
-    }
-    return null;
-  };
-
-  return (
-    <div className="flex min-h-dvh flex-col">
-      <Header />
-      <CardNavigation currentCardId={cardId} />
-      <main className="flex-grow container mx-auto px-4 pb-8">
-        {renderContent()}
-        <audio ref={audioRef} className="hidden" />
-        <audio ref={correctSoundRef} src="https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/sounds/correct.mp3" preload="auto" className="hidden" />
-        <audio ref={incorrectSoundRef} src="https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/sounds/incorrect.mp3" preload="auto" className="hidden" />
       </main>
       <Footer />
     </div>
