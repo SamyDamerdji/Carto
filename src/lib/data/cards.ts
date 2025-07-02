@@ -3,6 +3,7 @@ import { piqueValetCard } from './definitions/pique-valet';
 import { trefleAsCard } from './definitions/trefle-as';
 import { coeurAsCard } from './definitions/coeur-as';
 import { carreauAsCard } from './definitions/carreau-as';
+import { carreau10Card } from './definitions/carreau-10';
 
 
 export type CardColor = 'Trèfle' | 'Cœur' | 'Carreau' | 'Pique';
@@ -52,9 +53,9 @@ export interface Card {
     ton: string;
     perspective: string;
   };
-  phrase_cle: { 
-    texte: string; 
-    usage: string; 
+  phrase_cle: {
+    texte: string;
+    usage: string;
   };
   mots_cles: {
     positifs: string[];
@@ -95,6 +96,7 @@ const allCardsData: Card[] = [
   coeurAsCard,
   carreauAsCard,
   trefleAsCard,
+  carreau10Card,
 ];
 
 // Create a map for efficient lookups by ID
