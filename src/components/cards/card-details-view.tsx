@@ -92,7 +92,7 @@ export function CardDetailsView({ card }: { card: Card }) {
             </div>
           </div>
           <p className="mt-4 text-sm text-white/90 text-center">
-            {card.interpretations.general}
+            {card.interpretations.general.texte}
           </p>
           <div className="mt-6">
             <Link href={`/apprentissage/lecon/${card.id}`} passHref>
@@ -125,10 +125,10 @@ export function CardDetailsView({ card }: { card: Card }) {
             </TabsTrigger>
           </TabsList>
           <TabsContent value="endroit" className="mt-4 p-4 bg-background/20 rounded-lg border border-primary/20 text-white/90">
-            <p>{card.interpretations.endroit}</p>
+            <p>{card.interpretations.endroit.texte}</p>
           </TabsContent>
           <TabsContent value="ombre_et_defis" className="mt-4 p-4 bg-background/20 rounded-lg border border-primary/20 text-white/90">
-            <p>{card.interpretations.ombre_et_defis}</p>
+            <p>{card.interpretations.ombre_et_defis.texte}</p>
           </TabsContent>
         </Tabs>
       </SectionWrapper>
@@ -150,7 +150,7 @@ export function CardDetailsView({ card }: { card: Card }) {
           </TabsList>
           {Object.entries(card.domaines).map(([key, value]) => (
             <TabsContent key={key} value={key} className="mt-4 p-4 bg-background/20 rounded-lg border border-primary/20 text-white/90">
-              <p>{value}</p>
+              <p>{value.texte}</p>
             </TabsContent>
           ))}
         </Tabs>
@@ -193,17 +193,17 @@ export function CardDetailsView({ card }: { card: Card }) {
       {/* E. Le Conseil */}
       <SectionWrapper title="Le Conseil" icon={Lightbulb} index={hasCombinaisons ? 4 : 3}>
         <div className="p-4 bg-background/20 rounded-lg border border-primary/20 text-white/90">
-          <p>{card.interpretations.conseil}</p>
+          <p>{card.interpretations.conseil.texte}</p>
         </div>
       </SectionWrapper>
 
       {/* F. Mots-clés */}
       <SectionWrapper title="Mots-clés" icon={Tags} index={hasCombinaisons ? 5 : 4}>
         <blockquote className="border-l-4 border-primary pl-4 italic text-white/90 my-4">
-          {card.phrase_cle}
+          {card.phrase_cle.texte}
         </blockquote>
         <div className="flex flex-wrap gap-2">
-          {card.mots_cles.map((mot) => (
+          {[...card.mots_cles.positifs, ...card.mots_cles.negatifs, ...card.mots_cles.neutres].map((mot) => (
             <Badge key={mot} variant="secondary" className="bg-primary/20 text-primary-foreground/90 border border-primary/50">
               {mot}
             </Badge>
