@@ -1,9 +1,11 @@
+
 import { piqueAsCard } from './definitions/pique-as';
 import { piqueValetCard } from './definitions/pique-valet';
 import { trefleAsCard } from './definitions/trefle-as';
 import { coeurAsCard } from './definitions/coeur-as';
 import { carreauAsCard } from './definitions/carreau-as';
 import { carreau10Card } from './definitions/carreau-10';
+import { piqueRoiCard } from './definitions/pique-roi';
 
 
 export type CardColor = 'Trèfle' | 'Cœur' | 'Carreau' | 'Pique';
@@ -97,6 +99,7 @@ const allCardsData: Card[] = [
   carreauAsCard,
   trefleAsCard,
   carreau10Card,
+  piqueRoiCard,
 ];
 
 // Create a map for efficient lookups by ID
@@ -114,3 +117,5 @@ export const cardsList: CardSummary[] = allCardsData.map(card => ({
 export function getCardDetails(id: string): Card | undefined {
   return cardsDataMap.get(id);
 }
+
+    
