@@ -3,45 +3,179 @@ import type { Card } from '../cards';
 
 export const coeurCards: Card[] = [
   {
-    "id": "coeur_as",
-    "nom_carte": "As de Cœur",
-    "valeur": 1,
-    "couleur": "Cœur",
-    "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/01-coeur.png",
-    "resume_general": "Carte de l'origine de l'émotion, de l'amour pur et des nouveaux départs sentimentaux. C'est une onde concentrée, un appel du cœur. Elle annonce une rencontre, une réconciliation, une nouvelle source de bonheur ou un projet porté par la passion.",
-    "phrase_cle": "Une porte douce s'ouvre, écoutez votre cœur.",
-    "mots_cles": [
-      "amour", "nouveau départ", "émotion forte", "joie", "tendresse", "connexion sincère", "réconciliation",
-      "paix intérieure", "intuition", "bonheur", "terrain fertile", "vulnérabilité"
-    ],
-    "interpretations": {
-      "general": "Annonce une rencontre touchante, la renaissance d'un couple, une amitié qui se transforme ou un nouvel amour pour soi. C'est un terrain fertile pour cultiver des relations authentiques. Symbolise une nouvelle source de bonheur, un projet porté par le cœur ou une intuition à suivre.",
-      "endroit": "L'As de Cœur est un battement pur, une bénédiction émotionnelle. Il représente l'origine de tous les possibles affectifs : amour, joie, tendresse, connexion. C'est une carte qui rassure et qui dit que l'on est exactement là où l'on doit être, émotionnellement parlant. C'est un baume, un moment de paix intérieure.",
-      "ombre_et_defis": "Son aspect pur peut se confronter à l'illusion. Peut indiquer un amour non réciproque, une trop grande naïveté, une attente déçue ou un besoin d'amour mal placé. C'est une alarme douce qui rappelle que le cœur mérite mieux et qu'il faut s'aimer d'abord.",
-      "conseil": "Ouvrez la porte douce que cette carte présente. Écoutez votre cœur et osez être authentique. C'est le moment d'ouvrir son cœur, de montrer ses émotions et de laisser tomber les barrières. Aimez pleinement et soyez prêt à être aimé en retour, mais ne confondez pas l'amour avec le besoin."
-    },
-    "domaines": {
-      "amour": "C'est son domaine d'excellence. Annonce un beau potentiel, une vibration pure. Indique une rencontre touchante, une renaissance dans le couple ou une amitié qui se transforme. C'est un terrain fertile qui demande à être cultivé avec écoute et respect.",
-      "travail": "Peut symboliser un projet porté par le cœur et la passion, plutôt que par l'ego ou l'ambition pure. C'est une carte qui rassure sur la direction prise si elle est alignée avec les valeurs profondes.",
-      "finances": "Son influence est moins matérielle qu'émotionnelle. Elle suggère que la joie et le bonheur ne dépendent pas des finances. Elle peut indiquer qu'un geste généreux ou une décision prise avec le cœur aura un impact positif.",
-      "spirituel": "Représente le cœur à son état brut, avant les peurs et les blessures. C'est un appel à l'écoute de soi, à l'amour-propre comme point de départ. Dans un rêve, c'est une alerte douce, un message de l'inconscient sur un besoin affectif ou une blessure oubliée."
-    },
-    "prompts_visuels": [
-      "une main tenant une vieille clé devant une porte en bois d'où émane une douce lumière",
-      "une simple plume flottant et se posant délicatement à la surface de l'eau",
-      "une source d'eau pure jaillissant de la terre dans une clairière",
-      "deux mains se tendant l'une vers l'autre sans se toucher, avec une énergie palpable entre elles",
-      "un cœur dessiné dans le sable, sur le point d'être touché par une vague douce"
-    ],
-    "prompts_conversationnels": [
-      "L'As de Cœur est décrit comme 'l'amour quand il n'a pas encore été compliqué par les histoires'. Expliquez cette idée.",
-      "La fiche mentionne que cette carte est un 'terrain fertile'. Quelle est la différence entre un terrain fertile et un 'conte de fées tout cuit' ?",
-      "Comment distinguer l' 'amour pur' de l'As de Cœur de la 'naïveté' de son côté ombre ?",
-      "Si l'As de Pique représente la fin d'un cycle, que représente l'As de Cœur par rapport à ce concept de cycle ?",
-      "Cette carte parle de 'réconciliation'. Proposez un scénario où la réconciliation n'est pas avec une autre personne, mais avec une partie de soi-même."
-    ],
-    "combinaisons": []
+  "id": "coeur_as",
+  "nom_carte": "As de Cœur",
+  "valeur": "As",
+  "couleur": "Cœur",
+  "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/01-coeur.png",
+  "symbolique_image": "Un grand cœur unique au centre de la carte. Il représente l'unité, le point de départ d'une émotion pure, le foyer comme centre de la vie affective, et la graine de l'amour.",
+  "narration_base": {
+    "texte": "Voici l'As de Cœur, l'une des cartes les plus positives et les plus chères au cœur des cartomanciens. Considérez-la comme la fondation, la graine de tout ce qui touche à l'affectif. Elle symbolise le foyer, non seulement comme un lieu physique, mais aussi comme l'espace intérieur où naissent l'amour, la joie et la sécurité. C'est la carte du nouveau départ amoureux, de la nouvelle maison, d'une grande nouvelle qui réchauffe le cœur.",
+    "ton": "chaleureux, pédagogue",
+    "perspective": "mentor"
   },
+  "phrase_cle": {
+    "texte": "Le foyer du cœur, le début de l'amour.",
+    "usage": "Pour résumer son essence la plus pure en une phrase."
+  },
+  "mots_cles": {
+    "positifs": [
+      "Amour",
+      "Foyer",
+      "Maison",
+      "Nouveau départ amoureux",
+      "Bonheur",
+      "Joie",
+      "Famille",
+      "Naissance",
+      "Bonne nouvelle",
+      "Relation naissante",
+      "Réconciliation"
+    ],
+    "negatifs": [
+      "Dépendance affective",
+      "Nostalgie du foyer",
+      "Bouleversement émotionnel",
+      "Amour étouffant"
+    ],
+    "neutres": [
+      "Émotion",
+      "Message",
+      "Nouveau départ",
+      "Fondation"
+    ],
+    "priorite": [
+      "Amour",
+      "Foyer",
+      "Nouveau départ",
+      "Bonheur"
+    ]
+  },
+  "interpretations": {
+    "general": {
+      "texte": "L'As de Cœur annonce un commencement majeur et heureux sur le plan émotionnel. Il est le symbole par excellence de la maison, de la famille et de l'amour naissant. Sa présence dans un tirage est presque toujours un présage de joie, de satisfaction affective et de stabilité. Il peut s'agir d'un coup de foudre, d'un déménagement pour un lieu où l'on se sent bien, d'une naissance ou simplement d'une période de grand bonheur personnel et familial.",
+      "ton": "rassurant, positif",
+      "perspective": "mentor"
+    },
+    "endroit": {
+      "texte": "Dans son sens le plus direct, cette carte confirme un bonheur authentique. Elle parle d'amour partagé, d'harmonie au sein de la famille ou du couple. C'est l'annonce d'une proposition (mariage, vie commune), la concrétisation d'un projet immobilier (achat d'une maison) ou l'arrivée d'un enfant. Une nouvelle importante et positive concernant vos proches ou votre vie sentimentale est en chemin.",
+      "ton": "optimiste, direct",
+      "perspective": "mentor"
+    },
+    "ombre_et_defis": {
+      "texte": "L'ombre de cette carte n'est pas une menace, mais un avertissement sur un excès. Un amour si nouveau et si puissant peut parfois rendre aveugle ou dépendant. Un attachement excessif au foyer peut freiner l'ouverture au monde extérieur. La carte peut alors vous inviter à vous demander si ce bonheur naissant ne vous coupe pas d'autres aspects de votre vie, ou si vous ne placez pas toutes vos attentes dans une seule personne ou un seul lieu.",
+      "ton": "nuancé, prudent",
+      "perspective": "mentor"
+    },
+    "conseil": {
+      "texte": "Le conseil de l'As de Cœur est simple et puissant : ouvrez votre cœur. Soyez réceptif aux nouvelles rencontres, aux nouvelles émotions. Accueillez la joie sans crainte. Soignez votre 'foyer', qu'il soit physique ou intérieur. C'est le moment de construire, de fonder, de solidifier vos bases affectives et de partager votre bonheur avec ceux que vous aimez.",
+      "ton": "encourageant, inspirant",
+      "perspective": "mentor"
+    }
+  },
+  "domaines": {
+    "amour": {
+      "texte": "C'est la meilleure carte possible. Elle annonce une nouvelle relation amoureuse, un coup de foudre, une déclaration sincère, une proposition de mariage ou le début d'une vie commune. Pour les couples existants, elle signifie un renouveau, une harmonie retrouvée, une période de bonheur intense, ou un projet commun majeur comme l'arrivée d'un enfant.",
+      "situation_type": "Début d'une relation, bonheur conjugal, projet familial.",
+      "scenarios_associes": [
+        "Rencontrer quelqu'un de spécial.",
+        "Recevoir une demande en mariage.",
+        "Emménager avec son partenaire.",
+        "Apprendre une grossesse."
+      ]
+    },
+    "travail": {
+      "texte": "Bien que centrée sur l'affectif, cette carte influence positivement le travail. Elle signale un environnement professionnel bienveillant et harmonieux, un travail fait avec passion, ou le début d'un projet qui vous tient particulièrement à cœur. Elle peut aussi indiquer le lancement d'une activité à domicile ou dans un domaine lié à l'aide, au soin ou à la famille.",
+      "situation_type": "Travail passion, bonne ambiance, projet à domicile.",
+      "scenarios_associes": [
+        "Trouver un emploi dans lequel on se sent 'comme à la maison'.",
+        "Lancer un projet créatif qui vient du cœur.",
+        "Amélioration des relations avec les collègues."
+      ]
+    },
+    "finances": {
+      "texte": "L'argent est ici directement lié au foyer et à la sécurité familiale. L'As de Cœur peut annoncer un achat immobilier, un investissement pour améliorer son logement (rénovation, décoration) ou un soutien financier de la part de la famille. Les finances sont au service du bonheur et du confort domestique.",
+      "situation_type": "Achat immobilier, aide financière familiale, dépenses pour le confort.",
+      "scenarios_associes": [
+        "Obtenir un prêt pour une maison.",
+        "Recevoir un don ou un héritage d'un proche.",
+        "Investir de l'argent dans le bien-être de sa famille."
+      ]
+    },
+    "spirituel": {
+      "texte": "Sur le plan spirituel, l'As de Cœur est un appel à la reconnexion avec l'amour inconditionnel, à commencer par l'amour de soi. C'est l'ouverture du 'chakra du cœur'. Il invite à la gratitude pour les joies simples, à la guérison des blessures affectives passées et à la cultivation de la compassion et de la bienveillance.",
+      "situation_type": "Amour de soi, guérison émotionnelle, ouverture du cœur.",
+      "scenarios_associes": [
+        "Commencer une pratique de méditation centrée sur le cœur.",
+        "Pardonner à quelqu'un ou à soi-même.",
+        "Ressentir un profond sentiment de connexion et de paix intérieure."
+      ]
+    }
+  },
+  "prompts_visuels": [
+    {
+      "scene": "Une main tend une clé de maison dorée à une autre main, sous un soleil radieux.",
+      "symbolique": "L'accès au foyer, la proposition, le nouveau départ concret.",
+      "usage": "Illustrer l'aspect 'maison' et 'projet de vie'."
+    },
+    {
+      "scene": "Une petite graine de laquelle germe une plante dont la fleur est un cœur lumineux.",
+      "symbolique": "La naissance de l'amour, le potentiel de croissance affective.",
+      "usage": "Illustrer le concept de 'nouveau départ amoureux'."
+    }
+  ],
+  "modules_interactifs": [
+    {
+      "id_module": "reflexion_foyer_coeur_as",
+      "etapes": [
+        {
+          "type": "question_ouverte",
+          "contenu": "L'As de Cœur vous invite à penser à votre 'foyer'. Au-delà d'un lieu, qu'est-ce que ce mot signifie pour vous aujourd'hui ? Quelles personnes, quels sentiments, quels lieux composent votre véritable foyer ?",
+          "ton": "introspectif, doux",
+          "reponse_attendue": "Texte libre de réflexion personnelle."
+        }
+      ]
+    }
+  ],
+  "combinaisons": [
+    {
+      "carte_associee_id": "coeur_roi",
+      "signification": "Amour mature, sincère et protecteur. L'arrivée d'un homme bienveillant et aimant dans votre vie, ou la consolidation d'une relation avec un partenaire stable. Stabilité et sécurité affective.",
+      "scenarios_associes": [
+        "Relation avec un homme plus âgé ou très mature.",
+        "Un père ou un mari aimant et protecteur."
+      ],
+      "tonalite": "Très positive"
+    },
+    {
+      "carte_associee_id": "pique_08",
+      "signification": "Obstacles ou tristesse venant perturber le bonheur du foyer. Une mauvaise nouvelle affectant la famille, des larmes et des peines de cœur au sein de la maison. Difficultés affectives.",
+      "scenarios_associes": [
+        "Conflit familial.",
+        "Rupture ou chagrin d'amour vécu à la maison."
+      ],
+      "tonalite": "Négative"
+    },
+    {
+      "carte_associee_id": "carreau_10",
+      "signification": "Grande réussite matérielle liée au foyer. Entrée d'argent importante permettant un achat immobilier, une rénovation luxueuse ou assurant une grande sécurité financière à la famille.",
+      "scenarios_associes": [
+        "Achat d'une grande maison.",
+        "Gros gain financier qui profite au couple ou à la famille."
+      ],
+      "tonalite": "Très positive"
+    },
+    {
+      "carte_associee_id": "trefle_as",
+      "signification": "Annonce la signature d'un contrat lié à la maison (acte de vente, bail) ou à une union (contrat de mariage). C'est la concrétisation administrative et officielle d'un projet de cœur.",
+      "scenarios_associes": [
+        "Signer chez le notaire pour une maison.",
+        "Signer un contrat de mariage."
+      ],
+      "tonalite": "Positive et concrète"
+    }
+  ]
+},
   {
     "id": "coeur_roi",
     "nom_carte": "Roi de Cœur",
