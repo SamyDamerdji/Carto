@@ -137,50 +137,175 @@ export const piqueCards: Card[] = [
   {
     "id": "pique_valet",
     "nom_carte": "Valet de Pique",
-    "valeur": 11,
+    "valeur": "Valet",
     "couleur": "Pique",
     "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/V-pique.png",
-    "resume_general": "Personnage complexe et intrigant. C'est le messager des ombres, un stratège silencieux et un révélateur de vérités. Il incarne les secrets, la prudence, l'observation et les efforts discrets qui portent leurs fruits.",
-    "phrase_cle": "Observe dans l'ombre, car la vérité est cachée.",
-    "mots_cles": [
-      "stratège", "secret", "prudence", "observation", "révélation", "vérité", "discrétion", 
-      "allié caché", "mystère", "test de confiance", "ruse", "vigilance"
-    ],
+    "symbolique_image": "Le Valet est traditionnellement un serviteur, un messager ou un subalterne. Armé d'une pique, il représente une force active mais de rang inférieur, souvent celle qui exécute les ordres ou agit dans l'ombre. Son regard peut être interprété comme fuyant ou observateur, incarnant le secret, la surveillance et la duplicité.",
+    "narration_base": {
+      "texte": "Voici une carte qui demande toute votre vigilance : le Valet de Pique. Dans la cartomancie traditionnelle, il est souvent surnommé 'le traître' ou 'l'espion'. Il incarne la figure de la personne fausse, de l'ami qui n'en est pas un, ou de l'individu malintentionné qui agit dans l'ombre. Il n'est pas toujours une personne physique ; il peut aussi symboliser des médisances, de mauvaises nouvelles, des pensées négatives ou des obstacles sournois qui freinent vos projets. Sa présence est un appel à la prudence et à la méfiance.",
+      "ton": "prudent, pédagogue",
+      "perspective": "mentor"
+    },
+    "phrase_cle": {
+      "texte": "La trahison qui rôde, la méfiance nécessaire.",
+      "usage": "Pour résumer l'avertissement central de la carte."
+    },
+    "mots_cles": {
+      "positifs": [
+        "Vigilance",
+        "Prudence",
+        "Mise en garde",
+        "Révélation (d'une trahison)"
+      ],
+      "negatifs": [
+        "Trahison",
+        "Mensonge",
+        "Hypocrisie",
+        "Personne fausse",
+        "Mauvaise nouvelle",
+        "Médisance",
+        "Espionnage",
+        "Obstacle",
+        "Retard",
+        "Malveillance",
+        "Duplicité"
+      ],
+      "neutres": [
+        "Messager",
+        "Jeune personne",
+        "Doute",
+        "Secret",
+        "Observation"
+      ],
+      "priorite": [
+        "Trahison",
+        "Personne fausse",
+        "Méfiance",
+        "Obstacle"
+      ]
+    },
     "interpretations": {
-      "general": "Incarne un allié discret, un 'héros de l'ombre' qui aide sans se mettre en avant. Il est le signe que des efforts discrets porteront leurs fruits. C'est un guerrier fidèle, un poète réfléchi. Il invite à avancer prudemment, à la manière d'un joueur d'échecs.",
-      "endroit": "Contrairement aux autres valets, celui de Pique porte un poids. Il est associé à des traits sombres ou mélancoliques, mais n'est pas fondamentalement négatif. Il est un stratège qui observe avant d'agir, un révélateur qui peut changer le cours du jeu. Il représente les zones grises de la vie, où tout n'est pas noir ou blanc.",
-      "ombre_et_defis": "Représente un trouble-fête, une personne qui porte un masque ou dont les intentions sont cachées. Annonce un message caché, un avertissement, un test de confiance ou une trahison en embuscade. Il demande une vigilance accrue et de ne pas se fier aux apparences.",
-      "conseil": "Soyez un stratège. Observez le contexte dans son ensemble avant de prendre une décision. Fiez-vous à votre intuition pour 'gratter sous la surface' et découvrir la vérité. C'est un appel à rester vigilant et à avancer prudemment."
+      "general": {
+        "texte": "Le Valet de Pique est l'une des cartes les plus négatives du jeu. Il annonce presque toujours une forme de duplicité ou d'obstacle. Il peut représenter une personne concrète dans votre entourage (traditionnellement un jeune homme brun, mais il ne faut pas s'y limiter) qui est hypocrite ou agit contre vos intérêts. Plus largement, il symbolise les mauvaises nouvelles, les rumeurs, les retards frustrants et les situations où la confiance est ou sera brisée. Il est le signe avant-coureur d'une déception ou d'une trahison.",
+        "ton": "grave, avertisseur",
+        "perspective": "mentor"
+      },
+      "endroit": {
+        "texte": "Sa présence confirme qu'une influence négative est activement à l'œuvre. Une personne de votre entourage n'est pas sincère et pourrait vous nuire par des paroles ou des actes. Attendez-vous à des contrariétés, des nouvelles décevantes ou des blocages dans vos démarches. Cette carte vous demande d'être sur vos gardes, de ne pas partager d'informations confidentielles et d'observer attentivement les comportements autour de vous.",
+        "ton": "direct, préventif",
+        "perspective": "mentor"
+      },
+      "ombre_et_defis": {
+        "texte": "Le défi du Valet de Pique est de ne pas sombrer dans la paranoïa. L'ennemi est-il réellement extérieur ? Ou cette carte reflète-t-elle vos propres doutes, votre cynisme ou vos pensées auto-sabotrices ? Parfois, le 'traître' est notre propre esprit qui nous persuade que nous allons échouer ou que personne n'est digne de confiance. Il vous interroge sur votre capacité à discerner une menace réelle d'une peur infondée.",
+        "ton": "introspectif, nuancé",
+        "perspective": "mentor"
+      },
+      "conseil": {
+        "texte": "Le conseil est clair : la prudence est votre meilleure alliée. Ne faites pas confiance aveuglément. Prenez le temps d'analyser les situations et les intentions des gens. Protégez vos arrières, vos projets et vos secrets. Écoutez votre intuition, elle est probablement en train de vous signaler un danger. Ne vous engagez pas dans des médisances, car elles pourraient se retourner contre vous.",
+        "ton": "stratégique, protecteur",
+        "perspective": "mentor"
+      }
     },
     "domaines": {
-      "amour": "Annonce des surprises. Peut représenter un 'mystérieux amoureux' qui cache ses vraies émotions. C'est souvent un test de confiance, un défi à relever pour découvrir la vérité de la relation. Avec les cartes de Coeur, il signale des émotions contrariées ou un amour caché.",
-      "travail": "C'est le stratège en coulisses. Représente un 'allié discret' qui aide dans l'ombre, ou le signe que des efforts, même invisibles, seront récompensés. Invite à agir comme dans un jeu d'échecs : réfléchir avant d'agir, avancer prudemment.",
-      "finances": "Demande de la prudence. Avec l'As de Trèfle, il annonce une opportunité financière qui cache des détails importants. Avec les cartes rouges, il ajoute une dose de tension ou de risque. Il faut bien analyser avant de s'engager.",
-      "spirituel": "C'est un miroir de nos propres choix, entre prudence et audace. Il nous confronte aux zones grises de notre vie et nous invite à chercher les vérités cachées, à nous fier à notre intuition plus qu'aux interprétations toutes faites. Il parle des secrets que l'on se chuchote à soi-même."
+      "amour": {
+        "texte": "En amour, c'est un très mauvais présage. Il annonce la trahison, l'infidélité, les mensonges ou la présence d'un rival qui cherche à nuire à votre couple. Pour un célibataire, il prévient d'une rencontre avec une personne peu fiable et mal intentionnée. Une grande déception amoureuse est à craindre.",
+        "situation_type": "Infidélité, mensonge dans le couple, rivalité.",
+        "scenarios_associes": [
+          "Découvrir une tromperie.",
+          "Apprendre que son partenaire ment.",
+          "Une tierce personne sème la zizanie."
+        ]
+      },
+      "travail": {
+        "texte": "Au travail, le Valet de Pique est le collègue hypocrite, celui qui rapporte les conversations ou qui s'attribue votre travail. Il symbolise la trahison professionnelle, l'espionnage industriel à petite échelle, les coups bas et les projets qui sont sapés de l'intérieur. Méfiez-vous des alliances qui semblent trop belles pour être vraies.",
+        "situation_type": "Collègue déloyal, sabotage, ambiance de travail toxique.",
+        "scenarios_associes": [
+          "Être victime de médisance au bureau.",
+          "Un projet échoue à cause d'une 'fuite'.",
+          "Se sentir surveillé ou trahi par un collaborateur."
+        ]
+      },
+      "finances": {
+        "texte": "Le risque d'escroquerie, de vol ou de fraude est très élevé. Cette carte met en garde contre les mauvais conseils financiers, les propositions malhonnêtes et les personnes cherchant à abuser de votre confiance pour vous soutirer de l'argent. Soyez extrêmement vigilant avec vos biens, vos mots de passe et les contrats que vous signez.",
+        "situation_type": "Risque d'arnaque, vol, conseil financier frauduleux.",
+        "scenarios_associes": [
+          "Recevoir un email de phishing.",
+          "Se faire voler son portefeuille ou ses données bancaires.",
+          "Être poussé à un investissement douteux."
+        ]
+      },
+      "spirituel": {
+        "texte": "Sur le plan spirituel, le Valet de Pique représente l'ennemi intérieur : le doute paralysant, le cynisme, la pensée négative qui sabote toute progression. Il incarne la voix du critique intérieur qui vous dit que vous n'êtes pas à la hauteur. Le travail consiste à identifier cette voix et à ne pas la laisser prendre le contrôle de votre cheminement.",
+        "situation_type": "Auto-sabotage, pensées négatives, cynisme.",
+        "scenarios_associes": [
+          "Procrastiner sur un projet spirituel par peur de l'échec.",
+          "Se sentir bloqué par ses propres doutes.",
+          "Lutter contre une vision pessimiste du monde."
+        ]
+      }
     },
     "prompts_visuels": [
-      "une personne regardant une scène à travers des persiennes, dans la pénombre",
-      "une pièce d'échec (pion) placée de manière stratégique sur un échiquier",
-      "un détective observant un indice avec une loupe",
-      "deux personnes se chuchotant un secret à l'oreille dans un couloir sombre",
-      "une silhouette masquée lors d'un bal vénitien"
+      {
+        "scene": "Une personne tend une main en signe d'amitié, tandis que son ombre derrière elle tient un poignard.",
+        "symbolique": "La duplicité, la fausse amitié, l'intention cachée.",
+        "usage": "Illustrer le concept de trahison et d'hypocrisie."
+      },
+      {
+        "scene": "Un visage portant un masque souriant, mais le masque est légèrement fissuré, laissant entrevoir une expression méprisante en dessous.",
+        "symbolique": "Le mensonge, la façade sociale qui cache la malveillance.",
+        "usage": "Représenter la personne fausse et la médisance."
+      }
     ],
-    "prompts_conversationnels": [
-      "Le Valet de Pique est un 'héros de l'ombre'. Comment cette image contraste-t-elle avec celle d'un héros plus traditionnel ?",
-      "La fiche dit qu'il représente les 'zones grises de la vie'. Donnez un exemple de situation qui n'est ni totalement positive, ni totalement négative.",
-      "Le conseil est d'agir comme dans un 'jeu d'échecs'. Quels sont les principes d'un bon joueur d'échecs qui peuvent s'appliquer à la vie réelle ?",
-      "Cette carte représente parfois un 'test de confiance'. Comment peut-on savoir si notre confiance est mise à l'épreuve dans une relation ?",
-      "Comment distinguer la 'prudence' du Valet de Pique de la 'peur' qui peut nous paralyser ?"
+    "modules_interactifs": [
+      {
+        "id_module": "reflexion_mefiance_pique_valet",
+        "etapes": [
+          {
+            "type": "question_fermee",
+            "contenu": "Cette carte signale une menace. Pensez à votre situation actuelle. Votre intuition vous a-t-elle récemment alerté(e) au sujet d'une personne ou d'une situation, même sans preuve concrète ?",
+            "ton": "introspectif, direct",
+            "reponse_attendue": "Boutons 'Oui' / 'Non' / 'Je ne suis pas sûr(e)'."
+          }
+        ]
+      }
     ],
     "combinaisons": [
-      { "carte_associee_id": "coeur_as", "signification": "Alerte sur les émotions. Un amour caché ou une trahison potentielle est présente. L'intuition est primordiale." },
-      { "carte_associee_id": "coeur_roi", "signification": "Mêmes significations qu'avec l'As de Coeur : émotions contrariées, amour caché. Prudence dans les relations." },
-      { "carte_associee_id": "carreau_roi", "signification": "Un conflit potentiel avec une figure d'autorité. La stratégie et la discrétion sont nécessaires pour naviguer la situation." },
-      { "carte_associee_id": "carreau_07", "signification": "Nécessité de clarifier une situation qui semble floue. Un malentendu ou un manque d'information crée un obstacle." },
-      { "carte_associee_id": "trefle_as", "signification": "Une opportunité financière se présente, mais il faut être très attentif aux détails et aux conditions cachées." },
-      { "carte_associee_id": "trefle_10", "signification": "Un succès est possible, mais il viendra après une lutte ou des efforts importants. Ce ne sera pas facile." },
-      { "carte_associee_id": "pique_roi", "signification": "L'énergie de la stratégie devient intense et complexe. Une situation demande une analyse très fine et prudente." },
-      { "carte_associee_id": "pique_dame", "signification": "Peut représenter une femme rusée ou une protectrice qui agit dans l'ombre. Chaque déplacement compte." }
+      {
+        "carte_associee_id": "pique_dame",
+        "signification": "Association de deux personnes malveillantes, souvent un homme et une femme plus âgée. Complot, médisance organisée, trahison à grande échelle. C'est un duo extrêmement dangereux pour le consultant.",
+        "scenarios_associes": [
+          "Un couple ou deux collègues qui conspirent contre vous.",
+          "Calomnie et rumeurs destructrices."
+        ],
+        "tonalite": "Extrêmement négative"
+      },
+      {
+        "carte_associee_id": "coeur_as",
+        "signification": "La trahison pénètre le sanctuaire du foyer. Annonce une infidélité, un mensonge grave qui vient briser l'harmonie familiale, ou la présence d'un faux ami au sein de la maison.",
+        "scenarios_associes": [
+          "Découverte d'une liaison.",
+          "Un membre de la famille se révèle être un traître."
+        ],
+        "tonalite": "Très négative"
+      },
+      {
+        "carte_associee_id": "trefle_07",
+        "signification": "Trahison ou malhonnêteté pour une petite somme d'argent. Vol mineur, escroquerie sur un petit montant, ou mensonge concernant des finances modestes. La perte est faible, mais la déception est grande.",
+        "scenarios_associes": [
+          "Un ami qui ne vous rembourse pas un petit prêt.",
+          "Être floué de quelques euros lors d'une transaction."
+        ],
+        "tonalite": "Négative"
+      },
+      {
+        "carte_associee_id": "carreau_valet",
+        "signification": "Annonce l'arrivée imminente d'une mauvaise nouvelle par un moyen de communication (lettre, email, téléphone). La nouvelle elle-même est la trahison ou la source de la contrariété.",
+        "scenarios_associes": [
+          "Recevoir un courrier d'avocat ou d'huissier.",
+          "Apprendre une mauvaise nouvelle par un coup de fil."
+        ],
+        "tonalite": "Négative et imminente"
+      }
     ]
   },
   {
