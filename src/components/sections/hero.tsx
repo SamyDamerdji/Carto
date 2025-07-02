@@ -7,8 +7,8 @@ import { SparkleParticles } from "@/components/common/sparkle-particles";
 
 export function Hero() {
   return (
-    <section className="relative w-full overflow-hidden py-8 md:py-8">
-      <div className="container relative z-10 mx-auto px-4 md:px-6">
+    <section className="w-full overflow-hidden py-6 md:py-8">
+      <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center text-center">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -17,15 +17,15 @@ export function Hero() {
           >
             <motion.div
               animate={{
-                scale: [1, 1.01, 1],
+                scale: [1, 1.015, 1],
                 filter: [
-                  "drop-shadow(0 0 4px hsl(var(--primary) / 0.6))",
-                  "drop-shadow(0 0 12px hsl(var(--primary) / 0.9))",
-                  "drop-shadow(0 0 4px hsl(var(--primary) / 0.6))",
+                  "drop-shadow(0 0 6px hsl(var(--primary) / 0.7))",
+                  "drop-shadow(0 0 16px hsl(var(--primary) / 1))",
+                  "drop-shadow(0 0 6px hsl(var(--primary) / 0.7))",
                 ],
               }}
               transition={{
-                duration: 3.5,
+                duration: 3,
                 repeat: Infinity,
                 ease: "easeInOut",
                 repeatType: "loop",
@@ -43,7 +43,7 @@ export function Hero() {
           </motion.div>
           
           <motion.div
-            className="relative -mt-6 md:-mt-8 w-full max-w-2xl"
+            className="relative -mt-8 md:-mt-10 w-full max-w-2xl"
             animate={{
               y: ["-8px", "8px"],
             }}
@@ -54,7 +54,6 @@ export function Hero() {
               ease: "easeInOut",
             }}
           >
-            {/* The image and particles are wrapped to contain the effect */}
             <div className="relative">
               <Image
                 src="https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/eventail.png"
@@ -76,7 +75,7 @@ export function Hero() {
             Le Cartomancien est votre guide personnel pour apprendre, pratiquer et interpréter le langage des 52 cartes.
           </p>
         </div>
-        <div className="mt-6">
+        <div className="mt-4">
           <Features />
         </div>
       </div>
