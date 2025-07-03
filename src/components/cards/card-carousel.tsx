@@ -24,11 +24,11 @@ export function CardCarousel({ cards }: CardCarouselProps) {
     setActiveIndex((prev) => (prev === 0 ? cards.length - 1 : prev - 1));
   };
 
-  const onDragEnd = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-    const dragThreshold = 50;
-    if (info.offset.y > dragThreshold) {
+  const onPanEnd = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+    const swipeThreshold = 50;
+    if (info.offset.y > swipeThreshold) {
       handlePrev();
-    } else if (info.offset.y < -dragThreshold) {
+    } else if (info.offset.y < -swipeThreshold) {
       handleNext();
     }
   };
@@ -38,11 +38,8 @@ export function CardCarousel({ cards }: CardCarouselProps) {
   return (
     <div className="w-full flex flex-col items-center">
       <motion.div
-        className="relative w-full max-w-xs h-[400px] cursor-grab active:cursor-grabbing"
-        drag="y"
-        onDragEnd={onDragEnd}
-        dragConstraints={{ top: 0, bottom: 0 }}
-        dragElastic={0.1}
+        className="relative w-full max-w-xs h-[400px] cursor-ns-resize"
+        onPanEnd={onPanEnd}
       >
         <div
           className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-secondary/80 to-transparent z-20 pointer-events-none"
@@ -59,7 +56,7 @@ export function CardCarousel({ cards }: CardCarouselProps) {
             }
 
             const scale = 1 - Math.abs(offset) * 0.15;
-            const translateY = offset * 50; // Adjust vertical spacing
+            const translateY = offset * 40; // Reduced vertical spacing
             const zIndex = cards.length - Math.abs(offset);
 
             return (
@@ -75,7 +72,7 @@ export function CardCarousel({ cards }: CardCarouselProps) {
                 exit={{ opacity: 0, scale: 0.5 }}
                 transition={{ type: 'spring', stiffness: 200, damping: 25 }}
               >
-                  <div className="relative w-4/5 aspect-[2.5/3.5] pointer-events-none">
+                  <div className="relative w-52 aspect-[2.5/3.5] pointer-events-none">
                       <div className="absolute inset-0 bg-card rounded-2xl shadow-lg p-1">
                           <div className="relative h-full w-full p-2">
                               <Image
@@ -83,7 +80,7 @@ export function CardCarousel({ cards }: CardCarouselProps) {
                                 alt={`Image de la carte ${card.nom_carte}`}
                                 fill
                                 className="object-contain"
-                                sizes="250px"
+                                sizes="208px"
                               />
                           </div>
                       </div>
