@@ -126,53 +126,38 @@ export function CardDetailsView({ card }: { card: Card }) {
         </SectionWrapper>
       )}
 
-      <SectionWrapper title="Mots-clés" icon={Tags} index={2}>
+      <SectionWrapper title="Interprétations" icon={Layers} index={2}>
         <Accordion type="single" collapsible className="w-full">
-          {card.mots_cles.positifs.length > 0 && (
-            <AccordionItem value="item-positifs">
-              <AccordionTrigger className="font-headline text-lg hover:no-underline text-card-foreground/90">
-                <div className="flex items-center gap-3">
-                  <PlusCircle className="h-5 w-5 text-primary" />
-                  <span>Positifs</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="p-4 bg-background/20 rounded-b-lg border-x border-b border-primary/20">
-                <ul className="list-disc list-inside space-y-1 text-white/90">
-                  {card.mots_cles.positifs.map((keyword, i) => <li key={`pos-${i}`}>{keyword}</li>)}
-                </ul>
-              </AccordionContent>
+            <AccordionItem value="item-1">
+                <AccordionTrigger className="font-headline text-lg hover:no-underline text-card-foreground/90">
+                    <div className="flex items-center gap-3">
+                       <Heart className="h-5 w-5" /><span>Aspect Lumineux</span>
+                    </div>
+                </AccordionTrigger>
+                <AccordionContent className="p-4 bg-background/20 rounded-b-lg border-x border-b border-primary/20 text-white/90">
+                    <p>{card.interpretations.endroit.texte}</p>
+                </AccordionContent>
             </AccordionItem>
-          )}
-          {card.mots_cles.negatifs.length > 0 && (
-            <AccordionItem value="item-negatifs">
-              <AccordionTrigger className="font-headline text-lg hover:no-underline text-card-foreground/90">
-                <div className="flex items-center gap-3">
-                  <MinusCircle className="h-5 w-5 text-primary" />
-                  <span>Négatifs</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="p-4 bg-background/20 rounded-b-lg border-x border-b border-primary/20">
-                <ul className="list-disc list-inside space-y-1 text-white/90">
-                  {card.mots_cles.negatifs.map((keyword, i) => <li key={`neg-${i}`}>{keyword}</li>)}
-                </ul>
-              </AccordionContent>
+             <AccordionItem value="item-2">
+                <AccordionTrigger className="font-headline text-lg hover:no-underline text-card-foreground/90">
+                    <div className="flex items-center gap-3">
+                       <Briefcase className="h-5 w-5" /><span>Défis & Obstacles</span>
+                    </div>
+                </AccordionTrigger>
+                <AccordionContent className="p-4 bg-background/20 rounded-b-lg border-x border-b border-primary/20 text-white/90">
+                    <p>{card.interpretations.ombre_et_defis.texte}</p>
+                </AccordionContent>
             </AccordionItem>
-          )}
-          {card.mots_cles.neutres.length > 0 && (
-            <AccordionItem value="item-neutres">
-              <AccordionTrigger className="font-headline text-lg hover:no-underline text-card-foreground/90">
-                <div className="flex items-center gap-3">
-                  <List className="h-5 w-5 text-primary" />
-                  <span>Neutres</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="p-4 bg-background/20 rounded-b-lg border-x border-b border-primary/20">
-                <ul className="list-disc list-inside space-y-1 text-white/90">
-                  {card.mots_cles.neutres.map((keyword, i) => <li key={`neu-${i}`}>{keyword}</li>)}
-                </ul>
-              </AccordionContent>
+            <AccordionItem value="item-3">
+                <AccordionTrigger className="font-headline text-lg hover:no-underline text-card-foreground/90">
+                    <div className="flex items-center gap-3">
+                       <Sparkles className="h-5 w-5" /><span>Le Conseil de l'Oracle</span>
+                    </div>
+                </AccordionTrigger>
+                <AccordionContent className="p-4 bg-background/20 rounded-b-lg border-x border-b border-primary/20 text-white/90">
+                    <p>{card.interpretations.conseil.texte}</p>
+                </AccordionContent>
             </AccordionItem>
-          )}
         </Accordion>
       </SectionWrapper>
 
@@ -229,38 +214,53 @@ export function CardDetailsView({ card }: { card: Card }) {
         </SectionWrapper>
       )}
 
-      <SectionWrapper title="Interprétations" icon={Layers} index={5}>
+      <SectionWrapper title="Mots-clés" icon={Tags} index={5}>
         <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="item-1">
-                <AccordionTrigger className="font-headline text-lg hover:no-underline text-card-foreground/90">
-                    <div className="flex items-center gap-3">
-                       <Heart className="h-5 w-5" /><span>Aspect Lumineux</span>
-                    </div>
-                </AccordionTrigger>
-                <AccordionContent className="p-4 bg-background/20 rounded-b-lg border-x border-b border-primary/20 text-white/90">
-                    <p>{card.interpretations.endroit.texte}</p>
-                </AccordionContent>
+          {card.mots_cles.positifs.length > 0 && (
+            <AccordionItem value="item-positifs">
+              <AccordionTrigger className="font-headline text-lg hover:no-underline text-card-foreground/90">
+                <div className="flex items-center gap-3">
+                  <PlusCircle className="h-5 w-5 text-primary" />
+                  <span>Positifs</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="p-4 bg-background/20 rounded-b-lg border-x border-b border-primary/20">
+                <ul className="list-disc list-inside space-y-1 text-white/90">
+                  {card.mots_cles.positifs.map((keyword, i) => <li key={`pos-${i}`}>{keyword}</li>)}
+                </ul>
+              </AccordionContent>
             </AccordionItem>
-             <AccordionItem value="item-2">
-                <AccordionTrigger className="font-headline text-lg hover:no-underline text-card-foreground/90">
-                    <div className="flex items-center gap-3">
-                       <Briefcase className="h-5 w-5" /><span>Défis & Obstacles</span>
-                    </div>
-                </AccordionTrigger>
-                <AccordionContent className="p-4 bg-background/20 rounded-b-lg border-x border-b border-primary/20 text-white/90">
-                    <p>{card.interpretations.ombre_et_defis.texte}</p>
-                </AccordionContent>
+          )}
+          {card.mots_cles.negatifs.length > 0 && (
+            <AccordionItem value="item-negatifs">
+              <AccordionTrigger className="font-headline text-lg hover:no-underline text-card-foreground/90">
+                <div className="flex items-center gap-3">
+                  <MinusCircle className="h-5 w-5 text-primary" />
+                  <span>Négatifs</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="p-4 bg-background/20 rounded-b-lg border-x border-b border-primary/20">
+                <ul className="list-disc list-inside space-y-1 text-white/90">
+                  {card.mots_cles.negatifs.map((keyword, i) => <li key={`neg-${i}`}>{keyword}</li>)}
+                </ul>
+              </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-3">
-                <AccordionTrigger className="font-headline text-lg hover:no-underline text-card-foreground/90">
-                    <div className="flex items-center gap-3">
-                       <Sparkles className="h-5 w-5" /><span>Le Conseil de l'Oracle</span>
-                    </div>
-                </AccordionTrigger>
-                <AccordionContent className="p-4 bg-background/20 rounded-b-lg border-x border-b border-primary/20 text-white/90">
-                    <p>{card.interpretations.conseil.texte}</p>
-                </AccordionContent>
+          )}
+          {card.mots_cles.neutres.length > 0 && (
+            <AccordionItem value="item-neutres">
+              <AccordionTrigger className="font-headline text-lg hover:no-underline text-card-foreground/90">
+                <div className="flex items-center gap-3">
+                  <List className="h-5 w-5 text-primary" />
+                  <span>Neutres</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="p-4 bg-background/20 rounded-b-lg border-x border-b border-primary/20">
+                <ul className="list-disc list-inside space-y-1 text-white/90">
+                  {card.mots_cles.neutres.map((keyword, i) => <li key={`neu-${i}`}>{keyword}</li>)}
+                </ul>
+              </AccordionContent>
             </AccordionItem>
+          )}
         </Accordion>
       </SectionWrapper>
 
