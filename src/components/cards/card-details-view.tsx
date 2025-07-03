@@ -1,4 +1,3 @@
-
 'use client';
 
 import type { ReactNode } from 'react';
@@ -196,9 +195,9 @@ export function CardDetailsView({ card }: { card: Card }) {
                   : `Avec ${article} ${associatedCard.nom_carte}`;
 
                 return (
-                  <div key={combo.carte_associee_id} className="flex items-center gap-4 rounded-lg bg-secondary/20 p-3 backdrop-blur-lg border border-primary/30 shadow-md">
+                  <div key={combo.carte_associee_id} className="flex items-center gap-4 rounded-2xl bg-secondary/20 p-3 backdrop-blur-lg border border-primary/30 shadow-md">
                     <div className="relative h-20 w-14 flex-shrink-0">
-                        <div className="bg-card rounded-md shadow-lg p-1 w-full h-full">
+                        <div className="bg-card rounded-lg shadow-lg p-1 w-full h-full">
                             <div className="relative h-full w-full p-1">
                                 <Image
                                     src={associatedCard.image_url}
