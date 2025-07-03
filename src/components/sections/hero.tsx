@@ -10,11 +10,9 @@ export function Hero() {
     <section className="w-full overflow-hidden py-4 md:py-6">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center text-center">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 8 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+          <div
             className="w-full flex justify-center"
+            style={{ transform: "translateY(8px)" }}
           >
             <motion.div
               animate={{
@@ -41,7 +39,7 @@ export function Hero() {
                 priority
               />
             </motion.div>
-          </motion.div>
+          </div>
           
           <motion.div
             className="relative -mt-12 md:-mt-16 w-full max-w-2xl"
