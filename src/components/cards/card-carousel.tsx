@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -39,7 +38,7 @@ export function CardCarousel({ cards }: CardCarouselProps) {
   return (
     <div className="w-full flex flex-col items-center">
       <motion.div
-        className="relative w-full max-w-xs h-[480px] cursor-grab active:cursor-grabbing"
+        className="relative w-full max-w-xs h-[400px] cursor-grab active:cursor-grabbing"
         drag="y"
         onDragEnd={onDragEnd}
         dragConstraints={{ top: 0, bottom: 0 }}
@@ -59,9 +58,8 @@ export function CardCarousel({ cards }: CardCarouselProps) {
               return null; // Only render a few cards for performance
             }
 
-            const scale = 1 - Math.abs(offset) * 0.25;
-            const translateY = offset * 70; // Adjust vertical spacing
-            const opacity = 1 - Math.abs(offset) * 0.3;
+            const scale = 1 - Math.abs(offset) * 0.15;
+            const translateY = offset * 50; // Adjust vertical spacing
             const zIndex = cards.length - Math.abs(offset);
 
             return (
@@ -73,7 +71,7 @@ export function CardCarousel({ cards }: CardCarouselProps) {
                   zIndex,
                 }}
                 initial={{ y: translateY, scale: 0.5, opacity: 0 }}
-                animate={{ y: translateY, scale, opacity }}
+                animate={{ y: translateY, scale, opacity: 1 }}
                 exit={{ opacity: 0, scale: 0.5 }}
                 transition={{ type: 'spring', stiffness: 200, damping: 25 }}
               >
@@ -96,7 +94,7 @@ export function CardCarousel({ cards }: CardCarouselProps) {
         </AnimatePresence>
       </motion.div>
       
-      <div className="relative z-30 -mt-20 flex flex-col items-center w-full max-w-xs">
+      <div className="relative z-30 -mt-12 flex flex-col items-center w-full max-w-xs">
           <AnimatePresence mode="wait">
             <motion.h3 
                 key={activeCard.id}
