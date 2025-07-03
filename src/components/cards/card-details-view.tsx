@@ -1,3 +1,4 @@
+
 'use client';
 
 import type { ReactNode } from 'react';
@@ -8,21 +9,19 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import {
   Heart,
   Briefcase,
   CircleDollarSign,
   Sparkles,
-  Sun,
-  ShieldAlert,
   Layers,
   LayoutGrid,
   Link2,
-  Lightbulb,
   Tags,
   NotebookText,
   BrainCircuit,
+  Aperture,
 } from 'lucide-react';
 import { Textarea } from '@/components/ui/textarea';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -39,7 +38,7 @@ const SectionWrapper = ({ title, icon: Icon, children, index, action }: SectionW
   <motion.div
     initial={{ opacity: 0, y: 50 }}
     whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5, delay: index * 0.15 }}
+    transition={{ duration: 0.5, delay: index * 0.1 }}
     viewport={{ once: true, amount: 0.2 }}
     className="mx-auto mt-6 max-w-md rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6"
   >
@@ -76,9 +75,6 @@ export function CardDetailsView({ card }: { card: Card }) {
         viewport={{ once: true, amount: 0.2 }}
         className="mx-auto mt-8 max-w-md rounded-2xl bg-secondary/20 p-4 backdrop-blur-lg border border-primary/30 shadow-lg sm:p-6 text-center"
       >
-        <h1 className="font-headline text-4xl font-bold tracking-tight text-primary sm:text-5xl uppercase drop-shadow-lg whitespace-nowrap">
-          {card.nom_carte}
-        </h1>
         <div className="mt-4 flex flex-col items-center">
           <div className="bg-card rounded-xl shadow-lg p-1 inline-block">
             <div className="relative w-[200px] aspect-[2.5/3.5] p-2">
@@ -91,8 +87,14 @@ export function CardDetailsView({ card }: { card: Card }) {
               />
             </div>
           </div>
+          <h1 className="font-headline text-4xl font-bold tracking-tight text-primary sm:text-5xl uppercase drop-shadow-lg whitespace-nowrap mt-4">
+            {card.nom_carte}
+          </h1>
+          <blockquote className="mt-2 text-lg italic text-white/90">
+              "{card.phrase_cle.texte}"
+          </blockquote>
           <p className="mt-4 text-sm text-white/90 text-center">
-            {card.interpretations.general.texte}
+            {card.narration_base?.texte || card.interpretations.general.texte}
           </p>
           <div className="mt-6">
             <Link href={`/apprentissage/lecon/${card.id}`} passHref>
@@ -104,61 +106,49 @@ export function CardDetailsView({ card }: { card: Card }) {
           </div>
         </div>
       </motion.div>
-      
-      {/* B. Interprétations Détaillées */}
-      <SectionWrapper title="Interprétations" icon={Layers} index={1}>
-        <Tabs defaultValue="endroit" className="w-full">
-          <TabsList className="h-auto grid grid-cols-2 items-stretch justify-around rounded-2xl bg-secondary/20 p-1.5 backdrop-blur-lg border border-primary/30 shadow-lg">
-            <TabsTrigger
-              value="endroit"
-              className="flex h-auto flex-1 flex-col items-center gap-1 rounded-lg bg-transparent p-2 text-xs font-medium text-card-foreground/90 shadow-none ring-offset-0 transition-all duration-300 hover:bg-accent/20 hover:text-primary focus:shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 data-[state=active]:bg-transparent data-[state=active]:text-primary data-[state=active]:shadow-none"
-            >
-              <Sun className="h-5 w-5" />
-              <span>Aspect Lumineux</span>
-            </TabsTrigger>
-            <TabsTrigger
-              value="ombre_et_defis"
-              className="flex h-auto flex-1 flex-col items-center gap-1 rounded-lg bg-transparent p-2 text-xs font-medium text-card-foreground/90 shadow-none ring-offset-0 transition-all duration-300 hover:bg-accent/20 hover:text-primary focus:shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 data-[state=active]:bg-transparent data-[state=active]:text-primary data-[state=active]:shadow-none"
-            >
-              <ShieldAlert className="h-5 w-5" />
-              <span>Défis & Obstacles</span>
-            </TabsTrigger>
-          </TabsList>
-          <TabsContent value="endroit" className="mt-4 p-4 bg-background/20 rounded-lg border border-primary/20 text-white/90">
-            <p>{card.interpretations.endroit.texte}</p>
-          </TabsContent>
-          <TabsContent value="ombre_et_defis" className="mt-4 p-4 bg-background/20 rounded-lg border border-primary/20 text-white/90">
-            <p>{card.interpretations.ombre_et_defis.texte}</p>
-          </TabsContent>
-        </Tabs>
+
+      {/* B. Symbolique & Archétype */}
+      {card.symbolique_image && (
+        <SectionWrapper title="Symbolique & Archétype" icon={Aperture} index={1}>
+          <div className="p-4 bg-background/20 rounded-lg border border-primary/20 text-white/90">
+            <p>{card.symbolique_image}</p>
+          </div>
+        </SectionWrapper>
+      )}
+
+      {/* C. Mots-clés */}
+      <SectionWrapper title="Mots-clés" icon={Tags} index={2}>
+        <div className="flex flex-wrap gap-2">
+          {[...card.mots_cles.positifs, ...card.mots_cles.negatifs, ...card.mots_cles.neutres].map((mot) => (
+            <Badge key={mot} variant="secondary" className="bg-primary/20 text-primary-foreground/90 border border-primary/50">
+              {mot}
+            </Badge>
+          ))}
+        </div>
       </SectionWrapper>
 
-      {/* C. Application par Domaine */}
-      <SectionWrapper title="Application par Domaine" icon={LayoutGrid} index={2}>
-        <Tabs defaultValue="amour" className="w-full">
-          <TabsList className="h-auto grid grid-cols-4 items-stretch justify-around rounded-2xl bg-secondary/20 p-1.5 backdrop-blur-lg border border-primary/30 shadow-lg">
-            {Object.keys(card.domaines).map((key) => (
-              <TabsTrigger
-                key={key}
-                value={key}
-                className="flex h-auto flex-1 flex-col items-center gap-1 rounded-lg bg-transparent p-2 text-xs font-medium text-card-foreground/90 shadow-none ring-offset-0 transition-all duration-300 hover:bg-accent/20 hover:text-primary focus:shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 data-[state=active]:bg-transparent data-[state=active]:text-primary data-[state=active]:shadow-none"
-              >
-                {domainIcons[key]}
-                <span className="capitalize">{key}</span>
-              </TabsTrigger>
+      {/* D. Applications par Domaine */}
+      <SectionWrapper title="Applications par Domaine" icon={LayoutGrid} index={3}>
+        <Accordion type="single" collapsible className="w-full">
+            {Object.entries(card.domaines).map(([key, value], idx) => (
+                 <AccordionItem value={`item-${idx}`} key={key}>
+                    <AccordionTrigger className="font-headline text-lg hover:no-underline text-card-foreground/90">
+                        <div className="flex items-center gap-3">
+                            {domainIcons[key]}
+                            <span className="capitalize">{key}</span>
+                        </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="p-4 bg-background/20 rounded-b-lg border-x border-b border-primary/20 text-white/90">
+                        <p>{value.texte}</p>
+                    </AccordionContent>
+                 </AccordionItem>
             ))}
-          </TabsList>
-          {Object.entries(card.domaines).map(([key, value]) => (
-            <TabsContent key={key} value={key} className="mt-4 p-4 bg-background/20 rounded-lg border border-primary/20 text-white/90">
-              <p>{value.texte}</p>
-            </TabsContent>
-          ))}
-        </Tabs>
+        </Accordion>
       </SectionWrapper>
       
-      {/* D. Associations Clés */}
+      {/* E. Associations Clés */}
       {hasCombinaisons && (
-        <SectionWrapper title="Associations Clés" icon={Link2} index={3}>
+        <SectionWrapper title="Associations Clés" icon={Link2} index={4}>
           <ScrollArea className="h-96 w-full pr-4">
             <div className="space-y-4">
               {card.combinaisons.map((combo) => {
@@ -174,13 +164,13 @@ export function CardDetailsView({ card }: { card: Card }) {
                                     alt={associatedCard.nom_carte}
                                     fill
                                     className="object-contain"
+                                    sizes="56px"
                                 />
                             </div>
                         </div>
                     </div>
-                    <div className="flex-1">
-                      <h4 className="font-headline font-bold text-lg text-primary">{associatedCard.nom_carte}</h4>
-                      <p className="text-sm text-white/90">{combo.signification}</p>
+                    <div className="flex-1 text-sm text-white/90">
+                      <span className="font-bold text-primary">Avec le {associatedCard.nom_carte}</span> → {combo.signification}
                     </div>
                   </div>
                 )
@@ -190,29 +180,44 @@ export function CardDetailsView({ card }: { card: Card }) {
         </SectionWrapper>
       )}
 
-      {/* E. Le Conseil */}
-      <SectionWrapper title="Le Conseil" icon={Lightbulb} index={hasCombinaisons ? 4 : 3}>
-        <div className="p-4 bg-background/20 rounded-lg border border-primary/20 text-white/90">
-          <p>{card.interpretations.conseil.texte}</p>
-        </div>
-      </SectionWrapper>
-
-      {/* F. Mots-clés */}
-      <SectionWrapper title="Mots-clés" icon={Tags} index={hasCombinaisons ? 5 : 4}>
-        <blockquote className="border-l-4 border-primary pl-4 italic text-white/90 my-4">
-          {card.phrase_cle.texte}
-        </blockquote>
-        <div className="flex flex-wrap gap-2">
-          {[...card.mots_cles.positifs, ...card.mots_cles.negatifs, ...card.mots_cles.neutres].map((mot) => (
-            <Badge key={mot} variant="secondary" className="bg-primary/20 text-primary-foreground/90 border border-primary/50">
-              {mot}
-            </Badge>
-          ))}
-        </div>
+      {/* F. Interprétations Détaillées (optionnel, si on veut garder les onglets) */}
+      <SectionWrapper title="Interprétations" icon={Layers} index={5}>
+        <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="item-1">
+                <AccordionTrigger className="font-headline text-lg hover:no-underline text-card-foreground/90">
+                    <div className="flex items-center gap-3">
+                       <Heart className="h-5 w-5" /><span>Aspect Lumineux</span>
+                    </div>
+                </AccordionTrigger>
+                <AccordionContent className="p-4 bg-background/20 rounded-b-lg border-x border-b border-primary/20 text-white/90">
+                    <p>{card.interpretations.endroit.texte}</p>
+                </AccordionContent>
+            </AccordionItem>
+             <AccordionItem value="item-2">
+                <AccordionTrigger className="font-headline text-lg hover:no-underline text-card-foreground/90">
+                    <div className="flex items-center gap-3">
+                       <Briefcase className="h-5 w-5" /><span>Défis & Obstacles</span>
+                    </div>
+                </AccordionTrigger>
+                <AccordionContent className="p-4 bg-background/20 rounded-b-lg border-x border-b border-primary/20 text-white/90">
+                    <p>{card.interpretations.ombre_et_defis.texte}</p>
+                </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-3">
+                <AccordionTrigger className="font-headline text-lg hover:no-underline text-card-foreground/90">
+                    <div className="flex items-center gap-3">
+                       <Sparkles className="h-5 w-5" /><span>Le Conseil de l'Oracle</span>
+                    </div>
+                </AccordionTrigger>
+                <AccordionContent className="p-4 bg-background/20 rounded-b-lg border-x border-b border-primary/20 text-white/90">
+                    <p>{card.interpretations.conseil.texte}</p>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
       </SectionWrapper>
 
       {/* G. Mes Notes */}
-       <SectionWrapper title="Mes Notes" icon={NotebookText} index={hasCombinaisons ? 6 : 5}>
+       <SectionWrapper title="Mes Notes" icon={NotebookText} index={6}>
            <Textarea
                placeholder="Mes réflexions, associations personnelles, ou interprétations..."
                className="bg-secondary/20 backdrop-blur-lg border-primary/30 text-white placeholder:text-white/60"
