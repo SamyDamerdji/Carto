@@ -73,7 +73,7 @@ export function CardCarousel({ cards }: CardCarouselProps) {
                 transition={{ type: 'spring', stiffness: 200, damping: 25 }}
               >
                   <div className="relative w-52 aspect-[2.5/3.5] pointer-events-none">
-                      <div className="absolute inset-0 bg-card rounded-2xl shadow-lg p-1">
+                      <div className="absolute inset-0 bg-card rounded-xl shadow-lg p-1">
                           <div className="relative h-full w-full p-2">
                               <Image
                                 src={card.image_url}
