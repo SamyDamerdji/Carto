@@ -24,7 +24,7 @@ export function CardCarousel({ cards }: CardCarouselProps) {
     setActiveIndex((prev) => (prev === 0 ? cards.length - 1 : prev - 1));
   };
 
-  const onPanEnd = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+  const onDragEnd = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     const swipeThreshold = 50;
     if (info.offset.y > swipeThreshold) {
       handlePrev();
@@ -39,14 +39,11 @@ export function CardCarousel({ cards }: CardCarouselProps) {
     <div className="w-full flex flex-col items-center">
       <motion.div
         className="relative w-full max-w-xs h-[400px] cursor-ns-resize"
-        onPanEnd={onPanEnd}
+        drag="y"
+        onDragEnd={onDragEnd}
+        dragConstraints={{ top: 0, bottom: 0 }}
+        dragElasticity={0.1}
       >
-        <div
-          className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-secondary/80 to-transparent z-20 pointer-events-none"
-        />
-        <div
-          className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-secondary/80 to-transparent z-20 pointer-events-none"
-        />
         <AnimatePresence>
           {cards.map((card, index) => {
             const offset = index - activeIndex;
@@ -73,7 +70,7 @@ export function CardCarousel({ cards }: CardCarouselProps) {
                 transition={{ type: 'spring', stiffness: 200, damping: 25 }}
               >
                   <div className="relative w-52 aspect-[2.5/3.5] pointer-events-none">
-                      <div className="absolute inset-0 bg-card rounded-xl shadow-lg p-1">
+                      <div className="absolute inset-0 bg-card rounded-lg shadow-lg p-1">
                           <div className="relative h-full w-full p-2">
                               <Image
                                 src={card.image_url}
