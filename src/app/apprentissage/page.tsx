@@ -1,7 +1,6 @@
-
 'use client';
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { cardsList } from "@/lib/data/cards";
@@ -12,12 +11,12 @@ import { SuitNavigation } from "@/components/cards/suit-navigation";
 export default function ApprentissagePage() {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const handleSuitSelect = (suit: CardColor) => {
+  const handleSuitSelect = useCallback((suit: CardColor) => {
     const firstCardOfSuitIndex = cardsList.findIndex(card => card.couleur === suit);
     if (firstCardOfSuitIndex !== -1) {
       setActiveIndex(firstCardOfSuitIndex);
     }
-  };
+  }, []);
 
   return (
     <div className="flex min-h-dvh flex-col">

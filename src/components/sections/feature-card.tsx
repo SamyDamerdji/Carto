@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { memo } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -11,7 +12,7 @@ interface FeatureCardProps {
   index: number;
 }
 
-export function FeatureCard({ children, title, description, index, className, ...props }: FeatureCardProps & React.ComponentPropsWithoutRef<'div'>) {
+const FeatureCardComponent = ({ children, title, description, index, className, ...props }: FeatureCardProps & React.ComponentPropsWithoutRef<'div'>) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -41,3 +42,6 @@ export function FeatureCard({ children, title, description, index, className, ..
     </motion.div>
   );
 };
+
+FeatureCardComponent.displayName = 'FeatureCard';
+export const FeatureCard = memo(FeatureCardComponent);

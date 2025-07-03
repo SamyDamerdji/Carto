@@ -1,7 +1,7 @@
 'use client';
 
 import type { ElementType, ReactNode } from "react";
-import { useState, useCallback, useEffect, useRef } from "react";
+import { useState, useCallback, useEffect, useRef, memo } from "react";
 import { Button } from "@/components/ui/button";
 import { Volume2, VolumeX, Loader2 } from "lucide-react";
 import { textToSpeech } from "@/ai/flows/tts-flow";
@@ -16,7 +16,7 @@ interface InfoCardProps {
   playOnMount?: boolean;
 }
 
-export function InfoCard({ icon: Icon, title, children, textContentToSpeak, playOnMount = false }: InfoCardProps) {
+const InfoCardComponent = ({ icon: Icon, title, children, textContentToSpeak, playOnMount = false }: InfoCardProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -150,3 +150,6 @@ export function InfoCard({ icon: Icon, title, children, textContentToSpeak, play
     </div>
   );
 }
+
+InfoCardComponent.displayName = 'InfoCard';
+export const InfoCard = memo(InfoCardComponent);

@@ -115,15 +115,15 @@ export default function RevelationSystemiquePage() {
     drawCards();
   }, [drawCards]);
 
-  const handleReveal = () => {
+  const handleReveal = useCallback(() => {
     if (flipSoundRef.current) {
         flipSoundRef.current.currentTime = 0;
         flipSoundRef.current.play().catch(e => console.error("Audio play failed", e));
     }
     setIsRevealed(true);
-  }
+  }, []);
 
-  const handleInterpret = async () => {
+  const handleInterpret = useCallback(async () => {
     if (drawnCards.length < 7) return;
     setIsInterpreting(true);
     
@@ -156,9 +156,9 @@ export default function RevelationSystemiquePage() {
     } finally {
       setIsInterpreting(false);
     }
-  };
+  }, [drawnCards, toast]);
 
-  const handleDeepen = async () => {
+  const handleDeepen = useCallback(async () => {
     if (!interpretation || drawnCards.length < 7) return;
     setIsDeepening(true);
 
@@ -195,7 +195,7 @@ export default function RevelationSystemiquePage() {
     } finally {
         setIsDeepening(false);
     }
-  };
+  }, [drawnCards, interpretation, toast]);
 
   return (
     <div className="flex min-h-dvh flex-col">

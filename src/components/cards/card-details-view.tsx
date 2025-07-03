@@ -1,6 +1,7 @@
 'use client';
 
 import type { ReactNode } from 'react';
+import { memo } from 'react';
 import { motion } from 'framer-motion';
 import type { Card } from '@/lib/data/cards';
 import { getCardDetails } from '@/lib/data/cards';
@@ -37,7 +38,7 @@ interface SectionWrapperProps {
   action?: ReactNode;
 }
 
-const SectionWrapper = ({ title, icon: Icon, children, index, action }: SectionWrapperProps) => (
+const SectionWrapperComponent = ({ title, icon: Icon, children, index, action }: SectionWrapperProps) => (
   <motion.div
     initial={{ opacity: 0, y: 50 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -57,6 +58,9 @@ const SectionWrapper = ({ title, icon: Icon, children, index, action }: SectionW
     {children}
   </motion.div>
 );
+SectionWrapperComponent.displayName = 'SectionWrapper';
+const SectionWrapper = memo(SectionWrapperComponent);
+
 
 export function CardDetailsView({ card }: { card: Card }) {
   const domainIcons: Record<string, ReactNode> = {
