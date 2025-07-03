@@ -1,7 +1,7 @@
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { cardsList } from "@/lib/data/cards";
-import { CardGrid } from "@/components/cards/card-grid";
+import { CardCarousel } from "@/components/cards/card-carousel";
 
 export default function ApprentissagePage() {
   return (
@@ -14,11 +14,11 @@ export default function ApprentissagePage() {
                   Apprentissage
                 </h1>
                 <p className="mt-4 max-w-2xl text-lg text-white">
-                  Explorez la signification de chaque carte.
+                  Faites défiler les cartes pour explorer leur signification.
                 </p>
             </div>
             
-            <CardGrid cards={cardsList} />
+            <CardCarousel cards={cardsList} />
         </div>
       </main>
       <Footer />
