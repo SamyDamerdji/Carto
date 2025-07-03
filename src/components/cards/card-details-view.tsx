@@ -180,7 +180,7 @@ export function CardDetailsView({ card }: { card: Card }) {
                 const associatedCard = getCardDetails(combo.carte_associee_id);
                 if (!associatedCard) return null;
                 return (
-                  <div key={combo.carte_associee_id} className="flex items-center gap-4 rounded-xl bg-secondary/20 p-3 backdrop-blur-lg border border-primary/30 shadow-md">
+                  <div key={combo.carte_associee_id} className="flex items-start gap-4 rounded-xl bg-secondary/20 p-3 backdrop-blur-lg border border-primary/30 shadow-md">
                     <div className="relative h-20 w-14 flex-shrink-0">
                         <div className="bg-card rounded shadow-lg p-1 w-full h-full">
                             <div className="relative h-full w-full p-1">
@@ -194,8 +194,9 @@ export function CardDetailsView({ card }: { card: Card }) {
                             </div>
                         </div>
                     </div>
-                    <div className="flex-1 text-sm text-white/90">
-                      <span className="font-bold text-primary">Avec le {associatedCard.nom_carte}</span> → {combo.signification}
+                    <div className="flex-1 text-sm">
+                      <p className="font-bold text-primary">Avec le {associatedCard.nom_carte}</p>
+                      <p className="mt-1 text-white/90">{combo.signification}</p>
                     </div>
                   </div>
                 )
