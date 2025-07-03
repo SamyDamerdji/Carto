@@ -4,7 +4,7 @@ import * as React from 'react';
 import type { CardSummary } from '@/lib/data/cards';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { BrainCircuit, ChevronLeft, ChevronRight } from 'lucide-react';
+import { BrainCircuit, ChevronLeft, ChevronRight, FileText } from 'lucide-react';
 import Link from 'next/link';
 import { motion, AnimatePresence, PanInfo } from 'framer-motion';
 
@@ -83,7 +83,7 @@ export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouse
                     transition={{ type: 'spring', stiffness: 200, damping: 25 }}
                 >
                     <div className="relative w-48 aspect-[2.5/3.5] pointer-events-none">
-                        <div className="absolute inset-0 bg-card rounded-xl shadow-lg p-1">
+                        <div className="absolute inset-0 bg-card rounded-lg shadow-lg p-1">
                             <div className="relative h-full w-full p-2">
                                 <Image
                                 src={card.image_url}
@@ -130,6 +130,7 @@ export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouse
           <div className="flex flex-col gap-2 w-full">
               <Link href={`/apprentissage/${activeCard.id}`} passHref>
                   <Button variant="secondary" size="sm" className="text-xs w-full">
+                      <FileText />
                       Fiche détaillée
                   </Button>
               </Link>
