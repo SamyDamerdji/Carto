@@ -32,7 +32,7 @@ export function CardCarousel({ cards }: CardCarouselProps) {
 
   return (
     <div className="flex flex-col items-center justify-center w-full">
-      <div className="relative h-[480px] w-full" style={{ perspective: "1200px" }}>
+      <div className="relative h-[420px] w-full" style={{ perspective: "1000px" }}>
         {cards.map((card, i) => {
           const offset = i - index;
           const isVisible = Math.abs(offset) <= 2;
@@ -40,49 +40,51 @@ export function CardCarousel({ cards }: CardCarouselProps) {
           return (
             <motion.div
               key={card.id}
-              className="absolute w-[240px] h-[400px]"
+              className="absolute w-[200px]"
               style={{
                 transformStyle: "preserve-3d",
                 top: "50%",
                 left: "50%",
-                marginTop: "-200px",
-                marginLeft: "-120px",
+                marginTop: "-190px",
+                marginLeft: "-100px",
               }}
               animate={{
-                x: `${offset * 60}%`,
-                rotateY: `${offset * -25}deg`,
+                x: offset * 110,
+                rotateY: offset * -25,
                 scale: 1 - Math.abs(offset) * 0.2,
                 zIndex: cards.length - Math.abs(offset),
                 opacity: isVisible ? 1 : 0,
                 transition: { type: "spring", stiffness: 100, damping: 20 },
               }}
             >
-              <div className="relative h-full w-full overflow-hidden rounded-2xl border border-primary/30 bg-secondary/20 p-4 shadow-lg shadow-primary/20 backdrop-blur-lg flex flex-col [-webkit-box-reflect:below_1px_linear-gradient(to_bottom,transparent_85%,rgba(255,255,255,0.1))]">
-                <div className="absolute -right-2 -top-2 h-16 w-16 bg-[radial-gradient(closest-side,hsl(var(--primary)/0.1),transparent)]"></div>
-                
-                <h3 className="font-headline text-base whitespace-nowrap font-bold text-center text-primary uppercase mb-2 h-7 flex items-center justify-center" style={{ textShadow: '0px 2px 3px rgba(0,0,0,0.7)' }}>
+              <div className="relative w-full h-[380px] overflow-hidden rounded-2xl border border-primary/30 bg-secondary/20 p-4 shadow-lg shadow-primary/20 backdrop-blur-lg flex flex-col">
+                <motion.h3 
+                  animate={{ opacity: offset === 0 ? 1 : 0, y: offset === 0 ? 0 : -10 }}
+                  transition={{ duration: 0.2 }}
+                  className="font-headline text-base whitespace-nowrap font-bold text-center text-primary uppercase mb-2 h-7 flex items-center justify-center" style={{ textShadow: '0px 2px 3px rgba(0,0,0,0.7)' }}>
                   {card.nom_carte}
-                </h3>
+                </motion.h3>
                 
                 <Link href={`/apprentissage/${card.id}`} className="block cursor-pointer flex-grow">
                   <div className="relative w-full h-full">
-                    <div className="relative h-full w-full">
-                        <div className="absolute inset-0 bg-card rounded-xl shadow-lg p-2">
-                            <div className="relative h-full w-full">
-                                <Image
-                                src={card.image_url}
-                                alt={`Image de la carte ${card.nom_carte}`}
-                                fill
-                                className="object-contain"
-                                sizes="240px"
-                                />
-                            </div>
+                    <div className="absolute inset-0 bg-card rounded-xl shadow-lg p-1">
+                        <div className="relative h-full w-full p-2">
+                            <Image
+                              src={card.image_url}
+                              alt={`Image de la carte ${card.nom_carte}`}
+                              fill
+                              className="object-contain"
+                              sizes="200px"
+                            />
                         </div>
                     </div>
                   </div>
                 </Link>
-
-                <div className="mt-auto pt-4 flex flex-col gap-2">
+                
+                <motion.div 
+                  animate={{ opacity: offset === 0 ? 1 : 0, y: offset === 0 ? 0 : 10 }}
+                  transition={{ duration: 0.2 }}
+                  className="mt-auto pt-3 flex flex-col gap-2">
                   <Link href={`/apprentissage/${card.id}`} passHref>
                       <Button variant="secondary" size="sm" className="text-xs w-full">
                           Fiche détaillée
@@ -94,14 +96,14 @@ export function CardCarousel({ cards }: CardCarouselProps) {
                           Leçon interactive
                       </Button>
                   </Link>
-                </div>
+                </motion.div>
               </div>
             </motion.div>
           );
         })}
       </div>
 
-      <div className="flex justify-center items-center gap-4 mt-4">
+      <div className="flex justify-center items-center gap-4 mt-6">
         <Button onClick={handlePrev} size="icon" variant="outline" disabled={!canGoPrev}>
           <ChevronLeft className="h-4 w-4" />
         </Button>
