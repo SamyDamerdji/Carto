@@ -24,16 +24,16 @@ const ClubIcon = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 const SpadeIcon = (props: SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-    <path d="M12 2C2 12 7 17 12 22C17 17 22 12 12 2Z M10 18H14L12 22Z" />
-  </svg>
+    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+        <path d="M12 2C7.9-2.5 3.5 3.1 3.5 8.5c0 4.2 4.1 6.3 8.5 13.5 4.4-7.2 8.5-9.3 8.5-13.5C20.5 3.1 16.1-2.5 12 2zM12 20.5c-2-3.1-4.5-5.2-4.5-7.8 0-2.4 1.5-4.2 3.5-4.2s3.5 1.8 3.5 4.2c0 2.6-2.5 4.7-4.5 7.8z" clipRule="evenodd" fillRule="evenodd" />
+    </svg>
 );
 
 const suits: { name: CardColor, icon: JSX.Element }[] = [
-  { name: 'Cœur', icon: <HeartIcon className="w-6 h-6" /> },
-  { name: 'Carreau', icon: <DiamondIcon className="w-6 h-6" /> },
   { name: 'Trèfle', icon: <ClubIcon className="w-6 h-6" /> },
+  { name: 'Cœur', icon: <HeartIcon className="w-6 h-6" /> },
   { name: 'Pique', icon: <SpadeIcon className="w-6 h-6" /> },
+  { name: 'Carreau', icon: <DiamondIcon className="w-6 h-6" /> },
 ];
 
 interface SuitNavigationProps {
@@ -42,13 +42,13 @@ interface SuitNavigationProps {
     
 export function SuitNavigation({ onSuitSelect }: SuitNavigationProps) {
     return (
-        <div className="w-full max-w-xs flex justify-around items-center mt-6 p-2 rounded-2xl bg-secondary/20 backdrop-blur-lg border border-primary/30 shadow-lg">
+        <div className="w-full max-w-xs flex justify-around items-center mt-6 p-1.5 rounded-2xl bg-secondary/20 backdrop-blur-lg border border-primary/30 shadow-lg">
             {suits.map(suit => (
                 <Button 
                     key={suit.name}
                     variant="ghost" 
                     size="icon" 
-                    className="rounded-full text-primary/70 hover:text-primary hover:bg-primary/20 h-10 w-10"
+                    className="rounded-full text-primary hover:bg-primary/20 h-10 w-10"
                     onClick={() => onSuitSelect(suit.name)}
                     aria-label={`Aller à la couleur ${suit.name}`}
                 >
