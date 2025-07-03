@@ -31,10 +31,10 @@ const SpadeIcon = (props: SVGProps<SVGSVGElement>) => (
 );
 
 const suits: { name: CardColor, icon: JSX.Element }[] = [
-  { name: 'Cœur', icon: <HeartIcon className="w-5 h-5 text-red-500" /> },
-  { name: 'Carreau', icon: <DiamondIcon className="w-5 h-5 text-red-500" /> },
-  { name: 'Trèfle', icon: <ClubIcon className="w-5 h-5 text-card-foreground/80" /> },
-  { name: 'Pique', icon: <SpadeIcon className="w-5 h-5 text-card-foreground/80" /> },
+  { name: 'Cœur', icon: <HeartIcon className="w-6 h-6" /> },
+  { name: 'Carreau', icon: <DiamondIcon className="w-6 h-6" /> },
+  { name: 'Trèfle', icon: <ClubIcon className="w-6 h-6" /> },
+  { name: 'Pique', icon: <SpadeIcon className="w-6 h-6" /> },
 ];
 
 interface SuitNavigationProps {
@@ -43,13 +43,13 @@ interface SuitNavigationProps {
     
 export function SuitNavigation({ onSuitSelect }: SuitNavigationProps) {
     return (
-        <div className="flex justify-center items-center gap-2 mt-6 p-1.5 px-3 rounded-full bg-secondary/20 backdrop-blur-lg border border-primary/30 shadow-lg">
+        <div className="w-full max-w-xs flex justify-around items-center mt-6 p-2 rounded-2xl bg-secondary/20 backdrop-blur-lg border border-primary/30 shadow-lg">
             {suits.map(suit => (
                 <Button 
                     key={suit.name}
                     variant="ghost" 
                     size="icon" 
-                    className="rounded-full text-foreground/70 hover:text-primary hover:bg-primary/20 h-9 w-9"
+                    className="rounded-full text-primary/70 hover:text-primary hover:bg-primary/20 h-10 w-10"
                     onClick={() => onSuitSelect(suit.name)}
                     aria-label={`Aller à la couleur ${suit.name}`}
                 >
