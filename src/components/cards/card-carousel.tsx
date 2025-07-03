@@ -17,7 +17,7 @@ interface CardCarouselProps {
 
 export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouselProps) {
   const router = useRouter();
-  const dragStartRef = React.useRef({ y: 0, time: 0 });
+  const wasDragged = React.useRef(false);
   
   const handleNext = React.useCallback(() => {
     setActiveIndex((prev) => (prev === cards.length - 1 ? 0 : prev + 1));
@@ -27,27 +27,33 @@ export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouse
     setActiveIndex((prev) => (prev === 0 ? cards.length - 1 : prev - 1));
   }, [cards.length, setActiveIndex]);
 
-  const onDragStart = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-    dragStartRef.current = { y: info.point.y, time: Date.now() };
+  const handleTap = () => {
+    if (!wasDragged.current) {
+        router.push(`/apprentissage/${cards[activeIndex].id}`);
+    }
+  };
+
+  const onDragStart = () => {
+    wasDragged.current = false;
+  };
+  
+  const onDrag = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+    // If the drag distance exceeds a small threshold, we consider it a drag
+    if (Math.abs(info.offset.y) > 5) {
+        wasDragged.current = true;
+    }
   };
 
   const onDragEnd = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-    const dragDistance = Math.abs(info.point.y - dragStartRef.current.y);
-    const dragDuration = Date.now() - dragStartRef.current.time;
-
-    // A "tap" is a very short drag in distance and time
-    if (dragDistance < 10 && dragDuration < 200) {
-      router.push(`/apprentissage/${cards[activeIndex].id}`);
-      return;
-    }
-
-    // A "swipe" is a longer drag
+    // Only handle swipe logic here, tap is handled by onTap
     const swipeThreshold = 50;
     if (info.offset.y > swipeThreshold) {
       handlePrev();
     } else if (info.offset.y < -swipeThreshold) {
       handleNext();
     }
+    // Reset for the next interaction after a timeout to let the tap event resolve
+    setTimeout(() => { wasDragged.current = false; }, 0);
   };
 
   const activeCard = cards[activeIndex];
@@ -69,7 +75,9 @@ export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouse
         <motion.div
             className="relative w-48 h-[270px] cursor-pointer"
             drag="y"
+            onTap={handleTap}
             onDragStart={onDragStart}
+            onDrag={onDrag}
             onDragEnd={onDragEnd}
             dragConstraints={{ top: 0, bottom: 0 }}
             dragElasticity={0.1}
