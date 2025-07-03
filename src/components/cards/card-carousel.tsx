@@ -17,6 +17,7 @@ interface CardCarouselProps {
 
 export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouselProps) {
   const router = useRouter();
+  const dragStartRef = React.useRef({ y: 0, time: 0 });
   
   const handleNext = React.useCallback(() => {
     setActiveIndex((prev) => (prev === cards.length - 1 ? 0 : prev + 1));
@@ -26,7 +27,21 @@ export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouse
     setActiveIndex((prev) => (prev === 0 ? cards.length - 1 : prev - 1));
   }, [cards.length, setActiveIndex]);
 
+  const onDragStart = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+    dragStartRef.current = { y: info.point.y, time: Date.now() };
+  };
+
   const onDragEnd = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+    const dragDistance = Math.abs(info.point.y - dragStartRef.current.y);
+    const dragDuration = Date.now() - dragStartRef.current.time;
+
+    // A "tap" is a very short drag in distance and time
+    if (dragDistance < 10 && dragDuration < 200) {
+      router.push(`/apprentissage/${cards[activeIndex].id}`);
+      return;
+    }
+
+    // A "swipe" is a longer drag
     const swipeThreshold = 50;
     if (info.offset.y > swipeThreshold) {
       handlePrev();
@@ -40,7 +55,7 @@ export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouse
   return (
     <div className="w-full flex flex-col items-center">
       {/* Card Stack Container */}
-      <div className="relative w-full max-w-sm h-[360px] flex items-center justify-center">
+      <div className="relative w-full max-w-sm h-[320px] flex items-center justify-center">
         <motion.button
             className="absolute left-2 top-1/2 -translate-y-1/2 z-[60] text-primary/70 hover:text-primary transition-colors"
             onClick={handlePrev}
@@ -54,10 +69,10 @@ export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouse
         <motion.div
             className="relative w-48 h-[270px] cursor-pointer"
             drag="y"
+            onDragStart={onDragStart}
             onDragEnd={onDragEnd}
             dragConstraints={{ top: 0, bottom: 0 }}
             dragElasticity={0.1}
-            onTap={() => router.push(`/apprentissage/${activeCard.id}`)}
         >
             <AnimatePresence initial={false}>
             {cards.map((card, index) => {
@@ -133,13 +148,13 @@ export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouse
           <div className="flex flex-col gap-2 w-full">
               <Link href={`/apprentissage/${activeCard.id}`} passHref>
                   <Button variant="secondary" size="sm" className="text-xs w-full">
-                      <FileText />
+                      <FileText className="mr-2"/>
                       Fiche détaillée
                   </Button>
               </Link>
               <Link href={`/apprentissage/lecon/${activeCard.id}`} passHref>
                   <Button variant="default" size="sm" className="text-xs w-full">
-                      <BrainCircuit />
+                      <BrainCircuit className="mr-2"/>
                       Leçon interactive
                   </Button>
               </Link>
