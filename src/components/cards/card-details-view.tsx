@@ -137,7 +137,9 @@ export function CardDetailsView({ card }: { card: Card }) {
                 </div>
               </AccordionTrigger>
               <AccordionContent className="p-4 bg-background/20 rounded-b-lg border-x border-b border-primary/20">
-                <p className="text-white/90">{card.mots_cles.positifs.join(' • ')}</p>
+                <ul className="list-disc list-inside space-y-1 text-white/90">
+                  {card.mots_cles.positifs.map((keyword, i) => <li key={`pos-${i}`}>{keyword}</li>)}
+                </ul>
               </AccordionContent>
             </AccordionItem>
           )}
@@ -150,7 +152,9 @@ export function CardDetailsView({ card }: { card: Card }) {
                 </div>
               </AccordionTrigger>
               <AccordionContent className="p-4 bg-background/20 rounded-b-lg border-x border-b border-primary/20">
-                <p className="text-white/90">{card.mots_cles.negatifs.join(' • ')}</p>
+                <ul className="list-disc list-inside space-y-1 text-white/90">
+                  {card.mots_cles.negatifs.map((keyword, i) => <li key={`neg-${i}`}>{keyword}</li>)}
+                </ul>
               </AccordionContent>
             </AccordionItem>
           )}
@@ -163,7 +167,9 @@ export function CardDetailsView({ card }: { card: Card }) {
                 </div>
               </AccordionTrigger>
               <AccordionContent className="p-4 bg-background/20 rounded-b-lg border-x border-b border-primary/20">
-                <p className="text-white/90">{card.mots_cles.neutres.join(' • ')}</p>
+                <ul className="list-disc list-inside space-y-1 text-white/90">
+                  {card.mots_cles.neutres.map((keyword, i) => <li key={`neu-${i}`}>{keyword}</li>)}
+                </ul>
               </AccordionContent>
             </AccordionItem>
           )}
