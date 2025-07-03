@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { BrainCircuit, ChevronLeft, ChevronRight, FileText } from 'lucide-react';
 import Link from 'next/link';
 import { motion, AnimatePresence, PanInfo } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 
 interface CardCarouselProps {
   cards: CardSummary[];
@@ -15,6 +16,7 @@ interface CardCarouselProps {
 }
 
 export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouselProps) {
+  const router = useRouter();
   
   const handleNext = React.useCallback(() => {
     setActiveIndex((prev) => (prev === cards.length - 1 ? 0 : prev + 1));
@@ -50,11 +52,12 @@ export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouse
         </motion.button>
         
         <motion.div
-            className="relative w-full h-full cursor-ns-resize"
+            className="relative w-full h-full cursor-pointer"
             drag="y"
             onDragEnd={onDragEnd}
             dragConstraints={{ top: 0, bottom: 0 }}
             dragElasticity={0.1}
+            onTap={() => router.push(`/apprentissage/${activeCard.id}`)}
         >
             <AnimatePresence initial={false}>
             {cards.map((card, index) => {
