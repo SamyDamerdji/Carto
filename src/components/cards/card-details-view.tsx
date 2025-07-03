@@ -8,7 +8,6 @@ import { getCardDetails } from '@/lib/data/cards';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import {
   Heart,
@@ -23,6 +22,9 @@ import {
   BrainCircuit,
   Aperture,
   HeartPulse,
+  PlusCircle,
+  MinusCircle,
+  List,
 } from 'lucide-react';
 import { Textarea } from '@/components/ui/textarea';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -125,44 +127,47 @@ export function CardDetailsView({ card }: { card: Card }) {
       )}
 
       <SectionWrapper title="Mots-clés" icon={Tags} index={2}>
-        <div className="space-y-4">
+        <Accordion type="single" collapsible className="w-full">
           {card.mots_cles.positifs.length > 0 && (
-            <div>
-              <h4 className="font-headline text-sm font-bold text-white/80 mb-2">Positifs</h4>
-              <div className="flex flex-wrap gap-2">
-                {card.mots_cles.positifs.map((mot) => (
-                  <Badge key={mot} variant="default">
-                    {mot}
-                  </Badge>
-                ))}
-              </div>
-            </div>
+            <AccordionItem value="item-positifs">
+              <AccordionTrigger className="font-headline text-lg hover:no-underline text-card-foreground/90">
+                <div className="flex items-center gap-3">
+                  <PlusCircle className="h-5 w-5 text-primary" />
+                  <span>Positifs</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="p-4 bg-background/20 rounded-b-lg border-x border-b border-primary/20">
+                <p className="text-white/90">{card.mots_cles.positifs.join(' • ')}</p>
+              </AccordionContent>
+            </AccordionItem>
           )}
           {card.mots_cles.negatifs.length > 0 && (
-            <div>
-              <h4 className="font-headline text-sm font-bold text-white/80 mb-2">Négatifs</h4>
-              <div className="flex flex-wrap gap-2">
-                {card.mots_cles.negatifs.map((mot) => (
-                  <Badge key={mot} variant="destructive">
-                    {mot}
-                  </Badge>
-                ))}
-              </div>
-            </div>
+            <AccordionItem value="item-negatifs">
+              <AccordionTrigger className="font-headline text-lg hover:no-underline text-card-foreground/90">
+                <div className="flex items-center gap-3">
+                  <MinusCircle className="h-5 w-5 text-primary" />
+                  <span>Négatifs</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="p-4 bg-background/20 rounded-b-lg border-x border-b border-primary/20">
+                <p className="text-white/90">{card.mots_cles.negatifs.join(' • ')}</p>
+              </AccordionContent>
+            </AccordionItem>
           )}
           {card.mots_cles.neutres.length > 0 && (
-            <div>
-              <h4 className="font-headline text-sm font-bold text-white/80 mb-2">Neutres</h4>
-              <div className="flex flex-wrap gap-2">
-                {card.mots_cles.neutres.map((mot) => (
-                  <Badge key={mot} variant="secondary">
-                    {mot}
-                  </Badge>
-                ))}
-              </div>
-            </div>
+            <AccordionItem value="item-neutres">
+              <AccordionTrigger className="font-headline text-lg hover:no-underline text-card-foreground/90">
+                <div className="flex items-center gap-3">
+                  <List className="h-5 w-5 text-primary" />
+                  <span>Neutres</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="p-4 bg-background/20 rounded-b-lg border-x border-b border-primary/20">
+                <p className="text-white/90">{card.mots_cles.neutres.join(' • ')}</p>
+              </AccordionContent>
+            </AccordionItem>
           )}
-        </div>
+        </Accordion>
       </SectionWrapper>
 
       <SectionWrapper title="Significations par Domaine" icon={LayoutGrid} index={3}>
