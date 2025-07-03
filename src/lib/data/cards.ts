@@ -42,6 +42,7 @@ import { trefle5Card } from './definitions/trefle-5';
 import { pique4Card } from './definitions/pique-4';
 import { coeur4Card } from './definitions/coeur-4';
 import { carreau4Card } from './definitions/carreau-4';
+import { trefle4Card } from './definitions/trefle-4';
 
 
 export type CardColor = 'Trèfle' | 'Cœur' | 'Carreau' | 'Pique';
@@ -172,6 +173,7 @@ const allCardsData: Card[] = [
   pique4Card,
   coeur4Card,
   carreau4Card,
+  trefle4Card,
 ];
 
 // Create a map for efficient lookups by ID
