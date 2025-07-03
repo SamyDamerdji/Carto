@@ -37,8 +37,9 @@ export function CardCarousel({ cards }: CardCarouselProps) {
 
   return (
     <div className="w-full flex flex-col items-center">
+      {/* Card Stack Container */}
       <motion.div
-        className="relative w-full max-w-xs h-[400px] cursor-ns-resize"
+        className="relative w-full max-w-xs h-[360px] cursor-ns-resize mb-4"
         drag="y"
         onDragEnd={onDragEnd}
         dragConstraints={{ top: 0, bottom: 0 }}
@@ -48,12 +49,13 @@ export function CardCarousel({ cards }: CardCarouselProps) {
           {cards.map((card, index) => {
             const offset = index - activeIndex;
             
+            // Render only a few cards for performance
             if (Math.abs(offset) > 3) {
-              return null; // Only render a few cards for performance
+              return null;
             }
 
             const scale = 1 - Math.abs(offset) * 0.15;
-            const translateY = offset * 40; // Reduced vertical spacing
+            const translateY = offset * 30; // Reduced vertical spacing
             const zIndex = cards.length - Math.abs(offset);
 
             return (
@@ -67,17 +69,18 @@ export function CardCarousel({ cards }: CardCarouselProps) {
                 initial={{ y: translateY, scale: 0.5, opacity: 0 }}
                 animate={{ y: translateY, scale, opacity: 1 }}
                 exit={{ opacity: 0, scale: 0.5 }}
+                // Smoother spring animation
                 transition={{ type: 'spring', stiffness: 200, damping: 25 }}
               >
-                  <div className="relative w-52 aspect-[2.5/3.5] pointer-events-none">
-                      <div className="absolute inset-0 bg-card rounded-lg shadow-lg p-1">
+                  <div className="relative w-48 aspect-[2.5/3.5] pointer-events-none">
+                      <div className="absolute inset-0 bg-card rounded-xl shadow-lg p-1">
                           <div className="relative h-full w-full p-2">
                               <Image
                                 src={card.image_url}
                                 alt={`Image de la carte ${card.nom_carte}`}
                                 fill
                                 className="object-contain"
-                                sizes="208px"
+                                sizes="192px"
                               />
                           </div>
                       </div>
@@ -88,7 +91,8 @@ export function CardCarousel({ cards }: CardCarouselProps) {
         </AnimatePresence>
       </motion.div>
       
-      <div className="relative z-30 -mt-12 flex flex-col items-center w-full max-w-xs">
+      {/* Controls and Info Container */}
+      <div className="flex flex-col items-center w-full max-w-xs">
           <AnimatePresence mode="wait">
             <motion.h3 
                 key={activeCard.id}
@@ -96,7 +100,8 @@ export function CardCarousel({ cards }: CardCarouselProps) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.2 }}
-                className="font-headline text-xl whitespace-nowrap font-bold text-center text-primary uppercase h-10 flex items-center justify-center mb-2" style={{ textShadow: '0px 2px 3px rgba(0,0,0,0.7)' }}>
+                className="font-headline text-xl whitespace-nowrap font-bold text-center text-primary uppercase h-10 flex items-center justify-center mb-2" 
+                style={{ textShadow: '0px 2px 3px rgba(0,0,0,0.7)' }}>
                 {activeCard.nom_carte}
             </motion.h3>
           </AnimatePresence>
