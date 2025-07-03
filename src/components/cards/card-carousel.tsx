@@ -15,9 +15,34 @@ interface CardCarouselProps {
   setActiveIndex: (index: number | ((prevIndex: number) => number)) => void;
 }
 
+const variants = {
+  enter: (direction: number) => {
+    return {
+      rotateY: direction > 0 ? -180 : 180,
+      opacity: 0,
+      scale: 0.9,
+    };
+  },
+  center: {
+    zIndex: 1,
+    rotateY: 0,
+    opacity: 1,
+    scale: 1,
+  },
+  exit: (direction: number) => {
+    return {
+      zIndex: 0,
+      rotateY: direction > 0 ? 180 : -180,
+      opacity: 0,
+      scale: 0.9,
+    };
+  },
+};
+
 export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouselProps) {
   const router = useRouter();
-  const wasDragged = React.useRef(false);
+  const [direction, setDirection] = React.useState(0);
+  const flipSoundRef = React.useRef<HTMLAudioElement | null>(null);
 
   // --- Logic for 3D effect ---
   const x = useMotionValue(0);
@@ -38,51 +63,49 @@ export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouse
   };
   // --- End of 3D effect logic ---
   
-  const handleNext = React.useCallback(() => {
-    setActiveIndex((prev) => (prev === cards.length - 1 ? 0 : prev + 1));
-  }, [cards.length, setActiveIndex]);
-
-  const handlePrev = React.useCallback(() => {
-    setActiveIndex((prev) => (prev === 0 ? cards.length - 1 : prev - 1));
-  }, [cards.length, setActiveIndex]);
-
-  const handleTap = (event: MouseEvent | TouchEvent | PointerEvent) => {
-    if (!wasDragged.current) {
-        router.push(`/apprentissage/${cards[activeIndex].id}`);
+  const playSound = () => {
+    if (flipSoundRef.current) {
+      flipSoundRef.current.currentTime = 0;
+      flipSoundRef.current.play().catch(e => console.error("Audio play failed", e));
     }
-    wasDragged.current = false;
-  };
-
-  const onDragStart = () => {
-    wasDragged.current = false;
   };
   
-  const onDrag = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-    if (Math.abs(info.offset.y) > 5) {
-        wasDragged.current = true;
-    }
+  const paginate = (newDirection: number) => {
+    playSound();
+    setActiveIndex((prev) => {
+        if (newDirection > 0) {
+            return prev === cards.length - 1 ? 0 : prev + 1;
+        }
+        return prev === 0 ? cards.length - 1 : prev - 1;
+    });
+    setDirection(newDirection);
   };
 
   const onDragEnd = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-    if (wasDragged.current) {
-        const swipeThreshold = 50;
-        if (info.offset.y > swipeThreshold) {
-            handlePrev();
-        } else if (info.offset.y < -swipeThreshold) {
-            handleNext();
-        }
+    const swipeThreshold = 50;
+    if (info.offset.y < -swipeThreshold) {
+      paginate(1);
+    } else if (info.offset.y > swipeThreshold) {
+      paginate(-1);
+    } else if (Math.abs(info.offset.y) < 5) { // It's a click/tap
+      router.push(`/apprentissage/${cards[activeIndex].id}`);
     }
   };
 
   const activeCard = cards[activeIndex];
 
+  if (!activeCard) {
+    return null; // or a loading state
+  }
+  
   return (
     <div className="w-full flex flex-col items-center">
-      {/* Card Stack Container */}
-      <div className="relative w-full max-w-sm h-[320px] flex items-center justify-center" style={{ perspective: '800px' }}>
+      <audio ref={flipSoundRef} src="https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/sounds/flipcard-91468.mp3" preload="auto" className="hidden" />
+      {/* Card Container */}
+      <div className="relative w-full max-w-sm h-[320px] flex items-center justify-center" style={{ perspective: '1200px' }}>
         <motion.button
             className="absolute left-2 top-1/2 -translate-y-1/2 z-[60] text-primary/70 hover:text-primary transition-colors"
-            onClick={handlePrev}
+            onClick={() => paginate(-1)}
             aria-label="Carte précédente"
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.9 }}
@@ -90,81 +113,62 @@ export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouse
             <ChevronLeft className="h-8 w-8" />
         </motion.button>
         
-        <motion.div
-            className="relative w-48 h-[270px] cursor-pointer"
-            drag="y"
-            onTap={handleTap}
-            onDragStart={onDragStart}
-            onDrag={onDrag}
-            onDragEnd={onDragEnd}
-            dragConstraints={{ top: 0, bottom: 0 }}
-            dragElasticity={0.1}
+        <div
+            className="relative w-48 h-[270px]"
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             style={{ transformStyle: 'preserve-3d' }}
         >
-            <AnimatePresence initial={false}>
-            {cards.map((card, index) => {
-                const offset = index - activeIndex;
-                const isActive = index === activeIndex;
-
-                if (Math.abs(offset) > 3) {
-                    return null;
-                }
-
-                const scale = 1 - Math.abs(offset) * 0.15;
-                const translateY = offset * 30;
-                const zIndex = cards.length - Math.abs(offset);
-
-                return (
+            <AnimatePresence initial={false} custom={direction} mode="wait">
                 <motion.div
-                    key={card.id}
-                    className="absolute w-full h-full flex items-center justify-center pointer-events-none"
-                    style={{
-                        transformOrigin: 'center',
-                        zIndex,
-                        transformStyle: 'preserve-3d',
-                        ...(isActive && { rotateX, rotateY }),
+                    key={activeIndex}
+                    className="absolute w-full h-full flex items-center justify-center cursor-pointer"
+                    custom={direction}
+                    variants={variants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{
+                        rotateY: { type: "tween", duration: 0.4, ease: "easeInOut" },
+                        opacity: { duration: 0.2 },
+                        scale: { duration: 0.4 },
                     }}
-                    initial={{ y: translateY > 0 ? 100 : -100, scale: 0.5, opacity: 0 }}
-                    animate={{ y: translateY, scale, opacity: 1 }}
-                    exit={{ opacity: 0, scale: 0.5 }}
-                    transition={{ type: 'spring', stiffness: 200, damping: 25 }}
+                    drag="y"
+                    onDragEnd={onDragEnd}
+                    dragConstraints={{ top: 0, bottom: 0 }}
+                    dragElasticity={0.1}
+                    style={{ rotateX, rotateY }}
                 >
-                    <div className="relative w-48 aspect-[2.5/3.5]">
+                    <div className="relative w-48 aspect-[2.5/3.5] pointer-events-none">
                         <div className="absolute inset-0 bg-card rounded-lg shadow-lg p-1">
                             <div className="relative h-full w-full p-2">
                                 <Image
-                                    src={card.image_url}
-                                    alt={`Image de la carte ${card.nom_carte}`}
+                                    src={activeCard.image_url}
+                                    alt={`Image de la carte ${activeCard.nom_carte}`}
                                     fill
                                     className="object-contain"
                                     sizes="192px"
-                                    priority={index === activeIndex}
+                                    priority
                                 />
                             </div>
-                            {isActive && (
-                                <motion.div
-                                    className="absolute inset-0 rounded-lg mix-blend-overlay pointer-events-none"
-                                    style={{
-                                    background: useTransform(
-                                        [rotateX, rotateY],
-                                        ([latestX, latestY]) => `radial-gradient(at ${50 - (latestY as number) * 2}% ${50 + (latestX as number) * 2}%, rgba(255,255,255,0.2), transparent 80%)`
-                                    )
-                                    }}
-                                />
-                            )}
+                            <motion.div
+                                className="absolute inset-0 rounded-lg mix-blend-overlay"
+                                style={{
+                                background: useTransform(
+                                    [rotateX, rotateY],
+                                    ([latestX, latestY]) => `radial-gradient(at ${50 - (latestY as number) * 2}% ${50 + (latestX as number) * 2}%, rgba(255,255,255,0.2), transparent 80%)`
+                                )
+                                }}
+                            />
                         </div>
                     </div>
                 </motion.div>
-                );
-            })}
             </AnimatePresence>
-        </motion.div>
+        </div>
 
         <motion.button
             className="absolute right-2 top-1/2 -translate-y-1/2 z-[60] text-primary/70 hover:text-primary transition-colors"
-            onClick={handleNext}
+            onClick={() => paginate(1)}
             aria-label="Carte suivante"
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.9 }}
