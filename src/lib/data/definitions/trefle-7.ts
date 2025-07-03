@@ -95,6 +95,15 @@ export const trefle7Card: Card = {
         "Faire des économies grâce à une gestion attentive."
       ]
     },
+    "sante": {
+        "texte": "Indique de petites améliorations de santé, fruit d'une bonne hygiène de vie (mieux manger, bouger un peu). Rien de spectaculaire, mais la satisfaction de voir que les petits efforts pour prendre soin de soi paient. C'est la carte du bien-être gagné au quotidien.",
+        "situation_type": "Petite amélioration, bien-être, routine saine.",
+        "scenarios_associes": [
+            "Se sentir mieux après avoir amélioré son alimentation.",
+            "La satisfaction d'avoir tenu sa routine sportive.",
+            "Un bilan de santé qui montre une petite amélioration encourageante."
+        ]
+    },
     "spirituel": {
       "texte": "La spiritualité est ici une pensée appliquée, une réflexion sur la manière d'incarner ses valeurs dans le monde concret. Comment puis-je utiliser mes talents pour servir ? Comment mon travail peut-il avoir plus de sens ? C'est une spiritualité pragmatique, qui cherche à trouver le sacré dans le quotidien et le labeur.",
       "situation_type": "Spiritualité pragmatique, quête de sens au travail, réflexion appliquée.",

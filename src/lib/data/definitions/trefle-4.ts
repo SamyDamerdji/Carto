@@ -9,7 +9,7 @@ export const trefle4Card: Card = {
   "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/04-trefle.png",
   "symbolique_image": "Les quatre trèfles, comme les quatre pieds d'une table ou les quatre roues d'une voiture, représentent la stabilité, la sécurité et l'équilibre. Dans la couleur du travail et de l'argent, c'est la base solide d'une entreprise ou d'une situation financière.",
   "narration_base": {
-    "texte": "Voici le Quatre de Trèfle, la carte de la stabilité et de la sécurité matérielle. Elle est le symbole d'une situation professionnelle et financière bien établie, d'une entreprise solide, d'un travail sûr. Contrairement aux grandes réussites, elle ne parle pas de gains spectaculaires, mais de la paix d'esprit que procure une situation bien assise. C'est la carte des fondations solides, de la prudence et de la bonne gestion. Elle vous dit que votre position est sûre.",
+    "texte": "Voici le Quatre de Trèfle, la carte de la stabilité et de la sécurité matérielle. Elle est le symbole d'une situation professionnelle et financière bien établie, d'une entreprise solide, d'une travail sûr. Contrairement aux grandes réussites, elle ne parle pas de gains spectaculaires, mais de la paix d'esprit que procure une situation bien assise. C'est la carte des fondations solides, de la prudence et de la bonne gestion. Elle vous dit que votre position est sûre.",
     "ton": "rassurant, pragmatique, pédagogue",
     "perspective": "mentor"
   },
