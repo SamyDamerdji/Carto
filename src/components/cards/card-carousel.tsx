@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -41,7 +40,7 @@ export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouse
       {/* Card Stack Container */}
       <div className="relative w-full max-w-sm h-[360px] flex items-center justify-center">
         <motion.button
-            className="absolute left-2 z-20 text-primary/70 hover:text-primary transition-colors"
+            className="absolute left-2 z-[60] text-primary/70 hover:text-primary transition-colors"
             onClick={handlePrev}
             aria-label="Carte précédente"
             whileHover={{ scale: 1.2 }}
@@ -103,7 +102,7 @@ export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouse
         </motion.div>
 
         <motion.button
-            className="absolute right-2 z-20 text-primary/70 hover:text-primary transition-colors"
+            className="absolute right-2 z-[60] text-primary/70 hover:text-primary transition-colors"
             onClick={handleNext}
             aria-label="Carte suivante"
             whileHover={{ scale: 1.2 }}
