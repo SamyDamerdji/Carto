@@ -90,7 +90,7 @@ export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouse
                 return (
                 <motion.div
                     key={card.id}
-                    className="absolute w-full h-full flex items-center justify-center"
+                    className="absolute w-full h-full flex items-center justify-center pointer-events-none"
                     style={{
                     transformOrigin: 'center',
                     zIndex,
@@ -100,7 +100,7 @@ export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouse
                     exit={{ opacity: 0, scale: 0.5 }}
                     transition={{ type: 'spring', stiffness: 200, damping: 25 }}
                 >
-                    <div className="relative w-48 aspect-[2.5/3.5] pointer-events-none">
+                    <div className="relative w-48 aspect-[2.5/3.5]">
                         <div className="absolute inset-0 bg-card rounded-lg shadow-lg p-1">
                             <div className="relative h-full w-full p-2">
                                 <Image
@@ -109,6 +109,7 @@ export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouse
                                 fill
                                 className="object-contain"
                                 sizes="192px"
+                                priority={index === activeIndex}
                                 />
                             </div>
                         </div>
