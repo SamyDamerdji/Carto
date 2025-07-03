@@ -43,13 +43,13 @@ interface SuitNavigationProps {
     
 export function SuitNavigation({ onSuitSelect }: SuitNavigationProps) {
     return (
-        <div className="flex justify-center items-center gap-2 mt-4 p-2 rounded-full bg-secondary/30">
+        <div className="flex justify-center items-center gap-2 mt-6 p-1.5 px-3 rounded-full bg-secondary/20 backdrop-blur-lg border border-primary/30 shadow-lg">
             {suits.map(suit => (
                 <Button 
                     key={suit.name}
                     variant="ghost" 
                     size="icon" 
-                    className="rounded-full text-white/70 hover:text-primary hover:bg-primary/20 h-9 w-9"
+                    className="rounded-full text-foreground/70 hover:text-primary hover:bg-primary/20 h-9 w-9"
                     onClick={() => onSuitSelect(suit.name)}
                     aria-label={`Aller à la couleur ${suit.name}`}
                 >

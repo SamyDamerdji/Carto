@@ -39,9 +39,9 @@ export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouse
   return (
     <div className="w-full flex flex-col items-center">
       {/* Card Stack Container */}
-      <div className="relative w-full max-w-[240px] h-[360px] flex items-center justify-center">
+      <div className="relative w-full max-w-xs h-[360px] flex items-center justify-center">
         <motion.button
-            className="absolute left-0 z-20 text-primary/70 hover:text-primary transition-colors"
+            className="absolute left-8 z-20 text-primary/70 hover:text-primary transition-colors"
             onClick={handlePrev}
             aria-label="Carte précédente"
             whileHover={{ scale: 1.2 }}
@@ -103,7 +103,7 @@ export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouse
         </motion.div>
 
         <motion.button
-            className="absolute right-0 z-20 text-primary/70 hover:text-primary transition-colors"
+            className="absolute right-8 z-20 text-primary/70 hover:text-primary transition-colors"
             onClick={handleNext}
             aria-label="Carte suivante"
             whileHover={{ scale: 1.2 }}
