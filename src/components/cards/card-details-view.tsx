@@ -22,6 +22,7 @@ import {
   NotebookText,
   BrainCircuit,
   Aperture,
+  HeartPulse,
 } from 'lucide-react';
 import { Textarea } from '@/components/ui/textarea';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -61,6 +62,7 @@ export function CardDetailsView({ card }: { card: Card }) {
     travail: <Briefcase className="h-5 w-5" />,
     finances: <CircleDollarSign className="h-5 w-5" />,
     spirituel: <Sparkles className="h-5 w-5" />,
+    sante: <HeartPulse className="h-5 w-5" />,
   };
 
   const hasCombinaisons = card.combinaisons && card.combinaisons.length > 0;
@@ -118,20 +120,51 @@ export function CardDetailsView({ card }: { card: Card }) {
 
       {/* C. Mots-clés */}
       <SectionWrapper title="Mots-clés" icon={Tags} index={2}>
-        <div className="flex flex-wrap gap-2">
-          {[...card.mots_cles.positifs, ...card.mots_cles.negatifs, ...card.mots_cles.neutres].map((mot) => (
-            <Badge key={mot} variant="secondary" className="bg-primary/20 text-primary-foreground/90 border border-primary/50">
-              {mot}
-            </Badge>
-          ))}
+        <div className="space-y-4">
+          {card.mots_cles.positifs.length > 0 && (
+            <div>
+              <h4 className="font-headline text-sm font-bold text-white/80 mb-2">Positifs</h4>
+              <div className="flex flex-wrap gap-2">
+                {card.mots_cles.positifs.map((mot) => (
+                  <Badge key={mot} variant="default">
+                    {mot}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+          )}
+          {card.mots_cles.negatifs.length > 0 && (
+            <div>
+              <h4 className="font-headline text-sm font-bold text-white/80 mb-2">Négatifs</h4>
+              <div className="flex flex-wrap gap-2">
+                {card.mots_cles.negatifs.map((mot) => (
+                  <Badge key={mot} variant="destructive">
+                    {mot}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+          )}
+          {card.mots_cles.neutres.length > 0 && (
+            <div>
+              <h4 className="font-headline text-sm font-bold text-white/80 mb-2">Neutres</h4>
+              <div className="flex flex-wrap gap-2">
+                {card.mots_cles.neutres.map((mot) => (
+                  <Badge key={mot} variant="secondary">
+                    {mot}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </SectionWrapper>
 
-      {/* D. Applications par Domaine */}
-      <SectionWrapper title="Applications par Domaine" icon={LayoutGrid} index={3}>
+      {/* D. Significations par Domaine */}
+      <SectionWrapper title="Significations par Domaine" icon={LayoutGrid} index={3}>
         <Accordion type="single" collapsible className="w-full">
-            {Object.entries(card.domaines).map(([key, value], idx) => (
-                 <AccordionItem value={`item-${idx}`} key={key}>
+            {Object.entries(card.domaines).map(([key, value]) => (
+                 value && <AccordionItem value={`item-${key}`} key={key}>
                     <AccordionTrigger className="font-headline text-lg hover:no-underline text-card-foreground/90">
                         <div className="flex items-center gap-3">
                             {domainIcons[key]}

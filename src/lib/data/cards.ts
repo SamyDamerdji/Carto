@@ -86,6 +86,7 @@ export interface CardDomains {
     travail: StructuredDomain;
     finances: StructuredDomain;
     spirituel: StructuredDomain;
+    sante?: StructuredDomain;
 }
 
 export interface Card {
