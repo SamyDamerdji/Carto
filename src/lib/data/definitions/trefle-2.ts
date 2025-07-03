@@ -1,3 +1,4 @@
+
 import type { Card } from '@/lib/data/cards';
 
 export const trefle2Card: Card = {
@@ -96,6 +97,15 @@ export const trefle2Card: Card = {
         "Les finances n'évoluent ni dans un sens ni dans l'autre."
       ]
     },
+    "sante": {
+        "texte": "Indique une période de stagnation dans l'état de santé, ou une attente de résultats qui conditionne la suite. C'est une contrariété mineure, une petite fatigue qui empêche d'avancer. La situation est en suspens, en attente d'une information ou d'une décision pour se débloquer.",
+        "situation_type": "État de santé stationnaire, attente de résultats, fatigue.",
+        "scenarios_associes": [
+            "Un état de santé qui n'évolue pas, ni en bien ni en mal.",
+            "Attendre des résultats d'examens pour savoir quel traitement suivre.",
+            "Une petite contrariété de santé qui bloque un projet."
+        ]
+    },
     "spirituel": {
       "texte": "C'est une période de pause dans le cheminement. Vous avez accumulé des connaissances ou des expériences, et il est maintenant temps de les laisser décanter. C'est un moment de calme, de gestation intérieure, avant la prochaine étape de croissance. C'est la tranquillité nécessaire à l'intégration.",
       "situation_type": "Pause spirituelle, gestation intérieure, intégration.",
@@ -106,18 +116,6 @@ export const trefle2Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Un téléphone posé sur une table, silencieux, à côté d'une personne qui regarde par la fenêtre, dans l'attente.",
-      "symbolique": "L'attente, le silence, la communication en suspens, l'expectative.",
-      "usage": "Illustrer le concept d'attente et de stagnation."
-    },
-    {
-      "scene": "Une porte entrouverte, laissant filtrer un rai de lumière, mais sans que l'on puisse voir ce qu'il y a derrière.",
-      "symbolique": "Le potentiel, l'hésitation à franchir le pas, la situation en suspens.",
-      "usage": "Représenter l'idée de blocage temporaire et de potentiel à venir."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_attente_trefle_2",

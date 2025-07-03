@@ -102,6 +102,15 @@ export const trefleRoiCard: Card = {
         "Recevoir un conseil financier prudent et judicieux."
       ]
     },
+    "sante": {
+        "texte": "Symbolise une santé robuste, une constitution solide, fruit d'une vie saine et laborieuse. La vitalité est excellente. Il peut représenter un médecin de famille fiable et compétent, un ostéopathe ou un kinésithérapeute. C'est une carte de force physique et d'endurance. La santé est stable et bien gérée.",
+        "situation_type": "Santé de fer, constitution robuste, médecin de confiance.",
+        "scenarios_associes": [
+            "Avoir une excellente forme physique grâce à un travail régulier.",
+            "Être suivi par un médecin de famille compétent et loyal.",
+            "Une grande résistance physique aux maladies."
+        ]
+    },
     "spirituel": {
       "texte": "La spiritualité du Roi de Trèfle est pratique et incarnée. Elle se trouve dans l'éthique du travail, dans l'intégrité de ses actions et dans le service à la communauté par son labeur. Pour lui, le divin se manifeste dans un travail bien fait et dans la fiabilité des relations humaines. C'est la spiritualité de l'artisan, du bâtisseur.",
       "situation_type": "Éthique de vie, spiritualité pratique, intégrité.",
@@ -112,18 +121,6 @@ export const trefleRoiCard: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Un architecte d'âge mûr, au regard bienveillant, examinant les plans d'un bâtiment solide et élégant.",
-      "symbolique": "Le bâtisseur, le planificateur, la vision à long terme, la construction sur des bases solides.",
-      "usage": "Illustrer son rôle de fondateur et de gestionnaire compétent."
-    },
-    {
-      "scene": "Une poignée de main chaleureuse et ferme scellant un accord, dans un bureau sobre mais de bon goût.",
-      "symbolique": "La confiance, la loyauté, le partenariat honnête, l'accord juste.",
-      "usage": "Représenter son identité d'allié fiable et d'homme de parole."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_fiabilite_trefle_roi",
@@ -140,7 +137,7 @@ export const trefleRoiCard: Card = {
   "combinaisons": [
     {
       "carte_associee_id": "trefle-dame",
-      "signification": "Le couple d'affaires parfait. L'homme et la femme honnêtes et travailleurs qui réussissent ensemble. C'est le signe d'un partenariat professionnel ou personnel extrêmement solide, basé sur la confiance et des valeurs communes.",
+      "signification": "C'est le couple d'affaires parfait. L'homme et la femme honnêtes et travailleurs qui réussissent ensemble. C'est le signe d'un partenariat professionnel ou personnel extrêmement solide, basé sur la confiance et des valeurs communes.",
       "scenarios_associes": [
         "Un couple qui monte et réussit une entreprise familiale.",
         "Une association professionnelle parfaitement complémentaire et honnête."

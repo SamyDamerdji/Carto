@@ -1,3 +1,4 @@
+
 import type { Card } from '@/lib/data/cards';
 
 export const carreau10Card: Card = {
@@ -99,6 +100,15 @@ export const carreau10Card: Card = {
         "Recevoir un héritage conséquent.",
         "Vendre un bien immobilier avec une forte plus-value."
       ]
+    },
+    "sante": {
+        "texte": "Annonce un changement positif majeur pour la santé. Il peut s'agir d'un voyage pour suivre un traitement spécialisé, d'un déménagement dans un environnement plus sain, ou de la fin des soucis financiers qui permet d'accéder aux meilleurs soins. C'est une carte de grande amélioration de la santé, souvent liée à un déplacement ou à une nouvelle abondance.",
+        "situation_type": "Voyage pour la santé, amélioration majeure, accès aux soins.",
+        "scenarios_associes": [
+            "Partir à l'étranger pour une opération ou une cure.",
+            "Déménager à la campagne ou au bord de la mer pour sa santé.",
+            "Une grosse rentrée d'argent qui permet de payer un traitement coûteux."
+        ]
     },
     "spirituel": {
       "texte": "Sur le plan spirituel, la richesse matérielle annoncée par cette carte est un outil, pas une fin en soi. Elle offre la liberté : liberté de temps pour méditer, liberté de voyager pour découvrir d'autres cultures et d'autres philosophies, liberté de soutenir des causes qui ont du sens. Le défi spirituel est d'utiliser cette abondance pour l'élévation et le partage, et non pour l'attachement et l'ego.",

@@ -103,6 +103,15 @@ export const piqueDameCard: Card = {
         "Se faire escroquer par une femme."
       ]
     },
+    "sante": {
+        "texte": "Annonce une période de solitude face à la maladie ou une grande tristesse qui affecte la santé. Elle peut représenter une femme médecin ou soignante froide et peu empathique. C'est aussi la carte du deuil d'une santé perdue. Elle invite à la prudence et à ne pas rester isolé dans l'épreuve.",
+        "situation_type": "Solitude dans la maladie, deuil, soignante hostile.",
+        "scenarios_associes": [
+            "Traverser une maladie en se sentant très seul.",
+            "La tristesse ou la dépression qui a un impact sur le corps.",
+            "Avoir affaire à un personnel médical peu chaleureux."
+        ]
+    },
     "spirituel": {
       "texte": "Spirituellement, la Dame de Pique incarne la 'nuit noire de l'âme' sous un angle féminin. C'est la confrontation avec la perte, le vide et le sentiment d'abandon. C'est une épreuve de solitude extrême qui, si elle est surmontée, mène à une indépendance et une force intérieure sans égales. C'est la sagesse acquise dans la douleur.",
       "situation_type": "Nuit noire de l'âme, épreuve de la solitude, sagesse des cicatrices.",
@@ -113,18 +122,6 @@ export const piqueDameCard: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Une femme élégante, seule sur un banc dans un parc d'automne, avec des feuilles mortes tombant autour d'elle.",
-      "symbolique": "La solitude, la mélancolie, la fin d'un cycle, le veuvage.",
-      "usage": "Illustrer l'aspect 'femme seule' et 'tristesse'."
-    },
-    {
-      "scene": "Le visage d'une femme dont la moitié est éclairée et semble neutre, tandis que l'autre moitié, dans l'ombre, révèle un sourire venimeux ou un regard de mépris.",
-      "symbolique": "La duplicité, la méchanceté cachée, l'ennemie qui ne dit pas son nom.",
-      "usage": "Représenter son potentiel de rivale et de femme méchante."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_solitude_pique_dame",

@@ -100,6 +100,15 @@ export const pique2Card: Card = {
         "Une transaction qui n'en finit pas de se conclure."
       ]
     },
+    "sante": {
+        "texte": "Indique une situation de santé bloquée, une indécision face à un traitement, ou un diagnostic incertain. Deux avis médicaux contradictoires peuvent créer une impasse. C'est une carte de stagnation qui demande une décision tranchée pour avancer. Elle peut aussi symboliser un état de santé précaire, en équilibre instable.",
+        "situation_type": "Dilemme médical, stagnation de la santé, équilibre précaire.",
+        "scenarios_associes": [
+            "Hésiter entre deux traitements ou deux chirurgiens.",
+            "Un état de santé qui ne s'améliore ni ne s'aggrave.",
+            "Recevoir deux diagnostics différents pour un même problème."
+        ]
+    },
     "spirituel": {
       "texte": "C'est la carte du dilemme, du doute profond, de la dualité intérieure. C'est le conflit entre la lumière et l'ombre, la foi et le doute. L'esprit est divisé, incapable de choisir une voie. C'est une trêve dans une guerre intérieure, une paix armée qui demande une décision pour être résolue.",
       "situation_type": "Dilemme spirituel, dualité intérieure, impasse de la foi.",
@@ -110,18 +119,6 @@ export const pique2Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Deux masques, l'un souriant et l'autre tragique, posés l'un à côté de l'autre.",
-      "symbolique": "La duplicité, la dualité, la fausse apparence, l'ambivalence.",
-      "usage": "Illustrer le concept de fausse amitié et de double jeu."
-    },
-    {
-      "scene": "Deux épées croisées qui se bloquent mutuellement, avec des étincelles au point de contact.",
-      "symbolique": "L'impasse, le conflit, la rivalité, l'équilibre des forces qui mène à la stagnation.",
-      "usage": "Représenter la situation de blocage et de désunion."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_alliance_pique_2",

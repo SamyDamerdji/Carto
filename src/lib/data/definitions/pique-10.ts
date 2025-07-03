@@ -1,3 +1,4 @@
+
 import type { Card } from '@/lib/data/cards';
 
 export const pique10Card: Card = {
@@ -98,6 +99,15 @@ export const pique10Card: Card = {
         "Une perte financière qui vous plonge dans une situation précaire."
       ]
     },
+    "sante": {
+        "texte": "Carte très difficile pour la santé, traditionnellement associée à l'hôpital, à la maladie nocturne ou au confinement. Elle annonce une période d'angoisse liée à la santé, des nuits d'insomnie dues à la douleur ou à l'inquiétude. Elle peut signifier une hospitalisation, un diagnostic grave, ou un état dépressif lié à la maladie.",
+        "situation_type": "Hospitalisation, maladie grave, angoisse, dépression.",
+        "scenarios_associes": [
+            "Passer une nuit à l'hôpital.",
+            "Souffrir d'insomnies à cause de soucis de santé.",
+            "Une maladie qui confine à la maison et crée un sentiment d'enfermement."
+        ]
+    },
     "spirituel": {
       "texte": "C'est la carte de la 'nuit noire de l'âme' dans toute sa rigueur. C'est le sentiment d'être totalement abandonné, la perte de foi, le doute existentiel le plus profond. C'est une confrontation directe avec le vide et ses peurs les plus archaïques. C'est une épreuve de laquelle on ressort soit brisé, soit profondément transformé.",
       "situation_type": "Nuit noire de l'âme, crise de foi, désespoir existentiel.",
@@ -108,18 +118,6 @@ export const pique10Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Une personne assise sur son lit, la tête dans les mains, dans une chambre sombre seulement éclairée par la lune à travers des barreaux d'une fenêtre.",
-      "symbolique": "L'insomnie, l'angoisse, le sentiment d'enfermement, la solitude nocturne.",
-      "usage": "Illustrer les thèmes de la nuit, de la peur et de la prison mentale."
-    },
-    {
-      "scene": "Une barque à la dérive sur une mer noire et agitée, sous un ciel sans étoiles.",
-      "symbolique": "La perte de contrôle, le désespoir, être à la merci d'événements sombres.",
-      "usage": "Représenter le sentiment de détresse et d'échec."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_angoisse_pique_10",

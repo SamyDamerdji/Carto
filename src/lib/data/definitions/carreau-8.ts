@@ -1,3 +1,4 @@
+
 import type { Card } from '@/lib/data/cards';
 
 export const carreau8Card: Card = {
@@ -97,6 +98,15 @@ export const carreau8Card: Card = {
         "Plusieurs petites entrées et sorties d'argent."
       ]
     },
+    "sante": {
+        "texte": "Annonce des démarches actives pour sa santé. C'est la carte des rendez-vous médicaux, des examens, des déplacements pour voir des spécialistes. Indique que vous prenez votre santé en main. L'énergie est bonne, favorisant les activités physiques modérées et la recherche de solutions concrètes à un problème de santé.",
+        "situation_type": "Démarches médicales, examens, activité physique.",
+        "scenarios_associes": [
+            "Multiplier les rendez-vous pour avoir différents avis médicaux.",
+            "Commencer un programme d'exercice pour améliorer sa santé.",
+            "Faire des démarches pour trouver le bon traitement."
+        ]
+    },
     "spirituel": {
       "texte": "La spiritualité est ici une démarche active. C'est la personne qui fait le premier pas : s'inscrire à un cours de yoga, acheter un livre sur le sujet, décider d'aller à une conférence. C'est la phase de recherche et de préparation avant de s'engager plus profondément dans une voie. C'est l'action qui initie le cheminement.",
       "situation_type": "Démarche spirituelle, recherche, premier pas.",
@@ -107,18 +117,6 @@ export const carreau8Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Un agenda ouvert avec plusieurs rendez-vous et des itinéraires de voyage surlignés, à côté d'une tasse de café et d'un téléphone.",
-      "symbolique": "L'organisation, les démarches, les déplacements, l'activité intense.",
-      "usage": "Illustrer le concept de préparatifs et de rendez-vous."
-    },
-    {
-      "scene": "Deux personnes se serrant la main au-dessus d'une table où est posé un contrat, signifiant la conclusion d'une négociation.",
-      "symbolique": "La négociation, l'accord, la discussion qui aboutit.",
-      "usage": "Représenter son aspect commercial et transactionnel."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_demarche_carreau_8",

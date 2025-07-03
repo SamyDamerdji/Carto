@@ -120,18 +120,6 @@ export const pique4Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Un lit vide dans une chambre simple et austère, avec la lumière du jour qui filtre à travers une fenêtre, suggérant le passage du temps dans l'immobilité.",
-      "symbolique": "La convalescence, la maladie, le repos forcé, l'attente.",
-      "usage": "Illustrer le concept central de la carte."
-    },
-    {
-      "scene": "Un calendrier dont toutes les pages d'un mois sont barrées d'une croix rouge.",
-      "symbolique": "La pause, l'arrêt des activités, la période de stagnation.",
-      "usage": "Représenter l'idée d'inactivité et de temps suspendu."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_repos_pique_4",

@@ -1,3 +1,4 @@
+
 import type { Card } from '@/lib/data/cards';
 
 export const piqueValetCard: Card = {
@@ -100,6 +101,15 @@ export const piqueValetCard: Card = {
         "Être poussé à un investissement douteux."
       ]
     },
+    "sante": {
+        "texte": "Représente une mauvaise nouvelle concernant la santé, comme des résultats d'analyse décevants ou un diagnostic qui tarde. Elle peut symboliser un symptôme isolé et inquiétant, ou le début d'une maladie sournoise. Elle invite à ne pas ignorer les signaux d'alerte et à rester vigilant face à sa santé.",
+        "situation_type": "Mauvaise nouvelle médicale, symptôme inquiétant, retard de diagnostic.",
+        "scenarios_associes": [
+            "Recevoir des résultats de tests médicaux qui ne sont pas bons.",
+            "Un symptôme qui est ignoré par les médecins.",
+            "La découverte d'une maladie cachée."
+        ]
+    },
     "spirituel": {
       "texte": "Sur le plan spirituel, le Valet de Pique représente l'ennemi intérieur : le doute paralysant, le cynisme, la pensée négative qui sabote toute progression. Il incarne la voix du critique intérieur qui vous dit que vous n'êtes pas à la hauteur. Le travail consiste à identifier cette voix et à ne pas la laisser prendre le contrôle de votre cheminement.",
       "situation_type": "Auto-sabotage, pensées négatives, cynisme.",
@@ -110,18 +120,6 @@ export const piqueValetCard: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Une personne tend une main en signe d'amitié, tandis que son ombre derrière elle tient un poignard.",
-      "symbolique": "La duplicité, la fausse amitié, l'intention cachée.",
-      "usage": "Illustrer le concept de trahison et d'hypocrisie."
-    },
-    {
-      "scene": "Un visage portant un masque souriant, mais le masque est légèrement fissuré, laissant entrevoir une expression méprisante en dessous.",
-      "symbolique": "Le mensonge, la façade sociale qui cache la malveillance.",
-      "usage": "Représenter la personne fausse et la médisance."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_mefiance_pique_valet",
@@ -141,7 +139,7 @@ export const piqueValetCard: Card = {
       "signification": "Association de deux personnes malveillantes, souvent un homme et une femme plus âgée. Complot, médisance organisée, trahison à grande échelle. C'est un duo extrêmement dangereux pour le consultant.",
       "scenarios_associes": [
         "Un couple ou deux collègues qui conspirent contre vous.",
-        "Calomnie et rumeurs destructrices."
+        "Une campagne de calomnie menée par deux personnes."
       ],
       "tonalite": "Extrêmement négative"
     },

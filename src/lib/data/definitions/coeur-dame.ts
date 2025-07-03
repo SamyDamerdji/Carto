@@ -77,7 +77,7 @@ export const coeurDameCard: Card = {
   },
   "domaines": {
     "amour": {
-      "texte": "C'est la carte par excellence de l'amour heureux. Pour un homme, elle représente la femme idéale, l'âme sœur. Pour une femme, elle confirme ses propres qualités amoureuses ou l'arrivée d'une grande amitié. Elle annonce une relation épanouie, une déclaration d'amour, un mariage, ou tout simplement une phase de bonheur et de complicité intense dans le couple.",
+      "texte": "C'est la carte par excellence de l'amour heureux. Pour un homme, elle représente la femme idéale, l'âme sœur. Pour une femme, elle confirme ses propres qualités amoureuses ou l'arrivée d'une grande amitié féminine très forte. Elle annonce une relation épanouie, une déclaration d'amour, un mariage, ou tout simplement une phase de bonheur et de complicité intense dans le couple.",
       "situation_type": "Rencontre de l'âme sœur, bonheur conjugal, amour partagé.",
       "scenarios_associes": [
         "Tomber profondément amoureux.",
@@ -103,6 +103,15 @@ export const coeurDameCard: Card = {
         "Aider financièrement un proche par pure gentillesse."
       ]
     },
+    "sante": {
+        "texte": "Représente une santé florissante, un grand bien-être et une énergie douce. C'est la carte de la fertilité et de la maternité. Elle peut incarner une infirmière, une aide-soignante ou une thérapeute exceptionnellement douce et bienveillante. C'est la guérison par l'amour et le soin.",
+        "situation_type": "Santé épanouie, fertilité, soignante bienveillante.",
+        "scenarios_associes": [
+            "Une grossesse se déroule à merveille.",
+            "Être soigné par une personne très humaine et chaleureuse.",
+            "Un bien-être général qui rayonne de l'intérieur."
+        ]
+    },
     "spirituel": {
       "texte": "Elle est le cœur spirituel. Elle incarne la voie de la dévotion (Bhakti Yoga), l'amour divin, la compassion universelle. Son cheminement passe par l'ouverture totale du cœur, la connexion aux autres et à tout ce qui vit. Elle enseigne que l'amour est la plus grande force de guérison et d'éveil spirituel.",
       "situation_type": "Amour inconditionnel, ouverture du cœur, compassion.",
@@ -113,18 +122,6 @@ export const coeurDameCard: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Une femme au visage doux tendant une coupe remplie d'une lumière chaude et dorée.",
-      "symbolique": "L'amour comme offrande, la générosité du cœur, le don de soi.",
-      "usage": "Illustrer son rôle de figure aimante et nourricière."
-    },
-    {
-      "scene": "Un jardin fleuri luxuriant et ensoleillé, au centre duquel se trouve un banc accueillant.",
-      "symbolique": "L'harmonie, la beauté des sentiments, la sécurité affective, un lieu où le cœur peut se reposer.",
-      "usage": "Représenter le bonheur et l'épanouissement qu'elle apporte."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_amour_coeur_dame",

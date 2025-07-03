@@ -1,3 +1,4 @@
+
 import type { Card } from '@/lib/data/cards';
 
 export const pique3Card: Card = {
@@ -95,6 +96,15 @@ export const pique3Card: Card = {
         "Les finances sont affectées par une séparation."
       ]
     },
+    "sante": {
+        "texte": "Carte délicate, elle peut indiquer une intervention chirurgicale (le pique qui coupe), ou une maladie qui force à une 'rupture' avec son mode de vie habituel. Elle peut aussi symboliser un choc ou une blessure. C'est une carte qui demande de la prudence et d'être attentif aux signaux du corps.",
+        "situation_type": "Intervention chirurgicale, blessure, choc physique.",
+        "scenarios_associes": [
+            "Devoir subir une opération.",
+            "Une blessure soudaine qui impose un arrêt.",
+            "Un diagnostic qui agit comme un choc."
+        ]
+    },
     "spirituel": {
       "texte": "C'est une crise de foi provoquée par une grande déception ou une trahison. Le sentiment d'être séparé de sa source, de sa communauté ou de ses propres idéaux. C'est une épreuve douloureuse qui force à redéfinir ses croyances et ses allégeances.",
       "situation_type": "Crise de foi, rupture avec un groupe, perte d'idéaux.",
@@ -105,18 +115,6 @@ export const pique3Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Un pont de corde en train d'être coupé par un ciseau, au-dessus d'un ravin.",
-      "symbolique": "La rupture du lien, la séparation délibérée, l'impossibilité de revenir en arrière.",
-      "usage": "Illustrer le concept de rupture et d'éloignement."
-    },
-    {
-      "scene": "Un triangle de trois épées pointées les unes vers les autres, créant une tension insoluble.",
-      "symbolique": "Le conflit à trois, la situation bloquée par une tierce partie, l'impasse douloureuse.",
-      "usage": "Représenter l'idée du conflit et de l'intervention d'un tiers."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_rupture_pique_3",

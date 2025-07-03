@@ -1,3 +1,4 @@
+
 import type { Card } from '@/lib/data/cards';
 
 export const carreau7Card: Card = {
@@ -96,6 +97,15 @@ export const carreau7Card: Card = {
         "Négocier le prix d'un objet d'occasion."
       ]
     },
+    "sante": {
+        "texte": "Cette carte indique une conversation avec un professionnel de santé, ou une discussion sur sa santé avec des proches. C'est le moment où l'on parle de ses symptômes, où l'on cherche des conseils. Elle peut aussi représenter des pensées ou des inquiétudes mineures concernant sa santé.",
+        "situation_type": "Conversation médicale, inquiétude mineure, recherche de conseil.",
+        "scenarios_associes": [
+            "Parler de ses petits maux à son médecin.",
+            "Discuter de son hygiène de vie avec un ami.",
+            "Des pensées qui tournent autour d'un symptôme bénin."
+        ]
+    },
     "spirituel": {
       "texte": "La spiritualité passe ici par la parole : la lecture de textes sacrés, la récitation de mantras, les prières verbalisées, ou la discussion philosophique. C'est aussi être attentif aux messages et aux mots que l'on entend. C'est une spiritualité qui s'exprime et se partage.",
       "situation_type": "Prière, mantra, lecture spirituelle, discussion philosophique.",
@@ -106,18 +116,6 @@ export const carreau7Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Plusieurs bulles de conversation colorées s'entremêlant dans les airs.",
-      "symbolique": "La discussion, le bavardage, l'échange d'idées, la communication.",
-      "usage": "Illustrer le concept central de 'parole'."
-    },
-    {
-      "scene": "Une main donnant quelques pièces de monnaie à une autre main.",
-      "symbolique": "La petite transaction, le petit gain ou la petite dépense, l'échange financier mineur.",
-      "usage": "Représenter son aspect financier."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_parole_carreau_7",

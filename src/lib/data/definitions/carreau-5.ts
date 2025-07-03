@@ -105,6 +105,15 @@ export const carreau5Card: Card = {
         "Être poursuivi pour une dette."
       ]
     },
+    "sante": {
+        "texte": "Cette carte est directement liée au corps. Elle invite à être à l'écoute de ses sensations physiques. Elle peut annoncer un changement dans le corps, positif ou négatif. C'est aussi la carte de la sexualité, et peut donc toucher à la santé sexuelle. Elle conseille de prendre soin de son corps et de ne pas ignorer ses messages.",
+        "situation_type": "Conscience du corps, santé sexuelle, changement physique.",
+        "scenarios_associes": [
+            "Être plus attentif aux signaux de son corps.",
+            "Questions ou examens liés à la santé sexuelle.",
+            "Un changement physique notable (prise/perte de poids, etc.)."
+        ]
+    },
     "spirituel": {
       "texte": "La spiritualité s'incarne dans le corps. C'est l'invitation à être présent à ses cinq sens, à travers des pratiques comme le yoga, le tai-chi, ou la méditation en marchant. C'est aussi la prise de conscience que nos actions et nos 'contrats' (promesses, engagements) dans le monde matériel ont des conséquences karmiques.",
       "situation_type": "Spiritualité incarnée, conscience du corps, karma des actions.",
@@ -115,18 +124,6 @@ export const carreau5Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Un marteau de juge posé à côté d'un stylo et d'un contrat ouvert, prêt à être signé.",
-      "symbolique": "La loi, le contrat, le jugement, l'engagement formel.",
-      "usage": "Illustrer l'aspect légal et contractuel de la carte."
-    },
-    {
-      "scene": "Un bal masqué, où des couples dansent et d'autres chuchotent dans les coins.",
-      "symbolique": "La vie sociale, la séduction, les secrets, les commérages, la jalousie.",
-      "usage": "Représenter l'aspect relationnel, physique et conflictuel."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_contrat_carreau_5",

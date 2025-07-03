@@ -102,6 +102,15 @@ export const coeurRoiCard: Card = {
         "Situation financière confortable et gérée avec sagesse."
       ]
     },
+    "sante": {
+        "texte": "Excellente carte pour la santé, symbolisant un bon équilibre émotionnel qui favorise la santé physique. Elle peut représenter un médecin ou un thérapeute bienveillant et à l'écoute. Annonce une bonne vitalité, une guérison soutenue par un moral d'acier et le soutien des proches. Particulièrement favorable pour le cœur et le système circulatoire.",
+        "situation_type": "Bonne santé émotionnelle, médecin bienveillant, guérison.",
+        "scenarios_associes": [
+            "Trouver un médecin humain et compétent.",
+            "Le moral et le soutien des proches accélèrent une guérison.",
+            "Une excellente santé cardiovasculaire."
+        ]
+    },
     "spirituel": {
       "texte": "Le Roi de Cœur incarne la sagesse du cœur. C'est l'aboutissement d'un cheminement qui mène à l'amour inconditionnel, à la compassion et au pardon. Il représente celui qui a maîtrisé ses émotions et peut désormais guider les autres avec bienveillance. C'est le maître spirituel qui enseigne par l'amour.",
       "situation_type": "Amour inconditionnel, sagesse émotionnelle, compassion.",
@@ -112,18 +121,6 @@ export const coeurRoiCard: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Un homme d'âge mûr, au sourire chaleureux, tendant une main ouverte pour aider quelqu'un à se relever.",
-      "symbolique": "Le soutien, la bienveillance, l'aide désintéressée.",
-      "usage": "Illustrer l'aspect protecteur et généreux de la carte."
-    },
-    {
-      "scene": "Un phare solide et lumineux, dont la lumière balaie une mer calme la nuit.",
-      "symbolique": "Le guide, le repère stable et sécurisant dans les tempêtes émotionnelles.",
-      "usage": "Représenter la stabilité affective et le rôle de conseiller fiable."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_bienveillance_coeur_roi",

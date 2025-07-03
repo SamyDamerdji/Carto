@@ -1,3 +1,4 @@
+
 import type { Card } from '@/lib/data/cards';
 
 export const carreau4Card: Card = {
@@ -96,6 +97,15 @@ export const carreau4Card: Card = {
         "Une petite augmentation ou une prime."
       ]
     },
+    "sante": {
+        "texte": "Annonce une amélioration de la santé, une bonne nouvelle suite à un examen, ou un rendez-vous médical qui se passe bien. C'est une carte positive qui indique une petite victoire sur la maladie ou les soucis de santé. La situation s'améliore, même si c'est de manière modeste.",
+        "situation_type": "Amélioration de la santé, bonne nouvelle médicale, rendez-vous réussi.",
+        "scenarios_associes": [
+            "Des résultats d'analyse qui sont rassurants.",
+            "Un rendez-vous chez le médecin qui se passe bien.",
+            "Une petite amélioration qui redonne le moral."
+        ]
+    },
     "spirituel": {
       "texte": "C'est une petite révélation, une prise de conscience qui éclaire la journée. C'est une lecture, une conversation ou une méditation qui apporte une nouvelle compréhension. C'est un signe positif de l'univers qui vous encourage à continuer sur votre voie. C'est la joie d'apprendre et de progresser, pas à pas.",
       "situation_type": "Petite prise de conscience, signe encourageant, progression.",
@@ -106,18 +116,6 @@ export const carreau4Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Une main recevant un petit paquet cadeau joliment emballé.",
-      "symbolique": "Le cadeau, la petite surprise, la récompense, la bonne nouvelle.",
-      "usage": "Illustrer l'idée de petite réussite et de satisfaction."
-    },
-    {
-      "scene": "Deux personnes souriantes se serrant la main dans un bureau, après un entretien réussi.",
-      "symbolique": "Le rendez-vous fructueux, l'accord, la rencontre positive.",
-      "usage": "Représenter son aspect lié aux rencontres et aux conversations utiles."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_amelioration_carreau_4",

@@ -1,3 +1,4 @@
+
 import type { Card } from '@/lib/data/cards';
 
 export const coeur3Card: Card = {
@@ -97,6 +98,15 @@ export const coeur3Card: Card = {
         "Recevoir une petite somme et inviter ses amis au restaurant."
       ]
     },
+    "sante": {
+        "texte": "Annonce une amélioration de la santé, une guérison qui apporte de la joie, ou une bonne nouvelle médicale qui est une source de soulagement et de célébration. C'est la fin d'une période de soucis de santé. Elle est aussi très favorable pour tout ce qui concerne la naissance et la petite enfance.",
+        "situation_type": "Guérison célébrée, bonne nouvelle médicale, naissance.",
+        "scenarios_associes": [
+            "Célébrer la fin d'un traitement.",
+            "Des résultats d'analyse qui se révèlent être excellents.",
+            "La joie autour d'une naissance."
+        ]
+    },
     "spirituel": {
       "texte": "La spiritualité se vit dans la joie et la communauté. C'est le bonheur de partager sa foi ou ses découvertes avec un groupe. C'est l'expression créative de sa spiritualité à travers le chant, la danse, l'art. C'est la joie de l'âme qui s'exprime et se connecte aux autres.",
       "situation_type": "Joie communautaire, expression créative, partage spirituel.",
@@ -107,18 +117,6 @@ export const coeur3Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Trois coupes de champagne qui trinquent, avec des bulles et des confettis en arrière-plan.",
-      "symbolique": "La célébration, la fête, la joie partagée, la convivialité.",
-      "usage": "Illustrer l'aspect festif et social de la carte."
-    },
-    {
-      "scene": "Une personne se tenant à une intersection de trois chemins, chaque chemin menant vers un cœur de couleur différente.",
-      "symbolique": "Le choix du cœur, l'indécision, le triangle amoureux, les différentes options affectives.",
-      "usage": "Représenter son aspect de choix et de potentielle indécision."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_choix_coeur_3",

@@ -1,3 +1,4 @@
+
 import type { Card } from '@/lib/data/cards';
 
 export const trefle10Card: Card = {
@@ -97,6 +98,15 @@ export const trefle10Card: Card = {
         "Les dividendes d'une action s'envolent."
       ]
     },
+    "sante": {
+        "texte": "Carte très positive qui peut indiquer une excellente vitalité due à l'absence de soucis matériels. Négativement, si mal entourée, elle peut avertir contre le surmenage et le stress liés à une réussite professionnelle écrasante. C'est le burn-out qui guette celui qui ne pense qu'à l'argent et au travail.",
+        "situation_type": "Vitalité, surmenage, stress.",
+        "scenarios_associes": [
+            "Avoir l'énergie de ses ambitions.",
+            "La réussite professionnelle permet d'accéder aux meilleurs soins.",
+            "Risque de burn-out si le travail prend toute la place."
+        ]
+    },
     "spirituel": {
       "texte": "Spirituellement, le Dix de Trèfle est un rappel que l'abondance est un état d'esprit qui se manifeste dans le monde matériel. C'est la maîtrise des lois de la prospérité. Il invite à la gratitude pour les fruits de son travail et au partage de cette richesse. Le défi spirituel est le détachement : posséder sans être possédé par ses biens.",
       "situation_type": "Maîtrise de l'abondance, gratitude, détachement matériel.",
@@ -107,18 +117,6 @@ export const trefle10Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Un arbre luxuriant dont les feuilles sont des pièces d'or, avec des racines solides profondément ancrées dans la terre.",
-      "symbolique": "La croissance, la prospérité, la richesse qui vient d'une base solide (travail, effort), la récolte.",
-      "usage": "Illustrer la richesse méritée et la croissance des affaires."
-    },
-    {
-      "scene": "Une main ouvrant un coffre-fort rempli de lingots d'or et de liasses de billets.",
-      "symbolique": "L'abondance, la sécurité financière, le résultat concret du succès.",
-      "usage": "Représenter le gain financier majeur et la richesse."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_prosperite_trefle_10",

@@ -1,3 +1,4 @@
+
 import type { Card } from '@/lib/data/cards';
 
 export const trefleAsCard: Card = {
@@ -99,6 +100,15 @@ export const trefleAsCard: Card = {
         "Signature d'un accord commercial très lucratif."
       ]
     },
+    "sante": {
+      "texte": "C'est un excellent présage pour la santé. L'As de Trèfle annonce un regain d'énergie, une grande vitalité et le succès d'un traitement ou d'un régime. Elle symbolise la force physique et une constitution robuste. C'est le moment idéal pour commencer une nouvelle activité sportive ou un mode de vie plus sain ; le succès est garanti.",
+      "situation_type": "Regain d'énergie, excellente vitalité, succès d'un traitement.",
+      "scenarios_associes": [
+        "Se sentir en pleine forme physique.",
+        "Un traitement médical qui fonctionne parfaitement.",
+        "Commencer un sport et y prendre beaucoup de plaisir."
+      ]
+    },
     "spirituel": {
       "texte": "Sur le plan spirituel, c'est le succès d'une quête intérieure. Vos efforts pour méditer, pour comprendre, pour vous améliorer, portent leurs fruits. Vous atteignez un nouveau palier de conscience, une paix intérieure ou une clarté que vous cherchiez activement. C'est la réussite d'une discipline spirituelle.",
       "situation_type": "Aboutissement d'une démarche spirituelle, clarté obtenue par l'effort.",
@@ -109,18 +119,6 @@ export const trefleAsCard: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Une main serrant fermement celle d'une autre pour sceller un accord, avec une lumière vive émanant du point de contact.",
-      "symbolique": "Le contrat, l'accord, le partenariat réussi.",
-      "usage": "Illustrer l'aspect 'contrat' et 'affaires'."
-    },
-    {
-      "scene": "Une personne plantant un drapeau au sommet d'une montagne, symbolisant la victoire et l'accomplissement.",
-      "symbolique": "Le triomphe, l'atteinte de l'objectif, la réussite par l'effort.",
-      "usage": "Représenter le concept de 'succès' et de 'victoire'."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_projet_trefle_as",

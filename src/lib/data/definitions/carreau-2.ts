@@ -96,6 +96,15 @@ export const carreau2Card: Card = {
         "Un accord financier qui arrange les deux parties."
       ]
     },
+    "sante": {
+        "texte": "Annonce un partenariat de soin, une bonne communication avec son médecin. C'est aussi la carte du deuxième avis médical, qui peut être très bénéfique. La santé est une affaire de collaboration entre le patient et le soignant. Une nouvelle médicale est en chemin.",
+        "situation_type": "Partenariat médical, deuxième avis, communication.",
+        "scenarios_associes": [
+            "Établir une relation de confiance avec son médecin.",
+            "Solliciter un deuxième avis pour un problème de santé.",
+            "Recevoir les résultats d'un examen par un associé ou un partenaire."
+        ]
+    },
     "spirituel": {
       "texte": "La spiritualité se vit à deux. C'est l'échange d'idées avec un partenaire spirituel, la découverte d'une nouvelle voie grâce à une conversation. Le cheminement est stimulé par le dialogue et la confrontation des perspectives. C'est l'apprentissage par le miroir de l'autre.",
       "situation_type": "Partenaire spirituel, dialogue philosophique, apprentissage à deux.",
@@ -106,18 +115,6 @@ export const carreau2Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Deux personnes se serrant la main au-dessus d'une table où est signé un contrat, avec un sourire de satisfaction.",
-      "symbolique": "Le partenariat, l'accord, la collaboration, l'association d'intérêts réussie.",
-      "usage": "Illustrer le concept de partenariat d'affaires."
-    },
-    {
-      "scene": "Deux personnes assises à une table de café, engagées dans une conversation animée et complice, avec des bulles de dialogue pleines d'idées.",
-      "symbolique": "La communication, l'échange, le flirt, la connexion intellectuelle.",
-      "usage": "Représenter l'aspect de communication et de flirt."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_partenariat_carreau_2",

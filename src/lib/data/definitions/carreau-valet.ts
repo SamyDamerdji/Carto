@@ -1,3 +1,4 @@
+
 import type { Card } from '@/lib/data/cards';
 
 export const carreauValetCard: Card = {
@@ -99,6 +100,15 @@ export const carreauValetCard: Card = {
         "Recevoir une lettre de sa banque concernant un prêt."
       ]
     },
+    "sante": {
+        "texte": "Annonce une nouvelle concernant la santé : des résultats d'examens, une convocation, une ordonnance. Le caractère de la nouvelle dépend des cartes voisines. Il peut représenter un jeune interne en médecine, un ambulancier. La carte symbolise la communication active dans le domaine médical.",
+        "situation_type": "Nouvelle médicale, résultats, communication.",
+        "scenarios_associes": [
+            "Recevoir un appel de son médecin pour les résultats.",
+            "Un courrier de l'hôpital pour un rendez-vous.",
+            "Parler de sa santé avec un jeune professionnel."
+        ]
+    },
     "spirituel": {
       "texte": "Sur le plan spirituel, le Valet de Carreau est un signe, une synchronicité, un message de vos guides ou de l'univers. C'est la plume que vous trouvez sur votre chemin, la phrase que vous entendez à la radio et qui vous parle directement. Il vous invite à être attentif aux signes que la vie vous envoie.",
       "situation_type": "Synchronicité, signe, message de l'univers.",
@@ -109,18 +119,6 @@ export const carreauValetCard: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Une main glissant une lettre dans une boîte aux lettres, avec une lueur émanant de l'enveloppe.",
-      "symbolique": "Le message en transit, l'information qui arrive, la communication.",
-      "usage": "Illustrer le rôle de messager et de porteur de nouvelles."
-    },
-    {
-      "scene": "Un jeune homme en uniforme (postier, livreur) sonnant à une porte avec un colis ou une lettre à la main, un sourire vif aux lèvres.",
-      "symbolique": "Le service, la transmission, la nouvelle qui arrive directement à vous.",
-      "usage": "Représenter le personnage du messager de manière classique."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_message_carreau_valet",

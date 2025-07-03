@@ -1,3 +1,4 @@
+
 import type { Card } from '@/lib/data/cards';
 
 export const coeur10Card: Card = {
@@ -99,6 +100,15 @@ export const coeur10Card: Card = {
         "Ne plus avoir à s'inquiéter pour l'argent."
       ]
     },
+    "sante": {
+        "texte": "Annonce une excellente santé, une guérison complète et une grande joie de vivre. C'est le summum du bien-être. La guérison d'une longue maladie, le succès d'une opération, une vitalité retrouvée. C'est la carte de la rémission et de la célébration de la santé retrouvée.",
+        "situation_type": "Guérison complète, excellente santé, rémission.",
+        "scenarios_associes": [
+            "Apprendre sa rémission complète après une maladie.",
+            "Se sentir en pleine forme et heureux après une convalescence.",
+            "Célébrer une victoire sur la maladie."
+        ]
+    },
     "spirituel": {
       "texte": "C'est l'expérience de la joie pure, de l'extase mystique. C'est le sentiment d'être parfaitement aligné et en harmonie avec l'univers. La pratique spirituelle n'est plus un effort mais une source de bonheur intense. C'est la gratitude qui devient une seconde nature et la célébration de chaque instant de vie.",
       "situation_type": "Joie spirituelle, extase, gratitude profonde.",
@@ -109,18 +119,6 @@ export const coeur10Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Un groupe de personnes de tous âges trinquant joyeusement sous une pluie de confettis dorés.",
-      "symbolique": "La célébration, la fête, la joie partagée, le bonheur communautaire.",
-      "usage": "Illustrer les thèmes de la fête et de la réussite collective."
-    },
-    {
-      "scene": "Un feu d'artifice spectaculaire illuminant un ciel nocturne au-dessus d'une ville en fête.",
-      "symbolique": "L'apogée de la joie, l'éclat du bonheur, la célébration d'un grand succès.",
-      "usage": "Représenter le summum de la satisfaction et de la chance."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_joie_coeur_10",

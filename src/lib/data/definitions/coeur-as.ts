@@ -1,3 +1,4 @@
+
 import type { Card } from '@/lib/data/cards';
 
 export const coeurAsCard: Card = {
@@ -100,6 +101,15 @@ export const coeurAsCard: Card = {
         "Investir de l'argent dans le bien-être de sa famille."
       ]
     },
+    "sante": {
+        "texte": "Présage d'une excellente santé, de bien-être émotionnel et de vitalité. C'est la carte du cœur sain, au propre comme au figuré. Elle peut annoncer une grossesse, une naissance, ou simplement une période où l'on se sent bien dans son corps et dans sa tête. La guérison est favorisée, et l'équilibre psycho-somatique est excellent.",
+        "situation_type": "Bonne santé, grossesse, bien-être, guérison.",
+        "scenarios_associes": [
+            "Se sentir en pleine forme et plein d'énergie.",
+            "L'annonce d'une grossesse ou d'une naissance dans la famille.",
+            "Une guérison rapide après une maladie."
+        ]
+    },
     "spirituel": {
       "texte": "Sur le plan spirituel, l'As de Cœur est un appel à la reconnexion avec l'amour inconditionnel, à commencer par l'amour de soi. C'est l'ouverture du 'chakra du cœur'. Il invite à la gratitude pour les joies simples, à la guérison des blessures affectives passées et à la cultivation de la compassion et de la bienveillance.",
       "situation_type": "Amour de soi, guérison émotionnelle, ouverture du cœur.",
@@ -110,18 +120,6 @@ export const coeurAsCard: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Une main tend une clé de maison dorée à une autre main, sous un soleil radieux.",
-      "symbolique": "L'accès au foyer, la proposition, le nouveau départ concret.",
-      "usage": "Illustrer l'aspect 'maison' et 'projet de vie'."
-    },
-    {
-      "scene": "Une petite graine de laquelle germe une plante dont la fleur est un cœur lumineux.",
-      "symbolique": "La naissance de l'amour, le potentiel de croissance affective.",
-      "usage": "Illustrer le concept de 'nouveau départ amoureux'."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_foyer_coeur_as",

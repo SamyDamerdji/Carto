@@ -1,3 +1,4 @@
+
 import type { Card } from '@/lib/data/cards';
 
 export const coeur8Card: Card = {
@@ -99,6 +100,15 @@ export const coeur8Card: Card = {
         "Une petite rentrée d'argent qui fait plaisir."
       ]
     },
+    "sante": {
+        "texte": "Signe d'une bonne santé juvénile, d'une belle énergie et d'une récupération rapide. Elle peut annoncer une bonne nouvelle concernant la santé d'un enfant ou d'une jeune femme. Favorise tout ce qui est lié à la gynécologie et à la pédiatrie. C'est une carte de vitalité et de fraîcheur.",
+        "situation_type": "Santé juvénile, bonne vitalité, nouvelle médicale positive.",
+        "scenarios_associes": [
+            "Se remettre rapidement d'une maladie.",
+            "Une jeune femme en excellente santé.",
+            "Bonnes nouvelles suite à un examen pédiatrique."
+        ]
+    },
     "spirituel": {
       "texte": "C'est la joie de la découverte spirituelle. L'émerveillement face à une nouvelle philosophie, le bonheur simple d'une méditation réussie. C'est une approche de la spiritualité qui est légère, joyeuse et sans dogme. C'est le cœur qui s'ouvre avec la fraîcheur de la jeunesse.",
       "situation_type": "Joie de la découverte spirituelle, émerveillement, cœur ouvert.",
@@ -109,18 +119,6 @@ export const coeur8Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Une jeune femme au sourire radieux recevant un compliment ou une fleur d'une personne dont on ne voit que la main.",
-      "symbolique": "La séduction, le flirt, la joie de plaire, les débuts d'une romance.",
-      "usage": "Illustrer le concept de jeune femme amoureuse et de déclaration."
-    },
-    {
-      "scene": "Deux verres de vin sur une table de café en terrasse, au coucher du soleil, avec un air de complicité.",
-      "symbolique": "Le rendez-vous amoureux, l'intimité naissante, la conversation romantique.",
-      "usage": "Représenter l'idylle et la proposition amoureuse."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_idylle_coeur_8",

@@ -1,3 +1,4 @@
+
 import type { Card } from '@/lib/data/cards';
 
 export const coeur2Card: Card = {
@@ -96,6 +97,15 @@ export const coeur2Card: Card = {
         "Signer un contrat de partenariat commercial."
       ]
     },
+    "sante": {
+        "texte": "Annonce une excellente entente avec un professionnel de santé, un partenariat de soin réussi. Elle peut aussi symboliser la santé du couple, ou le soutien affectif comme facteur de guérison majeur. L'équilibre émotionnel de la carte favorise une santé globale harmonieuse.",
+        "situation_type": "Partenariat de soin, soutien affectif, santé du couple.",
+        "scenarios_associes": [
+            "Trouver un médecin ou un thérapeute avec qui le courant passe parfaitement.",
+            "Le soutien de son partenaire est le meilleur des remèdes.",
+            "Un couple en bonne santé, physiquement et émotionnellement."
+        ]
+    },
     "spirituel": {
       "texte": "Sur le plan spirituel, c'est l'union de l'âme avec le divin, ou la rencontre d'une âme sœur spirituelle. C'est la découverte d'un guide, d'un maître ou d'un partenaire avec qui le cheminement devient plus facile et plus joyeux. C'est la fin de la solitude spirituelle et l'harmonie entre le monde intérieur et le monde extérieur.",
       "situation_type": "Rencontre d'une âme sœur, union spirituelle, harmonie intérieure.",
@@ -106,18 +116,6 @@ export const coeur2Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Deux cygnes formant un cœur avec leur cou sur un lac calme au lever du soleil.",
-      "symbolique": "L'amour, la romance, l'harmonie, la fidélité, la beauté de l'union.",
-      "usage": "Illustrer le concept de couple et d'amour romantique."
-    },
-    {
-      "scene": "Deux mains qui s'unissent pour former un puzzle complet, dont la pièce centrale est un cœur.",
-      "symbolique": "Le partenariat, la complémentarité, l'union qui crée un tout parfait.",
-      "usage": "Représenter l'idée d'association et d'entente parfaite."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_union_coeur_2",

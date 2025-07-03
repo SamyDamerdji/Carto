@@ -1,3 +1,4 @@
+
 import type { Card } from '@/lib/data/cards';
 
 export const carreauAsCard: Card = {
@@ -98,6 +99,15 @@ export const carreauAsCard: Card = {
         "Un document à signer pour une transaction financière."
       ]
     },
+    "sante": {
+        "texte": "Annonce une nouvelle importante concernant la santé. Il peut s'agir de la réception de résultats d'analyse, d'une ordonnance médicale, d'une convocation pour un examen ou d'une proposition pour un nouveau traitement. La nature de la nouvelle (bonne ou mauvaise) dépendra des cartes environnantes, mais elle est toujours un déclencheur d'action.",
+        "situation_type": "Résultats d'analyse, ordonnance, nouvelle médicale.",
+        "scenarios_associes": [
+            "Recevoir les résultats d'une prise de sang ou d'une radio.",
+            "Obtenir une prescription pour un traitement.",
+            "Un courrier de l'hôpital pour fixer un rendez-vous."
+        ]
+    },
     "spirituel": {
       "texte": "Sur le plan spirituel, l'As de Carreau est un 'message de l'univers'. C'est une synchronicité, un signe, une idée fulgurante ou la lecture d'un texte qui apporte une révélation. C'est une information extérieure qui vient éclairer votre chemin intérieur et vous pousse à commencer une nouvelle pratique ou une nouvelle exploration de la conscience.",
       "situation_type": "Révélation, synchronicité, idée nouvelle.",
@@ -108,18 +118,6 @@ export const carreauAsCard: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Une main sort d'un écran d'ordinateur ou d'un smartphone, tendant une enveloppe scellée et lumineuse.",
-      "symbolique": "La nouvelle moderne, l'information digitale, la communication instantanée.",
-      "usage": "Illustrer le concept de 'message' et de 'notification'."
-    },
-    {
-      "scene": "Une main ouvrant un écrin pour révéler une bague de fiançailles étincelante.",
-      "symbolique": "La proposition, l'engagement, la promesse.",
-      "usage": "Mettre en avant la signification traditionnelle de la carte liée à l'union."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_nouvelle_carreau_as",

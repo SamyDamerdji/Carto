@@ -1,3 +1,4 @@
+
 import type { Card } from '@/lib/data/cards';
 
 export const trefle8Card: Card = {
@@ -96,6 +97,15 @@ export const trefle8Card: Card = {
         "Discuter du budget familial avec son partenaire."
       ]
     },
+    "sante": {
+        "texte": "Indique des discussions sur la santé. C'est une conversation avec un médecin, une discussion sur un traitement avec ses proches, ou le partage d'expériences avec d'autres personnes. Elle peut représenter une jeune femme (souvent brune) du corps médical. La communication est la clé pour trouver des solutions.",
+        "situation_type": "Discussion médicale, partage d'expérience, jeune soignante.",
+        "scenarios_associes": [
+            "Avoir une discussion approfondie avec son médecin traitant.",
+            "Rejoindre un groupe de soutien pour parler d'une maladie.",
+            "Une jeune infirmière ou doctoresse qui est à l'écoute."
+        ]
+    },
     "spirituel": {
       "texte": "La spiritualité est ici un sujet de conversation et d'échange. C'est le partage d'expériences dans un groupe de parole, la discussion sur un livre spirituel avec des amis. La progression se fait par le dialogue et la confrontation des idées avec d'autres personnes sur le même chemin.",
       "situation_type": "Groupe de parole, échange spirituel, partage d'idées.",
@@ -106,18 +116,6 @@ export const trefle8Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Un groupe de personnes autour d'une table de réunion, échangeant des idées de manière animée et constructive, avec des post-it et des graphiques.",
-      "symbolique": "La collaboration, le brainstorming, la discussion de projet, le travail d'équipe.",
-      "usage": "Illustrer l'aspect professionnel et collaboratif de la carte."
-    },
-    {
-      "scene": "Deux personnes discutant sur un banc public, l'une donnant un conseil à l'autre qui écoute attentivement.",
-      "symbolique": "La conversation, l'échange, le conseil, la communication qui aide.",
-      "usage": "Représenter le concept de discussion et d'échange."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_discussion_trefle_8",

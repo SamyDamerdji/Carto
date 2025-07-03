@@ -97,6 +97,15 @@ export const carreau3Card: Card = {
         "Un conflit avec son assureur pour obtenir une indemnisation."
       ]
     },
+    "sante": {
+        "texte": "Indique des complications, un diagnostic difficile à poser, ou un désaccord entre plusieurs médecins. La communication avec le corps médical est tendue. La carte peut aussi symboliser une maladie qui résulte du stress et des conflits. Elle demande de la persévérance pour obtenir des réponses claires.",
+        "situation_type": "Complications médicales, diagnostic difficile, conflit médical.",
+        "scenarios_associes": [
+            "Devoir consulter plusieurs spécialistes pour comprendre un problème.",
+            "Le stress des conflits qui se répercute sur la santé.",
+            "Des discussions tendues avec les professionnels de santé."
+        ]
+    },
     "spirituel": {
       "texte": "Sur le plan spirituel, c'est le débat intérieur, le conflit entre différentes parties de soi (le cœur et la raison, par exemple). C'est aussi le débat doctrinal, la confrontation d'idées avec d'autres. C'est une phase de lutte intellectuelle pour clarifier ses propres croyances, ce qui peut être épuisant mais nécessaire.",
       "situation_type": "Conflit intérieur, débat philosophique, lutte intellectuelle.",
@@ -107,18 +116,6 @@ export const carreau3Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Deux avocats en robe se faisant face de manière hostile dans un prétoire, avec des piles de dossiers entre eux.",
-      "symbolique": "Le procès, le litige, la procédure légale, le conflit formel.",
-      "usage": "Illustrer l'aspect légal et conflictuel de la carte."
-    },
-    {
-      "scene": "Trois personnes autour d'une table, engagées dans une discussion très tendue, les poings serrés.",
-      "symbolique": "La dispute, le désaccord, la négociation difficile, la tension palpable.",
-      "usage": "Représenter le concept de conflit et de communication difficile."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_conflit_carreau_3",

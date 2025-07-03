@@ -106,6 +106,15 @@ export const piqueRoiCard: Card = {
         "Devoir justifier ses finances auprès d'une autorité."
       ]
     },
+    "sante": {
+        "texte": "Représente l'autorité médicale : le chirurgien, le médecin spécialiste, le chef de service. Il annonce une décision médicale importante, un diagnostic précis, une opération chirurgicale. C'est une figure de grande compétence, qui peut être froide mais efficace. Il peut aussi symboliser la nécessité de prendre une décision radicale pour sa santé.",
+        "situation_type": "Autorité médicale, chirurgien, diagnostic final.",
+        "scenarios_associes": [
+            "Une opération chirurgicale est nécessaire.",
+            "Consulter un grand spécialiste pour un problème de santé.",
+            "Recevoir un diagnostic ferme et définitif."
+        ]
+    },
     "spirituel": {
       "texte": "Le Roi de Pique est le pouvoir de l'intellect qui dissèque les croyances. C'est une phase où la foi est passée au crible de la raison, ce qui peut être une épreuve. Il symbolise une discipline spirituelle très rigoureuse, presque austère. Il invite à devenir le maître de son propre esprit, en éliminant les pensées inutiles ou fausses avec la précision d'un chirurgien.",
       "situation_type": "Crise de foi intellectuelle, discipline mentale, maîtrise de soi.",
@@ -116,18 +125,6 @@ export const piqueRoiCard: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Un marteau de juge repose sur un épais livre de loi en cuir, dans un bureau sombre et lambrissé.",
-      "symbolique": "La loi, le verdict, l'autorité institutionnelle.",
-      "usage": "Illustrer l'aspect 'homme de loi' et 'jugement'."
-    },
-    {
-      "scene": "Un aigle solitaire perché au sommet d'un pic rocheux et enneigé, scrutant la vallée en contrebas.",
-      "symbolique": "Le pouvoir, la vision, l'intelligence acérée et l'isolement.",
-      "usage": "Représenter la puissance, la solitude et la perspective élevée du Roi."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_autorite_pique_roi",
@@ -180,5 +177,3 @@ export const piqueRoiCard: Card = {
     }
   ]
 };
-
-    

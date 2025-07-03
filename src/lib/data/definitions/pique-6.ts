@@ -1,3 +1,4 @@
+
 import type { Card } from '@/lib/data/cards';
 
 export const pique6Card: Card = {
@@ -96,6 +97,15 @@ export const pique6Card: Card = {
         "Le budget est à l'équilibre précaire, sans aucune amélioration."
       ]
     },
+    "sante": {
+        "texte": "Annonce une amélioration qui tarde, une convalescence lente, ou un état de santé qui stagne malgré les traitements. C'est une carte de lassitude physique et morale face à la maladie. Les efforts pour guérir semblent vains pour le moment, ce qui peut être très décourageant.",
+        "situation_type": "Guérison lente, stagnation médicale, découragement.",
+        "scenarios_associes": [
+            "Une convalescence qui dure plus longtemps que prévu.",
+            "Un traitement qui ne donne pas les résultats escomptés.",
+            "Se sentir fatigué et découragé par un état de santé qui ne s'améliore pas."
+        ]
+    },
     "spirituel": {
       "texte": "Sur le plan spirituel, c'est le 'plateau' par excellence. Vos pratiques semblent vides de sens, vos méditations sont agitées, vous avez l'impression de ne plus du tout progresser. C'est une crise de motivation spirituelle, une phase de sécheresse où la foi est mise à rude épreuve par le manque de résultats ressentis.",
       "situation_type": "Stagnation spirituelle, sécheresse de l'âme, pratique vide de sens.",
@@ -106,18 +116,6 @@ export const pique6Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Un bateau à rames pris dans une mer de glace, avec le rameur épuisé et les rames immobiles.",
-      "symbolique": "L'impasse, le blocage, l'impossibilité d'avancer malgré l'effort.",
-      "usage": "Illustrer le concept de stagnation et d'efforts vains."
-    },
-    {
-      "scene": "Un chemin de terre qui mène abruptement à une falaise ou un mur de briques infranchissable.",
-      "symbolique": "Le cul-de-sac, le projet qui mène à une impasse, la fin d'une voie.",
-      "usage": "Représenter l'idée de blocage et de fin de parcours."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_impasse_pique_6",

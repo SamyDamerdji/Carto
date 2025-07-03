@@ -1,3 +1,4 @@
+
 import type { Card } from '@/lib/data/cards';
 
 export const coeur4Card: Card = {
@@ -99,6 +100,15 @@ export const coeur4Card: Card = {
         "Épargner en vue de projets futurs."
       ]
     },
+    "sante": {
+        "texte": "Annonce une santé stable et un bon équilibre. Pas de grands changements à prévoir, mais une confirmation que l'état général est bon et solide. C'est une carte favorable pour la santé du cœur et la tension artérielle. Elle conseille de maintenir une routine saine pour préserver cet équilibre.",
+        "situation_type": "Santé stable, équilibre, bonne constitution.",
+        "scenarios_associes": [
+            "Un bilan de santé qui confirme que tout va bien.",
+            "Une période sans alertes ni problèmes de santé.",
+            "La stabilité émotionnelle qui favorise une bonne santé physique."
+        ]
+    },
     "spirituel": {
       "texte": "Sur le plan spirituel, c'est l'engagement ferme dans une voie ou une pratique. La foi n'est plus vacillante, elle est devenue une fondation solide de votre vie. C'est l'intégration profonde de valeurs spirituelles qui apportent paix et stabilité intérieure. Votre cœur a trouvé son ancrage spirituel.",
       "situation_type": "Engagement spirituel, foi stable, paix intérieure.",
@@ -109,18 +119,6 @@ export const coeur4Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Deux mains échangeant des alliances devant un autel ou un officier d'état civil.",
-      "symbolique": "Le mariage, l'engagement, la promesse, l'union officielle.",
-      "usage": "Illustrer la signification la plus traditionnelle de la carte."
-    },
-    {
-      "scene": "Une maison solide et accueillante, avec de la fumée sortant de la cheminée, entourée d'un jardin bien entretenu.",
-      "symbolique": "Le foyer, la stabilité, la sécurité, les fondations solides.",
-      "usage": "Représenter le concept de construction d'un foyer et de stabilité."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_engagement_coeur_4",

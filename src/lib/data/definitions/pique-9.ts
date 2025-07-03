@@ -93,6 +93,15 @@ export const pique9Card: Card = {
         "Une situation de surendettement sans issue."
       ]
     },
+    "sante": {
+        "texte": "C'est la carte la plus redoutée pour la santé. Elle peut annoncer une maladie grave, un accident, une fin de vie ou un deuil. Il ne faut pas la prendre à la légère. Elle indique une épreuve de santé majeure qui demande un immense courage et le soutien de tous les proches. C'est le symbole de la fragilité de la vie.",
+        "situation_type": "Maladie grave, accident, fin de vie, deuil.",
+        "scenarios_associes": [
+            "Recevoir un diagnostic de maladie très grave.",
+            "La perte d'un proche suite à une maladie.",
+            "Une épreuve de santé qui est une bataille pour la vie."
+        ]
+    },
     "spirituel": {
       "texte": "Spirituellement, c'est l'épreuve ultime de la foi. C'est la confrontation avec l'absurdité, la souffrance et la mort. C'est le moment où toutes les croyances sont brisées, où le ciel semble vide. C'est le point zéro de l'existence, un dépouillement total qui peut, paradoxalement, mener à une forme de libération si l'épreuve est transcendée.",
       "situation_type": "Perte de foi totale, confrontation au néant, dépouillement ultime.",
@@ -103,18 +112,6 @@ export const pique9Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Une pierre tombale solitaire dans un cimetière sous une pluie battante et un ciel gris.",
-      "symbolique": "Le deuil, la perte, la fin, la tristesse ultime.",
-      "usage": "Illustrer la signification la plus lourde de la carte."
-    },
-    {
-      "scene": "Un château de cartes magnifiquement construit qui s'effondre soudainement.",
-      "symbolique": "L'échec total, l'effondrement des projets, la fin brutale d'une construction.",
-      "usage": "Représenter le concept d'échec et de désastre."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_resilience_pique_9",

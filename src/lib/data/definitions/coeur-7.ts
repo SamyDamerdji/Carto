@@ -1,3 +1,4 @@
+
 import type { Card } from '@/lib/data/cards';
 
 export const coeur7Card: Card = {
@@ -98,6 +99,15 @@ export const coeur7Card: Card = {
         "Offrir un petit quelque chose 'juste pour le plaisir'."
       ]
     },
+    "sante": {
+        "texte": "Indique des pensées positives concernant la santé. C'est l'optimisme, l'espoir de guérison, la pensée bienveillante envers soi-même ou un proche malade. La santé mentale est bonne, ce qui favorise la santé physique. Elle peut aussi représenter la santé des enfants.",
+        "situation_type": "Pensée positive, espoir de guérison, santé des enfants.",
+        "scenarios_associes": [
+            "Garder un état d'esprit optimiste face à la maladie.",
+            "Penser avec affection à la santé d'un enfant ou d'un proche.",
+            "Le bien-être mental qui a un effet positif sur le corps."
+        ]
+    },
     "spirituel": {
       "texte": "C'est la spiritualité du cœur et de l'imagination. La prière, la visualisation créatrice, la connexion avec son enfant intérieur. C'est une approche douce et intuitive de la spiritualité. C'est l'idée que nos pensées bienveillantes ont un pouvoir créateur.",
       "situation_type": "Visualisation, prière, connexion à l'intuition.",
@@ -108,18 +118,6 @@ export const coeur7Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Une personne assise à une fenêtre, regardant au loin avec un sourire rêveur, tandis qu'un cœur lumineux flotte au-dessus de sa tête.",
-      "symbolique": "La rêverie, la pensée affectueuse, l'amour à distance.",
-      "usage": "Illustrer le concept de 'pensée pour quelqu'un'."
-    },
-    {
-      "scene": "Une ampoule en forme de cœur qui commence à s'allumer doucement.",
-      "symbolique": "L'idée qui vient du cœur, le début d'un sentiment, le potentiel créatif.",
-      "usage": "Représenter l'émergence d'une idée ou d'une affection."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_pensee_coeur_7",

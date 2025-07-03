@@ -1,3 +1,4 @@
+
 import type { Card } from '@/lib/data/cards';
 
 export const trefleValetCard: Card = {
@@ -101,6 +102,15 @@ export const trefleValetCard: Card = {
         "Obtenir une aide financière pour ses études."
       ]
     },
+    "sante": {
+        "texte": "Représente une bonne discipline et un effort constant pour maintenir ou améliorer sa santé. C'est la carte de celui qui suit son traitement avec sérieux, qui fait sa rééducation assidûment ou qui s'astreint à un régime strict. Peut incarner un jeune kinésithérapeute, un coach sportif ou un aide-soignant dévoué. Les efforts pour la santé paieront.",
+        "situation_type": "Discipline de santé, effort, jeune soignant.",
+        "scenarios_associes": [
+            "Suivre un programme de rééducation avec sérieux.",
+            "Réussir un régime grâce à sa persévérance.",
+            "Être aidé par un jeune professionnel de santé compétent."
+        ]
+    },
     "spirituel": {
       "texte": "Sa spiritualité passe par l'étude et la discipline. C'est le disciple qui étudie les textes sacrés avec sérieux, qui suit les enseignements d'un maître avec loyauté. Le chemin spirituel est vu comme un travail, une pratique régulière qui demande de la rigueur et de la persévérance. C'est la foi qui se construit par la connaissance et l'effort.",
       "situation_type": "Étude spirituelle, discipline, disciple loyal.",
@@ -111,18 +121,6 @@ export const trefleValetCard: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Un jeune étudiant à une table de bibliothèque, penché sur des livres ouverts, avec une ampoule lumineuse au-dessus de sa tête.",
-      "symbolique": "L'étude, la concentration, l'apprentissage, la compréhension qui vient par l'effort.",
-      "usage": "Illustrer l'aspect 'étudiant' et 'sérieux'."
-    },
-    {
-      "scene": "Un jeune artisan dans son atelier, appliquant avec soin la dernière touche à son ouvrage.",
-      "symbolique": "Le travail bien fait, l'application, la fiabilité, le potentiel du savoir-faire.",
-      "usage": "Représenter son identité de travailleur fiable et d'apprenti."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_effort_trefle_valet",

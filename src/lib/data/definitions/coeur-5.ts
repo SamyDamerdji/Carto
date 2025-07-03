@@ -1,3 +1,4 @@
+
 import type { Card } from '@/lib/data/cards';
 
 export const coeur5Card: Card = {
@@ -95,6 +96,15 @@ export const coeur5Card: Card = {
         "Regretter un achat coûteux et inutile."
       ]
     },
+    "sante": {
+        "texte": "Indique une déception concernant la santé. Un traitement qui ne fonctionne pas comme espéré, une guérison qui n'est pas complète, ou une perte de vitalité. C'est une carte de tristesse et de regret liés au corps. Elle invite à faire le deuil d'une ancienne condition physique pour mieux s'adapter à la nouvelle.",
+        "situation_type": "Déception médicale, perte de vitalité, deuil de la santé.",
+        "scenarios_associes": [
+            "Un traitement qui n'apporte pas les résultats espérés.",
+            "Regretter sa bonne santé d'avant.",
+            "Le moral affecté par une condition physique décevante."
+        ]
+    },
     "spirituel": {
       "texte": "C'est une crise de désillusion. Les pratiques spirituelles semblent vides, les croyances s'effondrent. C'est le sentiment d'avoir été abandonné ou trompé par ses idéaux. C'est une phase de 'deuil spirituel' nécessaire pour se débarrasser des illusions et trouver une foi plus authentique et personnelle.",
       "situation_type": "Désillusion spirituelle, perte de foi, deuil des illusions.",
@@ -105,18 +115,6 @@ export const coeur5Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Un pont brisé au-dessus d'une rivière, avec une personne d'un côté regardant tristement l'autre rive inaccessible.",
-      "symbolique": "La séparation, la perte, ce qui ne peut être atteint, le regret.",
-      "usage": "Illustrer le concept de deuil et de déception."
-    },
-    {
-      "scene": "Une personne regardant de dos un verre à moitié vide posé sur une table, ignorant les verres pleins à côté.",
-      "symbolique": "La focalisation sur la perte et le manque, l'incapacité à voir ce qui reste.",
-      "usage": "Représenter le sentiment de regret et de déception."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_deuil_coeur_5",

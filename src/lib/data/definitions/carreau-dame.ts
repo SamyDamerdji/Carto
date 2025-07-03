@@ -102,6 +102,15 @@ export const carreauDameCard: Card = {
         "Apprendre une nouvelle qui impacte ses finances."
       ]
     },
+    "sante": {
+        "texte": "La santé est ici liée à la communication. C'est le moment de poser des questions à son médecin, de chercher des informations, de parler de ses symptômes. Elle peut représenter une femme médecin ou une spécialiste très communicative. Négativement, elle peut signaler des commérages ou des informations de santé peu fiables trouvées sur internet.",
+        "situation_type": "Communication médicale, recherche d'information, diagnostic.",
+        "scenarios_associes": [
+            "Avoir une discussion claire et détaillée avec son médecin.",
+            "Chercher activement des informations sur une condition médicale.",
+            "Se méfier des diagnostics posés à la légère ou des rumeurs."
+        ]
+    },
     "spirituel": {
       "texte": "Sa spiritualité est intellectuelle et basée sur l'échange. C'est la personne qui lit beaucoup, qui suit des conférences, qui aime débattre de concepts philosophiques. Son chemin passe par l'apprentissage et la communication. Le risque est de rester à la surface des choses, dans le mental, sans jamais descendre dans l'expérience du cœur.",
       "situation_type": "Quête intellectuelle, apprentissage spirituel, communication.",
@@ -112,18 +121,6 @@ export const carreauDameCard: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Une femme élégante au téléphone, avec en arrière-plan une carte du monde et des avions qui décollent.",
-      "symbolique": "La communication, le voyage, les affaires internationales, le réseau.",
-      "usage": "Illustrer son rôle de communicante et de voyageuse."
-    },
-    {
-      "scene": "Deux femmes discutant de manière animée, avec des bulles de conversation qui s'échappent, certaines contenant des points d'interrogation et d'autres des points d'exclamation.",
-      "symbolique": "Le commérage, l'échange d'informations, la curiosité, la critique.",
-      "usage": "Représenter son côté ambivalent de messagère et de commère."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_communication_carreau_dame",

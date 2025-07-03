@@ -104,6 +104,15 @@ export const carreauRoiCard: Card = {
         "Augmentation significative de son patrimoine."
       ]
     },
+    "sante": {
+        "texte": "Peut représenter un spécialiste médical de renom, éventuellement étranger. C'est le recours à un expert pour un problème de santé précis. La carte favorise les diagnostics clairs et les solutions pragmatiques. Elle peut aussi indiquer que la guérison passe par des moyens financiers importants (traitement coûteux, clinique privée).",
+        "situation_type": "Consultation d'un spécialiste, expertise médicale, solution coûteuse.",
+        "scenarios_associes": [
+            "Consulter un grand professeur pour un second avis.",
+            "Un diagnostic précis est enfin posé grâce à un expert.",
+            "La santé s'améliore grâce à un investissement financier important."
+        ]
+    },
     "spirituel": {
       "texte": "La spiritualité du Roi de Carreau est ancrée dans le monde tangible. Il croit en la 'loi de l'attraction' comme un outil pour manifester le succès matériel. Son cheminement consiste à maîtriser les lois de l'abondance et à prouver son pouvoir de création dans le monde réel. La foi doit, pour lui, produire des résultats concrets.",
       "situation_type": "Manifestation, loi de l'attraction, spiritualité pragmatique.",
@@ -114,18 +123,6 @@ export const carreauRoiCard: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Un homme en costume élégant déplace une pièce de roi sur un échiquier mondial, avec des lignes de connexion lumineuses entre les grandes villes.",
-      "symbolique": "La stratégie, l'influence internationale, la maîtrise du jeu des affaires.",
-      "usage": "Illustrer le pouvoir et la vision globale du Roi de Carreau."
-    },
-    {
-      "scene": "Une poignée de main ferme entre deux personnes, scellant un accord devant la skyline d'un quartier d'affaires.",
-      "symbolique": "Le contrat, la négociation, le partenariat puissant.",
-      "usage": "Représenter son rôle de négociateur et d'homme d'affaires."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_strategie_carreau_roi",
@@ -144,8 +141,8 @@ export const carreauRoiCard: Card = {
       "carte_associee_id": "carreau-dame",
       "signification": "Le couple de pouvoir. L'homme et la femme d'affaires. Ils peuvent être partenaires en affaires ou dans la vie, unis par l'ambition et le succès. C'est une combinaison de grande influence et de réussite matérielle.",
       "scenarios_associes": [
-        "Un couple qui dirige une entreprise ensemble.",
-        "Une alliance stratégique entre deux personnes puissantes."
+        "Un couple d'expatriés qui réussit professionnellement.",
+        "Une association d'affaires entre un homme et une femme très puissants."
       ],
       "tonalite": "Très positive"
     },

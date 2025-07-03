@@ -97,6 +97,15 @@ export const carreau6Card: Card = {
         "Devoir attendre avant de pouvoir faire un achat important."
       ]
     },
+    "sante": {
+        "texte": "Une amélioration de la santé est en chemin, mais elle sera lente et progressive. C'est la carte de la convalescence, de la rééducation, du traitement au long cours. Elle demande de la patience et de la persévérance. Il peut aussi s'agir d'un déplacement pour des raisons médicales (aller voir un spécialiste, se rendre en cure).",
+        "situation_type": "Convalescence, guérison lente, rééducation.",
+        "scenarios_associes": [
+            "Une longue période de rééducation après un accident.",
+            "Un traitement médical qui demande plusieurs mois pour agir.",
+            "Se rendre dans une autre ville pour une consultation médicale."
+        ]
+    },
     "spirituel": {
       "texte": "Le chemin spirituel est long et demande de la persévérance. Cette carte vous rappelle que l'éveil n'est pas un événement soudain mais un processus graduel. C'est la pratique régulière, jour après jour, qui mène à la transformation. C'est l'invitation à apprécier le voyage autant que la destination.",
       "situation_type": "Cheminement spirituel lent, persévérance, patience.",
@@ -107,18 +116,6 @@ export const carreau6Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Une longue route droite s'étirant vers l'horizon sous un ciel clair.",
-      "symbolique": "Le chemin, le voyage, la distance, le temps qui passe.",
-      "usage": "Illustrer le concept de déplacement et de processus temporel."
-    },
-    {
-      "scene": "Un sablier dont le sable s'écoule lentement, à côté d'une lettre encore cachetée.",
-      "symbolique": "L'attente, la patience, la nouvelle qui tarde à arriver.",
-      "usage": "Représenter l'idée d'attente et de lenteur."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_patience_carreau_6",

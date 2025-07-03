@@ -96,6 +96,15 @@ export const carreau9Card: Card = {
         "Un virement bancaire qui est bloqué pour vérification."
       ]
     },
+    "sante": {
+        "texte": "Annonce un retard dans un diagnostic, un traitement reporté, ou une guérison qui se fait attendre. C'est une carte de frustration médicale. Les résultats d'examens tardent à arriver, un rendez-vous chez un spécialiste est annulé. La situation sanitaire stagne et demande de la patience.",
+        "situation_type": "Retard de diagnostic, traitement ajourné, guérison lente.",
+        "scenarios_associes": [
+            "Attendre longtemps des résultats d'analyse.",
+            "Une opération chirurgicale qui est reportée.",
+            "Avoir l'impression que le traitement ne fait pas effet rapidement."
+        ]
+    },
     "spirituel": {
       "texte": "Sur le plan spirituel, c'est le sentiment de stagner. Vous avez l'impression que vos pratiques ne donnent aucun résultat, que vos prières ne sont pas entendues. C'est un 'plateau' dans votre évolution. La carte vous invite à la persévérance et à la foi, même en l'absence de résultats visibles. C'est un test de patience.",
       "situation_type": "Stagnation spirituelle, test de patience, sentiment de blocage.",
@@ -106,18 +115,6 @@ export const carreau9Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Un coureur devant une haie qu'il ne parvient pas à franchir, avec la ligne d'arrivée visible au loin.",
-      "symbolique": "L'obstacle de dernière minute, le blocage avant le but, la frustration.",
-      "usage": "Illustrer le concept d'obstacle et de retard."
-    },
-    {
-      "scene": "Une horloge dont les aiguilles sont figées, ou une lettre bloquée dans une boîte aux lettres.",
-      "symbolique": "L'attente, le temps qui s'arrête, la communication qui ne passe pas.",
-      "usage": "Représenter le retard et le blocage de l'information."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_patience_carreau_9",

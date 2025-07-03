@@ -1,3 +1,4 @@
+
 import type { Card } from '@/lib/data/cards';
 
 export const coeurValetCard: Card = {
@@ -8,7 +9,7 @@ export const coeurValetCard: Card = {
   "image_url": "https://raw.githubusercontent.com/SamyDamerdji/Divinator/main/cards/V-coeur.png",
   "symbolique_image": "Le Valet de Cœur est un jeune homme au regard doux, souvent rêveur. Il incarne les débuts de l'amour, la pensée romantique, le messager des sentiments tendres. C'est l'élan du cœur, la déclaration timide mais sincère.",
   "narration_base": {
-    "texte": "Voici le Valet de Cœur, le grand romantique du jeu de cartes. Il représente un jeune homme blond ou châtain clair, sincère, aimable et souvent un peu timide. Il est le porteur de douces pensées, de sentiments naissants, d'une déclaration d'amour ou d'une proposition amicale. Il peut incarner un jeune amoureux, un fils, un frère ou un ami très proche. Sa présence annonce une nouvelle agréable, une invitation, ou tout simplement l'émergence de sentiments tendres et bienveillants.",
+    "texte": "Voici le Valet de Cœur, le grand romantique du jeu de cartes. Il représente un jeune homme blond ou châtain clair, sincère, aimable et souvent un peu timide. Il est le porteur de douces pensées, de sentiments naissants, d'une déclaration d'amour ou d'une proposition amicale. Il peut incarner un jeune amoureux, un fils, un frère ou un ami très proche. Sa présence annonce une nouvelle agréable, une invitation, ou simplement l'émergence de sentiments tendres et bienveillants.",
     "ton": "doux, chaleureux, pédagogue",
     "perspective": "mentor"
   },
@@ -102,6 +103,15 @@ export const coeurValetCard: Card = {
         "Dépenser de l'argent pour une sortie romantique."
       ]
     },
+    "sante": {
+        "texte": "Carte très positive pour la santé. Elle annonce de bonnes nouvelles : une guérison en cours, des résultats d'analyse rassurants, ou le début d'une nette amélioration. Elle peut représenter un jeune aide-soignant ou un interne sympathique. C'est le signe que le moral est bon et participe activement à la guérison.",
+        "situation_type": "Bonne nouvelle médicale, amélioration, guérison.",
+        "scenarios_associes": [
+            "Recevoir des résultats d'examens qui sont bons.",
+            "Se sentir beaucoup mieux après une période de maladie.",
+            "Le moral et l'optimisme favorisent la santé."
+        ]
+    },
     "spirituel": {
       "texte": "Le Valet de Cœur est l'éveil du cœur spirituel. C'est la découverte de la méditation, de la prière ou de toute pratique qui ouvre à la compassion et à l'amour. Il représente un enthousiasme juvénile pour le chemin spirituel, une foi simple et pure, non encore éprouvée par les doutes.",
       "situation_type": "Éveil spirituel, premier élan de foi, joie de la découverte.",
@@ -112,18 +122,6 @@ export const coeurValetCard: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Un jeune homme timide tendant une seule rose rouge, le regard baissé mais avec un léger sourire.",
-      "symbolique": "La déclaration timide, l'offre sincère, la pureté des sentiments naissants.",
-      "usage": "Illustrer le concept de 'jeune amoureux' et de 'déclaration'."
-    },
-    {
-      "scene": "Une lettre d'amour ouverte sur une table, à côté d'une tasse de café fumante, baignée d'une lumière matinale douce.",
-      "symbolique": "La bonne nouvelle, le message d'affection, la pensée tendre.",
-      "usage": "Représenter son rôle de messager des sentiments."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_pensee_amour_coeur_valet",

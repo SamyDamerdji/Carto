@@ -98,6 +98,15 @@ export const trefle9Card: Card = {
         "Atteindre un niveau de revenus stable et confortable."
       ]
     },
+    "sante": {
+        "texte": "Indique un succès dans le domaine de la santé. Un traitement qui porte ses fruits, une guérison qui se confirme, une amélioration notable de l'état général. C'est le résultat positif d'efforts constants (régime, rééducation, traitement). La santé est en très bonne voie d'amélioration.",
+        "situation_type": "Guérison en bonne voie, traitement efficace, amélioration de la santé.",
+        "scenarios_associes": [
+            "La fin d'un traitement avec de très bons résultats.",
+            "Une amélioration spectaculaire de sa condition physique.",
+            "Les efforts pour une meilleure hygiène de vie paient enfin."
+        ]
+    },
     "spirituel": {
       "texte": "Sur le plan spirituel, c'est la réussite d'une discipline. Vos efforts constants dans une pratique (méditation, yoga, étude) portent leurs fruits. Vous atteignez un nouveau palier de compréhension et de sérénité. C'est la preuve que la persévérance sur le chemin spirituel est récompensée par des résultats concrets dans votre vie intérieure.",
       "situation_type": "Aboutissement d'une pratique, sérénité acquise, discipline récompensée.",
@@ -108,18 +117,6 @@ export const trefle9Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Une main posant la dernière pièce d'un puzzle complexe, révélant une image de prospérité (une usine florissante, un champ de blé doré).",
-      "symbolique": "L'accomplissement, la touche finale, la concrétisation d'un projet long et complexe.",
-      "usage": "Illustrer le concept d'aboutissement et de réussite."
-    },
-    {
-      "scene": "Un diplôme encadré ou une coupe de vainqueur posé sur un bureau bien rangé.",
-      "symbolique": "La reconnaissance, la récompense du mérite, le succès validé.",
-      "usage": "Représenter la réussite professionnelle et la satisfaction."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_reussite_trefle_9",

@@ -1,3 +1,4 @@
+
 import type { Card } from '@/lib/data/cards';
 
 export const coeur6Card: Card = {
@@ -97,6 +98,15 @@ export const coeur6Card: Card = {
         "Recevoir un petit héritage."
       ]
     },
+    "sante": {
+        "texte": "Peut indiquer la résurgence d'un problème de santé ancien ou chronique. C'est aussi une carte qui parle de la mémoire du corps et des traumatismes passés. Positivement, elle peut signifier une guérison qui passe par la réconciliation avec son histoire ou son corps. La nostalgie et le bien-être émotionnel ont un impact direct sur la santé.",
+        "situation_type": "Maladie chronique, mémoire corporelle, guérison émotionnelle.",
+        "scenarios_associes": [
+            "Une ancienne blessure ou maladie qui refait surface.",
+            "Comprendre l'origine émotionnelle d'un problème de santé.",
+            "Le réconfort des souvenirs heureux aide à la guérison."
+        ]
+    },
     "spirituel": {
       "texte": "C'est un retour aux sources de votre spiritualité. Vous pourriez être attiré par les croyances de votre enfance, ou chercher à guérir des blessures émotionnelles anciennes. C'est un chemin de guérison de l'enfant intérieur, qui passe par le pardon et l'acceptation de son histoire personnelle.",
       "situation_type": "Guérison de l'enfant intérieur, retour aux sources, pardon.",
@@ -107,18 +117,6 @@ export const coeur6Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Une personne ouvrant une vieille boîte en bois remplie de photos jaunies, de lettres et de souvenirs d'enfance, avec un sourire doux.",
-      "symbolique": "La mémoire, la nostalgie, la connexion avec le passé affectif.",
-      "usage": "Illustrer le concept central de souvenir et de passé."
-    },
-    {
-      "scene": "Deux personnes se faisant une accolade chaleureuse sur un pont, symbolisant la réconciliation et le lien rétabli.",
-      "symbolique": "La réconciliation, le pardon, le retour, le lien qui unit.",
-      "usage": "Représenter l'idée de réconciliation et de retour d'une personne."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_passe_coeur_6",

@@ -97,6 +97,15 @@ export const pique8Card: Card = {
         "S'inquiéter pour son avenir financier."
       ]
     },
+    "sante": {
+        "texte": "Signale des soucis de santé mineurs mais contrariants : fatigue, déprime, petite maladie, douleurs. C'est une période où la vitalité est en baisse. La tristesse et les soucis peuvent avoir un impact direct sur le corps. Elle invite à se reposer et à ne pas négliger ces petits maux.",
+        "situation_type": "Fatigue, déprime, soucis de santé mineurs.",
+        "scenarios_associes": [
+            "Souffrir de fatigue chronique ou de déprime passagère.",
+            "Une série de petits pépins de santé.",
+            "Le stress qui provoque des douleurs physiques (dos, estomac)."
+        ]
+    },
     "spirituel": {
       "texte": "Sur le plan spirituel, c'est une période de doute et de 'désert'. La foi est mise à l'épreuve par les difficultés de la vie. C'est le moment où l'on se demande 'Pourquoi moi ?'. La pratique spirituelle peut sembler aride et sans réconfort. C'est une invitation à persévérer et à accepter que le chemin spirituel comporte aussi des phases de tristesse et de questionnement.",
       "situation_type": "Crise de foi, doute, épreuve spirituelle.",
@@ -107,18 +116,6 @@ export const pique8Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Un visage en gros plan avec une seule larme coulant sur la joue, sous un ciel nuageux.",
-      "symbolique": "Le chagrin, la peine, la tristesse simple et directe.",
-      "usage": "Illustrer l'émotion centrale de la carte."
-    },
-    {
-      "scene": "Une personne marchant péniblement sous une pluie fine et persistante, tenant un parapluie troué.",
-      "symbolique": "Les contrariétés, les petits malheurs qui s'accumulent, la fatigue face aux difficultés.",
-      "usage": "Représenter le concept de soucis quotidiens et de lassitude."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_chagrin_pique_8",

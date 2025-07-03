@@ -100,6 +100,15 @@ export const pique5Card: Card = {
         "Avoir un conflit avec sa banque."
       ]
     },
+    "sante": {
+        "texte": "Annonce une lutte contre la maladie. C'est une carte de crise de santé, une période de combat intense. Elle peut représenter une maladie aiguë, une fièvre, une inflammation, ou le stress qui attaque le corps. La vitalité est mise à rude épreuve, et il faudra se battre pour recouvrer la santé.",
+        "situation_type": "Lutte contre la maladie, crise de santé, stress physique.",
+        "scenarios_associes": [
+            "Combattre une infection ou une inflammation.",
+            "Une période où le corps est en état de crise.",
+            "Le stress intense qui provoque des symptômes physiques."
+        ]
+    },
     "spirituel": {
       "texte": "C'est une crise spirituelle active. C'est le combat intérieur contre ses propres démons, ses addictions, ses schémas de pensée négatifs. Ce n'est pas une phase passive de doute, mais une lutte consciente pour se libérer de ce qui nous entrave. C'est une épreuve de force de volonté.",
       "situation_type": "Combat intérieur, lutte contre ses addictions, crise de conscience.",
@@ -110,18 +119,6 @@ export const pique5Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Deux épées qui s'entrechoquent avec des étincelles, sur un fond sombre et orageux.",
-      "symbolique": "Le conflit, la bataille, l'affrontement, la crise.",
-      "usage": "Illustrer l'idée centrale de lutte et de conflit."
-    },
-    {
-      "scene": "Une personne traversant un champ de ronces, les vêtements déchirés mais le regard déterminé.",
-      "symbolique": "L'épreuve, l'adversité, la difficulté du chemin, la combativité.",
-      "usage": "Représenter le concept de lutte contre les obstacles."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_conflit_pique_5",

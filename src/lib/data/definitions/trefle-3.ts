@@ -1,3 +1,4 @@
+
 import type { Card } from '@/lib/data/cards';
 
 export const trefle3Card: Card = {
@@ -96,6 +97,15 @@ export const trefle3Card: Card = {
         "Les premiers bénéfices d'une petite entreprise."
       ]
     },
+    "sante": {
+        "texte": "Indique une amélioration progressive de la santé, le succès d'une collaboration entre plusieurs thérapies ou plusieurs soignants. C'est un travail d'équipe médical qui porte ses fruits. La santé progresse, étape par étape. C'est un signe très encourageant.",
+        "situation_type": "Amélioration progressive, collaboration médicale, progrès.",
+        "scenarios_associes": [
+            "La combinaison de plusieurs traitements s'avère efficace.",
+            "L'avis convergent de plusieurs médecins permet de trouver la bonne solution.",
+            "La santé s'améliore petit à petit."
+        ]
+    },
     "spirituel": {
       "texte": "Indique une progression sur votre chemin spirituel. Vous comprenez et intégrez un nouveau concept, votre pratique s'approfondit. Vous pouvez vous sentir soutenu par une communauté ou un guide. C'est une étape de croissance intérieure où vous sentez que vous avancez.",
       "situation_type": "Croissance spirituelle, progression, approfondissement.",
@@ -106,18 +116,6 @@ export const trefle3Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Trois personnes assemblant les pièces d'un grand puzzle, chacune apportant un morceau clé.",
-      "symbolique": "La collaboration, le travail d'équipe, l'union des compétences pour créer quelque chose de plus grand.",
-      "usage": "Illustrer le concept de partenariat et de progression commune."
-    },
-    {
-      "scene": "Un jeune plant qui sort de terre, avec deux petites feuilles, sous un soleil doux.",
-      "symbolique": "La croissance, le début prometteur, le développement, le potentiel.",
-      "usage": "Représenter l'idée de projet qui démarre bien et qui progresse."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_progression_trefle_3",

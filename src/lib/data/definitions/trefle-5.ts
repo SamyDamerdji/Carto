@@ -99,6 +99,15 @@ export const trefle5Card: Card = {
         "Un conflit sur la manière de dépenser l'argent du ménage."
       ]
     },
+    "sante": {
+        "texte": "Indique que la santé peut être affectée par le stress relationnel et les conflits. C'est une carte qui invite à se protéger des disputes pour préserver son énergie vitale. Positivement, elle peut signifier que le soutien des amis et de la famille est un facteur de guérison essentiel.",
+        "situation_type": "Stress, conflit nuisible à la santé, soutien amical.",
+        "scenarios_associes": [
+            "Le stress d'une dispute qui provoque des troubles du sommeil ou digestifs.",
+            "Le soutien des proches qui aide à surmonter une maladie.",
+            "La nécessité de s'éloigner des relations toxiques pour sa santé."
+        ]
+    },
     "spirituel": {
       "texte": "La spiritualité se vit en groupe. C'est l'importance de la 'sangha' ou de la communauté spirituelle pour se soutenir mutuellement. Positivement, c'est la force du groupe qui vous élève. Négativement, ce sont les conflits d'ego ou les désaccords doctrinaux au sein d'un groupe spirituel. C'est un rappel que le chemin partagé peut être une aide ou un obstacle.",
       "situation_type": "Communauté spirituelle, soutien de groupe, conflit idéologique.",
@@ -109,18 +118,6 @@ export const trefle5Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Plusieurs mains jointes au centre, formant un cercle de solidarité.",
-      "symbolique": "L'alliance, l'entraide, le soutien, la force du groupe.",
-      "usage": "Illustrer l'aspect positif de la carte : l'aide et le partenariat."
-    },
-    {
-      "scene": "Deux personnes se tournant le dos, bras croisés, avec un éclair de tension entre elles.",
-      "symbolique": "Le conflit, la dispute, le désaccord, la rupture de l'alliance.",
-      "usage": "Représenter l'aspect négatif de la carte : la querelle."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_alliance_trefle_5",

@@ -100,6 +100,15 @@ export const trefleDameCard: Card = {
         "Recevoir un conseil avisé pour ses économies."
       ]
     },
+    "sante": {
+        "texte": "Représente une santé solide, gérée avec bon sens et pragmatisme. C'est la carte de l'hygiène de vie, de l'alimentation saine et de l'exercice régulier. Elle peut incarner une infirmière ou une aide-soignante très compétente et fiable, qui donne des conseils pratiques. La santé est le fruit d'une bonne discipline.",
+        "situation_type": "Bonne hygiène de vie, santé stable, soignante compétente.",
+        "scenarios_associes": [
+            "Adopter un régime alimentaire sain et s'y tenir.",
+            "Une santé solide grâce à une routine d'exercice.",
+            "Recevoir des soins pratiques et efficaces."
+        ]
+    },
     "spirituel": {
       "texte": "Sa spiritualité est ancrée dans le service et la communauté. Elle trouve le sens dans l'aide qu'elle apporte aux autres, dans la fiabilité de sa parole et dans l'honnêteté de ses actes. C'est une spiritualité du quotidien, qui se manifeste par la bonté pratique et la construction de liens solides et bienveillants.",
       "situation_type": "Spiritualité du service, éthique de vie, force de la communauté.",
@@ -110,18 +119,6 @@ export const trefleDameCard: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Deux femmes se tenant par l'épaule, regardant dans la même direction vers un horizon prometteur, avec un air de confiance mutuelle.",
-      "symbolique": "L'amitié fidèle, le soutien, la loyauté, le chemin parcouru ensemble.",
-      "usage": "Illustrer son rôle d'amie et de soutien indéfectible."
-    },
-    {
-      "scene": "Une femme dans un bureau bien rangé, donnant une poignée de main ferme et souriante à un partenaire.",
-      "symbolique": "La fiabilité professionnelle, la compétence, le partenariat honnête.",
-      "usage": "Représenter son identité de femme d'affaires et de partenaire de confiance."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_confiance_trefle_dame",

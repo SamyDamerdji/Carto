@@ -1,3 +1,4 @@
+
 import type { Card } from '@/lib/data/cards';
 
 export const piqueAsCard: Card = {
@@ -101,6 +102,15 @@ export const piqueAsCard: Card = {
         "Clôturer un compte ou déclarer une faillite."
       ]
     },
+    "sante": {
+        "texte": "Carte très tranchante pour la santé, l'As de Pique peut annoncer un diagnostic médical qui tombe comme un couperet, une décision chirurgicale inévitable, ou le début d'une maladie sérieuse. Elle représente la nécessité d'une intervention radicale pour couper le mal à la racine. C'est une épreuve de santé majeure, mais aussi le point de départ d'une lutte décisive pour la guérison.",
+        "situation_type": "Diagnostic important, décision chirurgicale, épreuve de santé.",
+        "scenarios_associes": [
+            "Subir une opération chirurgicale.",
+            "Recevoir un diagnostic qui change la vie.",
+            "Le début d'un traitement lourd mais nécessaire."
+        ]
+    },
     "spirituel": {
       "texte": "C'est l'expérience de la 'nuit noire de l'âme'. Une crise existentielle profonde qui brise les anciennes croyances et force à une réévaluation complète de sa vie et de ses valeurs. C'est une épreuve spirituelle intense, mais c'est de cette 'mort' symbolique que peut naître une conscience nouvelle, plus authentique et plus forte. C'est la vérité qui détruit l'illusion.",
       "situation_type": "Crise existentielle, perte de foi, renaissance spirituelle.",
@@ -111,31 +121,6 @@ export const piqueAsCard: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Un marteau de juge sur le point de frapper son socle, avec un document officiel (contrat, verdict) posé à côté.",
-      "symbolique": "Le jugement final, la décision irrévocable, l'acte officiel.",
-      "usage": "Illustrer l'aspect légal et décisionnel de la carte."
-    },
-    {
-      "scene": "Un pont en pierre qui s'effondre au milieu, coupant la route entre deux rives.",
-      "symbolique": "La rupture, la fin d'un lien, l'impossibilité de revenir en arrière.",
-      "usage": "Représenter le concept de séparation et de fin définitive."
-    }
-  ],
-  "modules_interactifs": [
-    {
-      "id_module": "reflexion_decision_pique_as",
-      "etapes": [
-        {
-          "type": "question_ouverte",
-          "contenu": "L'As de Pique vous confronte à une fin nécessaire. S'il y avait une situation, une relation ou une croyance dans votre vie que vous savez devoir abandonner pour avancer, laquelle serait-ce ? Qu'est-ce qui vous empêche de prendre cette décision ?",
-          "ton": "introspectif, courageux",
-          "reponse_attendue": "Texte libre de réflexion personnelle."
-        }
-      ]
-    }
-  ],
   "combinaisons": [
     {
       "carte_associee_id": "pique-9",

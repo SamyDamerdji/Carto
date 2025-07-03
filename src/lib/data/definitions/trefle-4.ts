@@ -99,6 +99,15 @@ export const trefle4Card: Card = {
         "Faire des placements prudents et sécurisés."
       ]
     },
+    "sante": {
+        "texte": "La santé est stable et solide. C'est une carte qui indique un bon équilibre de vie, une constitution robuste. Il n'y a pas de problème majeur à craindre. C'est le résultat d'une bonne hygiène de vie. Elle conseille de maintenir cette routine saine pour préserver cet équilibre.",
+        "situation_type": "Santé stable, bon équilibre, constitution solide.",
+        "scenarios_associes": [
+            "Une période sans aucun souci de santé.",
+            "La confirmation que votre hygiène de vie est bonne pour vous.",
+            "Une grande résistance physique et mentale."
+        ]
+    },
     "spirituel": {
       "texte": "La spiritualité se manifeste par la discipline et la régularité. C'est une pratique bien ancrée dans le quotidien, qui apporte un sentiment de stabilité et d'équilibre intérieur. La foi est solide, elle est une fondation sur laquelle on peut s'appuyer dans les moments difficiles. C'est la force tranquille de la conviction.",
       "situation_type": "Discipline spirituelle, foi solide, équilibre intérieur.",
@@ -109,18 +118,6 @@ export const trefle4Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Un chêne ancien, grand et robuste, avec des racines visibles et profondes.",
-      "symbolique": "La solidité, la stabilité, la pérennité, les fondations.",
-      "usage": "Illustrer le concept de sécurité et de situation bien établie."
-    },
-    {
-      "scene": "Un coffre-fort ouvert, non pas pour montrer la richesse, mais pour montrer l'ordre parfait des dossiers et des classeurs à l'intérieur.",
-      "symbolique": "La bonne gestion, l'ordre, la prudence, la sécurité par l'organisation.",
-      "usage": "Représenter la bonne gestion et la stabilité financière."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_stabilite_trefle_4",

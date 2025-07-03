@@ -1,3 +1,4 @@
+
 import type { Card } from '@/lib/data/cards';
 
 export const pique7Card: Card = {
@@ -95,6 +96,15 @@ export const pique7Card: Card = {
         "Devoir remplacer un petit appareil qui est tombé en panne."
       ]
     },
+    "sante": {
+        "texte": "Signale de légers soucis de santé, des maux passagers, une petite fatigue. Rien de grave, mais des contrariétés qui affectent le bien-être (mal de tête, rhume, petite blessure). Elle peut aussi représenter une pensée anxieuse ou une inquiétude mineure concernant sa santé.",
+        "situation_type": "Souci de santé mineur, fatigue, anxiété.",
+        "scenarios_associes": [
+            "Attraper un virus saisonnier.",
+            "Avoir un doute et s'inquiéter pour un symptôme mineur.",
+            "Une petite blessure qui demande du repos."
+        ]
+    },
     "spirituel": {
       "texte": "C'est la carte du doute. Vous remettez en question votre chemin, votre pratique. La foi vacille légèrement. Ce n'est pas une crise profonde, mais une phase de questionnement, une pensée du type 'Est-ce que tout cela sert vraiment à quelque chose ?'. C'est une invitation à ne pas abandonner, mais peut-être à ajuster sa pratique.",
       "situation_type": "Doute spirituel, questionnement, remise en cause.",
@@ -105,18 +115,6 @@ export const pique7Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Une personne marchant avec une petite pierre dans sa chaussure, affichant une expression d'irritation.",
-      "symbolique": "La contrariété mineure, le petit tracas persistant, l'irritation.",
-      "usage": "Illustrer l'idée de souci mineur mais agaçant."
-    },
-    {
-      "scene": "Un point d'interrogation sombre flottant au-dessus de la tête d'une personne pensive.",
-      "symbolique": "Le doute, l'hésitation, la pensée morose, le questionnement.",
-      "usage": "Représenter son aspect mental et l'incertitude qu'il génère."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_relativiser_pique_7",

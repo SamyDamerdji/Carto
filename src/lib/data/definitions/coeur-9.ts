@@ -1,3 +1,4 @@
+
 import type { Card } from '@/lib/data/cards';
 
 export const coeur9Card: Card = {
@@ -98,6 +99,15 @@ export const coeur9Card: Card = {
         "Une augmentation de salaire qui change la vie."
       ]
     },
+    "sante": {
+        "texte": "C'est la 'carte miracle' pour la santé. Elle annonce la guérison, la rémission, la réalisation d'un vœu de santé. Un traitement donne d'excellents résultats, une opération est un succès total, la vitalité revient. C'est le signe que les prières pour la santé ont été exaucées.",
+        "situation_type": "Guérison miracle, vœu de santé exaucé, rémission.",
+        "scenarios_associes": [
+            "Une guérison que les médecins n'expliquent pas.",
+            "Le succès complet d'une opération ou d'un traitement.",
+            "Retrouver une santé parfaite contre toute attente."
+        ]
+    },
     "spirituel": {
       "texte": "Sur le plan spirituel, c'est l'atteinte d'un état de paix intérieure et de contentement profond. C'est le sentiment d'être en phase avec soi-même et avec l'univers. La quête spirituelle aboutit à un état de grâce et de sérénité. C'est la joie de l'âme qui a trouvé sa place.",
       "situation_type": "Paix intérieure, accomplissement spirituel, sérénité.",
@@ -108,18 +118,6 @@ export const coeur9Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Une personne les yeux fermés, soufflant les bougies d'un gâteau d'anniversaire, avec une expression de pur bonheur et d'espoir.",
-      "symbolique": "Le vœu, le souhait, l'espoir, la célébration de la vie.",
-      "usage": "Illustrer la signification centrale de 'carte des vœux'."
-    },
-    {
-      "scene": "Une clé dorée ouvrant un coffre au trésor d'où s'échappe une lumière chaude et des cœurs lumineux.",
-      "symbolique": "La réalisation, le succès, l'accès au bonheur et à la satisfaction.",
-      "usage": "Représenter l'accomplissement et la concrétisation des désirs."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_voeu_coeur_9",

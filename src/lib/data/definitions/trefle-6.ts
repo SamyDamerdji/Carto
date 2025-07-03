@@ -1,3 +1,4 @@
+
 import type { Card } from '@/lib/data/cards';
 
 export const trefle6Card: Card = {
@@ -96,6 +97,15 @@ export const trefle6Card: Card = {
         "La situation financière s'améliore de mois en mois."
       ]
     },
+    "sante": {
+        "texte": "Très bon présage pour la santé. Indique une progression vers la guérison, un traitement efficace qui mène au succès, une amélioration constante de l'état général. C'est la carte de la rémission en bonne voie. La vitalité est en hausse.",
+        "situation_type": "Progression vers la guérison, traitement réussi, amélioration.",
+        "scenarios_associes": [
+            "Un traitement médical qui fonctionne bien et vous met sur la voie de la guérison.",
+            "Sortir de l'hôpital pour une convalescence réussie à la maison.",
+            "Se sentir de mieux en mieux jour après jour."
+        ]
+    },
     "spirituel": {
       "texte": "Votre cheminement spirituel est sur la bonne voie. Vos pratiques et vos réflexions vous font progresser de manière tangible. Vous ressentez les bienfaits de votre discipline. C'est une invitation à continuer avec confiance, car vous êtes sur un chemin d'éveil et de croissance personnelle.",
       "situation_type": "Progression spirituelle, chemin d'éveil, pratique fructueuse.",
@@ -106,18 +116,6 @@ export const trefle6Card: Card = {
       ]
     }
   },
-  "prompts_visuels": [
-    {
-      "scene": "Une plante verte qui pousse vigoureusement vers une source de lumière, symbolisant la croissance et la bonne direction.",
-      "symbolique": "La croissance, la progression, le chemin vers le succès, l'espoir.",
-      "usage": "Illustrer l'idée de projet sur la bonne voie."
-    },
-    {
-      "scene": "Une personne gravissant un sentier de montagne, avec le sommet ensoleillé clairement visible et accessible.",
-      "symbolique": "Le chemin du succès, l'effort qui mène au but, la progression assurée.",
-      "usage": "Représenter le succès au bout du chemin."
-    }
-  ],
   "modules_interactifs": [
     {
       "id_module": "reflexion_progression_trefle_6",
