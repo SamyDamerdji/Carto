@@ -25,8 +25,7 @@ const ClubIcon = (props: SVGProps<SVGSVGElement>) => (
 );
 const SpadeIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-    <path d="M12 2L2.5 11.5C2.5 16.5 7 22 12 22s9.5-5.5 9.5-10.5L12 2z" />
-    <polygon points="12,21 10,18 14,18" />
+    <path d="M12 2C2 12 7 17 12 22C17 17 22 12 12 2Z M10 18H14L12 22Z" />
   </svg>
 );
 
