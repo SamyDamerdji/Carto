@@ -101,6 +101,15 @@ export const pique4Card: Card = {
         "Les investissements ne rapportent rien."
       ]
     },
+    "sante": {
+      "texte": "C'est la carte la plus directe concernant la santé. Elle annonce une période de maladie, de fatigue intense ou de surmenage qui oblige au repos. Elle conseille vivement de s'arrêter, d'écouter son corps et de se mettre en convalescence pour éviter des complications.",
+      "situation_type": "Maladie, convalescence, repos obligatoire.",
+      "scenarios_associes": [
+        "Attraper une grippe qui vous cloue au lit.",
+        "Un médecin qui prescrit un arrêt de travail pour épuisement.",
+        "La nécessité de se retirer pour se remettre d'une opération."
+      ]
+    },
     "spirituel": {
       "texte": "C'est la carte de la retraite spirituelle par excellence, mais souvent subie plutôt que choisie. Une maladie ou une épreuve vous force à l'introspection. C'est un moment pour méditer, pour lire, pour être seul avec ses pensées les plus profondes. C'est dans ce silence et cette immobilité que des compréhensions importantes peuvent émerger.",
       "situation_type": "Retraite spirituelle forcée, introspection profonde, solitude méditative.",

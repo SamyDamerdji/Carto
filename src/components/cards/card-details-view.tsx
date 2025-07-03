@@ -61,15 +61,22 @@ export function CardDetailsView({ card }: { card: Card }) {
     amour: <Heart className="h-5 w-5" />,
     travail: <Briefcase className="h-5 w-5" />,
     finances: <CircleDollarSign className="h-5 w-5" />,
-    spirituel: <Sparkles className="h-5 w-5" />,
     sante: <HeartPulse className="h-5 w-5" />,
+    spirituel: <Sparkles className="h-5 w-5" />,
   };
+
+  const orderedDomains = [
+    { key: 'amour', data: card.domaines.amour },
+    { key: 'travail', data: card.domaines.travail },
+    { key: 'finances', data: card.domaines.finances },
+    { key: 'sante', data: card.domaines.sante },
+    { key: 'spirituel', data: card.domaines.spirituel },
+  ];
 
   const hasCombinaisons = card.combinaisons && card.combinaisons.length > 0;
   
   return (
     <div className="container mx-auto px-4 pb-8">
-      {/* A. En-tête */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -109,7 +116,6 @@ export function CardDetailsView({ card }: { card: Card }) {
         </div>
       </motion.div>
 
-      {/* B. Symbolique & Archétype */}
       {card.symbolique_image && (
         <SectionWrapper title="Symbolique & Archétype" icon={Aperture} index={1}>
           <div className="p-4 bg-background/20 rounded-lg border border-primary/20 text-white/90">
@@ -118,7 +124,6 @@ export function CardDetailsView({ card }: { card: Card }) {
         </SectionWrapper>
       )}
 
-      {/* C. Mots-clés */}
       <SectionWrapper title="Mots-clés" icon={Tags} index={2}>
         <div className="space-y-4">
           {card.mots_cles.positifs.length > 0 && (
@@ -160,26 +165,26 @@ export function CardDetailsView({ card }: { card: Card }) {
         </div>
       </SectionWrapper>
 
-      {/* D. Significations par Domaine */}
       <SectionWrapper title="Significations par Domaine" icon={LayoutGrid} index={3}>
         <Accordion type="single" collapsible className="w-full">
-            {Object.entries(card.domaines).map(([key, value]) => (
-                 value && <AccordionItem value={`item-${key}`} key={key}>
-                    <AccordionTrigger className="font-headline text-lg hover:no-underline text-card-foreground/90">
-                        <div className="flex items-center gap-3">
-                            {domainIcons[key]}
-                            <span className="capitalize">{key}</span>
-                        </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="p-4 bg-background/20 rounded-b-lg border-x border-b border-primary/20 text-white/90">
-                        <p>{value.texte}</p>
-                    </AccordionContent>
-                 </AccordionItem>
+            {orderedDomains.map(({ key, data }) => (
+                 data && (
+                    <AccordionItem value={`item-${key}`} key={key}>
+                        <AccordionTrigger className="font-headline text-lg hover:no-underline text-card-foreground/90">
+                            <div className="flex items-center gap-3">
+                                {domainIcons[key]}
+                                <span className="capitalize">{key}</span>
+                            </div>
+                        </AccordionTrigger>
+                        <AccordionContent className="p-4 bg-background/20 rounded-b-lg border-x border-b border-primary/20 text-white/90">
+                            <p>{data.texte}</p>
+                        </AccordionContent>
+                    </AccordionItem>
+                 )
             ))}
         </Accordion>
       </SectionWrapper>
       
-      {/* E. Associations Clés */}
       {hasCombinaisons && (
         <SectionWrapper title="Associations Clés" icon={Link2} index={4}>
           <ScrollArea className="h-96 w-full pr-4">
@@ -213,7 +218,6 @@ export function CardDetailsView({ card }: { card: Card }) {
         </SectionWrapper>
       )}
 
-      {/* F. Interprétations Détaillées (optionnel, si on veut garder les onglets) */}
       <SectionWrapper title="Interprétations" icon={Layers} index={5}>
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
@@ -249,7 +253,6 @@ export function CardDetailsView({ card }: { card: Card }) {
         </Accordion>
       </SectionWrapper>
 
-      {/* G. Mes Notes */}
        <SectionWrapper title="Mes Notes" icon={NotebookText} index={6}>
            <Textarea
                placeholder="Mes réflexions, associations personnelles, ou interprétations..."
