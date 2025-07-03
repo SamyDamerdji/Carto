@@ -78,6 +78,16 @@ export function CardDetailsView({ card }: { card: Card }) {
 
   const hasCombinaisons = card.combinaisons && card.combinaisons.length > 0;
   
+  const getArticle = (cardName: string) => {
+    if (cardName.startsWith('As')) {
+      return "l'";
+    }
+    if (cardName.startsWith('Dame')) {
+      return 'la';
+    }
+    return 'le';
+  };
+
   return (
     <div className="container mx-auto px-4 pb-8">
       <motion.div
@@ -179,10 +189,16 @@ export function CardDetailsView({ card }: { card: Card }) {
               {card.combinaisons.map((combo) => {
                 const associatedCard = getCardDetails(combo.carte_associee_id);
                 if (!associatedCard) return null;
+
+                const article = getArticle(associatedCard.nom_carte);
+                const formattedTitle = article === "l'"
+                  ? `Avec ${article}${associatedCard.nom_carte}`
+                  : `Avec ${article} ${associatedCard.nom_carte}`;
+
                 return (
                   <div key={combo.carte_associee_id} className="flex items-start gap-4 rounded-xl bg-secondary/20 p-3 backdrop-blur-lg border border-primary/30 shadow-md">
                     <div className="relative h-20 w-14 flex-shrink-0">
-                        <div className="bg-card rounded shadow-lg p-1 w-full h-full">
+                        <div className="bg-card rounded-lg shadow-lg p-1 w-full h-full">
                             <div className="relative h-full w-full p-1">
                                 <Image
                                     src={associatedCard.image_url}
@@ -195,7 +211,7 @@ export function CardDetailsView({ card }: { card: Card }) {
                         </div>
                     </div>
                     <div className="flex-1 text-sm">
-                      <p className="font-bold text-primary">Avec le {associatedCard.nom_carte}</p>
+                      <p className="font-bold text-primary">{formattedTitle}</p>
                       <p className="mt-1 text-white/90">{combo.signification}</p>
                     </div>
                   </div>
