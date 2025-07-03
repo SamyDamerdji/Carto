@@ -42,7 +42,7 @@ export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouse
       {/* Card Stack Container */}
       <div className="relative w-full max-w-sm h-[360px] flex items-center justify-center">
         <motion.button
-            className="absolute left-2 z-[60] text-primary/70 hover:text-primary transition-colors"
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-[60] text-primary/70 hover:text-primary transition-colors"
             onClick={handlePrev}
             aria-label="Carte précédente"
             whileHover={{ scale: 1.2 }}
@@ -52,7 +52,7 @@ export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouse
         </motion.button>
         
         <motion.div
-            className="relative w-full h-full cursor-pointer"
+            className="relative w-48 h-[270px] cursor-pointer"
             drag="y"
             onDragEnd={onDragEnd}
             dragConstraints={{ top: 0, bottom: 0 }}
@@ -80,7 +80,7 @@ export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouse
                     transformOrigin: 'center',
                     zIndex,
                     }}
-                    initial={{ y: translateY, scale: 0.5, opacity: 0 }}
+                    initial={{ y: translateY > 0 ? 100 : -100, scale: 0.5, opacity: 0 }}
                     animate={{ y: translateY, scale, opacity: 1 }}
                     exit={{ opacity: 0, scale: 0.5 }}
                     transition={{ type: 'spring', stiffness: 200, damping: 25 }}
@@ -105,7 +105,7 @@ export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouse
         </motion.div>
 
         <motion.button
-            className="absolute right-2 z-[60] text-primary/70 hover:text-primary transition-colors"
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-[60] text-primary/70 hover:text-primary transition-colors"
             onClick={handleNext}
             aria-label="Carte suivante"
             whileHover={{ scale: 1.2 }}
