@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { BrainCircuit, ChevronLeft, ChevronRight, FileText } from 'lucide-react';
 import Link from 'next/link';
-import { motion, AnimatePresence, PanInfo } from 'framer-motion';
+import { motion, AnimatePresence, PanInfo, useMotionValue, useTransform } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 
 interface CardCarouselProps {
@@ -18,6 +18,25 @@ interface CardCarouselProps {
 export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouselProps) {
   const router = useRouter();
   const wasDragged = React.useRef(false);
+
+  // --- Logic for 3D effect ---
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const rotateX = useTransform(y, [-150, 150], [10, -10]);
+  const rotateY = useTransform(x, [-150, 150], [-10, 10]);
+
+  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    x.set(event.clientX - rect.left - rect.width / 2);
+    y.set(event.clientY - rect.top - rect.height / 2);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+  // --- End of 3D effect logic ---
   
   const handleNext = React.useCallback(() => {
     setActiveIndex((prev) => (prev === cards.length - 1 ? 0 : prev + 1));
@@ -27,10 +46,11 @@ export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouse
     setActiveIndex((prev) => (prev === 0 ? cards.length - 1 : prev - 1));
   }, [cards.length, setActiveIndex]);
 
-  const handleTap = () => {
+  const handleTap = (event: MouseEvent | TouchEvent | PointerEvent) => {
     if (!wasDragged.current) {
         router.push(`/apprentissage/${cards[activeIndex].id}`);
     }
+    wasDragged.current = false;
   };
 
   const onDragStart = () => {
@@ -38,22 +58,20 @@ export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouse
   };
   
   const onDrag = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-    // If the drag distance exceeds a small threshold, we consider it a drag
     if (Math.abs(info.offset.y) > 5) {
         wasDragged.current = true;
     }
   };
 
   const onDragEnd = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-    // Only handle swipe logic here, tap is handled by onTap
-    const swipeThreshold = 50;
-    if (info.offset.y > swipeThreshold) {
-      handlePrev();
-    } else if (info.offset.y < -swipeThreshold) {
-      handleNext();
+    if (wasDragged.current) {
+        const swipeThreshold = 50;
+        if (info.offset.y > swipeThreshold) {
+            handlePrev();
+        } else if (info.offset.y < -swipeThreshold) {
+            handleNext();
+        }
     }
-    // Reset for the next interaction after a timeout to let the tap event resolve
-    setTimeout(() => { wasDragged.current = false; }, 0);
   };
 
   const activeCard = cards[activeIndex];
@@ -61,7 +79,7 @@ export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouse
   return (
     <div className="w-full flex flex-col items-center">
       {/* Card Stack Container */}
-      <div className="relative w-full max-w-sm h-[320px] flex items-center justify-center">
+      <div className="relative w-full max-w-sm h-[320px] flex items-center justify-center" style={{ perspective: '800px' }}>
         <motion.button
             className="absolute left-2 top-1/2 -translate-y-1/2 z-[60] text-primary/70 hover:text-primary transition-colors"
             onClick={handlePrev}
@@ -81,14 +99,17 @@ export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouse
             onDragEnd={onDragEnd}
             dragConstraints={{ top: 0, bottom: 0 }}
             dragElasticity={0.1}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            style={{ transformStyle: 'preserve-3d' }}
         >
             <AnimatePresence initial={false}>
             {cards.map((card, index) => {
                 const offset = index - activeIndex;
-                
-                // Render only a few cards for performance
+                const isActive = index === activeIndex;
+
                 if (Math.abs(offset) > 3) {
-                return null;
+                    return null;
                 }
 
                 const scale = 1 - Math.abs(offset) * 0.15;
@@ -100,8 +121,10 @@ export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouse
                     key={card.id}
                     className="absolute w-full h-full flex items-center justify-center pointer-events-none"
                     style={{
-                    transformOrigin: 'center',
-                    zIndex,
+                        transformOrigin: 'center',
+                        zIndex,
+                        transformStyle: 'preserve-3d',
+                        ...(isActive && { rotateX, rotateY }),
                     }}
                     initial={{ y: translateY > 0 ? 100 : -100, scale: 0.5, opacity: 0 }}
                     animate={{ y: translateY, scale, opacity: 1 }}
@@ -112,14 +135,25 @@ export function CardCarousel({ cards, activeIndex, setActiveIndex }: CardCarouse
                         <div className="absolute inset-0 bg-card rounded-lg shadow-lg p-1">
                             <div className="relative h-full w-full p-2">
                                 <Image
-                                src={card.image_url}
-                                alt={`Image de la carte ${card.nom_carte}`}
-                                fill
-                                className="object-contain"
-                                sizes="192px"
-                                priority={index === activeIndex}
+                                    src={card.image_url}
+                                    alt={`Image de la carte ${card.nom_carte}`}
+                                    fill
+                                    className="object-contain"
+                                    sizes="192px"
+                                    priority={index === activeIndex}
                                 />
                             </div>
+                            {isActive && (
+                                <motion.div
+                                    className="absolute inset-0 rounded-lg mix-blend-overlay pointer-events-none"
+                                    style={{
+                                    background: useTransform(
+                                        [rotateX, rotateY],
+                                        ([latestX, latestY]) => `radial-gradient(at ${50 - (latestY as number) * 2}% ${50 + (latestX as number) * 2}%, rgba(255,255,255,0.2), transparent 80%)`
+                                    )
+                                    }}
+                                />
+                            )}
                         </div>
                     </div>
                 </motion.div>
