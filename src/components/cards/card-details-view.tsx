@@ -25,6 +25,7 @@ import {
   PlusCircle,
   MinusCircle,
   List,
+  GraduationCap, // Placeholder for Conseil, using Sparkles
 } from 'lucide-react';
 import { Textarea } from '@/components/ui/textarea';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -148,16 +149,6 @@ export function CardDetailsView({ card }: { card: Card }) {
                     <p>{card.interpretations.ombre_et_defis.texte}</p>
                 </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-3">
-                <AccordionTrigger className="font-headline text-lg hover:no-underline text-card-foreground/90">
-                    <div className="flex items-center gap-3">
-                       <Sparkles className="h-5 w-5" /><span>Le Conseil de l'Oracle</span>
-                    </div>
-                </AccordionTrigger>
-                <AccordionContent className="p-4 bg-background/20 rounded-b-lg border-x border-b border-primary/20 text-white/90">
-                    <p>{card.interpretations.conseil.texte}</p>
-                </AccordionContent>
-            </AccordionItem>
         </Accordion>
       </SectionWrapper>
 
@@ -214,7 +205,13 @@ export function CardDetailsView({ card }: { card: Card }) {
         </SectionWrapper>
       )}
 
-      <SectionWrapper title="Mots-clés" icon={Tags} index={5}>
+      <SectionWrapper title="Le Conseil de l'Oracle" icon={Sparkles} index={5}>
+        <div className="p-4 bg-background/20 rounded-lg border border-primary/20 text-white/90">
+          <p>{card.interpretations.conseil.texte}</p>
+        </div>
+      </SectionWrapper>
+
+      <SectionWrapper title="Mots-clés" icon={Tags} index={6}>
         <Accordion type="single" collapsible className="w-full">
           {card.mots_cles.positifs.length > 0 && (
             <AccordionItem value="item-positifs">
@@ -264,7 +261,7 @@ export function CardDetailsView({ card }: { card: Card }) {
         </Accordion>
       </SectionWrapper>
 
-       <SectionWrapper title="Mes Notes" icon={NotebookText} index={6}>
+       <SectionWrapper title="Mes Notes" icon={NotebookText} index={7}>
            <Textarea
                placeholder="Mes réflexions, associations personnelles, ou interprétations..."
                className="bg-secondary/20 backdrop-blur-lg border-primary/30 text-white placeholder:text-white/60"
