@@ -1,9 +1,24 @@
+
+'use client';
+
+import { useState } from "react";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { cardsList } from "@/lib/data/cards";
+import type { CardColor } from "@/lib/data/cards";
 import { CardCarousel } from "@/components/cards/card-carousel";
+import { SuitNavigation } from "@/components/cards/suit-navigation";
 
 export default function ApprentissagePage() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleSuitSelect = (suit: CardColor) => {
+    const firstCardOfSuitIndex = cardsList.findIndex(card => card.couleur === suit);
+    if (firstCardOfSuitIndex !== -1) {
+      setActiveIndex(firstCardOfSuitIndex);
+    }
+  };
+
   return (
     <div className="flex min-h-dvh flex-col">
       <Header />
@@ -13,12 +28,14 @@ export default function ApprentissagePage() {
                 <h1 className="font-headline text-4xl font-bold tracking-tight text-primary sm:text-5xl uppercase drop-shadow-lg">
                   Apprentissage
                 </h1>
-                <p className="mt-4 max-w-2xl text-lg text-white">
-                  Faites défiler les cartes pour explorer leur signification.
-                </p>
+                <SuitNavigation onSuitSelect={handleSuitSelect} />
             </div>
             
-            <CardCarousel cards={cardsList} />
+            <CardCarousel 
+              cards={cardsList}
+              activeIndex={activeIndex}
+              setActiveIndex={setActiveIndex}
+            />
         </div>
       </main>
       <Footer />
