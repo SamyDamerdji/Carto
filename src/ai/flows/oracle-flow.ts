@@ -4,11 +4,11 @@
  * This module focuses on immersion and emotional connection with the card.
  */
 import { ai } from '@/ai/genkit';
-import { z } from 'zod';
 import { CardSchema, ImmersionScriptOutputSchema, type ImmersionScriptOutput } from '@/ai/schemas/lesson-schemas';
+import type { Card } from '@/lib/data/cards';
 
-const ImmersionScriptInputSchema = CardSchema;
-export type ImmersionScriptInput = z.infer<typeof ImmersionScriptInputSchema>;
+// This is the input type for the flow, re-exporting for clarity
+export type ImmersionScriptInput = Card;
 
 
 export async function getImmersionScript(input: ImmersionScriptInput): Promise<ImmersionScriptOutput> {
@@ -17,7 +17,8 @@ export async function getImmersionScript(input: ImmersionScriptInput): Promise<I
 
 const immersionScriptPrompt = ai.definePrompt({
   name: 'immersionScriptPrompt',
-  input: { schema: ImmersionScriptInputSchema },
+  model: 'googleai/gemini-2.0-flash',
+  input: { schema: CardSchema },
   output: { schema: ImmersionScriptOutputSchema },
   prompt: `Tu es un mentor-conteur pour une application d'apprentissage de la cartomancie, "L'Oracle Royal". Ton ton est chaleureux, bienveillant et pédagogue.
 Ta mission est de créer le script pour le premier module d'une leçon interactive : "Immersion & Connexion Émotionnelle". Ce module n'est PAS une évaluation.
@@ -48,7 +49,7 @@ Génère maintenant la sortie JSON pour le script et le prompt d'image.`,
 const immersionScriptFlow = ai.defineFlow(
   {
     name: 'immersionScriptFlow',
-    inputSchema: ImmersionScriptInputSchema,
+    inputSchema: CardSchema,
     outputSchema: ImmersionScriptOutputSchema,
   },
   async (input) => {
