@@ -4,33 +4,22 @@
  * It calls various flows to get content, audio, and images, and combines them.
  */
 import { ai } from '@/ai/genkit';
-import { z } from 'zod';
 import { getCardDetails } from '@/lib/data/cards';
 import { getImmersionScript } from './oracle-flow';
-import { textToSpeech, TtsOutputSchema } from './tts-flow';
-import { generateImage, GenerateImageOutputSchema } from './image-generation-flow';
-
-// Input for the main orchestrator flow
-export const LessonStepInputSchema = z.object({
-  cardId: z.string(),
-  step: z.number().int().min(0),
-});
-export type LessonStepInput = z.infer<typeof LessonStepInputSchema>;
-
-// Output for a single lesson step
-export const LessonStepOutputSchema = z.object({
-  script: z.string(),
-  audioUrl: TtsOutputSchema.shape.media,
-  imageUrl: GenerateImageOutputSchema.shape.imageUrl.optional(),
-  isLastStep: z.boolean(),
-});
-export type LessonStepOutput = z.infer<typeof LessonStepOutputSchema>;
-
+import { textToSpeech } from './tts-flow';
+import { generateImage } from './image-generation-flow';
+import {
+  LessonStepInputSchema,
+  LessonStepOutputSchema,
+  type LessonStepInput,
+  type LessonStepOutput,
+} from '@/ai/schemas/lesson-schemas';
 
 // The main exported function that the UI will call
 export async function getLessonStep(input: LessonStepInput): Promise<LessonStepOutput> {
   return await lessonOrchestratorFlow(input);
 }
+export type { LessonStepOutput };
 
 
 // The orchestrator flow

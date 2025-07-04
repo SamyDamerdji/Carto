@@ -3,15 +3,8 @@
  * @fileOverview A Genkit flow for generating images based on a prompt.
  */
 import { ai } from '@/ai/genkit';
-import { z } from 'zod';
+import { GenerateImageInputSchema, GenerateImageOutputSchema, type GenerateImageInput, type GenerateImageOutput } from '@/ai/schemas/lesson-schemas';
 
-const GenerateImageInputSchema = z.string().describe('A descriptive prompt for the image to be generated.');
-export type GenerateImageInput = z.infer<typeof GenerateImageInputSchema>;
-
-const GenerateImageOutputSchema = z.object({
-  imageUrl: z.string().describe('The generated image as a data URI.'),
-});
-export type GenerateImageOutput = z.infer<typeof GenerateImageOutputSchema>;
 
 export async function generateImage(prompt: GenerateImageInput): Promise<GenerateImageOutput> {
   if (!prompt) {

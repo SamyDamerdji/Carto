@@ -5,16 +5,11 @@
  */
 import { ai } from '@/ai/genkit';
 import { z } from 'zod';
-import { CardSchema } from '@/ai/schemas/lesson-schemas';
+import { CardSchema, ImmersionScriptOutputSchema, type ImmersionScriptOutput } from '@/ai/schemas/lesson-schemas';
 
 const ImmersionScriptInputSchema = CardSchema;
 export type ImmersionScriptInput = z.infer<typeof ImmersionScriptInputSchema>;
 
-export const ImmersionScriptOutputSchema = z.object({
-  script: z.string().describe("The full narrative script for the mentor, combining introduction, symbolic visualization, and the key phrase. It should be warm, engaging, and guide the user to feel the card's essence."),
-  imagePrompt: z.string().describe("A concise, evocative prompt for an image generation model, based on the card's symbolism. Example: 'An ancient, ornate key unlocking a glowing heart-shaped lock, mystical atmosphere.'")
-});
-export type ImmersionScriptOutput = z.infer<typeof ImmersionScriptOutputSchema>;
 
 export async function getImmersionScript(input: ImmersionScriptInput): Promise<ImmersionScriptOutput> {
   return await immersionScriptFlow(input);

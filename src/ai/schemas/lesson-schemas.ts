@@ -128,3 +128,42 @@ export const LearningInputSchema = z.object({
   historyLength: z.number().describe("The number of steps already completed in the lesson."),
 });
 export type LearningInput = z.infer<typeof LearningInputSchema>;
+
+// === SCHEMAS FOR INTERACTIVE LESSONS (MODULE 1) ===
+
+// From image-generation-flow.ts
+export const GenerateImageInputSchema = z.string().describe('A descriptive prompt for the image to be generated.');
+export type GenerateImageInput = z.infer<typeof GenerateImageInputSchema>;
+
+export const GenerateImageOutputSchema = z.object({
+  imageUrl: z.string().describe('The generated image as a data URI.'),
+});
+export type GenerateImageOutput = z.infer<typeof GenerateImageOutputSchema>;
+
+// From tts-flow.ts
+export const TtsOutputSchema = z.object({
+  media: z.string().describe("The generated audio as a data URI."),
+});
+export type TtsOutput = z.infer<typeof TtsOutputSchema>;
+
+// From oracle-flow.ts
+export const ImmersionScriptOutputSchema = z.object({
+  script: z.string().describe("The full narrative script for the mentor, combining introduction, symbolic visualization, and the key phrase. It should be warm, engaging, and guide the user to feel the card's essence."),
+  imagePrompt: z.string().describe("A concise, evocative prompt for an image generation model, based on the card's symbolism. Example: 'An ancient, ornate key unlocking a glowing heart-shaped lock, mystical atmosphere.'")
+});
+export type ImmersionScriptOutput = z.infer<typeof ImmersionScriptOutputSchema>;
+
+// From lesson-orchestrator.ts
+export const LessonStepInputSchema = z.object({
+  cardId: z.string(),
+  step: z.number().int().min(0),
+});
+export type LessonStepInput = z.infer<typeof LessonStepInputSchema>;
+
+export const LessonStepOutputSchema = z.object({
+  script: z.string(),
+  audioUrl: TtsOutputSchema.shape.media,
+  imageUrl: GenerateImageOutputSchema.shape.imageUrl.optional(),
+  isLastStep: z.boolean(),
+});
+export type LessonStepOutput = z.infer<typeof LessonStepOutputSchema>;

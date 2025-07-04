@@ -7,11 +7,7 @@
 import { ai } from '@/ai/genkit';
 import { z } from 'zod';
 import wav from 'wav';
-
-const TtsOutputSchema = z.object({
-  media: z.string().describe("The generated audio as a data URI."),
-});
-export type TtsOutput = z.infer<typeof TtsOutputSchema>;
+import { TtsOutputSchema, type TtsOutput } from '@/ai/schemas/lesson-schemas';
 
 async function toWav(
   pcmData: Buffer,
